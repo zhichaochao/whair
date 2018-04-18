@@ -7,7 +7,7 @@ class ControllerCheckoutSuccess extends Controller {
 
             if (isset($this->session->data['order_id'])) {
 
-                $this->cart->clear();
+                $this->cart->clear($this->request->get['cart_ids']);
 
                 $order_id = $this->session->data['order_id'];
 

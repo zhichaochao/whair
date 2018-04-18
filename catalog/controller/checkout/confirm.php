@@ -21,7 +21,7 @@ class ControllerCheckoutConfirm extends Controller {
 		}
 
 		// Validate minimum quantity requirements.
-		$products = $this->cart->getProducts();
+		$products = $this->cart->getProducts($this->request->get['cart_ids']);
 
 		foreach ($products as $product) {
 			$product_total = 0;
@@ -92,7 +92,7 @@ class ControllerCheckoutConfirm extends Controller {
 			$this->load->model('tool/upload');
 			$this->load->model('tool/image');
 
-			foreach ($this->cart->getProducts() as $product) {
+			foreach ($this->cart->getProducts($this->request->get['cart_ids']) as $product) {
 				$option_data = array();
                                 
 				foreach ($product['option'] as $option) {
@@ -182,6 +182,8 @@ class ControllerCheckoutConfirm extends Controller {
 		$data['payment_type'] = isset($this->session->data['payment_type'])?$this->session->data['payment_type']:'';
 		$data['comment'] = isset($this->session->data['comment'])?$this->session->data['comment']:'';
 
+        $data['cart_ids'] = $this->request->get['cart_ids'];
+
 		$this->response->setOutput($this->load->view('checkout/confirm', $data));
 	}
 	
@@ -226,7 +228,7 @@ class ControllerCheckoutConfirm extends Controller {
 	    }
 	
 	    // Validate minimum quantity requirements.
-	    $products = $this->cart->getProducts();
+	    $products = $this->cart->getProducts($this->request->get['cart_ids']);
 	
 	    foreach ($products as $product) {
 	        $product_total = 0;
@@ -408,7 +410,7 @@ class ControllerCheckoutConfirm extends Controller {
 	        }
 	
 	        $order_data['products'] = array();
-	        foreach ($this->cart->getProducts() as $product) {
+	        foreach ($this->cart->getProducts($this->request->get['cart_ids']) as $product) {
 	            $option_data = array();
 	
 	            foreach ($product['option'] as $option) {
@@ -534,7 +536,7 @@ class ControllerCheckoutConfirm extends Controller {
 			$this->session->data['payment_code'] = $this->session->data['payment_method']['code'];
 
 	        //clear cart data
-	        $this->cart->clear();
+	        $this->cart->clear($this->request->get['cart_ids']);
 	        unset($this->session->data['addresses']);
 	        unset($this->session->data['eaddress']);
 	        unset($this->session->data['shipping_address']);

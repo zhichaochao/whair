@@ -1,7 +1,7 @@
 <?php
 class ControllerCheckoutCart extends Controller {
 	public function index() {
-        print_r($this->config);exit();
+//        print_r($this->config);exit();
         $this->load->language('checkout/cart');
         $this->document->addStyle('catalog/view/styles/shopping-cart.css');
 
@@ -75,7 +75,10 @@ class ControllerCheckoutCart extends Controller {
 
             $data['products'] = array();
 
+//            $products = $this->cart->getProducts();
+//            var_dump($products);
             $products = $this->cart->getProducts();
+//            var_dump($products);die;
 
             foreach ($products as $product) {
                 $product_total = 0;
@@ -273,7 +276,7 @@ class ControllerCheckoutCart extends Controller {
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
 
-
+//            var_dump($data['products']);die;
             $this->response->setOutput($this->load->view('checkout/cart', $data));
         } else {
             // print_r('2');exit();

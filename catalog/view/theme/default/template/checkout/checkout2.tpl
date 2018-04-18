@@ -146,10 +146,12 @@ function getPaymentMethod()
 
 // Get Order Info
 function getOrder(){
+//    console.log();
     $.ajax({
-        url: 'index.php?route=checkout/confirm',
+        url: 'index.php?route=checkout/confirm&cart_ids=' + "<?php echo $cart_ids ?>",
         dataType: 'html',
         success: function(html) {
+//            console.log(html);die;
             $('#collapse-checkout-confirm').html(html);
         },
         error: function(xhr, ajaxOptions, thrownError) {

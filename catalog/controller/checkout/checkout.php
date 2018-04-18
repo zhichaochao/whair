@@ -1,6 +1,7 @@
 <?php
 class ControllerCheckoutCheckout extends Controller {
 	public function index() {
+//	    var_dump($this->request->get['cart_ids']);die;
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$this->response->redirect($this->url->link('checkout/cart'));
@@ -15,9 +16,11 @@ class ControllerCheckoutCheckout extends Controller {
         $this->session->data['payment_type'] = 'Standard';//支付类型，标准支付
 
 		// Validate minimum quantity requirements.
-		$products = $this->cart->getProducts();
+//        var_dump();
+        $products = $this->cart->getProducts($this->request->get['cart_ids']);
+//        var_dump($products);die;
 
-		foreach ($products as $product) {
+        foreach ($products as $product) {
 			$product_total = 0;
 
 			foreach ($products as $product_2) {
@@ -100,6 +103,8 @@ class ControllerCheckoutCheckout extends Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+
+		$data['cart_ids'] = $this->request->get['cart_ids'];
 
 		$this->response->setOutput($this->load->view('checkout/checkout2', $data));
 	}

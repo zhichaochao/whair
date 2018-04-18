@@ -134,7 +134,7 @@
             <a href="<?php echo $login; ?>" class="a1"></a>
             <?php } ?>
             <a class="a2"></a>
-            <a href="<?php echo $shopping_cart; ?>" class="a3"><span><?php echo $text_cart_items; ?></span></a>
+            <a href="<?php echo $shopping_cart; ?>" class="a3"><span id="cart-num"><?php echo $text_cart_items; ?></span></a>
         </div>
 
     </div>

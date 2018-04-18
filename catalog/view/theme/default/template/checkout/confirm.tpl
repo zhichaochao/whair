@@ -141,7 +141,7 @@ function checkout(e) {
         return false;
     }
     $.ajax({
-        url: 'index.php?route=<?php echo $payment_type=="Express" ? "extension/payment/pp_express/expressComplete" : "checkout/confirm/save"; ?>',
+        url: 'index.php?route=<?php echo $payment_type=="Express" ? "extension/payment/pp_express/expressComplete" : "checkout/confirm/save"; ?>&cart_ids=<?php echo $cart_ids ?>',
         type: 'post',
         data: $('#collapse-checkout-confirm textarea'),
         dataType: 'json',

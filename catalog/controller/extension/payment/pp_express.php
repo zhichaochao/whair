@@ -288,7 +288,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 		}
 
 		// Validate minimum quantity requirements.
-		$products = $this->cart->getProducts();
+		$products = $this->cart->getProducts($this->request->get['cart_ids']);
 
 		foreach ($products as $product) {
 			$product_total = 0;
@@ -521,7 +521,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 
 			$product_data = array();
 
-			foreach ($this->cart->getProducts() as $product) {
+			foreach ($this->cart->getProducts($this->request->get['cart_ids']) as $product) {
 				$option_data = array();
 
 				foreach ($product['option'] as $option) {
@@ -803,7 +803,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 				}
                                 优化 by hwh end */
 
-				$redirect = $this->url->link('checkout/success','token='.$this->session->data['paypal']['token'].'&PayerID='.$this->session->data['paypal']['payerid']);
+				$redirect = $this->url->link('checkout/success','token='.$this->session->data['paypal']['token'].'&PayerID='.$this->session->data['paypal']['payerid'].'&cart_ids='.$this->request->get['cart_ids']);
 			} else {
 				if ($result['L_ERRORCODE0'] == '10486') {
 					if (isset($this->session->data['paypal_redirect_count'])) {

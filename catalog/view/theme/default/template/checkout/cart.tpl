@@ -71,7 +71,7 @@
 				<tr>
 					<td class="td-checkbox">
 						<span class="lang-checkbox">
-                            <input autocomplete="off" type="checkbox" value="<?php echo $product['key']; ?>">
+                            <input autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
                         </span>
 					</td>
 					<td class="td-goods">
@@ -118,8 +118,6 @@
 					</td>
 				</tr>
                 <?php } ?>
-                
-                
 			</tbody>
 		</table>
         </form>
@@ -171,7 +169,7 @@
                 <?php } ?>
 			</ul>
 			<ul class="checkout-types">
-				<li class="cart-checkout-metdod"> <button type="button" title="Proceed to Checkout" class="cart-to-checkout-gtm btn-checkout checkout-gtm" onclick="window.location='<?php echo $checkout; ?>';">
+				<li class="cart-checkout-metdod"> <button type="button" title="Proceed to Checkout" class="cart-to-checkout-gtm btn-checkout checkout-gtm" onclick="submitCart();">
 				    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
 				    &ensp;&ensp;&ensp;PROCEED TO CHECKOUT</button>
 				</li>
@@ -216,6 +214,16 @@
 </article>
 <script>
 
+	function submitCart() {
+	    console.log('in');
+        var chk_value = '';
+        $("input:checkbox[name='product']:checked").each(function() { // 遍历name=test的多选框
+            chk_value += $(this).val() + ',';  // 每一个被选中项的值
+        });
+        chk_value = chk_value.substring(0,chk_value.length-1);
+//        alert(chk_value);die;
+        window.location='index.php?route=checkout/checkout&cart_ids=' + chk_value;
+    }
 function updateQty(obj,type){
     var qty = 1;
     switch(type){
