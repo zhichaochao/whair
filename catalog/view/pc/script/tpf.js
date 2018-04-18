@@ -1,1 +1,0 @@
-;var _ta_tpf = {"setting":[],"base_url":"https:\/\/app.socialbird.cn\/TouchPoint\/Outgoing\/form?form_id="};
