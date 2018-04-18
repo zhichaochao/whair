@@ -115,50 +115,74 @@
 			</div>
 			<?php } ?>
 			<!--/产品价格-->
-			
-			<div id="product">
-                <form id='form-product'>
-				<?php if ($options) { ?>
-				<hr>
 
-				
-				<?php foreach ($options as $option) { ?>
+			<div id="product">
+				<form id='form-product'>
+					<?php if ($options) { ?>
+					<hr>
+					<?php foreach ($options as $option) { ?>
 
 					<!-- <h4><?=$option['name'];?></h4> -->
 
-				<?php if ($option['product_option_value']) { ?>
-				<?php if ($option['type'] == 'select') { ?>
-					<p class="select-box">
-					<span><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
-					<select onchange="changeprice()" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>"  style="cursor:pointer;">
-						<option value=""><?php echo $text_select; ?></option>
-						<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
-						<option <?=$k==0?'selected':'';?> value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
-						<?php if ($option_value['price']) { ?>
-						(<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-						<?php } ?>
-						</option>
-						<?php } ?>
-					</select>
-					</p>
-				<?php } elseif ($option['type'] == 'radio') { ?>
+					<?php if ($option['product_option_value']) { ?>
+					<?php if ($option['type'] == 'select') { ?>
 					<p class="select-box">
 						<span><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
-						<div class="product_label">
+						<select onchange="changeprice()" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>"  style="cursor:pointer;">
+							<option value=""><?php echo $text_select; ?></option>
 							<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
-								<label <?=$k==0?'style="border-color: rgb(254, 136, 31);"':''?>>
-									<input onclick=" changeprice();" <?=$k==0?'checked':'';?> type="radio" name="option[<?php echo $option['product_option_id']; ?>]" style="display:none" value="<?php echo $option_value['product_option_value_id']; ?>" />
-									<?php echo $option_value['name']; ?>
-								</label>
+							<option <?=$k==0?'selected':'';?> value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+							<?php if ($option_value['price']) { ?>
+							(<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
 							<?php } ?>
-						</div>
+							</option>
+							<?php } ?>
+						</select>
 					</p>
-				<?php }}}} ?>
-                </form>
+					<?php } if ($option['type'] == 'radio') { ?>
+					<p class="select-box">
+						<span><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
+					<div class="product_label">
+						<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
+						<label <?=$k==0?'style="border-color: rgb(254, 136, 31);"':''?>>
+						<input onclick=" changeprice();" <?=$k==0?'checked':'';?> type="radio" name="option[<?php echo $option['product_option_id']; ?>]" style="display:none" value="<?php echo $option_value['product_option_value_id']; ?>" />
+						<?php echo $option_value['name']; ?>
+						</label>
+						<?php } ?>
+					</div>
+					</p>
+					<?php }} ?>
+					<!--
+                                        <?php if ($option['type'] == 'text') { ?>
+                                        <div style="display: none" class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
+                                            <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
+                                            <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+                                        </div>
+                                        <?php }  if ($option['type'] == 'date') { ?>
+                                        <div style="display: none" class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
+                                            <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
+                                            <div class="input-group date">
+                                                <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" data-date-format="YYYY-MM-DD" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+                                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span></div>
+                                        </div>
+                                        <?php } ?>
+                    -->
+					<?php }} ?>
+				</form>
 				<p class="select-box">
 					<span>Qty:</span>
 					<input value="1" type="text" placeholder="" name="quantity" id="input-quantity">
 				</p>
+
+				<!-- 增减商品数量铵钮 -->
+				<div class="prodet_num_botom">
+					<button class="addnum" style="background-color: #00a8c6;width: 30px" id="button-minus"> - </button>
+					<button class="minusnum"  style="background-color: #00a8c6;width: 30px" id="button-add"> + </button>
+				</div>
+				<!-- 增减商品数量 -->
+
 				<input type="hidden" name="product_id" value="<?=$product_id?>">
 				<div style="clear: both;"></div>
 				<style>
@@ -202,6 +226,20 @@
                             $(this).css({"border-color":"#fe881f"});
                             $(this).siblings().css({"border-color":"#666"});
                         });
+
+//                        增减事件
+                        $('#button-add').click(function () {
+                            $('#input-quantity').val(parseInt($('#input-quantity').val())+1);
+                            $('#nums').html($('#input-quantity').val());
+                            console.log($('#nums').html());
+                        });
+                        $('#button-minus').click(function () {
+                            if($('#input-quantity').val()>0){
+                                $('#input-quantity').val(parseInt($('#input-quantity').val())-1);
+                                $('#nums').html($('#input-quantity').val());
+                            }
+                        });
+
                     });
 				</script>
 			</div>
@@ -225,7 +263,7 @@
 
 			<!--按钮-->
 			<div class="prodet_right_botom">
-				<button class="btn1 add-to-cart-gtm" id="button-cart">CHECK OUT: <font id="nums">0</font> <span class="new-product-num-right">Item</span></button>
+				<button class="btn1 add-to-cart-gtm" id="button-cart" ">CHECK OUT: <span id="nums">1</span> <span class="new-product-num-right">Item</span></button>
 				<button class="btn1 btn2 inquiry-gtm" id="product-detail-inquiry">Wholesale Inquiry</button>
 			</div>
 			<!--/按钮-->
@@ -257,7 +295,7 @@
          <?php } else { ?>
          <?php $class = 'col-xs-6 col-sm-3'; ?>
          <?php } ?>
-         
+
          <div class="<?php echo $class; ?>">
             <div class="product-thumb transition">
               <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
@@ -295,7 +333,7 @@
      </div>
      </div>
     </div>
-            
+
       <?php if (($column_left && $column_right) && (($i+1) % 2 == 0)) { ?>
       <div class="clearfix visible-md visible-sm"></div>
       <?php } elseif (($column_left || $column_right) && (($i+1) % 3 == 0)) { ?>
@@ -305,7 +343,7 @@
       <?php } ?>
       <?php $i++; ?>
       <?php } ?>
-      
+
       </div>
     <?php } ?>-->
 
@@ -389,11 +427,11 @@
 	<!--产品描述+评论-->
 	<!--<ul class="nav nav-tabs">
        <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
-           
+
        <?php if ($attribute_groups) { ?>
        <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
        <?php } ?>
-           
+
        <?php if ($review_status) { ?>
        <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
        <?php } ?>
@@ -682,7 +720,11 @@
                 $('#button-cart').button('loading');
             },
             complete: function() {
-                $('#button-cart').button('reset');
+                $('#input-quantity').val('1');
+//                $('#nums').html('1');
+//                $('#button-cart').button('reset');
+                $('#button-cart').html('CHECK OUT: <span id="nums">1</span> <span class="new-product-num-right">Item</span>');
+                $('#button-cart').attr("disabled",false);
             },
             success: function(json) {
                 $('.alert, .text-danger').remove();
@@ -710,8 +752,10 @@
                 }
 
                 if(json['success']) {
+
+                    $('#cart-num').html(parseInt($('#cart-num').html())+parseInt($('#input-quantity').val()));
+
                     $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                   $('#nums').html(1);
 
                     $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
 
@@ -811,7 +855,9 @@
         $('#review').fadeIn('slow');
     });
     function changeprice() {
-        // alert($("#form-product").serialize());
+        console.log('first');
+//         alert($("#form-product").serialize());
+//		alert('<?php echo $product_id; ?>'+',<?=$read_special?$read_special:0?>'+',<?php echo $read_price;?>');
         $.ajax({
             url: 'index.php?route=product/product/getprice&product_id=<?php echo $product_id; ?>&p=<?php echo $read_price;?>&s=<?=$read_special?$read_special:0?>',
             type: 'post',
@@ -819,8 +865,8 @@
             data: $("#form-product").serialize(),
 
             success: function(json) {
+//                console.log(json);die;
                 $('#money').html(json['html']);
-
             }
         });
     }
@@ -1224,8 +1270,7 @@
     });
     var myVideo=document.getElementById("audio");
     var Rerun=document.getElementById("Rerun");
-    function playVid()
-    {
+    function playVid() {
         Rerun.style.display="none";
         myVideo.play();
     }
@@ -1258,9 +1303,9 @@
             beforeSend: function() {
                 $('#button-cart').button('loading');
             },
-            complete: function() {
-                $('#button-cart').button('reset');
-            },
+//            complete: function() {
+//                $('#button-cart').button('reset');
+//            },
             success: function(json) {
                 $('.alert, .text-danger').remove();
                 $('.form-group').removeClass('has-error');
@@ -1287,15 +1332,24 @@
                 }
 
                 if(json['success']) {
+                    $('#nums').html('1');
+                    $('#input-quantity').val('1');
+//                    $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                    $('#cart-num').html(parseInt($('#cart-num').html())+parseInt($('#input-quantity').val()));
+
                     $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
-                    //$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+                    $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
 
-                    //$('html, body').animate({ scrollTop: 0 }, 'slow');
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 'slow');
 
-                    //$('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
 
-                    $('.a3').html("<span>" + json['total'] + "</span>"); //dyl add
+//                    $('.a3').html("<span>" + json['total'] + "</span>"); //dyl add
+
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

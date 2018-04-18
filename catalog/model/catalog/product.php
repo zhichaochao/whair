@@ -415,13 +415,11 @@ class ModelCatalogProduct extends Model {
             if ($key>0) {
                 $temp_query=$this->db->query("SELECT price FROM " . DB_PREFIX . "product_option_value WHERE product_id = '" . (int)$product_id . "' AND product_option_id = '" . (int)$key . "' AND product_option_value_id = '" . (int)$value . "'");
                 $temp=$temp_query->row;
-                $price+=$temp['price'];
+                if(isset($temp['price'])) $price+=$temp['price'];
             }
         }
 
         return $price;
-
-
     }
 
 	public function getBestSellerProducts($limit) {
