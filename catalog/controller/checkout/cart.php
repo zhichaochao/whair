@@ -1,7 +1,7 @@
 <?php
 class ControllerCheckoutCart extends Controller {
 	public function index() {
-        // print_r($this->config);exit();
+        print_r($this->config);exit();
         $this->load->language('checkout/cart');
         $this->document->addStyle('catalog/view/styles/shopping-cart.css');
 
@@ -309,7 +309,9 @@ class ControllerCheckoutCart extends Controller {
 	
 	public function add() {
 		$this->load->language('checkout/cart');
-
+//        $data = $this->request->post['option'];
+//        $this->response->setOutput(json_encode($data));
+//        return;
 		$json = array();
 
 		if (isset($this->request->post['product_id'])) {
@@ -335,13 +337,13 @@ class ControllerCheckoutCart extends Controller {
 				$option = array();
 			}
 
-			$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
+            $product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
 
-			foreach ($product_options as $product_option) {
-				if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
-					$json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
-				}
-			}
+//			foreach ($product_options as $product_option) {
+//				if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
+//					$json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
+//				}
+//			}
 
 			if (isset($this->request->post['recurring_id'])) {
 				$recurring_id = $this->request->post['recurring_id'];
