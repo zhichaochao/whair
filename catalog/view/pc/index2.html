@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="ltr" lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="ltr" lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="ltr" lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Hot Beauty Hair.com</title>
+
+<meta name="description" content="My Store" />
+
+
+<script src="script/jquery-2.1.1.min.js" type="text/javascript"></script>
+
+<script src="script/jq.js" type="text/javascript"></script>
+<link href="style/style.css" rel="stylesheet">
+
+<link href="style/bootstrap.min.css" rel="stylesheet" media="screen" />
+<script src="script/bootstrap.min.js" type="text/javascript"></script>
+<!--<link href="style/font-awesome.min.css" rel="stylesheet" type="text/css" />-->
+<!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />-->
+<link href="style/stylesheet.css" rel="stylesheet">
+
+<link href="style/home.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="style/owl.carousel.css" type="text/css" rel="stylesheet" media="screen" />
+
+<script src="script/common.js" type="text/javascript"></script>
+
+<!--<link href="image/cart.png" rel="icon" />-->
+
+<script src="script/owl.carousel.min.js" type="text/javascript"></script>
+
+
+<!-- Google Tag Manager -->
+<!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5NZ6HB');</script>-->
+<!-- End Google Tag Manager -->
+
+<script>
+$(document).ready(function() {
+	/* Search */
+	$('.jwx_header .a2').click(function() {
+		url = 'http://www.hotbeautyhairmall.com/product-search';
+		var value = $("input[name='new_search']").val();
+
+		if (value) {
+			url += '?search=' + encodeURIComponent(value);
+		}				
+		location = url;		
+	});
+	
+	$('#header-search').keydown(function(e){
+		if(e.keyCode==13){
+			$('.jwx_header .a2').click();
+		}	
+	})
+
+	//底下展示栏图片大小设置
+	var width = $(".image-box ul li").width() * 7 / 6;
+	width = Math.floor(width) - 7;
+	$(".image-box ul li").height(width);
+
+	//弹出层
+	var heig = $(window).height();
+	$(".bg-cover").height(heig);
+
+	//是否勾选
+	$(".bg-cho,.checkbox").on("click",function(){
+		if($("#checkbox").attr("checked")=="checked"){
+			$(".bg-cho").css({"background-image":"url(image/pc/cho1.png)"})
+			$("#checkbox").removeAttr("checked");
+		}
+		else{
+			$(".bg-cho").css({"background-image":"url(image/pc/cho2.png)"})
+			$("#checkbox").attr("checked",'true');
+		}
+	});
+
+	//登陆注册切换
+	$(".bg-choice .tab").on("click",function(){
+		var i = $(this).index();
+		$(this).addClass("activity").siblings(".tab").removeClass("activity");
+		$(".bg-box form").eq(i).show().siblings("form").hide();
+	});
+	
+	//弹出层关闭
+	$(".bg-box .bg-close").on("click",function(){
+		$(".bg-cover").hide();
+		$(".bg-box").hide();
+		$(".common-home").css({"overflow":"auto"});
+	});
+});
+</script>
+</head>
+<body class="common-home">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NZ6HB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!--弹出层-->
+<div class="bg-cover"></div>
+<div class="bg-box">
+	<div class="bg-close"></div>
+	<div class="bg-choice">
+		<div class="tab tab1 cursor activity">SIGN IN<div class="triangle"></div></div>
+		<div class="tab tab2 cursor">SIGN UP<div class="triangle"></div></div>
+	</div>
+	<form class="form1">
+		<label for="email">E-Mail Address</label>
+  		<input type="taxt" name="email" id="email" />
+		<label for="pwd">Psaaword</label>
+  		<input type="password" name="pwd" id="pwd" />
+		<div class="bg-fg"><a href>Forrgotten Fassword ?</a></div>
+		<input type="submit" name="" value="SIGN IN" id="submit"/>
+		<div class="bg-clo"><a href="">Close and no longer prompt</a></div>
+	</form>
+	<form class="form2" style="display:none;">
+		<div class="name-box">
+			<label for="firstname" class="name">First Name</label>
+  			<input type="taxt" name="firstname" id="firstname" class="name"/>
+		</div>
+		<div class="name-box right">
+			<label for="lastname" class="name">Last Name</label>
+  			<input type="taxt" name="lastname" id="lastname" class="name"/>
+		</div>
+		<label for="email">E-Mail Address</label>
+  		<input type="taxt" name="email" id="email" />
+		<label for="pwd">Psaaword</label>
+  		<input type="password" name="pwd" id="pwd" />
+		<label for="cpwd">Confirm Psaaword</label>
+  		<input type="password" name="cpwd" id="cpwd" />
+		<label for="checkbox" class="checkbox"><input type="checkbox" name="checkbox" id="checkbox" /><div class="bg-cho cursor"></div>I ariee to Hot Beauty Hair</label>
+		<a href>Terms and Conditions.</a>
+		<input type="submit" name="" value="SIGN UP" id="submit"/>
+	</form>
+</div>
+
+<!--新头部-->
+<div class="jwx_header">
+<div class="cont logo-img-height cont1"><a href="#"><img src="image/pc/LOGO.png" title="Hot Beauty Hair" alt="Hot Beauty Hair" class="logo-img"></a></div>
+
+  <div class="cont">
+    
+       
+      
+    <ul id="menu" class="nav">
+      <li ><a href="#">Home</a></li>
+     
+                 
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle">All Hair Collections</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Double Drawn Funmi Hair</a></li>
+                                <li><a href="#">Virgin Brazilian Hair</a></li>
+                                <li><a href="#">Virgin Peruvian Hair (Less Full)</a></li>
+                                <li><a href="#">Virgin Peruvian Hair (Very Full)</a></li>
+                              </ul>
+                          </div>
+          </div>
+        </li>
+        
+      
+      
+      <li class="dropdown ">
+        <a href="#" class="dropdown-toggle">Closure & Frontal & Wig</a>
+        <div class="dropdown-menu dropdown-menu0">
+           <div class="dropdown-inner">
+             <ul class="list-unstyled">
+               <li><a href="#">360 Frontal</a></li>
+               <li><a href="#">Customized Bundles Wig</a></li>
+               <li><a href="#">Lace Closure</a></li>
+               <li><a href="#">Lace Frontal</a></li>
+               <li><a href="#">Stock Lace Wig</a></li>
+             </ul>
+           </div>
+        </div>
+      </li>
+<li ><a href="#">Promotion</a></li>
+<li class="dropdown ">
+        <a href="#" class="dropdown-toggle">Company profile</a>
+        <div class="dropdown-menu dropdown-menu0">
+           <div class="dropdown-inner">
+             <ul class="list-unstyled">
+               <li><a href="#">Company Profile</a></li>
+               <li><a href="#">Company Capability</a></li>
+               <li><a href="#">TrustPass Profile</a></li>
+               <li><a href="#">FAQ</a></li>
+             </ul>
+           </div>
+        </div>
+      </li>
+    </ul>
+   
+
+<div class="d1 right">
+	<input id="header-search" value="" type="" name="new_search" placeholder="Search" class="sear-left left">
+	<div class="sear-click"></div>       
+	<a href="#" class="a1"></a>
+	<a href="#" class="a3" style="margin-left:6px;"><span>0</span></a>
+</div> 
+    
+  
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jwx_home">
+    <div id="slideshow1" class="owl-carousel" style="opacity: 1;">
+    <div class="item">
+        <a href="#"><img src="image/pc/banner.jpg" alt="virgin-hair" class="img-responsive" /></a>
+      </div>
+
+  </div>
+<script type="text/javascript"><!--
+$('#slideshow1').owlCarousel({
+	items: 6,
+	autoPlay: 5000,
+	singleItem: true,
+	navigation: true,
+	navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+	pagination: true
+});
+--></script>    	<!--主类目-->
+ </div><div class="content j1200">   <section>
+<div class="div-header">
+	<span class="pro-title">One Donor Raw Brazilian Hair</span>
+	<hr>
+</div>
+    	<ul class="idx-prod-box fixclea">
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/10-32inch-1b-natural-black-body-wave-brazilian-virgin-hair.html">
+                    <img src="image/pc/01.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/10-32inch-1b-natural-black-body-wave-brazilian-virgin-hair.html" title="">10-32inch #1B Natural Black Body Wave Brazilian Virgin Hair</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                         <span class="price-single">$35.30</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/10inch-to-30inch-brazilian-virgin-hair-straight.html">
+                    <img src="image/pc/02.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/10inch-to-30inch-brazilian-virgin-hair-straight.html" title="">10inch to 30inch Brazilian Virgin Hair Straight</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$35.30</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/10-32inch-1b-natural-black-big-curl-brazilian-virgin-hair.html">
+                    <img src="image/pc/03.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/10-32inch-1b-natural-black-big-curl-brazilian-virgin-hair.html" title="">10-32inch #1B Natural Black Big Curl Brazilian Virgin Hair</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$36.80</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/10-32inch-1b-natural-black-deep-wave-brazilian-virgin-hair.html">
+                    <img src="image/pc/04.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/10-32inch-1b-natural-black-deep-wave-brazilian-virgin-hair.html" title="">10-32inch #1B Natural Black Deep Wave Brazilian Virgin Hair</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$36.80</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    
+                    
+                    
+                    
+            	</ul>
+	<div class="div-bottom"><a href=""><span class="more">view more &gt;</span></a></div>
+    </section>
+<img src="image/pc/ban1.jpg" class="ban">
+<section>
+<div class="div-header">
+	<span class="pro-title">Fuller Virgin Peruvian Hair</span>
+	<hr>
+</div>
+    	<ul class="idx-prod-box fixclea">
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-body-wavy-10inch-to-30inch.html">
+                    <img src="image/pc/05.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-body-wavy-10inch-to-30inch.html" title="">Fuller Peruvian Virgin Hair Body Wavy 10inch to 30inch</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                         <span class="price-single">$31.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-silky-straight-10inch-to-32inch.html">
+                    <img src="image/pc/06.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-silky-straight-10inch-to-32inch.html" title="">Fuller Peruvian Virgin Hair Silky Straight 10inch to 32inch</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$31.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-natural-wave-10inch-to-30inch.html">
+                    <img src="image/pc/07.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-natural-wave-10inch-to-30inch.html" title="">Fuller Peruvian Virgin Hair Natural Wave 10inch to 30inch</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$32.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-deep-wave-10inch-to-32inch.html">
+                    <img src="image/pc/08.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-deep-wave-10inch-to-32inch.html" title="">Fuller Peruvian Virgin Hair Deep Wave 10inch to 32inch</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$31.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    
+                    
+                    
+                    
+            	</ul>
+	<div class="div-bottom"><a href=""><span class="more">view more &gt;</span></a></div>
+    </section>
+<img src="image/pc/ban2.jpg" class="ban">
+<section>
+<div class="div-header">
+	<span class="pro-title">Regular Virgin Peruvian Hair</span>
+	<hr>
+</div>
+    	<ul class="idx-prod-box fixclea">
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-body-wavy-10inch-to-30inch.html">
+                    <img src="image/pc/09.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-body-wavy-10inch-to-30inch.html" title="">1 Bundle Peruvian Virgin Hair Body Wavy 10inch to 30inch</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                         <span class="price-single">$20.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-silky-straight-10inch-to-30inch.html">
+                    <img src="image/pc/10.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-silky-straight-10inch-to-30inch.html" title="">1 Bundle Peruvian Virgin Hair Silky Straight 10inch to 30inch</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$20.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-loose-wave-10inch-to-30inch.html">
+                    <img src="image/pc/11.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-loose-wave-10inch-to-30inch.html" title="">1 Bundle Peruvian Virgin Hair Loose Wave 10inch to 30inch</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$20.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-deep-wave-10inch-to-30inch.html">
+                    <img src="image/pc/12.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-deep-wave-10inch-to-30inch.html" title="">1 Bundle Peruvian Virgin Hair Deep Wave 10inch to 30inch</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$20.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    
+                    
+                    
+                    
+            	</ul>
+	<div class="div-bottom"><a href=""><span class="more">view more &gt;</span></a></div>
+    </section>
+<img src="image/pc/ban3.jpg" class="ban">
+<section>
+<div class="div-header">
+	<span class="pro-title">Lace Closure & Lace Frontal</span>
+	<hr>
+</div>
+    	<ul class="idx-prod-box fixclea">
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/virgin-fuller-quality-4x13-lace-frontal-body-wavy.html">
+                    <img src="image/pc/13.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/virgin-fuller-quality-4x13-lace-frontal-body-wavy.html" title="">Virgin Fuller Quality 4x13 Lace Frontal Body Wavy</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                         <span class="price-single">$71.80</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/virgin-fuller-quality-4x13-lace-frontal-loose-wave.html">
+                    <img src="image/pc/14.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/virgin-fuller-quality-4x13-lace-frontal-loose-wave.html" title="">Virgin Fuller Quality 4x13 Lace Frontal Loose Wave</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$71.80</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/virgin-fuller-quality-4x4-lace-closure-body-wavymiddle-part.html">
+                    <img src="image/pc/15.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/virgin-fuller-quality-4x4-lace-closure-body-wavymiddle-part.html" title="">Virgin Fuller Quality 4x4 Lace Closure Body WavyMiddle Part</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$37.01</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/virgin-fuller-quality-4x4-lace-closure-loose-wave-free-part.html">
+                    <img src="image/pc/16.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/virgin-fuller-quality-4x4-lace-closure-loose-wave-free-part.html" title="">Virgin Fuller Quality 4x4 Lace Closure Loose Wave Free Part</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$37.01</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    
+                    
+                    
+                    
+            	</ul>
+	<div class="div-bottom"><a href=""><span class="more">view more &gt;</span></a></div>
+    </section>
+<img src="image/pc/ban4.jpg" class="ban">
+<section>
+<div class="div-header">
+	<span class="pro-title">Lace Wigs</span>
+	<hr>
+</div>
+    	<ul class="idx-prod-box fixclea">
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-loose-wave-10-28.html">
+                    <img src="image/pc/17.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-loose-wave-10-28.html" title="">Virgin Full Lace Wig Loose Wave 10"-28"</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                         <span class="price-single">$119.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-deep-wave-10-28.html">
+                    <img src="image/pc/18.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-deep-wave-10-28.html" title="">Virgin Full Lace Wig Deep Wave 10"-28"</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$119.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-silky-straight-10-28.html">
+                    <img src="image/pc/19.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-silky-straight-10-28.html" title="">Virgin Full Lace Wig Silky Straight 10"-28"</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$119.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    <li>
+                <a href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-kinky-curly-10-28.html">
+                    <img src="image/pc/20.jpg">
+                </a>
+                <div class="idx-prod-info">
+                    <!--商品标签-->
+                    
+                    <!--商品名-->
+                    <h4><a class="idx-prod-name" href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-kinky-curly-10-28.html" title="">Virgin Full Lace Wig Kinky Curly 10"-28"</a></h4>
+                    <!--价格-->
+                                    <p class="price">
+                        <span class="price-single">$119.70</span>
+                    </p>
+                                </div>
+                
+            </li>
+                    
+                    
+                    
+                    
+            	</ul>
+	<div class="div-bottom"><a href=""><span class="more">view more &gt;</span></a></div>
+    </section>
+</div>
+
+<div class="image-box">
+	<span class="pro-title">Customer share</span>
+	<hr>
+	<ul>
+		<li><a href="http://www.hotbeautyhairmall.com/virgin-brazilian-straight-hair-brown-color-with-black-root.html"><div class="imagediv1"></div></a></li>
+		<li><a href="
+http://www.hotbeautyhairmall.com/1-bundle-peruvian-virgin-hair-water-wave-10inch-to-30inch.html"><div class="imagediv2"></div></a></li>
+		<li><a href="http://www.hotbeautyhairmall.com/fuller-peruvian-virgin-hair-kinky-straight-12inch-to-26inch.html"><div class="imagediv3"></div></a></li>
+		<li><a href="http://www.hotbeautyhairmall.com/1b-613-virgin-straight-hair-10inch-26inch.html"><div class="imagediv4"></div></a></li>
+		<li><a href="http://www.hotbeautyhairmall.com/virgin-full-lace-wig-deep-wave-10-28.html"><div class="imagediv5"></div></a></li>
+		<li><a href="http://www.hotbeautyhairmall.com/double-drawn-straight-wig-middle-part-12-16.html"><div class="imagediv6"></div></a></li>
+	</ul>
+	<div style="clear:both;"></div>
+</div>
+
+
+<div class="footer jwx_footer">
+    <div class="footer_cont">
+      <div class="container" style="width:1200px;padding: 0;">
+        <ul class="footer_contul cf">
+                  <li class="li">
+            <h4>ABOUT US</h4>
+                          <p><a href="#" target="_blank">About Hot Beauty Hair</a></p>
+                          <p><a href="#" target="_blank">Return &amp; Exchange</a></p>
+                          <p><a href="#" target="_blank">Shipping Guide</a></p>
+                      </li>
+                  <li class="li">
+            <h4>WHY US</h4>
+                          <p><a href="#" target="_blank">Quality Guarantee</a></p>
+                          <p><a href="#" target="_blank">Customization</a></p>
+                          <p><a href="#" target="_blank">VIP Member Rewards Program</a></p>
+                      </li>
+                  <li class="li">
+            <h4>EXPERT HELP</h4>
+                          <p><a href="#" target="_blank">Download</a></p>
+                          <p><a href="#" target="_blank">Quality Hair Guide</a></p>
+                          <p><a href="#" target="_blank">Match Color</a></p>
+                          <p><a href="#" target="_blank">Match Length</a></p>
+                          <p><a href="#" target="_blank">FAQ</a></p>
+                      </li>
+                  
+          <li class="li">
+            <h4>Subscribe</h4>
+            <p style="font-size:13px;">Be the first to know about our latest products.</p>
+            <p><input type="email" name="txtemail" id="txtemail" value="" placeholder="Your Email Address" class="text1"></p>
+            <p>
+               <button type="submit" class="btn1" onClick="return subscribe();">SUBMIT</button>
+            </p>
+          </li>
+          
+          <li class="li5">
+            <h4>CONTACT</h4>
+            <p><i class="ci1"></i><a href="#">+8615800028742</a></p>
+                          <p><i class="ci2"></i><a href="#">Skype:hot.beauty.rebecca</a></p>
+                        <p><i class="ci4"></i><a href="#">rebecca@hotbeautyhair.com</a></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer_link">
+      <div class="container">
+        <!--<div class="footer_two_img"> <img src="catalog/view/theme/default/image/payment1.gif"><img src="catalog/view/theme/default/image/PositiveSSL_tl_trans2.png"><img src="catalog/view/theme/default/image/payment2.gif"> </div>-->
+        <div class="copyright"> Copyright Notice &copy; 2016-2018 www.hotbeautyhairmall.com All rights reserved </div>
+      </div>
+    </div>
+    
+    <div class="loading" style="display: none;">
+      <div class="overlay"></div>
+      <div class="loading-img"></div>
+    </div>
+  </div>
+  
+  
+    
+<script>
+function subscribe()
+{
+    var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var email = $('#txtemail').val();
+    if(email != "")
+    {
+        if(!emailpattern.test(email))
+        {
+            alert("Invalid Email");
+            return false;
+        }
+        else
+        {
+            $.ajax({
+                url: 'index.php?route=module/newsletters/news',
+                type: 'post',
+                data: 'email=' + $('#txtemail').val(),
+                dataType: 'json',
+
+                success: function(json) {
+                    alert(json.message);
+                }
+            });
+            return false;
+        }
+    }
+    else
+    {
+        alert("Email Is Require");
+        $(email).focus();
+        return false;
+    }
+}
+</script>
+
+<!--<script type="text/javascript">
+    var _paq = _paq || [];;_paq.push(["setDomains", ["*"]]);_paq.push(['trackPageView']);_paq.push(['enableFormTracking']);_paq.push(['enableLinkTracking']);_paq.push(['enableTPF']);(function() {var u="//ta.sbird.xyz/";_paq.push(['setTrackerUrl', u+'ta.gif']);_paq.push(['setSiteId', '0ef5f625eb4de43ab22eee5faf28b3a4']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js/ta.js'; s.parentNode.insertBefore(g,s);})();
+</script>-->
+
+<!-------------------------------------------------------------------->
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+  window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="https://v2.zopim.com/?4yN85V4UKeFY3fyrmuMphlxWLMSvkuKk";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");</script>
+
+<!--End of Zopim Live Chat Script-->
+<!-------------------------------------------------------------------->
+
+<div class="jwx_back_top">
+    <div class="back_top"><a href="#"></a></div>
+  </div>
+</body>
+</html>

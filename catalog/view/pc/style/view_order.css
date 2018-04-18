@@ -1,0 +1,444 @@
+.cart-finger-now-2{
+	width: 730px;
+}
+.pay_dlinpt dl:after, .member_left_orderul li:after {
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	overflow: hidden;
+	content: ".";
+}
+.cart_flow {
+	padding-top: 40px;
+	padding-bottom: 60px;
+}
+.cart_jgbot {
+	margin-top: 15px;
+}
+.cart_flow_table {
+	border-bottom: 1px solid #ccc;
+}
+.cart_flow_table tr {
+	border-top: 1px solid #ccc;
+}
+.cart_flow_table td {
+	padding: 10px;
+	font-size: 14px;
+	text-align: center;
+}
+.cart_flow_table .flow_font input {
+	padding: 4px;
+	width: 30px;
+	border: 1px solid #ccc;
+	margin: 0 5px;
+	text-indent: 0px;
+	text-align: center;
+}
+.cart_flow_table .edit a:hover {
+	color: #a61d91;
+}
+.cart_jglef h3 {
+	font-size: 18px;
+	font-weight: 300;
+	margin-bottom: 10px;
+}
+.cart_jglef {
+	float: left;
+	padding-top: 20px;
+}
+.cart_jglef p input {
+	border: 1px solid #c7c7c7;
+	float: left;
+	height: 28px;
+	line-height: 28px;
+	margin-right: 6px;
+	text-indent: 0.5em;
+	width: 193px;
+}
+.cart_jglef p button {
+	background-color: #a61d91;
+	border: 0 none;
+	color: #ffffff;
+	float: left;
+	font-size: 14px;
+	height: 30px;
+	width: 60px;
+}
+.cart_jgrig {
+	float: right;
+	padding: 20px 0;
+	position: relative;
+	min-width: 457px;
+}
+.cart_jgrig_pay {
+	margin-top: 20px;
+	margin-bottom: 100px;
+}
+.cart_jgrig_total {
+	width: 218px;
+	min-height: 66px;
+	float: right;
+}
+.cart_jgrig_total dl {
+	margin-bottom: 5px;
+}
+.cart_jgrig_total dt, .cart_jgrig_total dd {
+	font-size: 16px;
+}
+.cart_jgrig_total dl.big {
+	margin-bottom: 15px;
+}
+.cart_jgrig_total dl.big dt, .cart_jgrig_total dl.big dd {
+	font-size: 18px;
+}
+.cart_jgrig_total dt {
+	float: left;
+}
+.cart_jgrig_total dd {
+	float: right;
+	color: #dc0e60;
+}
+.cart_jgrig_pay button {
+	border: medium none;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 14px;
+	height: 36px;
+	padding: 0 15px;
+	border-radius: 4px;
+	background-color: #a61d91;
+	text-indent: 25px;
+	position: relative;
+}
+.cart_jgrig_pay a, .cart_jgrig_pay span {
+	float: left;
+}
+.cart_jgrig_pay .or {
+	font-size: 18px;
+	margin: 3px 10px 0;
+}
+.cart_jgrig_pay .fa-lock {
+	position: absolute;
+	font-size: 24px;
+	left: -10px;
+	top: 7px;
+}
+.pay_main {
+	margin-bottom: 50px;
+}
+.pay_main h2 {
+	font-size: 16px;
+	font-weight: 300;
+	padding-bottom: 8px;
+	margin-bottom: 25px;
+	border-bottom: 1px solid #ccc;
+}
+.pay_shipping_tah2 {
+	font-size: 16px;
+	font-weight: 300;
+	padding-bottom: 8px;
+}
+/*.pay_dlinpt dl {
+	height: 48px;
+	zoom: 1;
+}*/
+.pay_dlinpt dl {
+    height: auto;
+    min-height: 48px;
+	zoom: 1;
+}
+.pay_dlinpt dl dt {
+	float: left;
+	line-height: 30px;
+	font-size: 14px;
+	margin-right: 10px;
+	text-align: right;
+	width: 146px;
+}
+.pay_dlinpt dl dd {
+	float: left;
+	position: relative;
+	text-align: left;
+	width: 612px;
+}
+.pay_dlinpt dl dd input {
+	width: 100%;
+	border: 1px solid #cccccc;
+	height: 30px;
+}
+.pay_dlinpt dl dd select {
+	border: 1px solid #ccc;
+	height: 36px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	width: 618px;
+}
+.pay_buton {
+	padding-left: 156px;
+}
+.pay_buton .pay_buton_sub, .pay_buton .pay_buton_can {
+	width: 200px;
+	height: 40px;
+	font-size: 16px;
+	border: 0;
+	border-radius: 5px;
+	float: left;
+}
+.pay_buton .pay_buton_sub {
+	background-color: #a61d91;
+	color: #fff;
+	margin-right: 10px;
+}
+.pay_buton .pay_buton_can {
+	background-color: #ccc;
+	color: #666;
+}
+.pay_shippingul li {
+	border: 2px solid #cccccc;
+	cursor: pointer;
+	line-height: 38px;
+	margin-top: 10px;
+	width: 322px;
+}
+.pay_shippingul li.active2 {
+	border: 2px solid #a61d91;
+}
+.pay_shippingul li span {
+	font-size: 14px;
+	display: inline-block;
+	text-indent: 20px;
+}
+.pay_remark_h4 {
+	font-weight: 300;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.remark_textarea {
+	border: 1px solid #ccc;
+	height: 100px;
+	width: 500px;
+}
+.order_bottom_wrap {
+	float: right;
+	width: 250px;
+	font-size: 14px;
+}
+.order_bottom_wrap p {
+	line-height: 25px;
+}
+.order_bottom_wrap p span {
+	float: right;
+}
+.order_bottom_wrap .impor {
+	border-top: 1px solid #ccc;
+	color: #a61d91;
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: 5px;
+}
+.cart_jgrig_ul {
+	display: inline-block;
+	float: right;
+}
+.cart_jgrig_ul li.li2 {
+	margin: 10px 0;
+}
+.cart_jgrig_ul li.li2 button {
+	background-color: #a61d91;
+	border: 0 none;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 40px;
+	width: 250px;
+}
+.cart_jgrig_ul li.li2 button i.fa-pulse {
+	font-size:21px;
+	}
+.cart_jgrig_ul li.li2.li2_no button  , .cart_jgrig_ul li.li2.li2_no button:hover{
+ background-color:#ccc;
+ cursor:no-drop;
+}
+.cart_jgrig_ul li.li3 {
+	color: #676767;
+	font-size: 12px;
+	line-height: 16px;
+	position: relative;
+}
+.cart_jgrig_ul li.li3 span {
+	float: left;
+	height: 30px;
+	text-align: center;
+	margin-right: 3px;
+	position: relative;
+	width: 30px;
+}
+.cart_jgrig_ul li.li2 button:hover, .paypa_lait_le2 span button:hover {
+	background-color: #8b0276;
+}
+.cart_jgrig_ul li.li3 .fa-lock {
+	font-size: 22px;
+	margin-top: 4px;
+	color: #979797;
+}
+.pay_bot {
+	margin-bottom: 50px;
+}
+.pay_add {
+	margin-bottom: 25px;
+}
+/*.pay_order {
+	border: 2px solid #ccc;
+	cursor: pointer;
+	height: 35px;
+	line-height: 35px;
+	margin-top: 20px;
+	padding-left: 20px;
+	position: relative;
+	width: 780px;
+	font-size: 14px;
+}*/
+.pay_order {
+	border: 2px solid #a61d91;
+	cursor: pointer;
+	height: 35px;
+	line-height: 35px;
+	margin-top: 20px;
+	padding-left: 20px;
+	position: relative;
+	width: 780px;
+	font-size: 14px;
+}
+.noactive {
+    border: 2px solid #ccc !important;
+}
+.pay_order.clr {
+	border: 2px solid #a61d91;
+}
+.pay_order span.f_fr a {
+	margin: 0 7px;
+}
+.payment_mian {
+	margin-bottom: 100px;
+}
+.pay_awesm {
+	margin-top: 10px;
+}
+.pay_awesm button {
+	font-size: 14px;
+	padding: 3px 7px;
+}
+.payment_left {
+	margin-top: 20px;
+	float: left;
+}
+.payment_left p {
+	font-size: 14px;
+}
+.payment_left h4 {
+	margin-top: 29px;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+.payment_left table td,.payment_right table td{
+	padding: 7px;
+	text-align: center;
+	font-size: 14px;
+	border: 1px solid #ccc;
+}
+.payment_right table{
+	margin-top: 20px;
+}
+.payment_right {
+	border-left: 1px solid #cccccc;
+	overflow: hidden;
+	width: 600px;
+	float: right;
+	padding-left: 100px;
+}
+.payment_right p {
+	font-size: 14px;
+	margin: 10px 0;
+}
+.payment_right p.p3 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+.payment_right p button {
+	background-color: #a61d91;
+	border: medium none;
+	border-radius: 4px;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 14px;
+	height: 36px;
+	width: 200px;
+	padding: 0 15px;
+	position: relative;
+	text-indent: 25px;
+	display: inline-block;
+}
+.payment_right p .fa-lock {
+	font-size: 24px;
+	left: 30px;
+	position: absolute;
+	top: 7px;
+}
+.shopyes {
+	margin-bottom: 40px;
+}
+.shop_yes {
+	margin-bottom: 130px;
+	margin-top: 80px;
+}
+.shop_yes h1 {
+	font-size: 32px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.shop_yes p.p1 {
+	font-size: 17px;
+	margin-bottom: 25px;
+	text-align: center;
+}
+.shop_yes p.p2 {
+	color: #6b6b6b;
+	font-size: 14px;
+	padding-left: 100px;
+}
+.shop_yes p.p2 span {
+	padding-right: 25px;
+}
+.shop_yes p.p2 span a {
+	text-decoration: underline;
+}
+.shop_yes p.p2 span a:hover {
+	color: #650f58;
+}
+.cart_no_icon {
+	text-align: center;
+	margin-top:80px;
+	margin-bottom:130px;
+}
+.cart_no_icon .fa-shopping-cart {
+	font-size: 200px;
+	color: #eee;
+}
+.cart_no_font {
+	font-size: 25px;
+	color: #ccc;
+}
+.cart_shop_nobtn {
+	margin-top:50px;}
+.cart_shop_nobtn button {
+    background-color: #a61d91;
+    border: 0 none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 40px;
+    margin: 0 auto;
+    width: 20%;
+}

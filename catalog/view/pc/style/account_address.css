@@ -1,0 +1,44 @@
+.add-list-default,.add-list-other{
+	font-size: 18px;
+	color:#000804;
+	line-height: 27px;
+	margin-bottom: 10px;
+}
+.add-list-info{
+	font-size: 14px;
+	line-height: 34px;
+	color: #000804;
+}
+.btn-danger,.btn-info{
+	width: 120px;
+	height: 35px;
+	text-align: center;
+	line-height: 35px;
+	margin-top: 15px;
+	margin-right: 20px;
+	margin-bottom: 40px;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background: #f60;
+}
+.add-list-default,.add-list-other,.add-list-new{
+	display: inline-block;
+}
+.add-list-new .btn-primary{
+	width: 232px;
+	line-height: 30px;
+	height: 30px;
+	text-align: center;
+	padding: 0;
+	margin-left: 40px;
+	border: none;
+	border-radius: 6px;
+	background: #f60;
+}
+.add-list-new .btn-primary:hover{
+	background: #23a1d1;
+}
+.add-list-other{
+	margin-top: 25px;
+}
