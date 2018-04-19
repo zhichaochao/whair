@@ -7,14 +7,14 @@
 // }
 // HTTP
 define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
-define('HTTP_SKIN', HTTP_SERVER.$h.'view/theme/default/');
+define('HTTP_SKIN', HTTP_SERVER.'catalog/view/theme/default/');
 
 // HTTPS
 define('HTTPS_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
 
 // DIR
 define('DIR_ROOT', str_replace('\\', '/', __DIR__).'/');
-define('DIR_APPLICATION', DIR_ROOT.$h);
+define('DIR_APPLICATION', DIR_ROOT.'catalog/');
 define('DIR_LANGUAGE', DIR_APPLICATION.'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION.'view/theme/');
 define('DIR_IMAGE', DIR_ROOT.'image/');
