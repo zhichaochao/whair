@@ -1,10 +1,10 @@
 <?php
-if(Common::isMobile()){//移动设备访问m站目录
-    $h = 'm/';
-}else{//域名判断访问目录
-    $h = explode('.',$_SERVER['HTTP_HOST']);
-    $h = $h[0]=='m'?'m/':'catalog/';
-}
+// if(Common::isMobile()){//移动设备访问m站目录
+//     $h = 'm/';
+// }else{//域名判断访问目录
+//     $h = explode('.',$_SERVER['HTTP_HOST']);
+//     $h = $h[0]=='m'?'m/':'catalog/';
+// }
 // HTTP
 define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
 define('HTTP_SKIN', HTTP_SERVER.$h.'view/theme/default/');
