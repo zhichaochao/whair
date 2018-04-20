@@ -1,20 +1,20 @@
 <?php
-if(Common::isMobile()){//移动设备访问m站目录
-    $h = 'm/';
-}else{//域名判断访问目录
-    $h = explode('.',$_SERVER['HTTP_HOST']);
-    $h = $h[0]=='m'?'m/':'catalog/';
-}
+// if(Common::isMobile()){//移动设备访问m站目录
+//     $h = 'm/';
+// }else{//域名判断访问目录
+//     $h = explode('.',$_SERVER['HTTP_HOST']);
+//     $h = $h[0]=='m'?'m/':'catalog/';
+// }
 // HTTP
 define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
-define('HTTP_SKIN', HTTP_SERVER.$h.'view/theme/default/');
+define('HTTP_SKIN', HTTP_SERVER.'catalog/view/theme/default/');
 
 // HTTPS
 define('HTTPS_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
 
 // DIR
 define('DIR_ROOT', str_replace('\\', '/', __DIR__).'/');
-define('DIR_APPLICATION', DIR_ROOT.$h);
+define('DIR_APPLICATION', DIR_ROOT.'catalog/');
 define('DIR_LANGUAGE', DIR_APPLICATION.'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION.'view/theme/');
 define('DIR_IMAGE', DIR_ROOT.'image/');
