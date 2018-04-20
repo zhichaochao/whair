@@ -5,6 +5,18 @@ class ControllerProductProduct extends Controller {
     public function index() {
         $this->load->language('product/product');
 
+        if(isset($this->request->get['share'])){
+            $share = trim($this->request->get['share'],'{}');
+            $shareoption = [];
+            foreach (explode(',',$share) as $item){
+                $temp = explode(':',$item);
+//                var_dump();die;
+                $shareoption[preg_replace('/\D/s', '', $temp[0])] = preg_replace('/\D/s', '', $temp[1]);
+            }
+            $data['shareoption'] = $shareoption;
+        }
+
+//        var_dump($shareoption);die;
         $data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(
@@ -382,9 +394,9 @@ class ControllerProductProduct extends Controller {
 
             //原价
             if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-                //$data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-                $data['price'] = $this->currency->format($product_info['price'], $this->session->data['currency']);
-                $data['read_price']=$this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax'));
+                //$data['price'] = $this->currency->format($this->tax->calculate($product_info['defaultprice'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                $data['price'] = $this->currency->format($product_info['defaultprice'], $this->session->data['currency']);
+                $data['read_price']=$this->tax->calculate($product_info['defaultprice'], $product_info['tax_class_id'], $this->config->get('config_tax'));
             } else {
                 $data['price'] = false;
                 $data['read_price'] = false;
@@ -406,7 +418,7 @@ class ControllerProductProduct extends Controller {
 
             /* //折后价(新)
             if ($product_info['discount_percentage'] > 0) {
-                $data['special'] = $this->currency->format($product_info['price'] * ($product_info['discount_percentage'] / 100), $this->session->data['currency']);
+                $data['special'] = $this->currency->format($product_info['defaultprice'] * ($product_info['discount_percentage'] / 100), $this->session->data['currency']);
             } else {
                 $data['special'] = false;
             } */
@@ -433,7 +445,7 @@ class ControllerProductProduct extends Controller {
             $data['isLogged'] = $this->customer->isLogged();
 
             if ($this->config->get('config_tax')) {
-                $data['tax'] = $this->currency->format((float)$product_info['special'] ? $product_info['special'] : $product_info['price'], $this->session->data['currency']);
+                $data['tax'] = $this->currency->format((float)$product_info['special'] ? $product_info['special'] : $product_info['defaultprice'], $this->session->data['currency']);
             } else {
                 $data['tax'] = false;
             }
@@ -824,7 +836,7 @@ class ControllerProductProduct extends Controller {
             $data['content_bottom'] = $this->load->controller('common/content_bottom');
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
-
+//            var_dump($data['options']);die;
             $this->response->setOutput($this->load->view('product/product', $data));
 
         } else {

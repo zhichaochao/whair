@@ -27,7 +27,7 @@ define('DB_DRIVER', 'mpdo');
 define('DB_HOSTNAME', 'localhost');
  $base_data=array(
  		0=>array('username'=>'root','password'=>'root','database'=>'w'),
- 		1=>array('username'=>'root','password'=>'root','database'=>'o'),
+// 		1=>array('username'=>'root','password'=>'root','database'=>'o'),
  	
  );
  define('DB_DATABASE_DATA', serialize($base_data));

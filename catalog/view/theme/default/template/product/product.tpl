@@ -116,6 +116,7 @@
 			<?php } ?>
 			<!--/产品价格-->
 
+			<input type="hidden" value="" id="share-content" />
 			<div id="product">
 				<form id='form-product'>
 					<?php if ($options) { ?>
@@ -131,7 +132,7 @@
 						<select onchange="changeprice()" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>"  style="cursor:pointer;">
 							<option value=""><?php echo $text_select; ?></option>
 							<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
-							<option <?=$k==0?'selected':'';?> value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+							<option <?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'selected';} else if($k==0) echo 'selected'; ?> value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
 							<?php if ($option_value['price']) { ?>
 							(<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
 							<?php } ?>
@@ -180,6 +181,7 @@
 				<div class="prodet_num_botom">
 					<button class="addnum" style="background-color: #00a8c6;width: 30px" id="button-minus"> - </button>
 					<button class="minusnum"  style="background-color: #00a8c6;width: 30px" id="button-add"> + </button>
+					<button class="share" style="background-color: #00a8c6;width: 60px" id="button-share"> 分享 </button>
 				</div>
 				<!-- 增减商品数量 -->
 
@@ -220,13 +222,13 @@
 						border:1px solid #999;
 					}
 				</style>
+				<script type="text/javascript" src="http://www.jq22.com/demo/copy20161120/dist/clipboard.min.js"></script>
 				<script>
                     $(function(){
                         $('#product').on('click','label',function(){
                             $(this).css({"border-color":"#fe881f"});
                             $(this).siblings().css({"border-color":"#666"});
                         });
-
 //                        增减事件
                         $('#button-add').click(function () {
                             $('#input-quantity').val(parseInt($('#input-quantity').val())+1);
@@ -240,6 +242,40 @@
                             }
                         });
 
+//                        分享事件
+                        $('#button-share').click(function () {
+                            $.ajax({
+                                url: 'index.php?route=checkout/cart/share',
+                                type: 'post',
+                                async: false,
+                                data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+                                dataType: 'json',
+                                beforeSend: function() {
+                                    $('#button-share').button('loading');
+                                },
+                                complete: function() {
+//                                    $('#share-content').select();
+//                                    alert("复制分享链接成功！");
+                                    $('#button-share').button('reset');
+                                },
+                                success: function(json) {
+//                                    alert(json);
+                                    var clipboard = new Clipboard('.share', {
+                                        text: function() {
+                                            return json;
+                                        }
+                                    });
+                                    clipboard.on('success', function(e) {
+                                        alert("分享链接已经复制到剪贴板，赶快去分享吧~~");
+                                    });
+
+                                    clipboard.on('error', function(e) {
+                                        console.log(e);
+                                    });
+//									$('#share-content').val(json);
+                                }
+                        });
+                        });
                     });
 				</script>
 			</div>
@@ -727,6 +763,7 @@
                 $('#button-cart').attr("disabled",false);
             },
             success: function(json) {
+//                console.log(json);die;
                 $('.alert, .text-danger').remove();
                 $('.form-group').removeClass('has-error');
 
@@ -764,6 +801,7 @@
                     }, 'slow');
 
                     $('#cart > ul').load('index.php?route=common/cart/info ul li');
+
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

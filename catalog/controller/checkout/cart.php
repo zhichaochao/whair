@@ -309,10 +309,10 @@ class ControllerCheckoutCart extends Controller {
             // $this->response->setOutput($this->load->view('error/not_found', $data));
         }
     }
-	
+
 	public function add() {
 		$this->load->language('checkout/cart');
-//        $data = $this->request->post['option'];
+//        $data = array_filter($this->request->post['option']);
 //        $this->response->setOutput(json_encode($data));
 //        return;
 		$json = array();
@@ -560,4 +560,10 @@ class ControllerCheckoutCart extends Controller {
         return $arr;
     }
 
+    public function share(){
+	    $option = $this->request->post['option'];
+	    $url = HTTP_SERVER.'index.php?route=product/product&product_id='.$this->request->post['product_id'].'&share='.json_encode($option);
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($url));
+    }
 }

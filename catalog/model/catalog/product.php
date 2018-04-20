@@ -53,7 +53,8 @@ class ModelCatalogProduct extends Model {
 				'image'            => $query->row['image'],
 				'manufacturer_id'  => $query->row['manufacturer_id'],
 				'manufacturer'     => $query->row['manufacturer'],
-				'price'            => $query->row['price'],
+				'defaultprice'     => $query->row['price'],
+				'price'            => $this->getLowestPrice($product_id,$query->row['price']),
 				'special'          => $this->getSpecialPrice($product_id),
 				'reward'           => $query->row['reward'],
 				'points'           => $query->row['points'],
@@ -89,6 +90,23 @@ class ModelCatalogProduct extends Model {
 			return false;
 		}
 	}
+
+	public function getLowestPrice($product_id,$price){
+        $sqlplus = "SELECT MIN(price) AS price from " . DB_PREFIX . "product_option_value WHERE product_id='" . $product_id . "' AND price_prefix='+'";
+
+        $sqlminus = "SELECT MAX(price) AS price from " . DB_PREFIX . "product_option_value WHERE product_id='" . $product_id . "' AND price_prefix='-'";
+        $query = $this->db->query($sqlminus)->row;
+//        var_dump($query['price']);die;
+        if(!$query['price']){
+            $query = $this->db->query($sqlplus)->row;
+        }
+
+        if(isset($query['price'])){
+//            var_dump($price);die;
+            return $query['price']+$price;
+        }
+        else return $price;
+    }
 
 	public function getProducts($data = array()) {
 		$sql = "SELECT p.product_id,
