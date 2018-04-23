@@ -561,8 +561,12 @@ class ControllerCheckoutCart extends Controller {
     }
 
     public function share(){
-	    $option = $this->request->post['option'];
-	    $url = HTTP_SERVER.'index.php?route=product/product&product_id='.$this->request->post['product_id'].'&share='.json_encode($option);
+	    if(isset($this->request->post['option'])){
+	        $option = $this->request->post['option'];
+            $url = HTTP_SERVER.'index.php?route=product/product&product_id='.$this->request->post['product_id'].'&share='.json_encode($option);
+        }else{
+            $url = HTTP_SERVER.'index.php?route=product/product&product_id='.$this->request->post['product_id'];
+        }
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($url));
     }
