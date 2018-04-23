@@ -289,19 +289,19 @@
                 </div>
               </div>
               
-              <!--新增产品属性-->
-              <div class="form-group">
+              <!--新增产品属性
+              <div class="form-group" style="display: none">
                 <label class="col-sm-2 control-label" for="input-location"><?php echo $entry_relation_product; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="relation_product" value="<?php echo $relation_product; ?>" placeholder="<?php echo $entry_relation_product; ?>" id="input-relation-product" class="form-control" />
                 </div>
               </div>
-			  
-              <div class="form-group">
+              {*<!--Color-->*}
+              <div class="form-group" style="display: none">
                 <label class="col-sm-2 control-label" for="input-weight-class"><?php echo $entry_color; ?></label>
                 <div class="col-sm-10">
                   <select name="color_id" class="form-control" id="data-color-id" onchange="colorSynchro()">
-					<option value="0">--Select--</value>
+					<option value="0">--Select--</option>
                     <?php foreach ($colors as $color) { ?>
                     <?php if ($color['option_value_id'] == $color_id) { ?>
                     <option value="<?php echo $color['option_value_id']; ?>" selected="selected"><?php echo $color['name']; ?></option>
@@ -311,13 +311,13 @@
                     <?php } ?>
                   </select>
                 </div>
-              </div>	
-              
-              <div class="form-group">
+              </div>
+              {*<!--Length-->*}
+              <div class="form-group" style="display: none">
                 <label class="col-sm-2 control-label" for="input-weight-class"><?php echo $entry_length; ?></label>
                 <div class="col-sm-10">
                   <select name="length_id" class="form-control" id="data-length-id" onchange="lengthSynchro()">
-					<option value="0">--Select--</value>
+					<option value="0">--Select--</option>
                     <?php foreach ($lengths as $length) { ?>
                     <?php if ($length['option_value_id'] == $length_id) { ?>
                     <option value="<?php echo $length['option_value_id']; ?>" selected="selected"><?php echo $length['name']; ?></option>
@@ -328,7 +328,7 @@
                   </select>
                 </div>
               </div>
-              <!--/新增产品属性-->
+              新增产品属性-->
               
               
               <div class="form-group">
@@ -421,6 +421,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- M端产品链接 -->
             <div class="tab-pane" id="tab-links">
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>

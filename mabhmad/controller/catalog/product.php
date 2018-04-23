@@ -78,7 +78,8 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('catalog/product');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$data = [];
+//		    var_dump($this->request->post);die;
+            $data = [];
 			$data = $this->request->post;
 			
 			if (!isset($data['product_special'])) {

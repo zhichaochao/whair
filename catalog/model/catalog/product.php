@@ -351,6 +351,12 @@ class ModelCatalogProduct extends Model {
      * @param   Int  $product_id  产品ID
      */
 	public function getPopularProducts($product_id) {
+        /**
+         * create by bai_iab
+         */
+	    $sql = "SELECT related_id FROM ". DB_PREFIX . "product_related WHERE product_id='" . (int)$product_id."'";
+        $query = $this->db->query($sql);
+
 		/*$product_data = $this->cache->get('product.popular.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit);
 
 		if (!$product_data) {
@@ -371,16 +377,17 @@ class ModelCatalogProduct extends Model {
         //$sql = "SELECT p.product_id FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ORDER BY p.viewed DESC, p.date_added DESC LIMIT " . (int)$limit;
 
         //根据当前产品id查询出该产品所属的分类ID
-        $sql1 = "SELECT ptc.category_id FROM " . DB_PREFIX . "product p
-				LEFT JOIN " . DB_PREFIX . "product_to_category ptc
-				ON p.product_id = ptc.product_id
-				WHERE p.product_id = ".(int)$product_id." and p.status = 1";
-		$query1 = $this->db->query($sql1);
+//        $sql1 = "SELECT ptc.category_id FROM " . DB_PREFIX . "product p
+//				LEFT JOIN " . DB_PREFIX . "product_to_category ptc
+//				ON p.product_id = ptc.product_id
+//				WHERE p.product_id = ".(int)$product_id." and p.status = 1";
+//		$query1 = $this->db->query($sql1);
 
         //调用方法,获取属于父类的产品ID
-        $query = $this->getCategoryProduct($query1,$product_id);
+//        $query = $this->getCategoryProduct($query1,$product_id);
         foreach ($query->rows as $result) {
-		   $product_data[$result['product_id']] = $this->getProduct($result['product_id']);
+		   $product_data[$result['related_id']] = $this->getProduct($result['related_id']);
+//            return $product_data;
 		}
 
 		return $product_data;

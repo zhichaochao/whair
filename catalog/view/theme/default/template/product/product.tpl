@@ -236,7 +236,7 @@
                             console.log($('#nums').html());
                         });
                         $('#button-minus').click(function () {
-                            if($('#input-quantity').val()>0){
+                            if($('#input-quantity').val()>1){
                                 $('#input-quantity').val(parseInt($('#input-quantity').val())-1);
                                 $('#nums').html($('#input-quantity').val());
                             }
@@ -393,7 +393,6 @@
 			<div class="conter fixclea">
 				<div class="product_tabl_box">
 					<?php foreach($popular_products as $key=>$row){ ?>
-
 					<?php if( ($row['key_id'])%4 == 0 ){ ?>
 					<ul class="product_tabl cf fl-left">
 						<li>
@@ -442,8 +441,8 @@
 						</a>
 					</li>
 					<?php } ?>
-
 					<?php } ?>
+					<?php if(count($popular_products)%4!=0) echo '</ul>'; ?>
 				</div>
 			</div>
 		</dd>
@@ -790,6 +789,7 @@
 
                 if(json['success']) {
 
+//                    console.log(json['success']);die;
                     $('#cart-num').html(parseInt($('#cart-num').html())+parseInt($('#input-quantity').val()));
 
                     $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
@@ -1143,35 +1143,41 @@
                 });
             };
         }
+
+
         /*------轮播图-------*/
-
-        var oBox = $('#jwx_imgLb dd')[0];
-        var oldUl = $('#jwx_imgLb dd .product_tabl_box');
-        var oldaLi = $('#jwx_imgLb dd .product_tabl');
-        var oPrev = $('#jwx_imgLb dd .ileft')[0];
-        var oNext = $('#jwx_imgLb dd .iright')[0];
-        var now = 0;
-        oldUl.append([oldaLi.eq(0).clone(),oldaLi.eq(1).clone()]);
-        var oUl = $('#jwx_imgLb dd .product_tabl_box')[0],
-            aLi = $('#jwx_imgLb dd .product_tabl'),
-            nWidth = aLi.innerWidth();
-        oBox.timer = setInterval(fnNext, 5000);
-        oBox.onmouseover=function(){
-            clearInterval(oBox.timer);
-        }
-        oBox.onmouseout=function(){
+        if(parseInt('<?php echo count($popular_products); ?>')<=4){
+            $('.ileft').hide();
+            $('.iright').hide();
+        }else{
+            var oBox = $('#jwx_imgLb dd')[0];
+            var oldUl = $('#jwx_imgLb dd .product_tabl_box');
+            var oldaLi = $('#jwx_imgLb dd .product_tabl');
+            var oPrev = $('#jwx_imgLb dd .ileft')[0];
+            var oNext = $('#jwx_imgLb dd .iright')[0];
+            var now = 0;
+            oldUl.append([oldaLi.eq(0).clone(),oldaLi.eq(1).clone()]);
+            var oUl = $('#jwx_imgLb dd .product_tabl_box')[0],
+                aLi = $('#jwx_imgLb dd .product_tabl'),
+                nWidth = aLi.innerWidth();
             oBox.timer = setInterval(fnNext, 5000);
-        }
-        oNext.onclick=function(){
-            if(!$(oUl).is(':animated')){
-                fnNext();
+            oBox.onmouseover=function(){
+                clearInterval(oBox.timer);
             }
-        }
-        oPrev.onclick=function(){
-            if(!$(oUl).is(':animated')){
-                fnPrev();
+            oBox.onmouseout=function(){
+                oBox.timer = setInterval(fnNext, 5000);
             }
+            oNext.onclick=function(){
+                if(!$(oUl).is(':animated')){
+                    fnNext();
+                }
+            }
+            oPrev.onclick=function(){
+                if(!$(oUl).is(':animated')){
+                    fnPrev();
+                }
 
+            }
         }
 
 
