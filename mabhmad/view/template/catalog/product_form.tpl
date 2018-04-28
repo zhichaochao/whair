@@ -265,7 +265,7 @@
                   </select>
                 </div>
               </div>
-
+<!--
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-video"><?php echo $entry_video; ?></label>
                 <div class="col-sm-10">
@@ -279,6 +279,30 @@
                     <?php } ?>
                   </a>
                   <input type="hidden" name="video" value="<?php echo $video; ?>"  id="input-video" />
+                </div>
+              </div>
+-->
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
+                <div class="col-sm-10">
+                  <ul style="list-style-type: none">
+                    <!-- 预览框： -->
+                    <li style="float: left;width: 100px">
+                      <div class="preview">
+                          <?php if($video){ ?>
+                          <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
+                      </div>
+                    </li>
+
+                    <li style="float: left;width: 100px;margin-left: 10px">
+                  <div style="margin-top:10px;">
+                    <label for="input-video" class="input-video">请上传</label><br/>
+                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
+                      <div class="input-video" onclick="deleteVideo();">删除</div>
+                  </div></li>
+
+                  </ul>
+
                 </div>
               </div>
 
@@ -296,7 +320,7 @@
                   <input type="text" name="relation_product" value="<?php echo $relation_product; ?>" placeholder="<?php echo $entry_relation_product; ?>" id="input-relation-product" class="form-control" />
                 </div>
               </div>
-              {*<!--Color-->*}
+
               <div class="form-group" style="display: none">
                 <label class="col-sm-2 control-label" for="input-weight-class"><?php echo $entry_color; ?></label>
                 <div class="col-sm-10">
@@ -312,7 +336,7 @@
                   </select>
                 </div>
               </div>
-              {*<!--Length-->*}
+
               <div class="form-group" style="display: none">
                 <label class="col-sm-2 control-label" for="input-weight-class"><?php echo $entry_length; ?></label>
                 <div class="col-sm-10">
@@ -985,9 +1009,77 @@
       </div>
     </div>
   </div>
+  <script src="view/javascript/fileupload/jquery.ui.widget.js"></script>
+  <script src="view/javascript/fileupload/jquery.iframe-transport.js"></script>
+  <script src="view/javascript/fileupload/jquery.fileupload.js"></script>
+  <script src="view/javascript/fileupload/jquery.xdr-transport.js"></script>
   <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
   <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+  <style type="text/css">
+    .input-video {
+      width: 100px;
+      height: 30px;
+      font-size: 12px;
+      letter-spacing: 8px;
+      padding-left: 12px;
+      border-radius: 5px;
+      line-height: 30px;
+      cursor: pointer;
+      text-align: center;
+      background: -webkit-linear-gradient(top, #66B5E6, #2e88c0);
+      background: -moz-linear-gradient(top, #66B5E6, #2e88c0);
+      background: linear-gradient(top, #66B5E6, #2e88c0);
+      background: -ms-linear-gradient(top, #66B5E6, #2e88c0);
+      border: 1px solid #2576A8;
+      color: #fff;
+      text-shadow: 1px 1px 0.5px #22629B;
+    }
+  </style>
+  <script type="text/javascript">
+      $(".upinput").fileupload({
+
+          url: "<?php echo $edit_video; ?>"+"<?php echo $edit_video_url; ?>",//文件上传地址，当然也可以直接写在input的data-url属性内
+          dataType: "json", //如果不指定json类型，则传来的json字符串就需要解析jQuery.parseJSON(data.result);
+
+          done: function (e, data) {
+              //done方法就是上传完毕的回调函数，其他回调函数可以自行查看api
+              //注意data要和jquery的ajax的data参数区分，这个对象包含了整个请求信息
+              //返回的数据在data.result中，这里dataType中设置的返回的数据类型为json
+              if (data.result.sta) {
+                  // 上传成功：
+                  console.log('成功');
+                  $(".upstatus").html(data.result.msg);
+                  $(".preview").html("<video src="+ data.result.previewSrc +" loop='loop' autoplay='autoplay' width='100px' height='100px'></video>");
+              } else {
+                  // 上传失败：
+                  alert(data.result.msg);
+                  $(".progress .bar").css("width", "0%");
+                  $(".upstatus").html("<span style='color:red;'>" + data.result.msg + "</span>");
+              }
+
+          },
+          progress: function (e, data) { //上传进度
+              console.log('正在上传');
+              var progress = parseInt(data.loaded / data.total * 100, 10);
+              $(".progress .bar").css("width", progress + "%");
+              $(".upstatus").html("正在上传...");
+          }
+      });
+      function deleteVideo(){
+          $.ajax({
+              url: 'index.php?route=catalog/product/deleteVideo'+"<?php echo $edit_video_url; ?>",
+              dataType: 'json',
+              success: function() {
+                  $(".preview").html("");
+              },
+              error:function(){
+                  alert("删除失败");
+              }
+          });
+      }
+
+  </script>
   <script type="text/javascript"><!--
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({

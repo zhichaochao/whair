@@ -209,6 +209,15 @@ class ModelCatalogProduct extends Model {
 		return $product_id;
 	}
 
+	public function editVideo($product_id, $data) {
+        $sql = "UPDATE ". DB_PREFIX . "product SET video = '".$data."' WHERE product_id='".(int)$product_id."'";
+        $this->querysql($sql);
+    }
+	public function deleteVideo($product_id) {
+        $sql = "UPDATE ". DB_PREFIX . "product SET video = '' WHERE product_id='".(int)$product_id."'";
+        $this->querysql($sql);
+    }
+
 	public function editProduct($product_id, $data) {
 
 		// print_r($data);exit();
