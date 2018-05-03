@@ -106,3 +106,7 @@ $_['text_processing_status']        = '处理中订单';
 $_['text_other_status']             = '其它状态订单';
 $_['text_user_done_logs']           = '用户操作日志';
 $_['text_user_login_logs']          = '用户登录日志';
+
+$_['text_customer_share']          = '用户分享图管理';
+
+

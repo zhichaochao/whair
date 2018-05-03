@@ -164,7 +164,14 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()
 				);
 			}
-			// print_r($catalog);exit();
+			if ($this->user->hasPermission('access', 'catalog/customershare')) {
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_customer_share'),
+					'href'     => $this->url->link('catalog/customershare', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+			}
+//			 print_r($catalog);exit();
 
 			if ($catalog) {
 				$data['menus'][] = array(
