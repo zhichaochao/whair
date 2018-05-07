@@ -62,6 +62,14 @@ class ControllerCheckoutCart extends Controller {
                 $data['success'] = '';
             }
 
+            //优惠券
+            $data['coupon_url'] = $this->url->link('extension/total/coupon/coupon');
+            if (isset($this->session->data['coupon'])) {
+                $data['coupon'] = $this->session->data['coupon'];
+            } else {
+                $data['coupon'] = '';
+            }
+
             $data['action'] = $this->url->link('checkout/cart/edit', '', true);
 
             if ($this->config->get('config_cart_weight')) {
@@ -259,6 +267,8 @@ class ControllerCheckoutCart extends Controller {
                     }
                 }
             }
+
+            $data['paypal_checkout'] = HTTP_SERVER.'index.php?route=extension/payment/pp_express/express';
             // print_r($data['modules']);exit();
             $data['step_cart'] = $this->language->get('step_cart');
             $data['step_checkout'] = $this->language->get('step_checkout');

@@ -112,7 +112,7 @@
 	                    <?php } ?>
 					</td>
 					<td class="td-total"><?php echo $product['total']; ?></td>
-					<!--<td class="td-del" onclick="cart.remove('<?php echo $product['key']; ?>');">-->
+					<!--<td class="td-del" onclick="cart.remove('');">-->
                     <td class="td-del" onclick="javascript:cart_remove('<?php echo $product['cart_id']; ?>');">
 						<div></div>
 					</td>
