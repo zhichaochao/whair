@@ -14,6 +14,7 @@ $_['text_currency']                 = '货币设置';
 $_['text_customer']                 = '客户列表';
 $_['text_customer_group']           = '客户群组';
 $_['text_custom_field']             = '自定义字段';
+$_['text_custom_email']             = '群发邮件';
 $_['text_dashboard']                = '管理首页';
 $_['text_design']                   = '页面设计';
 $_['text_download']                 = '下载设置';
