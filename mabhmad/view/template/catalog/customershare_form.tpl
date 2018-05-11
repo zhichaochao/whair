@@ -44,7 +44,8 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-name"><?php echo $entry_name; ?></label>
                 <div class="col-sm-10">
-                <input type="text" name="filter_name" value="<?php if(isset($filter_name)) echo $filter_name; ?>" placeholder="请输入商品名称" id="input-name" class="form-control" />
+                <input type="text" name="filter_name" value="<?php if(isset($filter_name)) echo $filter_name; ?>" placeholder="
+Please enter the name of the product" id="input-name" class="form-control" />
                   <input type="hidden" name="product_id" value="<?php if(isset($product_id)) echo $product_id; ?>" />
                 </div>
               </div>

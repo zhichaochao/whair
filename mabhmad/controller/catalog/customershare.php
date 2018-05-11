@@ -132,7 +132,7 @@ class ControllerCatalogCustomershare extends Controller {
     }
 
     protected function getForm() {
-        $data['heading_title'] = '商品用户图管理';
+        $data['heading_title'] = 'Customerimage Manager';
 
         $data['text_form'] = !isset($this->request->get['product_id']) ? $this->language->get('text_add') : '编辑商品用户图';
         $data['text_enabled'] = $this->language->get('text_enabled');
@@ -242,7 +242,7 @@ class ControllerCatalogCustomershare extends Controller {
         );
 
         $data['breadcrumbs'][] = array(
-            'text' => '商品用户图管理',
+            'text' => 'Customerimage Manager',
             'href' => $this->url->link('catalog/customershare', 'token=' . $this->session->data['token'], true)
         );
 
