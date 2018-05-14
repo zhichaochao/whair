@@ -1714,20 +1714,31 @@ class ControllerCatalogProduct extends Controller {
 	                }
 	                $row = array();
 	                if(!$v[0]) continue;
+
+	                $row0['model'] = trim($v[0]);
+	                $row0['price'] = floatval($v[7]);
+	                $row0['quantity'] = intval($v[8]);
+	                $row0['relation_product'] = trim($v[9]);
+	                $row0['is_main'] = trim($v[10]);
+	                $row0['is_new'] = trim($v[11]);
+
+
 	                $row['model'] = trim($v[0]);
-	                $row['customer_group'] = trim($v[1]);
-	                $row['priority'] = intval($v[2]);
-	                $row['price'] = floatval($v[3]);
-	                $row['percent'] = floatval($v[4]);
-	                $row['date_start'] = trim($v[5]);
-	                $row['date_end'] = trim($v[6]);
+	                $row['customer_group'] = trim($v[25]);
+//	                $row['priority'] = intval($v[2]);
+	                $row['price'] = floatval($v[27]);
+	                $row['percent'] = floatval($v[26]);
+	                $row['date_start'] = trim($v[28]);
+	                $row['date_end'] = trim($v[29]);
 	    
 	                $product = Base::getRow('product', $row['model'], 'model');
 	                if(!$product){
+						$row0['product_id'] = 0;
 						$row['product_id'] = 0;
 	                    $data['msg'][] = '第'.($k+1).'行，商品Model '.$row['model'].' 不存在!';
 	                }else{
-	                    $row['product_id'] = $product['product_id'];
+                        $row0['product_id'] = $product['product_id'];
+                        $row['product_id'] = $product['product_id'];
 	                }
 	                $customerGroup = Base::getRow('customer_group_description', $row['customer_group'], 'name', 1);
 	                if(!$customerGroup){
@@ -1747,23 +1758,26 @@ class ControllerCatalogProduct extends Controller {
 	                } else {
 						$row['product_special_id'] = '';
 					}
+	                $importData0[] = $row0;
 	                $importData[] = $row;
 	            }
 	            if(empty($data['msg'])){//无错误信息，保存采购单
+                    $attributes0 = array('product_id', 'model', 'price', 'quantity', 'relation_product', 'is_main','is_new');
 	                $attributes = array('product_special_id', 'product_id', 'customer_group_id', 'priority', 'price', 'percent', 'date_start', 'date_end');
+	                $num0= Common::saveData('product',$attributes0,$importData0,2000,false,'REPLACE INTO');
 					$num = Common::saveData('product_special', $attributes, $importData, 2000, false, 'REPLACE INTO');
-	                if($num > 0){
+	                if($num > 0 && $num0>0){
 						$num = $num-$i;
-	                    $info = '商品特价导入成功，成功导入'.$num.'条记录！';
+	                    $info = '商品信息导入成功，成功导入'.$num.'条记录！';
 	                    $data['info'] = $info;
 	                }else{
-	                    $data['msg'][] = '商品特价导入失败!';
+	                    $data['msg'][] = '商品信息导入失败!';
 	                }
 	            }
 	        }
 	    }
 	    
-	    $data['title'] = '导入商品特价';
+	    $data['title'] = '导入商品信息';
 	    $data['tplUrl'] = $this->url->link('catalog/product', 'act=importSpecial&act2=tpl&token=' . $this->session->data['token'], true);
 	    
 	    $data['breadcrumbs'] = array();
@@ -1818,15 +1832,22 @@ class ControllerCatalogProduct extends Controller {
             'Material' => 'Material',
             'Volume' => 'Volume',
             'Texture' => 'Texture',
+            'Customer_Group' => 'Customer Group',
+            'Percent' => 'Percent',
+            'Specialprice' => 'Specialprice',
+            'Datestart' => 'Datestart',
+            'Dateend' => 'Dateend',
         );
         unset($filter_data['order'],$filter_data['start'],$filter_data['limit']);
         $filter_data['sort'] = 'p.relation_product';
         $res = $this->model_catalog_product->getProducts($filter_data);
+//        var_dump(count($res));die;
         $data = array();
         foreach ($res as $v){
             $v['color'] = '';
             $v['length'] = '';
             $v['category'] = '';
+            $v['percent'] = '';
             $v['main_image'] = '';
             $v['images'] = '';
             $v['Application'] = '';
@@ -1835,7 +1856,12 @@ class ControllerCatalogProduct extends Controller {
             $v['Material'] = '';
             $v['Volume'] = '';
             $v['Texture'] = '';
-             
+            $v['Customer_Group'] = '';
+            $v['Percent'] = '';
+            $v['Specialprice'] = '';
+            $v['Datestart'] = '';
+            $v['Dateend'] = '';
+
             $opName = $this->model_tool_import_product->getOptionValueDescriptionName($v['color_id']);
             if($opName) $v['color'] = $opName;
             $opName = $this->model_tool_import_product->getOptionValueDescriptionName($v['length_id']);
@@ -1853,14 +1879,30 @@ class ControllerCatalogProduct extends Controller {
             //额外商品属性
             $productOptions = $this->model_catalog_product->getProductOptions($v['product_id']);
             if($productOptions){
+
                 foreach ($productOptions as $vo){
                     $v[$vo['name']] = $vo['value'];
                 }
             }
-            $data[$v['category'].' '.$v['relation_product'].' '.$v['color'].' '.intval($v['length'])] = $v;
+//            $data[$v['category'].' '.$v['relation_product'].' '.$v['color'].' '.intval($v['length'])] = $v;
+
+            $productSpecials = $this->model_catalog_product->getProductSpecials($v['product_id']);
+            if($productSpecials){
+//                var_dump();die;
+//                foreach ($productSpecials[0] as $vo){
+                $this->load->model('customer/customer_group');
+                $groupcustomer = $this->model_customer_customer_group->getCustomerGroup($productSpecials[0]['customer_group_id']);
+//                var_dump($groupcustomer);die;
+                $v['Customer_Group'] = $groupcustomer['name'];
+                $v['Percent'] = $productSpecials[0]['percent'];
+                $v['Specialprice'] = $productSpecials[0]['price'];
+                $v['Datestart'] = $productSpecials[0]['date_start'];
+                $v['Dateend'] = $productSpecials[0]['date_end'];
+//                }
+            }
+            $data[$v['category'].' '.$v['relation_product'].' '.$v['color'].' '.intval($v['length']).' '.$v['Customer_Group'].' '.$v['percent'].' '.$v['Specialprice'].' '.$v['Datestart'].' '.$v['Dateend']] = $v;
         }
         ksort($data);
-    
         $excel = new SimpleExcel();
         $excel->header = $header;
         $excel->name = 'product'.date('Y-m-d');
