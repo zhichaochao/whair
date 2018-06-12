@@ -269,7 +269,6 @@ class ControllerCheckoutCart extends Controller {
             }
 
             $data['paypal_checkout'] = HTTP_SERVER.'index.php?route=extension/payment/pp_express/express';
-            // print_r($data['modules']);exit();
             $data['step_cart'] = $this->language->get('step_cart');
             $data['step_checkout'] = $this->language->get('step_checkout');
             $data['step_payment'] = $this->language->get('step_payment');
@@ -286,8 +285,11 @@ class ControllerCheckoutCart extends Controller {
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
 
-//            var_dump($data['products']);die;
+            if (isset($this->request->get['ajax'])) {
+                 $this->response->setOutput($this->load->view('checkout/cart_ajax', $data));
+            }else{
             $this->response->setOutput($this->load->view('checkout/cart', $data));
+            }
         } else {
             // print_r('2');exit();
             $data['heading_title'] = $this->language->get('heading_title');
@@ -313,18 +315,18 @@ class ControllerCheckoutCart extends Controller {
             $data['content_bottom'] = $this->load->controller('common/content_bottom');
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
+            if (isset($this->request->get['ajax'])) {
+                 $this->response->setOutput($this->load->view('checkout/cart_empty_ajax', $data));
+            }else{
+                $this->response->setOutput($this->load->view('checkout/cart_empty', $data));
+            }
 
-            $this->response->setOutput($this->load->view('checkout/cart_empty', $data));
-
-            // $this->response->setOutput($this->load->view('error/not_found', $data));
         }
     }
 
 	public function add() {
 		$this->load->language('checkout/cart');
-//        $data = array_filter($this->request->post['option']);
-//        $this->response->setOutput(json_encode($data));
-//        return;
+
 		$json = array();
 
 		if (isset($this->request->post['product_id'])) {

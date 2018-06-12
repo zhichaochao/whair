@@ -51,9 +51,9 @@ class ControllerCommonHeader extends Controller {
 		if ($this->customer->isLogged()) {
 			$this->load->model('account/wishlist');
 
-			$data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), $this->model_account_wishlist->getTotalWishlist());
+			$data['text_wishlist'] =  $this->model_account_wishlist->getTotalWishlist();
 		} else {
-			$data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
+			$data['text_wishlist'] =  (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0);
 		}
 
 		$data['text_shopping_cart'] = $this->language->get('text_shopping_cart');
@@ -102,6 +102,8 @@ class ControllerCommonHeader extends Controller {
 		$data['currency'] = $this->load->controller('common/currency'); //货币
 		// print_r($data['currency']);exit();
 		$data['search'] = $this->load->controller('common/search'); //搜索
+		// print_r($data['search']);exit();
+	
 //		$data['cart'] = $this->load->controller('common/cart'); //购物车
         $data['cart_product_quantity'] = $this->cart->countProducts(); //购物车商品总数量
 
@@ -124,34 +126,12 @@ class ControllerCommonHeader extends Controller {
 			$data['class'] = 'common-home';
 		}
 
-        //dyl加
-        //新品链接
-        $data['new_arrival'] = $this->url->link('product/newarrival');
-
-        //Company Profile链接
-        $data['company_overview'] = $this->url->link('information/company/overview');
-        //Company Capacity链接
-        $data['company_capacity'] = $this->url->link('information/company/capacity');
-        //Company Trustpass链接
-        $data['company_trustpass'] = $this->url->link('information/company/trustpass');
-        //Company faq链接
-        $data['company_faq'] = $this->url->link('information/company/faq');
-
-        //wholesales链接
-        $data['service_wholesales'] = $this->url->link('information/service/wholesales');
-        //sell from salon链接
-        $data['service_salon'] = $this->url->link('information/service/salon');
-        //sell from store链接
-        $data['service_store'] = $this->url->link('information/service/store');
-        //sell online链接
-        $data['service_online'] = $this->url->link('information/service/online');
-
-        //联系我们链接
         $data['contact_us_url'] = $this->url->link('information/contact');
 		//购物车数量
 		$data['text_cart_items'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 		//dyl,end
-
+		// print_r($this->config);exit();
+	$data['whatappphone'] = $this->config->get('config_telephone'); //电话
 		$data['email'] = $this->cart->customer->getEmail();
 		$data['link_account'] = $this->url->link('account/dashboard');
 		$data['link_logout'] = $this->url->link('account/logout');

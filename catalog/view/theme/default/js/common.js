@@ -116,13 +116,9 @@ $(function(){
 		$(".yd_nav").animate({right:"100%"});
 	})
 
-// 购物车开关
-	$(".img_ol .cart_li").click(function(){
-		$(".nav_cart").fadeIn();
-	})
-	$(".nav_cart .close").click(function(){
-		$(".nav_cart").fadeOut();
-	})
+	// 购物车关闭
+
+
 
 // 注册登录开关
 	$(".img_ol .login_li").click(function(){

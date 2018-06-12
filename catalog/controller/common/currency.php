@@ -25,6 +25,7 @@ class ControllerCommonCurrency extends Controller {
 				);
 			}
 		}
+		// print_r($data['currencies']);exit();
 
 		if (!isset($this->request->get['route'])) {
 			$data['redirect'] = $this->url->link('common/home');
