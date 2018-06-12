@@ -100,6 +100,7 @@ class ControllerCommonHeader extends Controller {
 
 		$data['language'] = $this->load->controller('common/language'); //语言
 		$data['currency'] = $this->load->controller('common/currency'); //货币
+		// print_r($data['currency']);exit();
 		$data['search'] = $this->load->controller('common/search'); //搜索
 //		$data['cart'] = $this->load->controller('common/cart'); //购物车
         $data['cart_product_quantity'] = $this->cart->countProducts(); //购物车商品总数量
@@ -247,8 +248,5 @@ class ControllerCommonHeader extends Controller {
 			$path=$this->get_category_path($category_info['parent_id']);
 			return $path."_".$category_id;
 		}
-		
 	}
-
-
 }
