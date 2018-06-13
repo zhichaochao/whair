@@ -18,41 +18,10 @@
           <li class="li">
             <h4><?php echo $information['title']; ?></h4>
             <?php foreach($information['child'] as $subkey=>$subval) { ?> 
-              <p><a href="<?php echo $subval['url']; ?>" target="_blank"><?php echo $subval['title']; ?></a></p>
+              <p><a href="<?php echo $subval['url']; ?>"><?php echo $subval['title']; ?></a></p>
             <?php } ?>
           </li>
         <?php } ?>
-
-                      <!-- <li>
-                    <h4>INFORMATION</h4>
-                          <a href="#" target="_blank"><?php echo $yd_About; ?></a>
-                          <a href="#" target="_blank"><?php echo $yd_After; ?></a>
-                          <a href="#" target="_blank"><?php echo $yd_Privacy; ?></a>
-                          <a href="#" target="_blank"><?php echo $yd_Hair; ?></a>
-                      </li>
-                    <li>
-                    <h4>BUYER INSTRUCTION</h4>
-                          <a href="#" target="_blank"><?php echo $yd_How; ?></a>
-                          <a href="#" target="_blank"><?php echo $yd_FAQ; ?></a>
-                          <a href="#" target="_blank"><?php echo $yd_Shipment; ?></a>
-                          <a href="#" target="_blank"><?php echo $yd_Return; ?></a>
-                      </li>
-                      <li>
-                    <h4><?php echo $informations[2]['title']; ?></h4>
-                          <a href="<?php echo $informations[2]['child'][0]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][0]['title']; ?></a>
-                          <a href="<?php echo $informations[2]['child'][1]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][1]['title']; ?></a>
-                          <a href="<?php echo $informations[2]['child'][2]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][2]['title']; ?></a>
-                          <a href="<?php echo $informations[2]['child'][3]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][3]['title']; ?></a>
-                      </li> -->
-
-                      <!-- <li class="li5">
-            <h4>CONTACT</h4>
-            <p><i class="ci1"></i><a href="javascript:;"><?php echo $telephone; ?></a></p>
-            <?php if($skype) { ?>
-              <p><i class="ci2"></i><a href="javascript:;">Skype:<?php echo $skype; ?></a></p>
-            <?php } ?>
-            <p><i class="ci4"></i><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
-          </li> -->
                       <li>
                     <h4>COMPANY INFO</h4>
                           <p><span><?php echo $yd_Call; ?></span> U.S No: 6262487420</p>
@@ -90,61 +59,29 @@
     <div class="yd_footer clearfix" >
       <div class="top" >
         <ul class="ul_ydfot clearfix">
-        <!-- <?php foreach($informations as $key => $information) { ?>
-          <li class="li">
-            <h4><?php echo $information['title']; ?></h4>
-            <?php foreach($information['child'] as $subkey=>$subval) { ?> 
-              <p><a href="<?php echo $subval['url']; ?>" target="_blank"><?php echo $subval['title']; ?></a></p>
-            <?php } ?>
-          </li>
-        <?php } ?> -->
-          <li>
-                  <h4>INFORMATION <div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
+              <?php foreach($informations as $key => $information) { ?>
+           <li>
+                  <h4><?php echo $information['title']; ?> <div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
                   <div class="slide_div">
-                    <ol>
-                      <li><a href="###">About Us</a></li>
-                      <li><a href="###">After Sale Service</a></li>
-                      <li><a href="###">Privacy Policy</a></li>
-                      <li><a href="###">Hair Club</a></li>
+                    <ol>    <?php foreach($information['child'] as $subkey=>$subval) { ?> 
+                      <li><a href="<?php echo $subval['url']; ?>"><?php echo $subval['title']; ?></a></li>
+                       <?php } ?>
+                      
                     </ol>
                   </div>
                     </li>
-
-                  <li>
-                  <h4>BUYER INSTRUCTION<div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
-                  <div class="slide_div">
-                    <ol>
-                      <li><a href="###">How To Order</a></li>
-                      <li><a href="###">FAQ</a></li>
-                      <li><a href="###">Shipment & Pay</a></li>
-                      <li><a href="###">Return Policy</a></li>
-                    </ol>
-                  </div>
-                    </li>
-                    <li>
-                  <h4>MY ACCOUNT<div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
-                  <div class="slide_div">
-                    <ol>
-                      <li><a href="###">My Account</a></li>
-                      <li><a href="###">My Order</a></li>
-                      <li><a href="###">My Wish List</a></li>
-                      <li><a href="###">Site Map</a></li>
-                    </ol>
-                  </div>
-                    </li>
+        <?php } ?>
+       
                     <li>
                       <h4>COMPANY INFO<div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
                       <div class="slide_div">
                         <ol>
-                      <li><a href="###"><span>Call Us:</span> U.S No: 6262487420</li>
-                      <li><a href="###"><span>Whatsapp:</span> +8615800028742</a></li>
-                      <li><a href="###"><span>Email:</span> rebecca@hotbeautyhair.com</a></li>
-                      <li>
-                        <a href="###">
-                          <span>Address:</span>
-                              R6403, Jiahe Creative Industry Park, No.63 of North Huangbian Road, 
-                    Baiyun District, Guangzhou, China.
-                        </a>
+                      <li><span>Call Us:</span> U.S No: 6262487420</li>
+                      <li><a href="###"><span>Whatsapp:</span> <?php echo $telephone; ?></a></li>
+                      <li><a href="mailto:<?php echo $email; ?>"><span>Email:</span><?php echo $email; ?></a></li>
+                      <li>                       
+                          <span><?php echo $yd_Address; ?></span>
+                             <?php echo $yd_Addcont; ?>                      
                       </li>
                     </ol>
                   </div>
@@ -153,8 +90,8 @@
                       <h4>SUBSCRIBE</h4>
                       <div class="slide_div" style="display: block !important;">
                         <p>Be the first to know about our latest products.</p>
-                    <input value="" placeholder="Your Email Address">
-                    <button type="submit">SUBMIT</button>
+                    <input type="email" name="txtemail" id="txtemail" value="" placeholder="Your Email Address" class="text1">
+                    <button type="submit" class="btn1" onClick="return subscribe();">SUBMIT</button>
                     <ol class="fot_img clearfix">
                       <li><a href="hotbeautymelisha"><img src="catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
                       <li><a href="hotbeautyhairofficia"><img src="catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
