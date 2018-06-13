@@ -1,6 +1,6 @@
 <!--返回顶部-->
     <div class="xf_right">
-      <div class="vip"><a href="account/account"><span>VIP</span></a></div>
+      <div class="vip"><a href="<?php echo $order?>"><span>VIP</span></a></div>
       <div class="top"><span>TOP</span></div>
     </div>
 
@@ -81,8 +81,8 @@
         </div>
       </div>
       <div class="bot clearfix">
-
-        <p>Copyright Notice &copy; 2016-<?php echo (($Y = intval(date('Y'))) > 2017) ? "$Y" : '';?> www.hotbeautyhairmall.com All rights reserved </p>
+        
+        <p>Copyright Notice &copy; 2016-<?php echo (($Y = intval(date('Y'))) > 2017) ? "$Y" : '';?> <?php echo $_SERVER['SERVER_NAME']; ?>  All rights reserved </p>
       </div>
     </div>
     
@@ -90,6 +90,14 @@
     <div class="yd_footer clearfix" >
       <div class="top" >
         <ul class="ul_ydfot clearfix">
+        <!-- <?php foreach($informations as $key => $information) { ?>
+          <li class="li">
+            <h4><?php echo $information['title']; ?></h4>
+            <?php foreach($information['child'] as $subkey=>$subval) { ?> 
+              <p><a href="<?php echo $subval['url']; ?>" target="_blank"><?php echo $subval['title']; ?></a></p>
+            <?php } ?>
+          </li>
+        <?php } ?> -->
           <li>
                   <h4>INFORMATION <div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
                   <div class="slide_div">
@@ -101,6 +109,7 @@
                     </ol>
                   </div>
                     </li>
+
                   <li>
                   <h4>BUYER INSTRUCTION<div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
                   <div class="slide_div">
@@ -147,16 +156,16 @@
                     <input value="" placeholder="Your Email Address">
                     <button type="submit">SUBMIT</button>
                     <ol class="fot_img clearfix">
-                      <li><a href="###"><img src="catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
-                      <li><a href="###"><img src="catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
+                      <li><a href="hotbeautymelisha"><img src="catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
+                      <li><a href="hotbeautyhairofficia"><img src="catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
                       <li><a href="###"><img src="catalog/view/theme/default/img/png/yd_fot3.png" alt=""></a></li>
-                      <li><a href="###"><img src="catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
+                      <li><a href="hotbeautymelisha"><img src="catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
                     </ol>
                       </div>
                     </li>
         </ul>
       </div>
-      <p class="clearfix">Copyright Notice &copy; 2016-2018 www.hotbeautyhairmall.com All rights reserved</p>
+      <p class="clearfix">Copyright Notice &copy; 2016-<?php echo (($Y = intval(date('Y'))) > 2017) ? "$Y" : '';?> <?php echo $_SERVER['SERVER_NAME']; ?>  All rights reserved</p>
     </div>
     <div class="yd_footer2" >
       <ol class="ol_ydfot clearfix">

@@ -44,15 +44,15 @@
         <div class="register" id="register-form-div">
           <h2>New Customers</h2>
           <div class="register_tab">
-          	<dl class="fixclea">
+            <dl class="fixclea">
               <dt class="req-before">Full Name:</dt>
               <dd class="fixclea">
                 <div class="stname" style="margin-right:10px;">
-                		<input type="text" name="firstname" maxlength="32" value="" placeholder="Firstname" id="input-firstname" class="short_inp1">
+                    <input type="text" name="firstname" maxlength="32" value="" placeholder="Firstname" id="input-firstname" class="short_inp1">
                                         <label class="req-before">First Name</label>
                 </div>
                 <div class="stname">
-                		<input type="text" name="lastname" maxlength="32" value="" placeholder="Lastname" id="input-lastname" class="short_inp1">
+                    <input type="text" name="lastname" maxlength="32" value="" placeholder="Lastname" id="input-lastname" class="short_inp1">
                     <!--<input type="text" name="lastname" size="33" maxlength="32" id="lastname" class="short_inp1">-->                    <label class="req-before">Last Name</label>
                 </div>
               </dd>
@@ -73,21 +73,21 @@
             </dl>
             -->
             <dl class="fixclea">
-            	<dt class="req-before">E-Mail Address:</dt>
+              <dt class="req-before">E-Mail Address:</dt>
               <dd>
                 <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email">
               </dd>
             </dl>
             <dl class="fixclea">
-            	<dt class="req-before">
+              <dt class="req-before">
                 Password:
-            	</dt>
+              </dt>
               <dd>
                 <input type="password" name="password" value="" placeholder="Password" id="input-password">
               </dd>
             </dl>
             <dl class="fixclea">
-            	<dt class="req-before">Confirm Password:</dt>
+              <dt class="req-before">Confirm Password:</dt>
               <dd>
                 <input type="password" name="confirm" value="" placeholder="Confirm Password" id="input-confirm">
               </dd>
@@ -119,19 +119,19 @@
             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="register_tab">
             <!--<p><strong><?php echo $text_i_am_returning_customer; ?></strong></p>-->
               <dl class="fixclea">
-	            <dt class="req-before"><?php echo $entry_email; ?>:</dt>
-	            <dd>
-	              <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" />
-	            </dd>
-	          </dl>
-	          <dl class="fixclea">
-	            <dt class="req-before"><?php echo $entry_password; ?>:</dt>
-	            <dd>
-	              <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password"/>
-	              <p class="forgot-psw"><a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?> ?</a></p>
-	            </dd>
-	          </dl>
-	            
+              <dt class="req-before"><?php echo $entry_email; ?>:</dt>
+              <dd>
+                <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" />
+              </dd>
+            </dl>
+            <dl class="fixclea">
+              <dt class="req-before"><?php echo $entry_password; ?>:</dt>
+              <dd>
+                <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password"/>
+                <p class="forgot-psw"><a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?> ?</a></p>
+              </dd>
+            </dl>
+              
               <!--<div class="form-group">
                 <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
                 <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
@@ -141,8 +141,8 @@
                 <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" class="form-control" />
                 <a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a></div>-->
               <div class="register_tabbuton center_text">
-		        <input type="submit" value="<?php echo $button_login; ?>" class="button" />
-		      </div>
+            <input type="submit" value="<?php echo $button_login; ?>" class="button" />
+          </div>
               
               <?php if ($redirect) { ?>
               <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
@@ -159,42 +159,42 @@
 
 <script>
 // Register
-	var regTf = true;
+  var regTf = true;
 $(document).delegate('#button-register', 'click', function() {
-		if(regTf){
-			regTf = false;
-			$.ajax({
+    if(regTf){
+      regTf = false;
+      $.ajax({
         url: '<?php echo $register;?>',
         type: 'post',
         data: $('#register-form-div input'),
         dataType: 'json',
         beforeSend: function() {
-        		
+            
             $('#button-register').button('loading');
         },  
         complete: function() {
-        		
+            
             $('#button-register').button('reset');
         },          
         success: function(json) {
-        		regTf = true;
+            regTf = true;
             $('.info_tips, .text-danger').remove();
             $('.form-group').removeClass('has-error');
-			            
+                  
             if (json['redirect']) {
                 location = json['redirect'];                
             } else if (json['error']) {
                 if (json['error']['warning']) {
-				    $('#checkout-login').css('display','block').prepend('<div class="info_tips tipssb"><span><img width="21" src="catalog/view/theme/default/image/icon32_warn.png"></span> ' + json['error']['warning'] + '</div>');
-					$('#danger').css('display','none');
+            $('#checkout-login').css('display','block').prepend('<div class="info_tips tipssb"><span><img width="21" src="catalog/view/theme/default/image/icon32_warn.png"></span> ' + json['error']['warning'] + '</div>');
+          $('#danger').css('display','none');
                 }else{
-				    $('#checkout-login').css('display','none');
-					$('#danger').css('display','none');
-				}
-				
-				if(json['error']['agree']){
-				   $('.erroragree').show().html('<div class="text-danger">' + json['error']['agree'] + '</div>');
-			    }
+            $('#checkout-login').css('display','none');
+          $('#danger').css('display','none');
+        }
+        
+        if(json['error']['agree']){
+           $('.erroragree').show().html('<div class="text-danger">' + json['error']['agree'] + '</div>');
+          }
                 
                 for (i in json['error']) {
                     var element = $('#input-' + i.replace('_', '-'));
@@ -203,7 +203,7 @@ $(document).delegate('#button-register', 'click', function() {
                             $(element).parent().after('<div class="text-danger" style="margin-left:0px;">' + json['error'][i] + '</div>');
                     } else {
                             $(element).after('<div class="text-danger"  style="margin-left:0px;">' + json['error'][i] + '</div>');
-                    }					
+                    }         
                 }
             }    
         },
@@ -211,23 +211,23 @@ $(document).delegate('#button-register', 'click', function() {
            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
-		}
+    }
      
 });
 
 $('#register-form-div input').keydown(function(e){
-		if(e.keyCode==13){
-			$('#button-register').click();
-		}	
+    if(e.keyCode==13){
+      $('#button-register').click();
+    } 
 });
 
 $('#agree').click(function(){
      var agree = $('#agree').val();
-	 if(agree == 1){
-	    $('#agree').val(0);
-	 }else{
+   if(agree == 1){
+      $('#agree').val(0);
+   }else{
         $('#agree').val(1);
-	 }
+   }
 });
 
 </script>
