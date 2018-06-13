@@ -17,8 +17,10 @@ $_['column_action']      = '操作';
 // Entry
 $_['entry_name']         = '横幅名称';
 $_['entry_title']        = '标题';
+$_['entry_title_small']  = '小标题(可填)';
 $_['entry_link']         = '链接';
 $_['entry_image']        = '图像';
+$_['entry_mimage']       = '手机图像';
 $_['entry_status']       = '状态';
 $_['entry_sort_order']   = '排序顺序';
 

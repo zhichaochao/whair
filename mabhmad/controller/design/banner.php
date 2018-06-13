@@ -292,8 +292,10 @@ class ControllerDesignBanner extends Controller {
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_title'] = $this->language->get('entry_title');
+		$data['entry_title_small'] = $this->language->get('entry_title_small');
 		$data['entry_link'] = $this->language->get('entry_link');
 		$data['entry_image'] = $this->language->get('entry_image');
+		$data['entry_mimage'] = $this->language->get('entry_mimage');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 
@@ -401,12 +403,22 @@ class ControllerDesignBanner extends Controller {
 					$image = '';
 					$thumb = 'no_image.png';
 				}
+				if (is_file(DIR_IMAGE . $banner_image['mimage'])) {
+					$mimage = $banner_image['mimage'];
+					$mthumb = $banner_image['mimage'];
+				} else {
+					$mimage = '';
+					$mthumb = 'no_image.png';
+				}
 				
 				$data['banner_images'][$key][] = array(
 					'title'      => $banner_image['title'],
+					'mtitle'      => $banner_image['mtitle'],
 					'link'       => $banner_image['link'],
 					'image'      => $image,
+					'mimage'      => $mimage,
 					'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
+					'mthumb'      => $this->model_tool_image->resize($mthumb, 100, 100),
 					'sort_order' => $banner_image['sort_order']
 				);
 			}

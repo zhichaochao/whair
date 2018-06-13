@@ -60,7 +60,7 @@ header{position:fixed;top:0;left:0;width:100%;background: #fff;z-index:10;height
 .border-b{border-bottom: 1px solid #ececec;}
 .ver-mid{display: inline-block;vertical-align: middle;}
 .modal{width: 100%;height: 100%;position: fixed;left: 0;top: 0; z-index: 999;background: rgba(0,0,0,.6);}
-.zzc_div{width: 100%;height: 100%;position: fixed;z-index:11;left: 0;top: 0;background: rgba(0,0,0,.6);display: none;}
+.zzc_div{width: 100%;height: 100%;position: fixed;z-index:11;left: 0;top: 0;background: rgba(0,0,0,.0);display: none;}
 
 
 /*字体*/

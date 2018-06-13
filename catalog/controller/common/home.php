@@ -5,10 +5,7 @@ class ControllerCommonHome extends Controller {
 		$this->document->setDescription($this->config->get('config_meta_description'));
 		$this->document->setKeywords($this->config->get('config_meta_keyword'));
 
-        // print_r($this->config);exit();
 
-        //引入样式
-		$this->document->addStyle('catalog/view/theme/default/stylesheet/common/home.css');
 
 		if (isset($this->request->get['route'])) {
 			$this->document->addLink($this->config->get('config_url'), 'canonical');
@@ -22,26 +19,35 @@ class ControllerCommonHome extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 
         //banner轮播图
-        $setting_info = array("name"=>"Home Page",
-							  "banner_id"=>7,
-							  "width"=>1200,
-							  //"height"=>380,
-							  "status"=>1
-							  );
+        $setting_info = array("name"=>"Home Page", "banner_id"=>7, "width"=>1536, "height"=>720, "mwidth"=>710,  "mheight"=>480, "status"=>1 );
+        // print_r( $setting_info);exit();
 		$data['slideshow'] = $this->load->controller('extension/module/slideshow',$setting_info);
+        // print_r($data['slideshow']);exit();
 
         //读取首页的中间图片
 		$this->load->model('design/banner');
 		$this->load->model('tool/image');
-		$data['middle_pics'] = $this->model_design_banner->getBanner(9);
+		 $data['fasts'] = array();
+        $results = $this->model_design_banner->getBanner(6);
+        foreach ($results as $result) {
+            if (is_file(DIR_IMAGE . $result['image'])) {
+                $image=$this->model_tool_image->resize($result['image'], 480, 480);
+                if (is_file(DIR_IMAGE . $result['mimage'])) {
+                   $mimage=  $this->model_tool_image->resize($result['mimage'], 230, 260);
+                }else{
+                     $mimage=$image;
+                }
+                $data['fasts'][] = array(
+                    'title' => $result['title'],
+                    'mtitle' => $result['mtitle'],
+                    'link'  => $result['link'],
+                    'image' =>   $image,
+                    'mimage' => $mimage
+                );
 
-		if(!empty($data['middle_pics'])){
-           foreach($data['middle_pics'] as $k => $v){
-               $data['middle_pics'][$k]['image'] = $this->model_tool_image->resize($v['image'], 595 , 329);
-           }
-		}else{
-		  $data['middle_pics_1'] = $data['middle_pics_2'] = $this->model_tool_image->resize('no_image.png', 595 , 329);
-		}
+            }
+        }
+        // print_r( $data['fasts']);exit();
 		//读取首页的中间图片,end
 
         //首页的产品分类显示

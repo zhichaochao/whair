@@ -23,8 +23,7 @@
 	
 	/*index图片弹窗*/
 	.img_modal{position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: transparent;display: none;}
-	.img_modal .text{position: absolute;width: 320px;height: 360px;left: 50%; margin-left: -160px;top: 15.62vw;
-	background: url(../img/jpg/pc_modal.jpg) no-repeat ;}
+	.img_modal .text{position: absolute;width: 320px;height: 360px;left: 50%; margin-left: -160px;top: 15.62vw;}
 	.img_modal .text .close{width: 52px;height: 52px; position: absolute;right: 0px;top: 0px;cursor: pointer;
 	background: url(../img/png/close2.png) no-repeat center center;background-size: 18px 18px;}
 	.img_modal .login_a{position: absolute;bottom: 40px;width: 160px;height: 40px;left: 80px; display: block;}
@@ -36,10 +35,10 @@
 	.login .login_ul li{float: left;width:48%;background: #fff;}
 	.login .login_ul li:last-child{float: right;}
 	.login .login_ul li p.bt_p{font-size: 16px;color: #333;height:60px;line-height: 60px;background: #e4e4e4;padding: 0 40px;}
-	.login form {padding:52px 2.08vw 0 2.08vw;}
+	.login form {padding:62px 2.08vw 0 2.08vw;}
 	.login form label{display: block;}
 	.login form label span{font-size: 16px;color: #666;line-height: 45px;}
-	.login form label input{width: 100%;border: 1px solid #ccc;border-radius:3px;height: 40px;line-height: 40px;
+	.login form label input{width: 100%;border: 1px solid #ccc;border-radius:3px;height:35px;line-height: 35px;
 	margin-bottom: 15px;padding: 0 10px;font-size: 17px;font-family: arial;color: #333;}
 	.login form label input::-webkit-input-placeholder{color: #ccc;}
 	.login form label input:-moz-placeholder{color: #ccc;}
@@ -48,13 +47,11 @@
 	.login form label input:focus{border: 1px solid #ff6700;}
 	.login form label a{font-size: 14px;line-height: 16px;color: #aaa;text-align: right;display:inline-block;float: right; border-bottom: 1px solid transparent;}
 	.login form label a:hover{color: #333;border-bottom: 1px solid #333;}
-	
 	.login .res_form{padding: 30px 40px 0 40px;}
 	.login .res_form label span{line-height: 36px;}
 	.login .res_form label input{margin-bottom: 10px;height: 35px;line-height: 35px;}
 	.login .res_form label.label_name{width: 50%;float: left;}
 	.login .res_form label.label_names{width: 50%;float: left;}
-	
 	.login .res_form label.label_name input{width: 90%;}
 	.login .res_form label.label_names span,
 	.login .res_form .xy_div {position: relative;}
@@ -66,7 +63,6 @@
 	    border-right-width: 0; width: 10px;height: 5px;-webkit-transform: rotate(-50deg);position: absolute;top:3px;left:2px;}
 	.login .res_form .xy_div p{font-size: 14px;color: #333;padding-left: 29px;height: 17px;line-height: 17px;}
 	.login .res_form .xy_div p a{font-size: 14px;color: #569acf;}
-	
 	.login form .tj_input{background: #000;height: 40px;line-height: 40px;border-radius:3px;color: #fff;font-size: 20px;margin: 152px 0 40px 0;cursor: pointer;}
 	.login .res_form .tj_input{margin: 50px 0 40px 0;}
 	
@@ -82,14 +78,15 @@
 	.pro_content .pro_ul{margin: 0 -0.67vw;}
 	.pro_content .pro_ul li{width: 25%;float: left;position: relative;padding: 0 0.67vw;margin-bottom: 1.66vw;}
 	.pro_content .pro_ul .pic_img{width: 100%;overflow: hidden;}
-	.pro_content .pro_ul .pic_img img{display: block;}
+	.pro_content .pro_ul .pic_img img{display: block;transition: all .5s;}
+	.pro_content .pro_ul>li:hover .pic_img img{transform: scale(1.2);}
 	.pro_content .pro_ul .text{text-align: center;background: #fff;padding-bottom: 0.94vw;}
 	.pro_content .pro_ul .text span{font-family: san_r;font-size: 1.25vw;line-height: 1.25vw;margin:1.66vw 0 0.73vw 0;display: block;}
 	.pro_content .pro_ul .text p{font-family: arial;font-size: 0.72vw;line-height: 0.92vw; padding: 0 1.25vw;box-sizing: border-box;
 	text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 	.pro_content .pro_ul .text p.p1{font-size: 0.83vw;line-height: 1.03vw;margin-bottom: 0.22vw;}
 	.pro_content .pro_ul .sc_div{width: 1.87vw;height: 1.87vw;position: absolute;top: 1.25vw;right: 1.09vw;z-index: 2;
-	background: url(../img/png/pro_star.png)no-repeat;background-size: 1.87vw 1.87vw;}
+	background: url(../img/png/pro_star.png)no-repeat;background-size: 1.87vw 1.87vw;cursor: pointer;}
 	.pro_content .bot{background: #fff;margin: 0.5vw 0 1.25vw 0;padding:  0 1.56vw;}
 	.pro_content .bot .left{float: left;}
 	.pro_content .bot .left ul li{float: left;width: 1.66vw;height: 1.66vw;line-height: 1.66vw;text-align: center; margin:0.93vw 0.52vw 0.93vw 0;border: 1px solid #d9d9d9;}
@@ -126,7 +123,7 @@
 	.pro_det_content .price_input input{display: inline-block;width: 2.08vw;height: 2.08vw;line-height: 2.08vw; float: left;
 	border-right: 1px solid#ccc;border-left: 1px solid#ccc;text-align: center;}
 	.pro_det_content label select{float: left; clear: both;width: 8.33vw;height: 2.08vw;line-height: 2.08vw;
-	border: 1px solid #ccc;box-sizing: content-box;cursor: pointer;}
+	border: 1px solid #ccc;box-sizing: border-box;padding: 0 5%; cursor: pointer;}
 	.pro_det_content .measurement{font-size: 0.83vw;color: #666;float: left;border-bottom: 1px solid #666;margin-top: 2.2vw;cursor: pointer;}
 	.pro_det_content .meas_img{position: absolute;right: 20vw;top: 14.8vw;width: 46.87vw;height: 41.66vw;display: none;}
 	.pro_det_content .right a.a_btn{width: 14.16vw;height: 2.08vw;line-height: 2.08vw;text-align: center;border-radius: 30px;
@@ -176,6 +173,35 @@
 	.pro_det_content .pro_det_bot ul{margin: 0 -0.83vw;}
 	.pro_det_content .pro_det_bot ul li{float: left;width: 25%;padding: 0 0.83vw;margin-bottom: 0.83vw;}
 	.pro_det_content .pro_det_bot ul li .text{display: none;}
+	
+	/**购物车心愿列表**/
+	.shop_content{background: #f5f5f5;;padding: 0 1.25vw;margin-bottom:8.3vw;}
+	.shop_content .top{text-align: center;background: #fff;margin: 1.25vw 0;padding: 2.08vw 0;}
+	.shop_content .top h1{font-size: 1.56vw;margin-bottom: 1.4vw;line-height: 1.6vw;}
+	.shop_content .top p{font-size: 0.83vw;line-height: 1vw;}
+	.shop_content .shop_ul{margin: 0 -0.41vw;}
+	.shop_content .shop_ul>li{width: 25%;padding: 0 0.41vw;float: left;position: relative;margin-bottom: 1.25vw;}
+	.shop_content .shop_ul .pic_img{width: 100%;overflow: hidden;}
+	.shop_content .shop_ul .pic_img img{display: block;transition: all .5s;}
+	.shop_content .shop_ul .one_a:hover .pic_img img{transform: scale(1.2);}
+	.shop_content .shop_ul .text{text-align: center;padding-bottom: 0.94vw;background: #fff;}
+	.shop_content .shop_ul .text span{font-family: san_r;font-size: 1.25vw;line-height: 1.25vw;margin:1.66vw 0 0.73vw 0;display: block;}
+	.shop_content .shop_ul .text p{font-family: arial;font-size: 0.72vw;line-height: 0.92vw; padding: 0 1.25vw;box-sizing: border-box;
+	text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+	.shop_content .shop_ul .text p.p1{font-size: 0.83vw;line-height: 1.03vw;margin-bottom: 0.22vw;}
+	.shop_content .shop_ul .close{width: 2.08vw;height: 2.08vw;position: absolute;top: 0.52vw;right: 0.78vw;
+	background: url(../img/png/close3.png) no-repeat;background-size: 2.08vw 2.08vw;cursor: pointer;}
+	.shop_content .select_div{background: #fff;padding: 0.52vw 0;text-align: center;position: relative;}
+	.shop_content .select_div button{width: 66.6%; margin: auto;display: block;border: 1px solid #ccc;height: 2.08vw;font-size: 0.83vw;line-height: 2.08vw;background: #fff;}
+	.shop_content .select_div button:hover{background: #f5f5f5;cursor: pointer;}
+	.shop_content .select_div button span{background: url(../img/png/down.png) no-repeat right center;background-size: 0.72vw;padding-right: 2vw;}
+	.shop_content .select_div ul{position: absolute;width: 66.7%;padding: 1vw 0;max-height: 11.5vw;overflow-y:scroll !important;
+	left: 16.7%;background: #fff;display: none;z-index: 12;border-left: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+	.shop_content .select_div ul li{width:100%;margin: auto;height: 2.08vw;font-size: 0.83vw;line-height: 2.08vw;cursor: pointer;border-right: 1px solid #ccc;box-sizing: content-box;}
+	.shop_content .select_div ul li:hover{background: #f5f5f5;}
+	.shop_content .shop_ul .shop_a{background: #fff;padding: 0.52vw 0 1.25vw 0;}
+	.shop_content .shop_ul .two_a{width: 66.6%;margin: auto;display: block;text-align: center;height: 2.08vw;line-height: 2.08vw;
+	background: #000;color: #fff;font-size: 0.83vw;border-radius: 50px;}
 	
 }
 
@@ -275,7 +301,6 @@
 	.pro_bnr {border-bottom: 0.1rem solid #f5f5f5;height: auto;}
 	.pro_bnr .swiper-pagination-bullet{width: 0.12rem;height: 0.12rem;border-radius: 50%;background: #fff;}
 	.pro_bnr .swiper-pagination-bullet-active{background: #fff !important;}
-	
 	.product_det{width: 100%;background: #f5f5f5;padding: 0 !important;}
 	.pro_det_content .top{background: #fff;}
 	.pro_det_content .top .left{display: none;}

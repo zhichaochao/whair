@@ -240,13 +240,13 @@ class ControllerCommonColumnLeft extends Controller {
 			// Design
 			$design = array();
 
-			if ($this->user->hasPermission('access', 'design/layout')) {
-				$design[] = array(
-					'name'	   => $this->language->get('text_layout'),
-					'href'     => $this->url->link('design/layout', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'design/layout')) {
+			// 	$design[] = array(
+			// 		'name'	   => $this->language->get('text_layout'),
+			// 		'href'     => $this->url->link('design/layout', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 			/*
 			if ($this->user->hasPermission('access', 'design/menu')) {
 				$design[] = array(
