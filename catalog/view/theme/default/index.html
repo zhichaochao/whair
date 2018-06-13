@@ -88,11 +88,11 @@
 				</div>
 				
 				<!--搜索框-->
-				<from class="search fl">
+				<form class="search fl">
 					<!--<input class="btn_in" type="submit" value="">-->
 					<input class="text_in" type="text"placeholder="Search">
 					<img class="close" src="img/png/close2.png"/>
-				</from>
+				</form>
 				
 				<!--导航购物车-->
 				<div class="nav_cart">
@@ -780,66 +780,11 @@
 		</div>
 		
 		<!--登录注册弹窗-->
-		<div class="modal login_modal">
+		<div class="modal img_modal">
 			<div class="text">
 				<div class="close"></div>
-				<div class="top">
-					<ol class="login_ol clearfix">
-						<li class="active">SIGN IN <span></span></li>
-						<li>SIGN UP</li>
-					</ol>
-				</div>
-				<div class="bot">
-					<ul class="login_ul">
-						<li class="active">
-							<form>
-								<label for="">
-									<span>E-Mail Address</span>
-									<input type="text" placeholder="Enter email address"/>
-								</label>
-								<label for="">
-									<span>Password</span>
-									<input type="password" placeholder="Please enter the password"/>
-									<a href="###">Forgotten Password ?</a>
-								</label>
-								<input class="tj_input" type="submit" value="SIGN IN" />
-							</form>
-							<p class="close_p"><a class="close_a" href="###">Close and no longer prompt</a></p>
-						</li>
-						<li>
-							<form class="res_form">
-								<label class="label_name" for="">
-									<span>First Name</span>
-									<input type="text" value="" />
-								</label>
-								<label class="label_name label_names" for="">
-									<span>Last Name</span>
-									<input type="text" value="" />
-								</label>
-								<label for="">
-									<span>E-Mail Address</span>
-									<input type="text" placeholder="Enter email address"/>
-								</label>
-								<label for="">
-									<span>Password</span>
-									<input type="password" placeholder="Please enter the password"/>
-								</label>
-								<label for="">
-									<span>Confirm Password</span>
-									<input type="password" placeholder="Please enter the password"/>
-								</label>
-								<div class="xy_div">
-									<input type="checkbox"/>
-									<span class="span1"></span>
-									<span class="span2"></span>
-									<p>I agree to Hot Beauty Hair <a href="###">Terms and Conditions.</a></p>
-								</div>
-								<input class="tj_input" type="submit" value="SIGN UP" />
-							</form>
-						</li>
-					</ul>
-					
-				</div>
+				<!--<img class="login_img" src="img/jpg/pc_modal.jpg"/>-->
+				<a class="login_a" href="###"></a>
 			</div>
 		</div>
 		
@@ -884,7 +829,23 @@
 			$(".video_div .bg_div").css("display","none")
 		})
 		
-		
+		/**login弹窗提示**/
+		var login_time = setInterval(function(){
+			$(".img_modal").fadeIn();
+			clearInterval(login_time);
+		},5000)
+		$(".img_modal").click(function(e){
+			var close = $('.img_modal .text'); 
+		   	if(!close.is(e.target) && close.has(e.target).length === 0){
+		      	$(".img_modal").fadeOut();
+		      	clearInterval(login_time);
+			}
+		})
+		//关闭登陆注册
+		$(".img_modal .close").click(function(){
+			$(".img_modal").fadeOut();
+			clearInterval(login_time);
+		})
 	})
 </script>
 		

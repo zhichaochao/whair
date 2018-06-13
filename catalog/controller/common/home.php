@@ -44,14 +44,6 @@ class ControllerCommonHome extends Controller {
 		}
 		//读取首页的中间图片,end
 
-		//首页Business Solutions模块的链接
-		//wholesales链接
-        $data['service_wholesales'] = $this->url->link('information/service/wholesales');
-        //sell from salon链接
-        $data['service_salon'] = $this->url->link('information/service/salon');
-        //sell online链接
-        $data['service_online'] = $this->url->link('information/service/online');
-        
         //首页的产品分类显示
         // Menu
         $this->load->model('catalog/category');
@@ -60,32 +52,11 @@ class ControllerCommonHome extends Controller {
         $categories = $this->model_catalog_category->getShowCategories();
         if(!empty($categories)){
         	foreach ($categories as $category) {
-        	    /**
-        	    //获取该分类下的产品
-                $child_product = $this->model_catalog_category->getProduct($category['category_id']);
-                $category_product = array();
-                foreach ($child_product as $product){
-                    if(isset($product['special'])){
-                        $special = $this->currency->format($product['special'], $this->session->data['currency']);
-                    }
-                    else{
-                        $special = '';
-                    }
-
-                    $category_product[] = array(
-                        'product_href'      => $this->url->link('product/product', 'product_id=' . $product['product_id']),
-                        'product_img'       => $this->model_tool_image->resize($product['image'],258,258),
-                        'product_name'      => $product['name'],
-                        'product_price'     => $this->currency->format($product['price'], $this->session->data['currency']),
-                        'product_special'   => $special
-                    );
-                }
-                */
+        	   
         		$data['categories'][] = array(
         				'pc_image'      => $this->model_tool_image->resize($category['pc_image'], 272, 285),
         				'pc_show_title' => $category['pc_show_title'],
         				'href'          => $this->url->link('product/category', 'path=' . $category['category_id']),
-//                        'product'       => $category_product
         		);
         	}
         }else{

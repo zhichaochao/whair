@@ -66,15 +66,11 @@ header{position:fixed;top:0;left:0;width:100%;background: #fff;z-index:10;height
 /*字体*/
 @font-face {
 	font-family:uki;
-	src: url(../font/UKIJJUNU.TTF);
+	src: url(../font/ukijjunu.ttf);
 }
 @font-face {
 	font-family:bau;
-	src: url(../font/BauerBodni_Titl_BT_Titling.ttf);
-}
-@font-face {
-	font-family:cam;
-	src: url(../font/cambria.ttc);
+	src: url(../font/BauerBodni.ttf);
 }
 @font-face {
 	font-family:san_b;
@@ -96,7 +92,10 @@ header{position:fixed;top:0;left:0;width:100%;background: #fff;z-index:10;height
 	font-family:san_t;
 	src: url(../font/san_m.ttf);
 }
-
+@font-face {
+	font-family:fram;
+	src: url(../font/framdcn.ttf);
+}
 .content{width: 80%;margin: auto;}
 .ov_text{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 100%;}
 
@@ -139,7 +138,7 @@ border-bottom:2px solid transparent ;position: relative;}
 
 .nav .right{float: right;position: relative;z-index: 10;}
 .nav .img_ol li{width: 28px;height: 28px;float: left;text-align: center;margin-right: 20px;cursor: pointer;position: relative;}
-.nav .img_ol li a{display: block;width: 28px;}
+.nav .img_ol li a{display: block;width: 28px;height: 28px;}
 .nav .img_ol li span{font-family: tahoma; font-size: 12px;color: #999;line-height: 18px;display: block;
 position: absolute;top: bottom:16px;right: -7px;}
 .nav .img_ol li:nth-child(1){background: url(../img/png/searchs.png) no-repeat center center;background-size: 28px ;}
@@ -148,13 +147,13 @@ position: absolute;top: bottom:16px;right: -7px;}
 .nav .img_ol li:nth-child(4){background: url(../img/png/carts.png) no-repeat center center;margin-right: 0;}
 
 
-.nav from{border-bottom: 2px solid #d5af74;width: 320px;height: 32px;line-height: 32px;box-sizing: border-box;
+.nav form{border-bottom: 2px solid #d5af74;width: 320px;height: 32px;line-height: 32px;box-sizing: border-box;
 opacity: 0;background: #fff;border-radius: 5px 5px 0 0;position: absolute;right: 172px;z-index: 9;display: none;}
-.nav from .text_in{background: #fff;width: 286px;height: 30px;float: left;font-size: 16px;padding: 0 10px;
+.nav form .text_in{background: #fff;width: 286px;height: 30px;float: left;font-size: 16px;padding: 0 10px;
 box-sizing: border-box;}
-.nav from .btn_in{background: url(../img/png/in_search.png) no-repeat center center;width: 32px;
+.nav form .btn_in{background: url(../img/png/in_search.png) no-repeat center center;width: 32px;
 display: block;float: left;height: 30px;opacity: .5;}
-.nav from .close{position: absolute;right: 0;top: 5px;width: 25px;opacity: .5;cursor: pointer;display: none;}
+.nav form .close{position: absolute;right: 0;top: 5px;width: 25px;opacity: .5;cursor: pointer;display: none;}
 
 @keyframes myanimate1{
 	0%{width: 62px;opacity: 0;}
@@ -174,8 +173,8 @@ display: block;float: left;height: 30px;opacity: .5;}
 }
 
 /**购物车**/
-.nav_cart {box-shadow: 0 5px 10px 2px rgba(222,222,222,.5);background: #fff;width: 26.04vw;padding: 0 2.08vw;
-position: absolute;right: 0;top: 0;z-index: 11;display: none;}
+.nav_cart {box-shadow: 0 5px 10px 2px rgba(222,222,222,.5);width: 26.04vw;padding: 0 2.08vw;
+position: absolute;right: 0;top: 0;z-index: 11;display: none;min-height: 13vw;background:#fff url(../img/loading.gif) no-repeat center bottom;}
 .nav_cart h1{font-size: 1.25vw;color: #000;font-weight: bold;line-height: 1.25vw;margin-top: 4.16vw;margin-bottom: 2.18vw;} 
 .nav_cart h1 .close{float: right;width: 1.04vw;height: 1.14vw;cursor: pointer;transition: all .5s;}
 .nav_cart h1 .close:hover{transform: rotate(90deg);}
@@ -189,13 +188,14 @@ position: absolute;right: 0;top: 0;z-index: 11;display: none;}
 .nav_cart .cart_ul li .text span{font-size: 0.93vw;color: #333;line-height: 0.93vw;}
 .nav_cart .cart_ul li:hover .pic_img img{transform: scale(1.2);}
 .nav_cart hr{background: #ccc;width: 18.75vw;height: 1px;border: none;position: relative;top: -1px;}
+.nav_cart .bot{padding-right: 2.78vw;}
 .nav_cart .bot .p_top{font-size: 0.83vw;color: #333;line-height: 0.83vw;margin-top:1.14vw;}
 .nav_cart .bot .p_bot{font-size: 1.45vw;color: #000;line-height: 1.45vw;margin-top: 1.25vw;font-weight: bold;}
 .nav_cart .bot span{float: right;}
-.nav_cart .bot a.a_btn{font-size: 0.83vw;color: #fff;text-align: center;width: 18.75vw;height: 2.08vw;line-height: 2.08vw;background: #000;
-border-radius: 50px;display: block;margin: 1.87vw 0 2.29vw 0;}
-.nav_cart .has{display: none;}
-.nav_cart .null {margin: 3.05vw 0 5.2vw 0;display: block;}
+.nav_cart .bot a.a_btn{font-size: 0.83vw;color: #fff;text-align: center;width: 100%;height: 2.08vw;line-height: 2.08vw;background: #000;
+border-radius: 50px;display: block;margin: 1.87vw 0 0 0;}
+.nav_cart .has{display: none;background: #fff;padding-bottom: 2.29vw;}
+.nav_cart .null {padding: 3.05vw 0 5.2vw 0;display: block;background: #fff;}
 .nav_cart .null p{font-size: 0.83vw;color: #333;text-align: center;}
 
 
@@ -254,7 +254,7 @@ text-align: center; position: absolute;bottom: 10px;}
 .yd_footer p{font-family: san_t; width: 100%;text-align: center;display: block;color: #fff;font-size: 0.18rem;line-height: 0.2rem;padding-bottom: 0.4rem;}
 .yd_footer p span{font-weight: bold;font-size: 0.2rem;}
 
-.yd_footer2{position: fixed;bottom: 0;left: 0;width: 100%;height:1rem;background: #fff;z-index: 10;display: none;}
+.yd_footer2{position: fixed;bottom: 0;left: 0;width: 100%;height:1rem;background: #fff;z-index: 99;display: none;}
 .yd_footer2 .ol_ydfot{border-top: 1px solid #ddd;}
 .yd_footer2 .ol_ydfot li{float: left;width: 20%;text-align: center;}
 .yd_footer2 .ol_ydfot li:last-child{border-right: none;}
@@ -281,53 +281,7 @@ display: block;width: 100%;padding:0 0.4rem;box-sizing: border-box;}
 .yd_nav a.right_img{background: url(../img/png/nav_right.png) no-repeat right 0.4rem center;background-size: 0.2rem 0.35rem;padding:0 0.4rem;box-sizing: border-box;}
 
 
-/**登陆注册**/
-.login_modal {display: none;}
-.login_modal .text{width: 500px;position: absolute;top:10.5vw;left: 50%;margin-left: -250px;background: #fff;}
-.login_modal .text .close{position: absolute;top: -18px;right: -45px;width: 35px;height: 35px;cursor: pointer;
-background: url(../img/png/close.png) no-repeat;background-size: 35px 35px;}
-.login_modal .login_ol{background: #333;}
-.login_modal .login_ol li{float: left;width: 50%;color: #888;font-size: 18px;height: 60px;line-height: 60px;text-align: center;cursor: pointer;}
-.login_modal .login_ol li.active{color: #fff;background: url(../img/png/login_down.png) no-repeat center bottom;background-size: 14px 7px;}
-.login_modal form {padding:54px 40px 0 40px;}
-.login_modal form label{display: block;}
-.login_modal form label span{font-size: 16px;color: #333;line-height: 45px;}
-.login_modal form label input{width: 100%;border: 1px solid #ccc;border-radius:3px;height: 40px;line-height: 40px;
-margin-bottom: 15px;padding: 0 10px;font-size: 17px;font-family: arial;}
-.login_modal form label input:focus{border: 1px solid #ff6700;}
-.login_modal form label a{font-size: 14px;line-height: 16px;color: #aaa;text-align: right;display:inline-block;float: right; border-bottom: 1px solid transparent;}
-.login_modal form label a:hover{color: #333;border-bottom: 1px solid #333;}
-.login_modal .res_form{padding: 30px 40px 0 40px;}
-.login_modal .res_form label span{line-height: 36px;}
-.login_modal .res_form label input{margin-bottom: 10px;height: 35px;line-height: 35px;}
-.login_modal .res_form label.label_name{width: 50%;float: left;}
-.login_modal .res_form label.label_name input{width: 90%;}
-.login_modal .res_form label.label_names span,
-.login_modal .res_form label.label_names input{margin-left: 10%;}
-.login_modal .res_form .xy_div {position: relative;}
-.login_modal .res_form .xy_div input{position: absolute;width: 16px;height: 16px;top: 0;left: 0;z-index: 2;opacity: 0;cursor: pointer;margin: 0;}
-.login_modal .res_form .xy_div span{width:16px;height:16px;border-radius:2px;position: absolute;border:1px solid #000;z-index: 1;}
-.login_modal .res_form .xy_div span.span1{display: block;}
-.login_modal .res_form .xy_div span.span2{background: #000;display: none;}
-.login_modal .res_form .xy_div span.span2:after {content: '\00a0'; display: inline-block;border: 2px solid #fff;border-top-width: 0;
-    border-right-width: 0; width: 10px;height: 5px;-webkit-transform: rotate(-50deg);position: absolute;top:3px;left:2px;}
-.login_modal .res_form .xy_div p{font-size: 14px;color: #333;padding-left: 29px;height: 17px;line-height: 17px;}
-.login_modal .res_form .xy_div p a{font-size: 14px;color: #569acf;}
-.login_modal .login_ul li{display: none;}
-.login_modal .login_ul li.active{display: block;}
-.login_modal form .tj_input{background: #000;height: 40px;line-height: 40px;border-radius:3px;color: #fff;font-size: 20px;margin: 46px 0;cursor: pointer;}
-.login_modal .res_form .tj_input{margin: 30px 0 60px 0;}
-.login_modal .close_p{text-align: center;margin-bottom: 80px;}
-.login_modal .close_a{font-size: 17px;color: #999; line-height: 17px;display: inline-block;border-bottom: 1px solid #999;}
-.login_modal .close_a:hover{color: #333;border-bottom: 1px solid #333;}
 
-.login .bot{border: 1px solid #ccc;border-top: none;}
-
-
-
-@media (min-width: 993px) and (max-width: 1439px) {
-	.login_modal .text{width: 420px;top:10.5vw;margin-left: -210px;}
-}
 
 @media (min-width: 1px) and (max-width: 992px) {
 	.footer{display: none !important;}
@@ -352,12 +306,12 @@ margin-bottom: 15px;padding: 0 10px;font-size: 17px;font-family: arial;}
 	.nav .mn_type .ul_type li:nth-child(2){background: url(../img/png/ngn1.png) no-repeat left center;background-size: 0.3rem 0.3rem;}
 	.nav .mn_type .ul_type li:nth-child(3){background: url(../img/png/zar1.png) no-repeat left center;background-size: 0.3rem 0.3rem;}
 	
-	.nav from{border-bottom: 2px solid #d5af74;width: 100%;height: 0.96rem;line-height: 0.96rem;box-sizing: border-box;
+	.nav form{border-bottom: 2px solid #d5af74;width: 100%;height: 0.96rem;line-height: 0.96rem;box-sizing: border-box;
 	opacity: 0;background: #fff;border-radius: 0;position: absolute;right: 0%;left: 0; top:1.2rem;z-index: 9;}
-	.nav from .text_in{background: transparent;width: 80%;height: 0.96rem;float: left;font-size: 0.24rem;padding: 0 10px;
+	.nav form .text_in{background: transparent;width: 80%;height: 0.96rem;float: left;font-size: 0.24rem;padding: 0 10px;
 	box-sizing: border-box;}
-	.nav from .btn_in{display: none;}
-	.nav from .close{position: absolute; right: 0.4rem;top: 0.3rem;width:0.36rem;opacity: .5;cursor: pointer;display: block;}
+	.nav form .btn_in{display: none;}
+	.nav form .close{position: absolute; right: 0.4rem;top: 0.3rem;width:0.36rem;opacity: .5;cursor: pointer;display: block;}
 	
 	@keyframes myanimate1{
 		0%{width: 62px;opacity: 0;}
@@ -379,8 +333,6 @@ margin-bottom: 15px;padding: 0 10px;font-size: 17px;font-family: arial;}
 	.nav>.right{position: absolute;top: 0.45rem;left: 1rem;}
 	
 	.nav .img_ol li{display: none;width: 0.34rem;height: 0.31rem;}
-	
-	
 	.nav .nav_off{position: absolute;left: 0.4rem;top: 0.45rem;width: 0.38rem;height: 0.31rem;
 	background: url(../img/png/menu.png) no-repeat;background-size: 0.38rem 0.31rem;}
 	
@@ -395,18 +347,14 @@ margin-bottom: 15px;padding: 0 10px;font-size: 17px;font-family: arial;}
 	.xf_right .vip:hover{background:#fff url(../img/png/yd_vip.png) no-repeat center center;background-size: 0.66rem 0.60rem;}
 	.xf_right .top:hover{background:#fff url(../img/png/yd_top.png) no-repeat center center;background-size: 0.32rem 0.32rem;}
 	
-	
 }
-@media (min-width:751px) and (max-width:992px) {
+@media (min-width:752px) and (max-width:992px) {
 	.nav .logo img{margin: 0 ;position: absolute;top: 50%;margin-top: -25px;left: 50%;margin-left: -167px;}
 	.nav .img_ol li.search_li{display: block;margin: 0;background-size:28px;}
 }
-@media (min-width: 1px) and (max-width: 750px) {
+@media (min-width: 1px) and (max-width: 751px) {
+	.content{width: 100%;}
 	.nav .img_ol li.search_li{display: block;margin: 0;background-size:0.32rem 0.31rem;}
-	.login_modal .text .close{display: none;}
-	.login .text{width: 100%;top:0;margin-left:0;left: 0;}
-	.login .text .bot{border: none;}
-	.login form label input{font-size: 0.24rem;}
 	.nav .logo img{display: block ;margin: 0;position: absolute;top: 0.4rem;left: 2.29rem;width: 2.92rem;height: 0.4rem;}
 }
 

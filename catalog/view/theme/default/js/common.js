@@ -58,6 +58,9 @@ $(function(){
 			$(this).find(".pic_img img").attr("src","img/png/jiahao_white.png");
 			$(this).removeClass("off");
 		}else{
+			$(".slide_div").stop().slideUp();
+			$(".ul_ydfot>li>h4").removeClass("off");
+			$(".ul_ydfot>li>h4 .pic_img img").attr("src","img/png/jiahao_white.png");
 			$(this).parent().find(".slide_div").stop().slideDown();
 			$(this).find(".pic_img img").attr("src","img/png/jianhao_white.png");
 			$(this).addClass("off");
@@ -116,9 +119,13 @@ $(function(){
 		$(".yd_nav").animate({right:"100%"});
 	})
 
-	// 购物车关闭
-
-
+// 购物车开关
+//	$(".img_ol .cart_li").click(function(){
+//		$(".nav_cart").fadeIn();
+//	})
+	$(".nav_cart .close").click(function(){
+		$(".nav_cart").fadeOut();
+	})
 
 // 注册登录开关
 	$(".img_ol .login_li").click(function(){
@@ -133,11 +140,12 @@ $(function(){
 	      	$("body").css("overflow","auto");
 		}
 	})
-	
-	$(".close , .close_a").click(function(){
+	//关闭登陆注册
+	$(".close").click(function(){
 		$(".login_modal").fadeOut();
 		$("body").css("overflow","auto");
 	})
+	
 	
 	$(".login_ol>li").click(function(){
 		$(this).addClass("active").siblings("li").removeClass("active");

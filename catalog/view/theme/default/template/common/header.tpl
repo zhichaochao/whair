@@ -10,7 +10,6 @@
         <script type="text/javascript" src="catalog/view/theme/default/js/jquery.min.js" ></script>
         <script type="text/javascript" src="catalog/view/theme/default/js/common.js" ></script>
         <script type="text/javascript" src="catalog/view/theme/default/js/swiper.js" ></script>
-        <script type="text/javascript" src="catalog/view/theme/default/js/index.js" ></script>
         <title><?php echo $title; ?></title>
         <base href="<?php echo $base; ?>" />
         <?php if ($description) { ?>
