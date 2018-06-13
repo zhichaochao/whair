@@ -19,39 +19,103 @@ class ControllerCommonFooter extends Controller {
 		$data['text_order'] = $this->language->get('text_order');
 		$data['text_wishlist'] = $this->language->get('text_wishlist');
 		$data['text_newsletter'] = $this->language->get('text_newsletter');
-
-		$this->load->model('catalog/information');
-
-		$informations = $this->model_catalog_information->getInformations();
-		$data['informations'] = [];
-		$parents = [];
-		//获取父类信息
-		foreach ($informations as $result) {
-			if ($result['bottom']) {
-				if($result['parent_id'] == 0){
-					$parents[] = array(
-						'title' => $result['title'],
-						'information_id' => $result['information_id'],
-						'seo_url' => $result['seo_url']
-					);
-				}
-			}
-		}
+		////底部文字
+        $data['yd_About'] = $this->language->get('yd_About');
+        $data['yd_After'] = $this->language->get('yd_After');
+        $data['yd_Privacy'] = $this->language->get('yd_Privacy');
+        $data['yd_Hair'] = $this->language->get('yd_Hair');
+        $data['yd_How'] = $this->language->get('yd_How');
+        $data['yd_FAQ'] = $this->language->get('yd_FAQ');
+        $data['yd_Shipment'] = $this->language->get('yd_Shipment');
+        $data['yd_Return'] = $this->language->get('yd_Return');
+        $data['yd_Account'] = $this->language->get('yd_Account');
+        $data['yd_Order'] = $this->language->get('yd_Order');
+        $data['yd_List'] = $this->language->get('yd_List');
+        $data['yd_Site'] = $this->language->get('yd_Site');
+        $data['yd_Call'] = $this->language->get('yd_Call');
+        $data['yd_Whatsapp'] = $this->language->get('yd_Whatsapp');
+        $data['yd_Email'] = $this->language->get('yd_Email');
+        $data['yd_Address'] = $this->language->get('yd_Address');
+        $data['yd_Addcont'] = $this->language->get('yd_Addcont');
 		
-		//获取第二级分类信息
-		foreach ($informations as $information) {
-			if($information['bottom']){
-				foreach($parents as $parent){
-					if($parent['information_id'] == $information['parent_id']){
-						$data['informations'][$parent['title']][] = array(
-							'title' => $information['title'],
-							'seo_url' => $information['seo_url']
-						);
-					}
-				}
-			}
-		}
+	    
+		$data['informations'] = array(
+			0 =>array(
+				'title'=>'INFORMATION',
+				'child'=>array(
+						0=>array(
+							'title'=>'About Us',
+							'url'=>$this->url->link('account/account'),
+							),
+						1=>array(
+							'title'=>'After Sale Service',
+							'url'=>$this->url->link('account/order'),
+							),
+						2=>array(
+							'title'=>'Privacy Policy',
+							'url'=>$this->url->link('account/wishlist'),
 
+							),
+						3=>array(
+							'title'=>'Hair Club',
+							'url'=>$this->url->link('information/sitemap'),
+							),
+
+
+					),
+				),
+			1=>array(
+				'title'=>'BUYER INSTRUCTION',
+				'child'=>array(
+						0=>array(
+							'title'=>'How To Order',
+							'url'=>$this->url->link('account/account'),
+							),
+						1=>array(
+							'title'=>'FAQ',
+							'url'=>$this->url->link('account/order'),
+							),
+						2=>array(
+							'title'=>'Shipment & Pay',
+							'url'=>$this->url->link('account/wishlist'),
+
+							),
+						3=>array(
+							'title'=>'Return Policy',
+							'url'=>$this->url->link('information/sitemap'),
+							),
+
+
+					),
+				),
+			2=>array(
+				'title'=>'MY ACCOUNT',
+				'child'=>array(
+						0=>array(
+							'title'=>'My Account',
+							'url'=>$this->url->link('account/account'),
+							),
+						1=>array(
+							'title'=>'My Order',
+							'url'=>$this->url->link('account/order'),
+							),
+						2=>array(
+							'title'=>'My Wish List',
+							'url'=>$this->url->link('account/wishlist'),
+
+							),
+						3=>array(
+							'title'=>'Site Map',
+							'url'=>$this->url->link('information/sitemap'),
+							),
+
+
+					),
+
+
+				),
+
+		 );
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);
 		$data['sitemap'] = $this->url->link('information/sitemap');
@@ -65,7 +129,18 @@ class ControllerCommonFooter extends Controller {
 		$data['newsletter'] = $this->url->link('account/newsletter', '', true);
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
+		
+		//$data['action'] = $this->url->link('account/login', '', true);
+		//$data['forgotten'] = $this->url->link('account/forgotten', '', true);
+		$data['entry_email'] = $this->language->get('entry_email');
+		$data['entry_password'] = $this->language->get('entry_password');
 
+		// $data['action'] = $this->url->link('account/login', '', true);
+		// //$data['register'] = $this->url->link('account/register', '', true);
+		// $data['register'] = $this->url->link('account/login/register_save', '', true);
+		// $data['forgotten'] = $this->url->link('account/forgotten', '', true);
+        //同意条款的内容链接 dyl add
+		$data['agree_url'] = $this->url->link('information/information/agree', 'information_id=' . $this->config->get('config_checkout_id'), true);
 		//底部wholesales的链接 dyl add
         $data['service_wholesales'] = $this->url->link('information/service/wholesales');
 

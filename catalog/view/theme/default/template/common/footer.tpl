@@ -10,47 +10,66 @@
 
     
     <!--底部-->
-    <div class="footer clearfix">
+    <div class="footer clearfix" >
       <div class="content clearfix">
         <div class="left clearfix">
           <ul class="clearfix">
+          <!-- <?php foreach($informations as $key => $information) { ?>
+          <li class="li">
+            <h4><?php echo $key; ?></h4>
+            <?php foreach($information as $value) { ?>
+              <p><a href="<?php echo $value['seo_url']; ?>" target="_blank"><?php echo $value['title']; ?></a></p>
+            <?php } ?>
+          </li>
+        <?php } ?> -->
+
                       <li>
                     <h4>INFORMATION</h4>
-                          <a href="#" target="_blank">About Us</a>
-                          <a href="#" target="_blank">After Sale Service</a>
-                          <a href="#" target="_blank">Privacy Policy</a>
-                          <a href="#" target="_blank">Hair Club</a>
+                          <a href="#" target="_blank"><?php echo $yd_About; ?></a>
+                          <a href="#" target="_blank"><?php echo $yd_After; ?></a>
+                          <a href="#" target="_blank"><?php echo $yd_Privacy; ?></a>
+                          <a href="#" target="_blank"><?php echo $yd_Hair; ?></a>
                       </li>
                     <li>
                     <h4>BUYER INSTRUCTION</h4>
-                          <a href="#" target="_blank">How To Order</a>
-                          <a href="#" target="_blank">FAQ</a>
-                          <a href="#" target="_blank">Shipment & Pay</a>
-                          <a href="#" target="_blank">Return Policy</a>
+                          <a href="#" target="_blank"><?php echo $yd_How; ?></a>
+                          <a href="#" target="_blank"><?php echo $yd_FAQ; ?></a>
+                          <a href="#" target="_blank"><?php echo $yd_Shipment; ?></a>
+                          <a href="#" target="_blank"><?php echo $yd_Return; ?></a>
                       </li>
                       <li>
-                    <h4>MY ACCOUNT</h4>
-                          <a href="#" target="_blank">My Account</a>
-                          <a href="#" target="_blank">My Order</a>
-                          <a href="#" target="_blank">My Wish List</a>
-                          <a href="#" target="_blank">Site Map</a>
+                    <h4><?php echo $informations[2]['title']; ?></h4>
+                          <a href="<?php echo $informations[2]['child'][0]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][0]['title']; ?></a>
+                          <a href="<?php echo $informations[2]['child'][1]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][1]['title']; ?></a>
+                          <a href="<?php echo $informations[2]['child'][2]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][2]['title']; ?></a>
+                          <a href="<?php echo $informations[2]['child'][3]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][3]['title']; ?></a>
                       </li>
+
+                      <!-- <li class="li5">
+            <h4>CONTACT</h4>
+            <p><i class="ci1"></i><a href="javascript:;"><?php echo $telephone; ?></a></p>
+            <?php if($skype) { ?>
+              <p><i class="ci2"></i><a href="javascript:;">Skype:<?php echo $skype; ?></a></p>
+            <?php } ?>
+            <p><i class="ci4"></i><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
+          </li> -->
                       <li>
                     <h4>COMPANY INFO</h4>
-                          <p><span>Call Us:</span> U.S No: 6262487420</p>
-                          <p><span>Whatsapp:</span> +8615800028742</p>
-                          <p><span>Email:</span> rebecca@hotbeautyhair.com</p>
+                          <p><span><?php echo $yd_Call; ?></span> U.S No: 6262487420</p>
+                          <p><span><?php echo $yd_Whatsapp; ?></span><?php echo $telephone; ?></p>
+                          <p><span><?php echo $yd_Email; ?></span><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
                         <p style="max-width:260px;line-height: 18px;margin-top: 3px;margin-bottom: 0;">
-                          <span>Address:</span>
-                          R6403, Jiahe Creative Industry Park, No.63 of North Huangbian Road, 
-                Baiyun District, Guangzhou, China.
-              </p>
+                          <span><?php echo $yd_Address; ?></span><?php echo $yd_Addcont; ?>
+                          </p>
                       </li>
                       <li>
                         <h4>SUBSCRIBE</h4>
+
                     <p>Be the first to know about our latest products.</p>
-                    <input value="" placeholder="Your Email Address">
-                    <button type="submit">SUBMIT</button>
+                    <!-- <input value="" placeholder="Your Email Address"> -->
+                    <input type="email" name="txtemail" id="txtemail" value="" placeholder="Your Email Address" class="text1">
+                    <button type="submit" class="btn1" onClick="return subscribe();">SUBMIT</button>
+
                     <ol class="clearfix">
                       <li><a href="###"><img src="catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
                       <li><a href="###"><img src="catalog/view/theme/default/img/png/fot_2.png" alt=""></a></li>
@@ -67,8 +86,8 @@
     </div>
     
     <!--yd底部-->
-    <div class="yd_footer clearfix">
-      <div class="top">
+    <div class="yd_footer clearfix" >
+      <div class="top" >
         <ul class="ul_ydfot clearfix">
           <li>
                   <h4>INFORMATION <div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
@@ -138,7 +157,7 @@
       </div>
       <p class="clearfix">Copyright Notice &copy; 2016-2018 www.hotbeautyhairmall.com All rights reserved</p>
     </div>
-    <div class="yd_footer2">
+    <div class="yd_footer2" >
       <ol class="ol_ydfot clearfix">
         <li class="active">
           <a href="###">
@@ -177,71 +196,49 @@
         </li>
       </ol>
     </div>
-    
-    <!--登录注册弹窗-->
-    <div class="modal login_modal">
+   
+   <div class="modal img_modal" style="display: none;">
       <div class="text">
         <div class="close"></div>
-        <div class="top">
-          <ol class="login_ol clearfix">
-            <li class="active">SIGN IN <span></span></li>
-            <li>SIGN UP</li>
-          </ol>
-        </div>
-        <div class="bot">
-          <ul class="login_ul">
-            <li class="active">
-              <form>
-                <label for="">
-                  <span>E-Mail Address</span>
-                  <input type="text" placeholder="Enter email address"/>
-                </label>
-                <label for="">
-                  <span>Password</span>
-                  <input type="password" placeholder="Please enter the password"/>
-                  <a href="###">Forgotten Password ?</a>
-                </label>
-                <input class="tj_input" type="submit" value="SIGN IN" />
-              </form>
-              <p class="close_p"><a class="close_a" href="###">Close and no longer prompt</a></p>
-            </li>
-            <li>
-              <form class="res_form">
-                <label class="label_name" for="">
-                  <span>First Name</span>
-                  <input type="text" value="" />
-                </label>
-                <label class="label_name label_names" for="">
-                  <span>Last Name</span>
-                  <input type="text" value="" />
-                </label>
-                <label for="">
-                  <span>E-Mail Address</span>
-                  <input type="text" placeholder="Enter email address"/>
-                </label>
-                <label for="">
-                  <span>Password</span>
-                  <input type="password" placeholder="Please enter the password"/>
-                </label>
-                <label for="">
-                  <span>Confirm Password</span>
-                  <input type="password" placeholder="Please enter the password"/>
-                </label>
-                <div class="xy_div">
-                  <input type="checkbox"/>
-                  <span class="span1"></span>
-                  <span class="span2"></span>
-                  <p>I agree to Hot Beauty Hair <a href="###">Terms and Conditions.</a></p>
-                </div>
-                <input class="tj_input" type="submit" value="SIGN UP" />
-              </form>
-            </li>
-          </ul>
-          
-        </div>
+        <!--<img class="login_img" src="img/jpg/pc_modal.jpg"/>-->
+        <a class="login_a" href="###"></a>
       </div>
     </div>
     
-    
   </body>
 </html>
+<script>
+function subscribe()
+{
+    var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var email = $('#txtemail').val();
+    if(email != "")
+    {
+        if(!emailpattern.test(email))
+        {
+            alert("Invalid Email");
+            return false;
+        }
+        else
+        {
+            $.ajax({
+                url: 'index.php?route=module/newsletters/news',
+                type: 'post',
+                data: 'email=' + $('#txtemail').val(),
+                dataType: 'json',
+
+                success: function(json) {
+                    alert(json.message);
+                }
+            });
+            return false;
+        }
+    }
+    else
+    {
+        alert("Email Is Require");
+        $(email).focus();
+        return false;
+    }
+}
+</script>
