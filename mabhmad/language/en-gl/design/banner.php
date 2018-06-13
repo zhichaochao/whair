@@ -19,6 +19,7 @@ $_['entry_name']        = 'Banner Name';
 $_['entry_title']       = 'Title';
 $_['entry_link']        = 'Link';
 $_['entry_image']       = 'Image';
+$_['entry_mimage']      = 'wap Image';
 $_['entry_status']      = 'Status';
 $_['entry_sort_order']  = 'Sort Order';
 
