@@ -1,0 +1,60 @@
+.order-list-table td{
+	text-align: center;
+}
+.order-list-table.table>tbody>tr>td, .order-list-table.table>tbody>tr>th, .order-list-table.table>tfoot>tr>td, .order-list-table.table>tfoot>tr>th, .order-list-table.table>thead>tr>td, .table>thead>tr>th{
+	vertical-align: middle;
+}
+.order-list-table thead td{
+	height: 38px;
+	color: #fff;
+	background: #F60;
+	font-size: 14px;
+}
+td.order-product-name{
+	text-align: left;
+	width: 300px;
+}
+.order-list-table tbody tr td{
+	font-size: 14px;
+	color: black;
+}
+.btn.btn-pay,.btn.btn-view,.btn.btn-cancel{
+	display: block;
+	border: none;
+	font-size: 13px;
+	border-radius: 0;
+}
+.btn.btn-view{
+	background: #f60;
+}
+.btn.btn-cancel{
+	background: #313131;
+	color: white;
+}
+.btn.btn-cancel:hover{
+	color: white;
+}
+.btn.btn-pay{
+	background: #179cd8;
+}
+
+.table>tbody>tr>.order-product-action{
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+.order-list-tfoot{
+	padding:12px  26px;
+	background: #eee;
+	border-bottom: 1px solid #dcdcdc;
+}
+.order-list-page-left,.order-list-page-right,.order-list-page-left ul{
+	padding: 0;
+}
+.order-list-page-right{
+	color: #000;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.order-list-page-left ul li span,.order-list-page-left ul li a{
+	margin-bottom: 0;
+}
