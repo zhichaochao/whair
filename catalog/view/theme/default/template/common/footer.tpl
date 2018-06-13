@@ -1,6 +1,6 @@
 <!--返回顶部-->
     <div class="xf_right">
-      <div class="vip"><a href="###"><span>VIP</span></a></div>
+      <div class="vip"><a href="account/account"><span>VIP</span></a></div>
       <div class="top"><span>TOP</span></div>
     </div>
 
@@ -14,16 +14,16 @@
       <div class="content clearfix">
         <div class="left clearfix">
           <ul class="clearfix">
-          <!-- <?php foreach($informations as $key => $information) { ?>
+          <?php foreach($informations as $key => $information) { ?>
           <li class="li">
-            <h4><?php echo $key; ?></h4>
-            <?php foreach($information as $value) { ?>
-              <p><a href="<?php echo $value['seo_url']; ?>" target="_blank"><?php echo $value['title']; ?></a></p>
+            <h4><?php echo $information['title']; ?></h4>
+            <?php foreach($information['child'] as $subkey=>$subval) { ?> 
+              <p><a href="<?php echo $subval['url']; ?>" target="_blank"><?php echo $subval['title']; ?></a></p>
             <?php } ?>
           </li>
-        <?php } ?> -->
+        <?php } ?>
 
-                      <li>
+                      <!-- <li>
                     <h4>INFORMATION</h4>
                           <a href="#" target="_blank"><?php echo $yd_About; ?></a>
                           <a href="#" target="_blank"><?php echo $yd_After; ?></a>
@@ -43,7 +43,7 @@
                           <a href="<?php echo $informations[2]['child'][1]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][1]['title']; ?></a>
                           <a href="<?php echo $informations[2]['child'][2]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][2]['title']; ?></a>
                           <a href="<?php echo $informations[2]['child'][3]['url']; ?>" target="_blank"><?php echo $informations[2]['child'][3]['title']; ?></a>
-                      </li>
+                      </li> -->
 
                       <!-- <li class="li5">
             <h4>CONTACT</h4>
@@ -71,17 +71,18 @@
                     <button type="submit" class="btn1" onClick="return subscribe();">SUBMIT</button>
 
                     <ol class="clearfix">
-                      <li><a href="###"><img src="catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
-                      <li><a href="###"><img src="catalog/view/theme/default/img/png/fot_2.png" alt=""></a></li>
+                      <li><a href="hotbeautymelisha"><img src="catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
+                      <li><a href="hotbeautyhairofficia"><img src="catalog/view/theme/default/img/png/fot_2.png" alt=""></a></li>
                       <li><a href="###"><img src="catalog/view/theme/default/img/png/fot_3.png" alt=""></a></li>
-                      <li><a href="###"><img src="catalog/view/theme/default/img/png/fot_4.png" alt=""></a></li>
+                      <li><a href="hotbeautymelisha"><img src="catalog/view/theme/default/img/png/fot_4.png" alt=""></a></li>
                     </ol>
                       </li>
               </ul>
         </div>
       </div>
       <div class="bot clearfix">
-        <p>Copyright Notice &copy; 2016-2018 www.hotbeautyhairmall.com All rights reserved </p>
+
+        <p>Copyright Notice &copy; 2016-<?php echo (($Y = intval(date('Y'))) > 2017) ? "$Y" : '';?> www.hotbeautyhairmall.com All rights reserved </p>
       </div>
     </div>
     
@@ -196,15 +197,8 @@
         </li>
       </ol>
     </div>
-   
-   <div class="modal img_modal" style="display: none;">
-      <div class="text">
-        <div class="close"></div>
-        <!--<img class="login_img" src="img/jpg/pc_modal.jpg"/>-->
-        <a class="login_a" href="###"></a>
-      </div>
-    </div>
-    
+
+
   </body>
 </html>
 <script>

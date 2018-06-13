@@ -20,18 +20,6 @@ class ControllerCommonFooter extends Controller {
 		$data['text_wishlist'] = $this->language->get('text_wishlist');
 		$data['text_newsletter'] = $this->language->get('text_newsletter');
 		////底部文字
-        $data['yd_About'] = $this->language->get('yd_About');
-        $data['yd_After'] = $this->language->get('yd_After');
-        $data['yd_Privacy'] = $this->language->get('yd_Privacy');
-        $data['yd_Hair'] = $this->language->get('yd_Hair');
-        $data['yd_How'] = $this->language->get('yd_How');
-        $data['yd_FAQ'] = $this->language->get('yd_FAQ');
-        $data['yd_Shipment'] = $this->language->get('yd_Shipment');
-        $data['yd_Return'] = $this->language->get('yd_Return');
-        $data['yd_Account'] = $this->language->get('yd_Account');
-        $data['yd_Order'] = $this->language->get('yd_Order');
-        $data['yd_List'] = $this->language->get('yd_List');
-        $data['yd_Site'] = $this->language->get('yd_Site');
         $data['yd_Call'] = $this->language->get('yd_Call');
         $data['yd_Whatsapp'] = $this->language->get('yd_Whatsapp');
         $data['yd_Email'] = $this->language->get('yd_Email');
