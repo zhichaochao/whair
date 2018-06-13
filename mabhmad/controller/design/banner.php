@@ -292,6 +292,7 @@ class ControllerDesignBanner extends Controller {
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_title'] = $this->language->get('entry_title');
+		$data['entry_title_small'] = $this->language->get('entry_title_small');
 		$data['entry_link'] = $this->language->get('entry_link');
 		$data['entry_image'] = $this->language->get('entry_image');
 		$data['entry_mimage'] = $this->language->get('entry_mimage');
@@ -412,6 +413,7 @@ class ControllerDesignBanner extends Controller {
 				
 				$data['banner_images'][$key][] = array(
 					'title'      => $banner_image['title'],
+					'mtitle'      => $banner_image['mtitle'],
 					'link'       => $banner_image['link'],
 					'image'      => $image,
 					'mimage'      => $mimage,

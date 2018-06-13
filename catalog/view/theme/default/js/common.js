@@ -164,5 +164,28 @@ $(function(){
 		}
 	})
 	
-
+	//替换图片
+    var win = $(window).width();
+		if(win<=750){
+		  $('.changeimage').each(function(){
+		    $(this).attr('src',$(this).attr('data-mimage'));
+		  })
+		}else{
+		  $('.changeimage').each(function(){
+		    $(this).attr('src',$(this).attr('data-image'));
+		  })
+		}
+	$(window).resize(function() {
+		var win = $(window).width();
+		if(win<=750){
+          $('.changeimage').each(function(){
+            $(this).attr('src',$(this).attr('data-mimage'));
+          })
+        }else{
+          $('.changeimage').each(function(){
+            $(this).attr('src',$(this).attr('data-image'));
+          })
+        }
+	})
+	
 })

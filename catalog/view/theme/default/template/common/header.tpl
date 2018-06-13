@@ -82,7 +82,7 @@
                 <!--logo-->
                 <div class="logo">
                     <a href="<?php echo $root_home; ?>">
-                        <img title="<?php echo $name; ?>" alt="<?php echo $name; ?>"  src="catalog/view/theme/default/img/png/logo.png"/>
+                        <img class="changeimage" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" data-image='"catalog/view/theme/default/img/png/logo.png' data-mimage='"catalog/view/theme/default/img/png/yd_logo.png'   />
                     </a>
                 </div>  
                 

@@ -1,21 +1,47 @@
-<div id="slideshow<?php echo $module; ?>" class="owl-carousel" style="opacity: 1;">
-  <?php foreach ($banners as $banner) { ?>
-  <div class="item">
-    <?php if ($banner['link']) { ?>
-    <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" /></a>
-    <?php } else { ?>
-    <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" />
-    <?php } ?>
-  </div>
-  <?php } ?>
-</div>
+
+
+
+
+
+
+
+
+
+<div class="content in_content clearfix">
+            <div class="banner">
+                <div class="swiper-container" id="swiper1">
+                    <div class="swiper-wrapper" style="cursor:-webkit-grab;">
+                        <?php foreach ($banners as $k=> $banner) { ?>
+                        <div class="swiper-slide ban_img">
+                           <?php if ($banner['link']) { ?>
+                             <a href="<?php echo $banner['link']; ?>"><img class="ban<?=$k+1;?> changeimage" data-image="<?php echo $banner['image']; ?>" data-mimage="<?php echo $banner['mimage']; ?>"  /></a>
+                              <?php } else { ?>
+                            <img class="ban<?=$k+1;?> changeimage" data-image="<?php echo $banner['image']; ?>" data-mimage="<?php echo $banner['mimage']; ?>"  />
+                              <?php } ?>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+
+
 <script type="text/javascript"><!--
-$('#slideshow<?php echo $module; ?>').owlCarousel({
-	items: 6,
-	autoPlay: 5000,
-	singleItem: true,
-	navigation: true,
-	navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
-	pagination: true
-});
+
+    var swiper1 = new Swiper('#swiper1', {
+        loop:true,
+        autoplay: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 --></script>

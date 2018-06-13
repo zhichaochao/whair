@@ -1,68 +1,41 @@
 <?php echo $header; ?>
-    <!--banner-->
-        <div class="content in_content clearfix">
-            <div class="banner">
-                <div class="swiper-container"id="swiper1">
-                    <div class="swiper-wrapper" style="cursor:-webkit-grab;">
-                        <div class="swiper-slide ban_img">
-                            <img class="ban1" src="catalog/view/theme/default/img/jpg/banner1.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide ban_img">
-                            <img class="ban2" src="catalog/view/theme/default/img/jpg/banner2.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide ban_img">
-                            <img class="ban3" src="catalog/view/theme/default/img/jpg/banner3.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </div>
+   <!--banner-->
+        <?=$slideshow;?>
         
         <!--内容-->
         <div class="content">
             <div class="index_text index_text1">
                 <div class="bt">
-                    <img src="catalog/view/theme/default/img/png/bt1.png" alt="" />
+                    <img src="catalog/view/theme/default/img/png/bt1.png"  />
                     <h1>THE SELECTION OF GOOD</h1>
                 </div>
                 
                 <ul class="ul_in1 clearfix">
+                    <?php foreach ($fasts as $fast) { ?>
                     <li>
-                        <a href="###">
+                        <?php if($fast['link']){?>
+                        <a href="<?=$fast['link'];?>">
                             <div class="pic clearfix">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index1_1.jpg" alt="" />
+                                <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>"  />
                             </div>
                             <div class="text">
-                                <h2>NEW ARRIEV</h2>
-                                <p>Get hair trend</p>
+                                <h2><?=$fast['title'];?></h2>
+                                <p><?=$fast['mtitle'];?></p>
                             </div>
                         </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic clearfix">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index1_2.jpg" alt="" />
+                        <?php }else{?>
+                        <div class="pic clearfix">
+                                <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>"  />
                             </div>
                             <div class="text">
-                                <h2>FLASH SALE</h2>
-                                <p>Discount every day</p>
+                                <h2><?=$fast['title'];?></h2>
+                                <p><?=$fast['mtitle'];?></p>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic clearfix">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index1_3.jpg" alt="" />
-                            </div>
-                            <div class="text">
-                                <h2>BUNDLE DEAL</h2>
-                                <p>Save 25% off</p>
-                            </div>
-                        </a>
-                    </li>
+
+                        <?php }?>
+                        </li>
+                    <?php } ?>
+                    
                 </ul>
                 
                 <div class="top clearfix">
@@ -80,7 +53,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index2_1.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index2_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index2_1.jpg'  />
                                 <p>Brazilian Virgin Hair (One Donor Virgin Hair)</p>
                             </div>
                             <div class="text">
@@ -92,7 +65,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index2_2.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index2_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index2_2.jpg'  />
                                 <p>Brazilian Virgin Hair (One Donor Virgin Hair)</p>
                             </div>
                             <div class="text">
@@ -104,7 +77,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index2_3.jpg"/>
+                                <img src="catalog/view/theme/default/img/jpg/pc_index2_3.jpg" />
                                 <p>Brazilian Virgin Hair (One Donor Virgin Hair)</p>
                             </div>
                             <div class="text">
@@ -120,7 +93,7 @@
                         <h1>Fuller Virgin  Peruvian Hair</h1>
                         <a href="###" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top2_img" src="catalog/view/theme/default/img/jpg/pc_index3.jpg"/>
+                    <img class="top2_img changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3.jpg'  />
                     
                 </div>
                 
@@ -128,7 +101,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index3_1.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3_1.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -140,7 +113,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index3_2.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3_2.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -152,7 +125,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index3_3.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3_3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3_3.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -164,7 +137,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index3_4.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3_4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3_4.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -180,14 +153,14 @@
                         <h1>Regular Virgin Peruvian Hair</h1>
                         <a href="###" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top3_img" src="catalog/view/theme/default/img/jpg/pc_index4.jpg"/>
+                    <img class="top3_img changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4.jpg'  />
                 </div>
                 
                 <ol class="ol_img4 ol_img clearfix">
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index4_1.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4_1.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -199,7 +172,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index4_2.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4_2.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -211,7 +184,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index4_3.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4_3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4_3.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -223,7 +196,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index4_4.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4_4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4_4.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -246,14 +219,14 @@
                     <div class="bt2">
                         <a href="###" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top4_img" src="catalog/view/theme/default/img/jpg/pc_index5.jpg"/>
+                    <img class="top4_img changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5.jpg'  />
                 </div>
                 
                 <ol class="ol_img5 ol_img clearfix">
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index5_1.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5_1.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -265,7 +238,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index5_2.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5_2.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -277,7 +250,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index5_3.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5_3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5_3.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -289,7 +262,7 @@
                     <li>
                         <a href="###">
                             <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index5_4.jpg"/>
+                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5_4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5_4.jpg'  />
                                 <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
                             </div>
                             <div class="text">
@@ -394,33 +367,11 @@
             </div>
             
         </div>
-
-        <!--登录注册弹窗-->
-        <div class="modal img_modal">
-            <div class="text">
-                <div class="close"></div>
-                <!--<img class="login_img" src="img/jpg/pc_modal.jpg"/>-->
-                <a class="login_a" href="###"></a>
-            </div>
-        </div>
         
-
 <?php echo $footer; ?>
 
-
 <script>
-    var swiper1 = new Swiper('#swiper1', {
-        loop:true,
-        autoplay: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
+ 
     var mySwiper = new Swiper('#swiper2', {
         autoplay: true,
         slidesPerView : 3,
@@ -445,64 +396,35 @@
             $(".video_div .bg_div").css("display","none")
         })
         
-        /**login弹窗提示**/
-        var login_time = setInterval(function(){
-            $(".img_modal").fadeIn();
-            clearInterval(login_time);
-        },5000)
-        $(".img_modal").click(function(e){
-            var close = $('.img_modal .text'); 
-            if(!close.is(e.target) && close.has(e.target).length === 0){
-                $(".img_modal").fadeOut();
-                clearInterval(login_time);
+     
+        //替换手机端图片
+        var win = $(window).width();
+            if(win<=750){
+              $(".video_div .video").attr("poster","catalog/view/theme/default/img/jpg/yd_video_bg.jpg");
+            }else{
+              $(".video_div .video").attr("poster","catalog/view/theme/default/img/jpg/video_bg.jpg");
+            }
+            if(win<=992){
+                $(".img_modal .text").css("background"," url(catalog/view/theme/default/img/jpg/yd_modal.jpg) no-repeat ").css("background-size","4rem 4.5rem");
+            }else{
+                    $(".img_modal .text").css("background"," url(catalog/view/theme/default/img/jpg/pc_modal.jpg) no-repeat ");
+            }
+        $(window).resize(function() {
+            var win = $(window).width();
+            if(win<=750){
+              $(".video_div .video").attr("poster","catalog/view/theme/default/img/jpg/yd_video_bg.jpg");
+            }else{
+              $(".video_div .video").attr("poster","catalog/view/theme/default/img/jpg/video_bg.jpg");
+            }
+            if(win<=992){
+                $(".img_modal .text").css("background"," url(catalog/view/theme/default/img/jpg/yd_modal.jpg) no-repeat ").css("background-size","4rem 4.5rem");
+            }else{
+                    $(".img_modal .text").css("background"," url(catalog/view/theme/default/img/jpg/pc_modal.jpg) no-repeat ");
             }
         })
-        //关闭登陆注册
-        $(".img_modal .close").click(function(){
-            $(".img_modal").fadeOut();
-            clearInterval(login_time);
-        })
+        
     })
-</script>
-        
-<script type="text/javascript" >
-    $(function(){
-    var win = $(window).width();
-    if(win<=750){
-        $(".banner .ban1").attr("src","catalog/view/theme/default/img/jpg/yd_banner1.jpg");
-        $(".banner .ban2").attr("src","catalog/view/theme/default/img/jpg/yd_banner2.jpg");
-        $(".banner .ban3").attr("src","catalog/view/theme/default/img/jpg/yd_banner3.jpg");
-        
-        $(".ul_in1 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index1_1.jpg");
-        $(".ul_in1 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index1_2.jpg");
-        $(".ul_in1 li").eq(2).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index1_3.jpg");
-        $(".video_div .video").attr("poster","catalog/view/theme/default/img/jpg/yd_video_bg.jpg")
-        
-        $(".ol_img2 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index2_1.jpg");
-        $(".ol_img2 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index2_2.jpg");
-        
-        $(".ol_img3 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index3_1.jpg");
-        $(".ol_img3 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index3_2.jpg");
-        $(".ol_img3 li").eq(2).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index3_3.jpg");
-        $(".ol_img3 li").eq(3).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index3_4.jpg");
-        
-        $(".ol_img4 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index4_1.jpg");
-        $(".ol_img4 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index4_2.jpg");
-        $(".ol_img4 li").eq(2).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index4_3.jpg");
-        $(".ol_img4 li").eq(3).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index4_4.jpg");
-        
-        $(".ol_img5 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index5_1.jpg");
-        $(".ol_img5 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index5_2.jpg");
-        $(".ol_img5 li").eq(2).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index5_3.jpg");
-        $(".ol_img5 li").eq(3).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index5_4.jpg");
-        $(".top2 .top2_img").attr("src","catalog/view/theme/default/img/jpg/yd_index3.jpg");
-        $(".top3 .top3_img").attr("src","catalog/view/theme/default/img/jpg/yd_index4.jpg");
-        $(".top4 .top4_img").attr("src","catalog/view/theme/default/img/jpg/yd_index5.jpg");
-        
-        $(".logo img").attr("src","catalog/view/theme/default/img/png/yd_logo.png");
-    }
     
-})
-
-
+    
 </script>
+        
