@@ -407,81 +407,99 @@
 
 <?php echo $footer; ?>
 
+
 <script>
-  var swiper1 = new Swiper('#swiper1', {
-    loop:true,
-    autoplay: true,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      },
-  });
-  var mySwiper = new Swiper('#swiper2', {
-    autoplay: true,
-    slidesPerView : 3,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-  })
+    var swiper1 = new Swiper('#swiper1', {
+        loop:true,
+        autoplay: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+    var mySwiper = new Swiper('#swiper2', {
+        autoplay: true,
+        slidesPerView : 3,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+    })
 
 
-  $(function(){
-    $('.fh_top').on('click',function (event) {
-      event.preventDefault();
-      $('html,body').animate({
-          scrollTop: 0
-      }, 500);
+    $(function(){
+        $('.fh_top').on('click',function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: 0
+            }, 500);
+        })
+        
+        var myvideo = document.getElementById("video");
+        $(".video_div .bg_div").click(function(){
+            myvideo.play();
+            $(".video_div .bg_div").css("display","none")
+        })
+        
+        /**login弹窗提示**/
+        var login_time = setInterval(function(){
+            $(".img_modal").fadeIn();
+            clearInterval(login_time);
+        },5000)
+        $(".img_modal").click(function(e){
+            var close = $('.img_modal .text'); 
+            if(!close.is(e.target) && close.has(e.target).length === 0){
+                $(".img_modal").fadeOut();
+                clearInterval(login_time);
+            }
+        })
+        //关闭登陆注册
+        $(".img_modal .close").click(function(){
+            $(".img_modal").fadeOut();
+            clearInterval(login_time);
+        })
     })
-    
-    var myvideo = document.getElementById("video");
-    $(".video_div .bg_div").click(function(){
-      myvideo.play();
-      $(".video_div .bg_div").css("display","none")
-    })
-    
-    
-  })
 </script>
+        
 <script type="text/javascript" >
     $(function(){
     var win = $(window).width();
     if(win<=750){
-        $(".banner .ban1").attr("src","img/jpg/yd_banner1.jpg");
-        $(".banner .ban2").attr("src","img/jpg/yd_banner2.jpg");
-        $(".banner .ban3").attr("src","img/jpg/yd_banner3.jpg");
+        $(".banner .ban1").attr("src","catalog/view/theme/default/img/jpg/yd_banner1.jpg");
+        $(".banner .ban2").attr("src","catalog/view/theme/default/img/jpg/yd_banner2.jpg");
+        $(".banner .ban3").attr("src","catalog/view/theme/default/img/jpg/yd_banner3.jpg");
         
-        $(".ul_in1 li").eq(0).find(".pic img").attr("src","img/jpg/yd_index1_1.jpg");
-        $(".ul_in1 li").eq(1).find(".pic img").attr("src","img/jpg/yd_index1_2.jpg");
-        $(".ul_in1 li").eq(2).find(".pic img").attr("src","img/jpg/yd_index1_3.jpg");
-        $(".video_div .video").attr("poster","img/jpg/yd_video_bg.jpg")
+        $(".ul_in1 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index1_1.jpg");
+        $(".ul_in1 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index1_2.jpg");
+        $(".ul_in1 li").eq(2).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index1_3.jpg");
+        $(".video_div .video").attr("poster","catalog/view/theme/default/img/jpg/yd_video_bg.jpg")
         
-        $(".ol_img2 li").eq(0).find(".pic img").attr("src","img/jpg/yd_index2_1.jpg");
-        $(".ol_img2 li").eq(1).find(".pic img").attr("src","img/jpg/yd_index2_2.jpg");
+        $(".ol_img2 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index2_1.jpg");
+        $(".ol_img2 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index2_2.jpg");
         
-        $(".ol_img3 li").eq(0).find(".pic img").attr("src","img/jpg/yd_index3_1.jpg");
-        $(".ol_img3 li").eq(1).find(".pic img").attr("src","img/jpg/yd_index3_2.jpg");
-        $(".ol_img3 li").eq(2).find(".pic img").attr("src","img/jpg/yd_index3_3.jpg");
-        $(".ol_img3 li").eq(3).find(".pic img").attr("src","img/jpg/yd_index3_4.jpg");
+        $(".ol_img3 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index3_1.jpg");
+        $(".ol_img3 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index3_2.jpg");
+        $(".ol_img3 li").eq(2).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index3_3.jpg");
+        $(".ol_img3 li").eq(3).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index3_4.jpg");
         
-        $(".ol_img4 li").eq(0).find(".pic img").attr("src","img/jpg/yd_index4_1.jpg");
-        $(".ol_img4 li").eq(1).find(".pic img").attr("src","img/jpg/yd_index4_2.jpg");
-        $(".ol_img4 li").eq(2).find(".pic img").attr("src","img/jpg/yd_index4_3.jpg");
-        $(".ol_img4 li").eq(3).find(".pic img").attr("src","img/jpg/yd_index4_4.jpg");
+        $(".ol_img4 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index4_1.jpg");
+        $(".ol_img4 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index4_2.jpg");
+        $(".ol_img4 li").eq(2).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index4_3.jpg");
+        $(".ol_img4 li").eq(3).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index4_4.jpg");
         
-        $(".ol_img5 li").eq(0).find(".pic img").attr("src","img/jpg/yd_index5_1.jpg");
-        $(".ol_img5 li").eq(1).find(".pic img").attr("src","img/jpg/yd_index5_2.jpg");
-        $(".ol_img5 li").eq(2).find(".pic img").attr("src","img/jpg/yd_index5_3.jpg");
-        $(".ol_img5 li").eq(3).find(".pic img").attr("src","img/jpg/yd_index5_4.jpg");
-        $(".top2 .top2_img").attr("src","img/jpg/yd_index3.jpg");
-        $(".top3 .top3_img").attr("src","img/jpg/yd_index4.jpg");
-        $(".top4 .top4_img").attr("src","img/jpg/yd_index5.jpg");
+        $(".ol_img5 li").eq(0).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index5_1.jpg");
+        $(".ol_img5 li").eq(1).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index5_2.jpg");
+        $(".ol_img5 li").eq(2).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index5_3.jpg");
+        $(".ol_img5 li").eq(3).find(".pic img").attr("src","catalog/view/theme/default/img/jpg/yd_index5_4.jpg");
+        $(".top2 .top2_img").attr("src","catalog/view/theme/default/img/jpg/yd_index3.jpg");
+        $(".top3 .top3_img").attr("src","catalog/view/theme/default/img/jpg/yd_index4.jpg");
+        $(".top4 .top4_img").attr("src","catalog/view/theme/default/img/jpg/yd_index5.jpg");
         
-        $(".logo img").attr("src","img/png/yd_logo.png");
+        $(".logo img").attr("src","catalog/view/theme/default/img/png/yd_logo.png");
     }
     
 })
