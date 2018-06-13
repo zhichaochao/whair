@@ -76,12 +76,11 @@
                       <h4>COMPANY INFO<div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
                       <div class="slide_div">
                         <ol>
-                      <li><span>Call Us:</span> U.S No: 6262487420</li>
+                      <li><a href=""><span>Call Us:</span> U.S No: 6262487420</li></a>  
                       <li><a href="###"><span>Whatsapp:</span> <?php echo $telephone; ?></a></li>
                       <li><a href="mailto:<?php echo $email; ?>"><span>Email:</span><?php echo $email; ?></a></li>
                       <li>                       
-                          <span><?php echo $yd_Address; ?></span>
-                             <?php echo $yd_Addcont; ?>                      
+                          <a href=""><span><?php echo $yd_Address; ?></span><?php echo $yd_Addcont; ?></a>                  
                       </li>
                     </ol>
                   </div>
