@@ -59,13 +59,11 @@
                     <label class="col-sm-2 control-label" for="input-is-home"><?php echo $entry_is_home; ?></label>
                     <div class="col-sm-10">
                         <select name="is_home" id="input-is-home" class="form-control">
-                            <?php if ($is_home) { ?>
-                            <option value="1" selected="selected">Yes</option>
-                            <option value="0">No</option>
-                            <?php } else { ?>
-                            <option value="1">Yes</option>
-                            <option value="0" selected="selected">No</option>
-                            <?php } ?>
+                           
+                            <option value="1"  <?php if ($is_home==1) { ?>selected="selected" <?php } ?>>Yes</option>
+                            <option value="0" <?php if ($is_home==0) { ?>selected="selected" <?php }?>>No</option>
+                         
+                           
                         </select>
                     </div>
                   </div>
@@ -73,13 +71,11 @@
                     <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
                     <div class="col-sm-10">
                         <select name="status" id="input-status" class="form-control">
-                            <?php if ($status) { ?>
-                            <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                            <option value="0"><?php echo $text_disabled; ?></option>
-                            <?php } else { ?>
-                            <option value="1"><?php echo $text_enabled; ?></option>
-                            <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                            <?php } ?>
+                            
+                            <option value="1" <?php if ($status==1) { ?>selected="selected" <?php } ?>><?php echo $text_enabled; ?></option>
+                            <option value="0" <?php if ($status==0) { ?>selected="selected" <?php } ?>><?php echo $text_disabled; ?></option>
+                            
+                           
                         </select>
                     </div>
                   </div>

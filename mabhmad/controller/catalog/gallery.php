@@ -508,7 +508,7 @@ class ControllerCatalogGallery extends Controller
             $data['is_home'] = $gallery_info['is_home'];
         }
         else{
-            $data['is_home'] = '';
+            $data['is_home'] = 1;
         }
 
         //status
@@ -519,7 +519,7 @@ class ControllerCatalogGallery extends Controller
             $data['status'] = $gallery_info['status'];
         }
         else{
-            $data['status'] = '';
+            $data['status'] = 1;
         }
 
         //sort_order
@@ -530,7 +530,7 @@ class ControllerCatalogGallery extends Controller
             $data['sort_order'] = $gallery_info['sort_order'];
         }
         else{
-            $data['sort_order'] = '';
+            $data['sort_order'] = 10;
         }
 
         $data['token'] = $this->session->data['token'];

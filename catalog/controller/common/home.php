@@ -4,9 +4,6 @@ class ControllerCommonHome extends Controller {
 		$this->document->setTitle($this->config->get('config_meta_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
 		$this->document->setKeywords($this->config->get('config_meta_keyword'));
-
-
-
 		if (isset($this->request->get['route'])) {
 			$this->document->addLink($this->config->get('config_url'), 'canonical');
 		}
@@ -87,17 +84,24 @@ class ControllerCommonHome extends Controller {
         	}
         
         	$recommend_products[$key]['product_link'] = $this->url->link('product/product','product_id='.$row['product_id']);
-        	
         	$recommend_products[$key]['texture'] = $this->model_catalog_product->getOptionDes('Texture',$row['product_id']);
-        	
         	$recommend_products[$key]['price'] = $this->currency->format($row['price'], $this->session->data['currency']);
-        	
         	$recommend_products[$key]['min_name'] = utf8_substr(strip_tags($row['name']),0,40).'...';
-
         	$i++;
         }
         
         $data['recommend_products'] = $recommend_products;
+        $this->load->model('common/gallery');
+       
+        $gallerys=$this->model_common_gallery->getGallerys(array('is_home'=>1,'start'=>0,'limit'=>6));
+        foreach ($gallerys as $key => $value) {
+            $gallerys[$key]['url']=$this->url->link('product/product','product_id='.$value['product_id']);
+             $gallerys[$key]['image']= $this->model_tool_image->resize($value['image'], 241, 241);
+        }
+          $data['gallerys'] =$gallerys;
+           // print_r($gallerys);exit();
+
+
 		$this->response->setOutput($this->load->view('common/home', $data));
 	}
 }
