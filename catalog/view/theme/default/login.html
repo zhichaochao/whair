@@ -45,7 +45,7 @@
 				
 				<!--pc导航-->
 				<ul class="nav_ul clearfix">
-					<li class="active"><a href="###">Home</a></li>
+					<li><a href="###">Home</a></li>
 					<li>
 						<a href="###">All Hair Collections</a>
 						<div class="text clearfix">
@@ -220,14 +220,16 @@
 					<ul class="login_ul clearfix">
 						<li class="active">
 							<p class="bt_p">Returning Customer</p>
-							<form>
+							<form class="login_form lr_form">
 								<label for="">
-									<span>E-Mail Address</span>
-									<input class="email" type="text" />
+									<span>E-Mail Address <i class="red_i">*</i></span>
+									<input class="email email1" type="text" />
+									<p class="ts_p">The email address you entered is incorrect</p>
 								</label>
 								<label for="">
-									<span>Password</span>
-									<input class="pass" type="password"/>
+									<span>Password <i class="red_i">*</i></span>
+									<input class="pass pass1" type="password"/>
+									<p class="ts_p">The password you entered is incorrect</p>
 									<a href="###">Forgotten Password ?</a>
 								</label>
 								<input class="tj_input" type="submit" value="SIGN IN" />
@@ -235,33 +237,40 @@
 						</li>
 						<li>
 							<p class="bt_p">New Customers</p>
-							<form class="res_form">
+							<form class="res_form lr_form">
 								<label class="clearfix label_name" for="">
-									<span>First Name</span>
-									<input type="text" value="" />
+									<span>First Name <i class="red_i">*</i></span>
+									<input class="name name1" type="text" value="" />
+									<p class="ts_p">Please enter your first name</p>
 								</label>
 								<label class="clearfix label_names" for="">
-									<span>Last Name</span>
-									<input type="text" value="" />
+									<span>Last Name <i class="red_i">*</i></span>
+									<input class="name name2" type="text" value="" />
+									<p class="ts_p">Please enter your last name</p>
 								</label>
 								<label class="clearfix" for="">
-									<span>E-Mail Address</span>
-									<input class="email"  type="text"/>
+									<span>E-Mail Address <i class="red_i">*</i></span>
+									<input class="email email2"  type="text"/>
+									<p class="ts_p">Please enter your email address</p>
 								</label>
 								<label class="clearfix" for="">
-									<span>Password</span>
-									<input class="pass" type="password"/>
+									<span>Password <i class="red_i">*</i></span>
+									<input class="pass pass2" type="password"/>
+									<p class="ts_p">Please enter your password</p>
 								</label>
 								<label class="clearfix" for="">
-									<span>Confirm Password</span>
-									<input class="pass" type="password"/>
+									<span>Confirm Password <i class="red_i">*</i></span>
+									<input class="pass pass3" type="password"/>
+									<p class="ts_p">Please confirm the password</p>
 								</label>
 								<div class="xy_div">
 									<input type="checkbox"/>
 									<span class="span1"></span>
 									<span class="span2"></span>
-									<p>I agree to Hot Beauty Hair <a href="###">Terms and Conditions.</a></p>
+									<p>I agree to Hot Beauty Hair <a href="###">Terms and Conditions.</a><i class="red_i">*</i></p>
 								</div>
+								<p class="xy_p">*required field</p>
+								
 								<input class="tj_input" type="submit" value="SIGN UP" />
 							</form>
 						</li>
@@ -464,5 +473,101 @@
 		$(".pass").blur(function(){
 			$(this).attr("placeholder","");
 		})
+		
+		$(".name").change(function(){
+			var text=$(this).val();
+			var re=/^[a-zA-Z]+$/;
+			if(!re.test(text) && text !=""){
+				$(this).siblings(".ts_p").addClass("off");
+				$(this).siblings(".ts_p").text("Please fill in in English");
+			}else{
+				$(this).siblings(".ts_p").removeClass("off");
+			}
+		})
+		$(".email").change(function(){
+			var text=$(this).val();
+			var re=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+			if(!re.test(text) && text !=""){
+				$(this).siblings(".ts_p").addClass("off");
+				$(this).siblings(".ts_p").text("The email address you entered is incorrect");
+			}else{
+				$(this).siblings(".ts_p").removeClass("off");
+			}
+		})
+		$(".pass").change(function(){
+			var text=$(this).val();
+			if(text.length<6 && text !=""){
+				$(this).siblings(".ts_p").addClass("off");
+				$(this).siblings(".ts_p").text("The password must be longer than 6 letters");
+			}else{
+				$(this).siblings(".ts_p").removeClass("off");
+			}
+		})
+		$(".pass3").change(function(){
+			var text=$(this).val();
+			var pass_val = $(".pass2").val();
+			if(text.length<6 && text !=""){
+				$(this).siblings(".ts_p").addClass("off");
+				$(this).siblings(".ts_p").text("The password must be longer than 6 letters");
+			}else if(text!=pass_val){
+				$(this).siblings(".ts_p").addClass("off");
+				$(this).siblings(".ts_p").text("The passwords you entered are not consistent. Please re-enter them");
+			}else{
+				$(this).siblings(".ts_p").removeClass("off");
+			}
+		})
+		
+		//注册提交
+		$(".res_form .tj_input").click(function(){
+			var name1 = $(".name1").val();
+			var name2 = $(".name2").val();
+			var email2 = $(".email2").val();
+			var pass2 = $(".pass2").val();
+			var pass3 = $(".pass3").val();
+			var bool = 0;
+			
+			$(".res_form .ts_p").each(function(){
+				if($(this).hasClass("off")){
+					bool=1;
+					return bool;
+				}
+			})
+			if(bool == 1){
+				return false;
+			}else{
+				if((name1 !="")&&(name2 !="")&&(email2 !="")&&(pass2 !="")&&(pass3 !="")&&($(".xy_div input").hasClass("off"))){
+					//正确
+				}else{
+					alert("* required field")
+					return false;
+				}
+			}
+		})
+		
+		//登陆提交
+		$(".login_form .tj_input").click(function(){
+			var email1 = $(".email1").val();
+			var pass1 = $(".pass1").val();
+			var bool = 0;
+			
+			$(".login_form .ts_p").each(function(){
+				if($(this).hasClass("off")){
+					bool=1;
+					return bool;
+				}
+			})
+			
+			if(bool == 1){
+				return false;
+			}else{
+				if((email1 !="")&&(pass1 !="")){
+					//正确
+				}else{
+					alert("* required field")
+					return false;
+				}
+			}
+		})
+		
 	})
 </script>

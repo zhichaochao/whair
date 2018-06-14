@@ -288,77 +288,33 @@
             
             <div class="index_text3">
                 <div class="bt">
-                    <img src="catalog/view/theme/default/img/png/bt2.png" alt="" />
+                    <img src="catalog/view/theme/default/img/png/bt2.png" alt="CUSTOMER SHARE" />
                     <h1># CUSTOMER SHARE</h1>
                     <p>Customers share pictures and immediately buy the same</p>
                 </div>
                 
                 <ol class="ol_img6 clearfix">
+                      <?php foreach ($gallerys as $gallery) { ?>
                     <li>
-                        <a href="###">
-                            <img src="catalog/view/theme/default/img/jpg/pc_index6_1.jpg"/>
+                        <a href="<?=$gallery['url']?>">
+                            <img src="<?=$gallery['image']?>" title="<?=$gallery['gallery_title']?>" alt="<?=$gallery['gallery_title']?>" />
                         </a>
                     </li>
-                    <li>
-                        <a href="###">
-                            <img src="catalog/view/theme/default/img/jpg/pc_index6_2.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <img src="catalog/view/theme/default/img/jpg/pc_index6_3.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <img src="catalog/view/theme/default/img/jpg/pc_index6_4.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <img src="catalog/view/theme/default/img/jpg/pc_index6_5.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <img src="catalog/view/theme/default/img/jpg/pc_index6_6.jpg"/>
-                        </a>
-                    </li>
+                    <?php } ?>
+               
+                
                 </ol>
                 
                 <div class="product_lb clearfix">
                     <div class="swiper-container" id="swiper2">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a href="###">
-                                <img src="catalog/view/theme/default/img/jpg/yd_index6_1.jpg"/>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="###">
-                                <img src="catalog/view/theme/default/img/jpg/yd_index6_2.jpg"/>
-                            </a>    
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="###">
-                                <img src="catalog/view/theme/default/img/jpg/yd_index6_3.jpg"/>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="###">
-                                <img src="catalog/view/theme/default/img/jpg/yd_index6_4.jpg"/>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="###">
-                                <img src="catalog/view/theme/default/img/jpg/yd_index6_5.jpg"/>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="###">
-                                <img src="catalog/view/theme/default/img/jpg/yd_index6_6.jpg"/>
-                            </a>
-                        </div>
+                        <?php foreach ($gallerys as $gallery) { ?>
+                            <div class="swiper-slide">
+                                <a href="<?=$gallery['url']?>">
+                                    <img src="<?=$gallery['image']?>" title="<?=$gallery['gallery_title']?>" alt="<?=$gallery['gallery_title']?>" />
+                                </a>
+                            </div>
+                        <?php } ?>
                       </div>
                     </div>
                     <div class="swiper-button-prev"></div>
