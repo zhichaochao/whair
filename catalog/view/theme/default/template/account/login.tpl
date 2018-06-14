@@ -6,7 +6,7 @@
   </ul>-->
   
   <!--错误提示-->
-  <div id="checkout-login" class="alert alert-danger" style="display:none;"></div>
+  <div id="checkout-login" class="alert alert-danger" style="display:none;" ></div>
   
   <?php if ($success) { ?>
   <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div>
@@ -14,12 +14,8 @@
   <?php if ($error_warning) { ?>
   <div class="alert alert-danger" id="danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
   <?php } ?>
-  
-  
-   
-
 <!-- 底部新 -->
-    <div class="login in_content clearfix">
+<div class="login in_content clearfix">
       <div class="text clearfix">
         <div class="top">
           <ol class="login_ol clearfix">
@@ -31,64 +27,75 @@
           <ul class="login_ul clearfix">
             <li class="active">
               <p class="bt_p">Returning Customer</p>
-
-              <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="register_tab">
+              <!-- 新登录 -->
+              <!-- <form class="login_form lr_form"> -->
+              <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="login_form lr_form">
                 <label for="">
-                  <span>E-Mail Address</span>
+                  <span>E-Mail Address <i class="red_i">*</i></span>
+                  <!-- <input class="email email1" type="text" /> -->
                   <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" />
+                 <p class="ts_p"    <?php if ($error_warning) { ?>  style='display:block;' <?php } ?>><?php if ($error_warning) { ?><?php echo $error_warning; ?><?php }else{ ?>The email address you entered is incorrect<?php } ?></p>
                 </label>
                 <label for="">
-                  <span>Password</span>
+                  <span>Password <i class="red_i">*</i></span>
+                  <!-- <input class="pass pass1" type="password"/> -->
                   <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password"/>
-                  <a href="<?php echo $forgotten; ?>">Forgotten Password ?</a>
+                  <p class="ts_p" >The password you entered is incorrect</p>
+                  <a href="###">Forgotten Password ?</a>
                 </label>
                 <input class="tj_input" type="submit" value="SIGN IN" />
-                <?php if ($redirect) { ?>
-              <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
-              <?php } ?>
-              <?php if ($redirect) { ?>
-              <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
-            <?php } ?>
               </form>
-
             </li>
             <li>
+           <!-- 新 注册 -->
+            <div class="register" id="register-form-div" >
               <p class="bt_p">New Customers</p>
-              <div id="register-form-div">
-             <form class="res_form"  >
+              <!-- <div class="res_form lr_form"> -->
+              <form class="res_form lr_form"  > 
                 <label class="clearfix label_name" for="">
-                  <span>First Name</span>
-                  <input type="text" name="firstname" maxlength="32" value="" placeholder="Firstname" id="input-firstname" class="short_inp1">
+                  <span>First Name <i class="red_i">*</i></span>
+                 <!--  <input class="name name1" type="text" value="" /> -->
+                  <input type="text" name="firstname" maxlength="32" value="" placeholder="Firstname" id="input-firstname" class="name name1">
+                  <p class="ts_p" id="errorfirstname">Please enter your first name</p>
                 </label>
                 <label class="clearfix label_names" for="">
-                  <span>Last Name</span>
-                  <input type="text" name="lastname" maxlength="32" value="" placeholder="Lastname" id="input-lastname" class="short_inp1">
+                  <span>Last Name <i class="red_i">*</i></span>
+                 <!--  <input class="name name2" type="text" value="" /> -->
+                  <input type="text" name="lastname" maxlength="32" value="" placeholder="Lastname" id="input-lastname" class="name name2">
+                  <p class="ts_p" id="errorlastname">Please enter your last name</p>
                 </label>
                 <label class="clearfix" for="">
-                  <span>E-Mail Address</span>
-                  <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email">
+                  <span>E-Mail Address <i class="red_i">*</i></span>
+                 <!--  <input class="email email2"  type="text"/> -->
+                  <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="email email2">
+                  <p class="ts_p" id="erroremail">Please enter your email address</p>
                 </label>
                 <label class="clearfix" for="">
-                  <span>Password</span>
-                  <input type="password" name="password" value="" placeholder="Password" id="input-password">
+                  <span>Password <i class="red_i">*</i></span>
+                  <!-- <input class="pass pass2" type="password"/> -->
+                  <input type="password" name="password" value="" placeholder="Password" id="input-password" class="pass pass2">
+                  <p class="ts_p" id="errorpassword">Please enter your password</p>
                 </label>
                 <label class="clearfix" for="">
-                  <span>Confirm Password</span>
-                  <input type="password" name="confirm" value="" placeholder="Confirm Password" id="input-confirm">
+                  <span>Confirm Password <i class="red_i">*</i></span>
+                  <input class="pass pass3" type="password" name="confirm" id="input-confirm" placeholder="Confirm Password"/>
+                  <!-- <input type="password" name="confirm" value="" placeholder="Confirm Password" id="input-confirm" class="pass pass3"> -->
+                  <p class="ts_p" id="errorconfirm">Please confirm the password</p>
                 </label>
                 <div class="xy_div">
+                  <!-- <input type="checkbox"/> -->
                   <input id="agree" type="checkbox" name="agree" value="1" checked="checked"/>
                   <span class="span1"></span>
                   <span class="span2"></span>
-                  <p>I agree to Hot Beauty Hair <a href="<?php echo $agree_url; ?>">Terms and Conditions.</a></p>
+                  <p>I agree to Hot Beauty Hair <a href="###">Terms and Conditions.</a><i class="red_i">*</i></p>
                   <div class="erroragree" style="display:none;"></div>
                 </div>
-                <!-- <input class="tj_input" type="submit" value="SIGN UP" id="button-register" /> -->
-                <button type="button" id="button-register" class="tj_input" >SIGN UP</button>
-                <!-- <?php if ($redirect) { ?>
-              <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
-            <?php } ?> -->
+                <p class="xy_p">*required field</p>
+                
+                <input class="tj_input" type="button" value="SIGN UP" id="button-register"/>
+                <!-- <button type="button" id="button-register" class="tj_input">SIGN UP</button> -->
               </form>
+              <!-- </div> -->
               </div>
             </li>
           </ul>
@@ -98,77 +105,163 @@
     </div>
 <script>
 // Register
-	var regTf = true;
 $(document).delegate('#button-register', 'click', function() {
-		if(regTf){
-			regTf = false;
-			$.ajax({
+  // console.log($('#register-form-div input'));
+
+      $.ajax({
         url: '<?php echo $register;?>',
         type: 'post',
         data: $('#register-form-div input'),
         dataType: 'json',
-        beforeSend: function() {
-        		
-            $('#button-register').button('loading');
-        },  
-        complete: function() {
-        		
-            $('#button-register').button('reset');
-        },          
+      
         success: function(json) {
-        		regTf = true;
-            $('.info_tips, .text-danger').remove();
-            $('.form-group').removeClass('has-error');
-			            
-            if (json['redirect']) {
-                location = json['redirect'];                
-            } else if (json['error']) {
-                if (json['error']['warning']) {
-				    $('#checkout-login').css('display','block').prepend('<div class="info_tips tipssb"><span><img width="21" src="catalog/view/theme/default/image/icon32_warn.png"></span> ' + json['error']['warning'] + '</div>');
-					$('#danger').css('display','none');
-                }else{
-				    $('#checkout-login').css('display','none');
-					$('#danger').css('display','none');
-				}
-				
-				if(json['error']['agree']){
-				   $('.erroragree').show().html('<div class="text-danger">' + json['error']['agree'] + '</div>');
-			    }
-                
-                for (i in json['error']) {
-                    var element = $('#input-' + i.replace('_', '-'));
+          if (json['redirect']) {
 
-                    if ($(element).parent().hasClass('input-group')) {
-                            $(element).parent().after('<div class="text-danger" style="margin-left:0px;">' + json['error'][i] + '</div>');
-                    } else {
-                            $(element).after('<div class="text-danger"  style="margin-left:0px;">' + json['error'][i] + '</div>');
-                    }					
-                }
-            }    
+                location = json['redirect']; 
+
+            } else if (json['error']) {
+          
+        
+            if(json['error']['agree']){
+               $('.erroragree').show().html( json['error']['agree'] );
+              }
+                
+            if(json['error']['firstname']){
+               $('#errorfirstname').show().html( json['error']['firstname'] );
+              }
+            if(json['error']['lastname']){
+               $('#errorlastname').show().html( json['error']['lastname'] );
+              }
+              if(json['error']['email']){
+               $('#erroremail').show().html( json['error']['email'] );
+              }
+              if(json['error']['password']){
+               $('#errorpassword').show().html( json['error']['password'] );
+              }
+              if(json['error']['confirm']){
+               $('#errorconfirm').show().html( json['error']['confirm'] );
+              }
+                
+                
+            } 
         },
         error: function(xhr, ajaxOptions, thrownError) {
            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
-		}
-     
 });
 
-$('#register-form-div input').keydown(function(e){
-		if(e.keyCode==13){
-			$('#button-register').click();
-		}	
-});
-
-$('#agree').click(function(){
-     var agree = $('#agree').val();
-	 if(agree == 1){
-	    $('#agree').val(0);
-	 }else{
-        $('#agree').val(1);
-	 }
-});
-
+  $(function(){
+    $(".email").focus(function(){
+      $(this).attr("placeholder","Enter email address");
+    })
+    $(".email").blur(function(){
+      $(this).attr("placeholder","");
+    })
+    $(".pass").focus(function(){
+      $(this).attr("placeholder","Please enter the password");
+    })
+    $(".pass").blur(function(){
+      $(this).attr("placeholder","");
+    })
+    
+    $(".name").change(function(){
+      var text=$(this).val();
+      var re=/^[a-zA-Z]+$/;
+      if(!re.test(text) && text !=""){
+        $(this).siblings(".ts_p").addClass("off");
+        $(this).siblings(".ts_p").text("Please fill in in English");
+      }else{
+        $(this).siblings(".ts_p").removeClass("off");
+      }
+    })
+    $(".email").change(function(){
+      var text=$(this).val();
+      var re=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+      if(!re.test(text) && text !=""){
+        $(this).siblings(".ts_p").addClass("off");
+        $(this).siblings(".ts_p").text("The email address you entered is incorrect");
+      }else{
+        $(this).siblings(".ts_p").removeClass("off");
+      }
+    })
+    $(".pass").change(function(){
+      var text=$(this).val();
+      if(text.length<6 && text !=""){
+        $(this).siblings(".ts_p").addClass("off");
+        $(this).siblings(".ts_p").text("The password must be longer than 6 letters");
+      }else{
+        $(this).siblings(".ts_p").removeClass("off");
+      }
+    })
+    $(".pass3").change(function(){
+      var text=$(this).val();
+      var pass_val = $(".pass2").val();
+      // console.log( $(".pass2").val());
+      // console.log( $(".pass3").val());
+      if(text.length<6 && text !=""){
+        $(this).siblings(".ts_p").addClass("off");
+        $(this).siblings(".ts_p").text("The password must be longer than 6 letters");
+      }else if(text!=pass_val){
+        $(this).siblings(".ts_p").addClass("off");
+        $(this).siblings(".ts_p").text("The passwords you entered are not consistent. Please re-enter them");
+      }else{
+        $(this).siblings(".ts_p").removeClass("off");
+      }
+    })
+    
+    //注册提交
+    $(".res_form .tj_input").click(function(){
+      var name1 = $(".name1").val();
+      var name2 = $(".name2").val();
+      var email2 = $(".email2").val();
+      var pass2 = $(".pass2").val();
+      var pass3 = $(".pass3").val();
+      var bool = 0;
+      
+      $(".res_form .ts_p").each(function(){
+        if($(this).hasClass("off")){
+          bool=1;
+          return bool;
+        }
+      })
+      if(bool == 1){
+        return false;
+      }else{
+        if((name1 !="")&&(name2 !="")&&(email2 !="")&&(pass2 !="")&&(pass3 !="")&&($(".xy_div input").hasClass("off"))){
+          //正确
+        }else{
+          alert("* required field")
+          return false;
+        }
+      }
+    })
+    
+    //登陆提交
+    $(".login_form .tj_input").click(function(){
+      var email1 = $(".email1").val();
+      var pass1 = $(".pass1").val();
+      var bool = 0;
+      
+      $(".login_form .ts_p").each(function(){
+        if($(this).hasClass("off")){
+          bool=1;
+          return bool;
+        }
+      })
+      
+      if(bool == 1){
+        return false;
+      }else{
+        if((email1 !="")&&(pass1 !="")){
+          //正确
+        }else{
+          alert("* required field")
+          return false;
+        }
+      }
+    })
+    
+  })
 </script>
-
 <?php echo $footer; ?>

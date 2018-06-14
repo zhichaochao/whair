@@ -40,7 +40,7 @@
             <a href="<?php echo $register; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
         </div>-->
         
-        <!--注册-->
+        <!--旧注册-->
         <div class="register" id="register-form-div">
           <h2>New Customers</h2>
           <div class="register_tab">
@@ -57,21 +57,6 @@
                 </div>
               </dd>
             </dl>
-            <!--<dl>
-              <dd>
-                Full Name:
-                <br/>
-                Firstname
-                <input type="text" name="firstname" value="" placeholder="Firstname" id="input-firstname" class="form-control">
-              </dd>
-            </dl>
-            <dl>
-              <dd>
-                Lastname
-                <input type="text" name="lastname" value="" placeholder="Lastname" id="input-lastname" class="form-control">
-              </dd>
-            </dl>
-            -->
             <dl class="fixclea">
               <dt class="req-before">E-Mail Address:</dt>
               <dd>
@@ -113,7 +98,7 @@
         </div>
         <!--/注册-->
         
-        <!--登陆-->
+        <!--旧登陆-->
         <div class="login">
             <h2><?php echo $text_returning_customer; ?></h2>
             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="register_tab">

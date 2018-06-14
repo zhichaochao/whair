@@ -106,35 +106,35 @@
     <div class="yd_footer2" >
       <ol class="ol_ydfot clearfix">
         <li class="active">
-          <a href="###">
+          <a href="<?php echo $home?>">
             <img class="active" src="catalog/view/theme/default/img/png/home-1.png" alt="" />
             <img src="catalog/view/theme/default/img/png/home-2.png" alt="" />
             <p>HOME</p>
           </a>
         </li>
         <li>
-          <a href="###">
+          <a href="<?php echo $contac?>">
             <img class="active" src="catalog/view/theme/default/img/png/fenlei-1.png" alt="" />
             <img src="catalog/view/theme/default/img/png/fenlei-2.png" alt="" />
             <p>ALL HAIR</p>
           </a>
         </li>
         <li>
-          <a href="###">
+          <a href="">
             <img class="active" src="catalog/view/theme/default/img/png/contact-1.png" alt="" />
             <img src="catalog/view/theme/default/img/png/contact-2 .png" alt="" />
             <p>CONTACT</p>
           </a>
         </li>
         <li>
-          <a href="###">
+          <a href="<?php echo $cart?>">
             <img class="active" src="catalog/view/theme/default/img/png/cart-1.png" alt="" />
             <img src="catalog/view/theme/default/img/png/cart-2.png" alt="" />
             <p>CART</p>
           </a>
         </li>
         <li>
-          <a href="###">
+          <a href="<?php echo $dashboard?>">
             <img class="active" src="catalog/view/theme/default/img/png/account-1.png" alt="" />
             <img src="catalog/view/theme/default/img/png/account-2.png" alt="" />
             <p>ACCOUNT</p>
