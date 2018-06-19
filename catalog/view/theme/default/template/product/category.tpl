@@ -1,14 +1,14 @@
 <?php echo $header; ?>
 
-<div class="container">
-  <ul class="breadcrumb">
+<div>
+  <!-- <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
-  </ul>
+  </ul> -->
   
-  <div class="row">
-    <?php echo $column_left; ?>    
+  <!-- <div class="row" style="width:900px;" style="background:red;"> -->
+   <!--  <?php echo $column_left; ?>    
   
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
@@ -16,15 +16,15 @@
     <?php $class = 'col-sm-9'; ?>
     <?php } else { ?>
     <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
+    <?php } ?> -->
     
-    <div id="content" class="<?php echo $class; ?>">
+    <!-- <div id="content" class="<?php echo $class; ?>">
       <?php echo $content_top; ?>
      
       <h2><?php echo $heading_title; ?></h2>     
           
       <?php if ($products) { ?>
-      <div class="row">
+ -->    <!--   <div class="row">
         <!--<div class="col-md-2 col-sm-6 hidden-xs">
           <div class="btn-group btn-group-sm">
          <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
@@ -32,7 +32,7 @@
           </div>
         </div>-->
         
-        <div class="col-md-4 col-xs-6">
+        <!-- <div class="col-md-4 col-xs-6" style="background:blue;">
           <div class="form-group input-group input-group-sm">
             <label class="input-group-addon" for="input-sort"><?php echo $text_sort; ?></label>
             <select id="input-sort" class="form-control" onchange="location = this.value;">
@@ -44,9 +44,9 @@
               <?php } ?>
               <?php } ?>
             </select>
-          </div>
-        </div>
-        <div class="col-md-3 col-xs-6">
+          </div> -->
+       <!--  </div>
+        <div class="col-md-3 col-xs-6" >
           <div class="form-group input-group input-group-sm">
             <label class="input-group-addon" for="input-limit"><?php echo $text_limit; ?></label>
             <select id="input-limit" class="form-control" onchange="location = this.value;">
@@ -59,86 +59,58 @@
               <?php } ?>
             </select>
           </div>
+        </div> -->
+     <!--  </div> --> 
+      <!--内容-->
+    <div class="content in_content product">
+      <div class="pro_content clearfix">
+        <div class="top clearfix">
+          <h1>DOUBLE DRAWN FUNMI HAIR [<span>24</span>]</h1>
+          <span class="sortby"><span>+</span> SORT BY</span>
+          <ol class="sortby_ol">
+            <li><a href="###">Best selling</a></li>
+            <li><a href="###">Newest</a></li>
+            <li><a href="###">Lowest price</a></li>
+            <li><a href="###">Highest price</a></li>
+          </ol>
         </div>
-      </div>
-      
-      <div class="row">
-        <?php foreach ($products as $product) { ?>
-        <div class="product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-12">
-          <div class="product-thumb">
-            <div class="image">
-               <a href="<?php echo $product['href']; ?>">
-          <!--<img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" />-->
-          <img src="<?php echo $product['thumb']; ?>" alt='<?php echo $product["max_name"]; ?>' title='<?php echo $product["max_name"]; ?>' class="img-responsive" style="width:228px; height:228px;" />
-               </a>
-            </div>
-            <div>
-              <div class="caption">
-                <!--<h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-                <p><?php echo $product['description']; ?></p>-->
-                
-                <?php if(!empty($product['texture'])){ ?>
-                <!--颜色名-->
-                <p><i class="category-color-tag-box"><?php echo $product['texture']; ?></i></p>
-                <?php } ?>
-                
-                <!--产品名-->
-                <h4><a href="<?php echo $product['href']; ?>" title="<?php echo $product['max_name']; ?>"><?php echo $product['name']; ?></a></h4>
-                                
-                <?php if($product['price']) { ?>
-                
-                <!--价格-->
-                <p class="price">
+        <div class="pro_text clearfix">
+          <ul class="pro_ul">
+           <?php foreach ($products as $product) { ?>
+            <li>
+              <a href="<?php echo $product['href']; ?>">
+                <div class="pic_img" >
+                  <img src="<?php echo $product['thumb']; ?>"   alt='<?php echo $product["max_name"]; ?>' title='<?php echo $product["max_name"]; ?>' style="width: 353px;height: 355px;" />
+                </div>
+                <div class="text clearfix" >
+                <span class="price">
                   <?php if($product['special']) { ?>
                      <span><?php echo $product['special']['special']; ?></span>
                      <del><?php echo $product['price']; ?></del>
                   <?php }else{ ?>
                      <span class="price-single"><?php echo $product['price']; ?></span>
-                  <?php } ?>                                                                      
-               
-                  <!--<?php if ($product['tax']) { ?>
-                    <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-                  <?php } ?>-->
-                </p>
-                
-                <?php } ?>
-                
-                <!--<?php //if ($product['rating']) { ?>-->
-                <!--评论等级-->
-                <!--<div class="rating">
-                  <?php for ($i = 1; $i <= 5; $i++) { ?>
-                  <?php if ($product['rating'] < $i) { ?>
-                  <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                  <?php } else { ?>
-                  <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
                   <?php } ?>
-                  <?php } ?>
-                </div>-->
-                <!--<?php //} ?>-->
-              </div>
-              
-              <!--<div class="button-group">
-                <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');">
-                   <i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span>
-                </button>
-                <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');">
-                   <i class="fa fa-heart"></i>
-                </button>
-                <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');">
-                   <i class="fa fa-exchange"></i>
-                </button>
-              </div>-->
-              
-            </div>
+                </span>
+                  <!-- <span>$35.30</span> -->
+                  <p class="p1"><?php echo $product['texture']; ?></p>
+                  <p><?php echo $product['name']; ?></p>
+                </div>
+              </a>
+              <div class="sc_div"></div>
+            </li>
+             <?php } ?>
+          </ul>
+        </div>
+        <!-- 分页 -->
+        <div class="bot clearfix">
+        <div class="left"><?php echo $pagination; ?></div>
+          <div class="right">
+            <p><?php echo $results; ?></p>
           </div>
         </div>
-        <?php } ?>
       </div>
+    </div>
       
-      <div class="row ware-list-tfoot">
-        <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
-        <div class="col-sm-6 text-right"><?php echo $results; ?></div>
-      </div>
       
       <?php }else{ ?>
        <p><?php echo $text_empty; ?></p>
@@ -152,5 +124,44 @@
    <?php echo $column_right; ?>
   </div>
 </div>
-
+<script>
+  $(function(){
+    
+    //sortby
+    $(".sortby").click(function(){
+      if($(this).hasClass("off")){
+        $(this).removeClass("off");
+        $(this).find("span").text("+");
+        $(this).siblings(".sortby_ol").slideUp();
+      }else{
+        $(this).addClass("off");
+        $(this).find("span").text("-");
+        $(this).siblings(".sortby_ol").slideDown();
+      }
+    })
+    
+    //收藏
+    $(".pro_content .pro_ul .sc_div").click(function(){
+      var win = $(window).width()
+      
+      if(win>750){
+        if($(this).hasClass("off")){
+          $(this).removeClass("off");
+          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","1.87vw 1.87vw");
+        }else{
+          $(this).addClass("off");
+          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","1.87vw 1.87vw");
+        }
+      }else{
+        if($(this).hasClass("off")){
+          $(this).removeClass("off");
+          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","0.5rem 0.5rem");
+        }else{
+          $(this).addClass("off");
+          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","0.5rem 0.5rem");
+        }
+      }
+    })
+  })
+</script>
 <?php echo $footer; ?>
