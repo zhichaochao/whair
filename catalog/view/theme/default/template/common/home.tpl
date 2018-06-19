@@ -38,254 +38,123 @@
                     
                 </ul>
                 
+                <?php if(isset($homes[0])){ ?>   
                 <div class="top clearfix">
                     <div class="bt2">
-                        <h1>One Donor Raw Brazilian Hair</h1>
-                        <a href="###" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
+                        <h1>One Donor <?=$homes[0]['category']['name'];?></h1>
+                        <a href="<?=$homes[0]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
                     <div class="video_div">
-                        <video id="video" class="video" poster="catalog/view/theme/default/img/jpg/video_bg.jpg" src="catalog/view/theme/default/img/myvideo.mp4" ></video>
+                        <video id="video" class="video" poster="<?=$homes[0]['image'];?>" src="<?=$homes[0]['video'];?>" ></video>
                         <div class="bg_div"></div>
                     </div>
                 </div>
-                
+             <?php if(isset($homes[0]['child'])){ ?>
                 <ol class="ol_img2 ol_img clearfix">
+                    <?php   foreach ($homes[0]['child'] as $k => $val) { if($k < 3){ ?>
                     <li>
-                        <a href="###">
+                        <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index2_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index2_1.jpg'  />
-                                <p>Brazilian Virgin Hair (One Donor Virgin Hair)</p>
+                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>" data-mimage="<?=$val['image'];?>"  />
+                                <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
-                                <span>$35.30</span>
+                                <span><?=$val['special']?$val['special']:$val['price'];?></span>
                                 <p>SHOW NOW  ></p>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index2_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index2_2.jpg'  />
-                                <p>Brazilian Virgin Hair (One Donor Virgin Hair)</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index2_3.jpg" />
-                                <p>Brazilian Virgin Hair (One Donor Virgin Hair)</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
+                    <?php } }?>
+               
                 </ol>
-                
+                <?php } }?>
+                  <?php if(isset($homes[1])){ ?>   
                 <div class="top top2 clearfix">
                     <div class="bt2">
-                        <h1>Fuller Virgin  Peruvian Hair</h1>
-                        <a href="###" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
+                        <h1><?=$homes[1]['category']['name'];?></h1>
+                        <a href="<?=$homes[1]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top2_img changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3.jpg'  />
+                    <img class="top2_img changeimage" data-image="<?=$homes[1]['image'];?>" src="<?=$homes[1]['image'];?>" data-mimage="<?=$homes[1]['mimage'];?>"  />
                     
                 </div>
-                
+                    <?php if(isset($homes[1]['child'])){ ?>
                 <ol class="ol_img3 ol_img clearfix">
+                     <?php   foreach ($homes[1]['child'] as $k => $val) { if($k < 4){ ?>
                     <li>
-                        <a href="###">
+                        <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3_1.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
+                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['mimage'];?>"  />
+                                <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
-                                <span>$35.30</span>
+                                <span><?=$val['special']?$val['special']:$val['price'];?></span>
                                 <p>SHOW NOW  ></p>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3_2.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3_3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3_3.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index3_4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index3_4.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
+                          <?php } }?>
                 </ol>
-                
+                    <?php } }?>
+               <?php if(isset($homes[2])){ ?>   
                 <div class="top top3 clearfix">
                     <div class="bt2">
-                        <h1>Regular Virgin Peruvian Hair</h1>
-                        <a href="###" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
+                        <h1><?=$homes[2]['category']['name'];?></h1>
+                        <a href="<?=$homes[2]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top3_img changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4.jpg'  />
+                    <img class="top3_img changeimage" data-image="<?=$homes[2]['image'];?>" src="<?=$homes[2]['image'];?>" data-mimage="<?=$homes[2]['mimage'];?>"  />
                 </div>
-                
+                    <?php if(isset($homes[2]['child'])){ ?>
                 <ol class="ol_img4 ol_img clearfix">
+                      <?php   foreach ($homes[2]['child'] as $k => $val) { if($k < 4){ ?>
                     <li>
-                        <a href="###">
+                       <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4_1.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
+                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['mimage'];?>"  />
+                                 <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
-                                <span>$35.30</span>
+                                 <span><?=$val['special']?$val['special']:$val['price'];?></span>
                                 <p>SHOW NOW  ></p>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4_2.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4_3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4_3.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index4_4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index4_4.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
+                          <?php } }?>
                 </ol>
-                
+                 <?php } }?>
             </div>
-            
+            <?php if(isset($homes[3])){ ?>    
             <div class="index_text index_text2">
                 <div class="bt">
                     <img src="catalog/view/theme/default/img/png/bt2.png" alt="" />
-                    <h1>LACE CLOSURE & LACE FRONTAL</h1>
+                    <h1><?=$homes[3]['category']['name'];?></h1>
                 </div>
                 
                 <div class="top top4">
                     <div class="bt2">
-                        <a href="###" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
+                        <a href="<?=$homes[3]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top4_img changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5.jpg'  />
+                    <img class="top4_img changeimage" data-image="<?=$homes[3]['image'];?>" src="<?=$homes[3]['image'];?>" data-mimage="<?=$homes[3]['mimage'];?>"  />
                 </div>
-                
+                   <?php if(isset($homes[3]['child'])){ ?>
                 <ol class="ol_img5 ol_img clearfix">
+                      <?php   foreach ($homes[3]['child'] as $k => $val) { if($k < 5){ ?>
                     <li>
-                        <a href="###">
+                       <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5_1.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
+                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['mimage'];?>" />
+                              <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
-                                <span>$35.30</span>
+                                  <span><?=$val['special']?$val['special']:$val['price'];?></span>
                                 <p>SHOW NOW  ></p>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5_2.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5_3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5_3.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_index5_4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_index5_4.jpg'  />
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="###">
-                            <div class="pic">
-                                <img src="catalog/view/theme/default/img/jpg/pc_index5_5.jpg"/>
-                                <p>Bundle 3 Tone Peruvian Virgin Hair Body Wave</p>
-                            </div>
-                            <div class="text">
-                                <span>$35.30</span>
-                                <p>SHOW NOW  ></p>
-                            </div>
-                        </a>
-                    </li>
+                       <?php  }} ?>
                 </ol>
+                    <?php  }?>
             </div>
-            
+              <?php  }?>
             <div class="index_text3">
                 <div class="bt">
                     <img src="catalog/view/theme/default/img/png/bt2.png" alt="CUSTOMER SHARE" />

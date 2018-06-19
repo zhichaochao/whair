@@ -17,6 +17,8 @@ $_['column_action']      = '操作';
 
 // Entry
 $_['entry_name']         = '首页楼层设置名称';
+$_['entry_parent']        = '关联分类';
+$_['entry_video']        = '视频（可选）（1楼使用）';
 $_['entry_title']        = '标题';
 $_['entry_title_small']  = '小标题(可填)';
 $_['entry_link']         = '链接';

@@ -177,11 +177,12 @@ class ControllerDesignHome extends Controller {
 
 		foreach ($results as $result) {
 
-		$category=$this->model_catalog_category->getCategory($result['category_id']);
+		// $category=$this->model_catalog_category->getCategory($result['category_id']);
 			$data['homes'][] = array(
 				'home_id' => $result['home_id'],
 				'floor'      => $result['floor'],
-				'category_name'      => $category['name'],
+				'path'      => $result['path'],
+				// 'category_name'      => $category['name'],
 				'category_id'      => $result['category_id'],
 				'image'      => $result['image'],
 				'edit'      => $this->url->link('design/home/edit', 'token=' . $this->session->data['token'] . '&home_id=' . $result['home_id'] . $url, true)
@@ -256,6 +257,7 @@ class ControllerDesignHome extends Controller {
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_default'] = $this->language->get('text_default');
 
+		$data['entry_parent'] = $this->language->get('entry_parent');
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_title'] = $this->language->get('entry_title');
 		$data['entry_title_small'] = $this->language->get('entry_title_small');
@@ -268,7 +270,10 @@ class ControllerDesignHome extends Controller {
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
 		$data['button_remove'] = $this->language->get('button_remove');
-
+		$data['entry_video'] = $this->language->get('entry_video');
+		 $data['edit_video'] = $this->url->link('catalog/product/editVideo').'&token=' . $this->session->data['token'];
+		 $data['delete_video'] = $this->url->link('catalog/product/deleteVideo').'&token=' . $this->session->data['token'];
+		 	// $data['edit_video_url'] = '&token=' . $this->session->data['token'] ;
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
@@ -316,27 +321,87 @@ class ControllerDesignHome extends Controller {
 
 		$data['token'] = $this->session->data['token'];
 
-		if (isset($this->request->post['name'])) {
-			$data['name'] = $this->request->post['name'];
+		if (isset($this->request->post['title'])) {
+			$data['title'] = $this->request->post['title'];
 		} elseif (!empty($home_info)) {
-			$data['name'] = $home_info['name'];
+			$data['title'] = $home_info['title'];
 		} else {
-			$data['name'] = '';
+			$data['title'] = '';
 		}
+		if (isset($this->request->post['link'])) {
+			$data['link'] = $this->request->post['link'];
+		} elseif (!empty($home_info)) {
+			$data['link'] = $home_info['link'];
+		} else {
+			$data['link'] = '';
+		}
+		if (isset($this->request->post['floor'])) {
+			$data['floor'] = $this->request->post['floor'];
+		} elseif (!empty($home_info)) {
+			$data['floor'] = $home_info['floor'];
+		} else {
+			$data['floor'] = '';
+		}
+		if (isset($this->request->post['category_id'])) {
+			$data['category_id'] = $this->request->post['category_id'];
+		} elseif (!empty($home_info)) {
+			$data['category_id'] = $home_info['category_id'];
+		} else {
+			$data['category_id'] = 0;
+		}
+		if (isset($this->request->post['path'])) {
+			$data['path'] = $this->request->post['path'];
+		} elseif (!empty($home_info)) {
+			$data['path'] = $home_info['path'];
+		} else {
+			$data['path'] = '';
+		}
+		if (isset($this->error['parent'])) {
+			$data['error_parent'] = $this->error['parent'];
+		} else {
+			$data['error_parent'] = '';
+		}
+		  $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+		   if (isset($this->request->post['video'])) {
+            $data['video'] = $this->request->post['video'];
+                 $data['video_url'] = $http_type . $_SERVER['HTTP_HOST'] . '/image/' . $this->request->post['video'];
+        } elseif (!empty($home_info)) {
+            $data['video'] = $home_info['video'];
+               $data['video_url'] = $http_type . $_SERVER['HTTP_HOST'].'/mabhmad/'. $home_info['video'];
+        } else {
+            $data['video'] = '';
+            $data['video_url'] ='';
+        }
 
-		if (isset($this->request->post['status'])) {
-			$data['status'] = $this->request->post['status'];
-		} elseif (!empty($home_info)) {
-			$data['status'] = $home_info['status'];
-		} else {
-			$data['status'] = true;
-		}
+		$url = '';
+		$this->load->model('tool/image');
+		if (!empty($home_info)) {
+		if (is_file(DIR_IMAGE . $home_info['mimage'])) {
+					$data['mimage'] = $home_info['mimage'];
+					$data['mthumb'] = $this->model_tool_image->resize($home_info['mimage'],100,100);
+				} else {
+					$data['mimage'] = '';
+					$data['mthumb'] = $this->model_tool_image->resize('no_image.png',100,100);
+				}
+		if (is_file(DIR_IMAGE . $home_info['image'])) {
+					$data['image'] = $home_info['image'];
+					$data['thumb'] = $this->model_tool_image->resize($home_info['image'],100,100);
+				} else {
+					$data['image'] = '';
+					$data['thumb'] = $this->model_tool_image->resize('no_image.png',100,100);
+				}
+			}else{
+				$data['mimage'] = '';
+					$data['mthumb'] = $this->model_tool_image->resize('no_image.png',100,100);
+					$data['image'] = '';
+					$data['thumb'] = $this->model_tool_image->resize('no_image.png',100,100);
+			}
 
 		$this->load->model('localisation/language');
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
-		$this->load->model('tool/image');
+
 
 
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);

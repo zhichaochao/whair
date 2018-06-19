@@ -28,45 +28,57 @@
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-name"><?php echo $entry_name; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="name" value="<?php echo $name; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name" class="form-control" />
-              <?php if ($error_name) { ?>
-              <div class="text-danger"><?php echo $error_name; ?></div>
-              <?php } ?>
+              <input type="text" name="floor" value="<?php echo $floor; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name" class="form-control" />
+          
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
-            <div class="col-sm-10">
-              <select name="status" id="input-status" class="form-control">
-                <?php if ($status) { ?>
-                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                <option value="0"><?php echo $text_disabled; ?></option>
-                <?php } else { ?>
-                <option value="1"><?php echo $text_enabled; ?></option>
-                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                <?php } ?>
-              </select>
-            </div>
-          </div>
+         
+               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-parent"><?php echo $entry_parent; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="path" value="<?php echo $path; ?>" placeholder="<?php echo $entry_parent; ?>" id="input-parent" class="form-control" />
+                  <input type="hidden" name="category_id" value="<?php echo $category_id; ?>" />
+                 
+                </div>
+              </div>
+                 <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
+                <div class="col-sm-10">
+                  <ul style="list-style-type: none">
+                    <!-- 预览框： -->
+                    <li style="float: left;width: 100px">
+                      <div class="preview">
+                          <?php if($video){ ?>
+                          <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
+                      </div>
+                    </li>
+
+                    <li style="float: left;width: 100px;margin-left: 10px">
+                  <div style="margin-top:10px;">
+                    <label for="input-video" class="input-video">请上传</label><br/>
+                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
+                      <div class="input-video" onclick="deleteVideo();">删除</div>
+                  </div></li>
+                  <input type="hidden" name="video" value="<?=$video;?>" id='video' />
+
+                  </ul>
+
+                </div>
+              </div>
           <br />
           <ul class="nav nav-tabs" id="language">
-            <?php foreach ($languages as $language) { ?>
-            <li><a href="#language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
-            <?php } ?>
+         
           </ul>
           <div class="tab-content">
-            <?php $image_row = 0; ?>
-            <?php foreach ($languages as $language) { ?>
-            <div class="tab-pane" id="language<?php echo $language['language_id']; ?>">
-              <table id="images<?php echo $language['language_id']; ?>" class="table table-striped table-bordered table-hover">
+   
+            <div class="tab-pane"  style="display: block;">
+              <table id="images" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
                     <td class="text-left"><?php echo $entry_title; ?></td>
-                    <td class="text-left"><?php echo $entry_title_small; ?></td>
                     <td class="text-left"><?php echo $entry_link; ?></td>
                     <td class="text-center"><?php echo $entry_image; ?></td>
                     <td class="text-center"><?php echo $entry_mimage; ?></td>
-                    <td class="text-right"><?php echo $entry_sort_order; ?></td>
                     <td></td>
                   </tr>
                 </thead>
@@ -74,40 +86,124 @@
                                                                                                                                                                                     
                 </tbody>
                 <tfoot>
-                  <tr>
-                    <td colspan="4"></td>
-                    <td class="text-left"><button type="button" onclick="addImage('<?php echo $language['language_id']; ?>');" data-toggle="tooltip" title="<?php echo $button_banner_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                <tr id="image-row0">
+                    <td class="text-left"><input name="title" value="<?=$title;?>" placeholder="标题" class="form-control" type="text">
+                      </td>
+              
+                    <td class="text-left" style="width: 30%;"><input name="link" value="<?=$link;?>" placeholder="链接" class="form-control" type="text"></td>
+                    <td class="text-center"><a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?=$thumb;?>" alt="" title="" data-placeholder="<?=$thumb;?>"></a>
+                      <input name="image" value="<?=$image;?>" id="input-image" type="hidden"></td> 
+                      <td class="text-center"><a href="" id="thumb-mimage" data-toggle="image" class="img-thumbnail"><img src="<?=$mthumb;?>" alt="" title="" data-placeholder="<?=$mthumb;?>"></a>
+                      <input name="mimage" value="<?=$mimage;?>" id="input-mimage" type="hidden"></td>
+             
+                
                   </tr>
                 </tfoot>
               </table>
             </div>
-            <?php } ?>
+    
           </div>
         </form>
       </div>
     </div>
   </div>
   <script type="text/javascript"><!--
-var image_row = <?php echo $image_row; ?>;
-
-function addImage(language_id) {
-	html  = '<tr id="image-row' + image_row + '">';
-    html += '  <td class="text-left"><input type="text" name="banner_image[' + language_id + '][' + image_row + '][title]" value="" placeholder="<?php echo $entry_title; ?>" class="form-control" /></td>';  
-    html += '  <td class="text-left"><input type="text" name="banner_image[' + language_id + '][' + image_row + '][mtitle]" value="" placeholder="<?php echo $entry_title_small; ?>" class="form-control" /></td>';  
-	html += '  <td class="text-left" style="width: 30%;"><input type="text" name="banner_image[' + language_id + '][' + image_row + '][link]" value="" placeholder="<?php echo $entry_link; ?>" class="form-control" /></td>';	
-  html += '  <td class="text-center"><a href="" id="thumb-image' + image_row + '" data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="banner_image[' + language_id + '][' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
-  html += '  <td class="text-center"><a href="" id="thumb-mimage' + image_row + '" data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="banner_image[' + language_id + '][' + image_row + '][mimage]" value="" id="input-mimage' + image_row + '" /></td>';
-	html += '  <td class="text-right" style="width: 10%;"><input type="text" name="banner_image[' + language_id + '][' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
-	html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row  + ', .tooltip\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
-	html += '</tr>';
-	
-	$('#images' + language_id + ' tbody').append(html);
-	
-	image_row++;
-}
-//--></script> 
-  <script type="text/javascript"><!--
 $('#language a:first').tab('show');
 //--></script> 
 </div>
+  <script type="text/javascript"><!--
+$('input[name=\'path\']').autocomplete({
+  'source': function(request, response) {
+    $.ajax({
+      url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+      dataType: 'json',
+      success: function(json) {
+     
+
+        response($.map(json, function(item) {
+          return {
+            label: item['name'],
+            value: item['category_id']
+          }
+        }));
+      }
+    });
+  },
+  'select': function(item) {
+    $('input[name=\'path\']').val(item['label']);
+    $('input[name=\'category_id\']').val(item['value']);
+  }
+});
+//--></script> 
+ <style type="text/css">
+    .input-video {
+      width: 100px;
+      height: 30px;
+      font-size: 12px;
+      letter-spacing: 8px;
+      padding-left: 12px;
+      border-radius: 5px;
+      line-height: 30px;
+      cursor: pointer;
+      text-align: center;
+      background: -webkit-linear-gradient(top, #66B5E6, #2e88c0);
+      background: -moz-linear-gradient(top, #66B5E6, #2e88c0);
+      background: linear-gradient(top, #66B5E6, #2e88c0);
+      background: -ms-linear-gradient(top, #66B5E6, #2e88c0);
+      border: 1px solid #2576A8;
+      color: #fff;
+      text-shadow: 1px 1px 0.5px #22629B;
+    }
+  </style>
+   <script src="view/javascript/fileupload/jquery.ui.widget.js"></script>
+  <script src="view/javascript/fileupload/jquery.iframe-transport.js"></script>
+  <script src="view/javascript/fileupload/jquery.fileupload.js"></script>
+  <script src="view/javascript/fileupload/jquery.xdr-transport.js"></script>
+  <script type="text/javascript">
+      $(".upinput").fileupload({
+
+          url: "<?php echo $edit_video; ?>",//文件上传地址，当然也可以直接写在input的data-url属性内
+          dataType: "json", //如果不指定json类型，则传来的json字符串就需要解析jQuery.parseJSON(data.result);
+
+          done: function (e, data) {
+              //done方法就是上传完毕的回调函数，其他回调函数可以自行查看api
+              //注意data要和jquery的ajax的data参数区分，这个对象包含了整个请求信息
+              //返回的数据在data.result中，这里dataType中设置的返回的数据类型为json
+              if (data.result.sta) {
+                  // 上传成功：
+                  console.log('成功');
+                  $(".upstatus").html(data.result.msg);
+                  $(".preview").html("<video src="+ data.result.previewSrc +" loop='loop' autoplay='autoplay' width='100px' height='100px'></video>");
+                  $('#video').val(data.result.previewSrc );
+              } else {
+                  // 上传失败：
+                  alert(data.result.msg);
+                  $(".progress .bar").css("width", "0%");
+                  $(".upstatus").html("<span style='color:red;'>" + data.result.msg + "</span>");
+              }
+
+          },
+          progress: function (e, data) { //上传进度
+              console.log('正在上传');
+              var progress = parseInt(data.loaded / data.total * 100, 10);
+              $(".progress .bar").css("width", progress + "%");
+              $(".upstatus").html("正在上传...");
+          }
+      });
+      function deleteVideo(){
+          $.ajax({
+              url: '<?php echo $delete_video; ?>',
+              dataType: 'json',
+              data:{video:$('#video').val()},
+              success: function() {
+                $('#video').val('');
+                  $(".preview").html("");
+              },
+              error:function(){
+                  alert("删除失败");
+              }
+          });
+      }
+
+  </script>
 <?php echo $footer; ?> 

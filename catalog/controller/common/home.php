@@ -51,20 +51,7 @@ class ControllerCommonHome extends Controller {
         // Menu
         $this->load->model('catalog/category');
         $this->load->model('tool/image');
-        //分类
-        $categories = $this->model_catalog_category->getShowCategories();
-        if(!empty($categories)){
-        	foreach ($categories as $category) {
-        	   
-        		$data['categories'][] = array(
-        				'pc_image'      => $this->model_tool_image->resize($category['pc_image'], 272, 285),
-        				'pc_show_title' => $category['pc_show_title'],
-        				'href'          => $this->url->link('product/category', 'path=' . $category['category_id']),
-        		);
-        	}
-        }else{
-        	$data['categories'] = [];
-        }
+   
 
         //加载model
         $this->load->model('catalog/product');
@@ -101,7 +88,69 @@ class ControllerCommonHome extends Controller {
           $data['gallerys'] =$gallerys;
            // print_r($gallerys);exit();
 
+        $this->load->model('common/home');
+          $homes=$this->model_common_home->getHomePages();
+        if ($homes) {
+          foreach ($homes as $key => $value) {
+              $homes[$key]['image']= $this->model_tool_image->resize($value['image'], 1040, 560);
+              $homes[$key]['mimage']= $this->model_tool_image->resize($value['mimage'], 710, 400);
+                $homes[$key]['category']= $this->model_catalog_category->getCategory($value['category_id']);
+                $category_path=$this->get_category_path($value['category_id']);
+              $homes[$key]['category_url']=$this->url->link('product/category', 'path=' .$category_path);
+            $filter_data = array(
+                'filter_category_id' => $value['category_id'],
+                'filter_sub_category' => true,       //dyl add
+                // 'filter_filter'      => $filter,
+                'sort'               =>'DESC',
+                'order'              => 'id',
+                'start'              => 0,
+                'limit'              => 5
+            );
+
+            $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+
+             $res= $this->model_catalog_product->getProducts($filter_data);
+             $childs=array();
+             foreach ($res as $k => $val) {
+
+                if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+                    $price = $this->currency->format($val['price'], $this->session->data['currency']);
+                } else {
+                    $price = false;
+                }
+                if ($this->customer->isLogged()) {
+                    $special = $this->model_catalog_product->getSpecialPrice($val['product_id']);
+                }
+
+                $childs[] = array(
+                    'product_id' =>$val['product_id'] , 
+                    'image' =>$this->model_tool_image->resize($val['image'],480, 560),
+                    'price'       => $price,
+                    'name'        => utf8_substr(strip_tags($val['name']),0,40).'...',
+                    'special'     => isset($special) ? $special : '',
+                    'url'=> $this->url->link('product/product', 'product_id=' . $val['product_id']),
+                     );
+             }
+              $homes[$key]['child'] = $childs;
+
+          }
+        }
+        // print_r($homes);exit();
+        $data['homes']=$homes;
+
 
 		$this->response->setOutput($this->load->view('common/home', $data));
 	}
+    protected function get_category_path($category_id)
+    {
+        $this->load->model('catalog/category');
+
+        $category_info = $this->model_catalog_category->getCategory($category_id);
+        if ($category_info['parent_id']==0) {
+            return $category_info['category_id'];
+        }else{
+            $path=$this->get_category_path($category_info['parent_id']);
+            return $path."_".$category_id;
+        }
+    }
 }

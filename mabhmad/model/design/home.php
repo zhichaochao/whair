@@ -1,7 +1,7 @@
 <?php
 class ModelDesignHome extends Model {
 	public function addHome($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "home_page SET  vedio= '" . $this->db->escape($data['vedio']) . "',mimage= '" . $this->db->escape($data['mimage']) . "',image= '" . $this->db->escape($data['image']) . "',  category_id = '" . (int)$data['category_id'] . "',  floor = '" . (int)$data['floor'] . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "home_page SET  video= '" . $this->db->escape($data['video']) . "',mimage= '" . $this->db->escape($data['mimage']) . "',title= '" . $this->db->escape($data['title']) . "',link= '" . $this->db->escape($data['link']) . "',image= '" . $this->db->escape($data['image']) . "', path= '" . $this->db->escape($data['path']) . "',  category_id = '" . (int)$data['category_id'] . "',  floor = '" . (int)$data['floor'] . "'");
 
 		$home_id = $this->db->getLastId();
 
@@ -11,7 +11,8 @@ class ModelDesignHome extends Model {
 	}
 
 	public function editHome($home_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "home_page SET  vedio= '" . $this->db->escape($data['vedio']) . "',mimage= '" . $this->db->escape($data['mimage']) . "',image= '" . $this->db->escape($data['image']) . "',  category_id = '" . (int)$data['category_id'] . "',  floor = '" . (int)$data['floor'] . "' WHERE home_id = '" . (int)$home_id . "'");
+		// print_r($data);exit();
+		$this->db->query("UPDATE " . DB_PREFIX . "home_page SET  video= '" . $this->db->escape($data['video']) . "',title= '" . $this->db->escape($data['title']) . "',link= '" . $this->db->escape($data['link']) . "',mimage= '" . $this->db->escape($data['mimage']) . "',image= '" . $this->db->escape($data['image']) . "',path= '" . $this->db->escape($data['path']) . "',  category_id = '" . (int)$data['category_id'] . "',  floor = '" . (int)$data['floor'] . "' WHERE home_id = '" . (int)$home_id . "'");
 
 
 		
@@ -40,11 +41,11 @@ class ModelDesignHome extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY home_id";
+			$sql .= " ORDER BY floor";
 		}
 
 	
-			$sql .= " DESC";
+			$sql .= " ASC";
 		
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {

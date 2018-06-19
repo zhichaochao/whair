@@ -1070,6 +1070,7 @@
           $.ajax({
               url: 'index.php?route=catalog/product/deleteVideo'+"<?php echo $edit_video_url; ?>",
               dataType: 'json',
+              data:{video:'<?php echo $video; ?>'},
               success: function() {
                   $(".preview").html("");
               },

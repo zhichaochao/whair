@@ -13,6 +13,7 @@ $_['text_default']      = 'Default';
 $_['column_name']       = 'Home page Name';
 $_['column_status']     = 'Status';
 $_['column_action']     = 'Action';
+$_['entry_video']        ="vedio for 1st floor"
 
 // Entry
 $_['entry_name']        = 'Home page Name';
