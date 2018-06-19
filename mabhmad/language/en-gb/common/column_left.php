@@ -6,6 +6,7 @@ $_['text_attribute']                = '商品属性';
 $_['text_attribute_group']          = '属性组';
 $_['text_backup']                   = '备份/恢复';
 $_['text_banner']                   = '横幅';
+$_['text_home']                   	= '首页楼层';
 $_['text_catalog']                  = '商品目录';
 $_['text_category']                 = '商品分类';
 $_['text_country']                  = '国家设置';

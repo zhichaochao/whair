@@ -175,7 +175,8 @@ display: block;float: left;height: 30px;opacity: .5;}
 
 /**购物车**/
 .nav_cart {box-shadow: 0 5px 10px 2px rgba(222,222,222,.5);width: 26.04vw;padding: 0 2.08vw;
-position: absolute;right: 0;top: 0;z-index: 11;display: none;min-height: 13vw;background:#fff url(../img/loading.gif) no-repeat center bottom;}
+position: absolute;right: 0;top: 0;z-index: 11;display: none;min-height: 13vw;
+background:#fff url(../img/loading.gif) no-repeat center bottom 1vw;background-size: 4.5vw 4.5vw;}
 .nav_cart h1{font-size: 1.25vw;color: #000;font-weight: bold;line-height: 1.25vw;margin-top: 4.16vw;margin-bottom: 2.18vw;} 
 .nav_cart h1 .close{float: right;width: 1.04vw;height: 1.14vw;cursor: pointer;transition: all .5s;}
 .nav_cart h1 .close:hover{transform: rotate(90deg);}

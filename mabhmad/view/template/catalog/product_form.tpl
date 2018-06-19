@@ -405,7 +405,7 @@
               <!--/是否为新品-->
 
               <!--是否为首页显示-->
-              <div class="form-group">
+          <!--     <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-is-home"><?php echo $entry_is_home; ?></label>
                 <div class="col-sm-10">
                   <select name="is_home" id="input-is-home" class="form-control">
@@ -418,7 +418,7 @@
                     <?php } ?>
                   </select>
                 </div>
-              </div>
+              </div> -->
               <!--/是否为首页显示-->
 			  
 			        <!--是否包邮-->
