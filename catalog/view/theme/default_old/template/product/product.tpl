@@ -319,7 +319,7 @@
 	<!--/class="row"-->
 
 	<!-----------相关产品------------>
-	<!--<?php if ($products) { ?>
+	<?php if ($products) { ?>
       <h3><?php echo $text_related; ?></h3>
        <div class="row">
          <?php $i = 0; ?>
@@ -381,7 +381,7 @@
       <?php } ?>
 
       </div>
-    <?php } ?>-->
+    <?php } ?>
 
 	<!--推荐产品-->
 	<?php if ($popular_products) { ?>

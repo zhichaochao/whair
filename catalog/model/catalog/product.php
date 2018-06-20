@@ -109,6 +109,7 @@ class ModelCatalogProduct extends Model {
     }
 
 	public function getProducts($data = array()) {
+	//	var_dump($data);die;
 		$sql = "SELECT p.product_id,
 				(SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating,
 				(SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "'
@@ -254,6 +255,7 @@ class ModelCatalogProduct extends Model {
 		} else {
 			$sql .= " ASC, LCASE(pd.name) ASC";
 		}
+		// print_r($data['order']);exit();
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
@@ -268,6 +270,7 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$product_data = array();
+		//var_dump($);die;
 
 		$query = $this->db->query($sql);
 

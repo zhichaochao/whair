@@ -1,6 +1,55 @@
 <?php echo $header; ?>
-<div class="container">
-  <ul class="breadcrumb">
+<div class="content in_content product">
+      <div class="pro_content clearfix">
+        <div class="top clearfix" >
+         <h1>My collection</h1>
+           <!-- <span class="sortby"><span>+</span> SORT BY</span>
+          <ol class="sortby_ol">
+            <li><a href="###">Best selling</a></li>
+            <li><a href="###">Newest</a></li>
+            <li><a href="###">Lowest price</a></li>
+            <li><a href="###">Highest price</a></li>
+          </ol> -->
+        </div>
+        <div class="pro_text clearfix">
+          <ul class="pro_ul">
+           <?php foreach ($products as $product) { ?>
+            <li>
+              <a href="<?php echo $product['href']; ?>">
+                <div class="pic_img" >
+                  <img src="<?php echo $product['thumb']; ?>"   alt='<?php echo $product["max_name"]; ?>'  style="width: 353px;height: 355px;" />
+                </div>
+                <div class="text clearfix" >
+                <span class="price">
+                  <?php if($product['special']) { ?>
+                     <span><?php echo $product['special']; ?></span>
+                     <del><?php echo $product['price']; ?></del>
+                  <?php }else{ ?>
+                     <span class="price-single"><?php echo $product['price']; ?></span>
+                  <?php } ?>
+                </span>
+                  <!-- <span>$35.30</span> -->
+                  <p class="p1"><?php echo $product['stock']; ?></p>
+                  <p><?php echo $product['name']; ?></p>
+                </div>
+              </a>
+              <div class="sc_div" onclick="wishlist('<?php echo $product['product_id']; ?>');" ></div>
+            </li>
+             <?php } ?>
+          </ul>
+        </div>
+        <!-- 分页 -->
+        <!-- <div class="bot clearfix">
+        <div class="left"><?php echo $pagination; ?></div>
+          <div class="right">
+            <p><?php echo $results; ?></p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+<!--<div class="container">
+   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
@@ -9,8 +58,8 @@
   <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
-  <?php } ?>
-  <div class="row"><?php echo $column_left; ?>
+  <?php } ?> -->
+  <!-- <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
@@ -55,6 +104,11 @@
                 <a href="<?php echo $product['remove']; ?>" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-times"></i></a></td>
             </tr>
             <?php } ?>
+
+
+
+
+
           </tbody>
         </table>
       </div>
@@ -64,7 +118,8 @@
       <div class="buttons clearfix">
         <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
       </div>
-      <?php echo $content_bottom; ?></div>
+      <?php echo $content_bottom; ?>
+      </div>
     <?php echo $column_right; ?></div>
-</div>
+</div> -->
 <?php echo $footer; ?>

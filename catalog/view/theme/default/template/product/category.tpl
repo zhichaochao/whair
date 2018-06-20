@@ -68,10 +68,10 @@
           <h1>DOUBLE DRAWN FUNMI HAIR [<span>24</span>]</h1>
           <span class="sortby"><span>+</span> SORT BY</span>
           <ol class="sortby_ol">
-            <li><a href="###">Best selling</a></li>
-            <li><a href="###">Newest</a></li>
-            <li><a href="###">Lowest price</a></li>
-            <li><a href="###">Highest price</a></li>
+            <li><a href="<?php echo $sort_sort_rating?>">Best selling</a></li>
+            <li><a href="<?php echo $sort_sort_add?>">Newest</a></li>
+            <li><a href="<?php echo $sort_sort_order?>">Lowest price</a></li>
+            <li><a href="<?php echo $sort_sort_order_d?>">Highest price</a></li>
           </ol>
         </div>
         <div class="pro_text clearfix">
@@ -80,7 +80,7 @@
             <li>
               <a href="<?php echo $product['href']; ?>">
                 <div class="pic_img" >
-                  <img src="<?php echo $product['thumb']; ?>"   alt='<?php echo $product["max_name"]; ?>' title='<?php echo $product["max_name"]; ?>' style="width: 353px;height: 355px;" />
+                  <img src="<?php echo $product['thumb']; ?>"   alt='<?php echo $product["max_name"]; ?>'  style="width: 353px;height: 355px;" />
                 </div>
                 <div class="text clearfix" >
                 <span class="price">
@@ -96,7 +96,7 @@
                   <p><?php echo $product['name']; ?></p>
                 </div>
               </a>
-              <div class="sc_div"></div>
+              <div class="sc_div" onclick="wishlist('<?php echo $product['product_id']; ?>');" ></div>
             </li>
              <?php } ?>
           </ul>
@@ -125,6 +125,21 @@
   </div>
 </div>
 <script>
+ function wishlist(product_id) {
+  //alert(product_id);die;
+   $.ajax({
+    url:'<?php echo $wishlist ;?>',
+    type:'post',
+    data:{'product_id':product_id},
+    dataType: 'json',
+    success:function(data){
+      if (data.success) {
+        $('#wishlist_count').html(data.total);
+      }
+               // location.reload(); 
+    }
+   })
+ }
   $(function(){
     
     //sortby

@@ -89,18 +89,18 @@
 									<dl class="col_f00 jiage" id="money" style="margin-bottom:10px;">
 										<?php if($special){ ?>
 										<span>
-											<i>Vip Price:&ensp;</i>
-											<b><?php echo $special; ?></b>
+											<i style="color:#999;font-size: 16px;">Vip Price:&ensp;</i>
+											<b style="font-size: 16px;"><?php echo $special; ?></b>
 											<del class="price-old" style="color:#999;font-size: 16px;"><?php echo $price; ?></del>
 											<b><?php echo $free_shipping; ?></b>
 										</span>
 										<?php }else{ ?>
 										<span>
-											<p style="font-size:20px;">Price:&ensp;
-											<?=$price?> </p>
-											<!-- <?php if (isset($login)) { ?>
+											<i>Price:&ensp;</i>
+											<b><?=$price?> </b>
+											<?php if (isset($login)) { ?>
 											<a class="price-go-login" href="<?php echo $login; ?>">View Specials</a>
-											<?php } ?> -->
+											<?php } ?>
 											<b><?php echo $free_shipping; ?></b>
 										</span>
 										<?php } ?>
@@ -108,7 +108,7 @@
 								</div>
 								<?php } ?>
 								<!--/产品价格-->
-							<i style="font-size:20px; color:gray; text-decoration:line-through;">$136.00</i></p>
+							
 							<p class="text_p"><span>Hair Color:</span> Natural Black</p>
 							<div class="label_div clearfix">
 								<label class="num_label" for="">

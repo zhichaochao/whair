@@ -10,7 +10,6 @@ class ControllerProductCategory extends Controller {
 		$this->load->model('tool/image');
 
 	    //引入该页面的css样式
-		$this->document->addStyle('catalog/view/theme/default/stylesheet/product/product_category.css');
 
 		if (isset($this->request->get['filter'])) {
 			$filter = $this->request->get['filter'];
@@ -23,6 +22,11 @@ class ControllerProductCategory extends Controller {
 		} else {
 			$sort = 'p.sort_order';
 		}
+		// if (isset($this->request->get['sort'])) {
+		// 	$sort = $this->request->get['price'];
+		// } else {
+		// 	$sort = 'i.price';
+		// }
 
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
@@ -92,6 +96,8 @@ class ControllerProductCategory extends Controller {
 
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 
+		$url = '';
+
 		if ($category_info) {
 			$this->document->setTitle($category_info['meta_title']);
 			$this->document->setDescription($category_info['meta_description']);
@@ -107,6 +113,11 @@ class ControllerProductCategory extends Controller {
 			$data['text_price'] = $this->language->get('text_price');
 			$data['text_tax'] = $this->language->get('text_tax');
 			$data['text_points'] = $this->language->get('text_points');
+
+			$data['sort_sort_order'] = $this->url->link('product/category', 'token='  . '&sort=p.price' . $url, true);
+			$data['sort_sort_order_d'] = $this->url->link('product/category', 'token='  . '&sort=p.price&order=DESC' . $url, true);
+			$data['sort_sort_add'] = $this->url->link('product/category', 'token='  . '&sort=p.date_added' . $url, true);
+			$data['sort_sort_rating'] = $this->url->link('product/category', 'token='  . '&sort=rating' . $url, true);
 			//产品对比按钮
 			//$data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 			$data['text_sort'] = $this->language->get('text_sort');
@@ -118,6 +129,13 @@ class ControllerProductCategory extends Controller {
 			$data['button_continue'] = $this->language->get('button_continue');
 			$data['button_list'] = $this->language->get('button_list');
 			$data['button_grid'] = $this->language->get('button_grid');
+
+			$data['wishlist'] = $this->url->link('account/wishlist/add', '', true);
+
+			 if (!isset($this->request->get['path'])) {
+		        $this->request->get['path']=$category_info['category_id'];
+		    
+		      }
 
 			// Set the last category breadcrumb
 			$data['breadcrumbs'][] = array(
