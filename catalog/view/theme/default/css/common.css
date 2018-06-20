@@ -196,7 +196,7 @@ background:#fff url(../img/loading.gif) no-repeat center bottom 1vw;background-s
 .nav_cart .bot span{float: right;}
 .nav_cart .bot a.a_btn{font-size: 0.83vw;color: #fff;text-align: center;width: 100%;height: 2.08vw;line-height: 2.08vw;background: #000;
 border-radius: 50px;display: block;margin: 1.87vw 0 0 0;}
-.nav_cart .has{display: none;background: #fff;padding-bottom: 2.29vw;}
+.nav_cart .has{background: #fff;padding-bottom: 2.29vw;}
 .nav_cart .null {padding: 3.05vw 0 5.2vw 0;display: block;background: #fff;}
 .nav_cart .null p{font-size: 0.83vw;color: #333;text-align: center;}
 

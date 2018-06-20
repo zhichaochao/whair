@@ -285,11 +285,9 @@ class ControllerCheckoutCart extends Controller {
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
 
-            if (isset($this->request->get['ajax'])) {
-                 $this->response->setOutput($this->load->view('checkout/cart_ajax', $data));
-            }else{
+           
             $this->response->setOutput($this->load->view('checkout/cart', $data));
-            }
+         
         } else {
             // print_r('2');exit();
             $data['heading_title'] = $this->language->get('heading_title');
@@ -315,12 +313,9 @@ class ControllerCheckoutCart extends Controller {
             $data['content_bottom'] = $this->load->controller('common/content_bottom');
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
-            if (isset($this->request->get['ajax'])) {
-                 $this->response->setOutput($this->load->view('checkout/cart_empty_ajax', $data));
-            }else{
+         
                 $this->response->setOutput($this->load->view('checkout/cart_empty', $data));
-            }
-
+           
         }
     }
 

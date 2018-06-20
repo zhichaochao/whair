@@ -55,11 +55,13 @@
     $(".img_ol .cart_li").click(function(){
         $(".nav_cart").fadeIn();
         $.ajax({
-            url: 'index.php?route=checkout/cart',
-            data:{ajax:1},
+            url: 'index.php?route=common/cart/info',
             dataType: 'html',
             success: function(html) {
                 $('.nav_cart').html(html);
+                 $(".nav_cart .close").click(function(){
+                     $(".nav_cart").fadeOut();
+                    })
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -113,8 +115,8 @@
                     <ol class="img_ol clearfix fl">
                         <li class="search_li"></li>
                         <li class="login_li"></li>
-                        <li><a href="<?=$wishlist;?>"><span><?php echo $text_wishlist; ?></span></a></li>
-                        <li class="cart_li"><span><?=$text_cart_items;?></span></li>
+                        <li><a href="<?=$wishlist;?>"><span id='wishlist_count'><?php echo $text_wishlist; ?></span></a></li>
+                        <li class="cart_li"><span  id='cart_count'><?=$text_cart_items;?></span></li>
                     </ol>
                 </div>
                 

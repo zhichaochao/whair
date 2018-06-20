@@ -52,6 +52,7 @@ class ControllerCommonCart extends Controller {
 		$data['text_checkout'] = $this->language->get('text_checkout');
 		$data['text_recurring'] = $this->language->get('text_recurring');
 		$data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+		$data['total_items']=$this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 		$data['text_loading'] = $this->language->get('text_loading');
 
 		$data['button_remove'] = $this->language->get('button_remove');
@@ -103,7 +104,7 @@ class ControllerCommonCart extends Controller {
 
 			$data['products'][] = array(
 				//'cart_id'   => $product['cart_id'],
-				'key'   => $product['key'],
+				// 'key'   => $product['key'],
 				'thumb'     => $image,
 				'name'      => $product['name'],
 				'model'     => $product['model'],
@@ -140,6 +141,7 @@ class ControllerCommonCart extends Controller {
 
 		$data['cart'] = $this->url->link('checkout/cart');
 		$data['checkout'] = $this->url->link('checkout/checkout', '', true);
+		// print_r(	$data['totals']);exit();
 
 		return $this->load->view('common/cart', $data);
 	}
