@@ -21,6 +21,7 @@ class ControllerCheckoutConfirm extends Controller {
 		}
 
 		// Validate minimum quantity requirements.
+		if (!isset($this->request->get['cart_ids'])){$this->request->get['cart_ids']='';}
 		$products = $this->cart->getProducts($this->request->get['cart_ids']);
 
 		foreach ($products as $product) {
@@ -183,6 +184,7 @@ class ControllerCheckoutConfirm extends Controller {
 		$data['comment'] = isset($this->session->data['comment'])?$this->session->data['comment']:'';
 
         $data['cart_ids'] = $this->request->get['cart_ids'];
+          $data['checkout_url'] =$this->url->link('checkout/cart');
 
 		$this->response->setOutput($this->load->view('checkout/confirm', $data));
 	}

@@ -25,7 +25,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 		$data['button_continue'] = $this->language->get('button_continue');
 		$data['button_upload'] = $this->language->get('button_upload');
 		
-		$address_id = (int)$this->request->get['address_id'];
+		$address_id = isset($this->request->get['address_id'])?(int)$this->request->get['address_id']:0;
 
 		$this->load->model('account/address');
 		$data['addresses'] = $this->model_account_address->getAddresses();
@@ -94,7 +94,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 		$data['shipping_address'] = isset($this->session->data['shipping_address'])?$this->session->data['shipping_address']:'';
 		$data['payment_type'] = isset($this->session->data['payment_type'])?$this->session->data['payment_type']:'';
 		
-
+// print_r($data);exit();
 		$this->response->setOutput($this->load->view('checkout/shipping_address', $data));
 	}
 

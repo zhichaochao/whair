@@ -1,34 +1,6 @@
 <?php echo $header; ?>
 
-<script type="text/javascript" src="catalog/view/theme/default/js/select2/js/select2.min.js"></script>
 
-<link href="catalog/view/theme/default/js/select2/css/select2.min.css" rel="stylesheet"/>
-<link href="catalog/view/theme/default/stylesheet/checkout/checkout.css" rel="stylesheet">
-
-<section class="content-wrap">
-    <div class="cart-finger">
-        <div class="cart-finger-pic">
-            <div class="cart-finger-now cart-finger-now-2">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div class="cart-finger-dec">
-            <ul class="fixclea">
-                <li>
-					<b>1</b> Shopping Cart
-				</li>
-				<li class="in-block act">
-					<b>2</b> Shipping
-				</li>
-				<li class="in-block">
-					<b>3</b> Place Order
-				</li>
-				<li class="in-block">
-					<b>4</b> Payment
-				</li>
-            </ul>
-        </div>
-    </div>
     <div class="new-checkout-main-wrap">
         <div id="error-confirm"></div>
         <section class="new-checkout-ship-address">

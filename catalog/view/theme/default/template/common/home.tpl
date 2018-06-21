@@ -59,7 +59,7 @@
                                 <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
-                                <span><?=$val['special']?$val['special']:$val['price'];?></span>
+                                <span><?=$val['special']?$val['special']['special']:$val['price'];?></span>
                                 <p>SHOW NOW  ></p>
                             </div>
                         </a>
@@ -83,11 +83,11 @@
                     <li>
                         <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['mimage'];?>"  />
+                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['image'];?>"  />
                                 <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
-                                <span><?=$val['special']?$val['special']:$val['price'];?></span>
+                                <span><?=$val['special']?$val['special']['special']:$val['price'];?></span>
                                 <p>SHOW NOW  ></p>
                             </div>
                         </a>
@@ -109,11 +109,11 @@
                     <li>
                        <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['mimage'];?>"  />
+                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['image'];?>"  />
                                  <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
-                                 <span><?=$val['special']?$val['special']:$val['price'];?></span>
+                                 <span><?=$val['special']?$val['special']['special']:$val['price'];?></span>
                                 <p>SHOW NOW  ></p>
                             </div>
                         </a>
@@ -141,11 +141,12 @@
                     <li>
                        <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['mimage'];?>" />
+                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['image'];?>" />
                               <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
-                                  <span><?=$val['special']?$val['special']:$val['price'];?></span>
+                              
+                                  <span><?=$val['special']?$val['special']['special']:$val['price'];?></span>
                                 <p>SHOW NOW  ></p>
                             </div>
                         </a>

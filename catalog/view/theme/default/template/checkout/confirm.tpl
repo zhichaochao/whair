@@ -1,94 +1,55 @@
 <?php if (!isset($redirect)) { ?>
-
-<div>
-    <table class="new-checkout-rew-order-table" border="0" cellspacing="0" cellpadding="0">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Product Name</th>
-                <th>Free Shipping</th>
-                <th>Qty</th>
-                <th>Unit Price</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($products as $product) { ?>
-            <tr>
-                <td><a href="<?php echo $product['href']; ?>"><image height=90 src="<?php echo $product['image']; ?>" /></a></td>
-                <td class="new-checkout-rew-order-name">
-                    <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-                    <div class="rew-order-name-bot">
-                    <?php foreach ($product['option'] as $option) { ?>
-                        <p><?php echo $option['name']; ?>: <span><?php echo $option['value']; ?></span></p>
-                    <?php } ?>
-                    <?php if($product['recurring']) { ?>
-                        <p><?php echo $text_recurring_item; ?>: <span><?php echo $product['recurring']; ?></span></p>
-                    <?php } ?>
+  <h2>SUMMARY</h2>
+                    <ul class="cart_ul">
+                     <?php foreach ($products as $product) { ?>
+                        <li class="clearfix">
+                            <a href="<?php echo $product['href']; ?>">
+                                <div class="pic_img">
+                                    <img src="<?php echo $product['image']; ?>" />
+                                </div>
+                                <div class="text">
+                                    <h2><?php echo $product['name']; ?></h2>
+                                    <p>  
+                                        <?php foreach ($product['option'] as $option) { ?>
+                                            <?php echo $option['value']; ?>
+                                        <?php } ?>
+                                        <?php if($product['recurring']) { ?>
+                                         <?php echo $product['recurring']; ?>
+                                        <?php } ?>
+                            
+                                     </p>
+                                     <span>  <?php echo $product['price']; ?></span>
+                                </div>
+                            </a>
+                        </li>
+                        <?php } ?>
+                         <?php foreach ($vouchers as $voucher) { ?>
+                         <?php echo $voucher['description']; ?>1<?php echo $voucher['amount']; ?>
+                        <?php } ?>
+                   
+                    </ul>
+                       <?php foreach ($totals as $k => $total) {  if($total['title']!='Poundage'){?>
+                       <?php if($total['title']=='Total') { ?>
+                        <p class="p2"><?php echo $total['title']; ?> <span class="fr"><?php echo $total['text']; ?></span></p>
+                        <?php }else{ ?>
+                            <p class="p1"><?php echo $total['title']; ?> <span class="fr"><?php echo $total['text']; ?></span></p>
+                        <?php } ?>
+                    <?php } } ?>
+                   
+                    <div class="shop_search">
+                        <p>
+                            If you have coupons, please fill them out. If not, 
+                            please pay.
+                        </p>
+                        <label >
+                            <input type="text"  id="coupon_code" name="coupon" value="<?php echo @$coupon; ?>" placeholder="coupon code"/>
+                            <button  onclick="coupon_code(this)">CONFIRM</button>
+                        </label>
                     </div>
-                </td>
-                <td>
-                    <?php if($product['free_postage']) { ?>
-                        YES
-                    <?php } else { ?>
-                        NO
-                    <?php } ?>
-                </td>
-                <td><?php echo $product['quantity']; ?></td>
-                <td class="new-checkout-rew-order-price">
-                    <?php echo $product['price']; ?>
-                    <?php if(!empty($product['original_price'])){ ?>
-                    <del><?php echo $product['original_price']; ?></del>
-                    <?php } ?>
-                </td>
-                <td class="new-checkout-rew-order-total"><?php echo $product['total']; ?></td>
-            </tr>
-        <?php } ?>
-        <?php foreach ($vouchers as $voucher) { ?>
-            <tr>
-                <td class="text-left"><?php echo $voucher['description']; ?></td>
-                <td class="text-left"></td>
-                <td class="text-right">1</td>
-                <td class="text-right"><?php echo $voucher['amount']; ?></td>
-                <td class="text-right"><?php echo $voucher['amount']; ?></td>
-            </tr>
-        <?php } ?>
-        </tbody>
-    </table>
-</div>
-<div class="new-checkout-bot fixclea">
-	<div class="new-checkout-bot-left">
-	    <div class="new-checkout-extra-info">
-	        <h4>Any Extra Info</h4>
-	        <textarea id="comment" name="comment" placeholder="Optional: Tell the seller your special requirements..."><?php echo $comment; ?></textarea>
-	    </div>
-	    <div class="new-checkout-bot-code" id="new-checkout-bot-code">
-
-			<?php if (!empty($success)) { ?>
-			<div class="alert alert-success" style="width:650px;display:inline-block;"><i class="fa fa-check-circle"></i> <?php echo $success; ?>
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			</div>
-			<?php } ?>
-			
-	        <label>Coupon Code:&ensp;&ensp;<input type="text" id="coupon_code" name="coupon" value="<?php echo @$coupon; ?>" /></label>
-	        <button onclick="coupon_code(this)"><?php echo empty($coupon)?'APPLY':'CANCEL'; ?></button>
-	        <p>Enter your coupon code if you have one.</p>
-	    </div>
-	</div>
-	
-	
-	<div class="new-checkout-bot-right">
-	    <ul>
-	    <?php foreach ($totals as $total) { ?>
-	        <li class="fixclea">
-	            <span><?php echo $total['title']; ?></span>
-	            <span><?php echo $total['text']; ?></span>
-	        </li>
-	    <?php } ?>
-	    </ul>
-	    <button class="new-continue-checkout" onclick="checkout(this)">CONTINUE CHECKOUT</button>
-	</div>
-</div>
+                    <div class="btn">
+                        <a class="a_btn" href="<?=$checkout_url;?>">GO TO CHECK OUT&nbsp;&nbsp;&nbsp;&gt;</a>
+                    </div>
+                   
 
 <?php } else { ?>
 <script type="text/javascript"><!--
