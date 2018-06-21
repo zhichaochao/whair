@@ -99,7 +99,57 @@ class ControllerAccountWishList extends Controller {
 				} else {
 					$special = false;
 				}
+				//根据用户等级获取对应产品价格
+				if ($this->customer->isLogged()) {
+					$special = $this->model_catalog_product->getSpecialPrice($result['product_id']);
+				}
 
+				// if ($this->config->get('config_tax')) {
+				// 	$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
+				// } else {
+				// 	$tax = false;
+				// }
+
+				// if ($this->config->get('config_review_status')) {
+				// 	$rating = (int)$result['rating'];
+				// } else {
+				// 	$rating = false;
+				// }
+			// 	$data['options'] = array();
+   //          $options=$this->model_catalog_product->getProductOptions($this->request->get['product_id']);
+			// //var_dump($product_id);die;
+   //          foreach ( $options as $option) {
+   //              $product_option_value_data = array();
+   //              foreach ($option['product_option_value'] as $option_value) {
+   //                  if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+   //                      if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
+   //                          $price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
+   //                      } else {
+   //                          $price = false;
+   //                      }
+
+   //                      $product_option_value_data[] = array(
+   //                          'product_option_value_id' => $option_value['product_option_value_id'],
+   //                          'option_value_id'         => $option_value['option_value_id'],
+   //                          'name'                    => $option_value['name'],
+   //                          'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
+   //                          'price'                   => $price,
+   //                          'price_prefix'            => $option_value['price_prefix']
+   //                      );
+   //                  }
+   //              }
+
+   //              $data['options'][] = array(
+   //                  'product_option_id'    => $option['product_option_id'],
+   //                  'product_option_value' => $product_option_value_data,
+   //                  'option_id'            => $option['option_id'],
+   //                  'name'                 => $option['name'],
+   //                  'type'                 => $option['type'],
+   //                  'image'                 =>$this->model_tool_image->resize($option['image'], 50, 50),
+   //                  'value'                => $option['value'],
+   //                  'required'             => $option['required']
+   //              );
+   //          }
 				$data['products'][] = array(
 					'product_id' => $product_info['product_id'],
 					'thumb'      => $image,
@@ -107,7 +157,9 @@ class ControllerAccountWishList extends Controller {
 					'model'      => $product_info['model'],
 					'stock'      => $stock,
 					'price'      => $price,
-					'special'    => $special,
+					// 'special'    => $special,
+					//'rating'      => $result['rating'],
+					'special'     => isset($special) ? $special : '',
 					'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
 					'remove'     => $this->url->link('account/wishlist', 'remove=' . $product_info['product_id'])
 				);

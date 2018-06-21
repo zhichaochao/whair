@@ -4,8 +4,7 @@
 				<div class="top clearfix">
 					<div class="left clearfix">
 						<ol class="pro_img_ol">
-							<li>
-							<?php if ($images) { ?>
+							<li><?php if ($images) { ?>
 							<div class="more-views">
 								<div class="prdimgup"> </div>
 								<div class="highslide-gallery" id="prdimglist" page="0">
@@ -16,7 +15,7 @@
 										<?php foreach ($images as $k => $image) { ?>
 										<li <?php if($k==0 && !$video){ ?>class="on"<?php } ?>>
 										<a class="highslide">
-											<img onclick="productInfoImg(this)" data-img="<?php echo $image['thumb2']; ?>" style="cursor: pointer !important;" src="<?php echo $image['thumb']; ?>" alt='<?php echo $heading_title; ?>' title='<?php echo $heading_title; ?>'>
+											<img onclick="productInfoImg(this)" data-img="<?php echo $image['thumb2']; ?>" style="cursor: pointer !important;" src="<?php echo $image['thumb']; ?>"  title='<?php echo $heading_title; ?>'>
 										</a>
 										</li>
 										<?php } ?>
@@ -25,17 +24,15 @@
 								<div class="prdimgdown"></div>
 								<div style="clear:both;"></div>
 							</div>
-							<?php } ?>
-						</li>
-							<!-- <li><img src="img/jpg/product1.jpg"/></li>
-							<li><img src="img/jpg/pro_det1.jpg"/></li>
-							<li><img src="img/jpg/pro_det1.jpg"/></li>
-							<li><img src="img/jpg/pro_det1.jpg"/></li> -->
+							<?php } ?></li>
+							<!-- <li><img src="catalog/view/theme/default/img/jpg/product1.jpg"/></li>
+							<li><img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/></li>
+							<li><img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/></li>
+							<li><img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/></li> -->
 						</ol>
 						<div class="pro_big_img">
-							<div class="swiper-container" id="swiper3">
-
-							    <div class="swiper-wrapper" id="jwx_productInfo2">
+							<div class="swiper-container"id="swiper3">
+							    <div class="swiper-wrapper">
 							      	<div class="swiper-slide ban_img">
 							      		<?php if ($video) { ?>
 										<!-- 产品后台上传视频 -->
@@ -50,23 +47,23 @@
 
 										<?php } elseif ($thumb) { ?>
 										<div class="highslide-gallery">
-											<a class="highslide product_image jqzoom" target="_blank" href="<?php echo $image; ?>" title="<?php echo $heading_title; ?>">
-												<img id="jwx_productInfoImg" src="<?php echo $thumb; ?>" title='<?php echo $heading_title; ?>' alt='<?php echo $heading_title; ?>' />
+											<a class="highslide product_image jqzoom" target="_blank"  title="<?php echo $heading_title; ?>">
+												<img id="jwx_productInfoImg" src="<?php echo $thumb; ?>" title='<?php echo $heading_title; ?>' ' />
 											</a>
 										</div>
 										<?php } ?>
 							      	</div>
-								   <!--  <div class="swiper-slide ban_img">
-								    	<img src="img/jpg/product1.jpg"/>
+								    <!-- <div class="swiper-slide ban_img">
+								    	<img src="catalog/view/theme/default/img/jpg/product1.jpg"/>
 								    </div>
 								    <div class="swiper-slide ban_img">
-								    	<img src="img/jpg/pro_det1.jpg"/>
+								    	<img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/>
 								    </div>
 								    <div class="swiper-slide ban_img">
-							      		<img src="img/jpg/pro_det1.jpg"/>
+							      		<img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/>
 							      	</div>
 								    <div class="swiper-slide ban_img">
-								    	<img src="img/jpg/product1.jpg"/>
+								    	<img src="catalog/view/theme/default/img/jpg/product1.jpg"/>
 								    </div> -->
 							    </div>
 							    <div class="swiper-pagination"></div>
@@ -78,6 +75,7 @@
 					</div>
 					<div class="right">
 						<div class="top_text">
+						<!-- <a href="###"><?php echo $heading_title;?></a> -->
 								<h2><?php echo $heading_title;?></h2>
 
 
@@ -89,18 +87,18 @@
 									<dl class="col_f00 jiage" id="money" style="margin-bottom:10px;">
 										<?php if($special){ ?>
 										<span>
-											<i style="color:#999;font-size: 16px;">Vip Price:&ensp;</i>
-											<b style="font-size: 16px;"><?php echo $special; ?></b>
-											<del class="price-old" style="color:#999;font-size: 16px;"><?php echo $price; ?></del>
+											<i style="color:#999;font-size: 25px;">Vip Price:&ensp;</i>
+											<b style="font-size: 30px;"><?php echo $special; ?></b>
+											<del class="price-old" style="color:#999;font-size: 20px;"><?php echo $price; ?></del>
 											<b><?php echo $free_shipping; ?></b>
 										</span>
 										<?php }else{ ?>
 										<span>
-											<i>Price:&ensp;</i>
-											<b><?=$price?> </b>
-											<?php if (isset($login)) { ?>
-											<a class="price-go-login" href="<?php echo $login; ?>">View Specials</a>
-											<?php } ?>
+											<i style="font-size: 25px;">Price:&ensp;</i>
+											<b style="font-size: 30px;"><?=$price?> </b>
+											<!-- <?php if (isset($login)) { ?>
+											<a class="price-go-login" href="<?php echo $login; ?>"><b style="font-size: 16px;">View Specials</b></a>
+											<?php } ?> -->
 											<b><?php echo $free_shipping; ?></b>
 										</span>
 										<?php } ?>
@@ -114,44 +112,54 @@
 								<label class="num_label" for="">
 									<span>Quantity:</span>
 
-									<div class="price_input clearfix" id="button-cart">
+									<div class="price_input clearfix" >
 										<span class="sub" ></span>
 										<input class="num" type="text" value="1" id="nums"/>
 										<span class="add"></span>
 									</div>
 
 								</label>
+								
 								<label class="len_label" for="">
-									<span>Length:</span>
-									<div class="select_div">
-										<button class="select_btn"><span>12in  100g  1pc</span></button>
-										<div class="select_ul">
-											<ul>
-												<li>12in  100g  1pc</li>
-												<li>14in  100g  1pc</li>
-												<li>16in  100g  1pc</li>
-												<li>18in  100g  1pc</li>
-												<li>20in  100g  1pc</li>
-												<li>22in  100g  1pc</li>
-												<li>24in  100g  1pc</li>
-												<li>26in  100g  1pc</li>
-												<li>28in  100g  1pc</li>
-												<li>30in  100g  1pc</li>
-											</ul>
-										</div>
+								<input type="hidden" value="" id="share-content" />
+									<!-- <span>Length:</span> -->
+									<div class="select_div" style="margin-top:35px;">
+									   <form id='form-product' >
+									<?php if ($options) { ?>
+					
+										<?php foreach ($options as $option) { ?>
+									<!-- <h4><?=$option['name'];?></h4> -->
+									<?php if ($option['product_option_value']) { ?>
+									<?php if ($option['type'] == 'select') { ?>
+									<p class="select-box">
+									<span style=" font-size:17px;color: gray;"><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
+									<select onchange="changeprice()" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>"  style="cursor:pointer; width:120px;height:41px;font-size:13px; " >
+										<option value=""><?php echo $text_select; ?></option>
+										<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
+										<option <?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'selected';} else if($k==0) echo 'selected'; ?> value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+										<?php if ($option_value['price']) { ?>
+										(<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+										<?php } ?>
+										</option>
+										<?php } ?>
+									</select>
+								    </p>
+									<?php } if ($option['type'] == 'radio') { ?>
+									<p class="select-box">
+										<span><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
+									<div class="product_label">
+										<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
+										<label <?=$k==0?'style="border-color: rgb(254, 136, 31);"':''?>>
+										<input onclick=" changeprice();" <?=$k==0?'checked':'';?> type="radio" name="option[<?php echo $option['product_option_id']; ?>]" style="display:none" value="<?php echo $option_value['product_option_value_id']; ?>" />
+										<?php echo $option_value['name']; ?>
+										</label>
+										<?php } ?>
 									</div>
-									<!-- <ul style="display: none;" class="clearfix">
-										<li class="active">12in 100g 1pc</li>
-										<li>12in 100g 1pc</li>
-										<li>12in 100g 1pc</li>
-										<li>12in 100g 1pc</li>
-										<li>12in 100g 1pc</li>
-										<li>12in 100g 1pc</li>
-										<li>12in 100g 1pc</li>
-										<li>12in 100g 1pc</li>
-										<li>12in 100g 1pc</li>
-									</ul>
- -->									
+									</p>
+									<?php }} ?>
+									<?php }} ?>
+								</form>
+									</div>
 								</label>
 								<span class="measurement">
 									About Measurement
@@ -161,8 +169,8 @@
 									<div class="close"></div>
 								</div>
 							</div>
-							<a class="a_btn clearfix" href="">ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
-							<button class="xyd_btn" href="###"><span>WISHLIST</span></button>
+							<a class="a_btn clearfix" id="button-cart" >ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
+							<button class="xyd_btn" onclick="wishlist('<?php echo $product_id; ?>');"><span>WISHLIST</span></button>
 						</div>
 						<div class="bot_text clear">
 							<p class="text_p text_p2"><span>Hair Material:</span> Double Drawn Human Hair</p>
@@ -369,13 +377,14 @@
 						<hr />
 						<span>RECOMMENDED FOR YOU</span>
 					</h1>
+
 					<ul class="bot_det_ul">
-					<?php foreach ($products as $product) { ?>
+					 <?php foreach ($recommend_products as $product) { ?>
 							
-						<!-- <li>
-							<a href="###">
-								<div class="pic_img">
-									<img src="<?php echo $product['thumb']; ?>"/>
+						<li>
+							<a href="<?php echo $href.$product['product_id']; ?>"> 
+								<div class="pic_img" >
+									<img src="<?php echo $product['image']; ?>" style="width: 353px;height: 250px;" />
 								</div>
 								<div class="text">
 								<span class="price">
@@ -387,60 +396,12 @@
 					                  <?php } ?>
 					                </span>
 									<!-- <span>$37.01</span> -->
-									<!-- <p class="p1"><?php echo $product['texture']; ?></p>
+									 <p class="p1"><?php echo $product['meta_title']; ?></p>
 									<p class="p2"><?php echo $product['name']; ?> </p>
 								</div>
 							</a>
 						</li>
-						<?php } ?> --> 
-						<li>
-							<a href="###">
-								<div class="pic_img">
-									<img src="catalog/view/theme/default/img/jpg/pro_det4.jpg"/>
-								</div>
-								<div class="text">
-									<span>$37.01</span>
-									<p class="p1">Silky Straight</p>
-									<p class="p2">10"-30" Virgin Brazilian Straight Hair </p>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="###">
-								<div class="pic_img">
-									<img src="catalog/view/theme/default/img/jpg/pro_det4.jpg"/>
-								</div>
-								<div class="text">
-									<span>$37.01</span>
-									<p class="p1">Silky Straight</p>
-									<p class="p2">10"-30" Virgin Brazilian Straight Hair </p>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="###">
-								<div class="pic_img">
-									<img src="catalog/view/theme/default/img/jpg/pro_det4.jpg"/>
-								</div>
-								<div class="text">
-									<span>$37.01</span>
-									<p class="p1">Silky Straight</p>
-									<p class="p2">10"-30" Virgin Brazilian Straight Hair </p>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="###">
-								<div class="pic_img">
-									<img src="catalog/view/theme/default/img/jpg/pro_det4.jpg"/>
-								</div>
-								<div class="text">
-									<span>$37.01</span>
-									<p class="p1">Silky Straight</p>
-									<p class="p2">10"-30" Virgin Brazilian Straight Hair </p>
-								</div>
-							</a>
-						</li>
+						<?php } ?> 
 					</ul>
 				</div>
 				
@@ -449,6 +410,21 @@
 		</div>
 <!-- 新 -->
 <script>
+function wishlist(product_id) {
+  //alert(product_id);die;
+   $.ajax({
+    url:'<?php echo $wishlist ;?>',
+    type:'post',
+    data:{'product_id':product_id},
+    dataType: 'json',
+    success:function(data){
+      if (data.success) {
+        $('#wishlist_count').html(data.total);
+      }
+               // location.reload(); 
+    }
+   })
+ }
 var swiper3 = new Swiper('#swiper3', {
 	loop:true,
 	navigation: {
@@ -565,7 +541,115 @@ $(function(){
 			}
 		})
 	})
+function productInfoImg(elm) {
+        var ind = $(elm).parents("li").index();
+        if(ind == 0){
+            if($(".product_image video").length === 0 ){
+                $("#jwx_productInfoImg").show();
+                $(".pra-list-ul li").removeClass("on");
+                $(elm).parents("li").addClass("on");
+                $(".product_image").attr("href", jQuery(elm).attr("data-img"));
+                $(".product_image").attr("target", "_blank");
+            }
+            else{
+                $(".product_image video").show();
+                $("#jwx_productInfoImg").hide();
+                $(".pra-list-ul li").removeClass("on");
+                $(elm).parents("li").addClass("on");
+                $(".product_image").removeAttr("href");
+                $(".product_image").attr("target", "_self");
+            }
+        }
+        else{
+            $(".product_image video").hide();
+            $("#jwx_productInfoImg").show();
+            jQuery("#jwx_productInfoImg").attr({
+                src: jQuery(elm).attr("data-img"),
+                jqimg: jQuery(elm).attr("jqimg")
+            });
+            $(".pra-list-ul li").removeClass("on");
+            $(elm).parents("li").addClass("on");
+            $(".product_image").attr("href", jQuery(elm).attr("data-img"));
+            $(".product_image").attr("target", "_blank");
+        }
+    }
+    function playVid() {
+        Rerun.style.display="none";
+        myVideo.play();
+    }
 
+</script>
+<!-- 加入购物车 -->
+<script type="text/javascript">
+    <!--
+
+    var product_id = "<?php echo $product_id; ?>";
+
+    $('#button-cart').on('click', function() {
+        $.ajax({
+            url: 'index.php?route=checkout/cart/add',
+            type: 'post',
+            data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+            dataType: 'json',
+            beforeSend: function() {
+                $('#button-cart').button('loading');
+            },
+            complete: function() {
+                $('#input-quantity').val('1');
+//                $('#nums').html('1');
+//                $('#button-cart').button('reset');
+                $('#button-cart').html('CHECK OUT: <span id="nums">1</span> <span class="new-product-num-right">Item</span>');
+                $('#button-cart').attr("disabled",false);
+            },
+            success: function(json) {
+//                console.log(json);die;
+                $('.alert, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if(json['error']) {
+                    if(json['error']['option']) {
+                        for(i in json['error']['option']) {
+                            var element = $('#input-option' + i.replace('_', '-'));
+
+                            if(element.parent().hasClass('input-group')) {
+                                element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                            } else {
+                                element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                            }
+                        }
+                    }
+
+                    if(json['error']['recurring']) {
+                        $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+                    }
+
+                    // Highlight any found errors
+                    $('.text-danger').parent().addClass('has-error');
+                }
+
+                if(json['success']) {
+
+//                    console.log(json['success']);die;
+                    $('#cart-num').html(parseInt($('#cart-num').html())+parseInt($('#input-quantity').val()));
+
+                    $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                    $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 'slow');
+
+                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
+
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+    //-->
 </script>
 
 <?php echo $footer; ?>
