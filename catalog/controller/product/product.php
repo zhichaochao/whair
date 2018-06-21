@@ -321,6 +321,8 @@ class ControllerProductProduct extends Controller {
             $data['button_upload'] = $this->language->get('button_upload');
             $data['button_continue'] = $this->language->get('button_continue');
 
+            $data['wishlist'] = $this->url->link('account/wishlist/add', '', true);
+
             $this->load->model('catalog/review');
 
             $data['tab_description'] = $this->language->get('tab_description');
@@ -780,6 +782,34 @@ class ControllerProductProduct extends Controller {
                 $i++;
             }
             $data['popular_products'] = $popular_products;
+
+            //首页推荐商品
+            $recommend_products = $this->model_catalog_product->getRecommendProducts();
+             //print_r($recommend_products);exit();
+            $i = 0;
+            foreach($recommend_products as $key=>$row){
+                $recommend_products[$key]['key_id'] = $i;   //作为索引值 dyl add
+            
+                $recommend_products[$key]['description'] = utf8_substr(strip_tags(html_entity_decode($row['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..';
+            
+                if($recommend_products[$key]['image']){
+                    $recommend_products[$key]['image'] = $this->model_tool_image->resize($row['image'], 228, 228);
+                }else{
+                    $recommend_products[$key]['image'] = $this->model_tool_image->resize('placeholder.png', 228, 228);
+                }
+            
+                $recommend_products[$key]['product_link'] = $this->url->link('product/product','product_id='.$row['product_id']);
+                $recommend_products[$key]['texture'] = $this->model_catalog_product->getOptionDes('Texture',$row['product_id']);
+                $recommend_products[$key]['price'] = $this->currency->format($row['price'], $this->session->data['currency']);
+                $recommend_products[$key]['min_name'] = utf8_substr(strip_tags($row['name']),0,40).'...';
+                $i++;
+            }
+            
+            $data['recommend_products'] = $recommend_products;
+
+            $data['href']=$this->url->link('product/product', 'product_id=' );
+            //print_r($recommend_products['product_id']);die;
+
             //产品详情页的popular product end
 
 
