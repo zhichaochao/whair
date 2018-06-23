@@ -85,7 +85,7 @@
 										<?php }else{ ?>
 										<span>
 											<!-- <i style="font-size: 25px;">Price:&ensp;</i> -->
-											<b style="font-size: 22px;"><?=$price?> </b>
+											<b style="font-size: 30px;"><?=$price?> </b>
 											<!-- <?php if (isset($login)) { ?>
 											<a class="price-go-login" href="<?php echo $login; ?>"><b style="font-size: 16px;">View Specials</b></a>
 											<?php } ?> -->

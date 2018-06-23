@@ -1518,16 +1518,16 @@ class ControllerProductProduct extends Controller {
 
                 if ($is_speical && !$this->customer->isLogged()) {
                     $this->session->data['redirect'] = $this->url->link('product/product', 'product_id=' . $product_info['product_id']);
-                    $login = $this->url->link('account/login', '', true);
-                    $login_html = '<a class="price-go-login" href="' . $login . '">View Specials</a>';
+                    // $login = $this->url->link('account/login', '', true);
+                    // $login_html = '<a class="price-go-login" href="' . $login . '">View Specials</a>';
                 }
 
-                $json['html']='<dd>
-						<i>Price:&ensp;</i>
-						<b>' . $product_price . '</b>'.
+                $json['html']='<p>
+						
+						<b style="font-size: 30px;">' . $product_price . '</b>'.
                     $login_html .
                     '<b><?php echo $free_shipping; ?></b>
-					</dd>';
+					</p>';
             }
 
             $this->response->addHeader('Content-Type: application/json');

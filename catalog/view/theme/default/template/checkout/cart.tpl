@@ -1,217 +1,160 @@
 <?php echo $header; ?>
-<section class="content-wrap">
-	<div class="cart-finger">
-		<div class="cart-finger-pic">
-			<div class="cart-finger-now">
-				<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-			</div>
-		</div>
-		<div class="cart-finger-dec">
-			<ul class="fixclea">
-				<li class="act">
-					<b>1</b> Shopping Cart
-				</li>
-				<li class="in-block">
-					<b>2</b> Shipping
-				</li>
-				<li class="in-block">
-					<b>3</b> Place Order
-				</li>
-				<li class="in-block">
-					<b>4</b> Payment
-				</li>
-			</ul>
-		</div>
-	</div>
-</section>
+<!--内容-->
+		<div class="shopcart2 clearfix">
+			<div class="content in_content shop2_content clearfix">
+				<div class="top clearfix">
+					<h1>SHOPPING CART</h1>
+					<a href="<?php echo $url?>">Continue Shopping</a>
+				</div>
+				<form id="cart-form" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+				<div class="shop2_text clearfix">
+					<div class="left">
+						<label for="" class="qx_label">
+							<span>ALL</span>
+							<input class="check_input" autocomplete="off" id="lang-checkbox-select-all" type="checkbox">
+							<i class="check_i"></i>
+							<!-- <input autocomplete="off" id="tfoot-checkbox-select-all" type="checkbox" class="check_i" > -->
+						</label>
+						<ul class="shop2_ul">
+							 <?php foreach($products as $product){ ?>
+							<li class="clearfix">
+								<label for="" class="dx_label">
+									 <input class="check_input" autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
+									 <i class="check_i"></i>
+									<!-- <input autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>" class="check_i" > -->
+								</label>	
+								<?php if ($product['thumb']) { ?>
+									<div>
+			                        <a href="<?php echo $product['href']; ?>">
+			                   <img src="<?php echo $product['thumb']; ?>"  title="<?php echo $product['name']; ?>" class="pic_img" />
+			                        </a>
+			                        </div>
+			                      <?php } ?>
+								<!-- <div class="pic_img">
+									<a href="###"><img src="img/jpg/pro_det1.jpg" alt="" /></a>
+								</div> -->
+								<div class="text">
+									<a class="a_bt" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+									<p><span>Color:</span> Natural Black</p>
+									<p>
+									<?php if ($product['option']) { ?>                         
+			                         <?php foreach ($product['option'] as $option) { ?>						  
+			                          <p>
+			                           <?php if( !empty($option['name']) ){ ?>
+			                             <?php echo $option['name'].': '; ?><?php echo $option['value']; ?>
+			                           <?php } ?> 
+			                          </p>                        
+			                         <?php } ?>                         
+			                        <?php } ?>
+			                        </p>
+									<p><span>Commodity code:</span> xhs00245</p>
+								</div>
+								<div class="price clearfix">
+									<!-- <p>$35.65<span>$35.65</span></p> -->
+									<?php if($product['original_price']) { ?>
+					                    <p class="price-new"><?php echo $product['price']; ?>
+					                    <span><?php echo $product['original_price']; ?></span></p>
+				                    <?php }else{ ?>
+				                    	<p class="price-new"><?php echo $product['price']; ?></p>
+				                    <?php } ?>
+								</div>
 
-<?php if ($attention) { ?>
-<div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $attention; ?>
-<button type="button" class="close" data-dismiss="alert">&times;</button>
-</div>
-<?php } ?>
+								<!-- 商品总价 -->
+								<td class="td-total"><?php echo $product['total']; ?></td>
 
-<?php if ($success && !$error_warning) { ?>
-<div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?>
-<button type="button" class="close" data-dismiss="alert">&times;</button>
-</div>
-<?php } ?>
-
-<?php if ($error_warning) { ?>
-<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
-<button type="button" class="close" data-dismiss="alert">&times;</button>
-</div>
-<?php } ?>
-
-<article class="content-wrap fixclea">
-	<section class="cart-table fl-left">
-		<div id="active-cart-thead" class="mod mod-thead">
-			<div class="content">
-				<ul class="list-inline">
-					<li class="col-opt">
-						<span class="lang-checkbox">
-                          <input autocomplete="off" id="lang-checkbox-select-all" type="checkbox">
-                          <label for="lang-checkbox-select-all"></label>
-                        </span>
-						<label for="lang-checkbox-select-all">all</label>
-					</li>
-					<li class="col-goods">Image</li>
-					<li class="col-quantity">Product Name</li>
-					<li class="col-unitprice">Qty</li>
-					<li class="col-rebate">Unit Price</li>
-					<li class="col-amount">Subtotal</li>
-				</ul>
-			</div>
-		</div>
-        
-        <form id="cart-form" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-		<table id="cart_table">
-			<tbody>
-                <?php foreach($products as $product){ ?>
-				<tr>
-					<td class="td-checkbox">
-						<span class="lang-checkbox">
-                            <input autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
-                        </span>
-					</td>
-					<td class="td-goods">
-                      <?php if ($product['thumb']) { ?>
-						<div>
-                        <a href="<?php echo $product['href']; ?>">
-                   <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" />
-                        </a>
-                        </div>
-                      <?php } ?>
-					</td>
-					<td class="td-quantity">
-						<h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-                        
-                        <?php if ($product['option']) { ?>                         
-                         <?php foreach ($product['option'] as $option) { ?>						  
-                          <p>
-                           <?php if( !empty($option['name']) ){ ?>
-                             <?php echo $option['name'].': '; ?><?php echo $option['value']; ?>
-                           <?php } ?> 
-                          </p>                        
-                         <?php } ?>                         
-                        <?php } ?>                        
-					</td>
-					<td class="td-qty fixclea">
+								<div class="pre_div">
+									<div class="num_div">
+										<span class="sub" onclick="javascript:updateQty(this,1);"></span>
+										<!-- <input class="num" type="text" value="1" /> -->
+										<input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
+										<span class="add" onclick="javascript:updateQty(this,2);"></span>
+									</div>
+								</div>
+					<!-- <td class="td-qty fixclea">
 						<!--<b>-</b><span>1</span><i>+</i>-->
                         
-                        <a href="javascript:void(0);" class="icon_cart icon1" onclick="javascript:updateQty(this,1);">-</a>
+                      <!--   <a href="javascript:void(0);" class="icon_cart icon1" onclick="javascript:updateQty(this,1);">-</a>
                     <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
                         <a href="javascript:void(0);" class="icon_cart icon2" onclick="javascript:updateQty(this,2);">+</a>
-					</td>
-					<td class="td-unit">
-						<?php if($product['original_price']) { ?>
-		                    <span class="price-new"><?php echo $product['price']; ?></span>
-		                    <del class="price-old"><?php echo $product['original_price']; ?></del>
-	                    <?php }else{ ?>
-	                    	<span class="price-new"><?php echo $product['price']; ?></span>
-	                    <?php } ?>
-					</td>
-					<td class="td-total"><?php echo $product['total']; ?></td>
-					<!--<td class="td-del" onclick="cart.remove('');">-->
-                    <td class="td-del" onclick="javascript:cart_remove('<?php echo $product['cart_id']; ?>');">
-						<div></div>
-					</td>
-				</tr>
-                <?php } ?>
-			</tbody>
-		</table>
-        </form>
-        
-		<div id="active-cart-tfoot" class="cart-tfoot">
-			<div class="content">
-				<ul class="list-inline">
-					<li class="col-opt">
-						<span class="lang-checkbox">
-                           <input autocomplete="off" id="tfoot-checkbox-select-all" type="checkbox">
-                           <label for="tfoot-checkbox-select-all"></label>
-                        </span>
-						<label for="tfoot-checkbox-select-all">all</label>
-					</li>
-					<li class="col-goods">delete</li>
-				</ul>
-			</div>
-		</div>
-		<div class="coupon-check fixclea">
-		<div class="fl-left">
-			<div id="check_coupon">
-				<form id="discount-coupon-form" action="<?php echo $coupon_url; ?>" method="post">
-					<div class="discount">
-						<div class="discount-form">
-							<div class="input-box">
-							 <label for="coupon_code">
-                                <h4>Coupon Code</h4>
-                                <span>Enter your coupon code if you have one.</span>
-                             </label> 
-                             <input class="input-text form-control" id="coupon_code" name="coupon" value="<?php echo @$coupon; ?>">
-						     <button type="submit" title="Apply Coupon" class="button-coupon-gtm" value="Apply Coupon"><?php echo empty($coupon)?'APPLY COUPON':'CANCEL COUPON'; ?></button>
-                             <div>
-                             	<a href="<?php echo $continue; ?>" class="continueshopping continue-shopping-gtm">&lt; &lt; <span>Continue Shopping</span></a>
-                             </div>
-                             
-                            </div>
+					</td> --> 
+								<div class="close" onclick="javascript:cart_remove('<?php echo $product['cart_id']; ?>');"></div>
+								<span class="wishlist">Move to Wishlist</span>
+							</li>
+							<?php } ?>
+						</ul>
+					</div>			
+					<div class="right">
+						<h2>SUMMARY</h2>			
+						<?php foreach ($totals as $k => $total) {  if($total['title']!='Poundage'){?>
+                       <?php if($total['title']=='Total') { ?>
+                        <p class="p2"><?php echo $total['title']; ?> <span class="fr"><?php echo $total['text']; ?></span></p>
+                        <?php }else{ ?>
+                            <p class="p1"><?php echo $total['title']; ?> <span class="fr"><?php echo $total['text']; ?></span></p>
+                        <?php } ?>
+                    <?php } } ?>
+						<div class="shop_search">
+							<p>
+								If you have coupons, please fill them out. If not, 
+								please pay.
+							</p>
+							<label for="">
+							<form id="discount-coupon-form" action="<?php echo $coupon_url; ?>" method="post">
+								<!-- <input type="text" placeholder="coupon code"/> -->
+								<!-- <button>CONFIRM</button> -->
+								<input class="input-text form-control" id="coupon_code" name="coupon"  placeholder="coupon code">
+								<button type="submit"   value="CONFIRM">CONFIRM</button>
+
+							</form>
+							</label>
+						</div>
+						<div class="btn">
+							<a class="a_btn"  onclick="submitCart();">GO TO CHECK OUT&nbsp;&nbsp;&nbsp;></a>
+							<!-- <button type="button" title="Proceed to Checkout" class="a_btn" >
+				    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+				   PROCEED TO CHECKOUT</button> -->
 						</div>
 					</div>
+				</div>
 				</form>
+				<div class="bot clearfix">
+					<dl>
+						<dt>Delivery dates</dt>
+						<dd class="pc_dd">
+							We ship by FedEx, DHL express and local express.<br />
+							You can expect to get these items within <br />
+							5-7 days. <a href="###">More information&nbsp;&nbsp;>></a>
+						</dd>
+						<dd class="yd_dd">
+							Shopping on Hot Beauty Hair.com is safe and secure 
+							- guaranteed!
+						</dd>
+						
+					</dl>
+					<dl>
+						<dt>Satisfaction Guaranteed </dt>
+						<dd>
+							Hot Beauty Hair.com cares about your complete 
+							satisfaction. We offer a comprehensive return policy 
+							on all items, allowing you to shop with confidence.
+						</dd>
+					</dl>
+					<dl>
+						<dt>Privacy Policy</dt>
+						<dd class="pc_dd">
+							Hot Beauty Hair.com respects your privacy.<br />
+							We do NOT share or in any way distribute 
+							any personal, business or contact information 
+							you may provide. <a href="###">See Our Return Policy&nbsp;&nbsp;>></a>
+						</dd>
+						<dd class="yd_dd">
+							Hot Beauty Hair.com respects your privacy.We do NOT share 
+							or in any way distribute any personal, business or contact 
+							information you may provide.
+						</dd>
+					</dl>
+				</div>	
 			</div>
 		</div>
-		<div class="fl-right coupon-check-right">
-			<ul class="coupon-check-price">
-                <?php foreach ($totals as $total) { ?>
-                <li class="<?php if($total['title']=='Total'){ ?>grand<?php }else{ ?>subtotal<?php } ?> fixclea">
-		            <span><?php echo $total['title']; ?></span>
-		            <i><?php echo $total['text']; ?></i>
-		        </li>
-                <?php } ?>
-			</ul>
-			<ul class="checkout-types">
-				<li class="cart-checkout-metdod"> <button type="button" title="Proceed to Checkout" class="cart-to-checkout-gtm btn-checkout checkout-gtm" onclick="submitCart();">
-				    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-				    &ensp;&ensp;&ensp;PROCEED TO CHECKOUT</button>
-				</li>
-				<li class="cart-checkout-metdod1">
-                    <a class="paypal-gtm" id="ec_shortcut_e323c519df578caa83f14382f362301b" href="<?php echo $paypal_checkout; ?>"><img class="right checkout-paypalexpress-gtm" alt="Checkout with PayPal" src="/catalog/view/theme/default/images/tzx/cart/check_out.png"></a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	</section>
-	<aside class="cart-table-aside fl-right">
-		<dl>
-			<dt>SHOP WITH CONFIDENCE</dt>
-			<dd>Shopping on Hot Beauty Hair.com is safe and secure - guaranteed!</dd>
-			<dd style="text-align: center;margin-top: 10px;">
-				<img src="/catalog/view/theme/default/images/tzx/cart/paypal.png">
-				
-			</dd>
-			<dd style="text-align: center;margin: 20px 0 30px;">
-				<img src="/catalog/view/theme/default/images/tzx/cart/comodo_secure.png">
-			</dd>
-		</dl>
-		<dl>
-			<dt>SATISFACTION GUARANTEED</dt>
-			<dd>Hot Beauty Hair.com cares about your complete satisfaction. We offer a comprehensive return policy on all items, allowing you to shop with confidence.</dd>
-			<dd>
-				<a href="javascript:;">See Our Return Policy &gt;&gt;</a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>PRIVACY POLICY</dt>
-			<dd>Hot Beauty Hair.com respects your privacy.We do NOT share or in any way distribute any personal, business or contact information you may provide.</dd>
-			<dd>
-				<a href="javascript:;">See Our Privacy Policy &gt;&gt;</a>
-			</dd>
-		</dl>
-	</aside>
-</article>
-<article class="content-wrap">
-	
-	
-</article>
 <script>
 
 	function submitCart() {
@@ -224,35 +167,31 @@
 //        alert(chk_value);die;
         window.location='index.php?route=checkout/checkout&cart_ids=' + chk_value;
     }
-function updateQty(obj,type){
-    var qty = 1;
-    switch(type){
-        case 0:
-            document.getElementById('cart-form').submit();
-            break;
-        case 1:
-            qty = $(obj).next('input[type="text"]').val() - 1;
-            if(qty == 0) return false;
-            $(obj).next('input[type="text"]').val(qty);
-            document.getElementById('cart-form').submit();
-            break;
-        case 2:
-            qty = parseInt($(obj).prev('input[type="text"]').val()) + 1;
-            $(obj).prev('input[type="text"]').val(qty);
-            document.getElementById('cart-form').submit();
-            break;
-    }
-    
-}
-
-
-function cart_remove(product_key){
-   if(confirm('Are you sure?')){
-	  cart.remove(product_key);
-   }     
-}
-
-
+	function updateQty(obj,type){
+	    var qty = 1;
+	    switch(type){
+	        case 0:
+	            document.getElementById('cart-form').submit();
+	            break;
+	        case 1:
+	            qty = $(obj).next('input[type="text"]').val() - 1;
+	            if(qty == 0) return false;
+	            $(obj).next('input[type="text"]').val(qty);
+	            document.getElementById('cart-form').submit();
+	            break;
+	        case 2:
+	            qty = parseInt($(obj).prev('input[type="text"]').val()) + 1;
+	            $(obj).prev('input[type="text"]').val(qty);
+	            document.getElementById('cart-form').submit();
+	            break;
+	    }
+	    
+	}
+	function cart_remove(product_key){
+	   if(confirm('Are you sure?')){
+		  cart.remove(product_key);
+	   }     
+	}
 	jQuery(function($){
 		//var $btnJian = $('.cart-table .td-qty b'),
 //			$btnAdd = $('.cart-table .td-qty i');
@@ -331,5 +270,73 @@ function cart_remove(product_key){
 		}});
 		
 	});
+	//搜索
+	//收藏
+		$(".wishlist").click(function(){
+			var win = $(window).width();
+			if(win>992){
+				if($(this).hasClass("off")){
+					$(this).removeClass("off");
+					$(this).css("background","url(catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#666");
+				}else{
+					$(this).addClass("off");
+					$(this).css("background","url(catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#d5af74");
+				}
+			}else{
+				if($(this).hasClass("off")){
+					$(this).removeClass("off");
+					$(this).css("background","url(catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#666");
+				}else{
+					$(this).addClass("off");
+					$(this).css("background","url(catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#d5af74");
+				}
+			}
+			
+		})
+		$(".shop_search input").focus(function(){
+			$(".shop_search button").css("display","block");
+		})
+		//全选
+		$(".qx_label input").click(function(cart_id){
+			if($(this).prop("checked")){
+				$(this).siblings(".check_i").addClass("active");
+				$(".dx_label input").each(function(){
+					$(this).prop("checked",true);
+					$(this).siblings(".check_i").addClass("active");
+				})
+			}else{
+				$(this).siblings(".check_i").removeClass("active");
+				$(".dx_label input").each(function(){
+					$(this).prop("checked","");
+					$(this).siblings(".check_i").removeClass("active");
+				})
+			}
+		})
+		//单选
+		$(".dx_label input").click(function(cart_id){
+			//alert($cart_id);
+			if($(this).prop("checked")){
+				$(this).siblings(".check_i").addClass("active");
+				var len = $(".dx_label .check_i").length;
+				var i=0;
+				$(".dx_label .check_i").each(function(){
+					if($(this).hasClass("active")){
+						i++
+					}
+					return i;
+				})
+				if(i>=len){
+					$(".qx_label input").prop("checked",true);
+					$(".qx_label .check_i").addClass("active");
+				}
+				
+			}else{
+				$(this).siblings(".check_i").removeClass("active");
+				$(".qx_label .check_i").removeClass("active");
+				$(".qx_label input").prop("checked","");
+			}
+		})
+
+
 </script>
 <?php echo $footer; ?>

@@ -178,7 +178,7 @@ class ControllerCheckoutCart extends Controller {
                     'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
                 );
             }
-          //  print_r( $data['products']);exit();
+           //print_r( $data['products']);exit();
 
             // Gift Voucher
             $data['vouchers'] = array();
@@ -246,6 +246,8 @@ class ControllerCheckoutCart extends Controller {
                     'text'  => $this->currency->format($total['value'], $this->session->data['currency'])
                 );
             }
+            //$category_path=$this->get_category_path($nav['inside_id']);
+            $data['url']=$this->url->link('product/category','', true);
 
             $data['continue'] = $this->url->link('common/home');
 
