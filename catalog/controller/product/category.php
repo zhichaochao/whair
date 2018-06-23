@@ -259,6 +259,7 @@ class ControllerProductCategory extends Controller {
 					  $color_name = $color_arr[0];
 				   }
 			    }
+			   // $wishlist= $this->model_catalog_product->wishlistornot($result['product_id']);
                             
                 //texture
                 $texture = $this->model_catalog_product->getOptionDes('Texture',$result['product_id']);
@@ -279,6 +280,7 @@ class ControllerProductCategory extends Controller {
 					'rating'      => $result['rating'],
 					//'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+					//'wishlist'=>$wishlist;
 				);
 			}
 

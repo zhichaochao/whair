@@ -387,9 +387,9 @@ class ControllerProductProduct extends Controller {
                     //'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
                     //'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'))
 
-                    'popup' => $this->model_tool_image->resize($result['image'], 700, 700),
+                    // 'popup' => $this->model_tool_image->resize($result['image'], 700, 700),
                     'thumb' => $this->model_tool_image->resize($result['image'], 200, 200),  //小图
-                    'thumb2' => $this->model_tool_image->resize($result['image'], 700, 700), //小图点击后的大图
+                    // 'thumb2' => $this->model_tool_image->resize($result['image'], 700, 700), //小图点击后的大图
                     'image'=> $this->model_tool_image->resize($result['image'], 700, 700)
                 );
             }
@@ -1506,12 +1506,12 @@ class ControllerProductProduct extends Controller {
                 $sproduct_price = $this->currency->format($sproduct_price, $this->session->data['currency']);
 
                 $json['sproduct_price']=$sproduct_price;
-                $json['html']='<dd>
-						<i>Vip Price:&ensp;</i>
-						<b>' . $sproduct_price . '</b>
-						<del class="price-old" style="color:#999;font-size: 16px;">' . $product_price . '</del>
+                $json['html']='<p>
+						
+						<b style="font-size: 30px;" >' . $sproduct_price . '</b>
+						<del class="price-old" style="color:#999;font-size: 30px;">' . $product_price . '</del>
 						<b>' . $free_shipping . '</b>
-					</dd>';
+					</p>';
             }else{
                 $login_html = '';
                 $is_speical = $this->model_catalog_product->isHasSpecialPrice($product_info['relation_product']);

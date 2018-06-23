@@ -36,7 +36,7 @@
                   <p><?php echo $product['name']; ?></p>
                 </div>
               </a>
-              <div class="sc_div" onclick="wishlist('<?php echo $product['product_id']; ?>');" ></div>
+              <!-- <div class="sc_div <?=$product['wishlist']==1?'off':'';?>" onclick="wishlist('<?php echo $product['product_id']; ?>',this);" ></div> -->
             </li>
              <?php } ?>
           </ul>
@@ -54,7 +54,22 @@
   </div>
 </div>
 <script>
- function wishlist(product_id) {
+ function wishlist(product_id,e) {
+  if ($(e).hasClass('off')) {
+       $.ajax({
+    url:'<?php echo $delewishlist ;?>',
+    type:'post',
+    data:{'product_id':product_id},
+    dataType: 'json',
+    success:function(data){
+      if (data.success) {
+        $('#wishlist_count').html(data.total);
+      }
+               // location.reload(); 
+    }
+   })
+
+  }else{
   //alert(product_id);die;
    $.ajax({
     url:'<?php echo $wishlist ;?>',
@@ -69,6 +84,7 @@
     }
    })
  }
+}
   $(function(){
     
     //sortby

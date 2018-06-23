@@ -4,7 +4,8 @@
 				<div class="top clearfix">
 					<div class="left clearfix">
 						<ol class="pro_img_ol">
-							<li><?php if ($images) { ?>
+						<?php if ($images) { ?>
+							<li class="li">
 							<div class="more-views">
 								<div class="prdimgup"> </div>
 								<div class="highslide-gallery" id="prdimglist" page="0">
@@ -24,56 +25,45 @@
 								<div class="prdimgdown"></div>
 								<div style="clear:both;"></div>
 							</div>
-							<?php } ?></li>
-							<!-- <li><img src="catalog/view/theme/default/img/jpg/product1.jpg"/></li>
-							<li><img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/></li>
-							<li><img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/></li>
-							<li><img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/></li> -->
+							</li>
+							<?php } ?>
 						</ol>
-						<div class="pro_big_img">
-							<div class="swiper-container"id="swiper3">
+						<div class="pro_big_img" style="overflow: hidden;position:relative; ">
+							<div class="swiper-container" id="swiper3">
 							    <div class="swiper-wrapper">
-							      	<div class="swiper-slide ban_img">
-							      		<?php if ($video) { ?>
+							    	<?php if ($video) { ?>
+							      		<div class="swiper-slide ban_img">						      		
 										<!-- 产品后台上传视频 -->
-										<div class="highslide-gallery">
-											<a class="highslide product_image jqzoom" target="_self" title="<?php echo $heading_title; ?>">
-												<video class="pull-left" src='<?=$video?>' id="audio" style="width:100%;height:100%;" autoplay></video>
-												<img id="Rerun" src="image/catalog/review.png" style="display:none;width:80px;height:80px;position:relative;z-index:10;top:-288px;" onclick= "playVid()"/>
-												<img id="jwx_productInfoImg" src="image/pc/kks1-700x700.jpg" title='Fuller Peruvian Virgin Hair Kinky Straight 12inch to 26inch' alt='Fuller Peruvian Virgin Hair Kinky Straight 12inch to 26inch' style="display:none;" />
-											</a>
+											<video class="pull-left" src='<?=$video?>' id="audio" style="width:100%;height:100%;" autoplay></video>
+											<img id="Rerun" src="image/catalog/review.png" style="display:none;width:80px;height:80px;position:relative;z-index:10;top:-288px;" onclick="playVid()"/>
+											<img id="jwx_productInfoImg" src="<?php echo $image['thumb']; ?>" title='Fuller Peruvian Virgin Hair Kinky Straight 12inch to 26inch' alt='Fuller Peruvian Virgin Hair Kinky Straight 12inch to 26inch' style="display:none;" />
+									 	</div>
+										<!-- 产品后台上传视频 -->
+										   	<?php foreach ($images as $k => $image) {  if($k > 0) {?>
+							    		<div class="swiper-slide ban_img">
+													<img  src="<?php echo $image['image']; ?>" title='<?php echo $heading_title; ?>'  />
 										</div>
-										<!-- 产品后台上传视频 -->
+								    	<?php } } ?>
+											<?php } elseif ($thumb) { ?>
+									   	<?php foreach ($images as $k => $image) { ?>
+								    		<div class="swiper-slide ban_img">
+													<img  src="<?php echo $image['image']; ?>" title='<?php echo $heading_title; ?>'  />
+											</div>
+								    	<?php } ?>
+							    	<?php } ?>
 
-										<?php } elseif ($thumb) { ?>
-										<div class="highslide-gallery">
-											<a class="highslide product_image jqzoom" target="_blank"  title="<?php echo $heading_title; ?>">
-												<img id="jwx_productInfoImg" src="<?php echo $thumb; ?>" title='<?php echo $heading_title; ?>' ' />
-											</a>
-										</div>
-										<?php } ?>
-							      	</div>
-								    <!-- <div class="swiper-slide ban_img">
-								    	<img src="catalog/view/theme/default/img/jpg/product1.jpg"/>
-								    </div>
-								    <div class="swiper-slide ban_img">
-								    	<img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/>
-								    </div>
-								    <div class="swiper-slide ban_img">
-							      		<img src="catalog/view/theme/default/img/jpg/pro_det1.jpg"/>
-							      	</div>
-								    <div class="swiper-slide ban_img">
-								    	<img src="catalog/view/theme/default/img/jpg/product1.jpg"/>
-								    </div> -->
-							    </div>
+							    </div>	
 							    <div class="swiper-pagination"></div>
 							    <div class="swiper-button-prev"></div>
 								<div class="swiper-button-next"></div>
 							</div>
 							
 						</div>
+						
 					</div>
-					<div class="right">
+
+					<div class="right" id="product">
+					<input type="hidden" name="product_id" value="<?=$product_id?>">
 						<div class="top_text">
 						<!-- <a href="###"><?php echo $heading_title;?></a> -->
 								<h2><?php echo $heading_title;?></h2>
@@ -87,15 +77,15 @@
 									<dl class="col_f00 jiage" id="money" style="margin-bottom:10px;">
 										<?php if($special){ ?>
 										<span>
-											<i style="color:#999;font-size: 25px;">Vip Price:&ensp;</i>
+											<!-- <i style="color:#999;font-size: 25px;">Vip Price:&ensp;</i> -->
 											<b style="font-size: 30px;"><?php echo $special; ?></b>
-											<del class="price-old" style="color:#999;font-size: 20px;"><?php echo $price; ?></del>
+											<del class="price-old" style="color:#999;font-size: 30px;"><?php echo $price; ?></del>
 											<b><?php echo $free_shipping; ?></b>
 										</span>
 										<?php }else{ ?>
 										<span>
-											<i style="font-size: 25px;">Price:&ensp;</i>
-											<b style="font-size: 30px;"><?=$price?> </b>
+											<!-- <i style="font-size: 25px;">Price:&ensp;</i> -->
+											<b style="font-size: 22px;"><?=$price?> </b>
 											<!-- <?php if (isset($login)) { ?>
 											<a class="price-go-login" href="<?php echo $login; ?>"><b style="font-size: 16px;">View Specials</b></a>
 											<?php } ?> -->
@@ -120,8 +110,8 @@
 
 								</label>
 								
-								<label class="len_label" for="">
-								<input type="hidden" value="" id="share-content" />
+								<label class="len_label" for="" >
+								<!-- <input type="hidden" value="" id="share-content" /> -->
 									<!-- <span>Length:</span> -->
 									<div class="select_div" style="margin-top:35px;">
 									   <form id='form-product' >
@@ -130,10 +120,10 @@
 										<?php foreach ($options as $option) { ?>
 									<!-- <h4><?=$option['name'];?></h4> -->
 									<?php if ($option['product_option_value']) { ?>
-									<?php if ($option['type'] == 'select') { ?>
+									<?php if ($option['type'] == 'select') { ?> 
 									<p class="select-box">
 									<span style=" font-size:17px;color: gray;"><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
-									<select onchange="changeprice()" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>"  style="cursor:pointer; width:120px;height:41px;font-size:13px; " >
+									<select onchange="changeprice()" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>"  style="cursor:pointer; width:120px;height:41px;font-size:13px;">
 										<option value=""><?php echo $text_select; ?></option>
 										<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
 										<option <?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'selected';} else if($k==0) echo 'selected'; ?> value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
@@ -384,7 +374,7 @@
 						<li>
 							<a href="<?php echo $href.$product['product_id']; ?>"> 
 								<div class="pic_img" >
-									<img src="<?php echo $product['image']; ?>" style="width: 353px;height: 250px;" />
+									<img src="<?php echo $product['image']; ?>" style="width: 303px;height: 250px;" />
 								</div>
 								<div class="text">
 								<span class="price">
@@ -445,8 +435,10 @@ $(function(){
 			$(".meas_img").fadeOut();
 		})
 		
-		$(".pro_img_ol>li").click(function(){
+		$(".pra-list-ul>li").click(function(){
+			
 			var this_index = $(this).index();
+		
 			$(".swiper-pagination-clickable span").eq(this_index).trigger('click');
 		})
 		
@@ -581,68 +573,64 @@ function productInfoImg(elm) {
 </script>
 <!-- 加入购物车 -->
 <script type="text/javascript">
-    <!--
-
+  
     var product_id = "<?php echo $product_id; ?>";
-
     $('#button-cart').on('click', function() {
+
         $.ajax({
             url: 'index.php?route=checkout/cart/add',
             type: 'post',
+             dataType: 'json',
             data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-            dataType: 'json',
-            beforeSend: function() {
-                $('#button-cart').button('loading');
-            },
-            complete: function() {
-                $('#input-quantity').val('1');
-//                $('#nums').html('1');
-//                $('#button-cart').button('reset');
-                $('#button-cart').html('CHECK OUT: <span id="nums">1</span> <span class="new-product-num-right">Item</span>');
-                $('#button-cart').attr("disabled",false);
-            },
+           
+     
             success: function(json) {
-//                console.log(json);die;
-                $('.alert, .text-danger').remove();
-                $('.form-group').removeClass('has-error');
+            	if (json.success) {
+        			$('#cart_count').html(json.total);
 
-                if(json['error']) {
-                    if(json['error']['option']) {
-                        for(i in json['error']['option']) {
-                            var element = $('#input-option' + i.replace('_', '-'));
+     			 }
+           // alert(json);
+              //console.log(json);
+                // $('.alert, .text-danger').remove();
+                // $('.form-group').removeClass('has-error');
 
-                            if(element.parent().hasClass('input-group')) {
-                                element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                            } else {
-                                element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                            }
-                        }
-                    }
+                // if(json['error']) {
+                //     if(json['error']['option']) {
+                //         for(i in json['error']['option']) {
+                //             var element = $('#input-option' + i.replace('_', '-'));
 
-                    if(json['error']['recurring']) {
-                        $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
-                    }
+                //             if(element.parent().hasClass('input-group')) {
+                //                 element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                //             } else {
+                //                 element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                //             }
+                //         }
+                //     }
 
-                    // Highlight any found errors
-                    $('.text-danger').parent().addClass('has-error');
-                }
+                //     if(json['error']['recurring']) {
+                //         $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+                //     }
 
-                if(json['success']) {
+                //     // Highlight any found errors
+                //     $('.text-danger').parent().addClass('has-error');
+                // }
 
-//                    console.log(json['success']);die;
-                    $('#cart-num').html(parseInt($('#cart-num').html())+parseInt($('#input-quantity').val()));
+                // if(json['success']) {
 
-                    $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                //    // //console.log(json['success']);die;
+                //    //  $('#cart-num').html(parseInt($('#cart-num').html())+parseInt($('#input-quantity').val()));
 
-                    $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+                //    //  $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
-                    $('html, body').animate({
-                        scrollTop: 0
-                    }, 'slow');
+                //    //  $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
 
-                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                //    //  $('html, body').animate({
+                //    //      scrollTop: 0
+                //    //  }, 'slow');
 
-                }
+                //    //  // $('#cart > ul').load('index.php?route=common/cart/info ul li');
+
+                // }
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -650,6 +638,22 @@ function productInfoImg(elm) {
         });
     });
     //-->
+    function changeprice() {
+        //console.log('first');
+//         alert($("#form-product").serialize());
+//		alert('<?php echo $product_id; ?>'+',<?=$read_special?$read_special:0?>'+',<?php echo $read_price;?>');
+        $.ajax({
+            url: 'index.php?route=product/product/getprice&product_id=<?php echo $product_id; ?>&p=<?php echo $read_price;?>&s=<?=$read_special?$read_special:0?>',
+            type: 'post',
+            dataType: 'json',
+            data: $("#form-product").serialize(),
+
+            success: function(json) {
+//                console.log(json);die;
+                $('#money').html(json['html']);
+            }
+        });
+    }
 </script>
 
 <?php echo $footer; ?>

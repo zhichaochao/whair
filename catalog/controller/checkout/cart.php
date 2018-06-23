@@ -320,6 +320,8 @@ class ControllerCheckoutCart extends Controller {
     }
 
 	public function add() {
+        // $products=$this->request->post['product_id'];
+        // var_dump($products);die;
 		$this->load->language('checkout/cart');
 
 		$json = array();
@@ -374,8 +376,9 @@ class ControllerCheckoutCart extends Controller {
 					$json['error']['recurring'] = $this->language->get('error_recurring_required');
 				}
 			}
-
+ // print_r($option);exit();
 			if (!$json) {
+
 				$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id);
 
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
@@ -431,6 +434,7 @@ class ControllerCheckoutCart extends Controller {
 				}
 
 				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+                $json['total'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
