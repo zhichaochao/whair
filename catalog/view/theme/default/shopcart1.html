@@ -224,7 +224,7 @@
 									<p>10"-30" Virgin Brazilian Straight Hair </p>
 								</div>
 							</a>
-							<!-- <div class="close"></div> -->
+							<div class="close"></div>
 							<div class="select_div">
 								<button class="select_btn"><span>12inch  100g</span></button>
 								<div class="select_ul">
@@ -665,18 +665,18 @@
 	$(function(){
 		//下拉选择
 		var off = 0;
-		$(".select_btn").click(function(){
+		$(".select_btn").on("click",function(event){
 			if($(this).hasClass("off")){
 				$(this).removeClass("off");
 				$(this).siblings(".select_ul").stop().slideUp();
-				off=0;
+				off = 0;
 			}else{
 				$(".select_btn").removeClass("off");
 				$(".select_ul").stop().slideUp();
-			
+				
 				$(this).addClass("off");
 				$(this).siblings(".select_ul").stop().slideDown();
-				off=1;
+				off = 1;
 			}
 			 event.stopPropagation();
 		})
@@ -695,6 +695,7 @@
 					off=0;
 				}
 			}
+			console.log(off)
 		})
 		
 		//删除当前li

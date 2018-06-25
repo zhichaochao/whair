@@ -222,7 +222,7 @@
 							<li><img src="img/jpg/product1.jpg"/></li>
 						</ol>
 						<div class="pro_big_img">
-							<div class="swiper-container"id="swiper3">
+							<div class="swiper-container" id="swiper3">
 							    <div class="swiper-wrapper">
 							      	<div class="swiper-slide ban_img">
 							      		<img src="img/jpg/pro_det1.jpg"/>
@@ -767,9 +767,9 @@ var swiper3 = new Swiper('#swiper3', {
 		
 		$(".pro_img_ol>li").click(function(){
 			var this_index = $(this).index();
+			$(this).addClass("active").siblings("li").removeClass("active");
 			$(".swiper-pagination-clickable span").eq(this_index).trigger('click');
 		})
-		
 		
 		$(".pro_det_content .len_label>ul>li").click(function(){
 			$(this).addClass("active").siblings("li").removeClass("active");
@@ -812,7 +812,7 @@ var swiper3 = new Swiper('#swiper3', {
 		
 		//下拉选择
 		var off = 0;
-		$(".select_btn").click(function(){
+		$(".select_btn").click(function(event){
 			if($(this).hasClass("off")){
 				$(this).removeClass("off");
 				$(this).siblings(".select_ul").stop().slideUp();
