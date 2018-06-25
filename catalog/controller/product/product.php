@@ -287,6 +287,7 @@ class ControllerProductProduct extends Controller {
             $this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
             $data['heading_title'] = $product_info['name'];
+            $data['wishlist']= $this->model_catalog_product->wishlistornot($product_info['product_id']);
 
             $data['text_select'] = $this->language->get('text_select');
             $data['text_manufacturer'] = $this->language->get('text_manufacturer');
@@ -321,7 +322,8 @@ class ControllerProductProduct extends Controller {
             $data['button_upload'] = $this->language->get('button_upload');
             $data['button_continue'] = $this->language->get('button_continue');
 
-            $data['wishlist'] = $this->url->link('account/wishlist/add', '', true);
+            $data['wishlist_add'] = $this->url->link('account/wishlist/add', '', true);
+            $data['delewishlist'] = $this->url->link('account/wishlist/delete', '', true);
 
             $this->load->model('catalog/review');
 

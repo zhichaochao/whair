@@ -160,7 +160,11 @@
 								</div>
 							</div>
 							<a class="a_btn clearfix" id="button-cart" >ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
-							<button class="xyd_btn" onclick="wishlist('<?php echo $product_id; ?>');"><span>WISHLIST</span></button>
+							<button class="xyd_btn <?=$wishlist==1 ?'off':'';?>"
+							  <?php if($wishlist==1) { ?>
+			              style='border: 1px solid rgb(213, 175, 116); background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll right 0.83vw center / 0.83vw auto;';
+			              <?php }?> 
+			              onclick="wishlist('<?php echo $product_id; ?>',this);"><span>WISHLIST</span></button>
 						</div>
 						<div class="bot_text clear">
 							<p class="text_p text_p2"><span>Hair Material:</span> Double Drawn Human Hair</p>
@@ -400,10 +404,40 @@
 		</div>
 <!-- 新 -->
 <script>
-function wishlist(product_id) {
+// function wishlist(product_id) {
+//   //alert(product_id);die;
+//    $.ajax({
+//     url:'<?php echo $wishlist ;?>',
+//     type:'post',
+//     data:{'product_id':product_id},
+//     dataType: 'json',
+//     success:function(data){
+//       if (data.success) {
+//         $('#wishlist_count').html(data.total);
+//       }
+//                // location.reload(); 
+//     }
+//    })
+//  }
+ function wishlist(product_id,e) {
+  if ($(e).hasClass('off')) {
+       $.ajax({
+    url:'<?php echo $delewishlist ;?>',
+    type:'post',
+    data:{'product_id':product_id},
+    dataType: 'json',
+    success:function(data){
+      if (data.success) {
+        $('#wishlist_count').html(data.total);
+      }
+               // location.reload(); 
+    }
+   })
+
+  }else{
   //alert(product_id);die;
    $.ajax({
-    url:'<?php echo $wishlist ;?>',
+    url:'<?php echo $wishlist_add ;?>',
     type:'post',
     data:{'product_id':product_id},
     dataType: 'json',
@@ -415,6 +449,7 @@ function wishlist(product_id) {
     }
    })
  }
+}
 var swiper3 = new Swiper('#swiper3', {
 	loop:true,
 	navigation: {

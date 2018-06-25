@@ -9,13 +9,13 @@
 				<form id="cart-form" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
 				<div class="shop2_text clearfix">
 					<div class="left">
-						<label for="" class="qx_label">
+						<label for="" class="qx_label" id="cart-tfoot">
 							<span>ALL</span>
 							<input class="check_input" autocomplete="off" id="lang-checkbox-select-all" type="checkbox">
 							<i class="check_i"></i>
 							<!-- <input autocomplete="off" id="tfoot-checkbox-select-all" type="checkbox" class="check_i" > -->
 						</label>
-						<ul class="shop2_ul">
+						<ul class="shop2_ul" id="cart_table">
 							 <?php foreach($products as $product){ ?>
 							<li class="clearfix">
 								<label for="" class="dx_label">
@@ -58,10 +58,6 @@
 				                    	<p class="price-new"><?php echo $product['price']; ?></p>
 				                    <?php } ?>
 								</div>
-
-								<!-- 商品总价 -->
-								<td class="td-total"><?php echo $product['total']; ?></td>
-
 								<div class="pre_div">
 									<div class="num_div">
 										<span class="sub" onclick="javascript:updateQty(this,1);"></span>
@@ -78,7 +74,11 @@
                         <a href="javascript:void(0);" class="icon_cart icon2" onclick="javascript:updateQty(this,2);">+</a>
 					</td> --> 
 								<div class="close" onclick="javascript:cart_remove('<?php echo $product['cart_id']; ?>');"></div>
-								<span class="wishlist">Move to Wishlist</span>
+								<span class="wishlist <?=$product['wishlist']==1 ?'off':'';?>" 
+									<?php if($product['wishlist']==1) { ?>
+					              style='background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll left center / 0.83vw 0.83vw; color: rgb(213, 175, 116);';
+					              <?php }?>
+								 onclick="wishlist('<?php echo $product['product_id']; ?>',this);">Move to Wishlist</span>
 							</li>
 							<?php } ?>
 						</ul>
@@ -156,7 +156,37 @@
 			</div>
 		</div>
 <script>
+function wishlist(product_id,e) {
+  if ($(e).hasClass('off')) {
+       $.ajax({
+    url:'<?php echo $delewishlist ;?>',
+    type:'post',
+    data:{'product_id':product_id},
+    dataType: 'json',
+    success:function(data){
+      if (data.success) {
+        $('#wishlist_count').html(data.total);
+      }
+               // location.reload(); 
+    }
+   })
 
+  }else{
+  //alert(product_id);die;
+   $.ajax({
+    url:'<?php echo $wishlist_add ;?>',
+    type:'post',
+    data:{'product_id':product_id},
+    dataType: 'json',
+    success:function(data){
+      if (data.success) {
+        $('#wishlist_count').html(data.total);
+      }
+               // location.reload(); 
+    }
+   })
+ }
+}
 	function submitCart() {
 	    console.log('in');
         var chk_value = '';
@@ -188,6 +218,7 @@
 	    
 	}
 	function cart_remove(product_key){
+		//alert(product_key);
 	   if(confirm('Are you sure?')){
 		  cart.remove(product_key);
 	   }     
@@ -200,7 +231,7 @@
 		var	$seleAllTop = $('#lang-checkbox-select-all'),
 			$seleAllBot = $('#tfoot-checkbox-select-all'),
 			$checkbox = $('#cart_table :checkbox'),
-			$btndel = $('.cart-tfoot .col-goods');
+			$btndel = $('#cart-tfoot .col-goods');
 			
 		//$btnJian.on('click',function(){
 //			if($(this).next().text() > 1){

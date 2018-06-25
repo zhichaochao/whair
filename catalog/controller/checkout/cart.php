@@ -80,6 +80,7 @@ class ControllerCheckoutCart extends Controller {
 
             $this->load->model('tool/image');
             $this->load->model('tool/upload');
+            $this->load->model('catalog/product');
 
             $data['products'] = array();
 
@@ -161,8 +162,9 @@ class ControllerCheckoutCart extends Controller {
                         $recurring .= sprintf($this->language->get('text_payment_cancel'), $this->currency->format($this->tax->calculate($product['recurring']['price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']), $product['recurring']['cycle'], $frequencies[$product['recurring']['frequency']], $product['recurring']['duration']);
                     }
                 }
-
+               $wishlist= $this->model_catalog_product->wishlistornot($product['product_id']);
                 $data['products'][] = array(
+                    'product_id'   => $product['product_id'],
                     'cart_id'   => $product['cart_id'],
                     'thumb'     => $image,
                     'name'      => $product['name'],
@@ -175,11 +177,13 @@ class ControllerCheckoutCart extends Controller {
                     'price'     => $price,
                     'original_price' => $original_price,//原价
                     'total'     => $total,
-                    'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
+                    'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id']),
+                    'wishlist'    =>$wishlist
                 );
             }
-           //print_r( $data['products']);exit();
-
+          //print_r( $data['products']);exit();
+            $data['wishlist_add'] = $this->url->link('account/wishlist/add', '', true);
+            $data['delewishlist'] = $this->url->link('account/wishlist/delete', '', true);
             // Gift Voucher
             $data['vouchers'] = array();
 

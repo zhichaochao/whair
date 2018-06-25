@@ -131,7 +131,7 @@ class ControllerProductCategory extends Controller {
 			$data['button_grid'] = $this->language->get('button_grid');
 
 			$data['wishlist'] = $this->url->link('account/wishlist/add', '', true);
-
+			$data['delewishlist'] = $this->url->link('account/wishlist/delete', '', true);
 			 if (!isset($this->request->get['path'])) {
 		        $this->request->get['path']=$category_info['category_id'];
 		    
@@ -259,7 +259,8 @@ class ControllerProductCategory extends Controller {
 					  $color_name = $color_arr[0];
 				   }
 			    }
-			   // $wishlist= $this->model_catalog_product->wishlistornot($result['product_id']);
+
+			    $wishlist= $this->model_catalog_product->wishlistornot($result['product_id']);
                             
                 //texture
                 $texture = $this->model_catalog_product->getOptionDes('Texture',$result['product_id']);
@@ -279,11 +280,11 @@ class ControllerProductCategory extends Controller {
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
 					//'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
-					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
-					//'wishlist'=>$wishlist;
+					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+					'wishlist'	  =>$wishlist
 				);
 			}
-
+			// print_r(	$data['products']);exit();
 			$url = '';
 
 			if (isset($this->request->get['filter'])) {
