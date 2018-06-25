@@ -62,17 +62,11 @@
 									<div class="num_div">
 										<span class="sub" onclick="javascript:updateQty(this,1);"></span>
 										<!-- <input class="num" type="text" value="1" /> -->
-										<input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
+										<input type="text" aid="<?php echo $product['cart_id']; ?>" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
 										<span class="add" onclick="javascript:updateQty(this,2);"></span>
 									</div>
 								</div>
-					<!-- <td class="td-qty fixclea">
-						<!--<b>-</b><span>1</span><i>+</i>-->
-                        
-                      <!--   <a href="javascript:void(0);" class="icon_cart icon1" onclick="javascript:updateQty(this,1);">-</a>
-                    <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
-                        <a href="javascript:void(0);" class="icon_cart icon2" onclick="javascript:updateQty(this,2);">+</a>
-					</td> --> 
+			
 								<div class="close" onclick="javascript:cart_remove('<?php echo $product['cart_id']; ?>');"></div>
 								<span class="wishlist <?=$product['wishlist']==1 ?'off':'';?>" 
 									<?php if($product['wishlist']==1) { ?>
@@ -198,29 +192,57 @@ function wishlist(product_id,e) {
         window.location='index.php?route=checkout/checkout&cart_ids=' + chk_value;
     }
 	function updateQty(obj,type){
-	    var qty = 1;
+	// var num= $(obj).parent().find('input').val();
+	var cart_id= $(obj).parent().find('input').attr('aid');
+	// console.log(num);
 	    switch(type){
 	        case 0:
-	            document.getElementById('cart-form').submit();
+	            // document.getElementById('cart-form').submit();
 	            break;
 	        case 1:
 	            qty = $(obj).next('input[type="text"]').val() - 1;
 	            if(qty == 0) return false;
 	            $(obj).next('input[type="text"]').val(qty);
-	            document.getElementById('cart-form').submit();
+	           
 	            break;
 	        case 2:
 	            qty = parseInt($(obj).prev('input[type="text"]').val()) + 1;
 	            $(obj).prev('input[type="text"]').val(qty);
-	            document.getElementById('cart-form').submit();
+	        
 	            break;
 	    }
+
+	     $.ajax({
+        url: 'index.php?route=checkout/cart/edit_ajax',
+        type: 'post',
+        data: {cart_id:cart_id,num:qty},
+        dataType: 'json',
+ 
+        success: function(json) {
+        	console.log(json);
+        }
+    })
+
+
+
 	    
 	}
 	function cart_remove(product_key){
 		//alert(product_key);
 	   if(confirm('Are you sure?')){
-		  cart.remove(product_key);
+
+	   	     $.ajax({
+		        url: 'index.php?route=checkout/cart/remove',
+		        type: 'post',
+		        data: {key:product_key},
+		        dataType: 'json',
+		 
+		        success: function(json) {
+		        	console.log(json);
+		        	if (json['link']) { location.reload();}
+		        }
+		    })
+		 	
 	   }     
 	}
 	jQuery(function($){

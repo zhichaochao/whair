@@ -450,31 +450,56 @@ class ControllerCheckoutCart extends Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
-	public function edit() {
-		$this->load->language('checkout/cart');
+    public function edit_ajax() {
+        $this->load->language('checkout/cart');
 
-		$json = array();
+        $json = array();
 
-		// Update
-		if (!empty($this->request->post['quantity'])) {
-			foreach ($this->request->post['quantity'] as $key => $value) {
-				$this->cart->update($key, $value);
-			}
+        // Update
+        if (!empty($this->request->post['num'])&&!empty($this->request->post['cart_id'])) {
+           
+                $this->cart->update($this->request->post['cart_id'], $this->request->post['num']);
+          
 
-			$this->session->data['success'] = $this->language->get('text_remove');
+            $this->session->data['success'] = $this->language->get('text_remove');
 
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
-			unset($this->session->data['reward']);
+            unset($this->session->data['shipping_method']);
+            unset($this->session->data['shipping_methods']);
+            unset($this->session->data['payment_method']);
+            unset($this->session->data['payment_methods']);
+            unset($this->session->data['reward']);
 
-			$this->response->redirect($this->url->link('checkout/cart'));
-		}
+        }
 
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(json_encode($json));
-	}
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
+
+    public function edit() {
+        $this->load->language('checkout/cart');
+
+        $json = array();
+
+        // Update
+        if (!empty($this->request->post['quantity'])) {
+            foreach ($this->request->post['quantity'] as $key => $value) {
+                $this->cart->update($key, $value);
+            }
+
+            $this->session->data['success'] = $this->language->get('text_remove');
+
+            unset($this->session->data['shipping_method']);
+            unset($this->session->data['shipping_methods']);
+            unset($this->session->data['payment_method']);
+            unset($this->session->data['payment_methods']);
+            unset($this->session->data['reward']);
+
+            $this->response->redirect($this->url->link('checkout/cart'));
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
 
 	public function remove() {
 		$this->load->language('checkout/cart');
