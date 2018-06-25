@@ -6,22 +6,22 @@
             <div class="content in_content address_content clearfix">
                 
                 <div class="left clearfix">
-                    <ol class="top_ol liucheng clearfix">
+                    <ol class="top_ol liucheng ol_1  clearfix">
                         <li class="active">
-                            <img src="img/png/express.png" alt="" />
+                            <img src="catalog/view/theme/default/img/png/express.png" alt="" />
                             <span></span>
                             <p>1.Shipping</p>
                             <em class="emr"></em>
                         </li>
                         <li>
-                            <img src="img/png/express.png" alt="" />
+                            <img src="catalog/view/theme/default/img/png/express.png" alt="" />
                             <span></span>
                             <p>2.Payment</p>
                             <em class="eml"></em>
                             <em class="emr"></em>
                         </li>
                         <li>
-                            <img src="img/png/express.png" alt="" />
+                            <img src="catalog/view/theme/default/img/png/express.png" alt="" />
                             <span></span>
                             <p>3.Deliver</p>
                             <em class="eml"></em>
@@ -30,27 +30,50 @@
                     
                     <div class="text clearfix" >
                         <input id="same_as_shipping" name="same_as_shipping" value="1"  type="hidden">
-                        <div class="payment_next" id="payment_next" >
-                        <div class="shipping_address" id="shipping_address">
+                        <div class="payment_next bg_gif" id="payment_next" >
+                        <div class="shipping_address bg_fff bg_gif" id="shipping_address">
+                            <h2>Select the shipping address</h2>
                      
                         </div>
-                        <div class="shipping_method" id="shipping_method">
-                       
+                        <div class="shipping_method bg_fff bg_gif" id="shipping_method">
+                        <h3>Shipping Method</h3>
                         </div>
                         </div>
                     </div>
                     
                 </div>
             
-                <div class="right clearfix">
-                    <div class="collapse-checkout" id='collapse-checkout-confirm'></div>
+                <div class="right clearfix right_shop  bg_gif">
+                    <div class="collapse-checkout bg_fff" id='collapse-checkout-confirm'><h2>SUMMARY</h2></div>
                   
                 </div>
             
             </div>
         </div>
 
-
+<script type="text/javascript">
+    $(function(){
+        //单选
+        $(".dx_label input").click(function(){
+            if($(this).prop("checked")){
+                $(this).siblings(".check_i").addClass("active");
+                
+            }else{
+                $(this).siblings(".check_i").removeClass("active");
+            }
+        })
+        
+        $(".address_ul>li").click(function(){
+            $(this).addClass("active").siblings("li").removeClass("active");
+        })
+        
+        //搜索
+        $(".shop_search input").focus(function(){
+            $(".shop_search button").css("display","block");
+        })
+    })
+</script>
+        
 <script type="text/javascript"><!--
 
 var checkPAStatus = 1; // use in confirm.tpl when submit
@@ -100,11 +123,13 @@ function getShippingMethod()
 // Get Payment Method
 function getPaymentMethod()
 {
+     $('#payment_next').html('<h2>3.Select a payment method</h2>');
     $.ajax({
         url: 'index.php?route=checkout/payment_method',
         dataType: 'html',
         success: function(html) {
             $('#payment_next').html(html);
+            $('.liucheng').removeClass('ol_2').addClass('ol_2');
             getOrder();
         },
         error: function(xhr, ajaxOptions, thrownError) {

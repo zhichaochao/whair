@@ -2,7 +2,7 @@
 
 <?php if ($shipping_methods) { ?>
 
-
+<div class="bg_fff">
  <h3>Shipping Method</h3>
                         <ul class="express_ul" id='collapse-shipping-method'>
                              <?php foreach ($shipping_methods as $quote) { ?>
@@ -36,8 +36,8 @@
                              <?php } ?>
                         </ul>
 
-
-   
+<a class="btn240" href="###">SAVW AND CONTINUE &nbsp;&nbsp;&nbsp;&gt;</a>
+   </div>
 
 <?php } ?>
 
