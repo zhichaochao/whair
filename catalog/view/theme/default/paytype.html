@@ -209,18 +209,18 @@
 			<div class="content in_content address_content clearfix">
 				
 				<div class="left clearfix">
-					<ol class="top_ol liucheng clearfix">
+					<ol class="top_ol liucheng ol_2 clearfix">
 						<li>
 							<img src="img/png/express.png" alt="" />
-							<span style="background: #d5af74;border: 1px solid #d5af74;"></span>
+							<span style=""></span>
 							<p>1.Shipping</p>
-							<em style="border-top: 1px solid #d5af74;width: 46%;margin: 0;" class="emr"></em>
+							<em class="emr"></em>
 						</li>
-						<li class="active">
+						<li>
 							<img src="img/png/express.png" alt="" />
 							<span></span>
 							<p>2.Payment</p>
-							<em style="border-top: 1px solid #d5af74;width: 46%;margin: 0;" class="eml"></em>
+							<em class="eml"></em>
 							<em class="emr"></em>
 						</li>
 						<li>
@@ -232,39 +232,42 @@
 					</ol>
 					
 					<div class="text clearfix">
-						<h2>Select a payment method</h2>
+						<div class="bg_fff">
+							<h2>3.Select a payment method</h2>
+							
+							<ol class="pay_ol">
+								<p class="ts">Click “save and continue” to make paypal payments</p>
+								<p class="jg"><span>i</span>Please choose the payment method</p>
+								<li class="clearfix">
+									<input class="pay_dx" type="radio" />
+									<img src="img/jpg/pay1.jpg"/>
+								</li>
+								<li class="clearfix">
+									<input class="pay_dx" type="radio" />
+									<img src="img/jpg/pay2.jpg"/>
+								</li>
+								<li class="clearfix">
+									<input class="pay_dx" type="radio" />
+									<img src="img/jpg/pay3.jpg"/>
+								</li>
+								<li class="clearfix">
+									<input class="pay_dx" type="radio" />
+									<img src="img/jpg/pay4.jpg"/>
+									<span>Naria Account</span>
+								</li>
+								<li class="clearfix">
+									<input class="pay_dx" type="radio" />
+									<i>Bank Wire Transfer</i>
+								</li>
+							</ol>
+						</div>
 						
-						<ol class="pay_ol">
-							<p class="ts">Click “save and continue” to make paypal payments</p>
-							<p class="jg"><span>i</span>Please choose the payment method</p>
-							<li class="clearfix">
-								<input class="pay_dx" type="radio" />
-								<img src="img/jpg/pay1.jpg"/>
-							</li>
-							<li class="clearfix">
-								<input class="pay_dx" type="radio" />
-								<img src="img/jpg/pay2.jpg"/>
-							</li>
-							<li class="clearfix">
-								<input class="pay_dx" type="radio" />
-								<img src="img/jpg/pay3.jpg"/>
-							</li>
-							<li class="clearfix">
-								<input class="pay_dx" type="radio" />
-								<img src="img/jpg/pay4.jpg"/>
-								<span>Naria Account</span>
-							</li>
-							<li class="clearfix">
-								<input class="pay_dx" type="radio" />
-								<i>Bank Wire Transfer</i>
-							</li>
-						</ol>
-						
+						<a class="btn240" href="###">GO TO CHECK OUT&nbsp;&nbsp;&nbsp;></a>
 					</div>
 					
 				</div>
 			
-				<div class="right clearfix">
+				<div class="right right_shop clearfix">
 					<h2>SUMMARY</h2>
 					<ul class="cart_ul">
 						<li class="clearfix">
@@ -316,6 +319,7 @@
 							</a>
 						</li>
 					</ul>
+					
 					<p class="p1">Shipping <span class="fr">$70.00</span></p>
 					<p class="p2">Total <span class="fr">$70.00</span></p>
 					<div class="shop_search">
@@ -330,8 +334,10 @@
 					</div>
 					<div class="btn">
 						<span>Buyer Message:</span>
-						<input type="text" placeholder="Please leave a message if necessary"/>
-						<a class="a_btn" href="###">GO TO CHECK OUT&nbsp;&nbsp;&nbsp;></a>
+						<label for="">
+							<input type="text" placeholder="Please leave a message if necessary"/>
+							<button>CONFIRM</button>
+						</label>
 					</div>
 				</div>
 			
@@ -534,6 +540,11 @@
 		//搜索
 		$(".shop_search input").focus(function(){
 			$(".shop_search button").css("display","block");
+		})
+		
+		//input
+		$(".right_shop .btn input").focus(function(){
+			$(".right_shop .btn button").css("display","block");
 		})
 	})
 </script>

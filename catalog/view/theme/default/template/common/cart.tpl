@@ -24,7 +24,7 @@
                                 </p>                        
                                <?php } ?>                         
                               <?php } ?>   
-                    <span>  <?php echo $product['price']; ?></span>
+                    <span>  <?php echo $product['total']; ?></span>
                     
                   </div>
                 </a>

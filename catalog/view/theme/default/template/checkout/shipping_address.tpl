@@ -1,6 +1,6 @@
 
 
-  <div id="shipping-existing" style="display: <?php echo ($eaddress||empty($addresses) ? 'none' : 'block'); ?>;">
+  <div class="bg_fff" id="shipping-existing" style="display: <?php echo ($eaddress||empty($addresses) ? 'none' : 'block'); ?>;">
 
        <h2>Select the shipping address</h2>
                         <ul class="address_ul clearfix">
@@ -13,7 +13,7 @@
                                   }
                               }
                           ?>
-                            <li class=" <?php if ($address['address_id'] == $address_id) echo 'active'; ?> clearfix">
+                            <li aid="<?=$address['address_id']?>" class=" <?php if ($address['address_id'] == $address_id) echo 'active'; ?> clearfix">
                                 <span> <?php echo $address['firstname'] .' '. $address['lastname']; ?> </span>
                                 <p><?php echo $address['telephone']; ?>  <?php 
                     if(mb_strlen($address['address_1'],'UTF8')>15){ 
@@ -44,10 +44,10 @@
   </div>
 
 
-  <div id="shipping-new" style="display: <?php echo ($eaddress||empty($addresses) ? 'block' : 'none'); ?>;">
+  <div id="shipping-new" class="bg_fff" style="display: <?php echo ($eaddress||empty($addresses) ? 'block' : 'none'); ?>;">
 
   <p class="form_p">* Required fields</p>
-            <form class="add_form clearfix">
+            <form class="add_form clearfix" id="collapse-shipping-address">
               <label for="input-shipping-firstname">
                 <span><?php echo $entry_firstname; ?> *</span>
                 <input type="text" name="firstname" value="<?php echo ($eaddress ? $eaddress['firstname'] : ''); ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-shipping-firstname"  class=" clear" />
@@ -95,7 +95,9 @@
               </label>
             <?php if(!empty($addresses)){ ?>  <button class="qx_btn" type="reset"  id='show-shipping-existing'>cancel</button>   <?php } ?>
               
-              <button class="bc_btn" id="btnSaveAddress" aid="<?php echo ($eaddress ? $eaddress['address_id'] : 0); ?>" onclick="saveAddress(this);">save address&nbsp;&nbsp; &gt;</button>
+        
+                 <a class="btn240 clearfix clear" id="btnSaveAddress" aid="<?php echo ($eaddress ? $eaddress['address_id'] : 0); ?>" onclick="saveAddress(this);">SAVE ADDRESS   ></a>
+                   <input  type="hidden" value="" name="company" />
             </form>
             
 
@@ -128,22 +130,20 @@ $('#shipping-existing').on('mouseenter','td',function(){
 $('#shipping-existing').on('mouseleave','tr',function(){
 	$(this).children('.new-checkout-address-rig').css('visibility','hidden');
 });
-$('.new-checkout-address-name p').on('click', function() {
+$('.address_ul li').on('click', function() {
     e = $(this);
     $.ajax({
         url: 'index.php?route=checkout/shipping_address/changeAddress&address_id='+e.attr('aid'),
         dataType: 'json',
-        beforeSend: function() {
-            e.button('loading');
-        },
+    
         success: function(json) {
             if (json['redirect']) {
                 location = json['redirect'];
             } else if (json['error']) {
-                e.button('reset');
+         
                 alert(json['error']);
             } else {
-                getShippingAddress();
+                // getShippingAddress();
             }
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -209,38 +209,31 @@ function saveAddress(e) {
     $.ajax({
         url: 'index.php?route=checkout/shipping_address/save&address_id='+address_id,
         type: 'post',
-        data: $('#collapse-shipping-address input[type=\'text\'], #collapse-shipping-address input[type=\'date\'], #collapse-shipping-address input[type=\'datetime-local\'], #collapse-shipping-address input[type=\'time\'], #collapse-shipping-address input[type=\'password\'], #collapse-shipping-address input[type=\'checkbox\']:checked, #collapse-shipping-address input[type=\'radio\']:checked, #collapse-shipping-address textarea, #collapse-shipping-address select'),
+        data: $('#collapse-shipping-address input[type=\'hidden\'], #collapse-shipping-address input[type=\'text\'], #collapse-shipping-address input[type=\'date\'], #collapse-shipping-address input[type=\'datetime-local\'], #collapse-shipping-address input[type=\'time\'], #collapse-shipping-address input[type=\'password\'], #collapse-shipping-address input[type=\'checkbox\']:checked, #collapse-shipping-address input[type=\'radio\']:checked, #collapse-shipping-address textarea, #collapse-shipping-address select'),
         dataType: 'json',
-        beforeSend: function() {
-            $('#button-shipping-address').button('loading');
-        },
+      
         success: function(json) {
-            $('#collapse-shipping-address .alert, #collapse-shipping-address .text-danger').remove();
-            checkSAStatus = 1;
+        
+          console.log(json);
             if (json['redirect']) {
                 location = json['redirect'];
             } else if (json['error']) {
-                checkSAStatus = 0;
-                $('#button-shipping-address').button('reset');
+            
 
-                if (json['error']['warning']) {
-                    $('#collapse-shipping-address .panel-body').prepend('<div class="alert alert-warning">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                }
 
                 for (i in json['error']) {
                     var element = $('#input-shipping-' + i.replace('_', '-'));
 
                     if ($(element).parent().hasClass('input-group')) {
-                        $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        $(element).parent().after('<p class="ts_ps">' + json['error'][i] + '</p>');
                     } else {
-                        $(element).after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        $(element).after('<p class="ts_ps">' + json['error'][i] + '</p>');
                     }
                 }
 
-                // Highlight any found errors
-                $('.text-danger').parent().parent().addClass('has-error');
-            } else {
-                getShippingAddress();
+            
+            } else{
+               getShippingAddress();
             }
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -254,12 +247,7 @@ $('#input-shipping-country').on('change', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/checkout/country&country_id=' + this.value,
 		dataType: 'json',
-		beforeSend: function() {
-			$('#input-shipping-country').after(' <i class="fa fa-circle-o-notch fa-spin"></i>');
-		},
-		complete: function() {
-			$('.fa-spin').remove();
-		},
+
 		success: function(json) {
 		
 
@@ -321,11 +309,7 @@ $(document).ready(function() {
     }, 1000);
 <?php } ?>
 
-//为国家地区下拉列表添加二级搜索框
-// $(document).ready(function(){
-//   $("#input-shipping-country").select2();
-//   $("#input-shipping-zone").select2();
-// });
+
 
 });
 

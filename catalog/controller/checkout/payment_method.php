@@ -123,7 +123,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		} else {
 			$data['text_agree'] = '';
 		}
-
+		$data['checkout']=$this->url->link('checkout/checkout');
 		$this->response->setOutput($this->load->view('checkout/payment_method', $data));
 	}
 
