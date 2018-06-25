@@ -29,13 +29,13 @@
                         <?php } ?>
                    
                     </ul>
-                       <?php foreach ($totals as $k => $total) {  if($total['title']!='Poundage'){?>
+                       <?php foreach ($totals as $k => $total) { ?>
                        <?php if($total['title']=='Total') { ?>
                         <p class="p2"><?php echo $total['title']; ?> <span class="fr"><?php echo $total['text']; ?></span></p>
                         <?php }else{ ?>
                             <p class="p1"><?php echo $total['title']; ?> <span class="fr"><?php echo $total['text']; ?></span></p>
                         <?php } ?>
-                    <?php } } ?>
+                    <?php }  ?>
                    
                     <div class="shop_search">
                         <p>
@@ -46,6 +46,13 @@
                         <label >
                             <input type="text"  id="coupon_code" name="coupon" value="<?php echo @$coupon; ?>" placeholder="coupon code"/>
                             <button  onclick="coupon_code(this)">CONFIRM</button>
+                        </label>
+                    </div>
+                    <div class="btn">
+                        <span>Buyer Message:</span>
+                        <label for="comment">
+                            <input  id="comment" name="comment" placeholder="Please leave a message if necessary" type="text">
+                            <button style="display: block;">CONFIRM</button>
                         </label>
                     </div>
                 
@@ -92,19 +99,12 @@ function coupon_code(e) {
 }
 
 // checkout order
-function checkout(e) {
-    if(!checkPAStatus || !checkSAStatus){
-        if(typeof($('.alert, .text-danger').offset())=="object"){
-            $(window).scrollTop($('.alert, .text-danger').offset().top-50);
-        }else{
-            $(window).scrollTop(0);
-        }
-        return false;
-    }
+function checkout() {
+   
     $.ajax({
         url: 'index.php?route=<?php echo $payment_type=="Express" ? "extension/payment/pp_express/expressComplete" : "checkout/confirm/save"; ?>&cart_ids=<?php echo $cart_ids ?>',
         type: 'post',
-        data: $('#collapse-checkout-confirm textarea'),
+        data: $('#comment'),
         dataType: 'json',
        
         success: function(json) {

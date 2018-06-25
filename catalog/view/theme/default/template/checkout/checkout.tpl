@@ -76,12 +76,10 @@
         
 <script type="text/javascript"><!--
 
-var checkPAStatus = 1; // use in confirm.tpl when submit
-var checkSAStatus = 1; // use in confirm.tpl when submit
 
 $(document).ready(function() {
     getShippingAddress();
-        getShippingMethod();
+    
   
 });
 
@@ -101,6 +99,7 @@ function getShippingAddress(address_id)
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
+        getShippingMethod();
 }
 
 // Get Shipping Method
@@ -130,6 +129,7 @@ function getPaymentMethod()
         success: function(html) {
             $('#payment_next').html(html);
             $('.liucheng').removeClass('ol_2').addClass('ol_2');
+            $('.address').addClass('pay');
             getOrder();
         },
         error: function(xhr, ajaxOptions, thrownError) {

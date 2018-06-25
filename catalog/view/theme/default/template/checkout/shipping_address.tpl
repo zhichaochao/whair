@@ -13,7 +13,7 @@
                                   }
                               }
                           ?>
-                            <li class=" <?php if ($address['address_id'] == $address_id) echo 'active'; ?> clearfix">
+                            <li aid="<?=$address['address_id']?>" class=" <?php if ($address['address_id'] == $address_id) echo 'active'; ?> clearfix">
                                 <span> <?php echo $address['firstname'] .' '. $address['lastname']; ?> </span>
                                 <p><?php echo $address['telephone']; ?>  <?php 
                     if(mb_strlen($address['address_1'],'UTF8')>15){ 
@@ -97,6 +97,7 @@
               
         
                  <a class="btn240 clearfix clear" id="btnSaveAddress" aid="<?php echo ($eaddress ? $eaddress['address_id'] : 0); ?>" onclick="saveAddress(this);">SAVE ADDRESS   ></a>
+                   <input  type="hidden" value="" name="company" />
             </form>
             
 
@@ -129,22 +130,20 @@ $('#shipping-existing').on('mouseenter','td',function(){
 $('#shipping-existing').on('mouseleave','tr',function(){
 	$(this).children('.new-checkout-address-rig').css('visibility','hidden');
 });
-$('.new-checkout-address-name p').on('click', function() {
+$('.address_ul li').on('click', function() {
     e = $(this);
     $.ajax({
         url: 'index.php?route=checkout/shipping_address/changeAddress&address_id='+e.attr('aid'),
         dataType: 'json',
-        beforeSend: function() {
-            e.button('loading');
-        },
+    
         success: function(json) {
             if (json['redirect']) {
                 location = json['redirect'];
             } else if (json['error']) {
-                e.button('reset');
+         
                 alert(json['error']);
             } else {
-                getShippingAddress();
+                // getShippingAddress();
             }
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -210,7 +209,7 @@ function saveAddress(e) {
     $.ajax({
         url: 'index.php?route=checkout/shipping_address/save&address_id='+address_id,
         type: 'post',
-        data: $('#collapse-shipping-address input[type=\'text\'], #collapse-shipping-address input[type=\'date\'], #collapse-shipping-address input[type=\'datetime-local\'], #collapse-shipping-address input[type=\'time\'], #collapse-shipping-address input[type=\'password\'], #collapse-shipping-address input[type=\'checkbox\']:checked, #collapse-shipping-address input[type=\'radio\']:checked, #collapse-shipping-address textarea, #collapse-shipping-address select'),
+        data: $('#collapse-shipping-address input[type=\'hidden\'], #collapse-shipping-address input[type=\'text\'], #collapse-shipping-address input[type=\'date\'], #collapse-shipping-address input[type=\'datetime-local\'], #collapse-shipping-address input[type=\'time\'], #collapse-shipping-address input[type=\'password\'], #collapse-shipping-address input[type=\'checkbox\']:checked, #collapse-shipping-address input[type=\'radio\']:checked, #collapse-shipping-address textarea, #collapse-shipping-address select'),
         dataType: 'json',
       
         success: function(json) {
@@ -233,7 +232,9 @@ function saveAddress(e) {
                 }
 
             
-            } 
+            } else{
+               getShippingAddress();
+            }
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -308,11 +309,7 @@ $(document).ready(function() {
     }, 1000);
 <?php } ?>
 
-//为国家地区下拉列表添加二级搜索框
-// $(document).ready(function(){
-//   $("#input-shipping-country").select2();
-//   $("#input-shipping-zone").select2();
-// });
+
 
 });
 
