@@ -92,10 +92,10 @@
                     <input type="email" name="txtemail" id="txtemail" value="" placeholder="Your Email Address" class="text1">
                     <button type="submit" class="btn1" onClick="return subscribe();">SUBMIT</button>
                     <ol class="fot_img clearfix">
-                      <li><a href="hotbeautymelisha"><img src="catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
-                      <li><a href="hotbeautyhairofficia"><img src="catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
+                      <li><a href="www.facebook.com/hotbeautymelisha"><img src="catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
+                      <li><a href="www.instagram.com/hotbeautyhairofficial"><img src="catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
                       <li><a href="###"><img src="catalog/view/theme/default/img/png/yd_fot3.png" alt=""></a></li>
-                      <li><a href="hotbeautymelisha"><img src="catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
+                      <li><a href="skype:hotbeautymelisha?add" target="blank"><img src="catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
                     </ol>
                       </div>
                     </li>
@@ -122,7 +122,7 @@
         <li>
           <a href="">
             <img class="active" src="catalog/view/theme/default/img/png/contact-1.png" alt="" />
-            <img src="catalog/view/theme/default/img/png/contact-2 .png" alt="" />
+            <img src="catalog/view/theme/default/img/png/contact-2.png" alt="" />
             <p>CONTACT</p>
           </a>
         </li>

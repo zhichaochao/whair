@@ -132,7 +132,7 @@
                         </span>
 						<label for="tfoot-checkbox-select-all">all</label>
 					</li>
-					<li class="col-goods">delete</li>
+					<li class="delete">delete</li>
 				</ul>
 			</div>
 		</div>

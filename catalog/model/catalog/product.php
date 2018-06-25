@@ -1220,7 +1220,46 @@ class ModelCatalogProduct extends Model {
             
             return $option_name;
 	}
-	
+	 /**
+	* 获取产品分类
+	* @author  dyl  783973660@qq.com 2016.9.26
+	* @param   Int  $product_id   产品ID
+	*/
+	// public function getCatalog($product_id){
+	// 	$sql = "select cd.name,ptc.category_id,c.parent_id from `".DB_PREFIX."product_to_category` ptc left join `".DB_PREFIX."category_description` cd on cd.category_id = ptc.category_id left join `".DB_PREFIX."category` c on c.category_id = ptc.category_id where status='1' and product_id = '".$product_id."' order by c.parent_id asc";
+
+	// 	$query = $this->db->query($sql);
+
+	// 	return $query->rows;
+	// }
+        
+        
+	public function wishlistornot($product_id){
+           $customer_id = $this->customer->isLogged() ? $this->customer->getId() : 0;
+            if( empty($product_id)|| $customer_id==0){
+                return false;
+            }
+          
+          // print_r($product_id);
+          // print_r('<br/>');
+           
+          // print_r($customer_id);
+
+
+          // print_r('<br/>');
+           
+            $sql ="select * from ".DB_PREFIX."customer_wishlist   where product_id = '".$product_id."' AND customer_id =". $customer_id;
+            $query = $this->db->query($sql);
+            // print_r($query->row)
+           if (empty($query->row)) {
+           	return  false;
+           }else {
+           		return  true;
+           }
+          
+            
+          
+	}
 	/**
 	 * 查询商品列表，筛选出8个最新上架、浏览次数最多的主要商品
 	 * @author  wyf
