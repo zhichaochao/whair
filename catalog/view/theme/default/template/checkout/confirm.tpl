@@ -50,9 +50,10 @@
                     </div>
                     <div class="btn">
                         <span>Buyer Message:</span>
+                        <i id="comment_success"></i>
                         <label for="comment">
-                            <input  id="comment" name="comment" placeholder="Please leave a message if necessary" type="text">
-                            <button style="display: block;">CONFIRM</button>
+                            <input  id="comment" value="<?php echo @$comment; ?>" name="comment" placeholder="Please leave a message if necessary" type="text">
+                            <button onclick="savecomment();" >CONFIRM</button>
                         </label>
                     </div>
                 
@@ -69,8 +70,25 @@ $(function(){
  $(".shop_search input").focus(function(){
             $(".shop_search button").css("display","block");
         })
+ $(".btn input").focus(function(){
+            $(".btn button").css("display","block");
+        })
  })
 // coupon code
+function savecomment() {
+    $.ajax({
+        url: 'index.php?route=checkout/confirm/savecomment',
+        type: 'post',
+        data: $('input#comment'),
+        dataType: 'json',
+
+        success: function(json) {
+            $('#comment').val(json['comment']);
+            $('#comment_success').html('Comment Success!');
+
+        }
+    })
+}
 function coupon_code(e) {
     $.ajax({
         url: 'index.php?route=extension/total/coupon/jcoupon',

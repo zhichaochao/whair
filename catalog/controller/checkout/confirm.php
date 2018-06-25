@@ -189,6 +189,17 @@ class ControllerCheckoutConfirm extends Controller {
 		$this->response->setOutput($this->load->view('checkout/confirm', $data));
 	}
 	
+	public function savecomment() {
+	    $json = array();
+	    $this->load->language('checkout/checkout');
+	    
+	    if(isset($this->request->post['comment'])) 
+	        $this->session->data['comment'] = strip_tags($this->request->post['comment']);
+	     $json['comment']= $this->session->data['comment'];
+	      $this->response->addHeader('Content-Type: application/json');
+	    $this->response->setOutput(json_encode($json));
+	}
+	
 	public function save() {
 	    $json = array();
 	    $this->load->language('checkout/checkout');
