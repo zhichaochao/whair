@@ -90,7 +90,6 @@ class ControllerAccountAccount extends Controller {
 		} else {
 			$data['error_telephone'] = '';
 		}
-
 		//密码的错误提示
 		/*if (isset($this->error['oldpassword'])) {
 			$data['error_oldpassword'] = $this->error['oldpassword'];
@@ -171,7 +170,7 @@ class ControllerAccountAccount extends Controller {
 		} else {
 			$data['telephone'] = '';
 		}
-
+// print_r($this->request->post['email']);exit();
         //旧密码
 		if (isset($this->request->post['oldpassword'])) {
 			$data['oldpassword'] = $this->request->post['oldpassword'];
@@ -200,7 +199,7 @@ class ControllerAccountAccount extends Controller {
 		//$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
-
+//print_r($data);exit();
 		$this->response->setOutput($this->load->view('account/account', $data));
 	}
 

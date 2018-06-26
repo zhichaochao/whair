@@ -72,7 +72,7 @@
 									<?php if($product['wishlist']==1) { ?>
 					              style='background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll left center / 0.83vw 0.83vw; color: rgb(213, 175, 116);';
 					              <?php }?>
-								 onclick="wishlist('<?php echo $product['product_id']; ?>',this);">Move to Wishlist</span>
+								 onclick="wishlist('<?php echo $product['product_id']; ?>',this);cart_removes('<?php echo $product['cart_id']; ?>')">Move to Wishlist</span>
 							</li>
 							<?php } ?>
 						</ul>
@@ -181,6 +181,19 @@ function wishlist(product_id,e) {
    })
  }
 }
+function cart_removes(product_key){
+	   	     $.ajax({
+		        url: 'index.php?route=checkout/cart/remove',
+		        type: 'post',
+		        data: {key:product_key},
+		        dataType: 'json',
+		 
+		        success: function(json) {
+		        	console.log(json);
+		        	if (json['link']) { location.reload();}
+		        }
+		    }) 	  
+	}
 	function submitCart() {
 	    console.log('in');
         var chk_value = '';

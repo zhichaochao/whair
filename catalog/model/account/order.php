@@ -187,12 +187,12 @@ class ModelAccountOrder extends Model {
 	 */
 	public function getOrderProductImgAndNameByOrderId($order_id) {
 
-		$sql = "SELECT op.name,p.image
+		$sql = "SELECT op.name,p.image,p.price
 				FROM " . DB_PREFIX . "order_product op
 				LEFT JOIN " . DB_PREFIX . "product p ON p.product_id = op.product_id
 				WHERE op.order_id = " . (int)$order_id. " ORDER BY p.date_added DESC,p.product_id desc LIMIT 1";
 		$query = $this->db->query($sql);
-
+//var_dump($query);exit();
 		return $query->row;
 	}
 

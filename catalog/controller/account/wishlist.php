@@ -166,6 +166,7 @@ class ControllerAccountWishList extends Controller {
 			} else {
 				$this->model_account_wishlist->deleteWishlist($result['product_id']);
 			}
+			//print_r($data['products']);exit;
 		}
 
 		$data['continue'] = $this->url->link('account/account', '', true);

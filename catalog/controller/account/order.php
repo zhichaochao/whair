@@ -51,7 +51,7 @@ class ControllerAccountOrder extends Controller {
 
 		$order_total = $this->model_account_order->getTotalOrders();
 		$results = $this->model_account_order->getOrders(($page - 1) * $limit, $limit);
-
+//print_r($results);exit;
 		foreach ($results as $result) {
 			//$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
 			//$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
@@ -60,9 +60,10 @@ class ControllerAccountOrder extends Controller {
 			
 			//根据order_id获取其中一件产品的图片和产品名字
 			$order_product_array = $this->model_account_order->getOrderProductImgAndNameByOrderId($result['order_id']);
-
+// print_r($order_product_array);exit;
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
+				'price'   => $order_product_array['price'],
 				'order_no'   => $result['order_no'],
 				//'name'       => $result['firstname'] . ' ' . $result['lastname'],
 				'order_image' =>  $this->model_tool_image->resize($order_product_array['image'], 100, 100), //订单图片
@@ -77,6 +78,7 @@ class ControllerAccountOrder extends Controller {
 				'cancel_href' => $this->url->link('account/order/cancel', 'order_id=' . $result['order_id'], true),
 				'repay'	      => $this->url->link('account/order/repay', 'order_id=' . $result['order_id'], true)
 			);
+			//print_r($data['orders']);exit;
 		}
 
 		$pagination = new Pagination();
@@ -99,7 +101,7 @@ class ControllerAccountOrder extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		
+		$data['goshopping'] = $this->url->link('account/home', '', true);
 
 		$this->response->setOutput($this->load->view('account/order_list', $data));
 	}

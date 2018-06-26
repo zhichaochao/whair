@@ -199,8 +199,9 @@ class ControllerAccountAddress extends Controller {
 	    $customerAddressId = $data['address_id'];
 
 		$data['addresses'] = array();
-		$results = $this->model_account_address->getAddresses();
 
+		$results = $this->model_account_address->getAddresses();
+//var_dump($results);exit();
 		foreach ($results as $result) {
 // 			if ($result['address_format']) {
 // 				$format = $result['address_format'];
@@ -447,7 +448,7 @@ class ControllerAccountAddress extends Controller {
 		$this->load->model('account/custom_field');
 
 		$data['custom_fields'] = $this->model_account_custom_field->getCustomFields($this->config->get('config_customer_group_id'));
-
+// print_r($data['custom_fields']);exit;
 		if (isset($this->request->post['custom_field'])) {
 			$data['address_custom_field'] = $this->request->post['custom_field'];
 		} elseif (isset($address_info)) {

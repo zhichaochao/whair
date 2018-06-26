@@ -7,18 +7,18 @@ class ControllerAccountLeft extends Controller {
 
 		 $route = array(
             'route' => array(
-                //控制台
+                //我的订单
                 array(
-                    'rewrite' => 'account-dashboard',
-                    //'iconclass' =>'class="dashboard"',
-                    'name' => 'Dashboard',
-                    'url' => $this->url->link('account/dashboard')
-                    ),
+                    'rewrite' => 'account-order',
+                    //'iconclass' =>'class="order"',
+                    'name' => 'My Orders',
+                    'url' => $this->url->link('account/order')
+                ),
                 //账户信息
                 array(
                     'rewrite' => 'account-account',
                     //'iconclass' =>'class="account"',
-                    'name' => 'Account Info',
+                    'name' => 'Account Information',
                     'url' => $this->url->link('account/account')
                 ),
                 //我的地址
@@ -28,27 +28,40 @@ class ControllerAccountLeft extends Controller {
                     'name' => 'Address List',
                     'url' => $this->url->link('account/address')
                 ),
-            	//会员等级
-            	array(
-            		'rewrite' => 'account-vip',
-            		'name' => 'VIP Club',
-            		'url' => $this->url->link('account/vip')
-            	),
-                //My Inquiry
+                //我的心愿单
+                array(
+                    'rewrite' => 'account-wishlist',
+                    //'iconclass' =>'class="wishlist"',
+                    'name' => 'My Wish List',
+                    'url' => $this->url->link('account/wishlist')
+                ),
+                //会员等级
+                array(
+                    'rewrite' => 'account-vip',
+                    'name' => 'My VIP',
+                    'url' => $this->url->link('account/vip')
+                ),
+                //优惠劵
+                array(
+                    'rewrite' => 'account-vip',
+                    'name' => 'My Coupon',
+                    'url' => $this->url->link('account/Coupon')
+                ),
+                //Hinquiry
                 array(
                     'rewrite' => 'account-inquiry',
                     //'iconclass' =>'class="inquiry"',
-                    'name' => 'My Inquiry',
+                    'name' => 'Help Center',
                     'url' => $this->url->link('account/inquiry')
                 ),
-                //我的订单
-                array(
-                    'rewrite' => 'account-order',
-                    //'iconclass' =>'class="order"',
-                    'name' => 'My Orders',
-                    'url' => $this->url->link('account/order')
-                ),
 
+                //控制台
+                array(
+                    'rewrite' => 'account-dashboard',
+                    //'iconclass' =>'class="dashboard"',
+                    'name' => 'Dashboard',
+                    'url' => $this->url->link('account/dashboard')
+                    ),
                 //我的心愿单
                 /*array(
                     'rewrite' => 'account-wishlist',
