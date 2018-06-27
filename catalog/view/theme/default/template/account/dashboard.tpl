@@ -1,5 +1,56 @@
 <?php echo $header; ?>
-<div class="container">
+<!--内容-->
+		<div class=" in_content peo_center">
+			<?php if ($success) { ?>
+			<div class="alert alert-success"><i class="fa fa-check-circle"></i>
+				<?php echo $success; ?>
+			</div>
+			<?php } ?>
+
+			<?php if ($error_warning) { ?>
+			<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>
+				<?php echo $error_warning; ?>
+			</div>
+			<?php } ?>
+			<div class="content clearfix">
+				
+				<div class="left clearfix">
+					<h1>MY ACCOUNT</h1>
+					<ol>
+						<?php echo $column_left; ?>
+			            <?php if ($column_left && $account_left) { ?>
+			            <?php $class = 'col-sm-6'; ?>
+			            <?php } elseif ($column_left || $account_left) { ?>
+			            <?php $class = 'col-sm-9'; ?>
+			            <?php } else { ?>
+			            <?php $class = 'col-sm-12'; ?>
+			            <?php } ?>
+			            <?php echo $account_left; ?>
+					</ol>
+				</div>
+				
+				<div class="right m_call clearfix">
+					<p><img src="catalog/view/theme/default/img/png/call1.png" alt="" /> +8613450252494</p>
+					<a href="mailto:hellena@hotbeautyhair.com"><p><img src="catalog/view/theme/default/img/png/call2.png" alt="" /> rebecca@hotbeautyhair.com</p></a>	
+					<p><img src="catalog/view/theme/default/img/png/call3.png" alt="" /> Submit your Feedback</p>
+					<form action="<?php echo $action; ?>" method="post" class="dash-help-form">	
+					<span>*Comment:</span>
+					<textarea name="enquiry"></textarea>
+					<?php if ($error_enquiry) { ?>
+					<div class="text-danger">
+					<?php echo $error_enquiry; ?>
+					</div>
+					<?php } ?>
+					<!-- <a class="a_btn" type="submit" >SUBMIT&nbsp;&nbsp;&nbsp;></a> -->
+					<input type="submit" value="SUBMIT&nbsp;&nbsp;&nbsp;>" class="a_btn" style="width: 240px;height: 40px;line-height: 40px;text-align: center;border-radius: 4px;color: #fff;background: #333;font-size: 16px;display: block;float: right;margin: 15px 10% 25px 0;">
+					</form>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+<!-- <div class="container">
 
 	<?php if ($success) { ?>
 	<div class="alert alert-success"><i class="fa fa-check-circle"></i>
@@ -11,9 +62,9 @@
 	<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>
 		<?php echo $error_warning; ?>
 	</div>
-	<?php } ?>
+	<?php } ?> -->
 
-	<div class="row">
+	<!-- <div class="row">
 		<?php echo $column_left; ?>
 
 		<?php if ($column_left && $account_left) { ?>
@@ -35,17 +86,17 @@
 					<?php echo $user_name; ?>
 					</p>
 					<!--<p class="dash-info-coupon">My Coupons</p>-->
-				</div>
+			<!-- 	</div>
 			</section>
 
 			<section class="dash dash-help">
 				<h3>Help Center</h3>
-				<div class="dash-help-cont dash-cont">
+				<div class="dash-help-cont dash-cont"> --> 
 					<!--<p class="dash-help-vip">
 						<i class="fa fa-user" aria-hidden="true"></i>
 						<span>VIP service Representative: Linda</span>
 					</p>-->
-					<p class="dash-help-vip">
+					<!-- <p class="dash-help-vip">
 						<i class="fa fa-phone-square" aria-hidden="true"></i>
 						<span>8613450252494</span>
 					</p>
@@ -75,15 +126,15 @@
 				</div>
 				
 			</section>
-
-			
+ 			
 
 		</div>
 		
-	</div>
-	<div class="recent-new">
+	</div>-->
+
+	<!-- <div class="recent-new">
 			<!--Recently Viewed Items-->
-			<section class="dash-recent">
+			<!-- <section class="dash-recent">
 				<h3>Recently Viewed Items:</h3>
 
 				<?php if ($viewedproducts) { ?>
@@ -101,20 +152,20 @@
 
 									<?php if(!empty($product['color_name'])){ ?>
 									<!--颜色名-->
-									<div class="dash-product-caption-color">
+									<!-- <div class="dash-product-caption-color">
 										<?php echo $product['color_name']; ?>
 										<b class="sanjiao"></b>
 									</div>
 									<?php } ?>
 
 									<!--产品名-->
-									<h4 class="dash-product-caption-name">
+								<!-- 	<h4 class="dash-product-caption-name">
 										<a href="<?php echo $product['href']; ?>" title="<?php echo $product['max_name']; ?>"><?php echo $product['name']; ?></a>
 									</h4>
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> --> 
 					<!--<div class="">
 						<div class="">
 							<div class="image">
@@ -138,7 +189,7 @@
 							</div>
 						</div>
 					</div>-->
-					<?php } ?>
+					<!-- <?php } ?>
 				</div>
 				<?php }else{ ?>
                    <div align="center" style="font-size:20px;">No Recently Viewed Items!</div>
@@ -147,9 +198,9 @@
 			</section>
 			<!--/Recently Viewed Items-->
             
-            <?php if(false){ ?>
+            <!-- <?php if(false){ ?>
 			<!--New Arrival-->
-			<section class="dash-new">
+			<!-- <section class="dash-new">
 				<h3>New Arrivals:</h3>
 
 				<?php if ($products) { ?>
@@ -162,25 +213,25 @@
 							    <img src="<?php echo $product['thumb']; ?>" alt='<?php echo $product["max_name"]; ?>' title='<?php echo $product["max_name"]; ?>' />
 								</a>
 							</div>
-							<div>
-								<div class="dash-product-caption">
+							<div> --> 
+								<!-- <div class="dash-product-caption">
 
 									<?php if(!empty($product['color_name'])){ ?>
 									<!--颜色名-->
-									<div class="dash-product-caption-color">
+									<!-- <div class="dash-product-caption-color">
 										<?php echo $product['color_name']; ?>
 										<b class="sanjiao"></b>
 									</div>
 									<?php } ?>
 
 									<!--产品名-->
-									<h4 class="dash-product-caption-name">
+									<!-- <h4 class="dash-product-caption-name">
 										<a href="<?php echo $product['href']; ?>" title="<?php echo $product['max_name']; ?>"><?php echo $product['name']; ?></a>
 									</h4>
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> --> 
 					<!--<div class="product-layout product-list col-xs-12">
 						<div class="">
 							<div class="image">
@@ -204,7 +255,7 @@
 							</div>
 						</div>
 					</div>-->
-					<?php } ?>
+				<!-- 	<?php } ?>
 				</div>
 				<?php }else{ ?>                
                   <div align="center" style="font-size:20px;">No New Arrivals!</div>
@@ -212,7 +263,7 @@
 
 			</section>
 			<!--/New Arrival-->
-            <?php } ?>
+           <!--  <?php } ?>
 		</div>
-</div>
+</div> --> 
 <?php echo $footer; ?>

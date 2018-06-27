@@ -43,9 +43,9 @@
                 <span>Amount Away From Next Level</span>
               </li>
               <li>
-                <span>0</span>
-                <span>$0.00</span>
-                <span>$500</span>
+                <span><?php echo $orders; ?></span>
+                <span><?php echo $order_totals; ?></span>
+                <span><?php echo $next_level; ?></span>
               </li>
             </ul>
           </div>
@@ -168,7 +168,7 @@
       
       
     </div>
-<link href="<?php echo HTTP_SKIN?>stylesheet/account/account_vip.css" type="text/css" rel="stylesheet" />
+<!-- <link href="<?php echo HTTP_SKIN?>stylesheet/account/account_vip.css" type="text/css" rel="stylesheet" />
 <div class="container">
 
   <div class="row">
@@ -241,7 +241,7 @@
     </div>
 
   </div>
-</div>
+</div> -->
 
 <?php echo $footer; ?>
 <script>

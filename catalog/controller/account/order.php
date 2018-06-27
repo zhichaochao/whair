@@ -67,7 +67,7 @@ class ControllerAccountOrder extends Controller {
 				'order_no'   => $result['order_no'],
 				//'name'       => $result['firstname'] . ' ' . $result['lastname'],
 				'order_image' =>  $this->model_tool_image->resize($order_product_array['image'], 100, 100), //订单图片
-				'order_product_name' => $order_product_array['name'],      //订单的产品名字
+				'order_product_name' => $order_product_array['name'],      //订单的产品名字 utf8_substr(strip_tags($result['name']),0,40).'...'
 				'status'     => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				//'products' => ($product_total + $voucher_total),
@@ -101,7 +101,7 @@ class ControllerAccountOrder extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$data['goshopping'] = $this->url->link('account/home', '', true);
+		$data['goshopping'] = $this->url->link('common/home', '', true);
 
 		$this->response->setOutput($this->load->view('account/order_list', $data));
 	}
@@ -592,5 +592,36 @@ class ControllerAccountOrder extends Controller {
 	   }
        return $orderStatus;
 	}
+public function delete() {
+		//$this->load->language('account/wishlist');
+		$order_id=$this->request->post['order_id'];
+		//print_r($order_id);exit;
+		$json = array();
 
+		// if (isset($this->request->post['order_id'])) {
+		// 	$product_id = $this->request->post['order_id'];
+		// } else {
+		// 	$order_id = 0;
+		// }
+
+		$this->load->model('account/order');
+
+		$product_info = $this->model_account_order->getOrder($order_id);
+//print_r($product_info);exit;
+		if ($product_info) {
+			if ($this->customer->isLogged()) {
+				// Edit customers cart
+				$this->load->model('account/order');
+
+				$this->model_account_order->deleteWishlist($order_id);
+
+				// $json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . (int)$this->request->post['product_id']), $product_info['name'], $this->url->link('account/wishlist'));
+
+				//$json['total'] =  $this->model_account_wishlist->getTotalWishlist();
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
 }

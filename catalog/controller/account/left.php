@@ -52,16 +52,17 @@ class ControllerAccountLeft extends Controller {
                     'rewrite' => 'account-inquiry',
                     //'iconclass' =>'class="inquiry"',
                     'name' => 'Help Center',
-                    'url' => $this->url->link('account/inquiry')
+                    // 'url' => $this->url->link('account/inquiry')
+                    'url' => $this->url->link('account/dashboard')
                 ),
 
                 //控制台
-                array(
-                    'rewrite' => 'account-dashboard',
-                    //'iconclass' =>'class="dashboard"',
-                    'name' => 'Dashboard',
-                    'url' => $this->url->link('account/dashboard')
-                    ),
+                // array(
+                //     'rewrite' => 'account-dashboard',
+                //     //'iconclass' =>'class="dashboard"',
+                //     'name' => 'Dashboard',
+                //     'url' => $this->url->link('account/dashboard')
+                //     ),
                 //我的心愿单
                 /*array(
                     'rewrite' => 'account-wishlist',
@@ -92,7 +93,7 @@ class ControllerAccountLeft extends Controller {
              //$route['route'][$k]['class'] =  (stripos($v['url'] , $this->request->server['QUERY_STRING']) !== false) ? 'class="clk"' : '';
 
              $getroute = $this->request->get['route'];
-             $route['route'][$k]['class'] =  (stripos($v['url'] , $getroute) !== false) ? 'class="on"' : '';
+             $route['route'][$k]['class'] =  (stripos($v['url'] , $getroute) !== false) ? 'class="active"' : '';
 
              //没有开启伪静态时,点击样式的定位
              switch($getroute){

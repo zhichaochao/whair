@@ -114,7 +114,7 @@
                 <div class="right">
                     <ol class="img_ol clearfix fl">
                         <li class="search_li"></li>
-                        <li class="login_li"></li>
+                        <li class="login_li"><a href="<?php echo $login_li?>"></a></li>
                         <li><a href="<?=$wishlist;?>"><span id='wishlist_count'><?php echo $text_wishlist; ?></span></a></li>
                         <li class="cart_li"><span  id='cart_count'><?=$text_cart_items;?></span></li>
                     </ol>
