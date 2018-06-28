@@ -11,7 +11,7 @@
 					<div class="left">
 						<label for="" class="qx_label" id="cart-tfoot">
 							<span>ALL</span>
-							<input class="check_input" onclick="getOrder()" autocomplete="off" id="lang-checkbox-select-all" type="checkbox">
+							<input checked="checked" class="check_input" onclick="getOrder()" autocomplete="off" id="lang-checkbox-select-all" type="checkbox">
 							<i class="check_i"></i>
 							<!-- <input autocomplete="off" id="tfoot-checkbox-select-all" type="checkbox" class="check_i" > -->
 						</label>
@@ -19,7 +19,7 @@
 							 <?php foreach($products as $product){ ?>
 							<li class="clearfix">
 								<label for="" class="dx_label">
-									 <input onclick="getOrder()" class="check_input" autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
+									 <input checked="checked" onclick="getOrder()" class="check_input" autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
 									 <i class="check_i"></i>
 									<!-- <input autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>" class="check_i" > -->
 								</label>	
