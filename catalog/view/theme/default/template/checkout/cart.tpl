@@ -47,7 +47,7 @@
 			                         <?php } ?>                         
 			                        <?php } ?>
 			                        </p>
-									<!-- <p><span>Commodity code:</span> xhs00245</p> -->
+									<p><span>Commodity code:</span> xhs00245</p>
 									<!-- 产品颜色 -->
 										<p><?php echo $color_data[0]['color'];?></p>						
 								<!-- 产品颜色 -->

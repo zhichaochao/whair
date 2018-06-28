@@ -7,15 +7,13 @@
           <h1>MY ACCOUNT</h1>
           <ol>
            <?php echo $column_left; ?>
-
-            <li class="active"><?php if ($column_left && $account_left) { ?>
+            <?php if ($column_left && $account_left) { ?>
             <?php $class = 'col-sm-6'; ?>
             <?php } elseif ($column_left || $account_left) { ?>
             <?php $class = 'col-sm-9'; ?>
             <?php } else { ?>
             <?php $class = 'col-sm-12'; ?>
-            <?php } ?></li>
-
+            <?php } ?>
             <?php echo $account_left; ?>
           </ol>
         </div>
@@ -95,27 +93,31 @@
             </label>
             <div class="xy_div">
               <label for="" class="dx_label">
-                <input class="check_input" type="checkbox"  name="default" value="0"/>
-                <i class="check_i"></i>
+
+              <div>
+              <?php if ($default) { ?>
+              <label >
+                <?php echo $text_yes; ?><input type="radio" name="default" value="1" checked="checked"  style="position: absolute;margin-top: 4px\9;margin-left: -20px;" />
+                </label>
+              <label >
+                <?php echo $text_no; ?><input type="radio" name="default" value="0"  style="position: absolute;margin-top: 4px\9;margin-left: -20px;"/>
+                </label>
+              <?php } else { ?>
+              <label >
+                <?php echo $text_yes; ?><input type="radio" name="default" value="1" style="position: absolute;margin-top: 4px\9;margin-left: -20px;" />
+                </label>
+              <label >
+                <?php echo $text_no; ?><input type="radio" name="default" value="0" checked="checked" style="position: absolute;margin-top: 4px\9;margin-left: -20px;"/>
+                </label>
+              <?php } ?>
+            </div>
+                <!-- <input class="check_input" type="checkbox"  name="default" value="0"/>
+                <i class="check_i"></i> -->
               </label>
               <span>Set this address as my default address</span>
-              <!-- <div class="col-sm-10">
-              <?php if ($default) { ?>
-              <label class="radio-inline">
-                <input type="radio" name="default" value="1" checked="checked" />
-                <?php echo $text_yes; ?></label>
-              <label class="radio-inline">
-                <input type="radio" name="default" value="0" />
-                <?php echo $text_no; ?></label>
-              <?php } else { ?>
-              <label class="radio-inline">
-                <input type="radio" name="default" value="1" />
-                <?php echo $text_yes; ?></label>
-              <label class="radio-inline">
-                <input type="radio" name="default" value="0" checked="checked" />
-                <?php echo $text_no; ?></label>
-              <?php } ?>
-            </div> -->
+
+              
+
             </div>
             
             <button class="qx_btn" type="reset">cancel</button>
@@ -133,9 +135,9 @@
   <div class="row">
     
     <div id="content" class="<?php echo $class; ?>">
-      <?php echo $content_top; ?>
+     <!--  <?php echo $content_top; ?> -->
       
-      <h2><?php echo $text_edit_address; ?></h2>
+      <!-- <h2><?php echo $text_edit_address; ?></h2> -->
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
           <!-- <div class="form-group required">

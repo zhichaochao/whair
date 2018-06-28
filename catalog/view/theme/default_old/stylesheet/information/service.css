@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+.sellfrom .teimg {
+	margin: 50px 0;
+}
+.sellfrom h2 {
+	font-size: 26px;
+	line-height: 30px;
+	margin-bottom: 40px;
+}
+.sellfrom .pp {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+.sellform_with {
+	margin-top: 37px;
+}
+.sellform_with h2 {
+	font-size: 24px;
+	margin-bottom: 32px;
+}
+.sellform_ul {
+	margin-bottom: 30px;
+}
+.sellform_ul li {
+	width: 25%;
+	float: left;
+}
+.sellform_ul.sellform_ul2 li {
+	width: 20%;
+}
+.sellform_ul li .p1 {
+	text-align: center;
+	margin: 25px 0;
+}
+.sellform_ul li .p2 {
+	padding: 0 30px;
+	font-size: 16px;
+	text-align: center;
+}
+.sellform_ul.sellform_ul2 li .p2 {
+	padding: 0 15px;
+}
+.sellfrom_how {
+	margin-top: 90px;
+	margin-bottom: 20px;
+	padding: 70px 0;
+	border-top: 1px dashed #868686;
+	border-bottom: 1px dashed #868686;
+}
+.sellfrom_how h2 {
+	font-size: 36px;
+	padding-bottom: 20px;
+	color: #ff6600;
+	text-align: center;
+}
+.sellfrom_how p {
+	font-size: 18px;
+	text-align: center;
+	padding: 0 150px;
+}
+
+.sellfrom_does {
+	border-top: 1px dashed #7f7f7f;
+	margin-top: 90px;
+	padding-top: 80px;
+}
+.sellfrom_does h2 {
+	font-size: 36px;
+	color: #ff6600;
+	margin-bottom: 50px;
+}
+.sellfrom_doesdl {
+	margin-bottom: 27px;
+}
+.sellfrom_doesdl h3 {
+	font-size: 24px;
+	margin-bottom: 5px;
+}
+.sellfrom_doesdl p {
+	font-size: 18px;
+}
+.sellfrom_button  {
+	margin-top:50px;
+	margin-bottom:100px;}
+.sellfrom_button button {
+	background-color: #ff6600;
+	color: #fff;
+	font-size:16px;
+	border:0;
+	padding:10px 90px;
+	border-radius:5px;
+}
+
+.merchant_soyou h2{
+	border-top:none !important;
+}
+div.container.service-container{
+	width: 1000px;
+}
+
+
+
+.merchant_soyou h2 {
+	font-size: 24px;
+	text-align: center;
+	border-top: 1px solid #CCC;
+	margin-bottom: 50px;
+	padding-top: 50px;
+	font-weight: bold;
+}
+.merchant_soyouul {
+	padding-left: 50px;
+}

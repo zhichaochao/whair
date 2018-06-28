@@ -1,0 +1,45 @@
+.container {
+	width: 1200px;
+	padding: 0;
+}
+
+#column-right {
+	margin-top: 92px;
+	padding: 0;
+}
+
+#column-right ul {
+	padding: 0;
+}
+
+#column-right li {
+	padding-left: 27px;
+	width: 165px;
+	border-bottom: 1px dashed #dcdcdc;
+}
+
+#column-right li a {
+	color: #020000;
+	line-height: 57px;
+	font-size: 16px;
+}
+
+#column-right li.on a {
+	color: #ff6600;
+}
+
+#column-right li a:hover {
+	color: #23a1d1;
+}
+
+#content {
+	margin-top: 86px;
+	padding: 0;
+}
+#content>h2{
+	color: #000804;
+	margin-bottom: 30px;
+}
+.container>.row{
+	width: 1200px;
+}
