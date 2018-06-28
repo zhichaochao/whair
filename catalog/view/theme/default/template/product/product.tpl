@@ -73,7 +73,8 @@
 								<?php if ($price) { ?>
 								<div class="product_right_dindan">
 									<dl class="col_f00 jiage" id="money" style="margin-bottom:10px;">
-										<?php if($special){ ?>
+									
+										<?php if(isset($special)&&$special){ ?>
 										<span>
 											<!-- <i style="color:#999;font-size: 25px;">Vip Price:&ensp;</i> -->
 											<b style="font-size: 30px;"><?php echo $special; ?></b>
@@ -115,59 +116,50 @@
 								<!-- 产品颜色 -->
 							<!-- <p class="text_p"><span>Hair Color:</span> Natural Black</p> -->
 
-							<div class="label_div clearfix">
+							<div class="label_div clearfix" id="form-product">
 								<label class="num_label" for="">
 									<span>Quantity:</span>
 
 									<div class="price_input clearfix" >
 										<span class="sub" ></span>
-										<input class="num" type="text" value="1" id="nums"/>
+										<input class="num" name="quantity" type="text" value="1" id="nums"/>
 										<span class="add"></span>
 									</div>
 
 								</label>
-								
-								<label class="len_label" for="" >
-								<!-- <input type="hidden" value="" id="share-content" /> -->
-									<!-- <span>Length:</span> -->
-									<div class="select_div" style="margin-top:35px;">
-									   <form id='form-product' >
-									<?php if ($options) { ?>
+									   
+									   	<?php if ($options) { ?>
 					
-										<?php foreach ($options as $option) { ?>
-									<!-- <h4><?=$option['name'];?></h4> -->
-									<?php if ($option['product_option_value']) { ?>
+										<?php foreach ($options as $option) { ?>	
+										<?php if ($option['product_option_value']) { ?>
 									<?php if ($option['type'] == 'select') { ?> 
-									<p class="select-box">
-									<span style=" font-size:17px;color: gray;"><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
-									<select onchange="changeprice()" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>"  style="cursor:pointer; width:120px;height:41px;font-size:13px;">
-										<option value=""><?php echo $text_select; ?></option>
-										<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
-										<option <?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'selected';} else if($k==0) echo 'selected'; ?> value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
-										<?php if ($option_value['price']) { ?>
-										(<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-										<?php } ?>
-										</option>
-										<?php } ?>
-									</select>
-								    </p>
-									<?php } if ($option['type'] == 'radio') { ?>
-									<p class="select-box">
-										<span><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
-									<div class="product_label">
-										<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
-										<label <?=$k==0?'style="border-color: rgb(254, 136, 31);"':''?>>
-										<input onclick=" changeprice();" <?=$k==0?'checked':'';?> type="radio" name="option[<?php echo $option['product_option_id']; ?>]" style="display:none" value="<?php echo $option_value['product_option_value_id']; ?>" />
-										<?php echo $option_value['name']; ?>
-										</label>
-										<?php } ?>
+								<label class="len_label" for="" >
+								<span ><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
+									<div class="select_div" >
+								
+				
+								
+							
+									
+									<div class="select_div" id="input-option<?php echo $option['product_option_id']; ?>">
+										<input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php if(isset($shareoption[$option['product_option_id']])){ echo $shareoption[$option['product_option_id']];}else{ echo $option['product_option_value'][0]['product_option_value_id'];} ?>" />
+										<button class="select_btn"><span>dfgdfg</span></button>
+										<div class="select_ul">
+											<ul>
+												<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
+												<li class="<?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'on';} else if($k==0) echo 'on'; ?>" value="<?php echo $option_value['product_option_value_id']; ?>"   ><?php echo $option_value['name']; ?></li>
+											<?php } ?>
+											</ul>
+										</div>
 									</div>
-									</p>
-									<?php }} ?>
-									<?php }} ?>
-								</form>
+								
+								
+							
+								
+							
 									</div>
-								</label>
+								</label>			<?php }} ?><?php }} ?>
+								
 								<span class="measurement">
 									About Measurement
 								</span>
@@ -535,22 +527,31 @@ $(function(){
 		})
 		
 		//下拉选择
-		var off = 0;
+	
+		$(".select_btn").each(function(){
+			var tmp=$(this).parent().find('li.on').text();
+			// console.log(tmp);
+			$(this).find('span').text(tmp);
+		})
+		changeprice();
 		$(".select_btn").click(function(){
 			if($(this).hasClass("off")){
 				$(this).removeClass("off");
 				$(this).siblings(".select_ul").stop().slideUp();
-				off=0;
+		
 			}else{
 				$(this).addClass("off");
 				$(this).siblings(".select_ul").stop().slideDown();
-				off=1;
+			
 			}
-			 event.stopPropagation();
+		
 		})
 		$(".select_ul li").click(function(){
 			var val = $(this).text();
+			var value = $(this).attr('value');
 			$(this).parents(".select_div").find(".select_btn span").text(val);
+			$(this).parents(".select_div").find('input').val(value);
+			changeprice();
 			$(".select_btn").removeClass("off");
 			$(".select_ul").stop().slideUp();
 		})
@@ -656,10 +657,10 @@ function productInfoImg(elm) {
             url: 'index.php?route=product/product/getprice&product_id=<?php echo $product_id; ?>&p=<?php echo $read_price;?>&s=<?=$read_special?$read_special:0?>',
             type: 'post',
             dataType: 'json',
-            data: $("#form-product").serialize(),
+            data: $("#form-product input"),
 
             success: function(json) {
-//                console.log(json);die;
+               console.log(json);
                 $('#money').html(json['html']);
             }
         });

@@ -12,7 +12,7 @@
 						<label for="" class="qx_label" id="cart-tfoot">
 							<span>ALL</span>
 							<input checked="checked" class="check_input" onclick="getOrder()" autocomplete="off" id="lang-checkbox-select-all" type="checkbox">
-							<i class="check_i"></i>
+							<i class="check_i active"></i>
 							<!-- <input autocomplete="off" id="tfoot-checkbox-select-all" type="checkbox" class="check_i" > -->
 						</label>
 						<ul class="shop2_ul" id="cart_table">
@@ -20,7 +20,7 @@
 							<li class="clearfix">
 								<label for="" class="dx_label">
 									 <input checked="checked" onclick="getOrder()" class="check_input" autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
-									 <i class="check_i"></i>
+									 <i class="check_i active"></i>
 									<!-- <input autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>" class="check_i" > -->
 								</label>	
 								<?php if ($product['thumb']) { ?>
@@ -47,7 +47,7 @@
 			                         <?php } ?>                         
 			                        <?php } ?>
 			                        </p>
-									<!-- <p><span>Commodity code:</span> xhs00245</p> -->
+									<p><span>Commodity code:</span><?=$product['model'];?></p>
 									<!-- 产品颜色 -->
 										<p><?php echo $color_data[0]['color'];?></p>						
 								<!-- 产品颜色 -->
