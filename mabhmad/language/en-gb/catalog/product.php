@@ -27,7 +27,8 @@ $_['column_action']          = '操作';
 // Entry
 $_['entry_name']             = '商品名称';
 $_['entry_description']      = '描述';
-$_['entry_m_description']    = 'M 描述';
+$_['entry_material']    	= '材料';
+$_['entry_m_description']    = '材料的描述';
 $_['entry_meta_title'] 	     = 'Meta 标签标题';
 $_['entry_meta_keyword'] 	 = 'Meta 标记关键字';
 $_['entry_meta_description'] = 'Meta 标签说明';

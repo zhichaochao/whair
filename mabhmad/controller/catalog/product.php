@@ -831,6 +831,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_relation_product'] = 'Relation Product';
 		$data['entry_color'] = 'Color';
 		$data['entry_length'] = 'Length';
+		$data['entry_material'] = $this->language->get('entry_material');
 		//新增的产品属性,end
 
 		$data['help_keyword'] = $this->language->get('help_keyword');
