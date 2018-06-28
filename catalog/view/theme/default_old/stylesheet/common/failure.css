@@ -1,0 +1,42 @@
+.fa-content-main{
+	width: 775px;
+	margin: 100px auto;
+}
+.fa-content-main-left,.fa-content-main-right{
+	float: left;
+}
+.fa-content-main-left{
+	width: 175px;
+	padding-top: 70px;
+}
+.fa-content-main h3{
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+.fa-content-main .ord-num-name{
+	color: #000;
+	font-size: 16px;
+}
+.fa-content-main .ord-num{
+	color: #666;
+	font-size: 13px;
+}
+.fa-content-main ul{
+	padding-left: 0;
+}
+.fa-content-main ul li{
+	font-size: 14px;
+	color: #2a2a2a;
+	line-height: 27px;
+}
+.fa-content-main ul li a{
+	text-decoration: underline;
+	color: #2a2a2a;
+}
+.fa-content-main ul li a:hover{
+	text-decoration: none;
+	color: #f60;
+}
+.fa-content-main .ord-num-box{
+	margin-bottom: 60px;
+}

@@ -1,0 +1,22 @@
+.er-content-main{
+	text-align: center;
+	margin: 100px auto;
+}
+.er-content-main-home,.er-content-main-back{
+	font-size: 16px;
+	color: #f60;
+	display: inline-block;
+}
+.er-content-main-home{
+	margin-right: 140px;
+}
+.er-content-main-home i,.er-content-main-back i{
+	color: #000;
+	font-size: 20px;
+}
+.er-content-main-link{
+	margin-top: 60px;
+}
+.er-content-main-home:hover,.er-content-main-back:hover{
+	color: #f61666;
+}

@@ -1,0 +1,361 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*该样式表为共用样式文件，修改请谨慎！*/
+/* 重置样式 */
+body {
+	font-size: 14px !important;
+	font-family: 'segoe ui', Arial, Helvetica, sans-serif !important;
+}
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu {
+	margin: 0;
+	padding: 0;
+}
+header, footer, section, article, aside, nav, hgroup, address, figure, figcaption, menu, details {
+	display: block;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption, th {
+	text-align: left;
+	font-weight: normal;
+}
+html, body, fieldset, img, iframe, abbr {
+	border: 0;
+	vertical-align: middle;
+}
+i, cite, em, var, address, dfn {
+	font-style: normal;
+}
+[hidefocus], summary {
+outline:0;
+}
+img {
+	max-width: 100%;
+}
+li {
+	list-style: none;
+}
+h1, h2, h3, h4, h5, h6, small {
+	font-size: 100%;
+}
+sup, sub {
+	font-size: 83%;
+}
+pre, code, kbd, samp {
+	font-family: inherit;
+}
+q:before, q:after {
+	content: none;
+}
+textarea {
+	overflow: auto;
+	resize: none;
+}
+label, summary {
+	cursor: default;
+}
+a, button {
+	cursor: pointer;
+}
+input[type=text] {
+	text-indent: 5px;
+}
+h1, h2, h3, h4, h5, h6, em, strong, b {
+	font-weight: bold !important;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+body, textarea, input, button, select, keygen, legend {
+	font-family: 'segoe ui', Arial, Helvetica, sans-serif;
+	color: #333;
+	outline: 0;
+}
+body {
+	background: #fff;
+}
+a, a:hover {
+	color: #333;
+}
+/* 功能样式 */
+.cont {
+	width: 100%;
+	box-sizing: border-box;
+}
+.f_cb:after, .f_cbli li:after, .cf:after, .container:after , .details_tabbot_dl dl:after ,.register_tab dl:after ,.company_right_canus dl:after {
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	overflow: hidden;
+	content: ".";
+}
+.f_cb, .f_cbli li, {
+ zoom: 1;
+}
+.f_ib {
+	display: inline-block;
+*display:inline;
+*zoom:1;
+}
+.f_dn {
+	display: none;
+}
+.f_db {
+	display: block;
+}
+.f_fl {
+	float: left;
+}
+.f_fr {
+	float: right;
+}
+.f_pr {
+	position: relative;
+}
+.f_prz {
+	position: relative;
+	zoom: 1;
+}
+.f_oh {
+	overflow: hidden;
+}
+.f_ff0 {
+	font-family: arial, \5b8b\4f53;
+}
+.f_ff1 {
+	font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+.f_fs1 {
+	font-size: 12px;
+}
+.f_fs2 {
+	font-size: 14px;
+}
+.f_em {
+	font-size: 1.2em;
+}
+.f_fwn {
+	font-weight: normal;
+}
+.f_fwb {
+	font-weight: bold;
+}
+.f_tal {
+	text-align: left;
+}
+.f_tac {
+	text-align: center;
+}
+.f_tar {
+	text-align: right;
+}
+.f_taj {
+	text-align: justify;
+	text-justify: inter-ideograph;
+}
+.f_vam, .f_vama * {
+	vertical-align: middle;
+}
+.f_wsn {
+	word-wrap: normal;
+	white-space: nowrap;
+}
+.f_pre {
+	overflow: hidden;
+	text-align: left;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.f_wwb {
+	white-space: normal;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.f_ti {
+	overflow: hidden;
+	text-indent: -30000px;
+}
+.f_ti2 {
+	text-indent: 2em;
+}
+.f_lhn {
+	line-height: normal;
+}
+.f_tdu, .f-tdu:hover {
+	text-decoration: underline;
+}
+.f_tdn, .f-tdn:hover {
+	text-decoration: none;
+}
+.f_toe {
+	overflow: hidden;
+	word-wrap: normal;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.f_csp {
+	cursor: pointer;
+}
+.f_csd {
+	cursor: default;
+}
+.f_csh {
+	cursor: help;
+}
+.f_csm {
+	cursor: move;
+}
+.f_usn {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+/*html5*/
+article, aside, dialog, footer, header, section, footer, nav, figure, menu {
+	display: block
+}
+/* 公用样式 */
+.clr {
+	display: block !important;
+}
+.cc {
+	margin: 0!important;
+	padding: 0!important;
+}
+.cc_mr {
+	margin: 0 !important;
+}
+.cc_bor {
+	border: 0!important;
+}
+.cc_pad {
+	padding: 0 !important;
+}
+.box_shadow {
+	box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+}
+i.col_zs {
+	color: #f60;
+}
+.col_ff0 {
+	color: #ff0;
+}
+.col_666 {
+	color: #666;
+}
+.bg_col_eee {
+	background-color: #eee;
+}
+.mr_5 {
+	margin: 0 5px;
+}
+.mr_t20 {
+	margin-top: 20px;
+}
+.pd_b30 {
+	padding-bottom: 30px;
+}
+.pd_b50 {
+	padding-bottom: 50px;
+}
+
+
+.merchant_soyouul .dll {
+	line-height: 24px;
+	margin-bottom: 15px;
+}
+.merchant_soyouul .dll .sp1 {
+	width: 114px;
+	float: left;
+	text-align: right;
+	padding-right: 10px;
+}
+.merchant_soyouul .dll .sp2 input {
+	width: 255px;
+	height: 30px;
+	line-height: 30px;
+	padding: 2px 0;
+	border: 1px solid #CCC;
+}
+.merchant_soyouul .dll .sp2 select {
+	padding: 4px;
+	width: 257px;
+}
+.merchant_soyouul .dlb .sp1 {
+	width: 114px;
+	float: left;
+	text-align: right;
+	padding-right: 10px;
+}
+.merchant_soyouul .dlb .sp2 textarea {
+	border: 1px solid #CCC;
+	width: 500px;
+	height: 150px;
+}
+.dll .text-danger{
+	margin-left: 185px;
+	color: #f60;
+}
+.text-danger-textarea{
+	color: #f60;
+}
+.dlbbut .btn.btn-primary {
+	background-color: #f60;
+	border: 0;
+	color: #FFF;
+	font-size: 16px;
+	padding: 8px 45px;
+}
+.merchant_soyouul .dlbbut span {
+	color: #f60;
+	display: block;
+	margin-left: 14px;
+}
+.merchant_soyouul .dlbbut {
+	margin-left: 124px;
+	margin-top: 20px;
+}
+.merchant_soyouul .dll .sp1, .merchant_soyouul .dlb .sp1 {
+	width: 185px;
+}
+.merchant_soyouul .dll .sp2 {
+	vertical-align: bottom;
+}
+.merchant_soyouul .dll .sp2_t {
+	display: inline-block;
+	margin-top: 8px;
+}
+.merchant_soyouul .dlb .sp2 {
+	display: inline-block;
+}
+.merchant_soyouul .dlb .sp2 p {
+	margin-top: 5px;
+}
+.merchant_soyouul .dlbbut {
+	margin-left: 185px;
+}
+.merchant_soyou.sellfrom_salon2 .merchant_soyouul {
+	padding-left: 0;
+}
+.merchant_soyou.sellfrom_salon2 .merchant_soyouul .dll .sp1, .merchant_soyou.sellfrom_salon2 .merchant_soyouul .dlb .sp1 {
+	width: 185px;
+}
+.merchant_soyou.sellfrom_salon2 .merchant_soyouul .dll .sp2_t {
+	margin-top: 0;
+}
+.merchant_soyou.sellfrom_salon2 .merchant_soyouul .dlbbut {
+	margin-left: 196px;
+}
+.merchant_soyou.sellfrom_salon2 .merchant_soyouul .dlb .sp2 textarea {
+	width: 755px;
+}
