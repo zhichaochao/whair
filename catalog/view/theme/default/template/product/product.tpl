@@ -190,7 +190,7 @@
 							<div class="share clearfix">
 								<span>Share: </span>
 								<ul class="share_ul">
-									<li><a href="###"></a></li>
+									<li><a href="sh #"></a></li>
 									<li><a href="###"></a></li>
 									<li><a href="###"></a></li>
 								</ul>
@@ -198,6 +198,7 @@
 						</div>
 					</div>
 				</div>
+
 			
 				<div class="bot clearfix">
 					<ol class="text_ol clearfix">
