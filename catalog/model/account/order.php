@@ -106,8 +106,9 @@ class ModelAccountOrder extends Model {
 	}
 	public function deleteWishlist($order_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "order WHERE customer_id = '" . (int)$this->customer->getId() . "' AND order_id = '" . (int)$order_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "order_product WHERE order_id = '" .(int)$order_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "order_product WHERE customer_id = '" . (int)$this->customer->getId() . "' AND order_id = '" . (int)$order_id . "'");
 	}
+
 	public function getOrders($start = 0, $limit = 20) {
 		if ($start < 0) {
 			$start = 0;

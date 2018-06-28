@@ -35,7 +35,7 @@
                     <p>Order Status: <?php echo $order['status']; ?></p>
                   </li>
                 </ol>
-                <div class="close" onclick="javascript:cart_remove('<?php echo $order['order_id']; ?>');"></div>
+                <!-- <div class="close" onclick="javascript:cart_remove('<?php echo $order['order_id']; ?>');"></div> -->
               </div>
               
               <div class="bot clearfix">
