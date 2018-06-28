@@ -35,7 +35,7 @@
 								</div> -->
 								<div class="text">
 									<a class="a_bt" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
-									<p><span>Color:</span> Natural Black</p>
+									<!-- <p><span>Color:</span> Natural Black</p> -->
 									<p>
 									<?php if ($product['option']) { ?>                         
 			                         <?php foreach ($product['option'] as $option) { ?>						  
@@ -47,7 +47,7 @@
 			                         <?php } ?>                         
 			                        <?php } ?>
 			                        </p>
-									<p><span>Commodity code:</span> xhs00245</p>
+									<!-- <p><span>Commodity code:</span> xhs00245</p> -->
 								</div>
 								<div class="price clearfix">
 									<!-- <p>$35.65<span>$35.65</span></p> -->
@@ -210,18 +210,19 @@ function cart_removes(product_key){
 	// console.log(num);
 	    switch(type){
 	        case 0:
+	        	//document.getElementById('cart-form').submit();
 	            // document.getElementById('cart-form').submit();
 	            break;
 	        case 1:
 	            qty = $(obj).next('input[type="text"]').val() - 1;
 	            if(qty == 0) return false;
 	            $(obj).next('input[type="text"]').val(qty);
-	           
+	          // document.getElementById('cart-form').submit();
 	            break;
 	        case 2:
 	            qty = parseInt($(obj).prev('input[type="text"]').val()) + 1;
 	            $(obj).prev('input[type="text"]').val(qty);
-	        
+	        //document.getElementById('cart-form').submit();
 	            break;
 	    }
 

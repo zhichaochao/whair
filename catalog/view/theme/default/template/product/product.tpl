@@ -96,8 +96,27 @@
 								</div>
 								<?php } ?>
 								<!--/产品价格-->
-							
-							<p class="text_p"><span>Hair Color:</span> Natural Black</p>
+								<!-- 产品颜色 -->
+								<?php if($color_data){?>
+								<?php foreach($color_data as $key=>$row){ ?>
+								<li>
+									<p style="font-size: 0.83vw;color: #666;">
+									<span style="font-size: 0.93vw;color: #000;line-height: 0.93vw;">Hair Color:</span>
+										<?php echo $row['color'];?>
+									</p>
+								</li>
+								<?php } ?>
+								<?php }else{ ?>
+								<li>
+									<p class="text_p">
+									<span>Hair Color:</span>
+										<?php echo $row['color'];?>
+									</p>
+								</li>
+								<?php } ?>							
+								<!-- 产品颜色 -->
+							<!-- <p class="text_p"><span>Hair Color:</span> Natural Black</p> -->
+
 							<div class="label_div clearfix">
 								<label class="num_label" for="">
 									<span>Quantity:</span>
