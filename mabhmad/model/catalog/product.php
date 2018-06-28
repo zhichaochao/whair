@@ -78,6 +78,7 @@ class ModelCatalogProduct extends Model {
 			    tag = '" . $this->db->escape($value['tag']) . "',
 			    meta_title = '" . $this->db->escape($value['meta_title']) . "',
 			    meta_description = '" . $this->db->escape($value['meta_description']) . "',
+			        material = '" . $this->db->escape($value['material']) . "',
 			    meta_keyword = '" . $this->db->escape($value['meta_keyword']). "'";
 			$this->querysql($sql);
 		}
@@ -264,6 +265,7 @@ class ModelCatalogProduct extends Model {
     			    tag = '" . $this->db->escape($value['tag']) . "',
     			    meta_title = '" . $this->db->escape($value['meta_title']) . "',
     			    meta_description = '" . $this->db->escape($value['meta_description']) . "',
+    			     material = '" . $this->db->escape($value['material']) . "',
     			    meta_keyword = '" . $this->db->escape($value['meta_keyword']). "'";
     			$this->querysql($sql);
     		}
@@ -692,6 +694,7 @@ class ModelCatalogProduct extends Model {
 				'meta_title'       => $result['meta_title'],
 				'meta_description' => $result['meta_description'],
 				'meta_keyword'     => $result['meta_keyword'],
+				'material'     => $result['material'],
 				'tag'              => $result['tag']
 			);
 		}
