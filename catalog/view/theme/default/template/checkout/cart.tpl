@@ -211,7 +211,7 @@ function cart_removes(product_key){
 	            break;
 	        case 1:
 	            qty = $(obj).next('input[type="text"]').val() - 1;
-	            if(qty == 0){alert('At least 1 preduct'); return false;};
+	            if(qty == 0){alert('At least 1 product'); return false;};
 	            $(obj).next('input[type="text"]').val(qty);
 	          // document.getElementById('cart-form').submit();
 	            break;
