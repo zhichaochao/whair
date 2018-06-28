@@ -466,7 +466,7 @@ class ControllerProductProduct extends Controller {
 
             $data['options'] = array();
             $options=$this->model_catalog_product->getProductOptions($this->request->get['product_id']);
-//			var_dump($options);die;
+			// print_r($options);die;
             foreach ( $options as $option) {
                 $product_option_value_data = array();
                 foreach ($option['product_option_value'] as $option_value) {

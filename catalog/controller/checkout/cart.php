@@ -300,12 +300,14 @@ class ControllerCheckoutCart extends Controller {
 			} else {
 				$quantity = $product_info['minimum'] ? $product_info['minimum'] : 1;
 			}
+            // print_r($this->request->post['quantity']);exit();
 
 			if (isset($this->request->post['option'])) {
 				$option = array_filter($this->request->post['option']);
 			} else {
 				$option = array();
 			}
+            // print_r($this->request->post['option']);  print_r($option);exit();
 
             $product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
 
