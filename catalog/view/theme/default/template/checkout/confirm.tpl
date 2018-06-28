@@ -48,6 +48,12 @@
                             <button  onclick="coupon_code(this)">CONFIRM</button>
                         </label>
                     </div>
+                    <?php if($cart==1){ ?>
+                    <div class="btn">
+                            <a class="a_btn"  onclick="submitCart();">GO TO CHECK OUT&nbsp;&nbsp;&nbsp;></a>
+                    
+                        </div>
+                    <?php }else{ ?>
                     <div class="btn">
                         <span>Buyer Message:</span>
                         <i id="comment_success"></i>
@@ -56,6 +62,7 @@
                             <button onclick="savecomment();" >CONFIRM</button>
                         </label>
                     </div>
+                    <?php }?>
                 
                    
 

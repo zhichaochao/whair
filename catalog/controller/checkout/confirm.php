@@ -22,6 +22,7 @@ class ControllerCheckoutConfirm extends Controller {
 
 		// Validate minimum quantity requirements.
 		if (!isset($this->request->get['cart_ids'])){$this->request->get['cart_ids']='';}
+		$this->session->data['cart_ids']=$this->request->get['cart_ids'];
 		$products = $this->cart->getProducts($this->request->get['cart_ids']);
 
 		foreach ($products as $product) {
@@ -52,6 +53,7 @@ class ControllerCheckoutConfirm extends Controller {
 		        'taxes'  => &$taxes,
 		        'total'  => &$total
 		    );
+		    // print_r($total_data);exit();
 		    $this->load->model('extension/extension');
 		    $sort_order = array();
 		    $results = $this->model_extension_extension->getExtensions('total');
@@ -59,7 +61,9 @@ class ControllerCheckoutConfirm extends Controller {
 		    foreach ($results as $key => $value) {
 		        $sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
 		    }
+
 		    array_multisort($sort_order, SORT_ASC, $results);
+		       // print_r($results);exit();
 		    foreach ($results as $result) {
 		        if ($this->config->get($result['code'] . '_status')) {
 		            $this->load->model('extension/total/' . $result['code']);
@@ -72,6 +76,7 @@ class ControllerCheckoutConfirm extends Controller {
 		    foreach ($totals as $key => $value) {
 		        $sort_order[$key] = $value['sort_order'];
 		    }
+		    // print_r($totals);exit();
 		    array_multisort($sort_order, SORT_ASC, $totals);
 		    $order_data['totals'] = $totals;
 		    
@@ -184,6 +189,7 @@ class ControllerCheckoutConfirm extends Controller {
 		$data['comment'] = isset($this->session->data['comment'])?$this->session->data['comment']:'';
 
         $data['cart_ids'] = $this->request->get['cart_ids'];
+        $data['cart'] =isset( $this->request->get['cart'])?1:0;
           $data['checkout_url'] =$this->url->link('checkout/cart');
 
 		$this->response->setOutput($this->load->view('checkout/confirm', $data));
@@ -564,6 +570,7 @@ class ControllerCheckoutConfirm extends Controller {
 	        unset($this->session->data['reward']);
 	        unset($this->session->data['voucher']);
 	        unset($this->session->data['vouchers']);
+	        unset($this->session->data['cart_ids']);
 	        
 	        //$json['redirect'] = $this->url->link('checkout/success', '', true);
 	        $json['redirect'] = $this->url->link('checkout/confirm/view_order', '', true);

@@ -6,12 +6,12 @@
 					<h1>SHOPPING CART</h1>
 					<a href="<?php echo $url?>">Continue Shopping</a>
 				</div>
-				<form id="cart-form" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+			
 				<div class="shop2_text clearfix">
 					<div class="left">
 						<label for="" class="qx_label" id="cart-tfoot">
 							<span>ALL</span>
-							<input class="check_input" autocomplete="off" id="lang-checkbox-select-all" type="checkbox">
+							<input class="check_input" onclick="getOrder()" autocomplete="off" id="lang-checkbox-select-all" type="checkbox">
 							<i class="check_i"></i>
 							<!-- <input autocomplete="off" id="tfoot-checkbox-select-all" type="checkbox" class="check_i" > -->
 						</label>
@@ -19,7 +19,7 @@
 							 <?php foreach($products as $product){ ?>
 							<li class="clearfix">
 								<label for="" class="dx_label">
-									 <input class="check_input" autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
+									 <input onclick="getOrder()" class="check_input" autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
 									 <i class="check_i"></i>
 									<!-- <input autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>" class="check_i" > -->
 								</label>	
@@ -62,7 +62,7 @@
 									<div class="num_div">
 										<span class="sub" onclick="javascript:updateQty(this,1);"></span>
 										<!-- <input class="num" type="text" value="1" /> -->
-										<input type="text" aid="<?php echo $product['cart_id']; ?>" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
+										<input class="product_quantity" type="text" aid="<?php echo $product['cart_id']; ?>" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
 										<span class="add" onclick="javascript:updateQty(this,2);"></span>
 									</div>
 								</div>
@@ -76,40 +76,15 @@
 							</li>
 							<?php } ?>
 						</ul>
-					</div>			
-					<div class="right">
-						<h2>SUMMARY</h2>			
-						<?php foreach ($totals as $k => $total) {  if($total['title']!='Poundage'){?>
-                       <?php if($total['title']=='Total') { ?>
-                        <p class="p2"><?php echo $total['title']; ?> <span class="fr"><?php echo $total['text']; ?></span></p>
-                        <?php }else{ ?>
-                            <p class="p1"><?php echo $total['title']; ?> <span class="fr"><?php echo $total['text']; ?></span></p>
-                        <?php } ?>
-                    <?php } } ?>
-						<div class="shop_search">
-							<p>
-								If you have coupons, please fill them out. If not, 
-								please pay.
-							</p>
-							<label for="">
-							<form id="discount-coupon-form" action="<?php echo $coupon_url; ?>" method="post">
-								<!-- <input type="text" placeholder="coupon code"/> -->
-								<!-- <button>CONFIRM</button> -->
-								<input class="input-text form-control" id="coupon_code" name="coupon"  placeholder="coupon code">
-								<button type="submit"   value="CONFIRM">CONFIRM</button>
+					</div>	
 
-							</form>
-							</label>
-						</div>
-						<div class="btn">
-							<a class="a_btn"  onclick="submitCart();">GO TO CHECK OUT&nbsp;&nbsp;&nbsp;></a>
-							<!-- <button type="button" title="Proceed to Checkout" class="a_btn" >
-				    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-				   PROCEED TO CHECKOUT</button> -->
-						</div>
-					</div>
+                <div class="right clearfix right_shop  bg_gif">
+                    <div class="collapse-checkout bg_fff" id='collapse-checkout-confirm'><h2>SUMMARY</h2></div>
+                  
+                </div>		
+				
 				</div>
-				</form>
+		
 				<div class="bot clearfix">
 					<dl>
 						<dt>Delivery dates</dt>
@@ -150,6 +125,27 @@
 			</div>
 		</div>
 <script>
+	getOrder();
+	function getOrder(){
+//    console.log();
+        var chk_value = '';
+        $("input:checkbox[name='product']:checked").each(function() { // 遍历name=test的多选框
+            chk_value += $(this).val() + ',';  // 每一个被选中项的值
+        });
+        chk_value = chk_value.substring(0,chk_value.length-1);
+        if (chk_value) {var url='index.php?route=checkout/confirm&cart=1&cart_ids=' + chk_value;}else {var url='index.php?route=checkout/confirm&cart=1&cart_ids=';}
+    $.ajax({
+        url: url,
+        dataType: 'html',
+        success: function(html) {
+//            console.log(html);die;
+            $('#collapse-checkout-confirm').html(html);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+}
 function wishlist(product_id,e) {
   if ($(e).hasClass('off')) {
        $.ajax({
@@ -215,7 +211,7 @@ function cart_removes(product_key){
 	            break;
 	        case 1:
 	            qty = $(obj).next('input[type="text"]').val() - 1;
-	            if(qty == 0) return false;
+	            if(qty == 0){alert('At least 1 preduct'); return false;};
 	            $(obj).next('input[type="text"]').val(qty);
 	          // document.getElementById('cart-form').submit();
 	            break;
@@ -234,10 +230,18 @@ function cart_removes(product_key){
  
         success: function(json) {
         	console.log(json);
+        	getOrder();
         }
     })
 
 
+			var num=0;
+	     $(".product_quantity").each(function(){
+
+			    num += parseInt($(this).val());
+			    //你的代码写在这里。
+			});
+	     $('#cart_count').html(parseInt(num));
 
 	    
 	}
@@ -259,85 +263,7 @@ function cart_removes(product_key){
 		 	
 	   }     
 	}
-	jQuery(function($){
-		//var $btnJian = $('.cart-table .td-qty b'),
-//			$btnAdd = $('.cart-table .td-qty i');
-            //$btnRemove = $('.cart-table .td-del>div'),
-			
-		var	$seleAllTop = $('#lang-checkbox-select-all'),
-			$seleAllBot = $('#tfoot-checkbox-select-all'),
-			$checkbox = $('#cart_table :checkbox'),
-			$btndel = $('#cart-tfoot .col-goods');
-			
-		//$btnJian.on('click',function(){
-//			if($(this).next().text() > 1){
-//				var newQty = $(this).next().text($(this).next().text()-1),
-//					newTotal = newQty.text() * $(this).parent().next('.td-unit').text();
-//				$(this).parent().nextAll('.td-total').text(newTotal.toFixed(2));
-//			}
-//		});
-		//$btnAdd.on('click',function(){
-//			//100000 -》应后台返回库存量
-//			if($(this).prev().text() < 100000){
-//				var newQty = $(this).prev().text(Number($(this).prev().text())+1),
-//					newTotal = newQty.text() * $(this).parent().next('.td-unit').text();
-//				$(this).parent().nextAll('.td-total').text(newTotal.toFixed(2));
-//			}
-//		});
-		//$btnRemove.on('click',function(){
-//			$(this).closest('tr').remove();
-//		});
-
-		$seleAllTop.click(function(){
-			$checkbox.prop('checked',this.checked);
-			$seleAllBot.prop('checked',this.checked);
-		});
-		$seleAllBot.click(function(){
-			$checkbox.prop('checked',this.checked);
-			$seleAllTop.prop('checked',this.checked);
-		});
-		$checkbox.click(function(){
-			$seleAllTop.prop('checked',$checkbox.filter(':checked').length == $checkbox.length);
-			$seleAllBot.prop('checked',$checkbox.filter(':checked').length == $checkbox.length);
-		});
-		$btndel.takyPopup({'width':390,'height':192,callback:function(pop){
-			if($checkbox.filter(':checked').length != 0){
-				var $title = $('<div/>').addClass('pop-content').html('Delect selected items'),
-					$popYes = $('<button/>').addClass('pop-yes').text('YES'),
-					$popNo = $('<button/>').addClass('pop-no').text('NO');
-				pop.find('.tips').append([$title,$popYes,$popNo]);
-				$popYes.click(function(e){
-					var str = '';
-					$('.popwrap,#popbox').remove();
-					$seleAllTop.prop('checked',false);
-					$seleAllBot.prop('checked',false);
-					//$checkbox.filter(':checked').prop('checked',false).closest('tr').remove();
-					$.each($checkbox.filter(':checked'),function(idx,ele){
-						str += $(ele).val()+';';
-					});
-					str = str.replace(/;$/g, "");				
-					cart.remove(str);
-					$checkbox.filter(':checked').prop('checked',false);
-					e.stopPropagation();
-				});
-				$popNo.click(function(e){
-					$('.popwrap,#popbox').remove();
-					e.stopPropagation();
-				});
-			}else{
-				var $title = $('<div/>').addClass('pop-content').html('Please select the items and click  delete button'),
-					$popYes = $('<button/>').addClass('pop-yes').text('YES');
-				pop.find('.tips').append([$title,$popYes,$popNo]);
-				$popYes.click(function(e){
-					$('.popwrap,#popbox').remove();
-					e.stopPropagation();
-				});
-			}
-			
-		}});
-		
-	});
-	//搜索
+	
 	//收藏
 		$(".wishlist").click(function(){
 			var win = $(window).width();
@@ -360,9 +286,7 @@ function cart_removes(product_key){
 			}
 			
 		})
-		$(".shop_search input").focus(function(){
-			$(".shop_search button").css("display","block");
-		})
+	
 		//全选
 		$(".qx_label input").click(function(cart_id){
 			if($(this).prop("checked")){
