@@ -1009,6 +1009,7 @@ class ControllerProductProduct extends Controller {
         $product_id = $this->request->get['product_id'];   //产品id
         $this->load->model('catalog/product');
         $product_info = $this->model_catalog_product->getProduct($product_id);
+        var_dump($product_info);die;
         if(!empty($product_info)){
 
             $this->load->model('catalog/review');

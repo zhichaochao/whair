@@ -48,6 +48,9 @@
 			                        <?php } ?>
 			                        </p>
 									<!-- <p><span>Commodity code:</span> xhs00245</p> -->
+									<!-- 产品颜色 -->
+										<p><?php echo $color_data[0]['color'];?></p>						
+								<!-- 产品颜色 -->
 								</div>
 								<div class="price clearfix">
 									<!-- <p>$35.65<span>$35.65</span></p> -->

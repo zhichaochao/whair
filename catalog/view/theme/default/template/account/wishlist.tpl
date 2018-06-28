@@ -12,7 +12,7 @@
             <li id="product">
               <a class="one_a" href="<?php echo $product['href']; ?>">
                 <div class="pic_img">
-                  <img src="<?php echo $product['thumb']; ?>"  style="width:353px;height: 335px;" />
+                  <img src="<?php echo $product['thumb']; ?>"  style="width:355px;height:305px;" />
                 </div>
                 <div class="text clearfix">
                  <!--  <span>$35.30</span> -->
@@ -27,7 +27,7 @@
 
                   <p class="p1"><?php echo $product['stock']; ?></p>
                   <p><?php echo $product['name']; ?> </p>
-                  <!-- <input type="hidden" name="product_id" value="<?php echo $product['product_id'];?>">   -->
+                  <input type="hidden" name="product_id" value="<?php echo $product['product_id'];?>">  
                   <input class="hidden" type="hidden" value="1" id="nums"/>            
                   </div>
               </a>

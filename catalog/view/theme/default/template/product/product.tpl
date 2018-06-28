@@ -66,9 +66,7 @@
 					<input type="hidden" name="product_id" value="<?=$product_id?>">
 						<div class="top_text">
 						<!-- <a href="###"><?php echo $heading_title;?></a> -->
-								<h2><?php echo $heading_title;?></h2>
-
-
+								<h2 style="font-size: 1.16vw;"><?php echo $heading_title;?></h2>
 							<p class="price">
 							<!-- $36.59 -->
 							<!--产品价格-->
@@ -100,16 +98,16 @@
 								<?php if($color_data){?>
 								<?php foreach($color_data as $key=>$row){ ?>
 								<li>
-									<p style="font-size: 0.83vw;color: #666;">
-									<span style="font-size: 0.93vw;color: #000;line-height: 0.93vw;">Hair Color:</span>
+									<p class="text_p" style="font-size: 0.83vw;color: #666;">
+									<span style="line-height: 2.93vw;">Hair Color:</span>
 										<?php echo $row['color'];?>
 									</p>
 								</li>
 								<?php } ?>
 								<?php }else{ ?>
 								<li>
-									<p class="text_p">
-									<span>Hair Color:</span>
+									<p class="text_p" style="font-size: 0.83vw;color: #666;">
+									<span style="line-height: 2.93vw;"">Hair Color:</span>
 										<?php echo $row['color'];?>
 									</p>
 								</li>
