@@ -10,17 +10,14 @@ class ControllerProductProduct extends Controller {
             $shareoption = [];
             foreach (explode(',',$share) as $item){
                 $temp = explode(':',$item);
-//                var_dump();die;
                 $shareoption[preg_replace('/\D/s', '', $temp[0])] = preg_replace('/\D/s', '', $temp[1]);
             }
             $data['shareoption'] = $shareoption;
         }
 
-//        var_dump($shareoption);die;
         $data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(
-            //'text' => $this->language->get('text_home'),
             'text' => 'Home',
             'href' => $this->url->link('common/home')
         );
@@ -33,22 +30,7 @@ class ControllerProductProduct extends Controller {
         $this->load->model('catalog/product');
         $category_list = $this->model_catalog_product->getCatalogName($this->request->get['product_id']);
 
-        //旧
-        /*$parent_id = 0;
-        foreach($category_list as $row){
-            if($row['parent_id']==0){              //父类
-               $parent_id = $row['category_id'];
-               $data['breadcrumbs'][] = array(
-                    'text' => $row['name'],
-                    'href' => $this->url->link('product/category', 'path=' . $row['category_id'])
-               );
-            }else{                                 //子类
-               $data['breadcrumbs'][] = array(
-                    'text' => $row['name'],
-                    'href' => $this->url->link('product/category', 'path=' . $parent_id.'_'.$row['category_id'])
-               );
-            }
-        }*/
+  
 
         //新
         foreach($category_list as $k => $row){
@@ -73,59 +55,7 @@ class ControllerProductProduct extends Controller {
         }
 
 
-        /*if (isset($this->request->get['path'])) {
-            $path = '';
-
-            $parts = explode('_', (string)$this->request->get['path']);
-
-            $category_id = (int)array_pop($parts);
-
-            foreach ($parts as $path_id) {
-                if (!$path) {
-                    $path = $path_id;
-                } else {
-                    $path .= '_' . $path_id;
-                }
-
-                $category_info = $this->model_catalog_category->getCategory($path_id);
-
-                if ($category_info) {
-                    $data['breadcrumbs'][] = array(
-                        'text' => $category_info['name'],
-                        'href' => $this->url->link('product/category', 'path=' . $path)
-                    );
-                }
-            }
-
-            // Set the last category breadcrumb
-            $category_info = $this->model_catalog_category->getCategory($category_id);
-
-            if ($category_info) {
-                $url = '';
-
-                if (isset($this->request->get['sort'])) {
-                    $url .= '&sort=' . $this->request->get['sort'];
-                }
-
-                if (isset($this->request->get['order'])) {
-                    $url .= '&order=' . $this->request->get['order'];
-                }
-
-                if (isset($this->request->get['page'])) {
-                    $url .= '&page=' . $this->request->get['page'];
-                }
-
-                if (isset($this->request->get['limit'])) {
-                    $url .= '&limit=' . $this->request->get['limit'];
-                }
-
-                $data['breadcrumbs'][] = array(
-                    'text' => $category_info['name'],
-                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
-                );
-            }
-        }*/
-
+     
 
         $this->load->model('catalog/manufacturer');
 
@@ -218,7 +148,7 @@ class ControllerProductProduct extends Controller {
 
         $product_info = $this->model_catalog_product->getProduct($product_id);
 
-//		var_dump($product_info);die;
+		// print_r($product_info);die;
         if ($product_info) {
             $url = '';
 
@@ -270,21 +200,13 @@ class ControllerProductProduct extends Controller {
                 $url .= '&limit=' . $this->request->get['limit'];
             }
 
-            //产品名的面包屑
-            /*$data['breadcrumbs'][] = array(
-                'text' => $product_info['name'],
-                'href' => $this->url->link('product/product', $url . '&product_id=' . $this->request->get['product_id'])
-            );*/
+           
 
             $this->document->setTitle($product_info['meta_title']);
             $this->document->setDescription($product_info['meta_description']);
             $this->document->setKeywords($product_info['meta_keyword']);
             $this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
-            $this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');
-            $this->document->addStyle('catalog/view/javascript/jquery/magnific/magnific-popup.css');
-            $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
-            $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
-            $this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
+          
 
             $data['heading_title'] = $product_info['name'];
             $data['wishlist']= $this->model_catalog_product->wishlistornot($product_info['product_id']);
@@ -386,19 +308,16 @@ class ControllerProductProduct extends Controller {
             $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
             foreach ($results as $result) {
                 $data['images'][] = array(
-                    //'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
-                    //'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'))
-
-                    // 'popup' => $this->model_tool_image->resize($result['image'], 700, 700),
+                
                     'thumb' => $this->model_tool_image->resize($result['image'], 200, 200),  //小图
-                    // 'thumb2' => $this->model_tool_image->resize($result['image'], 700, 700), //小图点击后的大图
+                  
                     'image'=> $this->model_tool_image->resize($result['image'], 700, 700)
                 );
             }
 
             //原价
             if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-                //$data['price'] = $this->currency->format($this->tax->calculate($product_info['defaultprice'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+              
                 $data['price'] = $this->currency->format($product_info['defaultprice'], $this->session->data['currency']);
                 $data['read_price']=$this->tax->calculate($product_info['defaultprice'], $product_info['tax_class_id'], $this->config->get('config_tax'));
             } else {
@@ -414,18 +333,7 @@ class ControllerProductProduct extends Controller {
             }
 
 
-            /*if ((float)$product_info['special']) {
-                $data['special'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-            } else {
-                $data['special'] = false;
-            }*/
-
-            /* //折后价(新)
-            if ($product_info['discount_percentage'] > 0) {
-                $data['special'] = $this->currency->format($product_info['defaultprice'] * ($product_info['discount_percentage'] / 100), $this->session->data['currency']);
-            } else {
-                $data['special'] = false;
-            } */
+        
 
             //根据用户等级获取对应产品价格
             if ($this->customer->isLogged()) {
@@ -466,7 +374,6 @@ class ControllerProductProduct extends Controller {
 
             $data['options'] = array();
             $options=$this->model_catalog_product->getProductOptions($this->request->get['product_id']);
-			// print_r($options);die;
             foreach ( $options as $option) {
                 $product_option_value_data = array();
                 foreach ($option['product_option_value'] as $option_value) {
@@ -499,30 +406,7 @@ class ControllerProductProduct extends Controller {
                     'required'             => $option['required']
                 );
             }
-//			 print_r(	$data['options']);exit();
 
-            /*
-            //获取后台设置的option属性
-            $data['option_data'] = $this->model_catalog_product->getOptionValue($product_id);
-            $data['option_data_color_title'] = '';
-            $data['option_data_color_content'] = '';
-            $data['option_data_length_title'] = '';
-            $data['option_data_length_content'] = '';
-            foreach($data['option_data'] as $k => $v){
-               if($v['name'] == 'Color'){
-                  $data['option_data_color_title'] = 'Color';
-                  $colorValue = explode(':', empty($v['tvalue']) ? $v['svalue'] : $v['tvalue']);
-                  $data['option_data_color_content'] .= $colorValue[0].',';
-               }
-               if($v['name'] == 'Length'){
-                  $data['option_data_length_title'] = 'Length';
-                  $lengthValue = explode(':', empty($v['tvalue']) ? $v['svalue'] : $v['tvalue']);
-                  $data['option_data_length_content'] .= $lengthValue[0].',';
-               }
-            }
-            $data['option_data_color_content'] = mb_substr($data['option_data_color_content'],0,-1,'utf-8');
-            $data['option_data_length_content'] = mb_substr($data['option_data_length_content'],0,-1,'utf-8');*/
-            //获取后台设置的option属性,end
 
             if ($product_info['minimum']) {
                 $data['minimum'] = $product_info['minimum'];
@@ -580,60 +464,7 @@ class ControllerProductProduct extends Controller {
 
             $data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
 
-            $data['products'] = array();
-
-            $results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
-            foreach ($results as $result) {
-                if ($result['image']) {
-                    $image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
-                } else {
-                    $image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
-                }
-
-                if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-                    $price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-                } else {
-                    $price = false;
-                }
-
-                /* if ((float)$result['special']) {
-                    $special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-                } else {
-                    $special = false;
-                } */
-
-                //根据用户等级获取对应产品价格
-                if ($this->customer->isLogged()) {
-                    $special = $this->model_catalog_product->getSpecialPrice($result['product_id']);
-                } else {
-                    $special = false;
-                }
-
-                if ($this->config->get('config_tax')) {
-                    $tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
-                } else {
-                    $tax = false;
-                }
-
-                if ($this->config->get('config_review_status')) {
-                    $rating = (int)$result['rating'];
-                } else {
-                    $rating = false;
-                }
-
-                $data['products'][] = array(
-                    'product_id'  => $result['product_id'],
-                    'thumb'       => $image,
-                    'name'        => $result['name'],
-                    'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
-                    'price'       => $price,
-                    'special'     => $special,
-                    'tax'         => $tax,
-                    'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
-                    'rating'      => $rating,
-                    'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
-                );
-            }
+           
 
             $data['tags'] = array();
             if ($product_info['tag']) {
@@ -646,147 +477,8 @@ class ControllerProductProduct extends Controller {
                 }
             }
 
-            //读取当前产品的颜色id
-            $data['color_id'] = $product_info['color_id'];
-
-            //属性关联读取
-            //颜色(Color)---根据长度查询产品的颜色(color_id,color,image)
-            $color_data = $this->model_catalog_product->getRelationColor1($product_info['relation_product'],$product_info['length_id']);
-
-            $data['length'] = '';
-            if($product_info['length_id']!=0){
-                $quantity_value = $this->model_catalog_product->getOptionValueByID($product_info['length_id']);
-                if($quantity_value){
-                    $data['length'] = $quantity_value['name'];
-                }
-            }
-
-            foreach($color_data as $key=>$row){
-                $color_data[$key]['image'] = "image/".$row['image'];  //获取图片路径，作为图片值
-                $color_arr = explode(':',$row['color']);              //根据:拆分color
-                $color_data[$key]['color'] = $color_arr[0];           //获取数组的第一个值,作为color值(颜色的名称)
-                $color_data[$key]['color_min'] = "";
-                /*if(isset($color_arr[1])){
-                   $color_data[$key]['color_min'] = $color_arr[1];     //获取数组的第二个值,作为color_min值(颜色的简称)
-                }*/
-                if(isset($color_arr[0])){
-                    $color_data[$key]['color_min'] = utf8_substr(strip_tags($color_arr[0]),0,5).'...';     //获取数组的第二个值,作为color_min值(颜色的简称)
-                }
-
-                $map['relation_product'] = $product_info['relation_product'];
-                $map['color_id'] = $row['color_id'];                  //根据查询出来的颜色值去查询产品的信息
-                $map['length_id'] = $product_info['length_id'];
-                $product_data = array();
-                $product_data = $this->model_catalog_product->getProductId($map);
-
-                $color_data[$key]['href'] = $this->url->link('product/product','product_id='.$product_data['product_id']);
-                $color_data[$key]['color_product_id'] = $product_data['product_id'];
-                $color_data[$key]['color_id'] = $row['color_id'];
-            }
-            $data['color_data'] = $color_data;
-
-            //长度(Length)---根据颜色查询产品的长度(length_id,name)
-            $length_data = $this->model_catalog_product->getRelationColLengths($product_info['relation_product'],$product_info['color_id']);
-            foreach($length_data as $key=>$row){
-                $map['relation_product'] = $product_info['relation_product'];
-                $map['color_id'] = $product_info['color_id'];
-                $map['length_id'] = $row['length_id'];                //根据查询出来的长度值去查询产品的信息
-                $product_data = array();
-                $product_data = $this->model_catalog_product->getProductId($map);
-                $length_data[$key]['href'] = $this->url->link('product/product','product_id='.$product_data['product_id']);
-                $length_data[$key]['product_id'] = $product_data['product_id'];
-                //该产品有折扣,则显示折后价
-                if($product_info['discount_percentage'] > 0){
-                    $length_data[$key]['price'] = $this->currency->format($product_data['price'] * ($product_info['discount_percentage']/100), $this->session->data['currency']);
-                }else{     //否则,显示原价
-                    $length_data[$key]['price'] = $this->currency->format($product_data['price'], $this->session->data['currency']);
-                }
-            }
-            $data['length_data'] = $length_data;
-
-            $new_length_data = array();
-            foreach($data['color_data'] as $k => $v){
-                //长度(Length)---根据颜色查询产品的长度(length_id,name)
-                $length_data = $this->model_catalog_product->getRelationColLengths($product_info['relation_product'],$v['color_id']);
-
-                $count_key = 0;       //每遍历完一种颜色的长度,就将个数设置为0
-                foreach($length_data as $key=>$row){
-
-                    $count_key++;      //将颜色的长度个数累加1
-
-                    $map['relation_product'] = $product_info['relation_product'];
-                    $map['color_id'] = $v['color_id'];
-                    $map['length_id'] = $row['length_id'];                //根据查询出来的长度值去查询产品的信息
-
-                    $product_data = array();
-                    $product_data = $this->model_catalog_product->getProductId($map);
-
-                    $new_length_data[$v['color_id']][$key]['href'] = $this->url->link('product/product','product_id='.$product_data['product_id']);
-                    $new_length_data[$v['color_id']][$key]['product_id'] = $product_data['product_id'];
-                    $new_length_data[$v['color_id']][$key]['color_id'] = $v['color_id'];
-                    $new_length_data[$v['color_id']][$key]['length'] = $row['length'];
-                    $new_length_data[$v['color_id']][$key]['weight'] = ($product_data['weight'] > 0) ? round($product_data['weight'], 2).'g' : '0g';
-
-                    /* //该产品有折扣,则显示折后价(每件产品设置的折扣值:$product_data['discount_percentage'];主产品的折扣值:$product_info['discount_percentage'])
-                    if($product_data['discount_percentage'] > 0){
-                       $new_length_data[$v['color_id']][$key]['price'] = $this->currency->format($product_data['price'] * ($product_data['discount_percentage']/100), $this->session->data['currency']);
-                    }else{     //否则,显示原价
-                       $new_length_data[$v['color_id']][$key]['price'] = $this->currency->format($product_data['price'], $this->session->data['currency']);
-                    } */
-
-                    //根据用户等级获取对应产品价格
-                    if ($this->customer->isLogged()) {
-                        $special = $this->model_catalog_product->getSpecialPrice($product_data['product_id']);
-                    }
-                    // print_r($special);print_r($v); print_r($new_length_data);
-
-                    if (!empty($special)) {
-                        $new_length_data[$v['color_id']][$key]['price'] = $special['special'] . ' <del>' . $this->currency->format($product_data['price'], $this->session->data['currency']) . '</del>';
-                    } else {
-                        $new_length_data[$v['color_id']][$key]['price'] = $this->currency->format($product_data['price'], $this->session->data['currency']);
-                    }
-                    // print_r( $new_length_data);exit();
-
-                    //统计某种颜色共有多少个长度
-                    $new_length_data[$v['color_id']][$key]['count_length'] = $count_key;
-                }
-            }
-            $data['length_data'] = $new_length_data;
-            //属性关联读取,end
-
-            //产品详情页的popular product
-            $popular_products = $this->model_catalog_product->getPopularProducts($product_id);
-            $i = 0;
-            foreach($popular_products as $key=>$row){
-                $popular_products[$key]['key_id'] = $i;   //作为索引值 dyl add
-
-                $popular_products[$key]['description'] = utf8_substr(strip_tags(html_entity_decode($row['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..';
-
-                if($popular_products[$key]['image']){
-                    $popular_products[$key]['image'] = $this->model_tool_image->resize($row['image'], 228, 228);
-                }else{
-                    $popular_products[$key]['image'] = $this->model_tool_image->resize('placeholder.png', 228, 228);
-                }
-
-                $popular_products[$key]['product_link'] = $this->url->link('product/product','product_id='.$row['product_id']);
-
-                $color_name = '';
-                if($row['color_id']!=0){
-                    $color_data = $this->model_catalog_product->getOptionValueByID($row['color_id']);
-                    if($color_data){
-                        $color_arr = explode(':',$color_data['name']);
-                        $color_name = $color_arr[0];
-                    }
-                }
-                $popular_products[$key]['min_name'] = utf8_substr(strip_tags($row['name']),0,40).'...';
-                $popular_products[$key]['color_name'] = $color_name;
-
-                $i++;
-            }
-            $data['popular_products'] = $popular_products;
-
             //首页推荐商品
-            $recommend_products = $this->model_catalog_product->getRecommendProducts();
+            $recommend_products = $this->model_catalog_product->getRecommendProducts(4);
              //print_r($recommend_products);exit();
             $i = 0;
             foreach($recommend_products as $key=>$row){
@@ -795,9 +487,9 @@ class ControllerProductProduct extends Controller {
                 $recommend_products[$key]['description'] = utf8_substr(strip_tags(html_entity_decode($row['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..';
             
                 if($recommend_products[$key]['image']){
-                    $recommend_products[$key]['image'] = $this->model_tool_image->resize($row['image'], 228, 228);
+                    $recommend_products[$key]['image'] = $this->model_tool_image->resize($row['image'], 360, 360);
                 }else{
-                    $recommend_products[$key]['image'] = $this->model_tool_image->resize('placeholder.png', 228, 228);
+                    $recommend_products[$key]['image'] = $this->model_tool_image->resize('placeholder.png', 360, 360);
                 }
             
                 $recommend_products[$key]['product_link'] = $this->url->link('product/product','product_id='.$row['product_id']);
@@ -810,9 +502,7 @@ class ControllerProductProduct extends Controller {
             $data['recommend_products'] = $recommend_products;
 
             $data['href']=$this->url->link('product/product', 'product_id=' );
-            //print_r($recommend_products['product_id']);die;
-
-            //产品详情页的popular product end
+  
 
 
             $data['recurrings'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);
@@ -952,45 +642,7 @@ class ControllerProductProduct extends Controller {
     }
 
     public function review() {
-        /*$this->load->language('product/product');
-
-        $this->load->model('catalog/review');
-
-        $data['text_no_reviews'] = $this->language->get('text_no_reviews');
-
-        if (isset($this->request->get['page'])) {
-            $page = $this->request->get['page'];
-        } else {
-            $page = 1;
-        }
-
-        $data['reviews'] = array();
-
-        $review_total = $this->model_catalog_review->getTotalReviewsByProductId($this->request->get['product_id']);
-
-        $results = $this->model_catalog_review->getReviewsByProductId($this->request->get['product_id'], ($page - 1) * 5, 5);
-
-        foreach ($results as $result) {
-            $data['reviews'][] = array(
-                'author'     => $result['author'],
-                'text'       => nl2br($result['text']),
-                'rating'     => (int)$result['rating'],
-                'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
-            );
-        }
-
-        $pagination = new Pagination();
-        $pagination->total = $review_total;
-        $pagination->page = $page;
-        $pagination->limit = 5;
-        $pagination->url = $this->url->link('product/product/review', 'product_id=' . $this->request->get['product_id'] . '&page={page}');
-
-        $data['pagination'] = $pagination->render();
-
-        $data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
-
-        $this->response->setOutput($this->load->view('product/review', $data));*/
-
+       
 
         $this->load->language('product/product');
 
@@ -1059,9 +711,6 @@ class ControllerProductProduct extends Controller {
     public function write() {
         $this->load->language('product/product');
 
-        //$json = array();
-
-        //if ($this->request->server['REQUEST_METHOD'] == 'POST') {
 
         if (empty($this->request->post['rating']) || $this->request->post['rating'] < 0 || $this->request->post['rating'] > 5) {
             //$json['error'] = $this->language->get('error_rating');

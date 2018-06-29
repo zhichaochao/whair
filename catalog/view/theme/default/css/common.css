@@ -137,7 +137,9 @@ line-height: 16px;margin-right: 18px;background-size: 16px 16px;font-size: 16px;
 .nav .mn_type .ul_type li:nth-child(2){background: url(../img/png/ngn1.png) no-repeat left center;background-size: 16px 16px;}
 .nav .mn_type .ul_type li:nth-child(3){background: url(../img/png/zar1.png) no-repeat left center;background-size: 16px 16px;}
 
+.nav .logo a{display: block;width: 334px;margin: auto;}
 .nav .logo img{margin:30px auto ;display: block;}
+
 
 .nav .nav_ul{float: left;}
 .nav .nav_ul>li{float: left;margin-right: 20px;font-size: 16px;line-height: 16px;padding-bottom: 8px;
@@ -371,6 +373,8 @@ display: block;width: 100%;padding:0 0.4rem;box-sizing: border-box;}
 	.content{width: 100%;}
 	.nav .img_ol li.search_li{display: block;margin: 0;background-size:0.32rem 0.31rem;}
 	.nav .logo img{display: block ;margin: 0;position: absolute;top: 0.4rem;left: 2.29rem;width: 2.92rem;height: 0.4rem;}
+	.nav .logo a{display: block;width: 2.9rem;margin: auto;}
+	
 }
 
 

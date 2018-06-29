@@ -95,25 +95,7 @@
 								</div>
 								<?php } ?>
 								<!--/产品价格-->
-								<!-- 产品颜色 -->
-								<?php if($color_data){?>
-								<?php foreach($color_data as $key=>$row){ ?>
-								<li>
-									<p class="text_p" style="font-size: 0.83vw;color: #666;">
-									<span style="line-height: 2.93vw;">Hair Color:</span>
-										<?php echo $row['color'];?>
-									</p>
-								</li>
-								<?php } ?>
-								<?php }else{ ?>
-								<li>
-									<p class="text_p" style="font-size: 0.83vw;color: #666;">
-									<span style="line-height: 2.93vw;"">Hair Color:</span>
-										<?php echo $row['color'];?>
-									</p>
-								</li>
-								<?php } ?>							
-								<!-- 产品颜色 -->
+							
 							<!-- <p class="text_p"><span>Hair Color:</span> Natural Black</p> -->
 
 							<div class="label_div clearfix" id="form-product">
@@ -158,7 +140,7 @@
 								
 							
 									</div>
-								</label>			<?php }} ?><?php }} ?>
+								</label><?php }} ?><?php }} ?>
 								
 								<span class="measurement">
 									About Measurement
@@ -388,7 +370,7 @@
 						<li>
 							<a href="<?php echo $href.$product['product_id']; ?>"> 
 								<div class="pic_img" >
-									<img src="<?php echo $product['image']; ?>" style="width: 303px;height: 250px;" />
+									<img src="<?php echo $product['image']; ?>"  />
 								</div>
 								<div class="text">
 								<span class="price">

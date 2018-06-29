@@ -123,7 +123,8 @@
 	.pro_big_img .swiper-button-next,.pro_big_img  .swiper-container-rtl .swiper-button-prev{right: 20px;width: 50px;height: 50px;border-radius: 100%;
 	background: rgba(0,0,0,.5) url(../img/png/lb_rights.png) no-repeat center center;background-size: 14px 26px;}
 	.pro_det_content .top .right{float: left;padding-left: 3.64vw;}
-	.pro_det_content .top .right a{font-size: 1.66vw;color: #333;line-height: 3.33vw;padding-top: 1vw;display: block;}
+	.pro_det_content .top .right a{font-size: 1.66vw;color: #333;line-height: 3.33vw;padding-top: 1vw;display: block;
+	text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width: 24vw;}
 	.pro_det_content .top p.price{font-family: san_r;color: #333;font-size: 1.56vw;line-height: 1.8vw;display: block;margin-bottom: 2.5vw;}
 	.pro_det_content .top p.price i{color: #ccc;text-decoration: line-through;margin-left: 0.46vw;}
 	.pro_det_content .top p.text_p{font-size: 0.83vw;color: #666;margin-bottom: 1.66vw;}
@@ -147,8 +148,8 @@
 	.pro_det_content .select_div ul li{width:100%;margin: auto;height: 2.08vw;font-size: 0.83vw;line-height: 2.08vw;cursor: pointer;}
 	.pro_det_content .select_div ul li:hover{background: #f5f5f5;}
 	.pro_det_content .measurement{font-size: 0.83vw;color: #666;float: left;border-bottom: 1px solid #666;margin-top: 2.2vw;cursor: pointer;}
-	.pro_det_content .meas_img{position: absolute;right: 50%;top: 50%;width: 46.87vw;height: 39.58vw;margin-top: -20vw;
-	margin-right: -19.79vw; display: none;z-index: 9;}
+	.pro_det_content .meas_img{position: absolute;right: 50%;top: 50%;width: 46.87vw;height: 39.58vw;margin-top: -100px;
+	margin-right: -19.79vw; display: none;z-index: 10;}
 	.pro_det_content .meas_img img{display: block;border: 1px solid #ccc;}
 	.pro_det_content .meas_img .close{width: 63px;height:63px;position: absolute;right: 0;top: 0;
 	background: url(../img/png/close2.png) no-repeat center center;background-size: 23px 23px;cursor: pointer;}
@@ -438,7 +439,7 @@
 	.add_form label{width: 47%;display: block;float: left;margin-right: 3%;margin-bottom: 24px;}
 	.add_form label span{font-size: 14px;color: #444;line-height: 14px;margin-bottom: 8px;display: block;}
 	.add_form label input{width: 100%; height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 4px;padding: 0 10px;}
-	.add_form label select{width: 100%; height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 4px;padding: 0 10px;}
+	.add_form label select{width: 100%; height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 4px;padding: 0 10px;cursor: pointer;}
 	.add_form label.add_label{width: 97%;}
 	.add_form label.add_label input{margin-bottom: 16px;}
 	.add_form button.qx_btn{float: left;clear: both;font-size: 16px;color: #333;background: transparent;border: none;border-bottom: 1px solid #333;margin-bottom: 2.08vw;}
@@ -497,17 +498,17 @@
 		.peo_center .right{width: 57vw;}
 	}
 	/*m_order*/
-	.peo_center .m_order form{width: 650px;}
-	.peo_center .m_order form>p{font-size: 12px;color: #999;margin-top: 2.08vw;margin-bottom: 1.56vw;}
-	.peo_center .m_order form>h2{font-size: 1.04vw;color: #444;margin-bottom: 1.04vw;margin-top: 2.08vw;}
-	.peo_center .m_order form label{width: 100%;}
-	.peo_center .m_order form label.f_name{width: 50%;float: left;box-sizing: border-box;padding-right: 1vw;}
-	.peo_center .m_order form label.l_name{width: 50%;float: left;}
-	.peo_center .m_order form label span{font-size: 14px;color: #444;display: block;margin-bottom: 6px;}
-	.peo_center .m_order form label input{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;margin-bottom: 25px;}
-	.peo_center .m_order form button{width: 160px;height: 40px;text-align: center;font-size: 16px;color: #fff;border-radius: 4px;
+	.peo_center .m_order .form_div{width: 650px;}
+	.peo_center .m_order .form_div>p{font-size: 12px;color: #999;margin-top: 2.08vw;margin-bottom: 1.56vw;}
+	.peo_center .m_order .form_div>h2{font-size: 1.04vw;color: #444;margin-bottom: 1.04vw;margin-top: 2.08vw;}
+	.peo_center .m_order .form_div label{width: 100%;}
+	.peo_center .m_order .form_div label.f_name{width: 50%;float: left;box-sizing: border-box;padding-right: 1vw;}
+	.peo_center .m_order .form_div label.l_name{width: 50%;float: left;}
+	.peo_center .m_order .form_div label span{font-size: 14px;color: #444;display: block;margin-bottom: 6px;}
+	.peo_center .m_order .form_div label input{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;margin-bottom: 25px;text-indent: 10px;}
+	.peo_center .m_order .form_div button{width: 160px;height: 40px;text-align: center;font-size: 16px;color: #fff;border-radius: 4px;
 	background: #333;border: none;margin-bottom: 2.08vw;}
-	.peo_center .m_order form button:hover{background: #666;}
+	.peo_center .m_order .form_div button:hover{background: #666;}
 	
 	/*m_account*/
 	.peo_center .m_account{text-align: center;}
@@ -518,22 +519,25 @@
 	.peo_center .m_account a.a_btn:hover{background: #666;}
 	
 	/*m_address*/
-	.peo_center .m_address form{max-width: 660px;}
-	.peo_center .m_address form>p{font-size: 12px;color: #999;margin-top: 2.08vw;margin-bottom: 1.56vw;}
-	.peo_center .m_address form>h2{font-size: 1.04vw;color: #444;margin-bottom: 1.04vw;margin-top: 2.08vw;}
-	.peo_center .m_address form label{max-width:320px;width: 48%; margin-right: 2%; float: left;}
-	.peo_center .m_address form label span{font-size: 14px;color: #444;display: block;margin-bottom: 6px;}
-	.peo_center .m_address form label input{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;margin-bottom: 25px;}
-	.peo_center .m_address form label select{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;margin-bottom: 25px;width: 100%;}
-	.peo_center .m_address form label.add{max-width: 676px; width: 100%;margin-right:0 ;padding-right:2%;box-sizing: border-box;}
-	.peo_center .m_address form .qx_btn{display: none;}
-	.peo_center .m_address form button.tj_btn{width: 160px;height: 40px;text-align: center;font-size: 16px;color: #fff;border-radius: 4px;
+	.peo_center .m_address .form_div{max-width: 660px;}
+	.peo_center .m_address .form_div>p{font-size: 12px;color: #999;margin-top: 2.08vw;margin-bottom: 1.56vw;}
+	.peo_center .m_address .form_div>h2{font-size: 1.04vw;color: #444;margin-bottom: 1.04vw;margin-top: 2.08vw;}
+	.peo_center .m_address .form_div label{max-width:320px;width: 48%; margin-right: 2%; float: left;}
+	.peo_center .m_address .form_div label span{font-size: 14px;color: #444;display: block;margin-bottom: 6px;}
+	.peo_center .m_address .form_div label input{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;margin-bottom: 15px;text-indent: 10px;}
+	.peo_center .m_address .form_div label select{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;padding: 0 5px;
+	margin-bottom: 15px;width: 100%;cursor: pointer;}
+	.peo_center .m_address .form_div label.add{max-width: 676px; width: 100%;margin-right:0 ;padding-right:2%;box-sizing: border-box;}
+	.peo_center .m_address .form_div .qx_btn{display: none;}
+	.peo_center .m_address .form_div button.tj_btn{width: 160px;height: 40px;text-align: center;font-size: 16px;color: #fff;border-radius: 4px;
 	background: #333;border: none;margin-bottom: 2.08vw;clear: both;float: right;margin-right: 2%;}
-	.peo_center .m_address form button.tj_btn:hover{background: #666;}
+	.peo_center .m_address .form_div button.tj_btn:hover{background: #666;}
 	.m_address .xy_div{clear: both;float: left;position: relative;}
-	.m_address .xy_div span{margin-left: 30px;font-size: 16px;color: #333;}
-	.m_address .check_input{width: 20px;height: 20px;display: block; position: absolute;top: 50%;margin-top: -10px; left: 0;z-index: 2;cursor: pointer;opacity: 0;}
-	.m_address .check_i{width: 20px;height: 20px;display: block; position: absolute;top: 50%;margin-top: -10px; left: 0;z-index: 1;
+	.m_address .xy_div label{width: 20px !important;height: 20px !important;margin-right: 0 !important;}
+	.m_address .xy_div span{margin-left: 10px;font-size: 16px;color: #333;}
+	.m_address .check_input{width: 20px;height: 20px !important;line-height: 40px !important;margin-bottom: 0 !important; 
+	display: block; position: absolute;top: 0; left: 0;z-index: 2;cursor: pointer;opacity: 0;}
+	.m_address .check_i{width: 20px;height: 20px;display: block; position: absolute;top: 0; left: 0;z-index: 1;
 	border: 1px solid #999;border-radius: 1px;box-sizing: border-box;}
 	.m_address .check_i.active:after{display: block;position: absolute;top: 4px;left: 3px;content: "";border: 2px solid #000; width: 10px;height: 4px;
 	 border-width: 0 0 2px 2px;transform: rotate(-45deg); }
@@ -559,7 +563,7 @@
 	.peo_center .m_call p{font-size: 16px;color: #333;line-height: 40px;margin-bottom: 15px;}
 	.peo_center .m_call p img{width: 40px;height: 40px;display: block;float: left;margin-right: 15px;}
 	.peo_center .m_call span{font-size: 18px;float: left;color: #333;margin-bottom: 20px;}
-	.peo_center .m_call textarea{clear: both;float: left;width: 80%;margin: auto 10%; height: 200px; box-sizing: border-box;}
+	.peo_center .m_call textarea{clear: both;float: left;width: 80%;margin: auto 10%; height: 200px; box-sizing: border-box;padding: 15px;}
 	.peo_center .m_call a.a_btn{width: 240px;height: 40px;line-height: 40px;text-align: center;border-radius:4px ;color: #fff;
 	background: #333;font-size: 16px;display: block;float: right;margin: 15px 10% 25px 0;}
 	.peo_center .m_call a.a_btn:hover{background: #666;}
@@ -640,7 +644,7 @@
 	.peo_center .m_vip .text_3 ul li span.active:after{content: "";display: block;margin: auto;border: 2px solid #666;width: 16px;height:8px;
 	border-width: 0 0 2px 2px;border-color: transparent transparent #666 #666;transform: rotate(-45deg);position: relative;top: 12px;	}
 	.peo_center .m_vip .text_4{max-width: 800px;display: block;margin: auto; padding-bottom: 5.2vw;}
-	.peo_center .m_vip .text_4>p{font-size: 20px;color: #333;margin-bottom: 1.04vw;line-height: 20px;}
+	.peo_center .m_vip .text_4 .div_text p{font-size: 20px;color: #333;margin-bottom: 1.04vw;line-height: 20px;}
 	.peo_center .m_vip .text_4 ul{max-width: 800px;margin: auto;display: block;border: 1px solid #ccc;}
 	.peo_center .m_vip .text_4 ul li{width: 100%;height: 50px;line-height: 50px;border-top: 1px solid #ccc;}
 	.peo_center .m_vip .text_4 ul li span{font-size: 16px;float: left;display: block;text-align: center;
@@ -733,8 +737,89 @@
 		.company .text_7>img{width: 80%;}
 	}
 	
+	/****view the order****/
+	.view_order {background: #f5f5f5;padding-top: 24px;}
+	.view_order .text_con {background: #fff;max-width: 1104px;margin: auto; padding: 0 40px 40px 40px;margin-bottom: 55px;}
+	.view_order .text_con h1{font-size: 24px;color: #333;line-height: 80px;margin-top: 10px;}
+	.view_order .text_con .top{border: 1px solid #eee;margin-bottom: 40px;}
+	.view_order .hui_div{height: 56px;background: #f5f5f5;padding-left: 10px;border-bottom: 1px solid #eee;}
+	.view_order .hui_div p{display: inline-block;float: left;line-height: 56px;margin-right: 130px;font-size: 16px;}
+	.view_order .ship .left {display: block;float: left;width: 480px;margin:0 80px 20px 20px;}
+	.view_order .ship .right{display: block;float: left;width: 360px;}
+	.view_order .ship .h2_span{font-size: 20px;display: block;margin: 20px 0 15px 0;}
+	.view_order .ship .text{border-radius: 5px;border: 1px solid #eee;padding: 25px 17px;min-height: 240px;position: relative;}
+	.view_order .ship.active .text{border: 1px solid #d5af74;}
+	.view_order .ship .text p{font-size: 16px;line-height: 26px;}
+	.view_order .ship .text p span{font-weight: bold;font-size: 22px;margin-bottom: 5px;display: inline-block;}
+	.view_order .ship.active .text button{display: block;}
+	.view_order .ship .text button{background: #fff;height: 32px;color: #999;padding: 0 15px;font-size: 16px;border: 1px solid #ccc;float: right;
+	position: absolute;right: 17px;bottom: 25px;display: none;}
+	.view_order .ship .text button:hover{background: #333;border: 1px solid #333;color: #fff;}
+	.view_order .bot {border: 1px solid #eee;}
+	.view_order .bot .text{padding: 0 24px;}
+	.view_order .bot .text .span_div span{display: block;height: 52px;line-height: 52px;float: right;font-size: 16px;width: 130px;text-align: center;}
+	.view_order .bot .order_ul {border-top: 1px solid #eee;border-bottom: 1px solid #eee;padding-top: 24px;}
+	.view_order .bot .order_ul li{margin-bottom: 24px;}
+	.view_order .bot .order_ul .pic_img{width: 96px;height: 96px;display: block;background: #999;float: left;}
+	.view_order .bot .order_ul .ov_text{width: 180px;font-size: 16px;line-height: 96px;float: left;margin-left: 10px;}
+	.view_order .bot .order_ul span{width: 130px;display: block;line-height: 96px;font-size: 16px;float: right;text-align: center;}
+	.view_order .bot .total{padding: 0 24px;margin-bottom: 24px;}
+	.view_order .bot .total p{font-size: 16px;display: block;float: right;width: 270px;clear: both;padding-top: 20px;line-height: 20px;margin-right: 20px;}
+	.view_order .bot .total p .p_span{font-weight: bold;font-size: 20px;}
+	.view_order .text_con a.a_btn{font-size: 16px;color: #fff;background: #333;border-radius: 4px;height: 40px;line-height: 40px;display: block;
+	float: right;clear: both;margin:24px 0 0 0;width: 200px;text-align: center;}
+	.view_order .text_con a.a_btn:hover{background: #666;}
+	.view_order .order_hty ul{border: 1px solid #eee;}
+	.view_order .order_hty ul li{height: 50px;line-height: 50px;border-bottom: 1px solid #eee;}
+	.view_order .order_hty ul li span{font-size: 16px;display: inline-block;width: 240px;text-align: center;}
+	.view_order .order_hty ul li span:nth-child(1){border-right: 1px solid #eee;box-sizing: border-box;}
+	.view_order .order_hty ul li:last-child{border-bottom: none;}
+	/*彈窗*/
+	.edit_add_md {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.5);z-index: 99;display: none;}
+	.edit_add_md>.text{background: #fff;width: 750px;margin:100px auto 0 auto;}
+	.edit_add_md .form_div{padding:2.08vw;position: relative;}
+	.edit_add_md .form_div .close{width: 30px;height: 30px;display: block;position: absolute;top: 2.08vw;right:2.08vw;
+	background: url(../img/png/close2.png) no-repeat center center;background-size: 27px 26px;cursor: pointer;}
+	.edit_add_md .form_div h1{font-size: 24px;font-family: san_b;color: #333;}
+	.edit_add_md .form_div>p{font-size: 12px;color: #999;margin-top: 2.08vw;margin-bottom: 1.56vw;}
+	.edit_add_md .form_div>h2{font-size: 1.04vw;color: #444;margin-bottom: 1.04vw;margin-top: 2.08vw;}
+	.edit_add_md .form_div label{max-width:336px;width: 50%; float: left;margin-right: 16px;}
+	.edit_add_md .form_div label.mr_no{margin-right: 0;}
+	.edit_add_md .form_div label span{font-size: 14px;color: #444;display: block;margin-bottom: 6px;}
+	.edit_add_md .form_div label input{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;text-indent: 10px;margin-bottom: 15px;}
+	.edit_add_md .form_div p.ts_ps{margin: 0 0 10px 0;}
+	.edit_add_md .form_div label select{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;padding: 0 5px;
+	margin-bottom: 15px;width: 100%;cursor: pointer;}
+	.edit_add_md .form_div label.add{ width: 100%;margin-right:0;max-width: 688px;}
+	.edit_add_md .form_div button.bc_btn{width: 240px;height: 40px;text-align: center;font-size: 16px;color: #fff;border-radius: 4px;
+	background: #333;border: none;clear: both;float: left;margin:20px 0 10px 95px;}
+	.edit_add_md .form_div button.qx_btn{width: 240px;height: 40px;text-align: center;font-size: 16px;color: #333;border-radius: 4px;
+	background: #eee;border: 1px solid #666;float: right;margin:20px 95px 10px 0;}
+	.edit_add_md .form_div button:hover{background: #666;color: #fff;}
 	
-	
+	.edit_method_md {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.5);z-index: 99;display: none;}
+	.edit_method_md>.text{background: #fff;max-width: 1024px;margin:100px auto 0 auto;padding: 2.08vw;position: relative;}
+	.edit_method_md>.text .close{width: 30px;height: 30px;display: block;position: absolute;top: 2.08vw;right:2.08vw;
+	background: url(../img/png/close2.png) no-repeat center center;background-size: 27px 26px;cursor: pointer;}
+	.edit_method_md>.text h2{font-size: 24px;margin-bottom: 24px;}
+	.edit_method_md .express_ul>li{border-top: 1px solid #dddddd;padding-top: 2.08vw;padding-bottom: 3.75vw;}
+	.edit_method_md .express_ul dl{float: left;display:block;}
+	.edit_method_md .express_ul dl:nth-child(1){width: 50%;}
+	.edit_method_md .express_ul dl:nth-child(2){width: 35%;}
+	.edit_method_md .express_ul dl:nth-child(3){width:15%;}
+	.edit_method_md .express_ul dt{font-size: 16px;font-weight: bold;color: #333;margin-bottom:2.08vw;}
+	.edit_method_md .express_ul dd.kd  {float: left;width: 50%;}
+	.edit_method_md .express_ul dd span{font-size: 14px;line-height:2.08vw;display: block;float: left;}
+	.edit_method_md .express_ul dd img{width: 6.25vw;height: 2.08vw;display: block;}
+	.edit_method_md .dx_label{display: block;height: 20px;width: 20px;float: left; position: relative;margin-right: 8px;}
+	.edit_method_md dd.kd .dx_label{top: 0.4vw;}
+	.edit_method_md .dx_label span{font-size: 0.93vw;color: #333;font-weight: bold;display: block;margin-left: 35px;}
+	.edit_method_md .check_input{width: 20px;height: 20px;display: block; position: absolute;top: 50%;margin-top: -10px; left: 0;z-index: 2;cursor: pointer;opacity: 0;}
+	.edit_method_md .check_i{width: 20px;height: 20px;display: block; position: absolute;top: 50%;margin-top: -10px; left: 0;z-index: 1;
+	border: 1px solid #999;border-radius: 1px;box-sizing: border-box;}
+	.edit_method_md .check_i.active:after{display: block;position: absolute;top: 4px;left: 3px;content: "";border: 2px solid #000; width: 10px;height: 4px;
+	 border-width: 0 0 2px 2px;transform: rotate(-45deg); }
+	.edit_method_md .a_btn{margin:2.6vw auto 0 auto;}
 }
 
 
@@ -1179,7 +1264,7 @@
 	/**********个人中心****************/
 	.peo_center{background: #f5f5f5;}
 	.peo_center .content>.left{display: none;}
-	.peo_center .yd_mycenter{display: block;width: 100%;padding: 0.2rem 0.2rem 0.4rem 0.2rem;}
+	.peo_center .yd_mycenter{display: block !important;width: 100%;padding: 0.2rem 0.2rem 0.4rem 0.2rem;}
 	.peo_center .content>.left h1{font-size: 0.4rem;font-family: san_b;text-align: center;line-height: 1.1rem;background: #fff;}
 	.peo_center .content>.left ol{padding: 0.2rem 0;}
 	.peo_center .content>.left ol li{background: #fff;padding: 0 0.2rem;}
@@ -1190,25 +1275,27 @@
 	.peo_center .content>.left ol li:nth-child(1){background:#fff url(../img/png/my_1.png) no-repeat left 0.2rem center;background-size: 0.36rem 0.36rem;}
 	.peo_center .content>.left ol li:nth-child(2){background:#fff url(../img/png/my_2.png) no-repeat left 0.2rem center;background-size: 0.32rem 0.36rem;}
 	.peo_center .content>.left ol li:nth-child(3){background:#fff url(../img/png/my_3.png) no-repeat left 0.2rem center;background-size: 0.28rem 0.36rem;}
-	.peo_center .content>.left ol li:nth-child(4){background:#fff url(../img/png/my_4.png) no-repeat left 0.2rem center;background-size: 0.38rem 0.36rem;}
-	.peo_center .content>.left ol li:nth-child(5){background:#fff url(../img/png/my_5.png) no-repeat left 0.2rem center;background-size: 0.35rem 0.31rem;}
-	.peo_center .content>.left ol li:nth-child(6){background:#fff url(../img/png/my_6.png) no-repeat left 0.2rem center;background-size: 0.36rem 0.28rem;}
-	.peo_center .content>.left ol li:nth-child(7){background:#fff url(../img/png/my_7.png) no-repeat left 0.2rem center;background-size: 0.34rem 0.341rem;}
-	.peo_center .content>.left ol li:nth-child(8){background:#fff url(../img/png/my_8.png) no-repeat left 0.2rem center;background-size: 0.32rem 0.33rem;}
+	.peo_center .content>.left ol li:nth-child(5){background:#fff url(../img/png/my_4.png) no-repeat left 0.2rem center;background-size: 0.38rem 0.36rem;}
+	.peo_center .content>.left ol li:nth-child(4){background:#fff url(../img/png/my_9.png) no-repeat left 0.2rem center;background-size: 0.38rem 0.36rem;}
+	.peo_center .content>.left ol li:nth-child(6){background:#fff url(../img/png/my_5.png) no-repeat left 0.2rem center;background-size: 0.35rem 0.31rem;}
+	.peo_center .content>.left ol li:nth-child(7){background:#fff url(../img/png/my_6.png) no-repeat left 0.2rem center;background-size: 0.36rem 0.28rem;}
+	.peo_center .content>.left ol li:nth-child(8){background:#fff url(../img/png/my_7.png) no-repeat left 0.2rem center;background-size: 0.34rem 0.341rem;}
+	.peo_center .content>.left ol li:nth-child(9){background:#fff url(../img/png/my_8.png) no-repeat left 0.2rem center;background-size: 0.32rem 0.33rem;}
+	.peo_center .content>.left ol li:nth-child(9) a{border-bottom: none;}
 	
 	/*m_order*/
 	.peo_center .m_order{width: 7.1rem;margin: 0.2rem 0.2rem 0.8rem 0.2rem;}
-	.peo_center .m_order form{background: #fff;padding: 0.35rem 0.2rem 0 0.2rem;}
-	.peo_center .m_order form>p{display: none;}
-	.peo_center .m_order form>h2{font-size: 0.3rem;font-family: san_b;font-weight: normal; color: #444;margin-bottom: 0.3rem;margin-top: 0.4rem;}
+	.peo_center .m_order .form_div{background: #fff;padding: 0.35rem 0.2rem 0 0.2rem;}
+	.peo_center .m_order .form_div>p{display: none;}
+	.peo_center .m_order .form_div>h2{font-size: 0.3rem;font-family: san_b;font-weight: normal; color: #444;margin-bottom: 0.3rem;margin-top: 0.4rem;}
 	
-	.peo_center .m_order form label{width: 100%;display: block;float: left;}
-	.peo_center .m_order form label.f_name{width: 3.2rem;float: left;}
-	.peo_center .m_order form label.l_name{width: 3.2rem;float: right;}
-	.peo_center .m_order form label.l_name span{float: left;}
-	.peo_center .m_order form label span{font-size: 0.24rem;font-family: san_m; color: #444;display: block;margin-bottom: 0.08rem;}
-	.peo_center .m_order form label input{height: 0.6rem;line-height: 0.6rem;border: 1px solid #ccc;border-radius: 5px;margin-bottom: 0.25rem;}
-	.peo_center .m_order form button{width: 2rem;height: 0.6rem;text-align: center;font-size: 0.24rem;color: #fff;border-radius: 4px;
+	.peo_center .m_order .form_div label{width: 100%;display: block;float: left;}
+	.peo_center .m_order .form_div label.f_name{width: 3.2rem;float: left;}
+	.peo_center .m_order .form_div label.l_name{width: 3.2rem;float: right;}
+	.peo_center .m_order .form_div label.l_name span{float: left;}
+	.peo_center .m_order .form_div label span{font-size: 0.24rem;font-family: san_m; color: #444;display: block;margin-bottom: 0.08rem;}
+	.peo_center .m_order .form_div label input{height: 0.6rem;line-height: 0.6rem;border: 1px solid #ccc;border-radius: 5px;margin-bottom: 0.25rem;}
+	.peo_center .m_order .form_div button{width: 2rem;height: 0.6rem;text-align: center;font-size: 0.24rem;color: #fff;border-radius: 4px;
 	background: #333;border: none;margin-bottom: 0.4rem;float: right;}
 	
 	/*m_account*/
@@ -1219,17 +1306,20 @@
 	background: #333;display: block;margin: 0 auto 2rem auto;}
 	
 	/*m_address*/
-	.peo_center .m_address form{background: #fff;margin: 0.2rem 0.2rem 0.8rem 0.2rem;padding:0 0.2rem;}
-	.peo_center .m_address form>p{font-size: 0.24rem;font-family: san_r; color: #999;margin-top: 0.4rem;margin-bottom: 0.3rem;}
-	.peo_center .m_address form label{width: 3.25rem;margin-right: 0.2rem; float: left;}
-	.peo_center .m_address form label.mr_no{margin-right: 0;}
-	.peo_center .m_address form label span{font-size:0.24rem;font-family: san_m; color: #444;display: block;margin-bottom: 0.08rem;}
-	.peo_center .m_address form label input{height: 0.6rem;line-height: 0.6rem;border: 0.01rem solid #ccc;border-radius: 5px;margin-bottom: 0.25rem;}
-	.peo_center .m_address form label select{height: 0.6rem;line-height: 0.6rem;border: 0.01rem solid #ccc;border-radius: 5px;margin-bottom: 0.25rem;width: 100%;}
-	.peo_center .m_address form label.add{max-width: 676px; width: 100%;margin-right:0 ;padding-right:2%;box-sizing: border-box;}
-	.peo_center .m_address form button.tj_btn{width: 2.4rem;height: 0.6rem;text-align: center;font-size: 0.2rem;color: #fff;border-radius: 4px;
+	.peo_center .m_address .form_div{background: #fff;margin: 0.2rem 0.2rem 0.8rem 0.2rem;padding:0 0.2rem;}
+	.peo_center .m_address .form_div>p{font-size: 0.24rem;font-family: san_r; color: #999;margin-top: 0.4rem;margin-bottom: 0.3rem;}
+	.peo_center .m_address .form_div label{width: 3.25rem;margin-right: 0.2rem; float: left;max-width: 325px;}
+	@media only screen and (min-width: 751px) and (max-width: 992px) {
+		.peo_center .m_address .form_div label{margin-right:8px;}
+	}
+	.peo_center .m_address .form_div label.mr_no{margin-right: 0;}
+	.peo_center .m_address .form_div label span{font-size:0.24rem;font-family: san_m; color: #444;display: block;margin-bottom: 0.08rem;}
+	.peo_center .m_address .form_div label input{height: 0.6rem;line-height: 0.6rem;border: 0.01rem solid #ccc;border-radius: 5px;margin-bottom: 0.25rem;}
+	.peo_center .m_address .form_div label select{height: 0.6rem;line-height: 0.6rem;border: 0.01rem solid #ccc;border-radius: 5px;margin-bottom: 0.25rem;width: 100%;}
+	.peo_center .m_address .form_div label.add{max-width: 658px; width: 100%;margin-right:0 ;}
+	.peo_center .m_address .form_div button.tj_btn{width: 2.4rem;height: 0.6rem;text-align: center;font-size: 0.2rem;color: #fff;border-radius: 4px;
 	background: #333;border: none;margin-bottom:0.4rem;clear: both;float: right;}
-	.peo_center .m_address form button.qx_btn{font-size: 0.24rem;font-family: san_r;background: transparent;border: none; border-bottom: 1px solid #6a6a6a;
+	.peo_center .m_address .form_div button.qx_btn{font-size: 0.24rem;font-family: san_r;background: transparent;border: none; border-bottom: 1px solid #6a6a6a;
 	clear: both;float: left;}
 	.m_address .xy_div{display: none;}
 	 
@@ -1329,33 +1419,38 @@
 	.peo_center .m_vip .text_2 ul li span:nth-child(1){width: 17%;border-left: none;}
 	.peo_center .m_vip .text_2 ul li span:nth-child(2){width: 32%;}
 	.peo_center .m_vip .text_2 ul li span:nth-child(3){width: 51%;}
-	.peo_center .m_vip .text_3{padding-top: 4.16vw;padding-bottom: 2.08vw;background: #fff;}
-	.peo_center .m_vip .text_3 ul{max-width: 800px;margin: auto;display: block;border: 1px solid #ccc;}
+	
+	.peo_center .m_vip .text_3{padding: 0.4rem 0.2rem;background: #fff;}
+	.peo_center .m_vip .text_3 ul{display: block;border: 1px solid #ccc;}
 	.peo_center .m_vip .text_3 ul li{width: 100%;height: 0.6rem;line-height: 0.6rem;border-top: 1px solid #ccc;}
 	.peo_center .m_vip .text_3 ul li span{font-size: 0.2rem;float: left;display: block;text-align: center;
 	line-height: 0.6rem;border-left: 1px solid #ccc;box-sizing: border-box;width: 17.5%;height: 0.6rem;}
 	.peo_center .m_vip .text_3 ul li:first-child{border-top: none;}
 	.peo_center .m_vip .text_3 ul li:first-child span:first-child{border-bottom: none;}
 	.peo_center .m_vip .text_3 ul li span:first-child{background: #f5f5f5;width: 30%;border-left: none;border-bottom: 1px solid #ccc;}
-	.peo_center .m_vip .text_3 ul li span.active:after{content: "";display: block;margin: auto;border: 2px solid #666;width: 16px;height:8px;
-	border-width: 0 0 2px 2px;border-color: transparent transparent #666 #666;transform: rotate(-45deg);position: relative;top: 12px;	}
-	.peo_center .m_vip .text_4{padding-bottom: 5.2vw;background: #fff;}
-	.peo_center .m_vip .text_4>p{font-size: 20px;color: #333;margin-bottom: 1.04vw;line-height: 20px;}
-	.peo_center .m_vip .text_4 ul{max-width: 800px;margin: auto;display: block;border: 1px solid #ccc;}
+	.peo_center .m_vip .text_3 ul li span.active:after{content: "";display: block;margin: auto;border: 2px solid #666;width: 0.2rem;height:0.1rem;
+	border-width: 0 0 0.02rem 0.02rem;border-color: transparent transparent #666 #666;transform: rotate(-45deg);position: relative;top: 0.18rem;}
+	
+	.peo_center .m_vip .text_4{padding: 0 0.2rem 0.4rem 0.2rem;background: #fff;margin-bottom: 0.2rem;}
+	.peo_center .m_vip .text_4 .div_text p{font-size: 0.2rem;color: #333;line-height: 0.28rem;}
+	.peo_center .m_vip .text_4 .div_text p:nth-child(2){margin-bottom: 0.4rem;}
+	.peo_center .m_vip .text_4 ul{display: block;border: 1px solid #ccc;}
 	.peo_center .m_vip .text_4 ul li{width: 100%;height: 0.6rem;line-height: 0.6rem;border-top: 1px solid #ccc;}
-	.peo_center .m_vip .text_4 ul li span{font-size: 16px;float: left;display: block;text-align: center;
-	line-height: 0.6rem;border-left: 1px solid #ccc;box-sizing: border-box;width: 70%;height: 0.6rem;}
+	.peo_center .m_vip .text_4 ul li span{font-size: 0.2rem;float: left;display: block;text-align: left;padding:0 0.05rem;
+	line-height: 0.6rem;border-left: 1px solid #ccc;box-sizing: border-box;width: 72%;height: 0.6rem;}
 	.peo_center .m_vip .text_4 ul li:first-child{border-top: none;}
 	.peo_center .m_vip .text_4 ul li:first-child span:first-child{border-bottom: none;}
-	.peo_center .m_vip .text_4 ul li span:first-child{background: #f5f5f5;width: 30%;border-left: none;border-bottom: 1px solid #ccc;}
-	.peo_center .m_vip .text_5{padding-bottom: 5.2vw;background: #fff;}
-	.div_text{max-width: 800px;display: block;margin: auto; }
-	.peo_center .m_vip .text_5 .p1_text{font-size: 16px;line-height: 0.6rem;margin-bottom: 0.6rem;}
-	.peo_center .m_vip .text_5 ul li {margin-bottom: 0.7vw;}
-	.peo_center .m_vip .text_5 ul li p{font-size: 16px;line-height: 20px;}
+	.peo_center .m_vip .text_4 ul li span:first-child{background: #f5f5f5;width: 28%;border-left: none;border-bottom: 1px solid #ccc;text-align: center;}
+	.peo_center .m_vip .text_4 ul li:nth-child(3) span:last-child{line-height: 0.22rem;padding-top: 0.09rem;}
+	
+	.peo_center .m_vip .text_5{padding: 0.4rem 0.2rem;margin-bottom: 0.2rem; background: #fff;}
+	.div_text{display: block;margin: auto; }
+	.peo_center .m_vip .text_5 .p1_text{font-size: 0.2rem;line-height: 0.26rem;margin-bottom: 0.1rem;}
+	.peo_center .m_vip .text_5 ul li {margin-bottom: 0.08rem;}
+	.peo_center .m_vip .text_5 ul li p{font-size: 0.2rem;line-height:0.26rem;}
 	.peo_center .m_vip .text_5 ul li p span{font-weight: bold;}
-	.peo_center .m_vip .text_5 .p2_text{font-size:18px; line-height: 20px;margin-bottom: 1.04vw;margin-top: 2.08vw;}
-	.peo_center .m_vip .text_5 .p2_text span{display: block;margin-bottom: 0.52vw;}
+	.peo_center .m_vip .text_5 .p2_text{font-size:0.2rem; line-height: 0.26rem;margin-top: 0.5rem;}
+	.peo_center .m_vip .text_5 .p2_text span{display: block;}
 	
 	/******company*********/
 	.company .pc_p,.company .pc_h2{display: none;}

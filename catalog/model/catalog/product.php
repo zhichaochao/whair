@@ -83,7 +83,9 @@ class ModelCatalogProduct extends Model {
 				'length_id'        => $query->row['length_id'],
 				'relation_product' => $query->row['relation_product'],
 				'discount_percentage' => $query->row['discount_percentage'],
-				'free_postage'     => $query->row['free_postage']
+				'free_postage'     => $query->row['free_postage'],
+				'material'     => $query->row['material'],
+				'm_description'     => $query->row['m_description']
 				//新增读取的产品属性,end
 			);
 		} else {
@@ -1265,13 +1267,13 @@ class ModelCatalogProduct extends Model {
 	 * @author  wyf
 	 * @param
 	 */
-	public function getRecommendProducts(){
+	public function getRecommendProducts($limit=8){
 		$sql = "select distinct p.product_id from " . DB_PREFIX . "product p
 			    left join " . DB_PREFIX . "product_to_category ptc on p.product_id = ptc.product_id
 			    left join " . DB_PREFIX . "category c on c.category_id = ptc.category_id
 			    left join " . DB_PREFIX . "product_to_store p2s on p.product_id = p2s.product_id
 			    where p.status = 1 and p.date_available <= NOW() and p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'
-			    and c.status = 1  order by p.viewed desc, p.date_added desc limit 8";
+			    and c.status = 1  order by p.viewed desc, p.date_added desc limit ".$limit;
 		$query = $this->db->query($sql);
 
 		foreach ($query->rows as $result) {

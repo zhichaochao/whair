@@ -115,30 +115,34 @@ class ControllerAccountWishList extends Controller {
 				// } else {
 				// 	$rating = false;
 				// }
-			// 	$data['options'] = array();
-   //          $options=$this->model_catalog_product->getProductOptions($this->request->get['product_id']);
-			// //var_dump($product_id);die;
-   //          foreach ( $options as $option) {
-   //              $product_option_value_data = array();
-   //              foreach ($option['product_option_value'] as $option_value) {
-   //                  if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
-   //                      if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
-   //                          $price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
-   //                      } else {
-   //                          $price = false;
-   //                      }
+		
+            $options=$this->model_catalog_product->getProductOptions($product_info['product_id']);
+			// print_r($options);die;   
+			$product_option_value_data = array();
+            foreach ( $options as $option) {
+             
+                foreach ($option['product_option_value'] as $option_value) {
+                    if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+                        if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
+                            $price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
+                        } else {
+                            $price = false;
+                        }
 
-   //                      $product_option_value_data[] = array(
-   //                          'product_option_value_id' => $option_value['product_option_value_id'],
-   //                          'option_value_id'         => $option_value['option_value_id'],
-   //                          'name'                    => $option_value['name'],
-   //                          'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
-   //                          'price'                   => $price,
-   //                          'price_prefix'            => $option_value['price_prefix']
-   //                      );
-   //                  }
-   //              }
+                        $product_option_value_data[] = array(
+                            'product_option_value_id' => $option_value['product_option_value_id'],
+                            'option_value_id'         => $option_value['option_value_id'],
+                            'name'                    => $option_value['name'],
+                            'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
+                            'price'                   => $price,
+                            'price_prefix'            => $option_value['price_prefix'],
+                            'product_option_id'		=>$option['product_option_id'],
+                        );
 
+                    }
+                }
+            }
+  // print_r($product_option_value_data);
    //              $data['options'][] = array(
    //                  'product_option_id'    => $option['product_option_id'],
    //                  'product_option_value' => $product_option_value_data,
@@ -157,7 +161,8 @@ class ControllerAccountWishList extends Controller {
 					'model'      => $product_info['model'],
 					'stock'      => $stock,
 					'price'      => $price,
-					// 'special'    => $special,
+					
+					 'option'    =>  $product_option_value_data,
 					//'rating'      => $result['rating'],
 					'special'     => isset($special) ? $special : '',
 					'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
@@ -166,9 +171,9 @@ class ControllerAccountWishList extends Controller {
 			} else {
 				$this->model_account_wishlist->deleteWishlist($result['product_id']);
 			}
-			//print_r($data['products']);exit;
+		
 		}
-
+	// print_r($data['products']);exit;
 		$data['continue'] = $this->url->link('account/account', '', true);
 
 		$data['column_left'] = $this->load->controller('common/column_left');

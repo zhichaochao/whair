@@ -214,6 +214,7 @@
 						<li class="active"><a href="###">My Orders</a></li>
 						<li><a href="###">Account Information</a></li>
 						<li><a href="###">Address List</a></li>
+						<li><a href=""></a></li>
 						<li><a href="###">My Wish List</a></li>
 						<li><a href="###">My VIP</a></li>
 						<li><a href="###">My Coupon</a></li>
@@ -274,11 +275,11 @@
 								</div>
 								
 								<div class="btn_div">
-									<a class="return" href="###">Return</a>
+									<!--<a class="return" href="###">Return</a>-->
 									<a class="" href="###">View</a>
 								</div>
 								
-								<div class="return_modal">
+								<!--<div class="return_modal">
 									<div class="text">
 										<span><em></em></span>
 										<p>Please choose the following ways  to contact us for your return</p>
@@ -286,7 +287,7 @@
 										<a class="skype fr" href="###">Skype</a>
 										<div class="close"></div>
 									</div>
-								</div>
+								</div>-->
 							</div>
 						</li>
 						<li class="clearfix">
@@ -590,13 +591,13 @@
 			$(this).parents("li").remove();
 		})
 		
-		$(".return").click(function(){
-			$(".return_modal").fadeIn();
-			$(this).css("background","#ddd");
-		})
-		$(".return_modal .close").click(function(){
-			$(".return_modal").fadeOut()
-			$(this).parents("li").find("a.return").css("background","#fff");
-		})
+//		$(".return").click(function(){
+//			$(".return_modal").fadeIn();
+//			$(this).css("background","#ddd");
+//		})
+//		$(".return_modal .close").click(function(){
+//			$(".return_modal").fadeOut()
+//			$(this).parents("li").find("a.return").css("background","#fff");
+//		})
 	})
 </script>
