@@ -106,7 +106,7 @@ class ControllerCommonFooter extends Controller {
 		 );
 		$data['home'] = $this->url->link('common/home', '', true);
 		$data['cart'] = $this->url->link('checkout/cart', '', true);
-		$data['dashboard'] = $this->url->link('account/dashboard', '', true);
+		$data['account_left'] = $this->url->link('account/inquiry', '', true);
 		$data['contac'] = $this->url->link('product/category&path=33', '', true);
 
 		$data['contact'] = $this->url->link('information/contact');
