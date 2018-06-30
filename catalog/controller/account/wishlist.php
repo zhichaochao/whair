@@ -88,72 +88,7 @@ class ControllerAccountWishList extends Controller {
 					$stock = $this->language->get('text_instock');
 				}
 
-				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-					$price = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$price = false;
-				}
-
-				if ((float)$product_info['special']) {
-					$special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
-				}
-				//根据用户等级获取对应产品价格
-				if ($this->customer->isLogged()) {
-					$special = $this->model_catalog_product->getSpecialPrice($result['product_id']);
-				}
-
-				// if ($this->config->get('config_tax')) {
-				// 	$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
-				// } else {
-				// 	$tax = false;
-				// }
-
-				// if ($this->config->get('config_review_status')) {
-				// 	$rating = (int)$result['rating'];
-				// } else {
-				// 	$rating = false;
-				// }
-		
-            $options=$this->model_catalog_product->getProductOptions($product_info['product_id']);
-			// print_r($options);die;   
-			$product_option_value_data = array();
-            foreach ( $options as $option) {
-             
-                foreach ($option['product_option_value'] as $option_value) {
-                    if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
-                        if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
-                            $price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
-                        } else {
-                            $price = false;
-                        }
-
-                        $product_option_value_data[] = array(
-                            'product_option_value_id' => $option_value['product_option_value_id'],
-                            'option_value_id'         => $option_value['option_value_id'],
-                            'name'                    => $option_value['name'],
-                            'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
-                            'price'                   => $price,
-                            'price_prefix'            => $option_value['price_prefix'],
-                            'product_option_id'		=>$option['product_option_id'],
-                        );
-
-                    }
-                }
-            }
-  // print_r($product_option_value_data);
-   //              $data['options'][] = array(
-   //                  'product_option_id'    => $option['product_option_id'],
-   //                  'product_option_value' => $product_option_value_data,
-   //                  'option_id'            => $option['option_id'],
-   //                  'name'                 => $option['name'],
-   //                  'type'                 => $option['type'],
-   //                  'image'                 =>$this->model_tool_image->resize($option['image'], 50, 50),
-   //                  'value'                => $option['value'],
-   //                  'required'             => $option['required']
-   //              );
-   //          }
+           
 				$data['products'][] = array(
 					'product_id' => $product_info['product_id'],
 					'thumb'      => $image,
@@ -161,9 +96,6 @@ class ControllerAccountWishList extends Controller {
 					'model'      => $product_info['model'],
 					'stock'      => $stock,
 					'price'      => $price,
-					
-					 'option'    =>  $product_option_value_data,
-					//'rating'      => $result['rating'],
 					'special'     => isset($special) ? $special : '',
 					'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
 					'remove'     => $this->url->link('account/wishlist', 'remove=' . $product_info['product_id'])
@@ -173,7 +105,6 @@ class ControllerAccountWishList extends Controller {
 			}
 		
 		}
-	// print_r($data['products']);exit;
 		$data['continue'] = $this->url->link('account/account', '', true);
 
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -184,6 +115,67 @@ class ControllerAccountWishList extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 
 		$this->response->setOutput($this->load->view('account/wishlist', $data));
+	}
+public function ceshi() {
+		if (!$this->customer->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('account/wishlist', '', true);
+
+			$this->response->redirect($this->url->link('account/login', '', true));
+		}
+
+		$this->load->language('account/wishlist');
+
+		$this->load->model('account/wishlist');
+
+		$this->load->model('catalog/product');
+
+		$this->load->model('tool/image');
+
+	
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home')
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
+			'href' => $this->url->link('account/account', '', true)
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('account/wishlist')
+		);
+
+		$data['heading_title'] = $this->language->get('heading_title');
+
+		$data['text_empty'] = $this->language->get('text_empty');
+
+		$data['column_image'] = $this->language->get('column_image');
+		$data['column_name'] = $this->language->get('column_name');
+		$data['column_model'] = $this->language->get('column_model');
+		$data['column_stock'] = $this->language->get('column_stock');
+		$data['column_price'] = $this->language->get('column_price');
+		$data['column_action'] = $this->language->get('column_action');
+
+		$data['button_continue'] = $this->language->get('button_continue');
+		$data['button_cart'] = $this->language->get('button_cart');
+		$data['button_remove'] = $this->language->get('button_remove');
+
+		$data['continue'] = $this->url->link('account/account', '', true);
+
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['column_right'] = $this->load->controller('common/column_right');
+		$data['content_top'] = $this->load->controller('common/content_top');
+		$data['content_bottom'] = $this->load->controller('common/content_bottom');
+		$data['footer'] = $this->load->controller('common/footer');
+		$data['header'] = $this->load->controller('common/header');
+
+		$this->response->setOutput($this->load->view('account/ceshi', $data));
 	}
 
 	public function add() {

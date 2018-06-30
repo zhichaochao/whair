@@ -220,18 +220,7 @@ class ControllerProductCategory extends Controller {
 					$price = false;
 				}
 
-				/*if ((float)$result['special']) {
-					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
-				}*/
-
-				/* //折后价(新)
-				if ($result['discount_percentage'] > 0) {
-					$special = $this->currency->format($result['price'] * ($result['discount_percentage'] / 100), $this->session->data['currency']);
-				} else {
-					$special = false;
-				} */
+			
 
 				//根据用户等级获取对应产品价格
 				if ($this->customer->isLogged()) {

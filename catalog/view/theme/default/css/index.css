@@ -127,10 +127,17 @@
 	text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width: 24vw;}
 	.pro_det_content .top p.price{font-family: san_r;color: #333;font-size: 1.56vw;line-height: 1.8vw;display: block;margin-bottom: 2.5vw;}
 	.pro_det_content .top p.price i{color: #ccc;text-decoration: line-through;margin-left: 0.46vw;}
-	.pro_det_content .top p.text_p{font-size: 0.83vw;color: #666;margin-bottom: 1.66vw;}
-	.pro_det_content .top p.text_p span{font-size: 0.93vw;color: #000;line-height: 0.93vw;}	
+	.pro_det_content .hiar_color {margin-bottom: 1.04vw;display: inline-block;}
+	.pro_det_content .hiar_color span{font-size: 0.83vw;line-height: 2.08vw;color: #666; float: left;}
+	.pro_det_content .hiar_color .select_btn{float: left;margin-left: 5px;padding-left: 10px;box-sizing: border-box;}
+	.pro_det_content .hiar_color .select_ul{width: 10vw !important;border: 1px solid #ccc;border-top: none;
+	left: auto !important;right: 0 !important;top: 2.08vw !important;}
+	
+	
 	.pro_det_content label{display: inline-block;float: left;margin-right: 1.66vw;}
+	.pro_det_content label.num_label{margin-bottom: 15px;}
 	.pro_det_content label>span{font-size: 0.83vw;line-height: 1.77vw; color: #666;float: left;position: relative;z-index: 9;}
+	.pro_det_content .label_div{display: block;clear: both;}
 	.pro_det_content .price_input{clear: both;border: 1px solid #ccc;}
 	.pro_det_content .price_input span{display: block;float: left; width: 2.08vw;height: 2.08vw;cursor: pointer;}
 	.pro_det_content .price_input span.sub{background: url(../img/png/sub.png) no-repeat center center;background-size:0.68vw;}
@@ -820,8 +827,99 @@
 	.edit_method_md .check_i.active:after{display: block;position: absolute;top: 4px;left: 3px;content: "";border: 2px solid #000; width: 10px;height: 4px;
 	 border-width: 0 0 2px 2px;transform: rotate(-45deg); }
 	.edit_method_md .a_btn{margin:2.6vw auto 0 auto;}
+	
+	/***haircare***/
+	.haircare{background: #f5f5f5;}
+	
+	.haircare .hair_text{background: #fff;max-width: 1000px;margin: auto;padding: 10px 40px 0 40px;}
+	.haircare .bnr_img{display: block;margin: auto;}
+	.haircare .text2 {padding-top: 25px;padding-bottom: 30px;}
+	.haircare .text2 .left p {font-size: 14px;color: #666;line-height: 14px;display: inline-block;float: left;}
+	.haircare .text2 .left p span{color: #d5af74;}
+	.haircare .text2 .ll_span{background: url(../img/png/yanj.png)no-repeat left center;padding-left: 38px;margin-left: 80px;}
+	.haircare .text2 ul li{float: left;margin-left: 8px;}
+	
+	.haircare .text3 {padding-bottom: 55px;}
+	.haircare .text3 .left{width: 340px;}
+	.haircare .text3 .left h1{font-size: 24px;line-height: 30px;color: #333;font-weight: normal;}
+	.haircare .text3 .left p{font-size: 16px;line-height: 24px;color: #333;margin-top: 14px;}
+	.haircare .text3 .right img{display: block;}
+	
+	.haircare .text4  h1{font-size: 24px;font-family: bau;font-weight: normal;line-height: 24px;margin-bottom:16px;}	
+	.haircare .text4  p{font-size: 16px;color: #444;line-height: 27px;margin-bottom: 50px;}
+	.haircare .text4 .img_div{display: block;margin: auto;width: 472px;padding-bottom: 55px;}
+	.haircare .text4 .img_div img{display: block;float: left;}
+	.haircare .text4 .img_div img.jt{margin: 40px 24px 0 24px;}
+	
+	.haircare .text5 p{font-size: 16px;color: #333;line-height: 24px;}
+	.haircare .text5 h1{font-family: bau;font-size: 24px;line-height: 24px; font-weight: normal;text-align: center;margin: 55px 0 40px 0;}
+	.haircare .text5 img{display: block;margin: auto;}
+	.haircare .text5 .video_ul{padding-bottom: 40px;}
+	.haircare .text5 .video_ul li{width: 50%;float: left;height: 215px;margin-bottom: 40px;position: relative;}
+	.haircare .text5 .video_ul li video{width: 100%;height: 100%;}
+	.haircare .text5 .video_ul li img.bf{position: absolute;top: 50%;left: 50%;margin-top: -22px;margin-left: -22px;cursor: pointer;}
+	
+	.haircare .text6{padding-bottom: 80px;}
+	.haircare .text6 p{font-size: 16px;color: #333;line-height: 24px;margin-bottom: 50px;}
+	.haircare .text6 h1{font-size: 24px;font-family: bau;font-weight: normal;margin-bottom: 15px;}
+	.haircare .text6 .fs_div{background: #f9f5f6;padding: 40px 10px 0 10px;}
+	.haircare .text6 .fs_div .img{width: 330px;margin: auto;text-align: center;}
+	.haircare .text6 .fs_div .img img{margin-bottom: 15px;}
+	.haircare .text6 .fs_div .img .left{width: 140px;float: left;}
+	.haircare .text6 .fs_div .img .right{width: 140px;float: right;}
+	.haircare .text6 .fs_div .fs{color: #f8598d;font-weight: bold;}
+	.haircare .text6 .fs_div p{margin-bottom: 35px;}
+	
+	.haircare .text7 p{font-size: 16px;color: #333;line-height: 24px;margin-bottom: 50px;}
+	.haircare .text7 h1{font-size: 24px;font-family: bau;font-weight: normal;line-height: 40px;margin-bottom: 24px;}
+	.haircare .text7 h1 span{width: 40px;height: 40px;display: block;text-align: center;line-height: 40px;background: #333;
+	color: #fff;font-size: 24px;font-family: bau;border-radius: 100%;float: left;margin-right: 8px;}
+	.haircare .text7 img{display: block;margin:24px auto;}
+	
+	.haircare .text8 {padding-bottom: 80px;}
+	.haircare .text8 p{font-size: 16px;color: #333;line-height: 24px;margin-bottom: 50px;}
+	.haircare .text8 h1{font-size: 24px;font-family: bau;font-weight: normal;line-height: 24px;text-align: center;}
+	.haircare .text8 ul{border: 1px solid #ccc;max-width: 804px;margin:24px auto 55px auto;}
+	.haircare .text8 ul li{height: 50px;line-height: 50px;border-top: 1px solid #ccc;}
+	.haircare .text8 ul li:nth-child(1){background: #f5f5f5;border-top: none;}
+	.haircare .text8 ul li span{display: block;text-align: center;float: left;border-right: 1px solid #ccc;box-sizing: border-box;}
+	.haircare .text8 ul li span:nth-child(1){width: 214px;}
+	.haircare .text8 ul li span:nth-child(2){width: 110px;}
+	.haircare .text8 ul li span:nth-child(3){width: 110px;}
+	.haircare .text8 ul li span:nth-child(4){width: 256px;}
+	.haircare .text8 ul li span:nth-child(5){width: 110px;border-right: none;}
+	.haircare .text8 p.img_p{margin-bottom:0;}
+	.haircare .text8 img{display: block;margin: 20px auto;}
+	
+	
+	.haircare .text9{padding-bottom: 55px;}
+	.haircare .text9 p{font-size: 16px;color: #333;line-height: 24px;margin-bottom: 40px;}
+	.haircare .text9 img{display: block;margin:0 auto 20px auto;}
+	.haircare .text9 h1{font-family: bau;font-size: 24px;font-weight: normal;margin-bottom: 8px;}
+	.haircare .text9 .bot{padding: 0 35px}
+	.haircare .text9 p.img_p{margin: 40px 0 24px 0;clear: both;display: block;float: left;}
+	
+	/******hairclub*****/
+	.hairclub{max-width: 1200px;}
+	.hairclub h1{font-size: 24px;line-height: 24px; font-weight: normal;text-align: center;font-family: bau;margin-top: 80px;}
+	.hairclub>p{font-size: 16px;color: #666;line-height: 16px;text-align: center;margin-top: 15px;}
+	.hairclub .video_ul{padding-top: 35px;padding-bottom: 60px; margin: 0 -15px;}
+	.hairclub .video_ul li{width: 33.33%;float: left;height: 215px;position: relative;margin-bottom: 20px;padding: 0 15px;}
+	.hairclub .video_ul li video{width: 100%;height: 100%;}
+	.hairclub .video_ul li img.bf{position: absolute;top: 50%;left: 50%;margin-top: -22px;margin-left: -22px;cursor: pointer;}
+	.hairclub .hair_ul {margin: 0 -15px;padding-top: 40px;}
+	.hairclub .hair_ul li{width: 33.33%;padding: 0 15px;float: left;}
+	.hairclub .hair_ul li .pic_img{display: block;position: relative;}
+	.hairclub .hair_ul li .pic_img img{display: block;}
+	.hairclub .hair_ul li .pic_img .div_p{height: 70px;line-height: 70px; position: absolute;bottom: 0;left: 0;padding: 0 20px;background: rgba(0,0,0,0.5);width: 100%;}
+	.hairclub .hair_ul li .pic_img p{color: #fff;font-size: 16px;line-height: 22px; vertical-align: middle;display: inline-block;width: 100%;}
+	.hairclub .hair_ul li .text{height: 50px;line-height: 50px;padding: 0 10px;}
+	.hairclub .hair_ul li .text p{font-size: 14px;color: #666;display: block;float: left;margin: 0;line-height: 50px;}
+	.hairclub .hair_ul li .text p span{color: #d5af74;}
+	.hairclub .hair_ul li .text .yj{font-size: 14px;color: #666;padding-left: 36px;background: url(../img/png/yanj.png)no-repeat left center;float: right;}
+	.hairclub .hair_ul li .more_a{font-size: 12px;color: #333;display: block;height: 12px;float: left;margin-left: 10px;border-bottom: 1px solid #6a6a6a;}
+	
 }
-
 
 @media only screen and (max-width:992px ) {
 	
@@ -916,6 +1014,7 @@
 	/************product_details*************/
 	.current{display: none;}
 	.pro_bnr {border-bottom: 0.1rem solid #f5f5f5;height: auto;}
+	.pro_big_img .swiper-button-next,.pro_big_img  .swiper-button-prev{display: none !important; }
 	.pro_bnr .swiper-pagination-bullet{width: 0.12rem;height: 0.12rem;border-radius: 50%;background: #fff;}
 	.pro_bnr .swiper-pagination-bullet-active{background: #fff !important;}
 	.product_det{width: 100%;background: #f5f5f5;padding: 0 !important;}
