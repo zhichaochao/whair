@@ -311,48 +311,30 @@ class ControllerProductProduct extends Controller {
                 
                     'thumb' => $this->model_tool_image->resize($result['image'], 200, 200),  //小图
                   
-                    'image'=> $this->model_tool_image->resize($result['image'], 700, 700)
+                    'image'=> $this->model_tool_image->resize($result['image'], 700, 700),  //小图
+                  
+                    'thumb2'=> $this->model_tool_image->resize($result['image'], 700, 700)
                 );
             }
 
-            //原价
-            if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-              
-                $data['price'] = $this->currency->format($product_info['defaultprice'], $this->session->data['currency']);
-                $data['read_price']=$this->tax->calculate($product_info['defaultprice'], $product_info['tax_class_id'], $this->config->get('config_tax'));
-            } else {
-                $data['price'] = false;
-                $data['read_price'] = false;
-            }
-
+            
             //包邮
             if($product_info['free_postage']){
                 $data['free_shipping'] = $this->language->get('text_free_shipping');
             }else{
                 $data['free_shipping'] = '';
             }
+            // print_r($product_info);exit();
 
-
+            //价格
+            $data['read_defaultprice']=$product_info['defaultprice'];
+            $data['defaultprice']=$this->currency->format($product_info['defaultprice'], $this->session->data['currency']);
+            $data['price']=$this->currency->format($product_info['price'], $this->session->data['currency']);
+            $data['special']=$product_info['special'];
         
 
-            //根据用户等级获取对应产品价格
-            if ($this->customer->isLogged()) {
-                $special = $this->model_catalog_product->getSpecialPrice($product_info['product_id']);
-                if(isset($special['special'])){
-                    $data['special'] = $special['special'];
-                    $data['read_special'] = $special['read_special'];
-                }
-            } else {
-                $data['special'] = false;
-                $data['read_special'] = false;
-            }
-
-            $is_speical = $this->model_catalog_product->isHasSpecialPrice($product_info['relation_product']);
-
-            if ($is_speical && !$this->customer->isLogged()) {
-                $this->session->data['redirect'] = $this->url->link('product/product', 'product_id=' . $product_info['product_id']);
-                $data['login'] = $this->url->link('account/login', '', true);
-            }
+      
+           
 
             $data['isLogged'] = $this->customer->isLogged();
 

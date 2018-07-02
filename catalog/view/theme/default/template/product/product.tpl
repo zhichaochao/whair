@@ -74,10 +74,10 @@
 								<div class="product_right_dindan">
 									<dl class="col_f00 jiage" id="money" style="margin-bottom:10px;">
 									
-										<?php if(isset($special)&&$special){ ?>
+										<?php if(isset($special)&&$special['special']){ ?>
 										<span>
 											<!-- <i style="color:#999;font-size: 25px;">Vip Price:&ensp;</i> -->
-											<b style="font-size: 30px;"><?php echo $special; ?></b>
+											<b style="font-size: 30px;"><?php echo $special['special']; ?></b>
 											<del class="price-old" style="color:#999;font-size: 30px;"><?php echo $price; ?></del>
 											<b><?php echo $free_shipping; ?></b>
 										</span>
@@ -635,9 +635,8 @@ function productInfoImg(elm) {
     function changeprice() {
         //console.log('first');
 //         alert($("#form-product").serialize());
-//		alert('<?php echo $product_id; ?>'+',<?=$read_special?$read_special:0?>'+',<?php echo $read_price;?>');
         $.ajax({
-            url: 'index.php?route=product/product/getprice&product_id=<?php echo $product_id; ?>&p=<?php echo $read_price;?>&s=<?=$read_special?$read_special:0?>',
+            url: 'index.php?route=product/product/getprice&product_id=<?php echo $product_id; ?>&p=<?php echo $read_defaultprice;?>&s=<?=$special["read_special"]? $special["read_special"]:0?>',
             type: 'post',
             dataType: 'json',
             data: $("#form-product input"),
@@ -651,3 +650,4 @@ function productInfoImg(elm) {
 </script>
 
 <?php echo $footer; ?>
+
