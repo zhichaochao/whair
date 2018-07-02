@@ -256,7 +256,9 @@ class ControllerProductProduct extends Controller {
             $data['product_id'] = (int)$this->request->get['product_id'];
 
             $data['points'] = $product_info['points'];
+            $data['material'] = $product_info['material'];
             $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+            $data['mdescription'] = html_entity_decode($product_info['mdescription'], ENT_QUOTES, 'UTF-8');
 
             //产品属性
             $data['manufacturer'] = $product_info['manufacturer'];
