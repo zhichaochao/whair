@@ -254,19 +254,31 @@
 	.shop_content .shop_ul .text p.p1{font-size: 0.83vw;line-height: 1.03vw;margin-bottom: 0.22vw;}
 	.shop_content .shop_ul .close{width: 2.08vw;height: 2.08vw;position: absolute;top: 0.52vw;right: 0.78vw;
 	background: url(../img/png/close3.png) no-repeat;background-size: 2.08vw 2.08vw;cursor: pointer;}
-	.shop_content .select_div{background: #fff;padding: 0.52vw 0;text-align: center;position: relative;}
-	.shop_content .select_div button{width: 66.6%; margin: auto;display: block;border: 1px solid #ccc;height: 2.08vw;font-size: 0.83vw;line-height: 2.08vw;background: #fff;}
-	.shop_content .select_div button:hover{background: #f5f5f5;cursor: pointer;}
-	.shop_content .select_div button span{background: url(../img/png/down.png) no-repeat right center;background-size: 0.72vw;padding-right: 2vw;}
-	.shop_content .select_div .select_ul{position: absolute;width: 66.6%;background: #fff;left: 16.7%;border-left: 1px solid #ccc;border-bottom: 1px solid #ccc;
-	display: none;z-index: 12;}
-	.shop_content .select_div ul{background: #fff;max-height: 11.5vw;padding: 1vw 0;overflow-y:scroll !important;}
-	.shop_content .select_div ul li{width:100%;margin: auto;height: 2.08vw;font-size: 0.83vw;line-height: 2.08vw;cursor: pointer;}
-	.shop_content .select_div ul li:hover{background: #f5f5f5;}
 	.shop_content .shop_ul .shop_a{background: #fff;padding: 0.52vw 0 1.25vw 0;}
 	.shop_content .shop_ul .two_a{width: 66.6%;margin: auto;display: block;text-align: center;height: 2.08vw;line-height: 2.08vw;
 	background: #333;color: #fff;font-size: 0.83vw;border-radius: 50px;}
 	.shop_content .shop_ul .two_a:hover{background: #666;}
+	/*弹窗*/
+	.shop_modal{background: rgba(0,0,0,.5);position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 99;display: none;}
+	.shop_modal .text{width: 560px;background: #fff;position: absolute;top: 50%;left: 50%;margin-left: -280px;margin-top: -170px;}
+	.shop_modal .text .close{width: 52px;height: 52px;display: block;position: absolute;right: 10px;top: 10px;
+	background: url(../img/png/close2.png) no-repeat center center;background-size: 26px 26px;cursor: pointer;}
+	.shop_modal .modal_ul {padding-top: 50px;}
+	.shop_modal .modal_ul>li{width: 240px;margin: 0 auto 25px auto;clear: both;}
+	.shop_modal .modal_ul>li>span{font-size: 16px;}
+	.shop_modal .select_div{background: #fff;padding: 0.52vw 0;text-align: center;position: relative;width: 240px;margin: auto;}
+	.shop_modal .select_div button{width: 100%; margin: auto;display: block;border: 1px solid #ccc;height:40px;font-size:16px;line-height:40px;background: #fff;}
+	.shop_modal .select_div button:hover{background: #f5f5f5;cursor: pointer;}
+	.shop_modal .select_div button span{background: url(../img/png/down.png) no-repeat right center;background-size:14px;padding-right: 35px;}
+	.shop_modal .select_div .select_ul{position: absolute;width: 100%;background: #fff;left: 0;border-left: 1px solid #ccc;border-bottom: 1px solid #ccc;
+	display: none;z-index: 12;}
+	.shop_modal .select_div ul{background: #fff;max-height: 11.5vw;padding: 1vw 0;overflow-y:scroll !important;}
+	.shop_modal .select_div ul li{width:100%;margin: auto;height: 40px;font-size: 16px;line-height: 40px;cursor: pointer;}
+	.shop_modal .select_div ul li:hover{background: #f5f5f5;}
+	.shop_modal .text a.a_btn{width: 240px;display: block;text-align: center;height: 40px;line-height: 40px;font-size: 16px;color: #fff;background: #333;
+	margin: 0 auto 55px auto;border-radius: 50px;}
+	.shop_modal .text a.a_btn:hover{background: #666;}
+	
 	@media (min-width:1281px ) and (max-width:1400px) {
 		.login .login_ul{width: 75%;}
 	}
@@ -765,6 +777,7 @@
 	.view_order .bot {border: 1px solid #eee;}
 	.view_order .bot .text{padding: 0 24px;}
 	.view_order .bot .text .span_div span{display: block;height: 52px;line-height: 52px;float: right;font-size: 16px;width: 130px;text-align: center;}
+	.view_order .bot .order_ul .yd_i{display: none;}
 	.view_order .bot .order_ul {border-top: 1px solid #eee;border-bottom: 1px solid #eee;padding-top: 24px;}
 	.view_order .bot .order_ul li{margin-bottom: 24px;}
 	.view_order .bot .order_ul .pic_img{width: 96px;height: 96px;display: block;background: #999;float: left;}
@@ -774,8 +787,12 @@
 	.view_order .bot .total p{font-size: 16px;display: block;float: right;width: 270px;clear: both;padding-top: 20px;line-height: 20px;margin-right: 20px;}
 	.view_order .bot .total p .p_span{font-weight: bold;font-size: 20px;}
 	.view_order .text_con a.a_btn{font-size: 16px;color: #fff;background: #333;border-radius: 4px;height: 40px;line-height: 40px;display: block;
-	float: right;clear: both;margin:24px 0 0 0;width: 200px;text-align: center;}
+	float: right;margin:24px 0 0 0;width: 200px;text-align: center;}
 	.view_order .text_con a.a_btn:hover{background: #666;}
+	.view_order .text_con a.qx_btn{font-size: 16px;color: #999;background: #fff;border-radius: 4px;height: 40px;line-height: 40px;display: block;
+	float: right;margin:24px 40px 0 0;width: 200px;text-align: center;border: 1px solid #ccc;}
+	.view_order .text_con a.qx_btn:hover{background: #333;border: 1px solid #333;color: #fff;}
+	
 	.view_order .order_hty ul{border: 1px solid #eee;}
 	.view_order .order_hty ul li{height: 50px;line-height: 50px;border-bottom: 1px solid #eee;}
 	.view_order .order_hty ul li span{font-size: 16px;display: inline-block;width: 240px;text-align: center;}
@@ -783,25 +800,25 @@
 	.view_order .order_hty ul li:last-child{border-bottom: none;}
 	/*彈窗*/
 	.edit_add_md {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.5);z-index: 99;display: none;}
-	.edit_add_md>.text{background: #fff;width: 750px;margin:100px auto 0 auto;}
+	.edit_add_md>.text{background: #fff;width: 750px;margin:4vw auto 0 auto;}
 	.edit_add_md .form_div{padding:2.08vw;position: relative;}
 	.edit_add_md .form_div .close{width: 30px;height: 30px;display: block;position: absolute;top: 2.08vw;right:2.08vw;
 	background: url(../img/png/close2.png) no-repeat center center;background-size: 27px 26px;cursor: pointer;}
 	.edit_add_md .form_div h1{font-size: 24px;font-family: san_b;color: #333;}
 	.edit_add_md .form_div>p{font-size: 12px;color: #999;margin-top: 2.08vw;margin-bottom: 1.56vw;}
 	.edit_add_md .form_div>h2{font-size: 1.04vw;color: #444;margin-bottom: 1.04vw;margin-top: 2.08vw;}
-	.edit_add_md .form_div label{max-width:336px;width: 50%; float: left;margin-right: 16px;}
-	.edit_add_md .form_div label.mr_no{margin-right: 0;}
+	.edit_add_md .form_div .label{margin: 0 -8px;max-height: 570px;overflow-y: auto;}
+	.edit_add_md .form_div label{max-width:336px;width: 50%;float: left; padding:0 8px;box-sizing: border-box;}
 	.edit_add_md .form_div label span{font-size: 14px;color: #444;display: block;margin-bottom: 6px;}
 	.edit_add_md .form_div label input{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;text-indent: 10px;margin-bottom: 15px;}
 	.edit_add_md .form_div p.ts_ps{margin: 0 0 10px 0;}
 	.edit_add_md .form_div label select{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;padding: 0 5px;
 	margin-bottom: 15px;width: 100%;cursor: pointer;}
-	.edit_add_md .form_div label.add{ width: 100%;margin-right:0;max-width: 688px;}
+	.edit_add_md .form_div label.add{ width: 100%;padding-right: 24px; max-width: 688px;}
 	.edit_add_md .form_div button.bc_btn{width: 240px;height: 40px;text-align: center;font-size: 16px;color: #fff;border-radius: 4px;
-	background: #333;border: none;clear: both;float: left;margin:20px 0 10px 95px;}
+	background: #333;border: none;clear: both;float: left;margin:20px 10px 10px 85px;}
 	.edit_add_md .form_div button.qx_btn{width: 240px;height: 40px;text-align: center;font-size: 16px;color: #333;border-radius: 4px;
-	background: #eee;border: 1px solid #666;float: right;margin:20px 95px 10px 0;}
+	background: #eee;border: 1px solid #666;float: right;margin:20px 85px 10px 10px;}
 	.edit_add_md .form_div button:hover{background: #666;color: #fff;}
 	
 	.edit_method_md {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.5);z-index: 99;display: none;}
@@ -810,12 +827,14 @@
 	background: url(../img/png/close2.png) no-repeat center center;background-size: 27px 26px;cursor: pointer;}
 	.edit_method_md>.text h2{font-size: 24px;margin-bottom: 24px;}
 	.edit_method_md .express_ul>li{border-top: 1px solid #dddddd;padding-top: 2.08vw;padding-bottom: 3.75vw;}
+	.edit_method_md .express_ul>li.yd_li{display: none;}
 	.edit_method_md .express_ul dl{float: left;display:block;}
 	.edit_method_md .express_ul dl:nth-child(1){width: 50%;}
 	.edit_method_md .express_ul dl:nth-child(2){width: 35%;}
 	.edit_method_md .express_ul dl:nth-child(3){width:15%;}
 	.edit_method_md .express_ul dt{font-size: 16px;font-weight: bold;color: #333;margin-bottom:2.08vw;}
 	.edit_method_md .express_ul dd.kd  {float: left;width: 50%;}
+	.edit_method_md .express_ul dd.kd.yd_kd{display: block;}
 	.edit_method_md .express_ul dd span{font-size: 14px;line-height:2.08vw;display: block;float: left;}
 	.edit_method_md .express_ul dd img{width: 6.25vw;height: 2.08vw;display: block;}
 	.edit_method_md .dx_label{display: block;height: 20px;width: 20px;float: left; position: relative;margin-right: 8px;}
@@ -1135,10 +1154,28 @@
 	.shop_content .select_div ul{background: #fff;max-height: 2.2rem;padding: 0.2rem 0;overflow-y:scroll !important;}
 	.shop_content .select_div ul li{width:100%;margin: auto;height: 0.5rem;font-size: 0.2rem;line-height: 0.5rem;cursor: pointer;padding-left: 0.3rem;}
 	.shop_content .select_div ul li:hover{background: #f5f5f5;}
-	.shop_content .shop_ul .shop_a{background: #fff; width: 30%;float: right;padding: 0.1rem 0.2rem 0.4rem 0.2rem;}
-	.shop_content .shop_ul .two_a{width: 100%;margin: auto;display: block;height: 0.5rem;line-height: 0.5rem;
-	background: url(../img/png/shop.png) no-repeat center center;background-size: 0.48rem 0.41rem;}
-	.shop_content .shop_ul .two_a span{display: none;}
+	.shop_content .shop_ul .shop_a{background: #fff; width:100%;padding: 0.1rem 0 0.4rem 0;}
+	.shop_content .shop_ul .two_a{width: 80%;margin: auto;display: block;background: #333;text-align: center;border-radius: 50px;
+	height: 0.5rem;line-height: 0.5rem;color: #fff;font-size: 0.2rem;}
+	
+	.shop_modal{background: rgba(0,0,0,.5);position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 99;display: none;}
+	.shop_modal .text{width: 5.6rem;background: #fff;position: absolute;top: 50%;left: 50%;margin-left: -2.8rem;margin-top: -1.7rem;}
+	.shop_modal .text .close{width: 0.52rem;height: 0.52rem;display: block;position: absolute;right: 0.1rem;top: 0.1rem;
+	background: url(../img/png/close2.png) no-repeat center center;background-size: 0.26rem 0.26rem;cursor: pointer;}
+	.shop_modal .modal_ul {padding-top: 0.5rem;}
+	.shop_modal .modal_ul>li{width:3.2rem;margin: 0 auto 0.2rem auto;clear: both;}
+	.shop_modal .modal_ul>li>span{font-size: 0.2rem;}
+	.shop_modal .select_div{background: #fff;padding: 0.1rem 0;text-align: center;position: relative;width: 3.2rem;margin: auto;}
+	.shop_modal .select_div button{width: 100%; margin: auto;display: block;border: 1px solid #ccc;height:0.5rem;font-size:0.2rem;line-height:0.5rem;background: #fff;}
+	.shop_modal .select_div button:hover{background: #f5f5f5;cursor: pointer;}
+	.shop_modal .select_div button span{background: url(../img/png/down.png) no-repeat right center;background-size:0.14rem 0.08rem;padding-right: 0.35rem;}
+	.shop_modal .select_div .select_ul{position: absolute;width: 100%;background: #fff;left: 0;border: 1px solid #ccc;border-top: none;
+	display: none;z-index: 12;}
+	.shop_modal .select_div ul{background: #fff;max-height: 2rem;overflow-y:scroll !important;}
+	.shop_modal .select_div ul li{width:100%;margin: auto;height: 0.5rem;font-size: 0.2rem;line-height: 0.5rem;cursor: pointer;}
+	.shop_modal .select_div ul li:hover{background: #f5f5f5;}
+	.shop_modal .text a.a_btn{width: 3.2rem;display: block;text-align: center;height: 0.5rem;line-height: 0.5rem;font-size: 0.2rem;color: #fff;background: #333;
+	margin: 0 auto 55px auto;border-radius: 50px;}
 	
 	/***支付成功***/
 	.success{text-align: center;}
@@ -1603,6 +1640,100 @@
 	.company .text_6 ul li:nth-child(4){display: none;}
 	.company .text_7>img{display: block;width: 100%; margin: 0.4rem auto 0.8rem auto;}
 	
+	/****view the order****/
+	.view_order {background: #f5f5f5;padding-top:0.2rem;}
+	.view_order .content{padding: 0 !important;}
+	.view_order .text_con {background: #fff;max-width: 1104px;margin: auto; padding: 0 0.2rem 0.2rem 0.2rem;margin-bottom: 55px;}
+	.view_order .text_con h1{font-size: 0.3rem;font-weight: normal;font-family: san_b; color: #333;line-height: 1rem;}
+	.view_order .text_con .top{border: 0.01rem solid #eee;margin-bottom: 0.4rem;}
+	.view_order .hui_div{height: 0.6rem;background: #f5f5f5;border-bottom: 0.01rem solid #eee;position: relative;}
+	.view_order .hui_div p{display: inline-block;line-height: 0.6rem;font-size: 0.2rem;font-family: san_r;}
+	.view_order .hui_div p:first-child{position: absolute;left: 0.1rem;top: 0;}
+	.view_order .hui_div p:nth-child(2){position: absolute;top: 0.6rem;left: 0.2rem;font-size: 0.16rem;padding-top: 0.05rem;}
+	.view_order .hui_div p:last-child{position: absolute;top: 0;right: 0.1rem;margin-right: 0;}
+	.view_order .ship{padding: 0.4rem 0.2rem 0.2rem 0.2rem;}
+	.view_order .ship .left {display: block;width: 100%;margin-bottom: 0.1rem;}
+	.view_order .ship .right{display: block;width: 100%;}
+	.view_order .ship .h2_span{font-size: 20px;display: block;margin: 20px 0 15px 0;}
+	.view_order .ship .text{border-radius: 5px;border: 0.01rem solid #eee;padding: 0.3rem 0.2rem;min-height: 2.5rem;position: relative;}
+	.view_order .ship.active .text{border: 0.01rem solid #d5af74;}
+	.view_order .ship .text p{font-size: 0.2rem;line-height: 0.38rem;}
+	.view_order .ship .text p span{font-weight: bold;font-size: 0.22rem;margin-bottom: 0.05rem;display: inline-block;}
+	.view_order .ship.active .text button{display: block;}
+	.view_order .ship .text button{background: #f5f5f5;height: 0.5rem;width: 2.4rem; color: #333;font-size: 0.2rem;border: 0.01rem solid #c6c4c1;
+	position: absolute;right: 0.2rem;bottom: 0.3rem;display: none;}
+	.view_order .bot {border: 0.01rem solid #eee;}
+	.view_order .bot .text{padding: 0 24px;}
+	.view_order .bot .text .span_div{display: none;}
+	
+	.view_order .bot .order_ul {border-bottom: 0.01rem solid #eee;padding-top: 0.2rem;}
+	.view_order .bot .order_ul li{margin-bottom: 24px;position: relative;}
+	.view_order .bot .order_ul .yd_i{display: block;float: left;}
+	.view_order .bot .order_ul .pic_img{width: 1rem;height: 1rem;display: block;background: #999;float: left;margin-right: 0.1rem;}
+	.view_order .bot .order_ul .ov_text{width: 2.4rem;font-size: 0.2rem;font-family: san_m; line-height: 0.28rem;float: left;}
+	.view_order .bot .order_ul span{display: inline-block;line-height: 0.24rem;font-size: 0.18rem;font-family: san_r; float: left;position: absolute;}
+	.view_order .bot .order_ul span.length{left: 1.1rem;top: 0.28rem;}
+	.view_order .bot .order_ul span.num{right:0rem;top: 0rem;}
+	.view_order .bot .order_ul span.d_price{display: none;}
+	.view_order .bot .order_ul span.z_price{bottom: 0;left: 1.1rem;font-family: san_r;font-size: 0.24rem;}
+	.view_order .bot .total{padding-bottom: 0.15rem;}
+	.view_order .bot .total p{font-size: 0.24rem;display: block;width: 100%;line-height: 0.4rem;padding-top: 0.15rem;}
+	.view_order .bot .total p:nth-child(2) span{font-family: san_m; font-size: 0.3rem;}
+	.view_order .text_con a.a_btn{font-size: 0.2rem;color: #fff;background: #333;border-radius: 4px;height: 0.5rem;line-height: 0.5rem;display: block;
+	float: right;clear: both;margin:0.2rem 0 0.2rem 0;width: 2.4rem;text-align: center;font-family: san_r;}
+	.view_order .text_con a.qx_btn{font-size: 0.2rem;color: #333;background: #f5f5f5;border-radius: 4px;height: 0.5rem;line-height: 0.5rem;display: block;
+	float: right;margin:0.2rem 0.4rem 0.2rem 0;width: 2.4rem;text-align: center;border: 1px solid #ccc;font-family: san_r;}
+	
+	.view_order .order_hty ul{border: 0.01rem solid #eee;}
+	.view_order .order_hty ul li{height: 0.5rem;line-height: 0.5rem;border-bottom: 0.01rem solid #eee;}
+	.view_order .order_hty ul li span{font-size: 0.16rem;font-family: san_r; display: inline-block;width: 2.4rem;text-align: center;}
+	.view_order .order_hty ul li span:nth-child(1){border-right: 0.01rem solid #eee;box-sizing: border-box;}
+	.view_order .order_hty ul li:last-child{border-bottom: none;}
+	/*彈窗*/
+	.edit_add_md {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.5);z-index: 99;display: none;}
+	.edit_add_md>.text{background: #fff;width: 7.1rem;margin:0.5rem auto 0 auto;}
+	.edit_add_md .form_div{padding:0.3rem;position: relative;max-height: 7rem;overflow-y: auto;}
+	.edit_add_md .form_div .close{width: 0.3rem;height: 0.3rem;display: block;position: absolute;top: 0.4rem;right:0.2rem;
+	background: url(../img/png/close2.png) no-repeat center center;background-size: 0.26rem;cursor: pointer;}
+	.edit_add_md .form_div h1{font-size: 0.3rem;font-family: san_b;color: #333;margin-top: 0.1rem;}
+	.edit_add_md .form_div>p{font-size: 0.24rem;color: #999;font-family: san_r; margin: 0.2rem 0rem;}
+	.edit_add_md .form_div .label{margin: 0 -0.08rem;}
+	.edit_add_md .form_div label{width: 50%;float: left; padding:0 0.08rem;box-sizing: border-box;}
+	.edit_add_md .form_div label span{font-size: 0.24rem;font-family: san_m; color: #444;display: block;margin-bottom: 0.05rem;}
+	.edit_add_md .form_div label input{height: 0.6rem;line-height: 0.6rem;border: 0.01rem solid #ccc;border-radius: 5px;text-indent: 0.1rem;margin-bottom: 0.1rem;}
+	.edit_add_md .form_div p.ts_ps{margin: 0 0 0.1rem 0;font-size: 0.14rem;}
+	.edit_add_md .form_div label select{height: 0.6rem;line-height: 0.6rem;border: 0.01rem solid #ccc;border-radius: 5px;padding: 0 0.05rem;
+	margin-bottom: 0.1rem;width: 100%;cursor: pointer;}
+	.edit_add_md .form_div label.add{ width: 100%;}
+	.edit_add_md .form_div button.bc_btn{width: 2.4rem;height: 0.6rem;text-align: center;font-size: 0.2rem;color: #fff;border-radius: 4px;
+	background: #333;border: 0.01rem solid #333;clear: both;float: left;margin:0.2rem 0.1rem 0.1rem 0.65rem;}
+	.edit_add_md .form_div button.qx_btn{width: 2.4rem;height: 0.6rem;text-align: center;font-size: 0.2rem;color: #333;border-radius: 4px;
+	background: #eee;border: 0.01rem solid #666;float: right;margin:0.2rem 0.65rem 0.1rem 0.1rem;}
+	
+	.edit_method_md {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.5);z-index: 99;display: none;}
+	.edit_method_md>.text{background: #fff;width: 7.1rem;margin:1rem auto 0 auto;padding: 0.2rem;position: relative;}
+	.edit_method_md>.text .close{width: 0.3rem;height: 0.3rem;display: block;position: absolute;top: 0.4rem;right:0.3rem;
+	background: url(../img/png/close2.png) no-repeat center center;background-size: 0.26rem;cursor: pointer;}
+	.edit_method_md>.text h2{font-size: 0.3rem;margin-bottom: 0.24rem;margin-top: 0.3rem;}
+	.edit_method_md .express_ul{border-top: 0.01rem solid #ddd;padding-top: 0.25rem;}
+	.edit_method_md .express_ul>li.yd_li{display: block;margin-top: 0.35rem;}
+	.edit_method_md .express_ul dl{float: left;display:block;text-align: center;}
+	.edit_method_md .express_ul dl:nth-child(1){width: 30%;}
+	.edit_method_md .express_ul dl:nth-child(2){width: 40%;}
+	.edit_method_md .express_ul dl:nth-child(3){width:30%;}
+	.edit_method_md .express_ul dt{font-size: 0.2rem;font-family: san_m; color: #333;margin-bottom:0.4rem;}
+	.edit_method_md .express_ul dd.kd.yd_kd{display: none;}
+	.edit_method_md .express_ul dd{display: block;text-align: center;width: 100%;height: 0.4rem;}
+	.edit_method_md .express_ul dd span{font-size: 0.18rem;line-height:0.4rem;font-family: san_r; display: inline-block;;}
+	.edit_method_md .express_ul dd img{width: 1.2rem;height: 0.4rem;display: block;}
+	.edit_method_md .dx_label{display: block;height: 20px;width: 20px;float: left; position: relative;margin-right: 8px;}
+	.edit_method_md dd.kd .dx_label{top: 0.1rem;}
+	.edit_method_md .check_input{width: 20px;height: 20px;display: block; position: absolute;top: 50%;margin-top: -10px; left: 0;z-index: 2;cursor: pointer;opacity: 0;}
+	.edit_method_md .check_i{width: 20px;height: 20px;display: block; position: absolute;top: 50%;margin-top: -10px; left: 0;z-index: 1;
+	border: 1px solid #999;border-radius: 1px;box-sizing: border-box;}
+	.edit_method_md .check_i.active:after{display: block;position: absolute;top: 4px;left: 3px;content: "";border: 2px solid #000; width: 10px;height: 4px;
+	 border-width: 0 0 2px 2px;transform: rotate(-45deg); }
+	.edit_method_md .a_btn{margin:0.8rem auto 0 auto;width: 2.4rem;height: 0.6rem;line-height: 0.6rem;font-size: 0.2rem;}
 	
 	
 	
