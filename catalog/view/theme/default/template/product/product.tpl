@@ -61,87 +61,59 @@
 						</div>
 						
 					</div>
-
-					<div class="right" id="product">
+				<div class="right" id="product">
 					<input type="hidden" name="product_id" value="<?=$product_id?>">
 						<div class="top_text">
-						<!-- <a href="###"><?php echo $heading_title;?></a> -->
-								<h2 style="font-size: 1.16vw;"><?php echo $heading_title;?></h2>
-							<p class="price">
-							<!-- $36.59 -->
-							<!--产品价格-->
-								<?php if ($price) { ?>
-								<div class="product_right_dindan">
-									<dl class="col_f00 jiage" id="money" style="margin-bottom:10px;">
-									
-										<?php if(isset($special)&&$special['special']){ ?>
-										<span>
-											<!-- <i style="color:#999;font-size: 25px;">Vip Price:&ensp;</i> -->
-											<b style="font-size: 30px;"><?php echo $special['special']; ?></b>
-											<del class="price-old" style="color:#999;font-size: 30px;"><?php echo $price; ?></del>
-											<b><?php echo $free_shipping; ?></b>
-										</span>
-										<?php }else{ ?>
-										<span>
-											<!-- <i style="font-size: 25px;">Price:&ensp;</i> -->
-											<b style="font-size: 30px;"><?=$price?> </b>
-											<!-- <?php if (isset($login)) { ?>
-											<a class="price-go-login" href="<?php echo $login; ?>"><b style="font-size: 16px;">View Specials</b></a>
-											<?php } ?> -->
-											<b><?php echo $free_shipping; ?></b>
-										</span>
-										<?php } ?>
-									</dl>
-								</div>
-								<?php } ?>
-								<!--/产品价格-->
+							<a><?php echo $heading_title;?></a>
 							
-							<!-- <p class="text_p"><span>Hair Color:</span> Natural Black</p> -->
+									<?php if ($price) { ?>
+									<p class="price"  id="money" >
 
-							<div class="label_div clearfix" id="form-product">
-								<label class="num_label" for="">
+										<?php if(isset($special)&&$special['special']){ ?>
+										<span><?php echo $special['special']; ?></span><i><?php echo $price; ?></i>
+										<?php }else{ ?>
+										<span><?=$price?> </span>
+										<?php } ?>
+
+									</p>
+						
+								<?php } ?>
+
+								<label class="num_label clearfix"  >
 									<span>Quantity:</span>
-
-									<div class="price_input clearfix" >
-										<span class="sub" ></span>
+									<div class="price_input clearfix">
+											<span class="sub" ></span>
 										<input class="num" name="quantity" type="text" value="1" id="nums"/>
 										<span class="add"></span>
 									</div>
-
 								</label>
-									   
-									   	<?php if ($options) { ?>
-					
+							<div class="label_div clearfix" id="form-product">
+								   	<?php if ($options) { ?>
 										<?php foreach ($options as $option) { ?>	
 										<?php if ($option['product_option_value']) { ?>
 									<?php if ($option['type'] == 'select') { ?> 
-								<label class="len_label" for="" >
-								<span ><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
-									<div class="select_div" >
-								
-				
-								
-							
-									
+								<label class="len_label" for="">
+									<span><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
 									<div class="select_div" id="input-option<?php echo $option['product_option_id']; ?>">
 										<input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php if(isset($shareoption[$option['product_option_id']])){ echo $shareoption[$option['product_option_id']];}else{ echo $option['product_option_value'][0]['product_option_value_id'];} ?>" />
-										<button class="select_btn"><span>dfgdfg</span></button>
+										<button class="select_btn"><span></span></button>
 										<div class="select_ul">
 											<ul>
 												<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
-												<li class="<?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'on';} else if($k==0) echo 'on'; ?>" value="<?php echo $option_value['product_option_value_id']; ?>"   ><?php echo $option_value['name']; ?></li>
+												<li class="<?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'active';} else if($k==0) echo 'active'; ?>" value="<?php echo $option_value['product_option_value_id']; ?>"   ><?php echo $option_value['name']; ?></li>
 											<?php } ?>
 											</ul>
 										</div>
 									</div>
-								
-								
+									<ul style="display: none;" class="clearfix select_ulk">
+											<?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
+												<li class="<?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'active';} else if($k==0) echo 'active'; ?>" value="<?php echo $option_value['product_option_value_id']; ?>"   ><?php echo $option_value['name']; ?></li>
+											<?php } ?>
+									</ul>
+									
+								</label>
+								<?php }} ?><?php }} ?>
 							
-								
-							
-									</div>
-								</label><?php }} ?><?php }} ?>
-								
 								<span class="measurement">
 									About Measurement
 								</span>
@@ -151,34 +123,28 @@
 								</div>
 							</div>
 							<a class="a_btn clearfix" id="button-cart" >ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
-							<button class="xyd_btn <?=$wishlist==1 ?'off':'';?>"
+								<button class="xyd_btn <?=$wishlist==1 ?'off':'';?>"
 							  <?php if($wishlist==1) { ?>
 			              style='border: 1px solid rgb(213, 175, 116); background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll right 0.83vw center / 0.83vw auto;';
 			              <?php }?> 
 			              onclick="wishlist('<?php echo $product_id; ?>',this);"><span>WISHLIST</span></button>
 						</div>
 						<div class="bot_text clear">
-							<p class="text_p text_p2"><span>Hair Material:</span> Double Drawn Human Hair</p>
-							<dl>
-								<dt>Quality Features:</dt>
-								<dd>span Young girl’s virgin human hair. One donor from one bundle.</dd>
-								<dd>Double drawn and double stitch weft hair.</dd>
-								<dd>No any short hair inside, very full hair tips.</dd>								
-								<dd>The most silk and soft hair.</dd>
-								<dd>Can be dyed or bleached to any color, even lightest 613#.</dd>
-								<dd>Can be restyled, flat ironed, straightened.</dd>
-								<dd>No shedding, tangle free. Can be last for 3-5 years if under good care.</dd>
-							</dl>
+							<p class="text_p text_p2"> <?=$material;?></p>
+							<?=$mdescription;?>
 							<div class="share clearfix">
 								<span>Share: </span>
 								<ul class="share_ul">
-									<li><a href="sh #"></a></li>
+									<li><a href="###"></a></li>
 									<li><a href="###"></a></li>
 									<li><a href="###"></a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
+
+
+			
 				</div>
 
 			
@@ -192,7 +158,7 @@
 						<li>
 							<h1 class="xxk_h1">PRODUCTS DETAILS</h1>
 							<div class="xxk_text">
-								<img src="catalog/view/theme/default/img/jpg/products.jpg"/>
+								<?=$description;?>
 							</div>
 						</li>
 						<li class="active">
@@ -512,7 +478,7 @@ $(function(){
 		//下拉选择
 	
 		$(".select_btn").each(function(){
-			var tmp=$(this).parent().find('li.on').text();
+			var tmp=$(this).parent().find('li.active').text();
 			// console.log(tmp);
 			$(this).find('span').text(tmp);
 		})
@@ -529,25 +495,16 @@ $(function(){
 			}
 		
 		})
-		$(".select_ul li").click(function(){
+		$(".select_ul li,.select_ulk li").click(function(){
 			var val = $(this).text();
 			var value = $(this).attr('value');
-			$(this).parents(".select_div").find(".select_btn span").text(val);
-			$(this).parents(".select_div").find('input').val(value);
+			$(this).parents(".len_label").find(".select_btn span").text(val);
+			$(this).parents(".len_label").find('input').val(value);
 			changeprice();
 			$(".select_btn").removeClass("off");
 			$(".select_ul").stop().slideUp();
 		})
-		$("body").click(function(e){
-			if(off==1){
-				var close = $('.select_div .select_ul'); 
-			   	if(!close.is(e.target) && close.has(e.target).length === 0){
-			      	$(".select_btn").removeClass("off");
-					$(".select_ul").stop().slideUp();
-					off=0;
-				}
-			}
-		})
+	
 		var win = $(window).width();
 		$(".xyd_btn").click(function(){
 			if(win>992){
@@ -642,7 +599,7 @@ function productInfoImg(elm) {
             data: $("#form-product input"),
 
             success: function(json) {
-               console.log(json);
+               // console.log(json);
                 $('#money').html(json['html']);
             }
         });
