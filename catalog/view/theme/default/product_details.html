@@ -108,6 +108,7 @@
 										<h2>Fuller Peruvian Virgin Hair </h2>
 		 								<p>Body Wavy</p>
 		 								<span>$15.39</span>
+		 								<p><span>x1</span></p>
 									</div>
 								</a>
 							</li>
@@ -120,6 +121,7 @@
 										<h2>Fuller Peruvian Virgin Hair  </h2>
 		 								<p>Body Wavy</p>
 		 								<span>$15.39</span>
+		 								<p><span>x1</span></p>
 									</div>
 								</a>
 							</li>
@@ -132,6 +134,7 @@
 										<h2>Fuller Peruvian Virgin Hair  </h2>
 		 								<p>Body Wavy</p>
 		 								<span>$15.39</span>
+		 								<p><span>x1</span></p>
 									</div>
 								</a>
 							</li>
@@ -144,6 +147,7 @@
 										<h2>Fuller Peruvian Virgin Hair  </h2>
 		 								<p>Body Wavy</p>
 		 								<span>$15.39</span>
+		 								<p><span>x1</span></p>
 									</div>
 								</a>
 							</li>
@@ -249,7 +253,7 @@
 					</div>
 					<div class="right">
 						<div class="top_text">
-							<a href="###">Raw Super Double Drawn BoB</a>
+							<a class="bt_a" href="###">Raw Super Double Drawn BoB</a>
 							<p class="price"><span>$36.59</span><i>$136.00</i></p>
 							<!--<div class="select_div hiar_color clearfix">
 								<span>Hair Color:</span>
@@ -336,7 +340,7 @@
 									<div class="close"></div>
 								</div>
 							</div>
-							<a class="a_btn clearfix" href="###">ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
+							<a class="add_shop a_btn clearfix" href="javascript:0;">ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
 							<button class="xyd_btn" href="###"><span>WISHLIST</span></button>
 						</div>
 						<div class="bot_text clear">
@@ -354,6 +358,8 @@
 							<div class="share clearfix">
 								<span>Share: </span>
 								<ul class="share_ul">
+									<li><a href="###"></a></li>
+									<li><a href="###"></a></li>
 									<li><a href="###"></a></li>
 									<li><a href="###"></a></li>
 									<li><a href="###"></a></li>
@@ -649,7 +655,6 @@
 				            <button type="submit">SUBMIT</button>
 				            <ol class="clearfix">
 				            	<li><a href="###"><img src="img/png/fot_1.png" alt=""></a></li>
-				            	<li><a href="###"><img src="img/png/fot_2.png" alt=""></a></li>
 				            	<li><a href="###"><img src="img/png/fot_3.png" alt=""></a></li>
 				            	<li><a href="###"><img src="img/png/fot_4.png" alt=""></a></li>
 				            </ol>
@@ -724,7 +729,6 @@
 				            <button type="submit">SUBMIT</button>
 				            <ol class="fot_img clearfix">
 				            	<li><a href="###"><img src="img/png/yd_fot1.png" alt=""></a></li>
-				            	<li><a href="###"><img src="img/png/yd_fot2.png" alt=""></a></li>
 				            	<li><a href="###"><img src="img/png/yd_fot3.png" alt=""></a></li>
 				            	<li><a href="###"><img src="img/png/yd_fot4.png" alt=""></a></li>
 				            </ol>
@@ -893,6 +897,29 @@ var swiper3 = new Swiper('#swiper3', {
 				}
 			}
 		})
+		
+		$(".add_shop").click(function(){
+			$(".nav_cart").slideDown();
+			var bt_a = $(".top_text .bt_a").text();
+			var price = $(".price span").text();
+			
+			var li_text = '<li class="clearfix">'+
+								'<a href="###">'+
+									'<div class="pic_img">'+
+										'<img src="">'+
+									'</div>'+
+									'<div class="text">'+
+										'<h2>'+bt_a+'</h2>'+
+		 								'<p>Body Wavy</p>'+
+		 								'<span>'+price+'</span>'+
+		 								'<p><span>x1</span></p>'+
+									'</div>'+
+								'</a>'+
+							'</li>'
+							
+			$(".cart_ul").append(li_text);
+		})
+		
 	})
 </script>
 		

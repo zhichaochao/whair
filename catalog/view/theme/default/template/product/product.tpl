@@ -1,6 +1,9 @@
 <?php echo $header; ?>
+
 <div class="content product_det in_content">
+
 			<div class="pro_det_content clearfix">
+				<div class="ts_ps"></div>
 				<div class="top clearfix">
 					<div class="left clearfix">
 						<ol class="pro_img_ol">
@@ -10,10 +13,8 @@
 								<div class="prdimgup"> </div>
 								<div class="highslide-gallery" id="prdimglist" page="0">
 									<ul class="pra-list-ul">
-										<?php if($video) { ?>
-										<li class="on"><img onclick="productInfoImg(this)" src="<?=$placeholder_image?>"></li>
-										<?php } ?>
-										<?php foreach ($images as $k => $image) { ?>
+									
+										<?php foreach ($images as $k => $image) {?>
 										<li <?php if($k==0 && !$video){ ?>class="on"<?php } ?>>
 										<a class="highslide">
 											<img onclick="productInfoImg(this)" data-img="<?php echo $image['thumb2']; ?>" style="cursor: pointer !important;" src="<?php echo $image['thumb']; ?>"  title='<?php echo $heading_title; ?>'>
@@ -130,14 +131,19 @@
 			              onclick="wishlist('<?php echo $product_id; ?>',this);"><span>WISHLIST</span></button>
 						</div>
 						<div class="bot_text clear">
-							<p class="text_p text_p2"> <?=$material;?></p>
-							<?=$mdescription;?>
+							<p class="text_p text_p2"><span>Hair Material:</span> <?=$material;?></p>
+							<div class="share_l">
+									<?=$m_description;?>
+								
+							</div>
 							<div class="share clearfix">
 								<span>Share: </span>
 								<ul class="share_ul">
-									<li><a href="###"></a></li>
-									<li><a href="###"></a></li>
-									<li><a href="###"></a></li>
+									<li><a id="share_button_facebook" >facebook</a></li>
+									<li><a id="share_button_twitter">Twitter</a></li>
+									<li><a id="share_button_google"></a>Google+</li>
+									<li><a id="share_button_linked">LinkedIN</a></li>
+									<li><a id="share_button_pinterest">Pinterest</a></li>
 								</ul>
 							</div>
 						</div>
@@ -580,6 +586,12 @@ function productInfoImg(elm) {
             success: function(json) {
             	if (json.success) {
         			$('#cart_count').html(json.total);
+        			$('.ts_ps').html(json.success);
+
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 'slow');
+
 
      			 }
             },

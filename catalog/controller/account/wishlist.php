@@ -75,7 +75,7 @@ class ControllerAccountWishList extends Controller {
 
 			if ($product_info) {
 				if ($product_info['image']) {
-					$image = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_wishlist_width'), $this->config->get($this->config->get('config_theme') . '_image_wishlist_height'));
+					$image = $this->model_tool_image->resize($product_info['image'], 700, 700);
 				} else {
 					$image = false;
 				}
@@ -95,10 +95,10 @@ class ControllerAccountWishList extends Controller {
 					'name'       => $product_info['name'],
 					'model'      => $product_info['model'],
 					'stock'      => $stock,
-					'price'      => $price,
-					'special'     => isset($special) ? $special : '',
-					'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
-					'remove'     => $this->url->link('account/wishlist', 'remove=' . $product_info['product_id'])
+					'price'      => $product_info['price'],
+					'special'     => $product_info['special'],
+					'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
+				
 				);
 			} else {
 				$this->model_account_wishlist->deleteWishlist($result['product_id']);
@@ -106,6 +106,7 @@ class ControllerAccountWishList extends Controller {
 		
 		}
 		$data['continue'] = $this->url->link('account/account', '', true);
+		$data['wishlist_delete'] = $this->url->link('account/wishlist/delete');
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -115,67 +116,6 @@ class ControllerAccountWishList extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 
 		$this->response->setOutput($this->load->view('account/wishlist', $data));
-	}
-public function ceshi() {
-		if (!$this->customer->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('account/wishlist', '', true);
-
-			$this->response->redirect($this->url->link('account/login', '', true));
-		}
-
-		$this->load->language('account/wishlist');
-
-		$this->load->model('account/wishlist');
-
-		$this->load->model('catalog/product');
-
-		$this->load->model('tool/image');
-
-	
-		$this->document->setTitle($this->language->get('heading_title'));
-
-		$data['breadcrumbs'] = array();
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home')
-		);
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_account'),
-			'href' => $this->url->link('account/account', '', true)
-		);
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('account/wishlist')
-		);
-
-		$data['heading_title'] = $this->language->get('heading_title');
-
-		$data['text_empty'] = $this->language->get('text_empty');
-
-		$data['column_image'] = $this->language->get('column_image');
-		$data['column_name'] = $this->language->get('column_name');
-		$data['column_model'] = $this->language->get('column_model');
-		$data['column_stock'] = $this->language->get('column_stock');
-		$data['column_price'] = $this->language->get('column_price');
-		$data['column_action'] = $this->language->get('column_action');
-
-		$data['button_continue'] = $this->language->get('button_continue');
-		$data['button_cart'] = $this->language->get('button_cart');
-		$data['button_remove'] = $this->language->get('button_remove');
-
-		$data['continue'] = $this->url->link('account/account', '', true);
-
-		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = $this->load->controller('common/column_right');
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
-
-		$this->response->setOutput($this->load->view('account/ceshi', $data));
 	}
 
 	public function add() {

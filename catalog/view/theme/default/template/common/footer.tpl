@@ -42,7 +42,7 @@
                     <ol class="clearfix">
                       <li><a href="http://www.facebook.com/hotbeautymelisha"><img src="catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
                       <li><a href="http://www.instagram.com/hotbeautyhairofficial"><img src="catalog/view/theme/default/img/png/fot_2.png" alt=""></a></li>
-                      <li><a href="http://api.whatsapp.com/send?phone=8613411191912"><img src="catalog/view/theme/default/img/png/fot_3.png" alt=""></a></li>
+                      <li><a href="http://api.whatsapp.com/send?phone=<?=$telephone;?>"><img src="catalog/view/theme/default/img/png/fot_3.png" alt=""></a></li>
                     </ol>
                       </li>
               </ul>

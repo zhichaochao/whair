@@ -24,7 +24,6 @@ class ControllerProductProduct extends Controller {
 
         $this->load->model('catalog/category');
         //引入样式
-        $this->document->addStyle('catalog/view/theme/default/stylesheet/product/product_product.css');
 
         //分类面包屑
         $this->load->model('catalog/product');
@@ -258,7 +257,7 @@ class ControllerProductProduct extends Controller {
             $data['points'] = $product_info['points'];
             $data['material'] = $product_info['material'];
             $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
-            $data['mdescription'] = html_entity_decode($product_info['mdescription'], ENT_QUOTES, 'UTF-8');
+            $data['m_description'] = html_entity_decode($product_info['m_description'], ENT_QUOTES, 'UTF-8');
 
             //产品属性
             $data['manufacturer'] = $product_info['manufacturer'];

@@ -105,6 +105,7 @@
 										<h2>Fuller Peruvian Virgin Hair </h2>
 		 								<p>Body Wavy</p>
 		 								<span>$15.39</span>
+		 								<p><span>x1</span></p>
 									</div>
 								</a>
 							</li>
@@ -117,6 +118,7 @@
 										<h2>Fuller Peruvian Virgin Hair  </h2>
 		 								<p>Body Wavy</p>
 		 								<span>$15.39</span>
+		 								<p><span>x1</span></p>
 									</div>
 								</a>
 							</li>
@@ -129,6 +131,7 @@
 										<h2>Fuller Peruvian Virgin Hair  </h2>
 		 								<p>Body Wavy</p>
 		 								<span>$15.39</span>
+		 								<p><span>x1</span></p>
 									</div>
 								</a>
 							</li>
@@ -141,6 +144,7 @@
 										<h2>Fuller Peruvian Virgin Hair  </h2>
 		 								<p>Body Wavy</p>
 		 								<span>$15.39</span>
+		 								<p><span>x1</span></p>
 									</div>
 								</a>
 							</li>
@@ -226,7 +230,7 @@
 							</a>
 							<div class="close"></div>
 							<div class="shop_a">
-								<a class="two_a" href="javascript:0;"><span>Move To Shopping Cart </span></a>
+								<a class="two_a" href="###"><span>Move To Shopping Cart </span></a>
 							</div>
 						</li>
 						<li>
@@ -242,7 +246,7 @@
 							</a>
 							<div class="close"></div>
 							<div class="shop_a">
-								<a class="two_a" href="javascript:0;"><span>Move To Shopping Cart </span></a>
+								<a class="two_a" href="###"><span>Move To Shopping Cart </span></a>
 							</div>
 						</li>
 						<li>
@@ -258,7 +262,7 @@
 							</a>
 							<div class="close"></div>
 							<div class="shop_a">
-								<a class="two_a" href="javascript:0;"><span>Move To Shopping Cart </span></a>
+								<a class="two_a" href="###"><span>Move To Shopping Cart </span></a>
 							</div>
 						</li>
 						<li>
@@ -274,7 +278,7 @@
 							</a>
 							<div class="close"></div>
 							<div class="shop_a">
-								<a class="two_a" href="javascript:0;"><span>Move To Shopping Cart </span></a>
+								<a class="two_a" href="###"><span>Move To Shopping Cart </span></a>
 							</div>
 						</li>
 						<li>
@@ -290,7 +294,7 @@
 							</a>
 							<div class="close"></div>
 							<div class="shop_a">
-								<a class="two_a" href="javascript:0;"><span>Move To Shopping Cart </span></a>
+								<a class="two_a" href="###"><span>Move To Shopping Cart </span></a>
 							</div>
 						</li>
 						<li>
@@ -306,7 +310,7 @@
 							</a>
 							<div class="close"></div>
 							<div class="shop_a">
-								<a class="two_a" href="javascript:0;"><span>Move To Shopping Cart </span></a>
+								<a class="two_a" href="###"><span>Move To Shopping Cart </span></a>
 							</div>
 						</li>
 						<li>
@@ -322,7 +326,7 @@
 							</a>
 							<div class="close"></div>
 							<div class="shop_a">
-								<a class="two_a" href="javascript:0;"><span>Move To Shopping Cart </span></a>
+								<a class="two_a" href="###"><span>Move To Shopping Cart </span></a>
 							</div>
 						</li>
 						<li>
@@ -338,7 +342,7 @@
 							</a>
 							<div class="close"></div>
 							<div class="shop_a">
-								<a class="two_a" href="javascript:0;"><span>Move To Shopping Cart </span></a>
+								<a class="two_a" href="###"><span>Move To Shopping Cart </span></a>
 							</div>
 						</li>
 					
@@ -347,7 +351,7 @@
 			</div>
 		</div>
 		
-		<div class="shop_modal">
+		<!--<div class="shop_modal">
 			<div class="text">
 				<div class="close"></div>
 				<ul class="modal_ul clearfix">
@@ -388,7 +392,7 @@
 				</ul>
 				<a class="a_btn" href="###">Move To Shopping Cart</a>
 			</div>
-		</div>
+		</div>-->
 		
 		
 		
@@ -442,7 +446,6 @@
 				            <button type="submit">SUBMIT</button>
 				            <ol class="clearfix">
 				            	<li><a href="###"><img src="img/png/fot_1.png" alt=""></a></li>
-				            	<li><a href="###"><img src="img/png/fot_2.png" alt=""></a></li>
 				            	<li><a href="###"><img src="img/png/fot_3.png" alt=""></a></li>
 				            	<li><a href="###"><img src="img/png/fot_4.png" alt=""></a></li>
 				            </ol>
@@ -517,7 +520,6 @@
 				            <button type="submit">SUBMIT</button>
 				            <ol class="fot_img clearfix">
 				            	<li><a href="###"><img src="img/png/yd_fot1.png" alt=""></a></li>
-				            	<li><a href="###"><img src="img/png/yd_fot2.png" alt=""></a></li>
 				            	<li><a href="###"><img src="img/png/yd_fot3.png" alt=""></a></li>
 				            	<li><a href="###"><img src="img/png/yd_fot4.png" alt=""></a></li>
 				            </ol>
@@ -573,65 +575,65 @@
 <script>
 	$(function(){
 		//下拉选择
-		var off = 0;
-		$(".select_btn").on("click",function(event){
-			var lilen = $(this).siblings(".select_ul").find("ul li").length;
-			if(lilen>1){
-				if($(this).hasClass("off")){
-					$(this).removeClass("off");
-					$(this).siblings(".select_ul").stop().slideUp();
-					off = 0;
-				}else{
-					$(".select_btn").removeClass("off");
-					$(".select_ul").stop().slideUp();
-				
-					$(this).addClass("off");
-					$(this).siblings(".select_ul").stop().slideDown();
-					off = 1;
-				}
-			}
-			event.stopPropagation();
-		})
-		$(".shop_modal .select_ul li").click(function(){
-			var val = $(this).text();
-			$(this).parents(".select_div").find(".select_btn span").text(val);
-			$(".select_btn").removeClass("off");
-			$(".select_ul").stop().slideUp();
-		})
-		$("body").click(function(e){
-			if(off==1){
-				var close = $('.select_div .select_ul'); 
-			   	if(!close.is(e.target) && close.has(e.target).length === 0){
-			      	$(".select_btn").removeClass("off");
-					$(".select_ul").stop().slideUp();
-					off=0;
-				}
-			}
-			console.log(off)
-		})
+//		var off = 0;
+//		$(".select_btn").on("click",function(event){
+//			var lilen = $(this).siblings(".select_ul").find("ul li").length;
+//			if(lilen>1){
+//				if($(this).hasClass("off")){
+//					$(this).removeClass("off");
+//					$(this).siblings(".select_ul").stop().slideUp();
+//					off = 0;
+//				}else{
+//					$(".select_btn").removeClass("off");
+//					$(".select_ul").stop().slideUp();
+//				
+//					$(this).addClass("off");
+//					$(this).siblings(".select_ul").stop().slideDown();
+//					off = 1;
+//				}
+//			}
+//			event.stopPropagation();
+//		})
+//		$(".shop_modal .select_ul li").click(function(){
+//			var val = $(this).text();
+//			$(this).parents(".select_div").find(".select_btn span").text(val);
+//			$(".select_btn").removeClass("off");
+//			$(".select_ul").stop().slideUp();
+//		})
+//		$("body").click(function(e){
+//			if(off==1){
+//				var close = $('.select_div .select_ul'); 
+//			   	if(!close.is(e.target) && close.has(e.target).length === 0){
+//			      	$(".select_btn").removeClass("off");
+//					$(".select_ul").stop().slideUp();
+//					off=0;
+//				}
+//			}
+//			console.log(off)
+//		})
 		
 		//判断下拉选项是不是大于1
-		var li_len = $(".modal_ul>li").length;
-		for(var i=0;i<li_len;i++){
-			
-			var lis_len = $(".modal_ul>li").eq(i).find(".select_ul ul li").length;
-			if(lis_len <= 1){
-				$(".modal_ul>li").eq(i).find(".select_btn").css("background","#f5f5f5").css("border","none");
-				$(".modal_ul>li").eq(i).find(".select_btn span").css("background","transparent");
-			}
-		}
+//		var li_len = $(".modal_ul>li").length;
+//		for(var i=0;i<li_len;i++){
+//			
+//			var lis_len = $(".modal_ul>li").eq(i).find(".select_ul ul li").length;
+//			if(lis_len <= 1){
+//				$(".modal_ul>li").eq(i).find(".select_btn").css("background","#f5f5f5").css("border","none");
+//				$(".modal_ul>li").eq(i).find(".select_btn span").css("background","transparent");
+//			}
+//		}
 		
 		//打开尺寸选项弹窗
-		$(".shop_ul .shop_a .two_a").click(function(){
-			$(".shop_modal").fadeIn();
-			$("body").css("overflow","hidden");
-		})
+//		$(".shop_ul .shop_a .two_a").click(function(){
+//			$(".shop_modal").fadeIn();
+//			$("body").css("overflow","hidden");
+//		})
 		
 		//关闭尺寸选项弹窗
-		$(".shop_modal .text .close").click(function(){
-			$(".shop_modal").fadeOut();
-			$("body").css("overflow","");
-		})
+//		$(".shop_modal .text .close").click(function(){
+//			$(".shop_modal").fadeOut();
+//			$("body").css("overflow","");
+//		})
 		
 		
 		//删除当前li
