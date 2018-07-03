@@ -133,7 +133,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo $dashboard?>">
+          <a href="<?php echo $account_left?>">
             <img class="active" src="catalog/view/theme/default/img/png/account-1.png" alt="" />
             <img src="catalog/view/theme/default/img/png/account-2.png" alt="" />
             <p>ACCOUNT</p>

@@ -115,7 +115,21 @@ class ControllerAccountAddress extends Controller {
 
 		$this->getForm();
 	}
+	public function edit_default(){
+		 if (!$this->customer->isLogged()) {
+				$this->session->data['redirect'] = $this->url->link('account/address', '', true);
 
+				$this->response->redirect($this->url->link('account/login', '', true));
+			}
+			$this->load->language('account/edit');
+			$this->load->language('account/address');
+			$this->load->model('account/address');
+			$address_id=$this->request->post['address_id'];
+			$json = array();
+			$this->model_account_address->editDefault($address_id);
+			$this->response->addHeader('Content-Type: application/json');
+			$this->response->setOutput(json_encode($json));
+	}
 	public function delete() {
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/address', '', true);
@@ -464,7 +478,7 @@ class ControllerAccountAddress extends Controller {
 		} else {
 			$data['default'] = false;
 		}
-
+//print_r($data['default']);exit;
 		$data['back'] = $this->url->link('account/address', '', true);
 
 		$data['column_left'] = $this->load->controller('common/column_left');

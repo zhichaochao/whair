@@ -3,7 +3,7 @@
     <div class=" in_content peo_center">
       <div class="content clearfix">
         
-        <div class="left clearfix">
+        <!-- <div class="left clearfix">
           <h1>MY ACCOUNT</h1>
           <ol>
            <?php echo $column_left; ?>
@@ -16,7 +16,7 @@
             <?php } ?>
             <?php echo $account_left; ?>
           </ol>
-        </div>
+        </div> -->
         
         <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1><?php echo $heading_title; ?></h1>
@@ -37,14 +37,15 @@
       
       
     </div>
-<div class="container">
+    header("Location: <?php echo $_SERVER['SERVER_NAME']; ?>"); 
+<!-- <div class="container"> -->
   <!--<ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>-->
   
-  <div class="row">
+  <!-- <div class="row">
     <?php echo $column_left; ?>
     
     <?php if ($column_left && $account_left) { ?>
@@ -62,7 +63,7 @@
             
       <?php if(!empty($order_no)){ ?>
         <!--生成的订单号-->
-        Your order number is <b><?php echo $order_no; ?>.</b>
+        <!-- Your order number is <b><?php echo $order_no; ?>.</b>
       <?php } ?>
       
       <?php echo $text_message; ?>
@@ -72,8 +73,7 @@
       <?php echo $content_bottom; ?>
     </div>   
   </div>
-</div>
-
+</div> --> 
 <?php if(isset($order) && !empty($order_no)){ ?>
 <script>
 // 增强电子商务代码

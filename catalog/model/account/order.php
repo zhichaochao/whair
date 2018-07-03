@@ -105,8 +105,7 @@ class ModelAccountOrder extends Model {
 		}
 	}
 	public function deleteWishlist($order_id) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "order WHERE customer_id = '" . (int)$this->customer->getId() . "' AND order_id = '" . (int)$order_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "order_product WHERE customer_id = '" . (int)$this->customer->getId() . "' AND order_id = '" . (int)$order_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX ."order SET del = '1' WHERE customer_id = '" . (int)$this->customer->getId() . "' AND order_id = '" . (int)$order_id . "'");		
 	}
 
 	public function getOrders($start = 0, $limit = 20) {
@@ -118,7 +117,7 @@ class ModelAccountOrder extends Model {
 			$limit = 1;
 		}
 
-		$query = $this->db->query("SELECT o.order_id,o.order_no, o.firstname, o.lastname, o.payment_code, os.name as status, o.date_added, o.total, o.currency_code, o.currency_value FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_status os ON (o.order_status_id = os.order_status_id) WHERE o.customer_id = '" . (int)$this->customer->getId() . "' AND o.order_status_id > '0' AND o.store_id = '" . (int)$this->config->get('config_store_id') . "' AND os.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY o.order_id DESC LIMIT " . (int)$start . "," . (int)$limit);
+		$query = $this->db->query("SELECT o.order_id,o.order_no, o.firstname, o.lastname, o.payment_code, os.name as status, o.date_added, o.total, o.currency_code, o.currency_value FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_status os ON (o.order_status_id = os.order_status_id) WHERE o.customer_id = '" . (int)$this->customer->getId() . "' AND o.order_status_id > '0'  AND o.del = '0' AND o.store_id = '" . (int)$this->config->get('config_store_id') . "' AND os.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY o.order_id DESC LIMIT " . (int)$start . "," . (int)$limit);
 
 		return $query->rows;
 	}

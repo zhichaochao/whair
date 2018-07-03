@@ -33,6 +33,7 @@
 				
 				<div class="right m_order clearfix">
 					<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+					<div class="form_div clearfix">
 						<p>* Required fields</p>
 						<label for="" class="f_name clearfix">
 							<span><?php echo $entry_firstname; ?> *</span>
@@ -76,9 +77,11 @@
 						</label>
 						<!-- <button type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary" /> -->
 						<button type="submit">UPDATA</button>
+						</div>
 					</form>
 
 					<form action="<?php echo $changepwd_action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+					<div class="form_div clearfix">
 						<h2>Change Password</h2>
 						<label for="">
 							<span>Current Password*</span>
@@ -111,6 +114,7 @@
 									<?php } ?>
 						</label>
 						<button type="submit">UPDATA</button>
+						</div>
 					</form>
 				</div>
 				

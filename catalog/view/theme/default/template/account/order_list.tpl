@@ -35,7 +35,7 @@
                     <p>Order Status: <?php echo $order['status']; ?></p>
                   </li>
                 </ol>
-                <!-- <div class="close" onclick="javascript:cart_remove('<?php echo $order['order_id']; ?>');"></div> -->
+                <div class="close" onclick="javascript:order_remove('<?php echo $order['order_id']; ?>');"></div>
               </div>
               
               <div class="bot clearfix">
@@ -55,7 +55,7 @@
                 </div>
                 
                 <div class="total">
-                  <p class="p1">Shipping<span class="fr">$48.98</span></p>
+                  <p class="p1">Shipping<span class="fr"><?php echo $order['text']; ?></span></p>
                   <p class="p2">Total <span class="fr"><?php echo $order['total']; ?></span></p>
                 </div>
                 
@@ -112,7 +112,7 @@ function cancel_order(url){
 		location.href=url;
 	}
 }
-function cart_remove(order_id){
+function order_remove(order_id){
 //alert(order_id);
 if(confirm('Are you sure?')){
 
