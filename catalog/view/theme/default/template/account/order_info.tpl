@@ -68,30 +68,23 @@
               <?php foreach ($products as $product) { ?>
                 <li class="clearfix">
                   <div class="pic_img">
-                    <img src="" alt="" />                   
+                    <img src="<?php echo $product['order_image']; ?>" alt="" />                   
                   </div>
                   <p class="ov_text"><?php echo $product['name']; ?>
                 </p>
                   <span class="d_price"><?php echo $product['total']; ?></span>
-
+  <span class="num">&nbsp;
                   <?php foreach ($product['option'] as $option) { ?>
-                <span class="num"><i class="yd_i">X</i><?php echo $option['value']; ?></span>
+              <i class="yd_i">X</i><?php echo $option['value']; ?>
                 <!-- <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small> -->
                 <?php } ?>
-
+</span>
                  <!--  <span class="num"><i class="yd_i">X</i>1</span> -->
                   <span class="length"><i class="yd_i"></i><?php echo $product['quantity']; ?></span>
                  <!--  <span class="z_price">$35.05</span> -->
-                  <?php if ($product['price'] == $product['original_price'] ) { ?>
-                  <!-- <?php echo $product['price']; ?> -->
-                  <span class="z_price"><?php echo $product['price']; ?></span>
-                <?php } else { ?>
-                  <?php if(empty($product['original_price'])) { ?>                    
-                    <span class="z_price"><?php echo $product['price']; ?></span>                    
-                  <?php } else { ?>
+              
                     <span class="z_price"><?php echo $product['price']; ?></span>
-                  <?php } ?>
-                <?php } ?>
+              
                 </li>
                <?php } ?>
               </ul>
@@ -127,8 +120,11 @@
           <?php }  ?>
             </ul>
           </div>
-          <a class="a_btn" href="<?php echo $continue?>">GO BACK</a>
-         <?php } ?>  
+          
+         <?php } ?>
+          <?php if($order_status !== 'Pending'){ ?>
+         <a class="a_btn" href="<?php echo $continue?>">GO BACK</a> 
+         <?php } ?>
         </div>
       </div>
     </div>
@@ -286,6 +282,8 @@
         <a class="btn240 a_btn" href="###">CONFIRM &nbsp;&nbsp;&nbsp;></a>
       </div>
     </div>
+
+<!--以下可以删 -->
 <div class="container">
   
   <?php if ($success) { ?>
@@ -299,17 +297,6 @@
   </div>
   <?php } ?>
   <div class="row">
-    <?php echo $column_left; ?>
-    
-    <?php if ($column_left && $account_left) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $account_left) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
-    
-    <?php echo $account_left; ?>
     
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h2><?php echo $heading_title; ?></h2>

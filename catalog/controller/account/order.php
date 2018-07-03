@@ -305,6 +305,7 @@ class ControllerAccountOrder extends Controller {
 			// Products
 			$data['products'] = array();
 			$products = $this->model_account_order->getOrderProducts($this->request->get['order_id']);
+			//var_dump($products);exit;
 			foreach ($products as $product) {
 				$option_data = array();
 
@@ -335,26 +336,27 @@ class ControllerAccountOrder extends Controller {
 				} else {
 					$reorder = '';
 				}
-				
-				if($product['original_price'] == 0){
-					$original_price = false;
-				}else{
-					$original_price = $this->currency->format($product['original_price'], $this->session->data['currency']);
-				}
-
+			
+	$this->load->model('tool/image');
+		
+		
+			
 				$data['products'][] = array(
+					'order_image' => $this->model_tool_image->resize($product_info['image'],100,100),
 					'name'     => $product['name'],
 					'model'    => $product['model'],
 					'option'   => $option_data,
 					'quantity' => $product['quantity'],
-					'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
+					'price'    => $this->currency->format($product['price'] , $order_info['currency_code'], $order_info['currency_value']),
 					'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),
-					'original_price'   => $original_price,
+		
 					'reorder'  => $reorder,
+				
 					'return'   => $this->url->link('account/return/add', 'order_id=' . $order_info['order_id'] . '&product_id=' . $product['product_id'], true)
 				);
+			
 			}
-// var_dump($results);exit;
+  // var_dump($data['products']);exit;
 			// Voucher
 			$data['vouchers'] = array();
 			$vouchers = $this->model_account_order->getOrderVouchers($this->request->get['order_id']);

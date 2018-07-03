@@ -198,7 +198,16 @@ class ModelAccountOrder extends Model {
 //var_dump($query);exit();
 		return $query->row;
 	}
+public function getOrderProductImgAndNameByOrderIds($order_id) {
 
+		$sql = "SELECT op.name,p.image,p.price
+				FROM " . DB_PREFIX . "order_product op
+				LEFT JOIN " . DB_PREFIX . "product p ON p.product_id = op.product_id
+				WHERE op.order_id = " . (int)$order_id. "";
+		$query = $this->db->query($sql);
+//var_dump($query);exit();
+		return $query->row;
+	}
 
 	/**
      * 用户中心取消订单,改变订单的状态
@@ -211,7 +220,8 @@ class ModelAccountOrder extends Model {
 	    $query = $this->db->query($sql);
 	    $this->db->query("INSERT INTO " . DB_PREFIX . "order_history SET order_id = '" . (int)$order_id . "', order_status_id = '" . (int)$order_status_id . "', notify = '0', comment = 'customer cancel', date_added = NOW()");
 
-        //根据订单ID,把该订单对应的产品数量加回去
+        //根据订单ID,把
+        //该订单对应的产品数量加回去
 	    /*$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
 		foreach($product_query->rows as $product) {
 			$this->db->query("UPDATE `" . DB_PREFIX . "product` SET quantity = (quantity + " . (int)$product['quantity'] . ") WHERE product_id = '" . (int)$product['product_id'] . "' AND subtract = '1'");
