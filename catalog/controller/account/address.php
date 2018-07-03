@@ -478,7 +478,7 @@ class ControllerAccountAddress extends Controller {
 		} else {
 			$data['default'] = false;
 		}
-
+//print_r($data['default']);exit;
 		$data['back'] = $this->url->link('account/address', '', true);
 
 		$data['column_left'] = $this->load->controller('common/column_left');

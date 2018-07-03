@@ -41,8 +41,7 @@
             <?php } ?>
            <?php foreach ($addresses as $result) { ?>
           <?php if($result['isshowdelete']==1){ ?>
-            <li class="<?=$result['isshowdelete']==0 ?'active':'';?>" onclick="javascript:default_address('<?php echo $result['address_id']; ?>');">
-                     
+            <li class="<?=$result['isshowdelete']==0 ?'active':'';?>" onclick="javascript:default_address('<?php echo $result['address_id']; ?>');">           
               <div class="text">
                 <p><?php echo $result['address']; ?></p>
                 <span>Default address</span>

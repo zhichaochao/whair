@@ -22,7 +22,7 @@ $_['entry_city']           = 'City';
 $_['entry_country']        = 'Country';
 $_['entry_zone']           = 'Region / State';
 $_['entry_default']        = 'Default Address';
-
+$_['entry_telephone']           = 'telephone';
 // Error
 $_['error_delete']                = 'Warning: You must have at least one address!';
 $_['error_default']               = 'Warning: You can not delete your default address!';

@@ -55,7 +55,7 @@
                 </div>
                 
                 <div class="total">
-                  <p class="p1">Shipping<span class="fr">$48.98</span></p>
+                  <p class="p1">Shipping<span class="fr"><?php echo $order['text']; ?></span></p>
                   <p class="p2">Total <span class="fr"><?php echo $order['total']; ?></span></p>
                 </div>
                 
