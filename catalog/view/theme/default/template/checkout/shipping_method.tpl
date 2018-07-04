@@ -3,7 +3,7 @@
 <?php if ($shipping_methods) { ?>
 
 <div class="bg_fff">
- <h3>Shipping Method</h3>
+ <!-- <h3>Shipping Method</h3> -->
  <p id="no_sel" style="color: #f00;"></p>
                         <ul class="express_ul" id='collapse-shipping-method'>
                              <?php foreach ($shipping_methods as $quote) { ?>

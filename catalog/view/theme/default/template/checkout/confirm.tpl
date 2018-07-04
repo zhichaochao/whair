@@ -10,15 +10,15 @@
                                 </div>
                                 <div class="text">
                                     <h2><?php echo $product['name']; ?></h2>
-                                    <p>  
+                                    
                                         <?php foreach ($product['option'] as $option) { ?>
-                                            <?php echo $option['value']; ?>
+                                       <p>   <?php echo $option['name']; ?>:  <?php echo $option['value']; ?> </p>
                                         <?php } ?>
                                         <?php if($product['recurring']) { ?>
                                          <?php echo $product['recurring']; ?>
                                         <?php } ?>
                             
-                                     </p>
+                                    
                                      <span>  <?php echo $product['price']; ?></span>
                                      <p><span> X <?php echo $product['quantity']; ?></span></p>
                                 </div>

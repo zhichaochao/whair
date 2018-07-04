@@ -114,11 +114,13 @@
     $('.new-checkout-ship-method').show();
 <?php } ?>
 $('#show-shipping-new').on('click', function() {
+  $('.address_ul li').removeClass('active');
     $('#btnSaveAddress').attr('aid', 0);
 		$('#shipping-existing').hide();
 		$('#shipping-new').show();
 });
 $('#show-shipping-existing').on('click', function() {
+  
     $('input.clear').val('');
     $('#shipping-existing').show();
     $('#shipping-new').hide();
@@ -131,9 +133,9 @@ $('#shipping-existing').on('mouseleave','tr',function(){
 	$(this).children('.new-checkout-address-rig').css('visibility','hidden');
 });
 $('.address_ul li').on('click', function() {
-    e = $(this);
+   $(this).addClass('active').siblings().removeClass('active');
     $.ajax({
-        url: 'index.php?route=checkout/shipping_address/changeAddress&address_id='+e.attr('aid'),
+        url: 'index.php?route=checkout/shipping_address/changeAddress&address_id='+$(this).attr('aid'),
         dataType: 'json',
     
         success: function(json) {
@@ -143,7 +145,7 @@ $('.address_ul li').on('click', function() {
          
                 alert(json['error']);
             } else {
-                // getShippingAddress();
+                getShippingMethod();
             }
         },
         error: function(xhr, ajaxOptions, thrownError) {

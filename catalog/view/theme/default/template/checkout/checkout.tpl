@@ -36,7 +36,7 @@
                      
                         </div>
                         <div class="shipping_method bg_fff bg_gif" id="shipping_method">
-                        <h3>Shipping Method</h3>
+                            <h3>Shipping Method</h3>
                         </div>
                         </div>
                     </div>
@@ -88,12 +88,13 @@ $(document).ready(function() {
 // Get Shipping Address
 function getShippingAddress(address_id)
 {
+
     $.ajax({
         url: 'index.php?route=checkout/shipping_address&address_id='+address_id,
         dataType: 'html',
         success: function(html) {
             $('#shipping_address').html(html);
-    
+        $('.address_ul li').removeClass('active');
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
