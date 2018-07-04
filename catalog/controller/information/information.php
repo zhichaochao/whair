@@ -5,9 +5,6 @@ class ControllerInformationInformation extends Controller {
 
 		$this->load->model('catalog/information');
 
-        //引入ABOUT US和Expert Help两个信息块的样式
-		$this->document->addStyle('catalog/view/theme/default/stylesheet/information/about_help/about_help_common.css');
-		$this->document->addStyle('catalog/view/theme/default/stylesheet/information/about_help/common.css');
 
 		$data['breadcrumbs'] = array();
 
@@ -23,6 +20,18 @@ class ControllerInformationInformation extends Controller {
 		}
 
 		$information_info = $this->model_catalog_information->getInformation($information_id);
+		    $this->load->model('catalog/information');
+        $informations=$this->model_catalog_information->getInformations() ;
+          foreach ($informations as $information) {
+        
+                $data['informations'][] = array(
+                	'information_id' => $information['information_id'],
+                	'title' => $information['title'],
+                	'class' => $information['information_id']==$information_id?'active':'',
+                	'url' => $this->url->link('information/information','information_id=' .  $information['information_id']),
+                );
+                	
+        	}
 
 		if ($information_info) {
 			$this->document->setTitle($information_info['meta_title']);
@@ -43,9 +52,8 @@ class ControllerInformationInformation extends Controller {
 			$data['continue'] = $this->url->link('common/home');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
-			//$data['column_right'] = $this->load->controller('common/column_right');
-			//dyl改
-			$data['about_help_left'] = $this->load->controller('information/about_help_left');
+			
+
 			$data['content_top'] = $this->load->controller('common/content_top');
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');

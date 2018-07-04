@@ -9,36 +9,20 @@ class ControllerInformationAbouthelpLeft extends Controller {
 	public function index() {
 
         $this->load->model('catalog/information');
-        $this->load->model('catalog/url_alias');
-
-        $getroute = $_SERVER["QUERY_STRING"];   //获取当前url的参数
+        $informations=$this->model_catalog_information->getInformations() ;
+        // print_r($informations);exit;
+       
         
-        foreach ($this->model_catalog_information->getInformations() as $result) {
-        	if ($result['bottom']) {
-        		if($result['parent_id'] == 0){
-        			$data['parents'][] = array(
-        					'title' => $result['title'],
-        					'information_id' => $result['information_id'],
-        					'seo_url' => $result['seo_url']
-        			);
-        		}
-        	}
-        }
+          foreach ($informations as $information) {
         
-        foreach ($this->model_catalog_information->getInformations() as $information) {
-        	if($result['bottom']){
-        		foreach($data['parents'] as $parent){
-        			if($parent['information_id'] == $information['parent_id']){
-        				$data['informations'][$parent['title']][] = array(
-        						'title' => $information['title'],
-        						'seo_url' => $information['seo_url']
-        				);
-        			}
-        		}
+                $data['informations'][] = array(
+                	'title' => $information['title'],
+                	'url' => $this->url->link('information/information','information_id=' .  $information['information_id']),
+                );
+                	
+        	
         	}
+                      return $this->load->view('information/about_help_left', $data);
         }
-
-		return $this->load->view('information/about_help_left', $data);
-	}
 
 }
