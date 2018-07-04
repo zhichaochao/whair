@@ -1,31 +1,36 @@
 <?php echo $header; ?>
-<div class="container">
+<!--内容-->
+    <div class=" in_content peo_center">
+      <div class="content clearfix">
+        
+        <div class="left clearfix">
+          <h1>CATALOGUE</h1>
+          <ol>
 
-  <!--<ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>-->
-  
-  <div class="row">
+    <?php if($informations) { ?>
+      <?php foreach($informations as $key => $value) { ?>
+
     
-    <?php if ($column_left && $about_help_left) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $about_help_left) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
+          <li class="<?php echo $value['class']; ?>">
+            <a href="<?php echo $value['url']; ?>"><?php echo $value['title']; ?></a>
+          </li>
+
+      <?php } ?>
     <?php } ?>
-    
-    <?php echo $about_help_left; ?>    
-  
-    <div id="content" class="<?php echo $class; ?>">      
-      <div class="panel-group" id="accordion">
-         <?php echo $description; ?>
-      </div>          
+
+
+          </ol>
+        </div>
+        
+        <div class="right fot_text clearfix">
+          <h1 class="footer_h1"><?=$heading_title;?></h1>
+         <?=$description;?>
+        
+        </div>
+        
+      </div>
+      
+      
     </div>
-  
-  </div>
-  
-</div>
+
 <?php echo $footer; ?>
