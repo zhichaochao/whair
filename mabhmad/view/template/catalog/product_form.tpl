@@ -298,14 +298,17 @@
                           <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
                       </div>
                     </li>
-
-                    <li style="float: left;width: 100px;margin-left: 10px">
+   <?php if(isset($this->request->get['product_id'])){ ?>
+                    <li style="float: left;width: 100px;margin-left: 10px">  
                   <div style="margin-top:10px;">
+               
                     <label for="input-video" class="input-video">请上传</label><br/>
                       <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
                       <div class="input-video" onclick="deleteVideo();">删除</div>
-                  </div></li>
-
+                    </div>
+                 
+                </li>
+   <?php }else{ echo '视频只支持编辑时上传，请先保存产品后再点击编辑时再来上传小视频';} ?>
                   </ul>
 
                 </div>
@@ -777,11 +780,11 @@
                   <thead>
                     <tr>
                       <td class="text-left"><?php echo $entry_customer_group; ?></td>
-                      <td class="text-right"><?php echo $entry_quantity; ?></td>
-                      <td class="text-right"><?php echo $entry_priority; ?></td>
+                      <!-- <td class="text-right"><?php echo $entry_quantity; ?></td> -->
+                      <!-- <td class="text-right"><?php echo $entry_priority; ?></td> -->
                       <td class="text-right"><?php echo $entry_price; ?></td>
-                      <td class="text-left"><?php echo $entry_date_start; ?></td>
-                      <td class="text-left"><?php echo $entry_date_end; ?></td>
+                      <!-- <td class="text-left"><?php echo $entry_date_start; ?></td> -->
+                      <!-- <td class="text-left"><?php echo $entry_date_end; ?></td> -->
                       <td></td>
                     </tr>
                   </thead>
@@ -799,19 +802,19 @@
                           <?php } ?>
                           <?php } ?>
                         </select></td>
-                      <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][quantity]" value="<?php echo $product_discount['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
-                      <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][priority]" value="<?php echo $product_discount['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>
+                      <!-- <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][quantity]" value="<?php echo $product_discount['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td> -->
+                   <!--    <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][priority]" value="<?php echo $product_discount['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td> -->
                       <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][price]" value="<?php echo $product_discount['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
-                      <td class="text-left" style="width: 20%;"><div class="input-group date">
+                     <!--  <td class="text-left" style="width: 20%;"><div class="input-group date">
                           <input type="text" name="product_discount[<?php echo $discount_row; ?>][date_start]" value="<?php echo $product_discount['date_start']; ?>" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
                           <span class="input-group-btn">
                           <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                          </span></div></td>
-                      <td class="text-left" style="width: 20%;"><div class="input-group date">
+                          </span></div></td> -->
+                   <!--    <td class="text-left" style="width: 20%;"><div class="input-group date">
                           <input type="text" name="product_discount[<?php echo $discount_row; ?>][date_end]" value="<?php echo $product_discount['date_end']; ?>" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
                           <span class="input-group-btn">
                           <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                          </span></div></td>
+                          </span></div></td> -->
                       <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                     </tr>
                     <?php $discount_row++; ?>
@@ -846,7 +849,7 @@
                   <thead>
                     <tr>
                       <td class="text-left"><?php echo $entry_customer_group; ?></td>
-                      <td class="text-right"><?php echo $entry_priority; ?></td>
+                      <!-- <td class="text-right"><?php echo $entry_priority; ?></td> -->
                       <td class="text-right"><?php echo $entry_price; ?></td>
                       <td class="text-right"><?php echo $entry_percent; ?></td>
                       <td class="text-left"><?php echo $entry_date_start; ?></td>
@@ -869,7 +872,7 @@
                           <?php } ?>
                           <?php } ?>
                         </select></td>
-                      <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][priority]" value="<?php echo $product_special['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>
+                      <!-- <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][priority]" value="<?php echo $product_special['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td> -->
                       <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][price]" value="<?php echo $product_special['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
                       <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][percent]" value="<?php echo $product_special['percent']; ?>" placeholder="<?php echo $entry_percent; ?>" class="form-control" /></td>
                       <td class="text-left" style="width: 20%;"><div class="input-group date">
@@ -1443,11 +1446,11 @@ function addDiscount() {
     html += '    <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';
     <?php } ?>
     html += '  </select></td>';
-    html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>';
-    html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
+    // html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>';
+    // html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
-    html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_discount[' + discount_row + '][date_start]" value="" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
-	html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_discount[' + discount_row + '][date_end]" value="" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
+    // html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_discount[' + discount_row + '][date_start]" value="" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
+	// html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_discount[' + discount_row + '][date_end]" value="" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
 	html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 	html += '</tr>';
 
@@ -1470,7 +1473,7 @@ function addSpecial() {
     html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';
     <?php } ?>
     html += '  </select></td>';
-    html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
+    // html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
   html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][percent]" value="" placeholder="<?php echo $entry_percent; ?>" class="form-control" /></td>';
     html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_special[' + special_row + '][date_start]" value="" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';

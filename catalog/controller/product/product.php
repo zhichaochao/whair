@@ -531,7 +531,7 @@ class ControllerProductProduct extends Controller {
             //询盘请求的url  end
 
             $data['email'] = $this->config->get('config_email');
-
+       // print_r($this->customer);exit();
             //购物车链接
             $data['shopping_cart'] = $this->url->link('checkout/cart');
 

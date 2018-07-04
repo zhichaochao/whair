@@ -80,7 +80,7 @@ $_['entry_is_main']          = '是否主产品';
 $_['entry_is_home']          = '是否首页显示';
 $_['entry_free_postage']     = '免邮';
 $_['entry_percent']          = "百分比";
-$_['entry_sync_percent']     = "同步百分比";
+$_['entry_sync_percent']     = "使用百分比";
 $_['entry_video']            = "小视频(后台上传)";
 $_['entry_video_link']       = "视频链接(包含'iframe'标签)";
 

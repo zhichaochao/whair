@@ -40,7 +40,7 @@
 									<?php if ($product['option']) { ?>                         
 			                         <?php foreach ($product['option'] as $option) { ?>						  
 			                          <p>
-			                           <?php if( !empty($option['name']) ){ ?>
+			                           <?php if(!empty($option['name'])){ ?>
 			                             <?php echo $option['name'].': '; ?><?php echo $option['value']; ?>
 			                           <?php } ?> 
 			                          </p>                        
@@ -50,9 +50,7 @@
 
 									<p><span>Commodity code:</span><?=$product['model'];?></p>
 
-									<!-- 产品颜色 -->
-										<p><?php echo $color_data[0]['color'];?></p>						
-								<!-- 产品颜色 -->
+									
 								</div>
 								<div class="price clearfix">
 									<!-- <p>$35.65<span>$35.65</span></p> -->

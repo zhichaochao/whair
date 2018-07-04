@@ -20,6 +20,7 @@
                             
                                      </p>
                                      <span>  <?php echo $product['price']; ?></span>
+                                     <p><span> X <?php echo $product['quantity']; ?></span></p>
                                 </div>
                             </a>
                         </li>

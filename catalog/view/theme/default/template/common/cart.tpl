@@ -24,7 +24,8 @@
                                 </p>                        
                                <?php } ?>                         
                               <?php } ?>   
-                    <span>  <?php echo $product['total']; ?></span>
+                    <span>  <?php echo $product['price']; ?></span>
+                    <p><span>x <?php echo $product['quantity']; ?></span></p>
                     
                   </div>
                 </a>
@@ -56,6 +57,8 @@
 
     <?php } ?>
 
-
+<script type="text/javascript">
+     $('.cart_ul').scrollTop($('.cart_ul').scrollHeight);
+</script>
 
 

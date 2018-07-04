@@ -132,7 +132,7 @@
 						</div>
 						<div class="bot_text clear">
 							<p class="text_p text_p2"><span>Hair Material:</span> <?=$material;?></p>
-							<div class="share_l">
+							<div class="share_l" style="max-width: 560px;">
 									<?=$m_description;?>
 								
 							</div>
@@ -586,11 +586,9 @@ function productInfoImg(elm) {
             success: function(json) {
             	if (json.success) {
         			$('#cart_count').html(json.total);
-        			$('.ts_ps').html(json.success);
+        			  $(".cart_li").click();
 
-                    $('html, body').animate({
-                        scrollTop: 0
-                    }, 'slow');
+                
 
 
      			 }

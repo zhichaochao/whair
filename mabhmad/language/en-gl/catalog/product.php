@@ -79,7 +79,7 @@ $_['entry_is_new']           = 'Is New';
 $_['entry_is_main']          = 'Is Main';
 $_['entry_free_postage']     = 'Free Postage';
 $_['entry_percent']          = "Percent";
-$_['entry_sync_percent']     = "Sync Percent";
+$_['entry_sync_percent']     = "Use percentage";
 $_['entry_is_home']          = "Homepage";
 
 // Help

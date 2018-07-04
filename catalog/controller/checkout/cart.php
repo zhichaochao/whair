@@ -181,10 +181,8 @@ class ControllerCheckoutCart extends Controller {
                     'wishlist'    =>$wishlist
                 );
             }
-            $product_info = $this->model_catalog_product->getProduct($product['product_id']);
-             //颜色(Color)---根据长度查询产品的颜色(color_id,color,image)
-            $data['color_data'] = $this->model_catalog_product->getRelationColor1($product_info['relation_product'],$product_info['length_id']);
-          //print_r($data['color_data']);exit();
+            // print_r(  $data['products']);exit();
+     
             $data['wishlist_add'] = $this->url->link('account/wishlist/add', '', true);
             $data['delewishlist'] = $this->url->link('account/wishlist/delete', '', true);
             // Gift Voucher

@@ -956,12 +956,16 @@ class ControllerCatalogProduct extends Controller {
 		}
 
         $data['edit_video'] = $this->url->link('catalog/product/editVideo');
-		$data['edit_video_url'] = '&token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url;
+
+		
 
 		$data['cancel'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true);
 
 		if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
 			$product_info = $this->model_catalog_product->getProduct($this->request->get['product_id']);
+			$data['edit_video_url'] = '&token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url;
+		}else{
+			$data['edit_video_url']='';
 		}
 
 		$data['token'] = $this->session->data['token'];

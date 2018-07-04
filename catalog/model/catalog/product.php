@@ -21,8 +21,9 @@ class ModelCatalogProduct extends Model {
 
 	public function getProduct($product_id) {
 
+
 		$query = $this->db->query("SELECT DISTINCT *, pd.name AS name, p.image, m.name AS manufacturer,
-				(SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount,
+				(SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' ORDER BY pd2.price ASC LIMIT 1) AS discount,
 				(SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special,
 				(SELECT points FROM " . DB_PREFIX . "product_reward pr WHERE pr.product_id = p.product_id AND pr.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "') AS reward,
 				(SELECT ss.name FROM " . DB_PREFIX . "stock_status ss WHERE ss.stock_status_id = p.stock_status_id AND ss.language_id = '" . (int)$this->config->get('config_language_id') . "') AS stock_status,
@@ -31,7 +32,9 @@ class ModelCatalogProduct extends Model {
 				(SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating,
 				(SELECT COUNT(*) AS total FROM " . DB_PREFIX . "review r2 WHERE r2.product_id = p.product_id AND r2.status = '1' GROUP BY r2.product_id) AS reviews, p.sort_order FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) LEFT JOIN " . DB_PREFIX . "manufacturer m ON (p.manufacturer_id = m.manufacturer_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'");
 // var_dump($query);die;
+
 		if ($query->num_rows) {
+		
 			return array(
 				'product_id'       => $query->row['product_id'],
 				'name'             => $query->row['name'],
@@ -53,8 +56,8 @@ class ModelCatalogProduct extends Model {
 				'image'            => $query->row['image'],
 				'manufacturer_id'  => $query->row['manufacturer_id'],
 				'manufacturer'     => $query->row['manufacturer'],
-				'defaultprice'     => $query->row['price'],
-				'price'            => $this->getLowestPrice($product_id,$query->row['price']),
+				'defaultprice'     => ($query->row['discount']>0&&$this->customer->isLogged())? $query->row['discount']:$query->row['price'],
+				'price'            => $this->getLowestPrice($product_id,($query->row['discount']>0&&$this->customer->isLogged())?$query->row['discount']:$query->row['price']),
 				'special'          => $this->getSpecialPrice($product_id),
 				'reward'           => $query->row['reward'],
 				'points'           => $query->row['points'],
@@ -98,7 +101,7 @@ class ModelCatalogProduct extends Model {
 
         $sqlminus = "SELECT MAX(price) AS price from " . DB_PREFIX . "product_option_value WHERE product_id='" . $product_id . "' AND price_prefix='-'";
         $query = $this->db->query($sqlminus)->row;
-//        var_dump($query['price']);die;
+       // var_dump($price);die;
         if(!$query['price']){
             $query = $this->db->query($sqlplus)->row;
         }
