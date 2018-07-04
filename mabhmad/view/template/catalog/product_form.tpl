@@ -298,7 +298,7 @@
                           <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
                       </div>
                     </li>
-   <?php if(isset($this->request->get['product_id'])){ ?>
+   <?php if($product_id){ ?>
                     <li style="float: left;width: 100px;margin-left: 10px">  
                   <div style="margin-top:10px;">
                

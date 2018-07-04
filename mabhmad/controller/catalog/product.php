@@ -1547,6 +1547,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('design/layout');
 
 		$data['layouts'] = $this->model_design_layout->getLayouts();
+		$data['product_id'] = isset($this->request->get['product_id'])?$this->request->get['product_id']:'';
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');

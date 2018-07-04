@@ -12,8 +12,7 @@ class ControllerAccountAccount extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		//引入该页面的css样式
-		$this->document->addStyle('catalog/view/theme/default/stylesheet/account/account_account.css');
+		
 
 		$this->load->model('account/customer');
 
