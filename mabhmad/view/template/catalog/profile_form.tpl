@@ -177,12 +177,33 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" >
                 <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
                 </div>
+              </div>   
+               <div class="form-group" >
+                <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_author; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="author" value="<?php echo $author; ?>" placeholder="<?php echo $entry_author; ?>" id="input-author" class="form-control" />
+                </div>
               </div>
+              <div class="form-group">
+                  
+                         <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_image; ?></label>
+                      
+                        <div class="col-sm-10">
+                              <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail" >
+                                  <img src="<?php echo $club_image; ?>" alt="" title="" data-placeholder="<?php echo $club_image; ?>" />
+                              </a>
+                              <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
+                      </div>
+
+              </div>
+              <!--  -->
+     
+
             </div>
             <div class="tab-pane" id="tab-design">
               <div class="table-responsive">

@@ -26,6 +26,7 @@ $_['text_filter']                   = '筛选过滤';
 $_['text_geo_zone']                 = '区域群组';
 $_['text_information']              = '信息管理';
 $_['text_nav']                      = '导航管理';
+$_['text_hairclub']                 = 'hairclub管理';
 $_['text_profile']                  = '简介管理';
 $_['text_installer']                = '插件安装';
 $_['text_language']                 = '语言设置';

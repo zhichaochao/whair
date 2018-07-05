@@ -242,6 +242,8 @@ class ControllerCatalogProduct extends Controller {
                     //文件上传到预览目录
                     if(isset($this->request->get['product_id'])){
                     $previewName = 'pre_'.$this->request->get['product_id'].'.'.$ext;
+	                }elseif(isset($this->request->get['hairclub'])){
+	                	 $previewName = 'hairclub/pre_'.rand(1000,9000).'.'.$ext;
 	                }else{
 	                	 $previewName = 'home/pre_'.rand(1000,9000).'.'.$ext;
 	                }

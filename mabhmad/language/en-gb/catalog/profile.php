@@ -27,6 +27,8 @@ $_['entry_status']           = '状态';
 $_['entry_sort_order']       = '排序顺序';
 $_['entry_layout']           = '布局重写';
 $_['entry_parent']           = '父类';
+$_['entry_image']           = 'club展示图';
+$_['entry_author']           = '作者';
 
 // Help
 $_['help_keyword']           = '不要使用空格，使用 “-” 代替空格和确保该关键词为全站沒有重复。';

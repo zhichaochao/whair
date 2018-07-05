@@ -87,7 +87,7 @@
                   <input id="agree" type="checkbox" name="agree" value="1" checked="checked"/>
                   <span class="span1"></span>
                   <span class="span2"></span>
-                  <p>I agree to Hot Beauty Hair <a href="###">Terms and Conditions.</a><i class="red_i">*</i></p>
+                  <p>I agree to Hot Beauty Hair <a target="_blank" href="<?=$agree_url;?>">Terms and Conditions.</a><i class="red_i">*</i></p>
                   <div class="erroragree" style="display:none;"></div>
                 </div>
                 <p class="xy_p">*required field</p>

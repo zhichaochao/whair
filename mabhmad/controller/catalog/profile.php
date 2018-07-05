@@ -9,6 +9,8 @@ class ControllerCatalogProfile extends Controller {
 
 		$this->load->model('catalog/profile');
 
+		$this->load->model('tool/image');
+
 		$this->getList();
 	}
 
@@ -20,6 +22,7 @@ class ControllerCatalogProfile extends Controller {
 		$this->load->model('catalog/profile');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+		
 			$this->model_catalog_profile->addProfile($this->request->post);
 
 			//获取路由参数
@@ -58,8 +61,8 @@ class ControllerCatalogProfile extends Controller {
 		$this->load->model('catalog/profile');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			// print_r( $this->request->post);exit;
 			$this->model_catalog_profile->editProfile($this->request->get['profile_id'], $this->request->post);
-
 			//获取路由参数
 			$doneUrl=isset($this->request->get['route']) ? $this->request->get['route'] : "";
 			$done="editProfile:ID=".$this->request->get['profile_id']; //$this->request->post['profile_description'][1]['title'];
@@ -283,6 +286,7 @@ class ControllerCatalogProfile extends Controller {
 	}
 
 	protected function getForm() {
+		$this->load->model('tool/image');
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_form'] = !isset($this->request->get['profile_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
@@ -302,6 +306,8 @@ class ControllerCatalogProfile extends Controller {
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_parent'] = $this->language->get('entry_parent');
 		$data['entry_layout'] = $this->language->get('entry_layout');
+		$data['entry_image'] = $this->language->get('entry_image');
+		$data['entry_author'] = $this->language->get('entry_author');
 
 		$data['help_keyword'] = $this->language->get('help_keyword');
 		$data['help_bottom'] = $this->language->get('help_bottom');
@@ -386,6 +392,7 @@ class ControllerCatalogProfile extends Controller {
 		if (isset($this->request->get['profile_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
 			$profile_info = $this->model_catalog_profile->getProfile($this->request->get['profile_id']);
 		}
+		// var_dump($profile_info);exit();
 		
 		$data['parents'] = $this->model_catalog_profile->getParents();
 
@@ -402,7 +409,7 @@ class ControllerCatalogProfile extends Controller {
 		} else {
 			$data['profile_description'] = array();
 		}
-
+   //print_r($data['profile_description']);exit();
 		$this->load->model('setting/store');
 
 		$data['stores'] = $this->model_setting_store->getStores();
@@ -464,7 +471,29 @@ class ControllerCatalogProfile extends Controller {
 		}
 
 		$this->load->model('design/layout');
+		//image
+        if(isset($this->request->post['image'])){
+            $data['image'] = $this->request->post['image'];
+        }
+        elseif(isset($this->request->get['profile_id'])&&$profile_info['image']){
+            $data['image'] = $profile_info['image'];
+        }
+        else{
+            $data['image'] = 'no_image.png';
+        }
+ // var_dump( $profile_info );exit();
+        $data['club_image'] = $this->model_tool_image->resize($data['image'], 100, 100);
 
+        if (isset($this->request->post['author'])) {
+			$data['author'] = $this->request->post['author'];
+		} elseif (!empty($profile_info)) {
+			$data['author'] = $profile_info['author'];
+		} else {
+			$data['author'] = '';
+		}
+		//var_dump( $data['author']);exit();
+        //$data['author']=$data['author'];
+        //$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 		$data['layouts'] = $this->model_design_layout->getLayouts();
 
 		$data['header'] = $this->load->controller('common/header');
@@ -538,7 +567,7 @@ class ControllerCatalogProfile extends Controller {
 				$this->error['warning'] = $this->language->get('error_return');
 			}
 
-			$store_total = $this->model_setting_store->getTotalStoresByProfileId($profile_id);
+			$store_total =$this->model_catalog_profile->deleteProfile($profile_id);
 
 			if ($store_total) {
 				$this->error['warning'] = sprintf($this->language->get('error_store'), $store_total);

@@ -146,7 +146,8 @@ class ControllerAccountLogin extends Controller {
 		$data['register'] = $this->url->link('account/login/register_save', '', true);
 		$data['forgotten'] = $this->url->link('account/forgotten', '', true);
         //同意条款的内容链接 dyl add
-		$data['agree_url'] = $this->url->link('information/information/agree', 'information_id=' . $this->config->get('config_checkout_id'), true);
+		$data['agree_url'] = $this->url->link('information/information', 'information_id=' . $this->config->get('config_checkout_id'), true);
+		// print_r($this->config->get('config_checkout_id'));exit();
 
 		// Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
 		if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {

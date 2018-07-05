@@ -15,13 +15,20 @@ class ModelCatalogProfile extends Model {
 		
 	}
 	
-	public function addProfile($data) {
-		$this->querysql("INSERT INTO " . DB_PREFIX . "profile SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "', parent_id = '" . (int)$data['parent_id'] . "'");
+	public function addProfile($data = array()) {
+
+		$this->querysql("INSERT INTO " . DB_PREFIX . "profile SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "' ,parent_id = '" . (int)$data['parent_id'] . "', author = '" . $this->db->escape($data['author']) . "', image = '" . $data['image'] . "', add_time = NOW(), update_time = NOW(), view = 0");
 
 		$profile_id = $this->db->getLastId();
 
 		foreach ($data['profile_description'] as $language_id => $value) {
-			$this->querysql("INSERT INTO " . DB_PREFIX . "profile_description SET profile_id = '" . (int)$profile_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', seo_url = '" . $this->db->escape($value['keyword']) . "'");
+		$this->querysql("INSERT INTO " . DB_PREFIX . "profile_description SET profile_id = '" . (int)$profile_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+		// print_r($p);exit();
+		}
+
+		if ($data['keyword']) {
+		    $this->querysql("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'profile_id=" . (int)$profile_id . "'");
+		    $this->querysql("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'profile_id=" . (int)$profile_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 
 		if (isset($data['profile_store'])) {
@@ -46,7 +53,7 @@ class ModelCatalogProfile extends Model {
 	}
 
 	public function editProfile($profile_id, $data) {
-		$this->querysql("UPDATE " . DB_PREFIX . "profile SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "', parent_id = '" . (int)$data['parent_id'] . "' WHERE profile_id = '" . (int)$profile_id . "'");
+		$this->querysql("UPDATE " . DB_PREFIX . "profile SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "', image = '" . $this->db->escape($data['image']) . "', parent_id = '" . (int)$data['parent_id'] . "' WHERE profile_id = '" . (int)$profile_id . "'");
 
 		$this->querysql("DELETE FROM " . DB_PREFIX . "profile_description WHERE profile_id = '" . (int)$profile_id . "'");
 
@@ -156,6 +163,8 @@ class ModelCatalogProfile extends Model {
 			$profile_description_data[$result['language_id']] = array(
 				'profile_id'   => $result['profile_id'],
 				'title'            => $result['title'],
+				//'author'            => $result['author'],
+				//'image'            => $result['image'],
 				'description'      => $result['description'],
 				'meta_title'       => $result['meta_title'],
 				'meta_description' => $result['meta_description'],

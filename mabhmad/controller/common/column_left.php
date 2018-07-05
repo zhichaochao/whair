@@ -59,13 +59,7 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 			
-			if ($this->user->hasPermission('access', 'catalog/gallery')) {
-			    $catalog[] = array(
-			        'name'      => $this->language->get('text_gallery'),
-                    'href'      => $this->url->link('catalog/gallery', 'token=' . $this->session->data['token'], true),
-                    'children'  => array()
-                );
-            }
+		
 
 			if ($this->user->hasPermission('access', 'catalog/recurring')) {
 				$catalog[] = array(
@@ -157,11 +151,31 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()
 				);
 			}
+		
+			// Attributes
+			$hairclub = array();
+		
+
 			if ($this->user->hasPermission('access', 'catalog/profile')) {
-				$catalog[] = array(
+				$hairclub[] = array(
 					'name'	   => $this->language->get('text_profile'),
 					'href'     => $this->url->link('catalog/profile', 'token=' . $this->session->data['token'], true),
 					'children' => array()
+				);
+			}
+			if ($this->user->hasPermission('access', 'catalog/gallery')) {
+				$hairclub[] = array(
+			        'name'      => $this->language->get('text_gallery'),
+                    'href'      => $this->url->link('catalog/gallery', 'token=' . $this->session->data['token'], true),
+                    'children'  => array()
+                );
+			}
+
+			if ($hairclub) {
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_hairclub'),
+					'href'     => '',
+					'children' => $hairclub
 				);
 			}
 		

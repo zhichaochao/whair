@@ -1,12 +1,12 @@
 <?php echo $header; ?>
 <!--内容-->
     <div class=" in_content peo_center">
-      <?php if ($success) { ?>
+<!--       <?php if ($success) { ?>
   <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div>
   <?php } ?>
   <?php if ($error_warning) { ?>
   <div class="alert alert-warning"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
-  <?php } ?>
+  <?php } ?> -->
 
       <div class="content clearfix">
         
@@ -83,3 +83,17 @@ function del_address(url){
   })
 </script>
 <?php echo $footer; ?>
+<?php if ($success) { ?>
+
+    <script type="text/javascript">
+alert('<?php echo $success; ?>');
+</script>
+
+  <?php } ?>
+
+  <?php if ($error_warning) { ?>
+
+    <script type="text/javascript">
+alert('<?php echo $error_warning; ?>');
+</script>
+  <?php } ?>
