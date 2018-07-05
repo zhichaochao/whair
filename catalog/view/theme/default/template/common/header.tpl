@@ -90,7 +90,7 @@
                 </div>  
                 
                 <!--whatApp-->
-                <p class="whatapp"><a href="whatsapp://send?phone=<?=$whatappphone;?>"><img src="catalog/view/theme/default/img/png/phone.png"/>WhatApp:<?=$whatappphone;?></a></p>
+                <p class="whatapp"><a  target="_blank"  href="whatsapp://send?phone=<?=$whatappphone;?>"><img src="catalog/view/theme/default/img/png/phone.png"/>WhatApp:<?=$whatappphone;?></a></p>
                 
                 <!--pc导航-->
                 <ul class="nav_ul clearfix">

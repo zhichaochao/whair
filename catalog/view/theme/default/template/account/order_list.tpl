@@ -6,14 +6,7 @@
         <div class="left clearfix">
           <h1>MY ACCOUNT</h1>
           <ol>
-            <?php echo $column_left; ?>
-            <?php if ($column_left && $account_left) { ?>
-            <?php $class = 'col-sm-6'; ?>
-            <?php } elseif ($column_left || $account_left) { ?>
-            <?php $class = 'col-sm-9'; ?>
-            <?php } else { ?>
-            <?php $class = 'col-sm-12'; ?>
-            <?php } ?>
+    
             <?php echo $account_left; ?>
           </ol>
         </div>
@@ -41,16 +34,24 @@
               <div class="bot clearfix">
                 <div class="left clearfix">
                   <ol class="bot_ol clearfix">
-
+  <?php if ($order['products']) { ?>
+          <?php foreach ($order['products'] as $product) { ?>
                     <li class="clearfix">
                       <div class="pic_img">
-                        <img src="<?php echo $order['order_image']; ?>" alt="" />
+                        <img src="<?php echo $product['image']; ?>" alt="" />
                       </div>
-                      <p><?php echo $order['order_product_name']; ?></p>
+                      <p><?php echo $product['name']; ?></p>
                       <div class="type">
-                        <p>Quantity:<?php echo $order['qty']; ?></p>                       
+                        <p>Quantity:<?php echo $product['quantity']; ?></p>    
+                    <?php if ($product['options']) { ?>
+                    <?php foreach ($product['options'] as $option) { ?>     
+                      <p><?php echo $option['name']; ?>:<?php echo $option['value']; ?></p>    
+
+                    <?php } }?>  
                       </div>
+                      <p class="price"><?php echo $product['price']; ?></p>
                     </li>
+                        <?php } }?>
                   </ol>
                 </div>
                 
@@ -78,8 +79,8 @@
                   <div class="text">
                     <span><em></em></span>
                     <p>Please choose the following ways  to contact us for your return</p>
-                    <a class="whatapp fl" href="###">What app</a>
-                    <a class="skype fr" href="###">Skype</a>
+                    <a class="whatapp fl" target="_blank" href="whatsapp://send?phone=<?=$whatappphone;?>">What app</a>
+                    <a class="skype fr" target="_blank"  href="skype:<?=$skype;?>?chat">Skype</a>
                     <div class="close"></div>
                   </div>
                 </div>
@@ -89,7 +90,7 @@
             <?php } else { ?>
           <div class="right m_account clearfix">
           
-          <img src="catalog/view\theme/default/img/png/order.png"/>
+          <img src="catalog/view/theme/default/img/png/order.png"/>
           <p> You have placed no orders</p>
           <a class="a_btn" href="<?php echo $goshopping?>">GO SHOPPING &nbsp;&nbsp;&nbsp;></a>
           

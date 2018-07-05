@@ -11,8 +11,6 @@ class ControllerAccountOrder extends Controller {
 
 		$this->document->setTitle('My Orders');
 
-		//引入该页面的css样式
-		$this->document->addStyle('catalog/view/theme/default/stylesheet/account/account_order_list.css');
 
 		$data['heading_title'] = 'My Orders';
 
@@ -59,31 +57,40 @@ class ControllerAccountOrder extends Controller {
 			$product_num = $this->model_account_order->getOrderProductNumber($result['order_id']);
 			
 			//根据order_id获取其中一件产品的图片和产品名字
-			$order_product_array = $this->model_account_order->getOrderProductImgAndNameByOrderId($result['order_id']);
+			$order_products = $this->model_account_order->getOrderProducts($result['order_id']);
+			foreach ($order_products as $key => $value) {
+				$order_products[$key]['image']=$this->model_tool_image->resize($value['image'],100,100);
+				$order_products[$key]['price']=$this->currency->format($value['price'], $result['currency_code'], $result['currency_value']);
+				$order_products[$key]['options']= $this->model_account_order->getOrderOptions($result['order_id'],$value['order_product_id']);
+			}
 			// print_r($order_product_array);exit;
 			$data['totals'] = array();
 			$totals = $this->model_account_order->getOrderTotals($result['order_id']);
-			//print_r($totals);exit;
+			$total=$this->currency->format(0, $result['currency_code'], $result['currency_value']);
+			foreach ($totals as $key => $value) {
+				if ($value['code']=='shipping') {
+					$total=$this->currency->format($value['value'], $result['currency_code'], $result['currency_value']);
+				}
+			}
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
-				'price'   => $order_product_array['price'],
+				'products'   => $order_products,
 				'order_no'   => $result['order_no'],
-				//'name'       => $result['firstname'] . ' ' . $result['lastname'],
-				'order_image' =>  $this->model_tool_image->resize($order_product_array['image'], 100, 100), //订单图片
-				'order_product_name' => $order_product_array['name'],      //订单的产品名字 utf8_substr(strip_tags($result['name']),0,40).'...'
+			
 				'status'     => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-				//'products' => ($product_total + $voucher_total),
+		
 				'qty'        => $product_num,
 				'payment_code' => $result['payment_code'],
 				'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
 				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
 				'cancel_href' => $this->url->link('account/order/cancel', 'order_id=' . $result['order_id'], true),
 				'repay'	      => $this->url->link('account/order/repay', 'order_id=' . $result['order_id'], true),
-				'text'  	=> $totals[1]['value']
+				'text'  	=> $total
 			);
-			//print_r($data['orders']);exit;
+			
 		}
+		// print_r(	$data['orders']);exit;
 		$pagination = new Pagination();
 		$pagination->total = $order_total;
 		$pagination->page = $page;
@@ -95,8 +102,9 @@ class ControllerAccountOrder extends Controller {
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($order_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($order_total - $limit)) ? $order_total : ((($page - 1) * $limit) + $limit), $order_total, ceil($order_total / $limit));
 
 		$data['continue'] = $this->url->link('account/account', '', true);
-
-		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['whatappphone'] =$this->config->get('config_telephone');
+		$data['skype'] =$this->config->get('config_skype');
+		// $data['column_left'] = $this->load->controller('common/column_left');
 		//$data['column_right'] = $this->load->controller('common/column_right');
 		$data['account_left'] = $this->load->controller('account/left');
 		$data['content_top'] = $this->load->controller('common/content_top');
