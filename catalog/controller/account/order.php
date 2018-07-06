@@ -478,92 +478,85 @@ class ControllerAccountOrder extends Controller {
 			$data['error_custom_field'] = array();
 		}
 
-		if (!isset($this->request->get['address_id'])) {
-			$data['action'] = $this->url->link('account/address/add', '', true);
-		} else {
-			$data['action'] = $this->url->link('account/address/edit', 'address_id=' . $this->request->get['address_id'], true);
-		}
 
-		if (isset($this->request->get['address_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$address_info = $this->model_account_address->getAddress($this->request->get['address_id']);
-		}
 
 		if (isset($this->request->post['firstname'])) {
 			$data['firstname'] = $this->request->post['firstname'];
-		} elseif (!empty($address_info)) {
-			$data['firstname'] = $address_info['firstname'];
+		} elseif (!empty($order_info)) {
+			$data['firstname'] = $order_info['shipping_firstname'];
 		} else {
 			$data['firstname'] = '';
 		}
 
 		if (isset($this->request->post['lastname'])) {
 			$data['lastname'] = $this->request->post['lastname'];
-		} elseif (!empty($address_info)) {
-			$data['lastname'] = $address_info['lastname'];
+		} elseif (!empty($order_info)) {
+			$data['lastname'] = $order_info['shipping_lastname'];
 		} else {
 			$data['lastname'] = '';
 		}
 
 		if (isset($this->request->post['company'])) {
 			$data['company'] = $this->request->post['company'];
-		} elseif (!empty($address_info)) {
-			$data['company'] = $address_info['company'];
+		} elseif (!empty($order_info)) {
+			$data['company'] = $order_info['shipping_company'];
 		} else {
 			$data['company'] = '';
 		}
 
 		if (isset($this->request->post['address_1'])) {
 			$data['address_1'] = $this->request->post['address_1'];
-		} elseif (!empty($address_info)) {
-			$data['address_1'] = $address_info['address_1'];
+		} elseif (!empty($order_info)) {
+			$data['address_1'] = $order_info['shipping_address_1'];
 		} else {
 			$data['address_1'] = '';
 		}
 
 		if (isset($this->request->post['address_2'])) {
 			$data['address_2'] = $this->request->post['address_2'];
-		} elseif (!empty($address_info)) {
-			$data['address_2'] = $address_info['address_2'];
+		} elseif (!empty($order_info)) {
+			$data['address_2'] = $order_info['shipping_address_2'];
 		} else {
 			$data['address_2'] = '';
 		}
 
 		if (isset($this->request->post['postcode'])) {
 			$data['postcode'] = $this->request->post['postcode'];
-		} elseif (!empty($address_info)) {
-			$data['postcode'] = $address_info['postcode'];
+		} elseif (!empty($order_info)) {
+			$data['postcode'] = $order_info['shipping_postcode'];
 		} else {
 			$data['postcode'] = '';
 		}
 
 		if (isset($this->request->post['city'])) {
 			$data['city'] = $this->request->post['city'];
-		} elseif (!empty($address_info)) {
-			$data['city'] = $address_info['city'];
+		} elseif (!empty($order_info)) {
+			$data['city'] = $order_info['shipping_city'];
 		} else {
 			$data['city'] = '';
 		}
 
 		if (isset($this->request->post['country_id'])) {
 			$data['country_id'] = (int)$this->request->post['country_id'];
-		}  elseif (!empty($address_info)) {
-			$data['country_id'] = $address_info['country_id'];
+		}  elseif (!empty($order_info)) {
+			$data['country_id'] = $order_info['shipping_country_id'];
 		} else {
-			$data['country_id'] = $this->config->get('config_country_id');
+			$data['country_id'] = $this->config->get('config_country_id');;
 		}
+		// print($address_info);exit();
 
 		if (isset($this->request->post['telephone'])) {
 			$data['telephone'] = $this->request->post['telephone'];
-		}  elseif (!empty($address_info)) {
-			$data['telephone'] = $address_info['telephone'];
+		}  elseif (!empty($order_info)) {
+			$data['telephone'] = $order_info['shipping_telephone'];
 		} else {
 			$data['telephone'] = '';
 		}
 		
 		if (isset($this->request->post['zone_id'])) {
 		    $data['zone_id'] = (int)$this->request->post['zone_id'];
-		}  elseif (!empty($address_info)) {
-		    $data['zone_id'] = $address_info['zone_id'];
+		}  elseif (!empty($order_info)) {
+		    $data['zone_id'] = $order_info['shipping_zone_id'];
 		} else {
 		    $data['zone_id'] = '';
 		}
@@ -577,13 +570,13 @@ class ControllerAccountOrder extends Controller {
 
 		$data['custom_fields'] = $this->model_account_custom_field->getCustomFields($this->config->get('config_customer_group_id'));
 // print_r($data['custom_fields']);exit;
-		if (isset($this->request->post['custom_field'])) {
-			$data['address_custom_field'] = $this->request->post['custom_field'];
-		} elseif (isset($address_info)) {
-			$data['address_custom_field'] = $address_info['custom_field'];
-		} else {
-			$data['address_custom_field'] = array();
-		}
+		// if (isset($this->request->post['custom_field'])) {
+		// 	$data['address_custom_field'] = $this->request->post['custom_field'];
+		// } elseif (isset($replace)) {
+		// 	$data['address_custom_field'] = $replace['custom_field'];
+		// } else {
+		// 	$data['address_custom_field'] = array();
+		// }
 
 		if (isset($this->request->post['default'])) {
 			$data['default'] = $this->request->post['default'];
@@ -613,28 +606,7 @@ class ControllerAccountOrder extends Controller {
 
 			$data['button_continue'] = $this->language->get('button_continue');
 
-			/*$data['breadcrumbs'] = array();
-
-			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('text_home'),
-				'href' => $this->url->link('common/home')
-			);
-
-			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('text_account'),
-				'href' => $this->url->link('account/account', '', true)
-			);
-
-			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('account/order', '', true)
-			);
-
-			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('text_order'),
-				'href' => $this->url->link('account/order/info', 'order_id=' . $order_id, true)
-			);*/
-
+		
 			$data['continue'] = $this->url->link('account/order', '', true);
 
 			$data['column_left'] = $this->load->controller('common/column_left');

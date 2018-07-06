@@ -4,6 +4,7 @@ class ControllerAccountDashboard extends Controller {
 	private $error = array();
 
 	public function index() {
+			$this->response->redirect($this->url->link('account/order', '', true));exit();
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/dashboard', '', true);
 			$this->response->redirect($this->url->link('account/login', '', true));

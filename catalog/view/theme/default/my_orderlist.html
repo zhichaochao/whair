@@ -282,6 +282,7 @@
 								
 								<div class="btn_div">
 									<!--<a class="return" href="###">Return</a>-->
+									<a class="red" href="###">Express</a>
 									<a class="" href="###">View</a>
 								</div>
 								
@@ -306,7 +307,7 @@
 										<p>Order Number: Hot152747427492</p>
 									</li>
 									<li>
-										<p>Order Status: Delivered </p>
+										<p>Order Status: Pending </p>
 									</li>
 								</ol>
 								<div class="close"></div>
@@ -348,6 +349,7 @@
 								<div class="btn_div">
 									<a href="###">Cancel</a>
 									<a class="red" href="###">Pay</a>
+									<a href="###">View</a>
 								</div>
 							</div>
 						</li>
@@ -361,7 +363,7 @@
 										<p>Order Number: Hot152747427492</p>
 									</li>
 									<li>
-										<p>Order Status: Pending</p>
+										<p>Order Status: Canceled</p>
 									</li>
 								</ol>
 								<div class="close"></div>
@@ -401,7 +403,7 @@
 								</div>
 								
 								<div class="btn_div">
-									<a class="red" href="###">Express</a>
+									<a href="###">View</a>
 								</div>
 							</div>
 						</li>
@@ -412,6 +414,24 @@
 			</div>
 			
 			
+		</div>
+		
+		<!--弹窗-->
+		<div class="del_modal">
+			<div class="text clearfix">
+				<h1>Deleted orders</h1>
+				<p>
+					After the order is deleted, the order can be retrieved from the order recycle bin.<br />
+					Will it continue?
+				</p>
+				<p>
+					Deleted orders cannot be applied for after-sales and comments<br />
+					Will it continue?
+				</p>
+				<div class="close"></div>
+				<button class="qd_btn">CONTINUE TO DELETE</button>
+				<button class="qx_btn">CANCEL</button>
+			</div>
 		</div>
 		
 		<!--返回顶部-->
@@ -481,7 +501,7 @@
 			<div class="top">
 				<ul class="ul_ydfot clearfix">
 					<li>
-            			<h4>INFORMATION <div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+            			<h4>INFORMATION <div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
             			<div class="slide_div">
 	            			<ol>
 	            				<li><a href="###">About Us</a></li>
@@ -492,7 +512,7 @@
 	            		</div>
                     </li>
                  	<li>
-            			<h4>BUYER INSTRUCTION<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+            			<h4>BUYER INSTRUCTION<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
             			<div class="slide_div">
 	            			<ol>
 	            				<li><a href="###">How To Order</a></li>
@@ -503,7 +523,7 @@
 	            		</div>
                     </li>
                   	<li>
-          	 			<h4>MY ACCOUNT<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+          	 			<h4>MY ACCOUNT<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
           	 			<div class="slide_div">
 	          	 			<ol>
 	            				<li><a href="###">My Account</a></li>
@@ -514,7 +534,7 @@
             			</div>
                   	</li>
                   	<li>
-                  		<h4>COMPANY INFO<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+                  		<h4>COMPANY INFO<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
                   		<div class="slide_div">
 	                  		<ol>
 	            				<li><a href="###"><span>Call Us:</span> U.S No: 6262487420</li>
@@ -564,11 +584,16 @@
 					</a>
 				</li>
 				<li>
-					<a href="###">
+					<a class="contact" href="javascript:0;">
 						<img class="active" src="img/png/contact-1.png" alt="" />
 						<img src="img/png/contact-2	.png" alt="" />
 						<p>CONTACT</p>
 					</a>
+					<div class="a_text">
+						<a href="###"><img src="img/jpg/fot_con1.jpg"/></a>
+						<a href="###"><img src="img/jpg/fot_con2.jpg"/></a>
+						<a href="###"><img src="img/jpg/fot_con3.jpg"/></a>
+					</div>
 				</li>
 				<li>
 					<a href="###">
@@ -591,17 +616,27 @@
 </html>
 <script>
 	$(function(){
+		var this_ ;
 		$(".peo_center .m_or_det .top .close").click(function(){
-			$(this).parents("li").remove();
+//			$(this).parents("li").remove();
+			this_ = $(this);
+			$(".del_modal").fadeIn();
+			$("body").css("overflow","hidden");
+			
 		})
 		
-//		$(".return").click(function(){
-//			$(".return_modal").fadeIn();
-//			$(this).css("background","#ddd");
-//		})
-//		$(".return_modal .close").click(function(){
-//			$(".return_modal").fadeOut()
-//			$(this).parents("li").find("a.return").css("background","#fff");
-//		})
+		
+//		关闭del_modal
+		$(".del_modal .close,.del_modal .qx_btn").click(function(){
+			$(".del_modal").fadeOut();
+			$("body").css("overflow","");
+		})
+		
+		$(".del_modal .qd_btn").click(function(){
+			
+			this_.parents("li").remove(); 
+			$(".del_modal").fadeOut();
+			$("body").css("overflow","");
+		})
 	})
 </script>

@@ -672,7 +672,7 @@
 			<div class="top">
 				<ul class="ul_ydfot clearfix">
 					<li>
-            			<h4>INFORMATION <div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+            			<h4>INFORMATION <div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
             			<div class="slide_div">
 	            			<ol>
 	            				<li><a href="###">About Us</a></li>
@@ -683,7 +683,7 @@
 	            		</div>
                     </li>
                  	<li>
-            			<h4>BUYER INSTRUCTION<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+            			<h4>BUYER INSTRUCTION<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
             			<div class="slide_div">
 	            			<ol>
 	            				<li><a href="###">How To Order</a></li>
@@ -694,7 +694,7 @@
 	            		</div>
                     </li>
                   	<li>
-          	 			<h4>MY ACCOUNT<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+          	 			<h4>MY ACCOUNT<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
           	 			<div class="slide_div">
 	          	 			<ol>
 	            				<li><a href="###">My Account</a></li>
@@ -705,7 +705,7 @@
             			</div>
                   	</li>
                   	<li>
-                  		<h4>COMPANY INFO<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+                  		<h4>COMPANY INFO<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
                   		<div class="slide_div">
 	                  		<ol>
 	            				<li><a href="###"><span>Call Us:</span> U.S No: 6262487420</li>
@@ -755,11 +755,16 @@
 					</a>
 				</li>
 				<li>
-					<a href="###">
+					<a class="contact" href="javascript:0;">
 						<img class="active" src="img/png/contact-1.png" alt="" />
 						<img src="img/png/contact-2	.png" alt="" />
 						<p>CONTACT</p>
 					</a>
+					<div class="a_text">
+						<a href="###"><img src="img/jpg/fot_con1.jpg"/></a>
+						<a href="###"><img src="img/jpg/fot_con2.jpg"/></a>
+						<a href="###"><img src="img/jpg/fot_con3.jpg"/></a>
+					</div>
 				</li>
 				<li>
 					<a href="###">
@@ -898,27 +903,30 @@ var swiper3 = new Swiper('#swiper3', {
 			}
 		})
 		
-		$(".add_shop").click(function(){
-			$(".nav_cart").slideDown();
-			var bt_a = $(".top_text .bt_a").text();
-			var price = $(".price span").text();
+		var win = $(window).innerWidth();
+		if(win>=751){
+			$(".add_shop").click(function(){
+				$(".nav_cart").slideDown();
+				var bt_a = $(".top_text .bt_a").text();
+				var price = $(".price span").text();
 			
-			var li_text = '<li class="clearfix">'+
-								'<a href="###">'+
-									'<div class="pic_img">'+
-										'<img src="">'+
-									'</div>'+
-									'<div class="text">'+
-										'<h2>'+bt_a+'</h2>'+
-		 								'<p>Body Wavy</p>'+
-		 								'<span>'+price+'</span>'+
-		 								'<p><span>x1</span></p>'+
-									'</div>'+
-								'</a>'+
-							'</li>'
+				var li_text = '<li class="clearfix">'+
+									'<a href="###">'+
+										'<div class="pic_img">'+
+											'<img src="">'+
+										'</div>'+
+										'<div class="text">'+
+											'<h2>'+bt_a+'</h2>'+
+			 								'<p>Body Wavy</p>'+
+			 								'<span>'+price+'</span>'+
+			 								'<p><span>x1</span></p>'+
+										'</div>'+
+									'</a>'+
+								'</li>'
 							
-			$(".cart_ul").append(li_text);
-		})
+				$(".cart_ul").append(li_text);
+			})
+		}
 		
 	})
 </script>

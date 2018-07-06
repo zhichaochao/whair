@@ -225,6 +225,9 @@
 					    <div class="swiper-slide ban_img">
 					    	<img class="ban3 changeimage" data-image='img/jpg/banner3.jpg' data-mimage='img/jpg/yd_banner3.jpg'  />
 					    </div>
+					    <div class="swiper-slide ban_img">
+					    	<img class="ban3 changeimage" data-image='img/jpg/banner4.jpg' data-mimage='img/jpg/yd_banner4.jpg'  />
+					    </div>
 				    </div>
 				    <div class="swiper-pagination"></div>
 				</div>
@@ -674,7 +677,12 @@
 			<div class="top">
 				<ul class="ul_ydfot clearfix">
 					<li>
-            			<h4>INFORMATION <div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+            			<h4>
+            				INFORMATION 
+            				<div class="pic_img">
+            					<img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  />
+            				</div>
+            			</h4>
             			<div class="slide_div">
 	            			<ol>
 	            				<li><a href="###">About Us</a></li>
@@ -685,7 +693,11 @@
 	            		</div>
                     </li>
                  	<li>
-            			<h4>BUYER INSTRUCTION<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+            			<h4>BUYER INSTRUCTION
+            				<div class="pic_img">
+            					<img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  />
+            				</div>
+            			</h4>
             			<div class="slide_div">
 	            			<ol>
 	            				<li><a href="###">How To Order</a></li>
@@ -696,7 +708,11 @@
 	            		</div>
                     </li>
                   	<li>
-          	 			<h4>MY ACCOUNT<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+          	 			<h4>MY ACCOUNT
+          	 				<div class="pic_img">
+            					<img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  />
+            				</div>
+          	 			</h4>
           	 			<div class="slide_div">
 	          	 			<ol>
 	            				<li><a href="###">My Account</a></li>
@@ -707,7 +723,11 @@
             			</div>
                   	</li>
                   	<li>
-                  		<h4>COMPANY INFO<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+                  		<h4>COMPANY INFO
+                  			<div class="pic_img">
+            					<img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  />
+            				</div>
+                  		</h4>
                   		<div class="slide_div">
 	                  		<ol>
 	            				<li><a href="###"><span>Call Us:</span> U.S No: 6262487420</li>
@@ -757,11 +777,16 @@
 					</a>
 				</li>
 				<li>
-					<a href="###">
+					<a class="contact" href="javascript:0;">
 						<img class="active" src="img/png/contact-1.png" alt="" />
 						<img src="img/png/contact-2	.png" alt="" />
 						<p>CONTACT</p>
 					</a>
+					<div class="a_text">
+						<a href="###"><img src="img/jpg/fot_con1.jpg"/></a>
+						<a href="###"><img src="img/jpg/fot_con2.jpg"/></a>
+						<a href="###"><img src="img/jpg/fot_con3.jpg"/></a>
+					</div>
 				</li>
 				<li>
 					<a href="###">
@@ -782,9 +807,8 @@
 		
 		<!--登录注册弹窗-->
 		<div class="modal img_modal">
-			<div class="text" style="background:  url(img/jpg/pc_modal.jpg) no-repeat ;">
+			<div class="text" style="background:url(img/pc_modal.gif) no-repeat;background-size: 100%;">
 				<div class="close"></div>
-				<!--<img class="login_img" src="img/jpg/pc_modal.jpg"/>-->
 				<a class="login_a" href="###"></a>
 			</div>
 		</div>
@@ -843,11 +867,6 @@
 	        }else{
 			  $(".video_div .video").attr("poster","img/jpg/video_bg.jpg");
 	        }
-			if(win<=992){
-				$(".img_modal .text").css("background"," url(img/jpg/yd_modal.jpg) no-repeat ").css("background-size","4rem 4.5rem");
-			}else{
-					$(".img_modal .text").css("background"," url(img/jpg/pc_modal.jpg) no-repeat ");
-			}
 		$(window).resize(function() {
 			var win = $(window).width();
 			if(win<=750){
@@ -855,11 +874,6 @@
 	        }else{
 			  $(".video_div .video").attr("poster","img/jpg/video_bg.jpg");
 	        }
-	        if(win<=992){
-				$(".img_modal .text").css("background"," url(img/jpg/yd_modal.jpg) no-repeat ").css("background-size","4rem 4.5rem");
-			}else{
-					$(".img_modal .text").css("background"," url(img/jpg/pc_modal.jpg) no-repeat ");
-			}
 		})
 		
 	})

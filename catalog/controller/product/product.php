@@ -460,6 +460,12 @@ class ControllerProductProduct extends Controller {
                 }
             }
 
+
+         $this->load->model('catalog/information');
+
+            $faq = $this->model_catalog_information->getInformation(13);
+            $data['faq']= html_entity_decode($faq['description'], ENT_QUOTES, 'UTF-8');
+
             //首页推荐商品
             $recommend_products = $this->model_catalog_product->getRecommendProducts(4);
              //print_r($recommend_products);exit();
@@ -483,9 +489,6 @@ class ControllerProductProduct extends Controller {
             }
             
             $data['recommend_products'] = $recommend_products;
-
-            $data['href']=$this->url->link('product/product', 'product_id=' );
-  
 
 
             $data['recurrings'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);

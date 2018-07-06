@@ -55,14 +55,17 @@ $(function(){
 	$(".ul_ydfot>li>h4").click(function(){
 		if($(this).hasClass("off")){
 			$(this).parent().find(".slide_div").stop().slideUp();
-			$(this).find(".pic_img img").attr("src","img/png/jiahao_white.png");
+			var src = $(this).find(".pic_img img").attr("data-img");
+			$(this).find(".pic_img img").attr("src",src);
 			$(this).removeClass("off");
 		}else{
+			var src = $(this).find(".pic_img img").attr("data-img");
+			var srcs = $(this).find(".pic_img img").attr("data-imgs");
 			$(".slide_div").stop().slideUp();
 			$(".ul_ydfot>li>h4").removeClass("off");
-			$(".ul_ydfot>li>h4 .pic_img img").attr("src","img/png/jiahao_white.png");
+			$(".ul_ydfot>li>h4 .pic_img img").attr("src",src);
 			$(this).parent().find(".slide_div").stop().slideDown();
-			$(this).find(".pic_img img").attr("src","img/png/jianhao_white.png");
+			$(this).find(".pic_img img").attr("src",srcs);
 			$(this).addClass("off");
 		}
 	})
@@ -188,4 +191,26 @@ $(function(){
         }
 	})
 	
+	
+	//contact
+	var off=0;
+	$(".contact").click(function(){
+		if(off==0){
+			$(this).siblings(".a_text").slideDown();
+			off=1;
+		}else{
+			$(".ol_ydfot .a_text").stop().slideUp();
+				off=0;				
+		}
+		
+	})
+	$("body").click(function(e){
+		if(off==1){
+			var close = $('.ol_ydfot .a_text,.ol_ydfot .contact'); 
+		   	if(!close.is(e.target) && close.has(e.target).length === 0){
+				$(".ol_ydfot .a_text").stop().slideUp();
+				off=0;
+			}
+		}
+	})
 })

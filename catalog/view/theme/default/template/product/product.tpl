@@ -1,5 +1,6 @@
 <?php echo $header; ?>
 
+
 <div class="content product_det in_content">
 
 			<div class="pro_det_content clearfix">
@@ -40,7 +41,7 @@
 											<img id="jwx_productInfoImg" src="<?php echo $image['thumb']; ?>" title='Fuller Peruvian Virgin Hair Kinky Straight 12inch to 26inch' alt='Fuller Peruvian Virgin Hair Kinky Straight 12inch to 26inch' style="display:none;" />
 									 	</div>
 										<!-- 产品后台上传视频 -->
-										   	<?php foreach ($images as $k => $image) {  if($k > 0) {?>
+										 <?php foreach ($images as $k => $image) {  if($k > 0) {?>
 							    		<div class="swiper-slide ban_img">
 													<img  src="<?php echo $image['image']; ?>" title='<?php echo $heading_title; ?>'  />
 										</div>
@@ -89,10 +90,10 @@
 									</div>
 								</label>
 							<div class="label_div clearfix" id="form-product">
-								   	<?php if ($options) { ?>
-										<?php foreach ($options as $option) { ?>	
-										<?php if ($option['product_option_value']) { ?>
-									<?php if ($option['type'] == 'select') { ?> 
+								<?php if ($options) { ?>
+								<?php foreach ($options as $option) { ?>	
+								<?php if ($option['product_option_value']) { ?>
+								<?php if ($option['type'] == 'select') { ?> 
 								<label class="len_label" for="">
 									<span><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
 									<div class="select_div" id="input-option<?php echo $option['product_option_id']; ?>">
@@ -139,11 +140,11 @@
 							<div class="share clearfix">
 								<span>Share: </span>
 								<ul class="share_ul">
-									<li><a id="share_button_facebook" >facebook</a></li>
-									<li><a id="share_button_twitter">Twitter</a></li>
-									<li><a id="share_button_google"></a>Google+</li>
-									<li><a id="share_button_linked">LinkedIN</a></li>
-									<li><a id="share_button_pinterest">Pinterest</a></li>
+									<li><a id="share_button_facebook" ></a></li>
+									<li><a id="share_button_twitter"></a></li>
+									<li><a id="share_button_linked"></a></li>
+									<li><a id="share_button_google"></a></li>
+									<li><a id="share_button_pinterest"></a></li>
 								</ul>
 							</div>
 						</div>
@@ -245,85 +246,7 @@
 							<h1 class="xxk_h1">FAQ</h1>
 							<div class="xxk_text">
 								<div class="faq_dl">
-									<dl>
-										<dt><span>1</span> How Much Hair Do I Need?</dt>
-										<dd>
-											A: For average head size, here is my suggestion: <br />
-											12"-14": 2 bundles <br />
-											16"-22": 3 bundles <br />
-											24"-28": 3 bundles or more
-										</dd>
-									</dl>
-									<dl>
-										<dt><span>2</span> Can the hair be straightened, curled ?</dt>
-										<dd>
-											A: Yes you could use hair straightener or hair curler to style the virgin hair . However,
-											 don't do it too frequently, or the heat will make the hair easily 
-											get dry and tangled.
-										</dd>
-									</dl>
-									<dl>
-										<dt><span>3</span> Can I dye/color the hair?</dt>
-										<dd>
-											A:  Yes. The hair can be colored. As a general rule it is easier to darken the
-											 hair than to lighten the hair. We recommend to dye darker, since it is 
-											difficult for the original colour to fade. Brazilian virgin hair extension in competitive price.<br />
-											Improper dying will ruin the hair. We highly recommend having your hairdresser dye the 
-											Brazilian virgin hair . Colouring by yourself will take a risk 
-											of not coming out the shade you want. If you can't get to a salon, please always use a good
-											 quality products and test a small sample first.
-										</dd>
-									</dl>
-									<dl>
-										<dt><span>4</span> How long does it last?</dt>
-										<dd>
-											A:  How long the hair lasts depends on how you maintain it. Treat it like your own hair and take
-											 very good care of it, then normally it could last 3-5 
-											yeas for our best one donor Brazilian hair and 1-2 years for our silk Peruvian hair.
-
-										</dd>
-									</dl>
-									<dl>
-										<dt><span>5</span> Why are my hair extensions getting tangled?</dt>
-										<dd>
-											A:  It could be caused by dry hair. Please make sure to wash & condition your hair at least
-											 once a week, twice a week is better. brazilian virgin 
-											hair Comb the hair from time to time. You could go to your stylist for further suggestions.
-
-										</dd>
-									</dl>
-									<dl>
-										<dt><span>6</span> How do I take care of my hair?</dt>
-										<dd>
-											A:  Treat this hair just as if it was your own hair. <br />
-										   <span>●</span>Prepare the warm water,not too hot and not too cold.<br />
-										   <span>●</span>Put some shampoo and hair conditioner inside the water.<br />
-										   <span>●</span>Put hair inside the water and wash slowly.<br />
-										   <span>●</span>Keep hair insider the warm water 10min around.<br />
-										   <span>●</span>Use clean warm water wash it again.<br />
-										   <span>●</span>Unstrap the line of the hair slowly.<br />
-										   <span>●</span>DO NOT put the hair in the sun or use hair dryer,let it dry naturally.
-										</dd>
-									</dl>
-									<dl>
-										<dt><span>7</span> What type of hair care products should I use?</dt>
-										<dd>
-											A:  Treat this hair extension just as if it was your own hair. <br />
-										   <span>●</span>Use good quality shampoo and hair conditioner to care the hair.
-										    It's important to keep the hair soft and shiny.<br />
-										   <span>●</span>You could use gel or spray styling products to keep the hair style.<br />
-										   <span>●</span>Olive oil will be a good choice to keep the hair healthy.<br />
-										</dd>
-									</dl>
-									<dl>
-										<dt><span>8</span> Why are my hair extensions getting tangled?</dt>
-										<dd>
-											A:  Human hair has natural protein . It is easy to tell by burning: human
-											 hair will be ash,which will go away after pinching.<br />
-											When burning,the human hair will show white smoke. While synthetic hair will be a sticky ball after burning and will show black smoke.
-											Moreover, human hair may have very few gray hair and split ends. It is normal and not a quality problem.
-										</dd>
-									</dl>
+									<?=$faq;?>
 								</div>
 							</div>
 						</li>
@@ -340,7 +263,7 @@
 					 <?php foreach ($recommend_products as $product) { ?>
 							
 						<li>
-							<a href="<?php echo $href.$product['product_id']; ?>"> 
+							<a href="<?php echo $product['product_link']; ?>"> 
 								<div class="pic_img" >
 									<img src="<?php echo $product['image']; ?>"  />
 								</div>
@@ -368,21 +291,7 @@
 		</div>
 <!-- 新 -->
 <script>
-// function wishlist(product_id) {
-//   //alert(product_id);die;
-//    $.ajax({
-//     url:'<?php echo $wishlist ;?>',
-//     type:'post',
-//     data:{'product_id':product_id},
-//     dataType: 'json',
-//     success:function(data){
-//       if (data.success) {
-//         $('#wishlist_count').html(data.total);
-//       }
-//                // location.reload(); 
-//     }
-//    })
-//  }
+
  function wishlist(product_id,e) {
   if ($(e).hasClass('off')) {
        $.ajax({
@@ -614,6 +523,40 @@ function productInfoImg(elm) {
             }
         });
     }
+</script>
+
+<script type="text/javascript">
+	
+	    function popupwindow(url, title, w, h) {
+            wLeft = window.screenLeft ? window.screenLeft : window.screenX;
+            wTop = window.screenTop ? window.screenTop : window.screenY;
+ 
+            var left = wLeft + (window.innerWidth / 2) - (w / 2);
+            var top = wTop + (window.innerHeight / 2) - (h / 2);
+            return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+        }
+   $(function(){
+       	  $('#share_button_facebook').click(function(){
+                var shareUrl = "http://www.facebook.com/sharer/sharer.php?u="+window.location.href;
+                popupwindow(shareUrl, 'Facebook', 600, 400);
+            })
+             $('#share_button_twitter').click(function(){
+                var shareUrl = "http://twitter.com/share?url="+window.location.href;
+                popupwindow(shareUrl, 'Twitter', 600, 400);
+            })
+            $('#share_button_linked').click(function(){
+                var shareUrl = "http://www.linkedin.com/shareArticle?url="+window.location.href;
+                popupwindow(shareUrl, 'LinkedIN', 600, 400);
+            })
+             $('#share_button_google').click( function(){
+                var shareUrl = "https://plus.google.com/share?url="+window.location.href;
+                popupwindow(shareUrl, 'Google', 600, 400);
+            })
+            $('#share_button_pinterest').click( function(){
+                var shareUrl = "https://www.pinterest.com/pin/create/button/?url="+window.location.href;
+                popupwindow(shareUrl, 'Pinterest', 600, 400);
+            })
+       })
 </script>
 
 <?php echo $footer; ?>

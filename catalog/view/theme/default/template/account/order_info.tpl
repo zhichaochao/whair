@@ -131,7 +131,7 @@
     
     <div class="edit_add_md">
       <div class="text">
-        <form action="" class="clearfix">
+        <form action="" class="clearfix" id="collapse-shipping-address">
           <div class="form_div clearfix">
             <div class="close"></div>
             <h1>Edit the address</h1>
@@ -141,7 +141,7 @@
                 <span>Frist Name *</span>
                 <input type="text" name="firstname" value="<?php echo $replace['firstname']; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" class="form-control" />
               <?php if ($error_firstname) { ?>
-              <p class="text-danger" style="color: #fd4f57;font-size: 14px;"><?php echo $error_firstname; ?></p>
+              <p class="ts_p" style="color: #fd4f57;font-size: 14px;"><?php echo $error_firstname; ?></p>
               <?php } ?>
                <!--  <p class="ts_ps">This field is required</p> -->
               </label>
@@ -149,7 +149,7 @@
                 <span>Last Name *</span>
                 <input type="text" name="lastname" value="<?php echo $replace['lastname']; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" class="form-control" />
               <?php if ($error_lastname) { ?>
-              <p class="text-danger" style="color: #fd4f57;font-size: 14px;"><?php echo $error_lastname; ?></p>
+              <p class="ts_p" style="color: #fd4f57;font-size: 14px;"><?php echo $error_lastname; ?></p>
               <?php } ?>
                 <!-- <p class="ts_ps">This field is required</p> -->
               </label>
@@ -157,13 +157,13 @@
                 <span>Address*</span>
                 <input type="text" name="address_1" value="<?php echo $replace['address_1']; ?>" placeholder="<?php echo $entry_address_1; ?>" id="input-address-1" class="form-control" />
               <?php if ($error_address_1) { ?>
-              <p class="text-danger" style="color: #fd4f57;font-size: 14px;"><?php echo $error_address_1; ?></p>
+              <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_address_1; ?></p>
               <?php } ?>
                 <!-- <p class="ts_ps">This field is required</p> -->
                 <input type="text" name="address_2" value="<?php echo $replace['address_2']; ?>" placeholder="<?php echo $entry_address_2; ?>" id="input-address-2" class="form-control" />
               </label>
               <label for="">
-                <span>Country *</span>
+                <span>Country *<?=$country_id;?></span>
                 <select name="country_id" id="input-country" class="form-control">
                 <option value=""><?php echo $replace['country']; ?></option>
                 <?php foreach ($countries as $country) { ?>
@@ -175,7 +175,7 @@
                 <?php } ?>
               </select>
               <?php if ($error_country) { ?>
-              <p class="text-danger" style="color: #fd4f57;font-size: 14px;"><?php echo $error_country; ?></p>
+              <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_country; ?></p>
               <?php } ?>
                 <!-- <p class="ts_ps">This field is required</p> -->
               </label>
@@ -183,7 +183,7 @@
                 <span>Post Code *</span>
                 <input type="text" name="postcode" value="<?php echo $replace['postcode']; ?>" placeholder="<?php echo $entry_postcode; ?>" id="input-postcode" class="form-control" />
               <?php if ($error_postcode) { ?>
-             <p class="text-danger" style="color: #fd4f57;font-size: 14px;"><?php echo $error_postcode; ?></p>
+             <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_postcode; ?></p>
               <?php } ?>
                <!--  <p class="ts_ps">This field is required</p> -->
               </label>
@@ -191,7 +191,7 @@
                 <span>City *</span>
                <input type="text" name="city" value="<?php echo $replace['city']; ?>" placeholder="<?php echo $entry_city; ?>" id="input-city" class="form-control" />
               <?php if ($error_city) { ?>
-              <p class="text-danger" style="color: #fd4f57;font-size: 14px;"><?php echo $error_city; ?></p>
+              <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_city; ?></p>
               <?php } ?>
                 <!-- <p class="ts_ps">This field is required</p> -->
               </label>
@@ -200,7 +200,7 @@
                 <select name="zone_id" id="input-zone" class="form-control" >
               </select>
               <?php if ($error_zone) { ?>
-              <p class="text-danger" style="color: #fd4f57;font-size: 14px;"><?php echo $error_zone; ?></p>
+              <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_zone; ?></p>
               <?php } ?>
                 <!-- <p class="ts_ps">This field is required</p> -->
               </label>
@@ -208,7 +208,7 @@
                 <span>Phone *</span>
                 <input type="text" name="telephone" value="<?php echo $replace['shipping_telephone']; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" class="form-control" />
               <?php if (!empty($error_telephone)) { ?>
-             <p class="text-danger" style="color: #fd4f57;font-size: 14px;"><?php echo $error_telephone; ?></p>
+             <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_telephone; ?></p>
               <?php } ?>
                 <!-- <p class="ts_ps">This field is required</p> -->
               </label>
@@ -283,196 +283,6 @@
       </div>
     </div>
 
-<!--以下可以删 -->
-<div class="container">
-  
-  <?php if ($success) { ?>
-  <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?>
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-  <?php } ?>
-  <?php if ($error_warning) { ?>
-  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-  <?php } ?>
-  <div class="row">
-    
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h2><?php echo $heading_title; ?></h2>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <td class="text-left" colspan="2"><?php echo $text_order_detail; ?></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left" style="width: 50%;">
-              <!--<?php if ($invoice_no) { ?>
-              <b><?php //echo $text_invoice_no; ?></b> <?php //echo $invoice_no; ?><br />
-              <?php } ?>
-              <b><?php //echo $text_order_id; ?></b> #<?php //echo $order_id; ?><br />-->
-              <?php if ($order_no) { ?>
-              <b>Order No:</b> <?php echo $order_no; ?><br />
-              <?php } ?>
-              <?php if ($order_status) { ?>
-              <b>Order Status:</b> <?php echo $order_status; ?><br />
-              <?php } ?>
-              <b><?php echo $text_date_added; ?></b> <?php echo $date_added; ?>
-            </td>
-            <td class="text-left" style="width: 50%;">
-              <?php if ($payment_method) { ?>
-              <b><?php echo $text_payment_method; ?></b> <?php echo $payment_method; ?><br />
-              <?php } ?>
-              <?php if ($shipping_method) { ?>
-              <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?><br />
-              <?php } ?>
-              <?php if ($shippingNumber) { ?>
-              <b>Shipping Number:</b> <?php echo $shippingNumber; ?>
-              <?php } ?>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <td class="text-left" style="width: 50%; vertical-align: top;"><?php echo $text_payment_address; ?></td>
-            <?php if ($shipping_address) { ?>
-            <td class="text-left" style="width: 50%; vertical-align: top;"><?php echo $text_shipping_address; ?></td>
-            <?php } ?>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left"><?php echo $payment_address; ?></td>
-            <?php if ($shipping_address) { ?>
-            <td class="text-left"><?php echo $shipping_address; ?></td>
-            <?php } ?>
-          </tr>
-        </tbody>
-      </table>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <td class="text-left"><?php echo $column_name; ?></td>
-              <td class="text-left"><?php echo $column_model; ?></td>
-              <td class="text-right"><?php echo $column_quantity; ?></td>
-              <td class="text-right"><?php echo $column_price; ?></td>
-              <td class="text-right"><?php echo $column_total; ?></td>
-              <?php if ($products) { ?>
-              <td style="width: 20px;"></td>
-              <?php } ?>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($products as $product) { ?>
-            <tr>
-              <td class="text-left"><?php echo $product['name']; ?>
-                <?php foreach ($product['option'] as $option) { ?>
-                <br />
-                &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
-                <?php } ?>
-                </td>
-              <td class="text-left"><?php echo $product['model']; ?></td>
-              <td class="text-right"><?php echo $product['quantity']; ?></td>
-              <td class="text-right">
-                <?php if ($product['price'] == $product['original_price'] ) { ?>
-                  <?php echo $product['price']; ?>
-                <?php } else { ?>
-                  <?php if(empty($product['original_price'])) { ?>
-                    <?php echo $product['price']; ?><br>
-                  <?php } else { ?>
-                    <?php echo $product['price']; ?><br>
-                    <del><?php echo $product['original_price']; ?></del>
-                  <?php } ?>
-                <?php } ?>
-              </td>
-              <td class="text-right"><?php echo $product['total']; ?></td>
-              <td class="text-right" style="white-space: nowrap;"><?php if ($product['reorder']) { ?>
-                <a href="<?php echo $product['reorder']; ?>" data-toggle="tooltip" title="<?php echo $button_reorder; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
-                <?php } ?>
-                <a href="<?php echo $product['return']; ?>" data-toggle="tooltip" title="<?php echo $button_return; ?>" class="btn btn-danger"><i class="fa fa-reply"></i></a></td>
-            </tr>
-            <?php } ?>
-            <?php foreach ($vouchers as $voucher) { ?>
-            <tr>
-              <td class="text-left"><?php echo $voucher['description']; ?></td>
-              <td class="text-left"></td>
-              <td class="text-right">1</td>
-              <td class="text-right"><?php echo $voucher['amount']; ?></td>
-              <td class="text-right"><?php echo $voucher['amount']; ?></td>
-              <?php if ($products) { ?>
-              <td></td>
-              <?php } ?>
-            </tr>
-            <?php } ?>
-          </tbody>
-          <tfoot>
-            <?php foreach ($totals as $total) { ?>
-            <!-- <?php echo print_r($total)?> -->
-            <tr>
-              <td colspan="3"></td>
-              <td class="text-right"><b><?php echo $total['title']; ?></b></td>
-              <td class="text-right"><?php echo $total['text']; ?></td>
-              <?php if ($products) { ?>
-              <td></td>
-              <?php } ?>
-            </tr>
-            <?php } ?>
-          </tfoot>
-        </table>
-      </div>
-      <?php if ($comment) { ?>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <td class="text-left"><?php echo $text_comment; ?></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left"><?php echo $comment; ?></td>
-          </tr>
-        </tbody>
-      </table>
-      <?php } ?>
-      <?php if ($histories) { ?>
-      <h3><?php echo $text_history; ?></h3>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <td class="text-left"><?php echo $column_date_added; ?></td>
-            <td class="text-left"><?php echo $column_status; ?></td>
-            <td class="text-left"><?php echo $column_comment; ?></td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php if ($histories) { ?>
-          <?php foreach ($histories as $history) { ?>
-          <tr>
-            <td class="text-left"><?php echo $history['date_added']; ?></td>
-            <td class="text-left"><?php echo $history['status']; ?></td>
-            <td class="text-left"><?php echo $history['comment']; ?></td>
-          </tr>
-          <?php } ?>
-          <?php } else { ?>
-          <tr>
-            <td colspan="3" class="text-center"><?php echo $text_no_results; ?></td>
-          </tr>
-          <?php } ?>
-        </tbody>
-      </table>
-      <?php } ?>
-      <div class="buttons clearfix">
-        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
-      </div>
-      <?php echo $content_bottom; ?>
-     </div>
-   </div>
-</div>
 <?php echo $footer; ?>
 <script>
   $(function(){
@@ -539,4 +349,44 @@ $('select[name=\'country_id\']').on('change', function() {
 });
 
 $('select[name=\'country_id\']').trigger('change');
+
+
+// Save Shipping Address
+function saveAddress(e) {
+    var address_id = $(e).attr('aid');
+    $.ajax({
+        url: 'index.php?route=checkout/shipping_address/save&address_id='+address_id,
+        type: 'post',
+        data: $('#collapse-shipping-address input[type=\'hidden\'], #collapse-shipping-address input[type=\'text\'], #collapse-shipping-address input[type=\'date\'], #collapse-shipping-address input[type=\'datetime-local\'], #collapse-shipping-address input[type=\'time\'], #collapse-shipping-address input[type=\'password\'], #collapse-shipping-address input[type=\'checkbox\']:checked, #collapse-shipping-address input[type=\'radio\']:checked, #collapse-shipping-address textarea, #collapse-shipping-address select'),
+        dataType: 'json',
+      
+        success: function(json) {
+        
+          console.log(json);
+            if (json['redirect']) {
+                location = json['redirect'];
+            } else if (json['error']) {
+            
+
+
+                for (i in json['error']) {
+                    var element = $('#input-shipping-' + i.replace('_', '-'));
+
+                    if ($(element).parent().hasClass('input-group')) {
+                        $(element).parent().after('<p class="ts_ps">' + json['error'][i] + '</p>');
+                    } else {
+                        $(element).after('<p class="ts_ps">' + json['error'][i] + '</p>');
+                    }
+                }
+
+            
+            } else{
+               getShippingAddress();
+            }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+}
 //--></script>
