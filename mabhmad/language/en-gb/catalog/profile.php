@@ -1,21 +1,21 @@
 <?php
 // Heading
-$_['heading_title']          = '信息管理';
+$_['heading_title']          = '简介管理';
 
 // Text
 $_['text_success']           = '成功：你已经修改了信息 ！';
-$_['text_list']              = '信息清单';
+$_['text_list']              = '简介清单';
 $_['text_add']               = '添加信息';
 $_['text_edit']              = '编辑信息';
 $_['text_default']           = '默认';
 
 // Column
-$_['column_title']           = '信息标题';
+$_['column_title']           = '简介标题';
 $_['column_sort_order']	     = '排序顺序';
 $_['column_action']          = '操作';
 
 // Entry
-$_['entry_title']            = '信息标题';
+$_['entry_title']            = '简介标题';
 $_['entry_description']      = '描述';
 $_['entry_store']            = '商店';
 $_['entry_meta_title'] 	     = 'Meta 标签标题';

@@ -142,7 +142,7 @@ class ControllerAccountLogin extends Controller {
 		}
 
 		$data['action'] = $this->url->link('account/login', '', true);
-		//$data['register'] = $this->url->link('account/register', '', true);
+		//$data['registers'] = $this->url->link('account/register', '', true);
 		$data['register'] = $this->url->link('account/login/register_save', '', true);
 		$data['forgotten'] = $this->url->link('account/forgotten', '', true);
         //同意条款的内容链接 dyl add

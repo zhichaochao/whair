@@ -483,7 +483,18 @@ class ControllerCatalogProfile extends Controller {
         }
  // var_dump( $profile_info );exit();
         $data['club_image'] = $this->model_tool_image->resize($data['image'], 100, 100);
-
+//images
+        if(isset($this->request->post['images'])){
+            $data['images'] = $this->request->post['images'];
+        }
+        elseif(isset($this->request->get['profile_id'])&&$profile_info['images']){
+            $data['images'] = $profile_info['images'];
+        }
+        else{
+            $data['images'] = 'no_image.png';
+        }
+ // var_dump( $profile_info );exit();
+        $data['club_images'] = $this->model_tool_image->resize($data['images'], 100, 100);
         if (isset($this->request->post['author'])) {
 			$data['author'] = $this->request->post['author'];
 		} elseif (!empty($profile_info)) {

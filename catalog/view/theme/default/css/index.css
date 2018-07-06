@@ -869,15 +869,18 @@
 	
 	/***haircare***/
 	.haircare{background: #f5f5f5;}
-	
 	.haircare .hair_text{background: #fff;max-width: 1000px;margin: auto;padding: 10px 40px 0 40px;}
+	.haircare .bnr_div{position: relative;}
 	.haircare .bnr_img{display: block;margin: auto;}
+	.haircare .bnr_div .hui{height: 70px;line-height: 70px;background: rgba(0,0,0,.5);padding: 0 15px;
+	position: absolute;bottom: 0;left: 0;width: 100%;}
+	.haircare .bnr_div .hui p{font-size: 24px;color: #fff;line-height: 28px;display: inline-block;vertical-align: middle;}
+	
 	.haircare .text2 {padding-top: 25px;padding-bottom: 30px;}
 	.haircare .text2 .left p {font-size: 14px;color: #666;line-height: 14px;display: inline-block;float: left;}
 	.haircare .text2 .left p span{color: #d5af74;}
 	.haircare .text2 .ll_span{background: url(../img/png/yanj.png)no-repeat left center;padding-left: 38px;margin-left: 80px;}
 	.haircare .text2 ul li{float: left;margin-left: 8px;}
-	
 	.haircare .text3 {padding-bottom: 55px;}
 	.haircare .text3 .left{width: 340px;}
 	.haircare .text3 .left h1{font-size: 24px;line-height: 30px;color: #333;font-weight: normal;}
@@ -1059,6 +1062,7 @@
 	.pay .pay_text{max-width: 1200px;margin: auto;background: #fff;}
 	.pay .pay_text h1{font-size: 20px;color: #333;text-align: center;font-weight: bold;line-height: 40px;margin: 40px 0 30px 0;}
 	.pay .pay_text .lv_p{font-size: 16px;color: #259f7e;text-align: center;}
+	.pay .pay_text .textp{text-align: center;font-size: 16px;line-height: 22px;color: #333;margin: 20px 0 40px 0;}
 	.pay .pay_text .pay_tb1{border: 1px solid #ccc;text-align: center;max-width: 640px;margin: 16px auto 55px auto;}
 	.pay .pay_text .pay_tb1 td{border: 1px solid #ccc;width: 58%;}
 	.pay .pay_text .pay_tb1 td:last-child{background: #f5f5f5;width: 32%;}
@@ -1096,9 +1100,12 @@
 	.forget .bot .form_div label span{display: block;font-size: 16px;color: #333;margin-bottom: 8px;}
 	.forget .bot .form_div label input{width: 100%;border: 1px solid #ccc;font-size: 17px;color: #333;height: 50px;line-height: 50px;padding: 0 12px;border-radius: 4px;}
 	.forget .bot .form_div label input:focus{border: 1px solid #ff6700;}
-	.forget .bot .form_div button{width: 300px;height: 50px;border-radius: 4px;font-size: 20px;margin-top: 50px;}
-	.forget .bot .form_div button.back{background: #f5f5f5;border: 1px solid #ccc;color: #666;float: left;}
-	.forget .bot .form_div button.continue{background: #333;border: 1px solid #ccc;color: #fff;float: right;}
+	
+	.forget .bot .form_div a.back{width: 300px;height: 50px;border-radius: 4px;font-size: 20px;margin-top: 50px;
+		background: #f5f5f5;border: 1px solid #ccc;color: #666;float: left;text-align: center;line-height: 50px;}
+	.forget .bot .form_div button.continue{width: 300px;height: 50px;border-radius: 4px;font-size: 20px;margin-top: 50px;
+		background: #333;border: 1px solid #ccc;color: #fff;float: right;}
+	.forget .bot .form_div a.back:hover{background: #666;color: #fff;border: 1px solid #666;}
 	.forget .bot .form_div button:hover{background: #666;color: #fff;border: 1px solid #666;}
 	
 	/********promotion********/
@@ -1910,35 +1917,15 @@
 	.edit_add_md .form_div button.qx_btn{width: 2.4rem;height: 0.6rem;text-align: center;font-size: 0.2rem;color: #333;border-radius: 4px;
 	background: #eee;border: 0.01rem solid #666;float: right;margin:0.2rem 0.65rem 0.1rem 0.1rem;}
 	
-	/*.edit_method_md {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.5);z-index: 99;display: none;}
-	.edit_method_md>.text{background: #fff;width: 7.1rem;margin:1rem auto 0 auto;padding: 0.2rem;position: relative;}
-	.edit_method_md>.text .close{width: 0.3rem;height: 0.3rem;display: block;position: absolute;top: 0.4rem;right:0.3rem;
-	background: url(../img/png/close2.png) no-repeat center center;background-size: 0.26rem;cursor: pointer;}
-	.edit_method_md>.text h2{font-size: 0.3rem;margin-bottom: 0.24rem;margin-top: 0.3rem;}
-	.edit_method_md .express_ul{border-top: 0.01rem solid #ddd;padding-top: 0.25rem;}
-	.edit_method_md .express_ul>li.yd_li{display: block;margin-top: 0.35rem;}
-	.edit_method_md .express_ul dl{float: left;display:block;text-align: center;}
-	.edit_method_md .express_ul dl:nth-child(1){width: 30%;}
-	.edit_method_md .express_ul dl:nth-child(2){width: 40%;}
-	.edit_method_md .express_ul dl:nth-child(3){width:30%;}
-	.edit_method_md .express_ul dt{font-size: 0.2rem;font-family: san_m; color: #333;margin-bottom:0.4rem;}
-	.edit_method_md .express_ul dd.kd.yd_kd{display: none;}
-	.edit_method_md .express_ul dd{display: block;text-align: center;width: 100%;height: 0.4rem;}
-	.edit_method_md .express_ul dd span{font-size: 0.18rem;line-height:0.4rem;font-family: san_r; display: inline-block;;}
-	.edit_method_md .express_ul dd img{width: 1.2rem;height: 0.4rem;display: block;}
-	.edit_method_md .dx_label{display: block;height: 20px;width: 20px;float: left; position: relative;margin-right: 8px;}
-	.edit_method_md dd.kd .dx_label{top: 0.1rem;}
-	.edit_method_md .check_input{width: 20px;height: 20px;display: block; position: absolute;top: 50%;margin-top: -10px; left: 0;z-index: 2;cursor: pointer;opacity: 0;}
-	.edit_method_md .check_i{width: 20px;height: 20px;display: block; position: absolute;top: 50%;margin-top: -10px; left: 0;z-index: 1;
-	border: 1px solid #999;border-radius: 1px;box-sizing: border-box;}
-	.edit_method_md .check_i.active:after{display: block;position: absolute;top: 4px;left: 3px;content: "";border: 2px solid #000; width: 10px;height: 4px;
-	 border-width: 0 0 2px 2px;transform: rotate(-45deg); }
-	.edit_method_md .a_btn{margin:0.8rem auto 0 auto;width: 2.4rem;height: 0.6rem;line-height: 0.6rem;font-size: 0.2rem;}*/
-	
 	/***haircare***/
 	.haircare{background: #f5f5f5;}
-	.haircare .hair_text{background: #fff;max-width: 1000px;margin: auto;padding: 0;}
+	.haircare .hair_text{background: #fff;max-width: 750px;margin: auto;padding: 0;}
+	.haircare .bnr_div{position: relative;max-width: 750px;display: block;margin: auto;}
 	.haircare .bnr_img{display: block;margin: auto;}
+	.haircare .bnr_div .hui{height: 0.7rem;line-height: 0.7rem;background: rgba(0,0,0,.5);padding: 0 15px;
+	position: absolute;bottom: 0;left: 0;width: 100%;}
+	.haircare .bnr_div .hui p{font-size: 0.24rem;color: #fff;line-height: 0.28rem;display: inline-block;vertical-align: middle;}
+	
 	.haircare .text2 {padding: 0.15rem 0.2rem 0.4rem 0.2rem;}
 	.haircare .text2 .left p {font-size: 0.18rem;color: #666;line-height: 0.18rem;height: 0.18rem;min-height: 14px; display: inline-block;float: left;}
 	.haircare .text2 .left p span{color: #d5af74;}
@@ -2134,6 +2121,7 @@
 	.pay .pay_text{max-width: 7.5rem;margin: auto;background: #fff;padding: 0 0.2rem;}
 	.pay .pay_text h1{font-size: 0.24rem;color: #333;text-align: center;font-weight: bold;line-height: 0.4rem;margin: 0.4rem 0 0.3rem 0;}
 	.pay .pay_text .lv_p{font-size: 0.18rem;color: #259f7e;text-align: center;}
+	.pay .pay_text .textp{text-align: center;font-size: 0.18rem;line-height: 0.24rem;color: #333;margin: 0.2rem 0 0.4rem 0;}
 	.pay .pay_text .pay_tb1{border: 0.01rem solid #ccc;text-align: center;max-width: 640px;margin: 0.2rem auto 0.55rem auto;}
 	.pay .pay_text .pay_tb1 td{border: 0.01rem solid #ccc;width: 58%;}
 	.pay .pay_text .pay_tb1 td:last-child{background: #f5f5f5;width: 32%;}
@@ -2173,9 +2161,10 @@
 	.forget .bot .form_div label input{width: 100%;border: 1px solid #ccc;font-size: 0.18rem;color: #333;
 	height: 0.5rem;line-height: 0.5rem;padding: 0 0.12rem;border-radius: 4px;}
 	.forget .bot .form_div label input:focus{border: 1px solid #ff6700;}
-	.forget .bot .form_div button{width: 3rem;height: 0.5rem;border-radius: 4px;font-size: 0.2rem;margin-top: 1.6rem;}
-	.forget .bot .form_div button.back{background: #f5f5f5;border: 1px solid #ccc;color: #666;float: left;}
-	.forget .bot .form_div button.continue{background: #333;border: 1px solid #333;color: #fff;float: right;}
+	.forget .bot .form_div a.back{width: 3rem;height: 0.5rem;border-radius: 4px;font-size: 0.2rem;margin-top: 1.6rem;
+		background: #f5f5f5;border: 1px solid #ccc;color: #666;float: left;text-align: center;line-height: 0.5rem;}
+	.forget .bot .form_div button.continue{width: 3rem;height: 0.5rem;border-radius: 4px;font-size: 0.2rem;margin-top: 1.6rem;
+		background: #333;border: 1px solid #333;color: #fff;float: right;}
 	
 	/********promotion********/
 	.promotion{padding: 0.2rem !important;}

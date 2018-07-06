@@ -201,6 +201,18 @@
                       </div>
 
               </div>
+              <div class="form-group">
+                  
+                         <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_image; ?></label>
+                      
+                        <div class="col-sm-10">
+                              <a href="" id="thumb-images" data-toggle="image" class="img-thumbnail" >
+                                  <img src="<?php echo $club_images; ?>" alt="" title="" data-placeholder="<?php echo $club_images; ?>" />
+                              </a>
+                              <input type="hidden" name="images" value="<?php echo $images; ?>" id="input-images" />
+                      </div>
+
+              </div>
               <!--  -->
      
 
