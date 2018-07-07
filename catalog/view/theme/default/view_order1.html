@@ -237,7 +237,7 @@
 								<div class="text clearfix">
 									<p>Nigeria Local Express <span>$0.00</span></p>
 									<p>（Weight: 200.00g）</p>
-									<button class="editship">Edit Shipping Method</button>
+									<!--<button class="editship">Edit Shipping Method</button>-->
 								</div>
 							</div>
 							
@@ -379,68 +379,6 @@
 			</div>
 		</div>
 		
-		<div class="edit_method_md">
-			<div class="text clearfix">
-				<div class="close"></div>
-				<h2>Select the Shipping Method</h2>
-				<ul class="express_ul">
-					<li class="clearfix">
-						<dl>
-							<dt>Shipping Method</dt>
-							<dd class="kd">
-								<label for="" class="dx_label">
-									<input class="check_input" type="checkbox" />
-									<i class="check_i"></i>
-								</label>
-								<img src="img/jpg/kd_1.jpg"/>
-							</dd>
-							<dd class="kd yd_kd">
-								<label for="" class="dx_label">
-									<input class="check_input" type="checkbox" />
-									<i class="check_i"></i>
-								</label>
-								<img src="img/jpg/kd_2.jpg"/>
-							</dd>
-						</dl>
-						<dl>
-							<dt>Expected delivery time</dt>
-							<dd>
-								<span>2-3 Working Days</span>
-							</dd>
-						</dl>
-						<dl>
-							<dt>Shipping Cost</dt>
-							<dd>
-								<span>$0.00</span>
-							</dd>
-						</dl>
-					</li>
-					<li class="clearfix yd_li">
-						<dl>
-							<dd class="kd">
-								<label for="" class="dx_label">
-									<input class="check_input" type="checkbox" />
-									<i class="check_i"></i>
-								</label>
-								<img src="img/jpg/kd_2.jpg"/>
-							</dd>
-						</dl>
-						<dl>
-							<dd>
-								<span>2-3 Working Days</span>
-							</dd>
-						</dl>
-						<dl>
-							<dd>
-								<span>$0.00</span>
-							</dd>
-						</dl>
-					</li>
-				</ul>
-				<a class="btn240 a_btn" href="###">CONFIRM &nbsp;&nbsp;&nbsp;></a>
-			</div>
-		</div>
-		
 		
 		<!--返回顶部-->
 		<div class="xf_right">
@@ -509,7 +447,7 @@
 			<div class="top">
 				<ul class="ul_ydfot clearfix">
 					<li>
-            			<h4>INFORMATION <div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+            			<h4>INFORMATION <div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
             			<div class="slide_div">
 	            			<ol>
 	            				<li><a href="###">About Us</a></li>
@@ -520,7 +458,7 @@
 	            		</div>
                     </li>
                  	<li>
-            			<h4>BUYER INSTRUCTION<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+            			<h4>BUYER INSTRUCTION<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
             			<div class="slide_div">
 	            			<ol>
 	            				<li><a href="###">How To Order</a></li>
@@ -531,7 +469,7 @@
 	            		</div>
                     </li>
                   	<li>
-          	 			<h4>MY ACCOUNT<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+          	 			<h4>MY ACCOUNT<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
           	 			<div class="slide_div">
 	          	 			<ol>
 	            				<li><a href="###">My Account</a></li>
@@ -542,7 +480,7 @@
             			</div>
                   	</li>
                   	<li>
-                  		<h4>COMPANY INFO<div class="pic_img"><img src="img/png/jiahao_white.png"/></div></h4>
+                  		<h4>COMPANY INFO<div class="pic_img"><img src="img/png/jiahao_white.png" data-img='img/png/jiahao_white.png' data-imgs='img/png/jianhao_white.png'  /></div></h4>
                   		<div class="slide_div">
 	                  		<ol>
 	            				<li><a href="###"><span>Call Us:</span> U.S No: 6262487420</li>
@@ -592,11 +530,16 @@
 					</a>
 				</li>
 				<li>
-					<a href="###">
+					<a class="contact" href="javascript:0;">
 						<img class="active" src="img/png/contact-1.png" alt="" />
 						<img src="img/png/contact-2	.png" alt="" />
 						<p>CONTACT</p>
 					</a>
+					<div class="a_text">
+						<a href="###"><img src="img/jpg/fot_con1.jpg"/></a>
+						<a href="###"><img src="img/jpg/fot_con2.jpg"/></a>
+						<a href="###"><img src="img/jpg/fot_con3.jpg"/></a>
+					</div>
 				</li>
 				<li>
 					<a href="###">
@@ -625,15 +568,6 @@
 		})
 		$(".edit_add_md .form_div .close").click(function(){
 			$(".edit_add_md").fadeOut();
-			$("body").css("overflow","");
-		})
-		
-		$(".editship").click(function(){
-			$(".edit_method_md").fadeIn();
-			$("body").css("overflow","hidden");
-		})
-		$(".edit_method_md .close").click(function(){
-			$(".edit_method_md").fadeOut();
 			$("body").css("overflow","");
 		})
 		

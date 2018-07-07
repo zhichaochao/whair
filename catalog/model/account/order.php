@@ -232,6 +232,17 @@ public function getOrderProductImgAndNameByOrderIds($order_id) {
 			}
 		}*/
 	}
+	/**
+	 * 订单详情页修改收货地址
+	 * @author zhichao
+	 */
+
+	public function saveOrderAddress($order_id,$data)
+	{
+		 $sql = "update `".DB_PREFIX."order` set payment_telephone = '". $this->db->escape($data['telephone'])."',shipping_telephone = '". $this->db->escape($data['telephone'])."',payment_city = '". $this->db->escape($data['city'])."',shipping_city = '". $this->db->escape($data['city'])."',payment_postcode = '". $this->db->escape($data['postcode'])."',shipping_postcode = '". $this->db->escape($data['postcode'])."',payment_address_2 = '". $this->db->escape($data['address_2'])."',shipping_address_2 = '". $this->db->escape($data['address_2'])."',payment_address_1 = '". $this->db->escape($data['address_1'])."',shipping_address_1 = '". $this->db->escape($data['address_1'])."',payment_firstname = '". $this->db->escape($data['firstname'])."',shipping_firstname = '". $this->db->escape($data['firstname'])."',payment_lastname = '". $this->db->escape($data['lastname'])."',shipping_lastname = '". $this->db->escape($data['lastname'])."' where order_id = '".$order_id."'";
+		 // print_r($sql);exit();
+	    $query = $this->db->query($sql);
+	}
 	
 	/**
 	 * 获取用户所有支付成功订单的总价

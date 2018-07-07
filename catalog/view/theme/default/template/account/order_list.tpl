@@ -34,13 +34,13 @@
               <div class="bot clearfix">
                 <div class="left clearfix">
                   <ol class="bot_ol clearfix">
-  <?php if ($order['products']) { ?>
-          <?php foreach ($order['products'] as $product) { ?>
+                  <?php if ($order['products']) { ?>
+                    <?php foreach ($order['products'] as $product) { ?>
                     <li class="clearfix">
                       <div class="pic_img">
-                        <img src="<?php echo $product['image']; ?>" alt="" />
+                       <a href="<?=$product['href'];?>"> <img src="<?php echo $product['image']; ?>"  /></a>
                       </div>
-                      <p><?php echo $product['name']; ?></p>
+                      <p><a href="<?=$product['href'];?>"><?php echo $product['name']; ?></a></p>
                       <div class="type">
                         <p>Quantity:<?php echo $product['quantity']; ?></p>    
                     <?php if ($product['options']) { ?>
@@ -56,7 +56,7 @@
                 </div>
                 
                 <div class="total">
-                  <p class="p1">Shipping<span class="fr"><?php echo $order['text']; ?></span></p>
+                  <p class="p1">Shipping<span class="fr"><?php echo $order['shipping_total']; ?></span></p>
                   <p class="p2">Total <span class="fr"><?php echo $order['total']; ?></span></p>
                 </div>
                 

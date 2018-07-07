@@ -58,7 +58,9 @@ class ControllerAccountOrder extends Controller {
 			
 			//根据order_id获取其中一件产品的图片和产品名字
 			$order_products = $this->model_account_order->getOrderProducts($result['order_id']);
+			// print_r($order_products);exit();
 			foreach ($order_products as $key => $value) {
+				$order_products[$key]['href']=$this->url->link('product/product', 'product_id=' . $value['product_id'], true);
 				$order_products[$key]['image']=$this->model_tool_image->resize($value['image'],100,100);
 				$order_products[$key]['price']=$this->currency->format($value['price'], $result['currency_code'], $result['currency_value']);
 				$order_products[$key]['options']= $this->model_account_order->getOrderOptions($result['order_id'],$value['order_product_id']);
@@ -69,7 +71,7 @@ class ControllerAccountOrder extends Controller {
 			$total=$this->currency->format(0, $result['currency_code'], $result['currency_value']);
 			foreach ($totals as $key => $value) {
 				if ($value['code']=='shipping') {
-					$total=$this->currency->format($value['value'], $result['currency_code'], $result['currency_value']);
+					$shipping_total=$this->currency->format($value['value'], $result['currency_code'], $result['currency_value']);
 				}
 			}
 			$data['orders'][] = array(
@@ -86,7 +88,7 @@ class ControllerAccountOrder extends Controller {
 				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
 				'cancel_href' => $this->url->link('account/order/cancel', 'order_id=' . $result['order_id'], true),
 				'repay'	      => $this->url->link('account/order/repay', 'order_id=' . $result['order_id'], true),
-				'text'  	=> $total
+				'shipping_total'  	=> $shipping_total
 			);
 			
 		}
@@ -132,11 +134,31 @@ class ControllerAccountOrder extends Controller {
 		}
 
 		$this->load->model('account/order');
+			$data['address_error']=0;
+			if (isset($this->request->post['edit_address'])) {
+				$error=$this->validateForm();
+				
+					$orderaddress=$this->request->post;
+					unset($orderaddress['edit_address']);
+					$this->session->orderaddress=$orderaddress;
+				if (!$error) {
+					 $this->model_account_order->saveOrderAddress($order_id,$orderaddress);
+				}else{
+					$data['address_error']=1;
+				}
+			
+
+			}else{
+				unset($this->session->orderaddress);
+			}
+	
 
 		$order_info = $this->model_account_order->getOrder($order_id);
+		// print_r($order_info);exit()
 
 		if ($order_info) {
 			$this->document->setTitle($this->language->get('text_order'));
+			
 
 			$url = '';
 
@@ -383,8 +405,14 @@ class ControllerAccountOrder extends Controller {
 					'title' => $total['title'],
 					'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value']),
 				);
+				if ($total['code']=='total') {
+					$data['total']= $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value']);
+				}
+				if ($total['code']=='shipping') {
+					$data['shipping_total']= $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value']);
+				}
 			}
-// var_dump($totals);exit;
+
 			$data['comment'] = nl2br($order_info['comment']);
 
 			// History
@@ -423,121 +451,122 @@ class ControllerAccountOrder extends Controller {
 		$data['button_back'] = $this->language->get('button_back');
 		$data['button_upload'] = $this->language->get('button_upload');
 
-		if (isset($this->error['firstname'])) {
-			$data['error_firstname'] = $this->error['firstname'];
+		if (isset($error['firstname'])) {
+			$data['error_firstname'] = $error['firstname'];
 		} else {
 			$data['error_firstname'] = '';
 		}
 
-		if (isset($this->error['lastname'])) {
-			$data['error_lastname'] = $this->error['lastname'];
+		if (isset($error['lastname'])) {
+			$data['error_lastname'] = $error['lastname'];
 		} else {
 			$data['error_lastname'] = '';
 		}
 
-		if (isset($this->error['address_1'])) {
-			$data['error_address_1'] = $this->error['address_1'];
+		if (isset($error['address_1'])) {
+			$data['error_address_1'] = $error['address_1'];
 		} else {
 			$data['error_address_1'] = '';
 		}
 
-		if (isset($this->error['city'])) {
-			$data['error_city'] = $this->error['city'];
+		if (isset($error['city'])) {
+			$data['error_city'] = $error['city'];
 		} else {
 			$data['error_city'] = '';
 		}
 
-		if (isset($this->error['postcode'])) {
-			$data['error_postcode'] = $this->error['postcode'];
+		if (isset($error['postcode'])) {
+			$data['error_postcode'] = $error['postcode'];
 		} else {
 			$data['error_postcode'] = '';
 		}
 
-		if (isset($this->error['country'])) {
-			$data['error_country'] = $this->error['country'];
+		if (isset($error['country'])) {
+			$data['error_country'] = $error['country'];
 		} else {
 			$data['error_country'] = '';
 		}
 
-		if (isset($this->error['zone'])) {
-			$data['error_zone'] = $this->error['zone'];
+		if (isset($error['zone'])) {
+			$data['error_zone'] = $error['zone'];
 		} else {
 			$data['error_zone'] = '';
 		}
 		
-		if (isset($this->error['telephone'])) {
-		    $data['error_telephone'] = $this->error['telephone'];
+		if (isset($error['telephone'])) {
+		    $data['error_telephone'] = $error['telephone'];
 		} else {
 		    $data['error_telephone'] = '';
 		}
 		
 
-		if (isset($this->error['custom_field'])) {
-			$data['error_custom_field'] = $this->error['custom_field'];
+		if (isset($error['custom_field'])) {
+			$data['error_custom_field'] = $error['custom_field'];
 		} else {
 			$data['error_custom_field'] = array();
 		}
 
+			//print_r($this->session->orderaddress);exit();
 
-
-		if (isset($this->request->post['firstname'])) {
-			$data['firstname'] = $this->request->post['firstname'];
+		if (isset($this->session->orderaddress['firstname'])) {
+			$data['firstname'] = $this->session->orderaddress['firstname'];
 		} elseif (!empty($order_info)) {
 			$data['firstname'] = $order_info['shipping_firstname'];
 		} else {
 			$data['firstname'] = '';
 		}
 
-		if (isset($this->request->post['lastname'])) {
-			$data['lastname'] = $this->request->post['lastname'];
+		if (isset($this->session->orderaddress['lastname'])) {
+			$data['lastname'] = $this->session->orderaddress['lastname'];
 		} elseif (!empty($order_info)) {
 			$data['lastname'] = $order_info['shipping_lastname'];
 		} else {
 			$data['lastname'] = '';
 		}
 
-		if (isset($this->request->post['company'])) {
-			$data['company'] = $this->request->post['company'];
-		} elseif (!empty($order_info)) {
-			$data['company'] = $order_info['shipping_company'];
-		} else {
-			$data['company'] = '';
-		}
+		// if (isset($this->session->orderaddress['company'])) {
+		// 	$data['company'] = $this->session->orderaddress['company'];
+		// } elseif (!empty($order_info)) {
+		// 	$data['company'] = $order_info['shipping_company'];
+		// } else {
+		// 	$data['company'] = '';
+		// }
 
-		if (isset($this->request->post['address_1'])) {
-			$data['address_1'] = $this->request->post['address_1'];
+		if (isset($this->session->orderaddress['address_1'])) {
+			$data['address_1'] = $this->session->orderaddress['address_1'];
 		} elseif (!empty($order_info)) {
 			$data['address_1'] = $order_info['shipping_address_1'];
 		} else {
 			$data['address_1'] = '';
 		}
 
-		if (isset($this->request->post['address_2'])) {
-			$data['address_2'] = $this->request->post['address_2'];
+		if (isset($this->session->orderaddress['address_2'])) {
+			$data['address_2'] = $this->session->orderaddress['address_2'];
 		} elseif (!empty($order_info)) {
 			$data['address_2'] = $order_info['shipping_address_2'];
 		} else {
 			$data['address_2'] = '';
 		}
 
-		if (isset($this->request->post['postcode'])) {
-			$data['postcode'] = $this->request->post['postcode'];
+
+		if (isset($this->session->orderaddress['postcode'])) {
+			$data['postcode'] = $this->session->orderaddress['postcode'];
 		} elseif (!empty($order_info)) {
 			$data['postcode'] = $order_info['shipping_postcode'];
 		} else {
 			$data['postcode'] = '';
 		}
 
-		if (isset($this->request->post['city'])) {
-			$data['city'] = $this->request->post['city'];
+		if (isset($this->session->orderaddress['city'])) {
+			$data['city'] = $this->session->orderaddress['city'];
 		} elseif (!empty($order_info)) {
 			$data['city'] = $order_info['shipping_city'];
 		} else {
 			$data['city'] = '';
 		}
 
-		if (isset($this->request->post['country_id'])) {
-			$data['country_id'] = (int)$this->request->post['country_id'];
+		if (isset($this->session->orderaddress['country_id'])) {
+			$data['country_id'] = (int)$this->session->orderaddress['country_id'];
 		}  elseif (!empty($order_info)) {
 			$data['country_id'] = $order_info['shipping_country_id'];
 		} else {
@@ -545,21 +574,22 @@ class ControllerAccountOrder extends Controller {
 		}
 		// print($address_info);exit();
 
-		if (isset($this->request->post['telephone'])) {
-			$data['telephone'] = $this->request->post['telephone'];
+		if (isset($this->session->orderaddress['telephone'])) {
+			$data['telephone'] = $this->session->orderaddress['telephone'];
 		}  elseif (!empty($order_info)) {
 			$data['telephone'] = $order_info['shipping_telephone'];
 		} else {
 			$data['telephone'] = '';
 		}
 		
-		if (isset($this->request->post['zone_id'])) {
-		    $data['zone_id'] = (int)$this->request->post['zone_id'];
+		if (isset($this->session->orderaddress['zone_id'])) {
+		    $data['zone_id'] = (int)$this->session->orderaddress['zone_id'];
 		}  elseif (!empty($order_info)) {
 		    $data['zone_id'] = $order_info['shipping_zone_id'];
 		} else {
 		    $data['zone_id'] = '';
 		}
+		$data['edit_address_url']=$this->url->link('account/order/info', 'order_id=' . $order_info['order_id'] , true);
 
 		$this->load->model('localisation/country');
 
@@ -816,5 +846,41 @@ public function delete() {
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
+	}
+  	private	function validateForm()
+	{
+		$error=array();
+		
+		 $this->load->language('account/edit');
+		// $this->load->language('checkout/checkout');
+		// print_r($this->request->post);exit();
+		if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
+					$error['firstname'] = $this->language->get('error_firstname');
+				}
+
+				if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
+					$error['lastname'] = $this->language->get('error_lastname');
+				}
+
+				if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
+					$error['address_1'] = $this->language->get('error_address_1');
+				}
+
+				if ((utf8_strlen(trim($this->request->post['city'])) < 2) || (utf8_strlen(trim($this->request->post['city'])) > 128)) {
+				$error['city'] = $this->language->get('error_city');
+				}
+
+				
+				if ((utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+					$error['postcode'] = $this->language->get('error_postcode');
+				}
+
+			
+				
+				if ((utf8_strlen(trim($this->request->post['telephone'])) < 3) || (utf8_strlen(trim($this->request->post['telephone'])) > 32)) {
+				  $error['telephone'] = $this->language->get('error_telephone');
+				}
+			
+		return $error;
 	}
 }

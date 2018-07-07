@@ -123,9 +123,7 @@ header{position:fixed;top:0;left:0;width:100%;background: #fff;z-index:10;height
 .nav .mn_type .top p{display: block;float: left;padding-left: 25px;background: url(../img/png/usd1.png) no-repeat left center;
 line-height: 16px;margin-right: 18px;background-size: 16px 16px;font-size: 16px;}
 .nav .mn_type .top .pic_img{float: left; position: relative;top: -5px;width: 34px;height:28px;padding: 10px;}
-.nav .mn_type .top img{transition: all .5s;display: block;margin: auto;}
-.nav .mn_type .top:hover img{transform: rotate(180deg);}
-.nav .mn_type .top.active img{transform: rotate(180deg);}
+
 .nav .mn_type .bot{display: none;position: absolute;top: 15px;left: 0px;z-index: 9;padding-top: 10px;}
 .nav .mn_type .bot span{display: block;width: 0;height: 0;border-width: 0 10px 10px; border-style: solid;
  border-color: transparent transparent #eee;position: absolute;top: 0px;left: 50%;margin-left: -10px;}
@@ -303,7 +301,11 @@ display: block;width: 100%;padding:0 0.4rem;box-sizing: border-box;}
 .yd_nav a.right_img{background: url(../img/png/nav_right.png) no-repeat right 0.4rem center;background-size: 0.2rem 0.35rem;padding:0 0.4rem;box-sizing: border-box;}
 
 
-
+@media (min-width: 993px) {
+	.nav .mn_type .top img{transition: all .5s;display: block;margin: auto;}
+	.nav .mn_type .top:hover img{transform: rotate(180deg);}
+	.nav .mn_type .top.active img{transform: rotate(180deg);}
+}
 
 @media (min-width: 1px) and (max-width: 992px) {
 	.footer{display: none !important;}
@@ -317,6 +319,7 @@ display: block;width: 100%;padding:0 0.4rem;box-sizing: border-box;}
 	.nav .mn_type{left: auto !important; right: 0.4rem;top: 0.44rem;}
 	.nav .mn_type .top p{font-size: 0.24rem;line-height: 0.3rem;padding-left: 0.47rem;background-size: 0.3rem 0.3rem;margin-right: 0.15rem;}
 	.nav .mn_type .top .pic_img{padding: 0;width: 0.18rem;height: 0.1rem;top: 0.1rem;}
+	.nav .mn_type .top .pic_img img{transition: all .5s;display: block;margin: auto;}
 	.nav .mn_type .bot{top: 0.25rem;padding-top: 0.08rem;left: -0.3rem;}
 	.nav .mn_type .bot span{display: block;width: 0;height: 0;border-width: 0 0.1rem 0.1rem; border-style: solid;
 	 border-color: transparent transparent #eee;position: absolute;top: 0px;left: 50%;margin-left: -0.1rem;}
@@ -377,7 +380,8 @@ display: block;width: 100%;padding:0 0.4rem;box-sizing: border-box;}
 @media (min-width: 1px) and (max-width: 751px) {
 	.content{width: 100%;}
 	.nav .img_ol li.search_li{display: block;margin: 0;background-size:0.32rem 0.31rem;}
-	.nav .logo img{display: block ;margin: 0;position: absolute;top: 0.4rem;left: 2.29rem;width: 2.92rem;height: 0.4rem;}
+	.nav .logo{position: absolute;top: 0.4rem;left: 2.29rem;width: 2.92rem;height: 0.4rem;}
+	.nav .logo img{display: block ;margin: 0;}
 	.nav .logo a{display: block;width: 2.9rem;margin: auto;}
 	
 }

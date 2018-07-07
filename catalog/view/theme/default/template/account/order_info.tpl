@@ -44,7 +44,7 @@
                   <!-- <p>Nigeria Local Express <span>$0.00</span></p>
                   <p>（Weight: 200.00g）</p> -->
                 <?php if($order_status == 'Pending'){ ?>
-                  <button class="editship">Edit Shipping Method</button>
+                  <!-- <button class="editship">Edit Shipping Method</button> -->
                  <?php } ?> 
                 </div>
               </div>
@@ -89,8 +89,8 @@
                <?php } ?>
               </ul>
               <div class="total clearfix">
-                <p class="clearfix"><span class="fl">Shipping </span><span class="fr"><?php echo $totals[1]['text']; ?></span></p>
-                <p class="clearfix"><span class="p_span fl">Total </span><span class="fr"><?php echo $totals[3]['text']; ?></span></p>
+                <p class="clearfix"><span class="fl">Shipping </span><span class="fr"><?php echo $shipping_total; ?></span></p>
+                <p class="clearfix"><span class="p_span fl">Total </span><span class="fr"><?php echo $total; ?></span></p>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@
                   <?php if($payment_code == 'pp_standard' || $payment_code == 'pp_express') { ?>
                     &nbsp;&nbsp;<a data-toggle="tooltip" href="<?php echo $repay;?>" title="Pay"  class="a_btn">Continue to pay</a>
                   <?php } ?>
-                  &nbsp;&nbsp;<a href="javascript:;" data-toggle="tooltip" onclick="cancel_order('<?php echo $ocancel_href;?>')" href="<?php echo $cancel_href;?>" title="Cancel Order"  class="qx_btn">Cancel</a>
+                  &nbsp;&nbsp;<a  title="Cancel Order"  onclick="cancel_order('<?=$cancel_href?>')" class="qx_btn">Cancel</a>
                 <?php } ?>
 
           <?php if ($histories) { ?>
@@ -129,9 +129,9 @@
       </div>
     </div>
     
-    <div class="edit_add_md">
+    <div class="edit_add_md" <?=!$address_error?"":"style='display:block'";?>>
       <div class="text">
-        <form action="" class="clearfix" id="collapse-shipping-address">
+        <form method="post" action="<?=$edit_address_url;?>"  class="clearfix" id="collapse-shipping-address">
           <div class="form_div clearfix">
             <div class="close"></div>
             <h1>Edit the address</h1>
@@ -139,7 +139,7 @@
             <div class="label clearfix">
               <label for="">
                 <span>Frist Name *</span>
-                <input type="text" name="firstname" value="<?php echo $replace['firstname']; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" class="form-control" />
+                <input type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" class="form-control" />
               <?php if ($error_firstname) { ?>
               <p class="ts_p" style="color: #fd4f57;font-size: 14px;"><?php echo $error_firstname; ?></p>
               <?php } ?>
@@ -147,7 +147,7 @@
               </label>
               <label class="mr_no" for="">
                 <span>Last Name *</span>
-                <input type="text" name="lastname" value="<?php echo $replace['lastname']; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" class="form-control" />
+                <input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" class="form-control" />
               <?php if ($error_lastname) { ?>
               <p class="ts_p" style="color: #fd4f57;font-size: 14px;"><?php echo $error_lastname; ?></p>
               <?php } ?>
@@ -155,16 +155,16 @@
               </label>
               <label class="add" for="">
                 <span>Address*</span>
-                <input type="text" name="address_1" value="<?php echo $replace['address_1']; ?>" placeholder="<?php echo $entry_address_1; ?>" id="input-address-1" class="form-control" />
+                <input type="text" name="address_1" value="<?php echo $address_1; ?>" placeholder="<?php echo $entry_address_1; ?>" id="input-address-1" class="form-control" />
               <?php if ($error_address_1) { ?>
               <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_address_1; ?></p>
               <?php } ?>
                 <!-- <p class="ts_ps">This field is required</p> -->
-                <input type="text" name="address_2" value="<?php echo $replace['address_2']; ?>" placeholder="<?php echo $entry_address_2; ?>" id="input-address-2" class="form-control" />
+                <input type="text" name="address_2" value="<?php echo $address_2; ?>" placeholder="<?php echo $entry_address_2; ?>" id="input-address-2" class="form-control" />
               </label>
               <label for="">
-                <span>Country *<?=$country_id;?></span>
-                <select name="country_id" id="input-country" class="form-control">
+                <span>Country *</span>
+                <select name="country_id" id="input-country" class="form-control" disabled="">
                 <option value=""><?php echo $replace['country']; ?></option>
                 <?php foreach ($countries as $country) { ?>
                 <?php if ($country['country_id'] == $country_id) { ?>
@@ -181,7 +181,7 @@
               </label>
               <label class="mr_no" for="">
                 <span>Post Code *</span>
-                <input type="text" name="postcode" value="<?php echo $replace['postcode']; ?>" placeholder="<?php echo $entry_postcode; ?>" id="input-postcode" class="form-control" />
+                <input type="text" name="postcode" value="<?php echo $postcode; ?>" placeholder="<?php echo $entry_postcode; ?>" id="input-postcode" class="form-control" />
               <?php if ($error_postcode) { ?>
              <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_postcode; ?></p>
               <?php } ?>
@@ -189,7 +189,7 @@
               </label>
               <label for="">
                 <span>City *</span>
-               <input type="text" name="city" value="<?php echo $replace['city']; ?>" placeholder="<?php echo $entry_city; ?>" id="input-city" class="form-control" />
+               <input type="text" name="city" value="<?php echo $city; ?>" placeholder="<?php echo $entry_city; ?>" id="input-city" class="form-control" />
               <?php if ($error_city) { ?>
               <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_city; ?></p>
               <?php } ?>
@@ -197,7 +197,7 @@
               </label>
               <label class="mr_no" for="">
                 <span>State *</span>
-                <select name="zone_id" id="input-zone" class="form-control" >
+                <select  disabled="" name="zone_id" id="input-zone" class="form-control" >
               </select>
               <?php if ($error_zone) { ?>
               <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_zone; ?></p>
@@ -206,7 +206,7 @@
               </label>
               <label for="">
                 <span>Phone *</span>
-                <input type="text" name="telephone" value="<?php echo $replace['shipping_telephone']; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" class="form-control" />
+                <input type="text" name="telephone" value="<?php echo $telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" class="form-control" />
               <?php if (!empty($error_telephone)) { ?>
              <p class="ts_ps" style="color: #fd4f57;font-size: 14px;"><?php echo $error_telephone; ?></p>
               <?php } ?>
@@ -214,77 +214,30 @@
               </label>
             </div>
             
-            <button class="bc_btn clearfix">SAVE ADDRESS&nbsp;&nbsp;&nbsp;></button>
-            <button class="qx_btn clearfix">CANCEL&nbsp;&nbsp;&nbsp;></button>
+            <button type="submit" class="bc_btn clearfix" >SAVE ADDRESS&nbsp;&nbsp;&nbsp;></button>
+            <button type="button" onclick="cancel_address();" class="qx_btn clearfix">CANCEL&nbsp;&nbsp;&nbsp;></button>
+            <input type="hidden" name="edit_address" value="true" />
           </div>
         </form>
       </div>
     </div>
+
+
     
-    <div class="edit_method_md">
-      <div class="text clearfix">
-        <div class="close"></div>
-        <h2>Select the Shipping Method</h2>
-        <ul class="express_ul">
-          <li class="clearfix">
-            <dl>
-              <dt>Shipping Method</dt>
-              <dd class="kd">
-                <label for="" class="dx_label">
-                  <input class="check_input" type="checkbox" />
-                  <i class="check_i"></i>
-                </label>
-                <img src="catalog/view/theme/default/img/jpg/kd_1.jpg"/>
-              </dd>
-              <dd class="kd yd_kd">
-                <label for="" class="dx_label">
-                  <input class="check_input" type="checkbox" />
-                  <i class="check_i"></i>
-                </label>
-                <img src="catalog/view/theme/default/img/jpg/kd_2.jpg"/>
-              </dd>
-            </dl>
-            <dl>
-              <dt>Expected delivery time</dt>
-              <dd>
-                <span>2-3 Working Days</span>
-              </dd>
-            </dl>
-            <dl>
-              <dt>Shipping Cost</dt>
-              <dd>
-                <span>$0.00</span>
-              </dd>
-            </dl>
-          </li>
-          <li class="clearfix yd_li">
-            <dl>
-              <dd class="kd">
-                <label for="" class="dx_label">
-                  <input class="check_input" type="checkbox" />
-                  <i class="check_i"></i>
-                </label>
-                <img src="catalog/view/theme/default/img/jpg/kd_2.jpg"/>
-              </dd>
-            </dl>
-            <dl>
-              <dd>
-                <span>2-3 Working Days</span>
-              </dd>
-            </dl>
-            <dl>
-              <dd>
-                <span>$0.00</span>
-              </dd>
-            </dl>
-          </li>
-        </ul>
-        <a class="btn240 a_btn" href="###">CONFIRM &nbsp;&nbsp;&nbsp;></a>
-      </div>
-    </div>
+
 
 <?php echo $footer; ?>
 <script>
+  function cancel_order(url){
+  if(confirm('Are You Sure?')){
+    location.href=url;
+  }
+}
+  function cancel_address() {
+    $('.edit_add_md').fadeOut();
+       $("body").css("overflow","");
+       return false;
+  }
   $(function(){
     $(".editadd").click(function(){
       $(".edit_add_md").fadeIn();
@@ -351,42 +304,4 @@ $('select[name=\'country_id\']').on('change', function() {
 $('select[name=\'country_id\']').trigger('change');
 
 
-// Save Shipping Address
-function saveAddress(e) {
-    var address_id = $(e).attr('aid');
-    $.ajax({
-        url: 'index.php?route=checkout/shipping_address/save&address_id='+address_id,
-        type: 'post',
-        data: $('#collapse-shipping-address input[type=\'hidden\'], #collapse-shipping-address input[type=\'text\'], #collapse-shipping-address input[type=\'date\'], #collapse-shipping-address input[type=\'datetime-local\'], #collapse-shipping-address input[type=\'time\'], #collapse-shipping-address input[type=\'password\'], #collapse-shipping-address input[type=\'checkbox\']:checked, #collapse-shipping-address input[type=\'radio\']:checked, #collapse-shipping-address textarea, #collapse-shipping-address select'),
-        dataType: 'json',
-      
-        success: function(json) {
-        
-          console.log(json);
-            if (json['redirect']) {
-                location = json['redirect'];
-            } else if (json['error']) {
-            
-
-
-                for (i in json['error']) {
-                    var element = $('#input-shipping-' + i.replace('_', '-'));
-
-                    if ($(element).parent().hasClass('input-group')) {
-                        $(element).parent().after('<p class="ts_ps">' + json['error'][i] + '</p>');
-                    } else {
-                        $(element).after('<p class="ts_ps">' + json['error'][i] + '</p>');
-                    }
-                }
-
-            
-            } else{
-               getShippingAddress();
-            }
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
-}
 //--></script>

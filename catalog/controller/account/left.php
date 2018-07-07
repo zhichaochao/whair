@@ -2,8 +2,6 @@
 class ControllerAccountLeft extends Controller {
 	public function index() {
 
-        //引入该页面的css样式
-		$this->document->addStyle('catalog/view/theme/default/stylesheet/account/account_left.css');
 
 		 $route = array(
             'route' => array(

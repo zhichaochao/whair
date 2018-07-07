@@ -19,6 +19,7 @@ var fun = function (doc, win) {
 }
 fun(document, window);
 $(function(){
+	 var win = $(window).width();
 	//返回顶部
 	$(document).scroll(function(){
         var top = $(document).scrollTop();
@@ -41,15 +42,45 @@ $(function(){
 	})
 	
 //	头部导航货币切换
-	$(".nav .mn_type").hover(function(){
-		$(".mn_type .bot").stop().slideToggle();
-	})
-	$(".nav .mn_type .bot").mouseover(function(){
-		$(".nav .mn_type .top").addClass("active")
-	})
-	$(".nav .mn_type .bot").mouseout(function(){
-		$(".nav .mn_type .top").removeClass("active")
-	})
+	if(win>992){
+		$(".nav .mn_type").hover(function(){
+			$(".mn_type .bot").stop().slideToggle();
+		})
+		$(".nav .mn_type .bot").mouseover(function(){
+			$(".nav .mn_type .top").addClass("active")
+		})
+		$(".nav .mn_type .bot").mouseout(function(){
+			$(".nav .mn_type .top").removeClass("active")
+		})
+		
+	}else{
+		var off = 0;
+		$(".nav .mn_type .top").click(function(event){
+			
+			if(off==0){
+				$(".nav .mn_type .bot").fadeIn();
+				off=1;
+				$(this).find(".pic_img img").css("transform","rotate(180deg)");
+			}else{
+				$(".nav .mn_type .bot").fadeOut();
+				$(this).find(".pic_img img").css("transform","rotate(0deg)");
+				off=0;
+			}
+			event.stopPropagation();
+		})
+		$("body").click(function(e){
+			if(off==1){
+				var win = $(window).width();
+				var close = $('.nav .mn_type .bot'); 
+			   	if(!close.is(e.target) && close.has(e.target).length === 0){
+			   		$(".nav .mn_type .bot").fadeOut();
+			   		$(".nav .mn_type .top .pic_img img").css("transform","rotate(0deg)");
+				}
+			   	off=0;
+			}
+		})
+	}
+
 	
 //	底部导航二级菜单
 	$(".ul_ydfot>li>h4").click(function(){
@@ -168,7 +199,6 @@ $(function(){
 	})
 	
 	//替换图片
-    var win = $(window).width();
 		if(win<=750){
 		  $('.changeimage').each(function(){
 		    $(this).attr('src',$(this).attr('data-mimage'));

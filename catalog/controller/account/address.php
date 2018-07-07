@@ -184,8 +184,6 @@ class ControllerAccountAddress extends Controller {
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
-		//引入该页面的css样式
-		$this->document->addStyle('catalog/view/theme/default/stylesheet/account/account_address.css');
 
 		$data['text_address_book'] = 'Your Shipping Addresses';
 		$data['text_empty'] = $this->language->get('text_empty');
