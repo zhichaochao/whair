@@ -1,55 +1,33 @@
 <?php echo $header; ?>
-<div class="container">
-  
-  <!--<ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>-->
-  
-  <div class="row">
-     
-    <?php //echo $column_left; ?>
-  
-    <?php if ($column_left && $account_left) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $account_left) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
-    
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
-      <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
-        <fieldset>
-          <legend><?php echo $text_password; ?></legend>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-password"><?php echo $entry_password; ?></label>
-            <div class="col-sm-10">
-              <input type="password" name="password" value="<?php echo $password; ?>" id="input-password" class="form-control" />
-              <?php if ($error_password) { ?>
-              <div class="text-danger"><?php echo $error_password; ?></div>
+    <div class="forget in_content clearfix">
+      <div class="text clearfix"><?php echo $content_top; ?>
+        <h1><?php echo $heading_title; ?></h1>
+        <div class="bot clearfix">
+          <p>
+           <?php echo $text_password; ?>
+          </p>
+          <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <div class="form_div clearfix">
+              <label class="clearfix" for="">
+                <span><?php echo $entry_password; ?>*</span>
+                <input type="password" name="password" value="<?php echo $password; ?>" id="input-password" class="form-control" />
+                <?php if ($error_password) { ?>
+                <p class="ts_ps"><?php echo $error_password; ?></p>
               <?php } ?>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-confirm"><?php echo $entry_confirm; ?></label>
-            <div class="col-sm-10">
-              <input type="password" name="confirm" value="<?php echo $confirm; ?>" id="input-confirm" class="form-control" />
-              <?php if ($error_confirm) { ?>
-              <div class="text-danger"><?php echo $error_confirm; ?></div>
+              </label>
+              <label class="clearfix" for="">
+                <span><?php echo $entry_confirm; ?>*</span>
+                 <input type="password" name="confirm" value="<?php echo $confirm; ?>" id="input-confirm" class="form-control" />
+                 <?php if ($error_confirm) { ?>
+                 <p class="ts_ps"><?php echo $error_confirm; ?></p>
               <?php } ?>
+              </label>
+              <a class="back" href="<?php echo $back; ?>">BACK</a>
+              <button class="continue" type="submit">CONTINUE</button>
             </div>
-          </div>
-        </fieldset>
-        <div class="buttons clearfix">
-          <div class="pull-left"><a href="<?php echo $back; ?>" class="btn btn-default"><?php echo $button_back; ?></a></div>
-          <div class="pull-right"><button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> <?php echo $button_continue; ?></button></div>
+          </form>
+           <?php echo $content_bottom; ?>
         </div>
-      </form>
-      <?php echo $content_bottom; ?>
+      </div>
     </div>
-  </div>
-</div>
 <?php echo $footer; ?>

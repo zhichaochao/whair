@@ -361,6 +361,7 @@ class ControllerCatalogGallery extends Controller
         $data['entry_sort_order'] = $this->language->get('entry_sort_order');
         $data['entry_additional_image'] = $this->language->get('entry_additional_image');
         $data['entry_related'] = $this->language->get('entry_related');
+        $data['entry_video'] = $this->language->get('entry_video');
 
         $data['help_related'] = $this->language->get('help_related');
 

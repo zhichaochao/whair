@@ -89,6 +89,56 @@
 
             </div>
             <div class="tab-pane" id="tab-image">
+             <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
+                <div class="col-sm-10">
+                  <ul style="list-style-type: none">
+                    <!-- 预览框： -->
+                    <li style="float: left;width: 100px">
+                      <div class="preview">
+                          <?php if($video){ ?>
+                          <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
+                      </div>
+                    </li>
+   <?php if($product_id){ ?>
+                    <li style="float: left;width: 100px;margin-left: 10px">  
+                  <div style="margin-top:10px;">
+               
+                    <label for="input-video" class="input-video">请上传</label><br/>
+                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
+                      <div class="input-video" onclick="deleteVideo();">删除</div>
+                    </div>
+                 
+                </li>
+   <?php }else{ echo '视频只支持编辑时上传，请先保存产品后再点击编辑时再来上传小视频';} ?>
+                  </ul>
+
+                </div>
+              </div>
+           <!--  <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
+                <div class="col-sm-10">
+                  <ul style="list-style-type: none">
+                    <!-- 预览框： -->
+                  <!--   <li style="float: left;width: 100px">
+                      <div class="preview">
+                          <?php if($video){ ?>
+                          <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
+                      </div>
+                    </li>
+
+                    <li style="float: left;width: 100px;margin-left: 10px">
+                  <div style="margin-top:10px;">
+                    <label for="input-video" class="input-video">请上传</label><br/>
+                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
+                      <div class="input-video" onclick="deleteVideo();">删除</div>
+                  </div></li>
+                  <input type="hidden" name="video" value="<?=$video;?>" id='video' />
+
+                  </ul>
+
+                </div>
+              </div> -->
               <div class="table-responsive">
                   <table class="table table-striped table-bordered table-hover">
                       <thead>

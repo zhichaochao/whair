@@ -49,7 +49,8 @@
                     <li style="float: left;width: 100px">
                       <div class="preview">
                           <?php if($video){ ?>
-                          <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
+                          <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video>
+                          <?php } ?>
                       </div>
                     </li>
 

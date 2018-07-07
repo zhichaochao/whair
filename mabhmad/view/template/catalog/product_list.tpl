@@ -90,7 +90,7 @@
                   <?php } ?>
                 </select>
               </div>              
-              <div class="form-group">
+              <div class="form-group" >
                 <label class="control-label" for="input-quantity"><?php echo $entry_relation_product; ?></label>
                 <input type="text" name="filter_relation_product" value="<?php echo $filter_relation_product; ?>" placeholder="<?php echo $entry_relation_product; ?>" id="input-quantity" class="form-control" />
               </div>

@@ -36,6 +36,7 @@ $_['entry_is_home']          = '是否首页显示';
 $_['entry_status']           = '状态';
 $_['entry_additional_image'] = '附加图片';
 $_['entry_related']          = '关联产品';
+$_['entry_video']        = '视频（可选）';
 
 // Error
 $_['error_warning']          = '警告: 存在错误，请检查！';
