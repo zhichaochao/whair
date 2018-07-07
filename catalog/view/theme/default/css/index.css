@@ -567,8 +567,8 @@
 	/*m_add*/ 
 	.peo_center .m_add ul {padding-top: 24px;max-width: 998px;margin: 0 -1.04vw;box-sizing: content-box;}
 	.peo_center .m_add ul li{width: 50%;padding: 0 1.04vw 24px 1.04vw; float: left;cursor: pointer;}
-	.peo_center .m_add ul li .text{border-radius: 4px;position: relative;border: 1px solid #ddd;padding:30px 15px 0 15px;height: 306px}
-	.peo_center .m_add ul li p{font-size: 16px;line-height: 26px;} 
+	.peo_center .m_add ul li .text{border-radius: 4px;position: relative;border: 1px solid #ddd;padding:1.65vw 15px 4.16vw 15px;}
+	.peo_center .m_add ul li p{font-size: 0.83vw;line-height: 1.45vw;} 
 	.peo_center .m_add ul li span{display: none;}
 	.peo_center .m_add ul li.active .text{border: 1px solid #d7b37b;}
 	.peo_center .m_add ul li.active span{color: #d7b37b;display: block;font-size: 0.83vw;position: absolute;bottom: 2.08vw;left: 15px;}
@@ -787,7 +787,7 @@
 	
 	
 	.view_order .ship .h2_span{font-size: 20px;display: block;margin: 20px 0 15px 0;}
-	.view_order .ship .text{border-radius: 5px;border: 1px solid #eee;padding: 25px 17px;height: 266px;position: relative;}
+	.view_order .ship .text{border-radius: 5px;border: 1px solid #eee;padding: 25px 17px;min-height: 240px;position: relative;}
 	.view_order .ship.active .text{border: 1px solid #d5af74;}
 	.view_order .ship .text p{font-size: 16px;line-height: 26px;}
 	.view_order .ship .text p span{font-weight: bold;font-size: 22px;margin-bottom: 5px;display: inline-block;}

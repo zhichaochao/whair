@@ -41,7 +41,7 @@
                   <!-- <input class="pass pass1" type="password"/> -->
                   <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password"/>
                   <p class="ts_p" >The password you entered is incorrect</p>
-                  <a href="###">Forgotten Password ?</a>
+                  <a href="<?php echo $forgotten?>">Forgotten Password ?</a>
                 </label>
                 <input class="tj_input" type="submit" value="SIGN IN" />
               </form>
