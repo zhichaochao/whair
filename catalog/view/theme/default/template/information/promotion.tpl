@@ -28,6 +28,7 @@
                   </div>
                   <div class="fsbg_div">
                     <i>-45%</i>
+                    
                   </div>
                 </div>
               </a>

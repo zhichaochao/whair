@@ -422,7 +422,28 @@ class ControllerCatalogGallery extends Controller
             $gallery_info = $this->model_catalog_gallery->getGalleryInfo($this->request->get['gallery_id']);
 
         }
+        //视频
+        if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+            $product_info = $this->model_catalog_product->getProduct($this->request->get['product_id']);
+            $data['edit_video_url'] = '&token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url;
+        }else{
+            $data['edit_video_url']='';
+        }
+        //
+         $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
 
+        if (isset($this->request->post['video'])) {
+            $data['video'] = $this->request->post['video'];
+            $data['video_url'] = $http_type . $_SERVER['HTTP_HOST'] . '/image/' . $this->request->post['video'];
+        } elseif (!empty($product_info)) {
+            $data['video'] = $product_info['video'];
+            $data['video_url'] = $http_type . $_SERVER['HTTP_HOST'].'/image/'. $product_info['video'];
+        } else {
+            $data['video'] = '';
+            $data['video_url'] = '';
+        }
+        //视频end
+        
         //gallery_image
         if(isset($this->request->post['gallery_image'])){
             $gallery_images = $this->request->post['gallery_image'];
@@ -580,4 +601,97 @@ class ControllerCatalogGallery extends Controller
 
         return !$this->error;
     }
+    // 新增 视频开始
+    public function deleteVideo(){
+        $this->load->language('catalog/product');
+        $this->document->setTitle($this->language->get('heading_title'));
+        $this->load->model('catalog/product');
+       // var_dump($this->request->get['product_id']);
+      
+        if(isset($this->request->get['product_id'])){
+              unlink('../image/'.$this->request->get['video']); 
+        $this->model_catalog_product->deleteVideo($this->request->get['product_id']);
+        }else{
+              unlink($this->request->get['video']);
+        }
+        $this->response->setOutput(json_encode('1'));
+    }
+
+    public function editVideo(){
+//        $files = [];
+//        $files = $this->request->post;
+//        $file = $files['files'];
+//        $this->response->setOutput(json_encode([1,2]));die;
+
+
+        $this->load->language('catalog/product');
+
+        $this->document->setTitle($this->language->get('heading_title'));
+
+        $this->load->model('catalog/product');
+
+        if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+//            var_dump($_FILES['files']);
+
+            $file = $_FILES['files'];
+//            move_uploaded_file($file['tmp_name'],'upload/preview/'.$file['name']);
+//formData传过来的参数param1和param2
+//            $param1 = $files['param1'];
+//            $param2 = $files['param2'];
+//ajax返回数组
+            $data = array('sta'=>TRUE,'msg'=>'上传成功！');
+//检查是否为图片
+            $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+
+            $arrExt = array('3gp','rmvb','flv','wmv','avi','mkv','mp4','mp3','wav');
+            if(!in_array($ext,$arrExt)) {
+                $data['sta'] = FALSE;
+                $data['msg'] = '不支持此类型文件的上传！';
+            }else{
+                $previewPath = DIR_IMAGE.'video/';
+                $arr = explode('/',$previewPath);
+                $dirAll = '';
+                $result = FALSE;
+                if(count($arr) > 0) {
+                    foreach($arr as $key=>$value) {
+                        $tmp = trim($value);
+                        if($tmp != '') {
+                            $dirAll .= $tmp.'/';
+                            if(!file_exists($dirAll)) {
+                                mkdir($dirAll,0777,true);
+                            }
+                        }
+                    }
+                }
+
+                if($file['error'] == 0) {
+//                if(isset($param1) && isset($param2)) {
+                    //需要用到$param1和$param2的一些其他操作...
+
+                    //文件上传到预览目录
+                    if(isset($this->request->get['product_id'])){
+                    $previewName = 'pre_'.$this->request->get['product_id'].'.'.$ext;
+                    }elseif(isset($this->request->get['hairclub'])){
+                         $previewName = 'hairclub/pre_'.rand(1000,9000).'.'.$ext;
+                    }else{
+                         $previewName = 'home/pre_'.rand(1000,9000).'.'.$ext;
+                    }
+                    $previewSrc = 'video/'.$previewName;
+                    if(!move_uploaded_file($file['tmp_name'],DIR_IMAGE.$previewSrc)) {
+                        $data['sta'] = FALSE;
+                        $data['msg'] = '上传失败！';
+                    } else {
+                        if(isset($this->request->get['product_id'])){
+                        $this->model_catalog_product->editVideo($this->request->get['product_id'],$previewSrc);
+                        }
+                        $data['previewSrc'] = '../image/'.$previewSrc;
+                    }
+
+//                }
+                }
+            }
+            $this->response->setOutput(json_encode($data));
+        }
+    }
+    // 新增 视频end
 }
