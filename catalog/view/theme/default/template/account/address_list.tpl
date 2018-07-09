@@ -20,30 +20,28 @@
         <div class="right m_add clearfix">        
           <ul class="clearfix">
           <?php if ($addresses) { ?>
-          <?php foreach ($addresses as $result) { ?>
-          <?php if($result['isshowdelete']==0){ ?>
-            <li class="<?=$result['isshowdelete']==0 ?'active':'';?>">
-              <div class="text">
-                <p><?php echo $result['address']; ?></p>
-                <span>Default address</span>
-                <div class="close" onclick="del_address('<?php echo $result['delete'];?>')" class="btn btn-danger"></div>
-                <a class="a_img" href="<?php echo $result['update']; ?>"></a>
-              </div>
-            </li>
-            <?php } ?>
-            <?php } ?>
+         
            <?php foreach ($addresses as $result) { ?>
           <?php if($result['isshowdelete']==1){ ?>
-            <li class="<?=$result['isshowdelete']==0 ?'active':'';?>" onclick="javascript:default_address('<?php echo $result['address_id']; ?>');">           
+            <li>           
               <div class="text">
                 <p><?php echo $result['address']; ?></p>
-                <span>Default address</span>
+                 
                 <div class="close" onclick="del_address('<?php echo $result['delete'];?>')" class="btn btn-danger"></div>
+                  <span style="display: block;" onclick="javascript:default_address('<?php echo $result['address_id']; ?>');">Set Default Address</span>
                 <a class="a_img" href="<?php echo $result['update']; ?>"></a>
               </div>
             </li>
-            <?php } ?>
-            <?php } ?>
+            <?php }else{ ?>
+            <li class="active">
+              <div class="text">
+                <p><?php echo $result['address']; ?></p>
+                <span>Default address</span>
+                <a class="a_img" href="<?php echo $result['update']; ?>"></a>
+              </div>
+            </li>
+
+            <?php } }?>
             <?php }?>
           </ul>
           <a class="a_btn clearfix" href="<?php echo $add; ?>">Add New Address</a>
@@ -69,11 +67,11 @@ function del_address(url){
 }
 </script>
 <script>
-  $(function(){
-    $(".m_add>ul>li").click(function(){
-      $(this).addClass("active").siblings("li").removeClass("active");
-    })
-  })
+  // $(function(){
+  //   $(".m_add>ul>li").click(function(){
+  //     $(this).addClass("active").siblings("li").removeClass("active");
+  //   })
+  // })
 </script>
 <?php echo $footer; ?>
 <?php if ($success) { ?>

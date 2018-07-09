@@ -30,13 +30,10 @@ class ControllerAccountAddress extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
-		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
-
 		$this->load->model('account/address');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			if (isset($this->request->post['default'])) {$this->request->post['default']=1;}else{$this->request->post['default']=0;}
 			$this->model_account_address->addAddress($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_add');
@@ -71,13 +68,11 @@ class ControllerAccountAddress extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
-		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 		$this->load->model('account/address');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			if (isset($this->request->post['default'])) {$this->request->post['default']=1;}else{$this->request->post['default']=0;}
 			$this->model_account_address->editAddress($this->request->get['address_id'], $this->request->post);
 
 			// Default Shipping Address
