@@ -5,7 +5,7 @@ class ControllerInformationPromotion extends Controller {
 
 		$this->load->model('catalog/promotion');
 
-		$this->load->model('catalog/product');
+		$this->load->model('catalog/dis_promotion');
 
 		$this->load->model('tool/image');
 
@@ -201,9 +201,9 @@ class ControllerInformationPromotion extends Controller {
 				'limit'              => $limit
 			);
 
-			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
-
-			$results = $this->model_catalog_product->getProducts($filter_data);
+			$product_total = $this->model_catalog_dis_promotion->getTotalProducts($filter_data);
+			//临时 
+			$results = $this->model_catalog_dis_promotion->discountProducts($filter_data);
 			// print_r($results);exit();
 
 			foreach ($results as $result) {
@@ -224,7 +224,7 @@ class ControllerInformationPromotion extends Controller {
 
 				//根据用户等级获取对应产品价格
 				if ($this->customer->isLogged()) {
-					$special = $this->model_catalog_product->getSpecialPrice($result['product_id']);
+					$special = $this->model_catalog_dis_promotion->getSpecialPrice($result['product_id']);
 				}
 
 				if ($this->config->get('config_tax')) {
@@ -242,17 +242,17 @@ class ControllerInformationPromotion extends Controller {
 				//颜色名称
 				$color_name = '';
 				if($result['color_id']!=0){
-				   $color_data = $this->model_catalog_product->getOptionValueByID($result['color_id']);
+				   $color_data = $this->model_catalog_dis_promotion->getOptionValueByID($result['color_id']);
 				   if($color_data){
 					  $color_arr = explode(':',$color_data['name']);
 					  $color_name = $color_arr[0];
 				   }
 			    }
 
-			    $wishlist= $this->model_catalog_product->wishlistornot($result['product_id']);
+			    $wishlist= $this->model_catalog_dis_promotion->wishlistornot($result['product_id']);
                             
                 //texture
-                $texture = $this->model_catalog_product->getOptionDes('Texture',$result['product_id']);
+                $texture = $this->model_catalog_dis_promotion->getOptionDes('Texture',$result['product_id']);
 
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],

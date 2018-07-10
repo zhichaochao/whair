@@ -1,4 +1,5 @@
 <?php echo $header; ?><?php echo $column_left; ?>
+
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
@@ -89,6 +90,7 @@
 
             </div>
             <div class="tab-pane" id="tab-image">
+<!-- 视频 -->
              <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
                 <div class="col-sm-10">
@@ -107,7 +109,7 @@
                     <label for="input-video" class="input-video">请上传</label><br/>
                       <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
                       <div class="input-video" onclick="deleteVideo();">删除</div>
-                    </div>
+                  </div>
                  
                 </li>
    <?php }else{ echo '视频只支持编辑时上传，请先保存产品后再点击编辑时再来上传小视频';} ?>
@@ -207,6 +209,72 @@
   <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
   <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+
+    <style type="text/css">
+    .input-video {
+      width: 100px;
+      height: 30px;
+      font-size: 12px;
+      letter-spacing: 8px;
+      padding-left: 12px;
+      border-radius: 5px;
+      line-height: 30px;
+      cursor: pointer;
+      text-align: center;
+      background: -webkit-linear-gradient(top, #66B5E6, #2e88c0);
+      background: -moz-linear-gradient(top, #66B5E6, #2e88c0);
+      background: linear-gradient(top, #66B5E6, #2e88c0);
+      background: -ms-linear-gradient(top, #66B5E6, #2e88c0);
+      border: 1px solid #2576A8;
+      color: #fff;
+      text-shadow: 1px 1px 0.5px #22629B;
+    }
+  </style>
+  <script type="text/javascript">
+      $(".upinput").fileupload({
+
+          url: "<?php echo $edit_video; ?>"+"<?php echo $edit_video_url; ?>",//文件上传地址，当然也可以直接写在input的data-url属性内
+          dataType: "json", //如果不指定json类型，则传来的json字符串就需要解析jQuery.parseJSON(data.result);
+
+          done: function (e, data) {
+              //done方法就是上传完毕的回调函数，其他回调函数可以自行查看api
+              //注意data要和jquery的ajax的data参数区分，这个对象包含了整个请求信息
+              //返回的数据在data.result中，这里dataType中设置的返回的数据类型为json
+              if (data.result.sta) {
+                  // 上传成功：
+                  console.log('成功');
+                  $(".upstatus").html(data.result.msg);
+                  $(".preview").html("<video src="+ data.result.previewSrc +" loop='loop' autoplay='autoplay' width='100px' height='100px'></video>");
+              } else {
+                  // 上传失败：
+                  alert(data.result.msg);
+                  $(".progress .bar").css("width", "0%");
+                  $(".upstatus").html("<span style='color:red;'>" + data.result.msg + "</span>");
+              }
+
+          },
+          progress: function (e, data) { //上传进度
+              console.log('正在上传');
+              var progress = parseInt(data.loaded / data.total * 100, 10);
+              $(".progress .bar").css("width", progress + "%");
+              $(".upstatus").html("正在上传...");
+          }
+      });
+      function deleteVideo(){
+          $.ajax({
+              url: 'index.php?route=catalog/product/deleteVideo'+"<?php echo $edit_video_url; ?>",
+              dataType: 'json',
+              data:{video:'<?php echo $video; ?>'},
+              success: function() {
+                  $(".preview").html("");
+              },
+              error:function(){
+                  alert("删除失败");
+              }
+          });
+      }
+
+  </script>
   <script type="text/javascript"><!--
 //      $('#language a:first').tab('show');
       $('.set-product-id').autocomplete({
