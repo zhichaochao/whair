@@ -93,6 +93,7 @@
                 <p class="clearfix"><span class="p_span fl">Total </span><span class="fr"><?php echo $total; ?></span></p>
               </div>
             </div>
+
           </div>
           
           <!-- <a class="a_btn" href="###">Continue to pay</a>
@@ -102,6 +103,12 @@
                   <?php if($payment_code == 'pp_standard' || $payment_code == 'pp_express') { ?>
                     &nbsp;&nbsp;<a data-toggle="tooltip" href="<?php echo $repay;?>" title="Pay"  class="a_btn">Continue to pay</a>
                   <?php } ?>
+                  <?php if($bank_receipt) { ?>
+                    &nbsp;&nbsp;<a data-toggle="tooltip" href="<?php echo $repay_receipt;?>" title="Pay"  class="a_btn">Re Submit Receipt</a>
+                  <?php }else{ ?>
+                    &nbsp;&nbsp;<a data-toggle="tooltip" href="<?php echo $repay_receipt;?>" title="Pay"  class="a_btn">Continue to pay</a>
+                <?php } ?>
+
                   &nbsp;&nbsp;<a  title="Cancel Order"  onclick="cancel_order('<?=$cancel_href?>')" class="qx_btn">Cancel</a>
                 <?php } ?>
 
@@ -125,7 +132,18 @@
           <?php if($order_status !== 'Pending'){ ?>
          <a class="a_btn" href="<?php echo $continue?>">GO BACK</a> 
          <?php } ?>
+           <div class="bot clearfix" style="margin-top: 70px;">
+            <div class="hui_div clearfix">
+              <p>Bank Receipt</p>
+            </div>
+            <div class="text clearfix">
+ <div class="bank_receipt" style="text-align: center; background: #fff; margin-top: 20px;">
+        <img style="margin:0 auto;max-width: 100%;" src="<?=$bank_receipt;?>" />
+      </div>
+    </div>
+  </div>
         </div>
+       
       </div>
     </div>
     
@@ -220,6 +238,7 @@
           </div>
         </form>
       </div>
+     
     </div>
 
 

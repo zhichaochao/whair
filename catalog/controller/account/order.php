@@ -88,6 +88,7 @@ class ControllerAccountOrder extends Controller {
 				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
 				'cancel_href' => $this->url->link('account/order/cancel', 'order_id=' . $result['order_id'], true),
 				'repay'	      => $this->url->link('account/order/repay', 'order_id=' . $result['order_id'], true),
+			
 				'shipping_total'  	=> $shipping_total
 			);
 			
@@ -154,7 +155,7 @@ class ControllerAccountOrder extends Controller {
 	
 
 		$order_info = $this->model_account_order->getOrder($order_id);
-		// print_r($order_info);exit()
+		// print_r($order_info);exit();
 
 		if ($order_info) {
 			$this->document->setTitle($this->language->get('text_order'));
@@ -233,6 +234,7 @@ class ControllerAccountOrder extends Controller {
 			$data['payment_code']=$results[0]['payment_code'];
 			//print_r($payment_code);exit;
 			$data['repay']	      = $this->url->link('account/order/repay', 'order_id=' . $order_id, true);
+			$data['repay_receipt']	      = $this->url->link('account/order/repay_receipt', 'order_id=' . $order_id, true);
 			$data['cancel_href'] = $this->url->link('account/order/cancel', 'order_id=' . $order_id, true);
 			//订单状态 dyl add
 			if ($order_info['order_status_id']) {
@@ -367,7 +369,7 @@ class ControllerAccountOrder extends Controller {
 					$reorder = '';
 				}
 			
-	$this->load->model('tool/image');
+			$this->load->model('tool/image');
 		
 		
 			
@@ -616,6 +618,7 @@ class ControllerAccountOrder extends Controller {
 			$data['default'] = false;
 		}
 			//结束
+		$data['bank_receipt'] =$order_info['bank_receipt'];
 			$data['continue'] = $this->url->link('account/order', '', true);
 
 			$data['column_left'] = $this->load->controller('common/column_left');
@@ -788,6 +791,52 @@ class ControllerAccountOrder extends Controller {
 	    //$order_info = $this->model_account_order->getOrder($order_id);
 
 	    $this->response->redirect($this->url->link('checkout/payment'));
+	}
+	/**
+	 * 再上传凭证
+	 * @author  dyl  志超
+	 */
+	public function repay_receipt(){
+	   if (!$this->customer->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('account/order', '', 'SSL');
+			$this->response->redirect($this->url->link('account/login', '', 'SSL'));
+		}
+	    if (isset($this->request->get['order_id'])) {
+	        $order_id = $this->request->get['order_id'];
+	    } else {
+	        $order_id = 0;
+	    }
+
+	    $this->session->data['order_id'] = $order_id;
+	    //$this->load->model('account/order');
+	    //$order_info = $this->model_account_order->getOrder($order_id);
+
+	    $this->response->redirect($this->url->link('checkout/confirm/view_order'));
+	}
+	public function receipt()
+	{
+		if (!$this->customer->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('account/order', '', 'SSL');
+			$this->response->redirect($this->url->link('account/login', '', 'SSL'));
+		}
+	    if (isset($this->request->get['order_id'])) {
+	        $order_id = $this->request->get['order_id'];
+	    } else {
+	        $order_id = 0;
+	    }
+	   
+	    $img = date("YmdHis").substr(md5(mt_rand(0,1000)),0,2).strtolower(strrchr($_FILES['bank_receipt']['name'],"."));
+		$souceName = DIR_IMAGE.'/bank_receipt/'.$img;
+		$imgk='../image/bank_receipt/'.$img;
+		$moveRes=move_uploaded_file($_FILES['bank_receipt']['tmp_name'],$souceName);
+		if ($moveRes) {
+			$this->load->model('account/order');
+			$this->model_account_order->submitOrderBankReceipt($order_id,$imgk);
+			
+		}
+		 $this->response->redirect($this->url->link('account/order/info','order_id='.$order_id));
+
+		
 	}
 
 

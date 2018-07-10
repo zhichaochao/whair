@@ -98,7 +98,8 @@ class ModelAccountOrder extends Model {
 				'order_no'                => $order_query->row['order_no'],        //dyl add
 				'shippingNumber'          => $order_query->row['shippingNumber'],  //dyl add
 				'payment_telephone'       => $order_query->row['payment_telephone'],
-				'shipping_telephone'      => $order_query->row['shipping_telephone']
+				'shipping_telephone'      => $order_query->row['shipping_telephone'],
+				'bank_receipt'            => $order_query->row['bank_receipt']
 			);
 		} else {
 			return false;
@@ -256,6 +257,17 @@ public function getOrderProductImgAndNameByOrderIds($order_id) {
 	
 		$query = $this->db->query($sql);
 		return $query->row;
+	}
+		/**
+	 * 上传支付的凭证
+	 * @author zhichao
+	 */
+	public function submitOrderBankReceipt($order_id,$bank_receipt)
+	{
+		 $sql = "update `".DB_PREFIX."order` set bank_receipt = '". $this->db->escape($bank_receipt)."' where order_id = '".$order_id."'";
+		 // print_r($sql);exit();
+	    $query = $this->db->query($sql);
+	    // print_r(  $query);exit();
 	}
 
 }

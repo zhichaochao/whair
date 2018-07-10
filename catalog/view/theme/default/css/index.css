@@ -1088,6 +1088,11 @@
 	.pay .pay_text .text_div img{display: block;}
 	.pay .pay_text .text_div .tj_btn{width: 144px;height: 40px;border-radius: 2px;background: #333;color:#fff;font-size: 20px;border:none;margin: 15px auto 30px auto;}
 	
+	.pay .pay_4{max-width: 640px;margin: auto;padding-bottom: 40px;}
+	.pay .pay_4 img{display: block;margin: auto;}
+	.pay .pay_4 p{font-size: 14px;color: #666;line-height: 20px;text-align: center;padding: 0 60px;margin: 10px 0 40px 0;}
+	.pay .pay_4 a{width: 240px;height: 40px;font-size: 20px;line-height: 40px;text-align: center;color: #fff;display: block;margin: auto;background: #259f7e;}
+	
 	/*****forget*****/
 	.forget{background: #f5f5f5;}
 	.forget .text{max-width: 750px;margin:24px auto 80px auto;}
@@ -1122,6 +1127,30 @@
 	.promotion .pro_text .pro_ul .fsbg_div{width: 72px;height: 32px;background: #fe2a4d;text-align: center;float: right;margin-top: 28px;}
 	.promotion .pro_text .pro_ul .fsbg_div i{color: #fff;font-size: 16px;line-height: 32px;}
 	.promotion .pro_content .bot{background: #f5f5f5;}
+	
+	/************search_div**************/
+	.search_div {background: #fff !important;}
+	.search_div h1{font-size: 30px;color: #333;font-weight: normal;margin-bottom: 10px;}
+	.search_div  .form_sr p.p_sr{font-size: 14px;margin-bottom: 10px;}
+	.search_div  .form_sr .input_sr{width: 32%;height: 50px;line-height: 50px;border: 1px solid #ccc;border-radius: 5px;
+	margin-right:40px;clear: both;float: left;padding: 0 10px;box-sizing: border-box;}
+	.search_div  .form_sr select{width: 23%;display: block;float: left;height: 50px;line-height: 50px;border: 1px solid #ccc;border-radius: 5px;}
+	.search_div .sr_div {position: relative;display: block;float: left;height: 50px;line-height: 50px;padding: 15px 0;margin-left: 20px;}
+	.search_div .sr_div input{position: absolute;width: 16px;height: 16px;top: 15px;left: 0;z-index: 2;opacity: 0;cursor: pointer;margin: 0;}
+	.search_div .sr_div span{width:16px;height:16px;border-radius:2px;position: absolute;border:1px solid #000;z-index: 1;}
+	.search_div .sr_div span.span1{display: block;}
+	.search_div .sr_div span.span2{background: #000;display: none;}
+	.search_div .sr_div span.span2:after {content: '\00a0'; display: inline-block;border: 2px solid #fff;border-top-width: 0;
+	    border-right-width: 0; width: 10px;height: 5px;-webkit-transform: rotate(-50deg);position: absolute;top:3px;left:2px;}
+	.search_div .sr_div p{font-size: 14px;color: #333;padding-left: 29px;height: 20px;line-height: 20px;display:block;}
+	.search_div .sr_div p a{font-size: 14px;color: #569acf;}
+	.search_div .form_sr button{background: #ff6600;font-size: 16px;color: #fff;height: 40px;padding: 0 15px;border: none;margin: 10px 0 30px 0;
+	display: block;float: left;clear: both;}
+	
+	.search_div .ser_bot label{border: 1px solid #ccc ;height: 40px;line-height: 40px;border-radius: 4px;display: inline-block;margin-bottom: 20px;}
+	.search_div .ser_bot label span{display: block;height: 40px;line-height: 40px;background: #eee;width: 80px;text-align: center;float: left;font-size: 16px;}
+	.search_div .ser_bot label select{width: 300px;height: 40px;line-height: 40px;border: none;cursor: pointer;font-size: 16px;padding: 0 10px;border-radius: 4px;}
+	.search_div .pro_ul{background: #f5f5f5;padding-top: 24px;}
 	
 	
 	
@@ -2147,6 +2176,11 @@
 	background: url(../img/png/close4.png) no-repeat center;background-size: 0.4rem;cursor: pointer;}
 	.pay .pay_text .text_div img{display: block;}
 	.pay .pay_text .text_div .tj_btn{width: 1.8rem;height: 0.5rem;border-radius: 2px;background: #333;color:#fff;font-size: 0.24rem;border:none;margin: 0.3rem auto 0.4rem auto;}
+	
+	.pay .pay_4{max-width: 640px;margin: auto;padding-bottom: 40px;}
+	.pay .pay_4 img{display: block;margin: auto;}
+	.pay .pay_4 p{font-size: 0.2rem;color: #666;line-height: 0.24rem;text-align: center;padding: 0;margin: 0.2rem 0 0.4rem 0;}
+	.pay .pay_4 a{width: 3rem;height: 0.6rem;font-size: 0.24rem;line-height: 0.6rem;text-align: center;color: #fff;display: block;margin: auto;background: #259f7e;}
 	
 	/*****forget*****/
 	.forget{background: #f5f5f5;}

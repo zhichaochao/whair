@@ -591,16 +591,11 @@ class ControllerCheckoutConfirm extends Controller {
 	    
 	    $this->document->setTitle($this->language->get('heading_title'));
             
-             /* 优化 by hwh begin 注释掉无用的js,css
-	    $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
-	    $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
-	    $this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
-	    优化 by hwh end */
-            
 	    $data = array();
 	    $order_id = $this->session->data['order_id'];
 	    $this->load->model('checkout/order');
 	    $order = $this->model_checkout_order->getOrder($order_id);
+	    // print_r($order);exit();
 	    $data['order'] = $order;
 	    
 	    if(!$order || $order['order_status'] != 'Pending') 
@@ -617,18 +612,15 @@ class ControllerCheckoutConfirm extends Controller {
 				foreach ($payment_method_attributes as $payment_method_attribute) {
 					$sort_order[] = $payment_method_attribute['sort_order'];
 				}
-
 				array_multisort($sort_order, SORT_ASC, $payment_method_attributes);
 				$data['payment_method_attributes'] = $payment_method_attributes;
 				$data['payment_method_image'] = $this->model_tool_image->resize($this->config->get($payment_code . '_image'), 474, 154);
 			}
 		}
-
 		$data['payment'] = $this->url->link('checkout/payment', '', true);
-
+		$data['submit_bank_receipt'] = $this->url->link('account/order/receipt', 'order_id='.$order_id, true);
         $this->load->model('checkout/order_total');
 	    $data['totals'] = $this->model_checkout_order_total->getOrderTotal2($order_id);
-
 	    $data['column_left'] = $this->load->controller('common/column_left');
 	    $data['column_right'] = $this->load->controller('common/column_right');
 	    $data['content_top'] = $this->load->controller('common/content_top');
