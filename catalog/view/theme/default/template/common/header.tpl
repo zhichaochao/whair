@@ -122,9 +122,9 @@
                 </div>
                 
                 <!--搜索框-->
-            <form method='post' action='<?=$search_url;?>'  class="search fl" >
+            <form method='post' action='<?php echo $search_url;?>'  class="search fl" >
                     <input class="btn_in" type="submit" value="">
-                    <input class="text_in" name="search" type="text" placeholder="Search">
+                    <input class="text_in"  type="text" name="new_search" placeholder="Search">
                     <img class="close" src="catalog/view/theme/default/img/png/close2.png"/>
              </form>
                 

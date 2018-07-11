@@ -314,7 +314,7 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" >
                 <label class="col-sm-2 control-label" for="input-video-link"><?php echo $entry_video_link; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="video_link" value="<?php echo $video_link; ?>" placeholder="<?php echo $entry_video_link; ?>" id="input-video-link" class="form-control" />
@@ -1089,7 +1089,7 @@
       }
 
   </script>
-  <script type="text/javascript"><!--
+  <script type="text/javascript" ><!--
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({
 	'source': function(request, response) {

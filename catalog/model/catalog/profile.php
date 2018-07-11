@@ -32,7 +32,29 @@ class ModelCatalogProfile extends Model {
 	
 		
 	}
+public function getVideo($limit_num='') {
+		// $where=' ';
+		// if ($parent_id>0) {
+		// 	$where.=' AND parent_id ='.$parent_id;
+		// }else{
+		// 	$where.=' AND parent_id =0';
+		// }
+		$limit='';
+		if ($limit_num>0) {
+			$limit.=' limit 0,'.$limit_num;
+		}
+			$query = $this->db->query("SELECT video,gallery_title,image FROM " . DB_PREFIX . "gallery id " .$limit);
 
+	//var_dump($query);exit;
+		return $query->rows;
+	}
+	public function getVideos() {
+
+			$query = $this->db->query("SELECT video,gallery_title,image FROM " . DB_PREFIX . "gallery id ");
+
+	//var_dump($query);exit;
+		return $query->rows;
+	}
 
 
 }

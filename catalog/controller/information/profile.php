@@ -57,9 +57,19 @@ class ControllerInformationProfile extends Controller {
 				}
 				$profile_know['childs']=$childs;
 				// print_r($profile_care['childs']);exit;
-			
-			
-
+				$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+				$videos=$this->model_catalog_profile->getVideo(3);
+				//var_dump($videos);exit;
+			    if ($videos) {
+				
+						foreach ($videos as $key => $value) {
+							$videos[$key]['video']=$http_type . $_SERVER['HTTP_HOST']. $value['video'];
+							$videos[$key]['gallery_title']=$value['gallery_title'];
+							$videos[$key]['image']=$this->model_tool_image->resize($value['image'],380,215);
+						}
+				}
+			   $profile_video['videos']=$videos;
+//var_dump($profile_video['videos']);exit;
 				$data['breadcrumbs'] = array();
 
 				$data['breadcrumbs'][] = array(
@@ -68,7 +78,8 @@ class ControllerInformationProfile extends Controller {
 				);
 				$data['profile_care']=$profile_care;
 				$data['profile_know']=$profile_know;
-
+				$data['profile_video']=$profile_video;
+				$data['videohome'] = $this->url->link('information/profile/hairclub', '', true);
 				$data['column_left'] = $this->load->controller('common/column_left');
 				//$data['column_right'] = $this->load->controller('common/column_right');
 				$data['account_left'] = $this->load->controller('account/left');      //新左侧栏
@@ -78,6 +89,47 @@ class ControllerInformationProfile extends Controller {
 				$data['header'] = $this->load->controller('common/header');
 	
 			$this->response->setOutput($this->load->view('information/profile_index', $data));
+		}
+		public function hairclub()
+		{
+			$this->load->language('information/profile');
+
+				$this->load->model('catalog/profile');
+					$this->load->model('tool/image');
+			$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+				$videos=$this->model_catalog_profile->getVideos();
+				//var_dump($videos);exit;
+				if ($videos) {
+				
+						foreach ($videos as $key => $value) {
+							$videos[$key]['video']=$http_type . $_SERVER['HTTP_HOST']. $value['video'];
+							$videos[$key]['gallery_title']=$value['gallery_title'];
+							$videos[$key]['image']=$this->model_tool_image->resize($value['image'],380,215);
+						}
+				}
+			   $profile_video['videos']=$videos;
+			   $data['profile_video']=$profile_video;
+
+			//    $pagination = new Pagination();
+			// $pagination->total = $product_total;
+			// $pagination->page = $page;
+			// $pagination->limit = $limit;
+			// $pagination->url = $this->url->link('information/hairhome', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+
+			// $data['pagination'] = $pagination->render();
+
+			// $data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
+
+			$data['column_left'] = $this->load->controller('common/column_left');
+				//$data['column_right'] = $this->load->controller('common/column_right');
+				$data['account_left'] = $this->load->controller('account/left');      //新左侧栏
+				$data['content_top'] = $this->load->controller('common/content_top');
+				//$data['content_bottom'] = $this->load->controller('common/content_bottom');
+				$data['footer'] = $this->load->controller('common/footer');
+				$data['header'] = $this->load->controller('common/header');
+	
+			$this->response->setOutput($this->load->view('information/hairhome', $data));
+		
 		}
 
 		public function infocare()
