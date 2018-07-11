@@ -68,9 +68,9 @@ class ControllerCatalogNav extends Controller {
 			// print_r($this->request->post);exit();
 			if(isset($this->request->post['is_target'])){$this->request->post['is_target']=1;}else{$this->request->post['is_target']=0;}
 			if ($this->request->post['type']=='especially'&&$this->request->post['inside_id']!='0') {
-				$tem=$this->get_especially_nav($this->request->post['inside_id']);
-				$this->request->post['seo_url']=$tem['seo_url'];
-				$this->request->post['url']=$tem['url'];
+				// $tem=$this->get_especially_nav($this->request->post['inside_id']);
+				// print_r($this->request->post['inside_id']);exit();
+				$this->request->post['url']=$this->request->post['inside_id'];
 			}
 			$this->model_catalog_nav->editNav($this->request->get['nav_id'], $this->request->post);
 
@@ -444,7 +444,7 @@ class ControllerCatalogNav extends Controller {
 			$data['inside_id'] = $this->request->post['inside_id'];
 		} elseif (!empty($nav_info)) {
 			if ($data['type']=='especially') {
-				$data['inside_id']=$nav_info['seo_url'];
+				$data['inside_id']=$nav_info['url'];
 			}else{
 			$data['inside_id'] = $nav_info['inside_id'];
 			}
@@ -547,7 +547,10 @@ class ControllerCatalogNav extends Controller {
 	}
 	protected function especiallynavs(){
 		$res=array();
-		$res[]= array('name' =>'New Arrival' ,'seo_url'=> 'product-newarrival','url'=>'index.php?route=product/newarrival');
+		$res[]= array('name' =>'All Hair Collections' ,'url'=>'product/category');
+		$res[]= array('name' =>'Promotion' ,'url'=>'information/promotion');
+		$res[]= array('name' =>'Hair Club' ,'url'=>'information/profile');
+		$res[]= array('name' =>'Company Profile' ,'url'=>'information/company');
 		return $res;
 
 	}
@@ -556,7 +559,7 @@ class ControllerCatalogNav extends Controller {
 		$res=array();
 			$navs=$this->especiallynavs();
 			foreach ($navs as $key => $value) {
-				if($value['seo_url']==$seo_url){
+				if($value['url']==$seo_url){
 					$res=$value;
 				}
 			}
@@ -567,13 +570,13 @@ class ControllerCatalogNav extends Controller {
 	protected function get_especially_navs($inside_id)
 	{
 		$res='';
-		$res.="<option value='0'>". $this->language->get('text_especially').$this->language->get('text_above')."</option>";
+		// $res.="<option value='0'>". $this->language->get('text_especially').$this->language->get('text_above')."</option>";
 		$navs=$this->especiallynavs();
 		foreach ($navs as $key => $value) {
-			if($inside_id==$value['seo_url']){
-				$res.="<option selected value='".$value['seo_url']."'>".$value['name']."</option>";
+			if($inside_id==$value['url']){
+				$res.="<option selected value='".$value['url']."'>".$value['name']."</option>";
 			}else{
-			$res.="<option value='".$value['seo_url']."'>".$value['name']."</option>";
+			$res.="<option value='".$value['url']."'>".$value['name']."</option>";
 			}
 		}
 		return $res;

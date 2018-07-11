@@ -105,7 +105,7 @@
                   <?php } ?>
                   <?php if($bank_receipt) { ?>
                     &nbsp;&nbsp;<a data-toggle="tooltip" href="<?php echo $repay_receipt;?>" title="Pay"  class="a_btn">Re Submit Receipt</a>
-                  <?php }else{ ?>
+                  <?php }elseif(!($payment_code == 'pp_standard' || $payment_code == 'pp_express')){ ?>
                     &nbsp;&nbsp;<a data-toggle="tooltip" href="<?php echo $repay_receipt;?>" title="Pay"  class="a_btn">Continue to pay</a>
                 <?php } ?>
 
@@ -132,6 +132,7 @@
           <?php if($order_status !== 'Pending'){ ?>
          <a class="a_btn" href="<?php echo $continue?>">GO BACK</a> 
          <?php } ?>
+           <?php if($bank_receipt) { ?>
            <div class="bot clearfix" style="margin-top: 70px;">
             <div class="hui_div clearfix">
               <p>Bank Receipt</p>
@@ -141,7 +142,7 @@
         <img style="margin:0 auto;max-width: 100%;" src="<?=$bank_receipt;?>" />
       </div>
     </div>
-  </div>
+  </div>         <?php } ?>
         </div>
        
       </div>

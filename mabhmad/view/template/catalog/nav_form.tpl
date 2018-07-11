@@ -59,18 +59,18 @@
             </div>
           </div>
         
-          <div class="form-group url-content">
+      <!--     <div class="form-group url-content">
             <label class="col-sm-2 control-label" for="input-url"><?php echo $entry_url; ?></label>
             <div class="col-sm-10">
               <input type="text" name="url" value="<?php echo $url; ?>" placeholder="<?php echo $entry_url; ?>" id="input-url" class="form-control" />
             </div>
-          </div>
-          <div class="form-group url-content">
+          </div> -->
+       <!--    <div class="form-group url-content">
             <label class="col-sm-2 control-label " for="input-seo-url"><?php echo $entry_seo_url; ?></label>
             <div class="col-sm-10">
               <input type="text" name="seo_url" value="<?php echo $seo_url; ?>" placeholder="<?php echo $entry_seo_url; ?>" id="input-seo-url" class="form-control" />
             </div>
-          </div>
+          </div> -->
         
 
           <div class="form-group">
@@ -86,7 +86,7 @@
               </select>
               <select class="form-control" style=" width: 40%;" onchange="changeinsideid(this.value)"  name="inside_id" id="input-inside-id">
           
-               <option value="0"><?=$text_especially;?><?=$text_above;?></option>
+               <!-- <option value="0"><?=$text_especially;?><?=$text_above;?></option> -->
               </select>
               <input type="hidden" name="tem" id='inside_id_tem' value="<?=$inside_id?>" />
             

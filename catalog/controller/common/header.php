@@ -1,3 +1,4 @@
+
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index() {
@@ -205,13 +206,14 @@ class ControllerCommonHeader extends Controller {
 		}elseif ($nav['type']=='profile_id') {
 			$res['url']=$this->url->link('information/company/index', 'profile_id=' . $nav['inside_id']);
 		}else{
-			if (strstr($nav['url'], 'http')) {
-				$res['url']=$nav['url'];
-			}elseif ($this->config->get('config_seo_url')) {
-				$res['url']=$nav['seo_url'];
-			}else{
-				$res['url']=$nav['url'];
-			}
+			$res['url']=$this->url->link($nav['url']);
+			// if (strstr($nav['url'], 'http')) {
+			// 	$res['url']=$nav['url'];
+			// }elseif ($this->config->get('config_seo_url')) {
+			// 	$res['url']=$nav['seo_url'];
+			// }else{
+			// 	$res['url']=$nav['url'];
+			// }
 		}
 
 		return $res;
