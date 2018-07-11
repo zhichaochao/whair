@@ -1,7 +1,7 @@
 <?php
 // Heading
 $_['heading_title']  = 'Contact Us';
-
+$_['heading_titles']  = 'HairClub';
 // Text
 $_['text_location']  = 'Our Location';
 $_['text_store']     = 'Our Stores';

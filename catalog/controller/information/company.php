@@ -10,6 +10,9 @@ class ControllerInformationCompany extends Controller {
 
 	public function index()
 	{
+		$this->load->language('information/contact');
+		$this->document->setTitle($this->language->get('heading_titles'));
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
