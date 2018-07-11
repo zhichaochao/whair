@@ -63,6 +63,7 @@
           <?php } ?>
           <?php echo $entry_description; ?></label>
        </div>
+       
           <button class="clearfix" value="<?php echo $button_search; ?>" id="button-search">Search</button>
         </div>
       <div class="ser_bot clearfix">

@@ -112,14 +112,14 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo $contac?>">
+          <a href="###">
             <img class="active" src="catalog/view/theme/default/img/png/fenlei-1.png" alt="" />
             <img src="catalog/view/theme/default/img/png/fenlei-2.png" alt="" />
             <p>ALL HAIR</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="###">
             <img class="active" src="catalog/view/theme/default/img/png/contact-1.png" alt="" />
             <img src="catalog/view/theme/default/img/png/contact-2.png" alt="" />
             <p>CONTACT</p>

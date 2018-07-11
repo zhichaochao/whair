@@ -20,7 +20,7 @@
 					<span>*Comment:</span>
 					<textarea name="enquiry"></textarea>
 					<?php if ($error_enquiry) { ?>
-					<div class="text-danger">
+					<div class="text-danger" style="color: red;" >
 					<?php echo $error_enquiry; ?>
 					</div>
 					<?php } ?>

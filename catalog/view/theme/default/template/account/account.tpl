@@ -30,7 +30,7 @@
 							<!-- <input type="text"  /> -->
 							<input type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" class="form-control" />
 							<?php if ($error_firstname) { ?>
-							<div class="text-danger">
+							<div class="text-danger" style="color:red;">
 								<?php echo $error_firstname; ?>
 							</div>
 							<?php } ?>
@@ -40,7 +40,7 @@
 							<!-- <input type="text"  /> -->
 							<input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" class="form-control" />
 							<?php if ($error_lastname) { ?>
-							<div class="text-danger">
+							<div class="text-danger" style="color:red;">
 								<?php echo $error_lastname; ?>
 							</div>
 							<?php } ?>
@@ -50,7 +50,7 @@
 							<!-- <input type="text"  /> -->
 							<input type="email" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
 							<?php if ($error_email) { ?>
-							<div class="text-danger">
+							<div class="text-danger" style="color:red;">
 								<?php echo $error_email; ?>
 							</div>
 							<?php } ?>
@@ -60,7 +60,7 @@
 							<!-- <input type="text"  /> -->
 							<input type="tel" name="telephone" value="<?php echo $telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" class="form-control" />
 							<?php if ($error_telephone) { ?>
-							<div class="text-danger">
+							<div class="text-danger" style="color:red;">
 								<?php echo $error_telephone; ?>
 							</div>
 							<?php } ?>
@@ -78,7 +78,7 @@
 							<!-- <input type="password"  /> -->
 							<input type="password" name="oldpassword" value="<?php echo $oldpassword;?>" placeholder="" id="input-password" class="form-control" />
 									<?php if (!empty($error_oldpassword)) { ?>
-									<div class="text-danger">
+									<div class="text-danger" style="color:red;">
 										<?php echo $error_oldpassword; ?>
 									</div>
 									<?php } ?>
@@ -88,7 +88,7 @@
 							<!-- <input type="password"  /> -->
 							<input type="password" name="password" value="<?php echo $password;?>" placeholder="" id="input-password-1" class="form-control" />
 									<?php if (!empty($error_password)) { ?>
-									<div class="text-danger">
+									<div class="text-danger" style="color:red;">
 										<?php echo $error_password; ?>
 									</div>
 									<?php } ?>
@@ -98,7 +98,7 @@
 							<!-- <input type="password"  /> -->
 							<input type="password" name="confirm" value="<?php echo $confirm;?>" placeholder="" id="input-confirm" class="form-control" />
 									<?php if (!empty($error_confirm)) { ?>
-									<div class="text-danger">
+									<div class="text-danger" style="color:red;" >
 										<?php echo $error_confirm; ?>
 									</div>
 									<?php } ?>
