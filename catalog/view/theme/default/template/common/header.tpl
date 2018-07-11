@@ -122,11 +122,15 @@
                 </div>
                 
                 <!--搜索框-->
-            <form method='post' action='<?php echo $search_url;?>'  class="search fl" >
+           <!--  <form method='post' action='<?php echo $search_url;?>'  class="search fl" >
                     <input class="btn_in" type="submit" value="">
                     <input class="text_in"  type="text" name="new_search" placeholder="Search">
                     <img class="close" src="catalog/view/theme/default/img/png/close2.png"/>
-             </form>
+             </form> -->
+             <form class="search fl">
+              <input id="header-search" value="" type="" name="new_search" placeholder="Search">
+                <img class="close" src="catalog/view/theme/default/img/png/close2.png"/>
+              </form>
                 
                 <!--导航购物车-->
                 <div class="nav_cart">
@@ -166,3 +170,25 @@
             </div>
         
         </div>
+        <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+ <script>
+        $(document).ready(function() {
+            /* Search */
+            $('.search_li ').click(function() {
+               // alert(1111);die;
+                url = '<?php echo $search_url; ?>';
+                var value = $("input[name='new_search']").val();
+
+                if (value) {
+                    url += '?search=' + encodeURIComponent(value);
+                }
+                location = url;
+            });
+
+            $('#header-search').keydown(function(e){
+                if(e.keyCode==13){
+                    $('.search_li').click();
+                }
+            })
+        });
+    </script>
