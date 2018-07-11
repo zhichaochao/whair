@@ -23,7 +23,7 @@ class ModelCatalogGallery extends Model
         
     }
     public function getGalleryInfo($gallery_id){
-        $query = $this->db->query("SELECT gallery_id, gallery_title, product_id, product_name, image, author, is_home, sort_order, status FROM " . DB_PREFIX . "gallery WHERE gallery_id = " . (int)$gallery_id);
+        $query = $this->db->query("SELECT gallery_id, gallery_title, product_id, video, product_name, image, author, is_home, sort_order, status FROM " . DB_PREFIX . "gallery WHERE gallery_id = " . (int)$gallery_id);
 
         return $query->row;
     }
@@ -36,7 +36,7 @@ class ModelCatalogGallery extends Model
 
     public function getGallerys($data = array()) {
 
-        $sql = "SELECT gallery_id, gallery_title, product_name, author, image, view FROM " . DB_PREFIX . "gallery WHERE status = '1'";
+        $sql = "SELECT gallery_id, gallery_title, product_name, author,product_id, image, view FROM " . DB_PREFIX . "gallery WHERE status = '1'";
 
         if (!empty($data['filter_gallery_title'])) {
             $sql .= " AND gallery_title like '%" . $this->db->escape($data['filter_gallery_title']) . "%'";
@@ -138,12 +138,13 @@ class ModelCatalogGallery extends Model
     }
 
     public function editGallery($gallery_id, $data){
+        // print_r($data);exit;
 
         $this->querysql("UPDATE " . DB_PREFIX . "gallery SET gallery_title = '" . $this->db->escape($data['gallery_title'])
 
             . "', product_id = " . (int)$data['product_id'] . ", product_name = '" . $this->db->escape($data['product_name'])
 
-            . "', is_home = " . (int)$data['is_home'] . ", sort_order = " . (int)$data['sort_order']
+            . "', video = '" . $this->db->escape($data['video']) . "', is_home = " . (int)$data['is_home'] . ", sort_order = " . (int)$data['sort_order']
 
             . ", status = " . (int)$data['status'] . ",author = '" . $this->db->escape($data['author']) . "'"
 

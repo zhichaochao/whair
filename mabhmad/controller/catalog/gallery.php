@@ -23,13 +23,14 @@ class ControllerCatalogGallery extends Controller
         $this->getList();
     }
 
-    public function add() {
+    public function add() { 
+        //var_dump($this->request->post);exit();
         $this->load->language('catalog/gallery');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
         $this->load->model('catalog/gallery');
-//        var_dump($this->request->post);exit;
+     
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 
 
@@ -207,10 +208,11 @@ class ControllerCatalogGallery extends Controller
         $gallery_total = $this->model_catalog_gallery->getTotalgallerys($filter_data);
 
         $results = $this->model_catalog_gallery->getGallerys($filter_data);
-
+       // var_dump($results);exit();
         foreach ($results as $result) {
             $data['galleries'][] = array(
                 'gallery_id'        => $result['gallery_id'],
+                'product_id'        => $result['product_id'],
                 'product_name'      => $result['product_name'],
                 'gallery_title'     => $result['gallery_title'],
                 'view'              => $result['view'],
@@ -371,8 +373,9 @@ class ControllerCatalogGallery extends Controller
         $data['tab_general'] = $this->language->get('tab_general');
         $data['tab_data'] = $this->language->get('tab_data');
         $data['tab_image'] = $this->language->get('tab_image');
-
-
+      // $data['edit_video'] = $this->url->link('catalog/gallery/editVideo');
+        $data['edit_video'] = $this->url->link('catalog/gallery/editVideo').'&token=' . $this->session->data['token'];
+        $data['edit_video_url'] = '&token=' . $this->session->data['token'] ;
         if (isset($this->error['warning'])) {
             $data['error_warning'] = $this->error['warning'];
         } else {
@@ -420,28 +423,20 @@ class ControllerCatalogGallery extends Controller
         if (!empty($this->request->get['gallery_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
 
             $gallery_info = $this->model_catalog_gallery->getGalleryInfo($this->request->get['gallery_id']);
+            // print_r($gallery_info);exit;
 
         }
         //视频
-        if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-            $product_info = $this->model_catalog_product->getProduct($this->request->get['product_id']);
-            $data['edit_video_url'] = '&token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url;
-        }else{
-            $data['edit_video_url']='';
-        }
+       // if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+       //      $product_info = $this->model_catalog_product->getProduct($this->request->get['product_id']);
+       //      $data['edit_video_url'] = '&token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url;
+       //  }else{
+       //      $data['edit_video_url']='';
+       //  }
+        //$data['token'] = $this->session->data['token'];
         //
          $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
 
-        if (isset($this->request->post['video'])) {
-            $data['video'] = $this->request->post['video'];
-            $data['video_url'] = $http_type . $_SERVER['HTTP_HOST'] . '/image/' . $this->request->post['video'];
-        } elseif (!empty($product_info)) {
-            $data['video'] = $product_info['video'];
-            $data['video_url'] = $http_type . $_SERVER['HTTP_HOST'].'/image/'. $product_info['video'];
-        } else {
-            $data['video'] = '';
-            $data['video_url'] = '';
-        }
         //视频end
         
         //gallery_image
@@ -555,6 +550,16 @@ class ControllerCatalogGallery extends Controller
             $data['sort_order'] = 10;
         }
 
+        if(isset($this->request->post['video'])){
+            $data['video'] =$http_type . $_SERVER['HTTP_HOST'].'/image/'. $this->request->post['video'];
+        }
+        elseif(isset($this->request->get['gallery_id'])){
+            $data['video'] =$http_type . $_SERVER['HTTP_HOST'].'/image/'. $gallery_info['video'];
+        }
+        else{
+            $data['video'] = '';
+        }
+
         $data['token'] = $this->session->data['token'];
 
         $data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
@@ -601,7 +606,8 @@ class ControllerCatalogGallery extends Controller
 
         return !$this->error;
     }
-    // 新增 视频开始
+    // 新增
+    //  视频开始
     public function deleteVideo(){
         $this->load->language('catalog/product');
         $this->document->setTitle($this->language->get('heading_title'));
@@ -609,7 +615,7 @@ class ControllerCatalogGallery extends Controller
        // var_dump($this->request->get['product_id']);
       
         if(isset($this->request->get['product_id'])){
-              unlink('../image/'.$this->request->get['video']); 
+              unlink('/image/'.$this->request->get['video']); 
         $this->model_catalog_product->deleteVideo($this->request->get['product_id']);
         }else{
               unlink($this->request->get['video']);
@@ -684,7 +690,7 @@ class ControllerCatalogGallery extends Controller
                         if(isset($this->request->get['product_id'])){
                         $this->model_catalog_product->editVideo($this->request->get['product_id'],$previewSrc);
                         }
-                        $data['previewSrc'] = '../image/'.$previewSrc;
+                        $data['previewSrc'] = '/image/'.$previewSrc;
                     }
 
 //                }

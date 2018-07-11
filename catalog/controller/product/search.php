@@ -269,7 +269,7 @@ class ControllerProductSearch extends Controller {
 					  $color_name = $color_arr[0];
 				   }
 			    }
-
+				$wishlist= $this->model_catalog_product->wishlistornot($result['product_id']);
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
@@ -284,10 +284,11 @@ class ControllerProductSearch extends Controller {
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
 					//'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
-					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+					'wishlist'	  =>$wishlist
 				);
 			}
-
+			//var_dump($data['products']);exit();
 			$url = '';
 
 			if (isset($this->request->get['search'])) {
@@ -502,6 +503,8 @@ class ControllerProductSearch extends Controller {
 				$this->model_account_search->addSearch($search_data);
 			}
 		}
+		$data['wishlist'] = $this->url->link('account/wishlist/add', '', true);
+			$data['delewishlist'] = $this->url->link('account/wishlist/delete', '', true);
 
 		$data['search_url'] = HTTP_SERVER.'index.php?route=product/search';
 		$data['search'] = $search;
