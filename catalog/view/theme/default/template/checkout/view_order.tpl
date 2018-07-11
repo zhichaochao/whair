@@ -22,11 +22,21 @@
                  
                      <?php if ($payment_method_code == 'pp_express') { ?>
 
-        <form action="<?php echo $payment; ?>" method="post">
+     <!--    <form action="<?php echo $payment; ?>" method="post">
           <p class="p3">
             <button type="submit" value="Confirm Order"><i class="fa fa-lock"></i>CHECKOUT</button>
           </p>
-        </form>
+        </form> -->
+                <div class="pay_4">
+                        <img class="xs_pay" src="img/jpg/pay_xs.png" alt="" />
+                        <p>
+                            If you have PayPal account, please pay your order by PayPal account directly.<br />
+                            If you don't have a paypal account, you can also pay via paypal with your credit 
+                            card or bank debit card. Payment can be submitted in any currency!
+                        </p>
+                        <a class="check_a" href="<?php echo $payment; ?>">CHECK OUT &nbsp;&nbsp;></a>
+                    </div>
+                    
                         <?php } else { ?>
                <div class="text2 clearfix">
                       

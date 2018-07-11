@@ -22,7 +22,7 @@ class ModelCheckoutOrderTotal extends Model {
        return $order_total;
 	}
 	
-	public function getOrderTotal2($order_id) {
+	public function getOrderTotal2($order_id,$payment_code) {
 	    $order_total = array();
 	    $order_total_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_total` o WHERE o.order_id = '" . (int)$order_id . "'order by sort_order asc");
 
@@ -59,6 +59,27 @@ class ModelCheckoutOrderTotal extends Model {
 			                'value'          => $this->currency->format($result['value'], 'USD'),
 			                'sort_order'     => $result['sort_order'],
 			            );
+			            }
+	            	  if ($this->session->data['currency']=='USD'&&$payment_code=='naria_account') {
+	            	  	 $currency=$this->currency->getValue("NGN");
+	            	  	 if ( $currency>0) {
+							 $order_total[] = array(
+					                'order_total_id' => $result['order_total_id'],
+					                'order_id'       => $result['order_id'],
+					                'code'           => 'rate',
+					                'title'          =>'Exchange Rate (USD:NGN)',
+					                'value'          => '1:'. $currency,
+					                'sort_order'     => $result['sort_order'],
+					            );
+							 $order_total[] = array(
+				                'order_total_id' => $result['order_total_id'],
+				                'order_id'       => $result['order_id'],
+				                'code'           => $result['code'],
+				                'title'          => $result['title'].'(NGN)',
+				                'value'          => $this->currency->format($result['value'], 'NGN'),
+				                'sort_order'     => $result['sort_order'],
+				            );
+			             }
 			            }
 	        	}
 	        }
