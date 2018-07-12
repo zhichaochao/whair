@@ -24,7 +24,7 @@
         <?php } ?>
                       <li>
                     <h4>COMPANY INFO</h4>
-                          <p><span><?php echo $yd_Call; ?></span> U.S No: <?=$telephone;?></a></p>
+                          <p><span><?php echo $yd_Call; ?></span> <?=$telephone;?></a></p>
                           <p><span><?php echo $yd_Whatsapp; ?></span><?php echo $telephone; ?></p>
                           <p><span><?php echo $yd_Email; ?></span><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
                         <p style="max-width:260px;line-height: 18px;margin-top: 3px;margin-bottom: 0;">
@@ -60,7 +60,7 @@
         <ul class="ul_ydfot clearfix">
               <?php foreach($informations as $key => $information) { ?>
            <li>
-                  <h4><?php echo $information['title']; ?> <div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
+                  <h4><?php echo $information['title']; ?> <div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png" data-img='catalog/view/theme/default/img/png/jiahao_white.png' data-imgs='catalog/view/theme/default/img/png/jianhao_white.png'/></div></h4>
                   <div class="slide_div">
                     <ol>    <?php foreach($information['child'] as $subkey=>$subval) { ?> 
                       <li><a href="<?php echo $subval['url']; ?>"><?php echo $subval['title']; ?></a></li>
@@ -72,10 +72,10 @@
         <?php } ?>
        
                     <li>
-                      <h4>COMPANY INFO<div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png"/></div></h4>
+                      <h4>COMPANY INFO<div class="pic_img"><img src="catalog/view/theme/default/img/png/jiahao_white.png" data-img='catalog/view/theme/default/img/png/jiahao_white.png' data-imgs='catalog/view/theme/default/img/png/jianhao_white.png'/></div></h4>
                       <div class="slide_div">
                         <ol>
-                      <li><a target="_blank" href="”tel://<?=$telephone;?>"><span>Call Us:</span> U.S No:<?=$telephone;?></li></a>  
+                      <li><a target="_blank" href="”tel://<?=$telephone;?>"><span>Call Us:</span><?=$telephone;?></li></a>  
                       <li><a target="_blank" href="whatsapp://send?phone=<?=$telephone;?>"><span>Whatsapp:</span> <?php echo $telephone; ?></a></li>
                       <li><a target="_blank" href="mailto:<?php echo $email; ?>"><span>Email:</span><?php echo $email; ?></a></li>
                       <li>                       

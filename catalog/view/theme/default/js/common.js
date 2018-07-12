@@ -132,16 +132,33 @@ $(function(){
 	})
 	
 //	yd头部导航二级菜单	
-	$(".yd_nav ul>li>a").click(function(){
+	$(".yd_nav .slide_img").click(function(){
+//		if($(this).hasClass("off")){
+//			$(this).parent().find(".yd_nav_ol").stop().slideUp()
+//			$(this).attr("src","img/png/jiahao.png");
+//			$(this).removeClass("off");
+//		}else{
+//			$(this).parent().find(".yd_nav_ol").stop().slideDown()
+//			$(this).attr("src","img/png/jianhao.png");
+//			$(this).addClass("off");
+//		}
+		
 		if($(this).hasClass("off")){
-			$(this).parent().find(".yd_nav_ol").stop().slideUp()
-			$(this).find(".slide_img").attr("src","img/png/jiahao.png");
+			$(this).siblings(".yd_nav_ol").stop().slideUp();
+			var src = $(this).attr("data-img");
+			$(this).attr("src",src);
 			$(this).removeClass("off");
 		}else{
-			$(this).parent().find(".yd_nav_ol").stop().slideDown()
-			$(this).find(".slide_img").attr("src","img/png/jianhao.png");
+			var src = $(this).attr("data-img");
+			var srcs = $(this).attr("data-imgs");
+//			$(".slide_div").stop().slideUp();
+//			$(".ul_ydfot>li>h4").removeClass("off");
+//			$(".ul_ydfot>li>h4 .pic_img img").attr("src",src);
+			$(this).siblings(".yd_nav_ol").stop().slideDown();
+			$(this).attr("src",srcs);
 			$(this).addClass("off");
 		}
+		
 	})
 //	yd头部导航开关
 	$(".nav_off").click(function(){

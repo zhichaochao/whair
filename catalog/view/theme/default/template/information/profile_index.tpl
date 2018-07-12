@@ -56,8 +56,10 @@
 					<li>
 						<video src="<?=$child['video'];?>" class="video_li" poster="<?=$child['image'];?>"></video>
 						<img class="bf" src="catalog/view/theme/default/img/png/bf.png"/>
+						<div class="text_vd clearfix">
 						<div class="bg_div">
 							<p><?=$child['gallery_title'];?> </p>
+						</div>
 						</div>
 					</li>
 					<?php } ?>

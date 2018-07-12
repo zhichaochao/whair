@@ -31,37 +31,23 @@
             <?php } ?>
           </select>
 
-           <div class="col-sm-3">
-          <label class="checkbox-inline">
+           <div class="sr_div sr_div1">
             <?php if ($sub_category) { ?>
             <input type="checkbox" name="sub_category" value="1" checked="checked" />
             <?php } else { ?>
             <input type="checkbox" name="sub_category" value="1" />
             <?php } ?>
-            <?php echo $text_sub_category; ?></label>
+           <p> <?php echo $text_sub_category; ?></p>
           </div>
 
-          <!-- <div class="sr_div">
-            <input type="checkbox"/>
-            <span class="span1"></span>
-            <span class="span2"></span>
-            <p>Search in subcategories</p>
-          </div> -->
-        <!--   <div class="sr_div">
-            <input type="checkbox"/>
-            <span class="span1"></span>
-            <span class="span2"></span>
-            <p>Search in product descriptions</p>
-          </div> -->
 
-          <div >
-        <label class="checkbox-inline">
+          <div class="sr_div sr_div2">
           <?php if ($description) { ?>
           <input type="checkbox" name="description" value="1" id="description" checked="checked" />
           <?php } else { ?>
           <input type="checkbox" name="description" value="1" id="description" />
           <?php } ?>
-          <?php echo $entry_description; ?></label>
+          <p><?php echo $entry_description; ?></p>
        </div>
        
           <button class="clearfix" value="<?php echo $button_search; ?>" id="button-search">Search</button>
@@ -107,15 +93,12 @@
                        
                onclick="wishlist('<?php echo $product['product_id']; ?>',this);" ></div>
             </li>
-          <?php } ?> 
-          <div class="bot clearfix">
-            <div class="left"><?php echo $pagination; ?></div>
-              <div class="right">
-                <p><?php echo $results; ?></p>
-              </div>
-        </div>
+          <?php } ?>
           <?php echo $content_bottom; ?>
           </ul>
+          <div class="fy_div clearfix">
+           <?php echo $pagination; ?>  
+        </div>
       <?php } else { ?>
       <p style="font-size: 18px;"><?php echo $text_empty; ?></p>
       <?php } ?>

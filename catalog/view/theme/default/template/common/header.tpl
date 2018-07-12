@@ -152,7 +152,7 @@
                     <ul>
                     <?php if($navs){ foreach ($navs as $k => $nav) { ?>
                         <li class="clearfix">
-                            <a  href="<?php echo $nav['url']; ?>"  <?=$nav['is_target']==1?'target="_blank"':''; ?> ><?=$nav['name'];?>   <?php if($nav['child']){?><img class="slide_img" src="catalog/view/theme/default/img/png/jiahao.png"/>  <?php } ?></a>
+                            <a  href="<?php echo $nav['url']; ?>"  <?=$nav['is_target']==1?'target="_blank"':''; ?> ><?=$nav['name'];?>   </a><?php if($nav['child']){?><img class="slide_img" src="catalog/view/theme/default/img/png/jiahao.png" data-img='catalog/view/theme/default/img/png/jiahao.png' data-imgs='catalog/view/theme/default/img/png/jianhao.png'/>  <?php } ?>
                             <?php if($nav['child']){?>
                             <ol class="yd_nav_ol clearfix">
                     

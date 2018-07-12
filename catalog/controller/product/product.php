@@ -329,9 +329,9 @@ class ControllerProductProduct extends Controller {
 
             //价格
             $data['read_defaultprice']=$product_info['defaultprice'];
-        
+            $data['defaultprice']=$this->currency->format($product_info['defaultprice'], $this->session->data['currency']);
             $data['price']=$this->currency->format($product_info['price'], $this->session->data['currency']);
-            $data['special']=$this->currency->format($product_info['special'], $this->session->data['currency']);;
+            $data['special']=$product_info['special'];
         
 
       

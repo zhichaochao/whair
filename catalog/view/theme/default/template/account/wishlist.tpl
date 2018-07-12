@@ -52,7 +52,9 @@ $(".shop_ul .close").click(function(){
     data:{'product_id':product_id},
     dataType: 'json',
     success:function(data){
-    console.log(data);
+    if (data.success) {
+        $('#wishlist_count').html(data.total);
+      }
                // location.reload(); 
     }
    })
