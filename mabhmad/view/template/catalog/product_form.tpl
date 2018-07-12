@@ -31,7 +31,7 @@
             <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li>
             <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
             <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
-            <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li>
+            <!-- <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li> -->
             <li><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
             <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
@@ -117,12 +117,12 @@
                   <?php } ?>
                 </div>
               </div>
-              <div class="form-group">
+             <!--  <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-price"><?php echo $entry_price; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="price" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
                 </div>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-tax-class"><?php echo $entry_tax_class; ?></label>
                 <div class="col-sm-10">
@@ -571,7 +571,7 @@
             </div>
             <div class="tab-pane" id="tab-option">
               <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-2" style="width: 10%;">
                   <ul class="nav nav-pills nav-stacked" id="option">
                     <?php $option_row = 0; ?>
                     <?php foreach ($product_options as $product_option) { ?>
@@ -583,7 +583,7 @@
                     </li>
                   </ul>
                 </div>
-                <div class="col-sm-10">
+                <div class="col-sm-10" style="width:90%;">
                   <div class="tab-content">
                     <?php $option_row = 0; ?>
                     <?php $option_value_row = 0; ?>
@@ -672,10 +672,13 @@
                         <table id="option-value<?php echo $option_row; ?>" class="table table-striped table-bordered table-hover">
                           <thead>
                           <tr>
-                            <td class="text-left"><?php echo $entry_option_value; ?></td>
+                            <td class="text-left"><?php echo $entry_option_value; ?>(正常价是所有属性价格的叠加)</td>
                             <td class="text-right"><?php echo $entry_quantity; ?></td>
-                            <td class="text-left"><?php echo $entry_subtract; ?></td>
+                            <!-- <td class="text-left"><?php echo $entry_subtract; ?></td> -->
                             <td class="text-right"><?php echo $entry_price; ?></td>
+                             <?php foreach ($customer_groups as $customer_group) { ?>
+                               <td class="text-right"><?php echo $customer_group['name']; ?></td>
+                             <?php } ?>
                             <td class="text-right"><?php echo $entry_option_points; ?></td>
                             <td class="text-right"><?php echo $entry_weight; ?></td>
                             <td></td>
@@ -698,7 +701,8 @@
                               </select>
                             </td>
                             <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
-                            <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
+                            <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" value='1'/>
+                           <!--  <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
                                 <?php if ($product_option_value['subtract']) { ?>
                                 <option value="1" selected="selected"><?php echo $text_yes; ?></option>
                                 <option value="0"><?php echo $text_no; ?></option>
@@ -706,20 +710,16 @@
                                 <option value="1"><?php echo $text_yes; ?></option>
                                 <option value="0" selected="selected"><?php echo $text_no; ?></option>
                                 <?php } ?>
-                              </select></td>
-                            <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
-                                <?php if ($product_option_value['price_prefix'] == '+') { ?>
-                                <option value="+" selected="selected">+</option>
-                                <?php } else { ?>
-                                <option value="+">+</option>
-                                <?php } ?>
-                                <?php if ($product_option_value['price_prefix'] == '-') { ?>
-                                <option value="-" selected="selected">-</option>
-                                <?php } else { ?>
-                                <option value="-">-</option>
-                                <?php } ?>
-                              </select>
+                              </select></td> -->
+
+                            <td class="text-right">
                               <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo $product_option_value['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
+                               <?php foreach ($customer_groups as $customer_group) { ?>
+                          
+                                <td class="text-right">
+                              <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price<?php echo $customer_group['customer_group_id']; ?>]" value="<?php echo $product_option_value['price'.$customer_group['customer_group_id']]; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
+                             <?php } ?>
+
                             <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
                                 <?php if ($product_option_value['points_prefix'] == '+') { ?>
                                 <option value="+" selected="selected">+</option>
@@ -774,17 +774,14 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="tab-discount">
+         <!--    <div class="tab-pane" id="tab-discount">
               <div class="table-responsive">
                 <table id="discount" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
-                      <td class="text-left"><?php echo $entry_customer_group; ?></td>
-                      <!-- <td class="text-right"><?php echo $entry_quantity; ?></td> -->
-                      <!-- <td class="text-right"><?php echo $entry_priority; ?></td> -->
+               
                       <td class="text-right"><?php echo $entry_price; ?></td>
-                      <!-- <td class="text-left"><?php echo $entry_date_start; ?></td> -->
-                      <!-- <td class="text-left"><?php echo $entry_date_end; ?></td> -->
+                    
                       <td></td>
                     </tr>
                   </thead>
@@ -802,19 +799,11 @@
                           <?php } ?>
                           <?php } ?>
                         </select></td>
-                      <!-- <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][quantity]" value="<?php echo $product_discount['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td> -->
-                   <!--    <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][priority]" value="<?php echo $product_discount['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td> -->
+                   
+                      <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][priority]" value="<?php echo $product_discount['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>
                       <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][price]" value="<?php echo $product_discount['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
-                     <!--  <td class="text-left" style="width: 20%;"><div class="input-group date">
-                          <input type="text" name="product_discount[<?php echo $discount_row; ?>][date_start]" value="<?php echo $product_discount['date_start']; ?>" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
-                          <span class="input-group-btn">
-                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                          </span></div></td> -->
-                   <!--    <td class="text-left" style="width: 20%;"><div class="input-group date">
-                          <input type="text" name="product_discount[<?php echo $discount_row; ?>][date_end]" value="<?php echo $product_discount['date_end']; ?>" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
-                          <span class="input-group-btn">
-                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                          </span></div></td> -->
+                  
+              
                       <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                     </tr>
                     <?php $discount_row++; ?>
@@ -828,15 +817,15 @@
                   </tfoot>
                 </table>
               </div>
-            </div>
+            </div> -->
             <div class="tab-pane" id="tab-special">
               <div class="table-responsive">
               <?php if ($error_special) { ?>
                   <div class="text-danger"><?php echo $error_special; ?></div>
               <?php } ?>
-              <div class="form-group">
+              <div class="form-group" style="height: 0;overflow: hidden; padding: 0;">
                 <label class="col-sm-2 control-label"><?php echo $entry_sync_percent; ?></label>
-                <div class="col-sm-10">
+                <div class="col-sm-10" >
                   <label class="radio-inline">
                     <input type="radio" name="sync_percent" value="1" <?php if($sync_percent == 1) echo 'checked="checked"'; ?>/>
                     <?php echo $text_yes; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -848,10 +837,11 @@
                 <table id="special" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
+                      <td class="text-left">参与优惠的尺寸<br/>(如果不存在这个尺寸请先保存填写的选项)</td>
                       <td class="text-left"><?php echo $entry_customer_group; ?></td>
                       <!-- <td class="text-right"><?php echo $entry_priority; ?></td> -->
-                      <td class="text-right"><?php echo $entry_price; ?></td>
-                      <td class="text-right"><?php echo $entry_percent; ?></td>
+                      <td class="text-right">直减(正常价减去下边的价格)</td>
+                      <td class="text-right"><?php echo $entry_percent; ?>（正常价的比例）（优先）<br/>0代表不使用百分比</td>
                       <td class="text-left"><?php echo $entry_date_start; ?></td>
                       <td class="text-left"><?php echo $entry_date_end; ?></td>
                       <td></td>
@@ -863,6 +853,16 @@
                     <?php foreach ($product_specials as $product_special) { ?>
                     <input type="hidden" name="product_special[<?=$special_row?>][product_special_id]" value="<?=$product_special['product_special_id']?>"/>
                     <tr id="special-row<?php echo $special_row; ?>">
+                      <td class="text-left"><select name="product_special[<?php echo $special_row; ?>][product_option_value_id]" class="form-control">
+                         <option value="0">全部尺寸都参与</option>
+                          <?php if($special_options){ foreach ($special_options as $special_option) { ?>
+                          <?php if ($special_option['product_option_value_id'] == $product_special['product_option_value_id']) { ?>
+                          <option value="<?php echo $special_option['product_option_value_id']; ?>" selected="selected"><?php echo $special_option['name']; ?></option>
+                          <?php } else { ?>
+                          <option value="<?php echo $special_option['product_option_value_id']; ?>"><?php echo $special_option['name']; ?></option>
+                          <?php } ?>
+                          <?php } }?>
+                        </select></td>
                       <td class="text-left"><select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
                           <?php foreach ($customer_groups as $customer_group) { ?>
                           <?php if ($customer_group['customer_group_id'] == $product_special['customer_group_id']) { ?>
@@ -1342,7 +1342,7 @@ $('#attribute tbody tr').each(function(index, element) {
                   html += '      <tr>';
                   html += '        <td class="text-left"><?php echo $entry_option_value; ?></td>';
                   html += '        <td class="text-right"><?php echo $entry_quantity; ?></td>';
-                  html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
+                  // html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
                   html += '        <td class="text-right"><?php echo $entry_price; ?></td>';
                   html += '        <td class="text-right"><?php echo $entry_option_points; ?></td>';
                   html += '        <td class="text-right"><?php echo $entry_weight; ?></td>';
@@ -1407,15 +1407,22 @@ $('#attribute tbody tr').each(function(index, element) {
           html += $('#option-values' + option_row).html();
           html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
           html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>';
-          html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';
-          html += '    <option value="1"><?php echo $text_yes; ?></option>';
-          html += '    <option value="0"><?php echo $text_no; ?></option>';
-          html += '  </select></td>';
-          html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
-          html += '    <option value="+">+</option>';
-          html += '    <option value="-">-</option>';
-          html += '  </select>';
+          html += '<input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" value="1" /> ';
+          // html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';
+          // html += '    <option value="1"><?php echo $text_yes; ?></option>';
+          // html += '    <option value="0"><?php echo $text_no; ?></option>';
+          // html += '  </select></td>';
+
+          html += '  <td class="text-right">';
           html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
+
+           <?php foreach ($customer_groups as $customer_group) { ?>
+          html += '  <td class="text-right">';
+              html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price<?=$customer_group["customer_group_id"];?>]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
+            <?php } ?>
+
+
+
           html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
           html += '    <option value="+">+</option>';
           html += '    <option value="-">-</option>';
@@ -1468,6 +1475,12 @@ var special_row = <?php echo $special_row; ?>;
 
 function addSpecial() {
 	html  = '<tr id="special-row' + special_row + '">';
+
+    html += '  <td class="text-left"><select name="product_special[' + special_row + '][product_option_value_id]" class="form-control">';
+    <?php if($special_options){ foreach ($special_options as $special_option) { ?>
+    html += '      <option value="<?php echo $special_option['product_option_value_id']; ?>"><?php echo addslashes($special_option['name']); ?></option>';
+    <?php } } ?>
+    html += '  </select></td>';
     html += '  <td class="text-left"><select name="product_special[' + special_row + '][customer_group_id]" class="form-control">';
     <?php foreach ($customer_groups as $customer_group) { ?>
     html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';

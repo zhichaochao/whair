@@ -557,28 +557,28 @@ class ControllerCatalogProduct extends Controller {
 			$special = false;
 			$percent = false;
 
+		
 			$product_specials = $this->model_catalog_product->getProductSpecials($result['product_id']);
-
+			
 			foreach ($product_specials  as $product_special) {
-				if (($product_special['date_start'] == '0000-00-00' || strtotime($product_special['date_start']) < time()) && ($product_special['date_end'] == '0000-00-00' || strtotime($product_special['date_end']) > time())) {
-					$special = $product_special['price'];   //折后价格
-					$percent = $product_special['percent'];  //商品折扣,若两者都存在优先使用商品折扣进行计算				
-					
-					break;
-				}
+			
+					$special_price = $product_special['special_price'];   //折后价格				
+					$old_price = $product_special['old_price'];   //折前价格				
+				
 			}
+	
+
 
 			$this->load->model('catalog/url_alias');
 			$keyword = $this->model_catalog_url_alias->getKeyword($result['product_id']);
-			
 			$data['products'][] = array(
 				'product_id' => $result['product_id'],
 				'image'      => $image,
 				'name'       => $result['name'],
 				'href'       => HTTP_CATALOG . $keyword,
 				'model'      => $result['model'],
-				'price'      => $result['price'],
-				'special'    => $percent ? ($result['price'] * ($percent/100)) : $special,
+				'price'      => isset($old_price)?$old_price:$this->model_catalog_product->getProductPrice($result['product_id']),
+				'special'    => isset($special_price) ?$special_price : 0,
 				'free_postage' => $result['free_postage'],
 				'quantity'   => $result['quantity'],
 				'relation_product'   => $result['relation_product'],
@@ -1336,6 +1336,13 @@ class ControllerCatalogProduct extends Controller {
 						'quantity'                => $product_option_value['quantity'],
 						'subtract'                => $product_option_value['subtract'],
 						'price'                   => $product_option_value['price'],
+						'price1'                   => $product_option_value['price1'],
+						'price2'                   => $product_option_value['price2'],
+						'price3'                   => $product_option_value['price3'],
+						'price4'                   => $product_option_value['price4'],
+						'price5'                   => $product_option_value['price5'],
+						'price6'                   => $product_option_value['price6'],
+						'price7'                   => $product_option_value['price7'],
 						'price_prefix'            => $product_option_value['price_prefix'],
 						'points'                  => $product_option_value['points'],
 						'points_prefix'           => $product_option_value['points_prefix'],
@@ -1344,6 +1351,10 @@ class ControllerCatalogProduct extends Controller {
 					);
 				}
 			}
+			if ($product_option['name']=='Length'&&$product_option['type']=='select') {
+				$data['special_options']=$this->model_catalog_product->getProductOptionnames($this->request->get['product_id'],$product_option['option_id']);
+			}
+			
 
 			$data['product_options'][] = array(
 				'product_option_id'    => $product_option['product_option_id'],
@@ -1356,6 +1367,8 @@ class ControllerCatalogProduct extends Controller {
 				'required'             => $product_option['required']
 			);
 		}
+		// print_r($data['special_options']);exit();
+
 
 		$data['option_values'] = array();
 
@@ -1417,6 +1430,7 @@ class ControllerCatalogProduct extends Controller {
 				'priority'          => $product_special['priority'],
 				'price'             => $product_special['price'],
 				'percent'           => $product_special['percent'],
+				'product_option_value_id'           => $product_special['product_option_value_id'],
 				'date_start'        => ($product_special['date_start'] != '0000-00-00') ? $product_special['date_start'] : '',
 				'date_end'          => ($product_special['date_end'] != '0000-00-00') ? $product_special['date_end'] :  ''
 			);
