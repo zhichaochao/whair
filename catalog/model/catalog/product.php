@@ -107,6 +107,8 @@ class ModelCatalogProduct extends Model {
         }
 
         if(isset($query['price'])){
+        	//不登录就加价
+        	if (!$this->customer->isLogged()) {$query['price']=$query['price']/8*10;}
 //            var_dump($price);die;
             return $query['price']+$price;
         }

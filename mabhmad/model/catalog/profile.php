@@ -20,6 +20,7 @@ class ModelCatalogProfile extends Model {
 		$this->querysql("INSERT INTO " . DB_PREFIX . "profile SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "' ,parent_id = '" . (int)$data['parent_id'] . "', author = '" . $this->db->escape($data['author']) . "', image = '" . $data['image'] . "', images = '" . $data['images'] . "', add_time = NOW(), update_time = NOW(), view = 0");
 
 		$profile_id = $this->db->getLastId();
+		// print_r($profile_id);exit()
 
 		foreach ($data['profile_description'] as $language_id => $value) {
 		$this->querysql("INSERT INTO " . DB_PREFIX . "profile_description SET profile_id = '" . (int)$profile_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
@@ -135,8 +136,9 @@ class ModelCatalogProfile extends Model {
 				$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 			}
 
-			$query = $this->db->query($sql);
 
+			$query = $this->db->query($sql);
+	// print_r($sql );exit();
 			return $query->rows;
 		} else {
 			$profile_data = $this->cache->get('profile.' . (int)$this->config->get('config_language_id'));

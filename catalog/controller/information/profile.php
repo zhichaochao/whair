@@ -12,7 +12,7 @@ class ControllerInformationProfile extends Controller {
 				// 	$profile_id = 0;
 				// }
 				$profile_parent=$this->model_catalog_profile->getProfiles(0);
-				//print_r($profile_parent);exit;
+				// print_r($profile_parent);exit;
 				foreach ($profile_parent as $key => $profiles) {
 					   $data['profiles'][$key] = $profiles;
 					   $data['profiles'][$key]['child'] = $this->model_catalog_profile->getProfiles($profiles['profile_id']);
@@ -27,7 +27,7 @@ class ControllerInformationProfile extends Controller {
 						
 				// 	);
 				// }	
-				//var_dump($profile_par['profiles']);die;
+				// var_dump($profile_par['profiles']);die;
 				 $data['profile_id']=$profile_par['profiles'][0]['profile_id'];
 				 $data['profiles_id']=$profile_par['profiles'][1]['profile_id'];
 				// var_dump($data['profile_id']);die;

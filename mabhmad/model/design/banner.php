@@ -22,6 +22,7 @@ class ModelDesignBanner extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "banner_image WHERE banner_id = '" . (int)$banner_id . "'");
 
 		if (isset($data['banner_image'])) {
+			// print_r($data['banner_image']);exit();
 			foreach ($data['banner_image'] as $language_id => $value) {
 				foreach ($value as $banner_image) {
 					$this->db->query("INSERT INTO " . DB_PREFIX . "banner_image SET banner_id = '" . (int)$banner_id . "', language_id = '" . (int)$language_id . "', title = '" .  $this->db->escape($banner_image['title']) . "', mtitle = '" .  $this->db->escape($banner_image['mtitle']) . "', link = '" .  $this->db->escape($banner_image['link']) . "', image = '" .  $this->db->escape($banner_image['image']) . "',mimage = '" .  $this->db->escape($banner_image['mimage']) . "', sort_order = '" . (int)$banner_image['sort_order'] . "'");

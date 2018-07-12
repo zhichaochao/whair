@@ -16,7 +16,7 @@ class ControllerCommonHome extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 
         //banner轮播图
-        $setting_info = array("name"=>"Home Page", "banner_id"=>7, "width"=>1536, "height"=>720, "mwidth"=>710,  "mheight"=>480, "status"=>1 );
+        $setting_info = array("name"=>"Home Page", "banner_id"=>1, "width"=>1536, "height"=>720, "mwidth"=>710,  "mheight"=>480, "status"=>1 );
         // print_r( $setting_info);exit();
 		$data['slideshow'] = $this->load->controller('extension/module/slideshow',$setting_info);
         // print_r($data['slideshow']);exit();
@@ -25,7 +25,7 @@ class ControllerCommonHome extends Controller {
 		$this->load->model('design/banner');
 		$this->load->model('tool/image');
 		 $data['fasts'] = array();
-        $results = $this->model_design_banner->getBanner(6);
+        $results = $this->model_design_banner->getBanner(2);
         foreach ($results as $result) {
             if (is_file(DIR_IMAGE . $result['image'])) {
                 $image=$this->model_tool_image->resize($result['image'], 480, 480);

@@ -463,7 +463,8 @@ class ControllerProductProduct extends Controller {
 
          $this->load->model('catalog/information');
 
-            $faq = $this->model_catalog_information->getInformation(13);
+            $faq = $this->model_catalog_information->getInformation(9);
+            // print_r($faq);exit();
             $data['faq']= html_entity_decode($faq['description'], ENT_QUOTES, 'UTF-8');
 
             //首页推荐商品
@@ -1124,6 +1125,7 @@ class ControllerProductProduct extends Controller {
             }
 
             $option_price = $this->model_catalog_product->getProductPriceByOption($this->request->get['product_id'],$option);
+                if (!$this->customer->isLogged()) {$option_price=$option_price/8*10;}
 
 //            $this->response->setOutput(json_encode($option_price));
 //        return;
