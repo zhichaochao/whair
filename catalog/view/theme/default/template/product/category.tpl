@@ -20,7 +20,7 @@
             <li>
               <a href="<?php echo $product['href']; ?>">
                 <div class="pic_img" >
-                  <img src="<?php echo $product['thumb']; ?>"  style="width: 353px;height: 355px;" />
+                  <img src="<?php echo $product['thumb']; ?>"   />
                 </div>
                 <div class="text clearfix" >
                 <span class="price">
