@@ -12,7 +12,7 @@
                 </li>
             <?php } ?>
                 <li class="active">
-                  <a href="<?php echo $sitemap; ?>">SiteMap1</a>
+                  <a href="<?php echo $sitemap; ?>">SiteMap</a>
                 </li>
           <?php } ?>
           </ol>
