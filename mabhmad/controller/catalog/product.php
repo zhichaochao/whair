@@ -101,19 +101,21 @@ class ControllerCatalogProduct extends Controller {
 			}else{
 				foreach ($data['product_image'] as $result) {
 					if (is_file(DIR_IMAGE . $result['image'])) {
-						$image = $this->model_tool_image->resize($data['image'], 40, 40);
-						$image = $this->model_tool_image->resize($data['image'], 200, 200);
-						$image = $this->model_tool_image->resize($data['image'], 700, 700);
+						$image = $this->model_tool_image->resize($result['image'], 50, 50);
+						$image = $this->model_tool_image->resize($result['image'], 100, 100);
+						$image = $this->model_tool_image->resize($result['image'], 200, 200);
+						$image = $this->model_tool_image->resize($result['image'], 400, 400);
+						$image = $this->model_tool_image->resize($result['image'], 800, 800);
 					}
 				}
 
 			}
 			if (is_file(DIR_IMAGE . $data['image'])) {
-				$image = $this->model_tool_image->resize($data['image'], 228, 228);
-				$image = $this->model_tool_image->resize($data['image'], 700, 700);
-				$image = $this->model_tool_image->resize($data['image'], 200, 200);
-				$image = $this->model_tool_image->resize($data['image'], 47, 47);
-				$image = $this->model_tool_image->resize($data['image'], 90, 90);
+						$image = $this->model_tool_image->resize($data['image'], 50, 50);
+						$image = $this->model_tool_image->resize($data['image'], 100, 100);
+						$image = $this->model_tool_image->resize($data['image'], 200, 200);
+						$image = $this->model_tool_image->resize($data['image'], 400, 400);
+						$image = $this->model_tool_image->resize($data['image'], 800, 800);
 			}
 
 
@@ -549,9 +551,9 @@ class ControllerCatalogProduct extends Controller {
 
 		foreach ($results as $result) {
 			if (is_file(DIR_IMAGE . $result['image'])) {
-				$image = $this->model_tool_image->resize($result['image'], 40, 40);
+				$image = $this->model_tool_image->resize($result['image'], 50, 50);
 			} else {
-				$image = $this->model_tool_image->resize('no_image.png', 40, 40);
+				$image = $this->model_tool_image->resize('no_image.png', 50, 50);
 			}
 
 			$special = false;
