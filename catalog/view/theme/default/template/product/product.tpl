@@ -126,9 +126,7 @@
 							</div>
 							<a class="a_btn clearfix" id="button-cart" >ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
 								<button class="xyd_btn <?=$wishlist==1 ?'off':'';?>"
-							  <?php if($wishlist==1) { ?>
-			              style='border: 1px solid rgb(213, 175, 116); background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll right 0.83vw center / 0.83vw auto;';
-			              <?php }?> 
+							 
 			              onclick="wishlist('<?php echo $product_id; ?>',this);"><span>WISHLIST</span></button>
 						</div>
 						<div class="bot_text clear">
