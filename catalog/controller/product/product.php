@@ -321,6 +321,15 @@ class ControllerProductProduct extends Controller {
             }
 
             $data['images'] = array();
+             $data['images'][] = array(
+                
+                    'thumb' => $this->model_tool_image->resize($product_info['image'], 200, 200),  //小图
+                  
+                    'image'=> $this->model_tool_image->resize($product_info['image'], 700, 700),  //小图
+                  
+                    'thumb2'=> $this->model_tool_image->resize($product_info['image'], 700, 700)
+                );
+            // print_r($product_info);exit();
             $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
             foreach ($results as $result) {
                 $data['images'][] = array(
