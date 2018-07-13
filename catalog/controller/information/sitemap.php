@@ -69,18 +69,14 @@ class ControllerInformationSitemap extends Controller {
 				'href'     => $this->url->link('product/category', 'path=' . $category_1['category_id'])
 			);
 		}
-
-		$data['special'] = $this->url->link('product/special');
-		$data['account'] = $this->url->link('account/account', '', true);
-		$data['edit'] = $this->url->link('account/edit', '', true);
-		$data['password'] = $this->url->link('account/password', '', true);
-		$data['address'] = $this->url->link('account/address', '', true);
-		$data['history'] = $this->url->link('account/order', '', true);
-		$data['download'] = $this->url->link('account/download', '', true);
+		$data['order'] = $this->url->link('account/order', '', true);
+		$data['accountinformation'] = $this->url->link('account/account', '', true);
 		$data['cart'] = $this->url->link('checkout/cart');
-		$data['checkout'] = $this->url->link('checkout/checkout', '', true);
-		$data['search'] = $this->url->link('product/search');
-		$data['contact'] = $this->url->link('information/contact');
+		$data['address'] = $this->url->link('account/address', '', true);
+		$data['wishlist'] = $this->url->link('account/wishlist');
+		$data['vip'] = $this->url->link('account/vip');
+		$data['help'] = $this->url->link('account/help','', true);
+		$data['login'] = $this->url->link('account/login','', true);
 
 		$this->load->model('catalog/information');
 
@@ -93,6 +89,22 @@ class ControllerInformationSitemap extends Controller {
 			);
 		}
 
+		if (isset($this->request->get['information_id'])) {
+			$information_id = (int)$this->request->get['information_id'];
+		} else {
+			$information_id = 0;
+		}
+		//$this->load->model('catalog/information');
+        $inforon=$this->model_catalog_information->getInformations() ;
+       // var_dump($inforon);exit();
+          foreach ($inforon as $inforons) {
+                $data['inforon'][] = array(
+                	'information_id' => $inforons['information_id'],
+                	'title' => $inforons['title'],
+                	'class' => $inforons['information_id']==$information_id?'active':'',
+                	'url' => $this->url->link('information/information','information_id=' .  $inforons['information_id']),
+                );
+        	}
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');

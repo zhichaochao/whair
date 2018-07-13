@@ -18,7 +18,7 @@ class ControllerInformationInformation extends Controller {
 		} else {
 			$information_id = 0;
 		}
-
+		$data['sitemap'] =$this->url->link('information/sitemap','',true);
 		$information_info = $this->model_catalog_information->getInformation($information_id);
 		    $this->load->model('catalog/information');
         $informations=$this->model_catalog_information->getInformations() ;
