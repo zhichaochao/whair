@@ -392,21 +392,21 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 
-			if ($this->user->hasPermission('access', 'customer/customer_group')) {
-				$customer[] = array(
-					'name'	   => $this->language->get('text_customer_group'),
-					'href'     => $this->url->link('customer/customer_group', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'customer/customer_group')) {
+			// 	$customer[] = array(
+			// 		'name'	   => $this->language->get('text_customer_group'),
+			// 		'href'     => $this->url->link('customer/customer_group', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 
-			if ($this->user->hasPermission('access', 'customer/custom_field')) {
-				$customer[] = array(
-					'name'	   => $this->language->get('text_custom_field'),
-					'href'     => $this->url->link('customer/custom_field', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'customer/custom_field')) {
+			// 	$customer[] = array(
+			// 		'name'	   => $this->language->get('text_custom_field'),
+			// 		'href'     => $this->url->link('customer/custom_field', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 			if ($this->user->hasPermission('access', 'customer/email')) {
 				$customer[] = array(
 					'name'	   => $this->language->get('text_custom_email'),
