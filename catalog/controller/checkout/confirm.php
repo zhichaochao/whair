@@ -145,7 +145,7 @@ class ControllerCheckoutConfirm extends Controller {
 				$data['products'][] = array(
                     'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
-                    'image'      => $this->model_tool_image->resize($product['image'], 90, 90),
+                    'image'      => $this->model_tool_image->resize($product['image'], 100, 100),
 					'name'       => $product['name'],
 					'model'      => $product['model'],
 					'option'     => $option_data,
