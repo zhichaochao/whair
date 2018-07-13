@@ -164,6 +164,7 @@
 	.pro_det_content .right .xyd_btn{width: 8.3vw;border: 1px solid #ccc;color: #333;height: 2.08vw;line-height: 2.08vw;
 	border-radius: 4px;font-size: 0.83vw;padding-top: 0;margin: 1.66vw 0 2.5vw 2.08vw;float: left;box-sizing: content-box;
 	background: url(../img/png/shop_star.png) no-repeat right 0.83vw center;background-size: 0.83vw;}
+	.pro_det_content .right .xyd_btn.off{background: url(../img/png/shop_star_.png) no-repeat right 0.83vw center;background-size: 0.83vw;border: 1px solid #d5af74;}
 	.pro_det_content .right .xyd_btn span{display: block;float: left;height: 2.08vw;line-height: 2.1vw;padding-left: 1.25vw;}
 	.pro_det_content .top dl dt{font-size: 0.93vw;color: #000;line-height: 0.93vw;margin-bottom: 0.43vw;}
 	.pro_det_content .top dl dd{font-size: 0.83vw;color: #666;line-height: 1.36vw;padding-left: 0.83vw;
@@ -1264,7 +1265,7 @@
 	.pro_det_content .top p.text_p{font-family:san_m;font-size: 0.24rem;color: #666;}
 	.pro_det_content .top p.text_p span{font-size:0.26rem;color: #000;line-height: 0.3rem;}	
 	.pro_det_content .label_div{position: relative;}
-	.pro_det_content label{display: inline-block;float: left;margin-top: 0.26rem;}
+	.pro_det_content label{display: inline-block;float: left;margin-top: 0.26rem;position: relative;z-index: 1;}
 	.pro_det_content .len_label{clear: both;}
 	.pro_det_content label span{font-size: 0.26rem;line-height: 0.36rem; color: #666;float: left;}
 	.pro_det_content .price_input{clear: both;border: 1px solid #ccc;}
@@ -1288,6 +1289,8 @@
 	.pro_det_content .right .xyd_btn{width:0.8rem;border: 1px solid #ccc;color: #333;height: 0.8rem;line-height: 0.8rem;
 	border-radius: 4px;margin:  0.2rem 0 0.4rem 0.4rem;float: left;box-sizing: content-box;
 	background: url(../img/png/shop_star.png) no-repeat center center;background-size: 0.38rem 0.36rem;}
+	.pro_det_content .right .xyd_btn.off{background: url(../img/png/shop_star_.png) no-repeat center;background-size:  0.38rem 0.36rem;border: 1px solid #d5af74;}
+	
 	.pro_det_content .right .xyd_btn span{display: none;}
 	.pro_det_content .top .bot_text{border-top: 0.2rem solid #f5f5f5; padding: 0 0.4rem;}
 	.pro_det_content .top .text_p2{margin-top: 0.4rem;color: #666;font-size: 0.2rem !important;margin-bottom: 0.2rem;}
