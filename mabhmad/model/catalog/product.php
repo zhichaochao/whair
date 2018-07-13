@@ -423,8 +423,9 @@ class ModelCatalogProduct extends Model {
 			}
 			else {
 				foreach ($data['product_special'] as $key => $product_special) {
+					// print_r($product_special);exit();
                     if ($product_special['product_special_id']) {
-                        if (isset($product_special['customer_group_id']) && !empty($product_special['customer_group_id'])) {
+                        if (isset($product_special['date_end']) && !empty($product_special['date_end'])) {
                             $this->db->query("UPDATE " . DB_PREFIX . "product_special SET
 					        customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
 					        	product_option_value_id = '" . (int)$product_special['product_option_value_id'] . "',

@@ -71,8 +71,8 @@
 									<?php if ($price) { ?>
 									<p class="price"  id="money" >
 
-										<?php if(isset($special)&&$special['special']){ ?>
-										<span><?php echo $special['special']; ?></span><i><?php echo $price; ?></i>
+										<?php if(isset($special)){ ?>
+										<span><?php echo $special; ?></span><i><?php echo $price; ?></i>
 										<?php }else{ ?>
 										<span><?=$price?> </span>
 										<?php } ?>
@@ -512,7 +512,7 @@ function productInfoImg(elm) {
         //console.log('first');
 //         alert($("#form-product").serialize());
         $.ajax({
-            url: 'index.php?route=product/product/getprice&product_id=<?php echo $product_id; ?>&p=<?php echo $read_defaultprice;?>&s=<?=$special["read_special"]? $special["read_special"]:0?>',
+            url: 'index.php?route=product/product/getprice&product_id=<?php echo $product_id; ?>',
             type: 'post',
             dataType: 'json',
             data: $("#form-product input"),

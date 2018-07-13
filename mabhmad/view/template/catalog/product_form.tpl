@@ -25,6 +25,20 @@
       </div>
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-product" class="form-horizontal">
+        <!-- 被舍去的字段 -->
+          <input type="hidden" name="sku" value="" />
+          <input type="hidden" name="upc" value="" />
+          <input type="hidden" name="ean" value="" />
+          <input type="hidden" name="jan" value="" />
+          <input type="hidden" name="isbn" value="" />
+          <input type="hidden" name="mpn" value="" />
+          <input type="hidden" name="location" value="" />
+          <input type="hidden" name="price" value="" />
+          <input type="hidden" name="relation_product" value="" />
+          <input type="hidden" name="is_main" value="" />
+          <input type="hidden" name="is_home" value="" />
+          <input type="hidden" name="discount_percentage" value="" />
+            <!-- //被舍去的字段 -->
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
@@ -686,6 +700,11 @@
                           </thead>
                           <tbody>
                           <?php foreach ($product_option['product_option_value'] as $product_option_value) { ?>
+                          <!-- 被舍去的字段 -->
+                          <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" value=''/>
+                          <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" value='+'/>
+                             <!--// 被舍去的字段 -->
+
                           <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" />
                           <tr id="option-value-row<?php echo $option_value_row; ?>">
                             <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][option_value_id]" class="form-control">
@@ -864,6 +883,7 @@
                           <?php } }?>
                         </select></td>
                       <td class="text-left"><select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+                          <option value="0">全部客户都参与</option>
                           <?php foreach ($customer_groups as $customer_group) { ?>
                           <?php if ($customer_group['customer_group_id'] == $product_special['customer_group_id']) { ?>
                           <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected"><?php echo $customer_group['name']; ?></option>
@@ -1477,15 +1497,18 @@ function addSpecial() {
 	html  = '<tr id="special-row' + special_row + '">';
 
     html += '  <td class="text-left"><select name="product_special[' + special_row + '][product_option_value_id]" class="form-control">';
+  html += '   <option value="0">全部尺寸都参与</option> ';
     <?php if($special_options){ foreach ($special_options as $special_option) { ?>
     html += '      <option value="<?php echo $special_option['product_option_value_id']; ?>"><?php echo addslashes($special_option['name']); ?></option>';
     <?php } } ?>
     html += '  </select></td>';
     html += '  <td class="text-left"><select name="product_special[' + special_row + '][customer_group_id]" class="form-control">';
+      html += '   <option value="0">全部客户都参与</option> ';
     <?php foreach ($customer_groups as $customer_group) { ?>
     html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';
     <?php } ?>
     html += '  </select></td>';
+    html += '<input type="hidden" name="product_special[' + special_row + '][priority]" value="0" /> ';
     // html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
   html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][percent]" value="" placeholder="<?php echo $entry_percent; ?>" class="form-control" /></td>';

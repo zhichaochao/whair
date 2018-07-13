@@ -5,15 +5,9 @@ class ControllerProductProduct extends Controller {
     public function index() {
         $this->load->language('product/product');
 
-        if(isset($this->request->get['share'])){
-            $share = trim($this->request->get['share'],'{}');
-            $shareoption = [];
-            foreach (explode(',',$share) as $item){
-                $temp = explode(':',$item);
-                $shareoption[preg_replace('/\D/s', '', $temp[0])] = preg_replace('/\D/s', '', $temp[1]);
-            }
-            $data['shareoption'] = $shareoption;
-        }
+       
+          
+    
 
         $data['breadcrumbs'] = array();
 
@@ -146,6 +140,27 @@ class ControllerProductProduct extends Controller {
         $this->load->model('catalog/product');
 
         $product_info = $this->model_catalog_product->getProduct($product_id);
+        $sp= $this->model_catalog_product->getProductSpecialPrice($product_id);
+        // print_r($sp);exit();
+        if (!$sp) {
+            $sp= $this->model_catalog_product->getProductMinPrice($product_id);
+        }
+         if(isset($this->request->get['share'])&&$this->request->get['share']!='{}'){
+            $share = trim($this->request->get['share'],'{}');
+        }else{
+            $share=trim($sp['share'],'{}');
+        }
+            $shareoption = [];
+            foreach (explode(',',$share) as $item){
+                $temp = explode(':',$item);
+                $shareoption[preg_replace('/\D/s', '', $temp[0])] = preg_replace('/\D/s', '', $temp[1]);
+            }
+            $data['shareoption'] = $shareoption;
+        
+
+     
+      // print_r($shareoption);exit();
+
 
 		// print_r($product_info);die;
         if ($product_info) {
@@ -327,11 +342,12 @@ class ControllerProductProduct extends Controller {
             }
             // print_r($product_info);exit();
 
-            //价格
-            $data['read_defaultprice']=$product_info['defaultprice'];
         
             $data['price']=$this->currency->format($product_info['price'], $this->session->data['currency']);
-            $data['special']=$this->currency->format($product_info['special'], $this->session->data['currency']);;
+            if ($product_info['special']>0) {
+                 $data['special']=$this->currency->format($product_info['special'], $this->session->data['currency']);
+            }
+           
         
 
       
@@ -340,7 +356,7 @@ class ControllerProductProduct extends Controller {
             $data['isLogged'] = $this->customer->isLogged();
 
             if ($this->config->get('config_tax')) {
-                $data['tax'] = $this->currency->format((float)$product_info['special'] ? $product_info['special'] : $product_info['defaultprice'], $this->session->data['currency']);
+                $data['tax'] = $this->currency->format((float)$product_info['special']>0 ? $product_info['special'] : $product_info['price'], $this->session->data['currency']);
             } else {
                 $data['tax'] = false;
             }
@@ -1096,82 +1112,22 @@ class ControllerProductProduct extends Controller {
         } else {
             $product_id = 0;
         }
-
-        if (isset($this->request->get['p'])) {
-            $product_price = (float)$this->request->get['p'];
-        } else {
-            $product_price = 0;
-        }
-        if (isset($this->request->get['s']) && (int)$this->request->get['s'] > 0) {
-            $sproduct_price = (float)$this->request->get['s'];
-        } else {
-            $sproduct_price = 0;
-        }
+        $options=$this->request->post['option'];
 
         $this->load->model('catalog/product');
 
-        $product_info = $this->model_catalog_product->getProduct($product_id);
-
-        if ($product_info) {
-
-//            $quantity = $product_info['minimum'] ? $product_info['minimum'] : 1;
-
-//            $is_speical = $this->model_catalog_product->isHasSpecialPrice($product_info['relation_product']);
-
-            if (isset($this->request->post['option'])) {
-                $option = array_filter($this->request->post['option']);
-            } else {
-                $option = array();
-            }
-
-            $option_price = $this->model_catalog_product->getProductPriceByOption($this->request->get['product_id'],$option);
-                if (!$this->customer->isLogged()) {$option_price=$option_price/8*10;}
-
-//            $this->response->setOutput(json_encode($option_price));
-//        return;
-
-            $product_price=$product_price+$option_price;
-            $product_price=	$this->currency->format($product_price, $this->session->data['currency']);
-            // print_r(	$option );
-            $json['product_price']=$product_price;
-
-            if($product_info['free_postage']){
-                $free_shipping = $this->language->get('text_free_shipping');
-            }else{
-                $free_shipping = '';
-            }
-
-            if ($sproduct_price>0) {
-                $sproduct_price = $sproduct_price + $option_price;
-                $sproduct_price = $this->currency->format($sproduct_price, $this->session->data['currency']);
-
-                $json['sproduct_price']=$sproduct_price;
-                $json['html']='<p>
-						
-						<b style="font-size: 30px;" >' . $sproduct_price . '</b>
-						<del class="price-old" style="color:#999;font-size: 30px;">' . $product_price . '</del>
-						<b>' . $free_shipping . '</b>
-					</p>';
-            }else{
-                $login_html = '';
-                $is_speical = $this->model_catalog_product->isHasSpecialPrice($product_info['relation_product']);
-
-                if ($is_speical && !$this->customer->isLogged()) {
-                    $this->session->data['redirect'] = $this->url->link('product/product', 'product_id=' . $product_info['product_id']);
-                    // $login = $this->url->link('account/login', '', true);
-                    // $login_html = '<a class="price-go-login" href="' . $login . '">View Specials</a>';
-                }
-
-                $json['html']='<p>
-						
-						<b style="font-size: 30px;">' . $product_price . '</b>'.
-                    $login_html .
-                    '<b><?php echo $free_shipping; ?></b>
-					</p>';
-            }
-
-            $this->response->addHeader('Content-Type: application/json');
-            $this->response->setOutput(json_encode($json));
+        $price=  $this->model_catalog_product->getProductPricebyOptions($product_id,$options);
+        $price_c= $this->currency->format($price['price'], $this->session->data['currency']);
+      $json=$price;
+     if ($price['special']>0) {
+          $price_s= $this->currency->format($price['special'], $this->session->data['currency']);
+           $json['html']= '<span>'.$price_s.'</span><i>'. $price_c.'</i>';
+      }else{
+            $json['html']= '<span>'. $price_c.'</span>';  
         }
+
+     $this->response->addHeader('Content-Type: application/json');
+     $this->response->setOutput(json_encode($json));
+        
     }
 }

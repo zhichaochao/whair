@@ -222,13 +222,8 @@ class ControllerProductCategory extends Controller {
 
 			
 
-				//根据用户等级获取对应产品价格
-				if ($this->customer->isLogged()) {
-					$special = $this->model_catalog_product->getSpecialPrice($result['product_id']);
-				}
-
 				if ($this->config->get('config_tax')) {
-					$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
+					$tax = $this->currency->format((float)$result['special']>0 ? $result['special'] : $result['price'], $this->session->data['currency']);
 				} else {
 					$tax = false;
 				}
@@ -263,8 +258,8 @@ class ControllerProductCategory extends Controller {
 					'color_name'  => $color_name,
                     'texture'     => $texture,
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
-					'price'       => $price,
-					'special'     => isset($special) ? $special : '',
+					'price'       => $this->currency->format($result['price'],$this->session->data['currency']),
+					'special'     => $result['special']>0? $this->currency->format($result['special'],$this->session->data['currency']) : '',
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],

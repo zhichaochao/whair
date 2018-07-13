@@ -33,8 +33,10 @@ class ModelCatalogProduct extends Model {
 		// print_r($price);exit();
 		if (!$price) {
 			$price=array();
-			$price['old_price']=$this->getProductMinPrice($product_id);
+			$old_price=$this->getProductMinPrice($product_id);
 			$price['special']=0;
+			$price['old_price']=$old_price['price'];
+			$price['share']=$old_price['share'];
 		}
 
 		if ($query->num_rows) {
@@ -61,6 +63,7 @@ class ModelCatalogProduct extends Model {
 				'manufacturer'     => $query->row['manufacturer'],
 				'price'            => $price['old_price'],
 				'special'          => $price['special'],
+				'share'          => $price['share'],
 				'reward'           => $query->row['reward'],
 				'points'           => $query->row['points'],
 				'tax_class_id'     => $query->row['tax_class_id'],
@@ -100,18 +103,40 @@ class ModelCatalogProduct extends Model {
 
 	// 找其中一个活动优惠价
 	public function getProductSpecialPrice($product_id) {
+		//用户组
+		$price_type=$this->customer->isLogged()?(int)$this->config->get('config_customer_group_id'):'';
+		if ($this->customer->isLogged()) {
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' AND customer_group_id in (0,".$price_type.") ORDER BY priority, price");
+		}else{
+
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' ORDER BY priority, price");
+		}
 		$row=array();
 		foreach ($query->rows as $key => $value) {
 		if (($value['date_start'] == '0000-00-00' || strtotime($value['date_start']) < time()) && ($value['date_end'] == '0000-00-00' || strtotime($value['date_end']) > time())) {
 			if ($value['product_option_value_id']==0) {
-				$value['old_price']=$this->getProductMinPrice($product_id);
+				$old_price=$this->getProductMinPrice($product_id);
+				$value['old_price']=$old_price['price'];
+				$value['share']=$old_price['share'];
+
 			}else{
-				$queryk = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option_value WHERE product_option_value_id = '" . (int)$value['product_option_value_id'] . "'");
+				$queryk = $this->db->query("SELECT price".$price_type." as price,product_option_value_id,product_option_id,option_id FROM " . DB_PREFIX . "product_option_value WHERE product_option_value_id = '" . (int)$value['product_option_value_id'] . "'");
 				$tem=$queryk->row;
 				$value['old_price']=$tem['price'];
+				  $queryp = $this->db->query("SELECT  price".$price_type." as price,product_option_value_id,product_option_id FROM (SELECT * FROM " . DB_PREFIX . "product_option_value WHERE  product_id='".$product_id."' ORDER BY  price".$price_type." ASC) as opv   WHERE product_id='".$product_id."' AND option_id <> '".(int)$tem['option_id'] ."' GROUP BY option_id");
+				  $share='{'.$tem['product_option_id'].':'.$tem['product_option_value_id'];
+				  // print_r($queryp->rows);exit();
+				  if ($queryp->rows) {
+				 	foreach ($queryp->rows as $ky => $val) {
+				 		$share.=','.$val['product_option_id'].':'.$val['product_option_value_id'];
+				 			$tem['price']+=$val['price'];
+				 	}
+				 }
+				 $share.='}';
+				 	$value['old_price']=$tem['price'];
+				 	$value['share']=$share;
+
 			}
-			// print_r($value);exit();
 			if ($value['percent'] > 0) {
 				$value['special']=$value['old_price']*$value['percent']/100;
 			}else{
@@ -125,26 +150,78 @@ class ModelCatalogProduct extends Model {
 	}
 	// 找最低的价格
 	public function getProductMinPrice($product_id){
-	       $query = $this->db->query("SELECT  min(price) as price,product_option_value_id FROM " . DB_PREFIX . "product_option_value   WHERE product_id='".$product_id."' GROUP BY option_id");
+			//用户组
+		$price_type=$this->customer->isLogged()?(int)$this->config->get('config_customer_group_id'):'';
+	       $query = $this->db->query("SELECT  price".$price_type." as price ,product_option_id,product_option_value_id FROM (SELECT * FROM " . DB_PREFIX . "product_option_value WHERE  product_id='".$product_id."' ORDER BY  price".$price_type." ASC) as opv  WHERE product_id='".$product_id."' GROUP BY option_id");
 			$price=0;
-		
+			$share='{';
 			if ($query->rows) {
 			 	foreach ($query->rows as $key => $value) {
 			 		$price+=$value['price'];
+			 		if ($key==0) {
+			 			$share.=$value['product_option_id'].':'.$value['product_option_value_id'];
+			 		}else{
+			 			$share.=','.$value['product_option_id'].':'.$value['product_option_value_id'];
+			 		}
+			 		
 			 	}
 			 } 
+			 $share.='}';
+		
+		 return array('price'=>$price,'share'=>$share);
+    }
+    // 根据属性来获取价格
+    public function getProductPricebyOptions($product_id,$options)
+    {
+    	$price_type=$this->customer->isLogged()?(int)$this->config->get('config_customer_group_id'):'';
+    	$share='{';
+    	$k=0;
+    	$price=0;
+    	$ids='0';
+    	foreach ($options as $key => $value) {
+    		if ($k==0) {
+    			$share.=$key.':'.$value;
+    		}else{
+    			$share.=','.$key.':'.$value;
+    		}
+    		$k++;
+    		$query = $this->db->query("SELECT  price".$price_type." as price,product_option_value_id,product_option_id FROM " . DB_PREFIX . "product_option_value   WHERE product_id='".$product_id."' AND  product_option_id ='".$key."' AND product_option_value_id='".$value."'");
+    		$tem_price=$query->row;
+    		$price+= $tem_price['price'];
+			$ids.=','.$value;
+    	
+    		 // print_r($tem_price);
+    	}
+    	 $share.='}';
+    	 if($this->customer->isLogged()){
 
+    	 	 $queryk= $this->db->query("SELECT * FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' AND product_option_value_id in(".$ids.") AND ((date_start = '0000-00-00' OR date_start < NOW()) AND (date_end = '0000-00-00' OR date_end > NOW()))ORDER BY priority, price limit 1");
+    	 }else{
+    			$queryk= $this->db->query("SELECT * FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' AND product_option_value_id in(".$ids.") AND ((date_start = '0000-00-00' OR date_start < NOW()) AND (date_end = '0000-00-00' OR date_end > NOW())) AND customer_group_id in (0,".(int)$this->config->get('config_customer_group_id').")  ORDER BY priority, price limit 1");
+    	}
+    	 $tem_special_price=$queryk->row;
+    	 if ($tem_special_price) {
+    	 	if ($tem_special_price['percent']>0) {
+    	 		$special=$price*$tem_special_price['percent']/100;
+    	 	}else{
+    	 		$special=$price-$tem_special_price['price'];
+    	 	}
+    	 }else{
+    	 	$special='';
+    	 }
 
+    	 return   array('price'=>$price,'share'=>$share,'special'=>$special);
 
-		 return $price;
+    	
     }
 
 	public function getProducts($data = array()) {
 	//	var_dump($data);die;
 		$sql = "SELECT p.product_id,
-				(SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating,
+				(SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating
+				
 			    ";
-		
+	
 		
 
 		if (!empty($data['filter_category_id'])) {
@@ -291,9 +368,10 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$product_data = array();
-		//var_dump($);die;
+		//var_dump($);die
 
 		$query = $this->db->query($sql);
+		// print_r($query->rows);exit();
 
 		foreach ($query->rows as $result) {
 			$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
