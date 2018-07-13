@@ -170,7 +170,7 @@
             </div>
         
         </div>
-        <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script src="/catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
  <script>
         $(document).ready(function() {
             /* Search */

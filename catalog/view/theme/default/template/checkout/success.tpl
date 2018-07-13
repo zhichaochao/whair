@@ -1,5 +1,5 @@
 <?php echo $header; ?>
-	<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/common/success.css"/>
+	<link rel="stylesheet" type="text/css" href="/catalog/view/theme/default/stylesheet/common/success.css"/>
 
 <section class="content-wrap">
 	<div class="cgConter">
