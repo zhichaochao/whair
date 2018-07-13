@@ -77,7 +77,7 @@ class ControllerInformationSitemap extends Controller {
 		$data['vip'] = $this->url->link('account/vip');
 		$data['help'] = $this->url->link('account/help','', true);
 		$data['login'] = $this->url->link('account/login','', true);
-
+		$data['sitemap'] =$this->url->link('information/sitemap','',true);
 		$this->load->model('catalog/information');
 
 		$data['informations'] = array();
