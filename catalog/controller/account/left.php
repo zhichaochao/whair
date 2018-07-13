@@ -70,9 +70,12 @@ class ControllerAccountLeft extends Controller {
          
              //有开启伪静态时,点击样式的定位
              if( $this->config->get('config_seo_url') ){
+                // print_r( $v['url']);
+                // print_r($this->request->server);
+                // exit();
 
                                                                //没有filter
-                  if( stripos($this->request->server['QUERY_STRING'] , $v['rewrite']) !== false ){
+                  if( stripos($v['url'] , $this->request->server['REQUEST_URI']) !== false ){
                      $route['route'][$k]['class'] = 'class="active"';
         	      }
         	  

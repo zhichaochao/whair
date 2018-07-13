@@ -33,20 +33,20 @@ class ControllerCommonFooter extends Controller {
 				'child'=>array(
 						0=>array(
 							'title'=>'About Us',
-							'url'=>$this->url->link('account/account'),
+							'url'=>$this->url->link('information/company'),
 							),
 						1=>array(
 							'title'=>'After Sale Service',
-							'url'=>$this->url->link('account/order'),
+							'url'=>$this->url->link('information/information','information_id=2'),
 							),
 						2=>array(
 							'title'=>'Privacy Policy',
-							'url'=>$this->url->link('account/wishlist'),
+							'url'=>$this->url->link('information/information','information_id=6'),
 
 							),
 						3=>array(
 							'title'=>'Hair Club',
-							'url'=>$this->url->link('information/sitemap'),
+							'url'=>$this->url->link('information/profile'),
 							),
 
 
@@ -57,20 +57,20 @@ class ControllerCommonFooter extends Controller {
 				'child'=>array(
 						0=>array(
 							'title'=>'How To Order',
-							'url'=>$this->url->link('account/account'),
+						'url'=>$this->url->link('information/information','information_id=1'),
 							),
 						1=>array(
 							'title'=>'FAQ',
-							'url'=>$this->url->link('account/order'),
+							'url'=>$this->url->link('information/information','information_id=9'),
 							),
 						2=>array(
 							'title'=>'Shipment & Pay',
-							'url'=>$this->url->link('account/wishlist'),
+							'url'=>$this->url->link('information/information','information_id=3'),
 
 							),
 						3=>array(
 							'title'=>'Return Policy',
-							'url'=>$this->url->link('information/sitemap'),
+							'url'=>$this->url->link('information/information','information_id=4'),
 							),
 
 
