@@ -8,20 +8,20 @@
                 <div class="left clearfix">
                     <ol class="top_ol liucheng ol_1  clearfix">
                         <li class="active">
-                            <img src="catalog/view/theme/default/img/png/express.png" alt="" />
+                            <img src="/catalog/view/theme/default/img/png/express.png" alt="" />
                             <span></span>
                             <p>1.Shipping</p>
                             <em class="emr"></em>
                         </li>
                         <li>
-                            <img src="catalog/view/theme/default/img/png/express.png" alt="" />
+                            <img src="/catalog/view/theme/default/img/png/express.png" alt="" />
                             <span></span>
                             <p>2.Payment</p>
                             <em class="eml"></em>
                             <em class="emr"></em>
                         </li>
                         <li>
-                            <img src="catalog/view/theme/default/img/png/express.png" alt="" />
+                            <img src="/catalog/view/theme/default/img/png/express.png" alt="" />
                             <span></span>
                             <p>3.Deliver</p>
                             <em class="eml"></em>

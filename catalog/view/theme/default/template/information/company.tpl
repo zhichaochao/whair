@@ -3,7 +3,7 @@
 		<div class="in_content company">
 			<!--banner-->
 			<div class="ny_bar" >
-				<img class="changeimage" data-image='catalog/view/theme/default/img/jpg/ny_bar1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_ny_bar1.jpg'  />
+				<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/ny_bar1.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_ny_bar1.jpg'  />
 			</div>
 			
 			<div class="com_content">
@@ -23,8 +23,8 @@
 							</p>
 						</div>
 						
-						<img class="changeimage fl" data-image='catalog/view/theme/default/img/jpg/com_1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_1.jpg'  />
-						<img class="changeimage fr" data-image='catalog/view/theme/default/img/jpg/com_2.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_2.jpg'  />
+						<img class="changeimage fl" data-image='/catalog/view/theme/default/img/jpg/com_1.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_1.jpg'  />
+						<img class="changeimage fr" data-image='/catalog/view/theme/default/img/jpg/com_2.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_2.jpg'  />
 					</div>
 					
 					<div class="text_2 clearfix">
@@ -157,9 +157,9 @@
 							<h1 class="com_h1">OUR MISSION</h1>
 						</div>
 						
-						<img class="changeimage fl" data-image='catalog/view/theme/default/img/jpg/com_3.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_3.jpg'  />
+						<img class="changeimage fl" data-image='/catalog/view/theme/default/img/jpg/com_3.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_3.jpg'  />
 						<div class="right clearfix">
-							<img src="catalog/view/theme/default/img/png/bt1.png" alt="" />
+							<img src="/catalog/view/theme/default/img/png/bt1.png" alt="" />
 							<p class="pc_p">
 								Let customers from all over the world </br>
 								can enjoy the beauty and value from </br>
@@ -429,19 +429,19 @@
 						
 						<ul class="clearfix">
 							<li>
-								<img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_4.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_4.jpg'  />
+								<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_4.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_4.jpg'  />
 								<p>Atlanta Bronner Bro beauty show</p>
 							</li>
 							<li>
-								<img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_5.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_5.jpg'  />
+								<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_5.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_5.jpg'  />
 								<p>Miami Asia-America Trade Show</p>
 							</li>
 							<li>
-								<img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_6.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_6.jpg'  />
+								<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_6.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_6.jpg'  />
 								<p>South Africa Trade Show</p>
 							</li>
 							<li>
-								<img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_7.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_7.jpg'  />
+								<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_7.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_7.jpg'  />
 								<p>Nigeria Trade Show</p>
 							</li>
 						</ul>
@@ -456,15 +456,15 @@
 						</div>
 						<p>Hot Beauty Hair Departments Introduction</p>
 						<div class="left clearfix">
-							<img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_8.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_8.jpg'  />
+							<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_8.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_8.jpg'  />
 						</div>
 						<div class="right clearfix">
 							<ul class="clearfix">
-								<li><img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_9.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_9.jpg'  /></li>
+								<li><img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_9.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_9.jpg'  /></li>
 								<li><p>SALE TEAM</p></li>
-								<li><img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_10.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_10.jpg'  /></li>
+								<li><img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_10.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_10.jpg'  /></li>
 								<li><p>Sales Team</p></li>
-								<li><img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_11.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_com_11.jpg'  /></li>
+								<li><img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_11.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_11.jpg'  /></li>
 							</ul>
 						</div>
 						
@@ -476,7 +476,7 @@
 							<span class="com_span"><i>07</i></span>
 							<h1 class="com_h1">GLORIES OF COMPANY</h1>
 						</div>
-						<img class="changeimage" data-image='catalog/view/theme/default/img/jpg/com_12.png' data-mimage='catalog/view/theme/default/img/jpg/yd_com_12.png'  />
+						<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/com_12.png' data-mimage='/catalog/view/theme/default/img/jpg/yd_com_12.png'  />
 					</div>
 				</div>
 			</div>

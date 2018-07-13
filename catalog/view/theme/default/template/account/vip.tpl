@@ -23,15 +23,15 @@
         
         <div class="right m_vip clearfix">
           <div class="bnr_img">
-            <img class="changeimage" data-image='catalog/view/theme/default/img/jpg/pc_vip.jpg'   />
-            <img class="vip_img" src="catalog/view/theme/default/img/png/vip1.png"/>
+            <img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/pc_vip.jpg'   />
+            <img class="vip_img" src="/catalog/view/theme/default/img/png/vip1.png"/>
             <p class="p1">Your VIP level:<?php echo $grade; ?></p>
             <p class="p2"><?php echo $user_name; ?></p>
           </div>
           
           <div class="text_1 clearfix">
             <h1 class="vip_h1">VIP SYSTEM</h1>
-            <img src="catalog/view/theme/default/img/jpg/vip1.jpg"/>
+            <img src="/catalog/view/theme/default/img/jpg/vip1.jpg"/>
           </div>
           
           <div class="text_2 clearfix">

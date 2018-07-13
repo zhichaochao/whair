@@ -95,6 +95,7 @@
 	.pro_content .pro_ul .text p.p1{font-size: 0.83vw;line-height: 1.03vw;margin-bottom: 0.22vw;color: #000;}
 	.pro_content .pro_ul .sc_div{width: 1.87vw;height: 1.87vw;position: absolute;top: 1.25vw;right: 1.09vw;z-index: 2;
 	background: url(../img/png/pro_star.png)no-repeat;background-size: 1.87vw 1.87vw;cursor: pointer;}
+	.pro_content .pro_ul .sc_div.off{background: url(../img/png/pro_star_.png)no-repeat;background-size: 1.87vw 1.87vw;}
 	.pro_content .bot{background: #fff;margin: 0.5vw 0 1.25vw 0;padding:  0 1.56vw;}
 	.pro_content .bot .left{float: left;}
 	.pro_content .bot .left ul li{float: left;width: 1.66vw;height: 1.66vw;line-height: 1.66vw;text-align: center; margin:0.93vw 0.52vw 0.93vw 0;border: 1px solid #d9d9d9;}
@@ -1244,6 +1245,7 @@
 	.pro_content .pro_ul .text p.p1{ font-size: 0.2rem;line-height: 0.28rem;color: #000;}
 	.pro_content .pro_ul .sc_div{width: 0.5rem;height: 0.5rem;position: absolute;top: 0.15rem;right: 0.15rem;z-index: 2;
 	background: url(../img/png/pro_star.png)no-repeat;background-size: 0.5rem 0.5rem;}
+	.pro_content .pro_ul .sc_div.off{background: url(../img/png/pro_star_.png)no-repeat;background-size: 0.5rem 0.5rem;}
 	.pro_content .bot{display: none;}
 	
 	/************product_details*************/

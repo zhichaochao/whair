@@ -73,7 +73,7 @@
 								<div class="close" onclick="javascript:cart_remove('<?php echo $product['cart_id']; ?>');"></div>
 								<span class="wishlist <?=$product['wishlist']==1 ?'off':'';?>" 
 									<?php if($product['wishlist']==1) { ?>
-					              style='background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll left center / 0.83vw 0.83vw; color: rgb(213, 175, 116);';
+					              style='background: rgba(0, 0, 0, 0) url("/catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll left center / 0.83vw 0.83vw; color: rgb(213, 175, 116);';
 					              <?php }?>
 								 onclick="wishlist('<?php echo $product['product_id']; ?>',this);cart_removes('<?php echo $product['cart_id']; ?>')">Move to Wishlist</span>
 							</li>
@@ -273,18 +273,18 @@ function cart_removes(product_key){
 			if(win>992){
 				if($(this).hasClass("off")){
 					$(this).removeClass("off");
-					$(this).css("background","url(catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#666");
+					$(this).css("background","url(/catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#666");
 				}else{
 					$(this).addClass("off");
-					$(this).css("background","url(catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#d5af74");
+					$(this).css("background","url(/catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#d5af74");
 				}
 			}else{
 				if($(this).hasClass("off")){
 					$(this).removeClass("off");
-					$(this).css("background","url(catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#666");
+					$(this).css("background","url(/catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#666");
 				}else{
 					$(this).addClass("off");
-					$(this).css("background","url(catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#d5af74");
+					$(this).css("background","url(/catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#d5af74");
 				}
 			}
 			
