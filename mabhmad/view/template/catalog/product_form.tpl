@@ -43,8 +43,8 @@
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
             <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li>
-            <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
-            <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
+            <!-- <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li> -->
+            <li><a href="#tab-option" data-toggle="tab">价格</a></li>
             <!-- <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li> -->
             <li><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
             <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
@@ -548,7 +548,7 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="tab-attribute">
+           <!--  <div class="tab-pane" id="tab-attribute">
               <div class="table-responsive">
                 <table id="attribute" class="table table-striped table-bordered table-hover">
                   <thead>
@@ -582,18 +582,19 @@
                   </tfoot>
                 </table>
               </div>
-            </div>
+            </div> -->
             <div class="tab-pane" id="tab-option">
               <div class="row">
-                <div class="col-sm-2" style="width: 10%;">
+                <div class="col-sm-2" style="width: 10%; position: relative;">
                   <ul class="nav nav-pills nav-stacked" id="option">
                     <?php $option_row = 0; ?>
-                    <?php foreach ($product_options as $product_option) { ?>
+                    <?php  foreach ($product_options as $product_option) { ?>
                     <li><a href="#tab-option<?php echo $option_row; ?>" data-toggle="tab"><i class="fa fa-minus-circle" onclick="$('a[href=\'#tab-option<?php echo $option_row; ?>\']').parent().remove(); $('#tab-option<?php echo $option_row; ?>').remove(); $('#option a:first').tab('show');"></i> <?php echo $product_option['name']; ?></a></li>
                     <?php $option_row++; ?>
                     <?php } ?>
+                  
                     <li>
-                      <input type="text" name="option" value="" placeholder="<?php echo $entry_option; ?>" id="input-option" class="form-control" />
+                      <input type="text" name="option" value="" placeholder="选择尺寸填写价格" id="input-option" class="form-control" />
                     </li>
                   </ul>
                 </div>
@@ -856,7 +857,7 @@
                 <table id="special" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
-                      <td class="text-left">参与优惠的尺寸<br/>(如果不存在这个尺寸请先保存填写的选项)</td>
+                      <td class="text-left">参与优惠的尺寸<br/>(如果不存在这个尺寸请先保存填写的尺寸)</td>
                       <td class="text-left"><?php echo $entry_customer_group; ?></td>
                       <!-- <td class="text-right"><?php echo $entry_priority; ?></td> -->
                       <td class="text-right">直减(正常价减去下边的价格)</td>
@@ -1111,6 +1112,12 @@
   </script>
   <script type="text/javascript" ><!--
 // Manufacturer
+
+$('#tab-option').on('click', function() {
+  $('#input-option').click();
+  
+})
+
 $('input[name=\'manufacturer\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
@@ -1360,10 +1367,15 @@ $('#attribute tbody tr').each(function(index, element) {
                   html += '  <table id="option-value' + option_row + '" class="table table-striped table-bordered table-hover">';
                   html += '  	 <thead>';
                   html += '      <tr>';
-                  html += '        <td class="text-left"><?php echo $entry_option_value; ?></td>';
+                  html += '        <td class="text-left"><?php echo $entry_option_value; ?>(正常价是所有属性价格的叠加)</td>';
                   html += '        <td class="text-right"><?php echo $entry_quantity; ?></td>';
                   // html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
                   html += '        <td class="text-right"><?php echo $entry_price; ?></td>';
+            
+                   <?php foreach ($customer_groups as $customer_group) { ?>
+                       html += '   <td class="text-right"><?php echo $customer_group["name"]; ?></td>';
+                    <?php } ?>
+
                   html += '        <td class="text-right"><?php echo $entry_option_points; ?></td>';
                   html += '        <td class="text-right"><?php echo $entry_weight; ?></td>';
                   html += '        <td></td>';
@@ -1498,7 +1510,7 @@ function addSpecial() {
 
     html += '  <td class="text-left"><select name="product_special[' + special_row + '][product_option_value_id]" class="form-control">';
   html += '   <option value="0">全部尺寸都参与</option> ';
-    <?php if($special_options){ foreach ($special_options as $special_option) { ?>
+    <?php if(isset($special_options)){ foreach ($special_options as $special_option) { ?>
     html += '      <option value="<?php echo $special_option['product_option_value_id']; ?>"><?php echo addslashes($special_option['name']); ?></option>';
     <?php } } ?>
     html += '  </select></td>';

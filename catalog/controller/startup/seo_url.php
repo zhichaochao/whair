@@ -75,30 +75,18 @@ class ControllerStartupSeoUrl extends Controller {
 		parse_str($url_info['query'], $data);
 
 		//dyl add(以下链接不生成伪静态url)
-		$url_array = array('product/category','product/product',
-                           'product/special','product/manufacturer',
-                           'product/compare','affiliate/account',
-                           'common/currency/currency','common/language/language'
-                           );
+	
 
 		foreach ($data as $key => $value) {
 			if (isset($data['route'])) {
-				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
-					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'");
-
-					if ($query->num_rows && $query->row['keyword']) {
-						$url .= '/' . $query->row['keyword'];
-
-						unset($data[$key]);
-					}
-				}else if ($key == 'path') {
+			 if ($key == 'path') {
 					$categories = explode('_', $value);
 
 					foreach ($categories as $category) {
 						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'");
 
 						if ($query->num_rows && $query->row['keyword']) {
-							$url .= '/' . $query->row['keyword'];
+							$url = '/' . $query->row['keyword'];
 						} else {
 							$url = '';
 
@@ -109,7 +97,7 @@ class ControllerStartupSeoUrl extends Controller {
 					unset($data[$key]);
 				}
 				//有开启伪静态,且不为以上链接,且不包含-
-				else if($this->config->get('config_seo_url') && !in_array($data['route'],$url_array) && !stripos($data['route'],'-')){
+				else if($this->config->get('config_seo_url') && !stripos($data['route'],'-')){
 
                     //对个别链接进行添加或者读取操作 dyl add
 			        $this->load->model('tool/seo_url');

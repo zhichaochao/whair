@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <link rel="stylesheet" href="catalog/view/theme/default/css/common.css" />
-        <link rel="stylesheet" href="catalog/view/theme/default/css/index.css" />
-        <link rel="stylesheet" href="catalog/view/theme/default/css/swiper.min.css" />
-        <script type="text/javascript" src="catalog/view/theme/default/js/jquery.min.js" ></script>
-        <script type="text/javascript" src="catalog/view/theme/default/js/common.js" ></script>
-        <script type="text/javascript" src="catalog/view/theme/default/js/swiper.js" ></script>
+        <link rel="stylesheet" href="/catalog/view/theme/default/css/common.css" />
+        <link rel="stylesheet" href="/catalog/view/theme/default/css/index.css" />
+        <link rel="stylesheet" href="/catalog/view/theme/default/css/swiper.min.css" />
+        <script type="text/javascript" src="/catalog/view/theme/default/js/jquery.min.js" ></script>
+        <script type="text/javascript" src="/catalog/view/theme/default/js/common.js" ></script>
+        <script type="text/javascript" src="/catalog/view/theme/default/js/swiper.js" ></script>
         <title><?php echo $title; ?></title>
         <base href="<?php echo $base; ?>" />
         <?php if ($description) { ?>
@@ -19,21 +19,21 @@
         <meta name="keywords" content= "<?php echo $keywords; ?>" />
         <?php } ?>
         <?php foreach ($styles as $style) { ?>
-    <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
-    <?php } ?>
+        <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
+        <?php } ?>
 
 
-    <?php foreach ($links as $link) { ?>
-    <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
-    <?php } ?>
+        <?php foreach ($links as $link) { ?>
+        <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
+        <?php } ?>
 
-    <?php foreach ($scripts as $script) { ?>
-    <script src="<?php echo $script; ?>" type="text/javascript"></script>
-    <?php } ?>
+        <?php foreach ($scripts as $script) { ?>
+        <script src="<?php echo $script; ?>" type="text/javascript"></script>
+        <?php } ?>
 
-    <?php foreach ($analytics as $analytic) { ?>
-    <?php echo $analytic; ?>
-    <?php } ?>
+        <?php foreach ($analytics as $analytic) { ?>
+        <?php echo $analytic; ?>
+        <?php } ?>
 
 
 
