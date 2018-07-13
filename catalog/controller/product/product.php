@@ -302,7 +302,7 @@ class ControllerProductProduct extends Controller {
 
             if ($product_info['image']) {
                 //$data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
-                $data['thumb'] = $this->model_tool_image->resize($product_info['image'], 700, 700);
+                $data['thumb'] = $this->model_tool_image->resize($product_info['image'], 800, 800);
             } else {
                 $data['thumb'] = '';
             }
@@ -325,9 +325,9 @@ class ControllerProductProduct extends Controller {
                 
                     'thumb' => $this->model_tool_image->resize($product_info['image'], 200, 200),  //小图
                   
-                    'image'=> $this->model_tool_image->resize($product_info['image'], 700, 700),  //小图
+                    'image'=> $this->model_tool_image->resize($product_info['image'], 800, 800),  //小图
                   
-                    'thumb2'=> $this->model_tool_image->resize($product_info['image'], 700, 700)
+                    'thumb2'=> $this->model_tool_image->resize($product_info['image'], 800, 800)
                 );
             // print_r($product_info);exit();
             $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
@@ -336,9 +336,9 @@ class ControllerProductProduct extends Controller {
                 
                     'thumb' => $this->model_tool_image->resize($result['image'], 200, 200),  //小图
                   
-                    'image'=> $this->model_tool_image->resize($result['image'], 700, 700),  //小图
+                    'image'=> $this->model_tool_image->resize($result['image'], 800, 800),  //小图
                   
-                    'thumb2'=> $this->model_tool_image->resize($result['image'], 700, 700)
+                    'thumb2'=> $this->model_tool_image->resize($result['image'], 800, 800)
                 );
             }
 

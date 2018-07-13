@@ -5,7 +5,7 @@
     <div class="content in_content product">
       <div class="pro_content clearfix">
         <div class="top clearfix">
-          <h1>DOUBLE DRAWN FUNMI HAIR [<span>24</span>]</h1>
+          <h1>DOUBLE DRAWN FUNMI HAIR [<span><?php echo $product_total; ?></span>]</h1>
           <span class="sortby"><span>+</span> SORT BY</span>
           <ol class="sortby_ol">
             <li><a href="<?php echo $sort_sort_rating?>">Best selling</a></li>
@@ -20,7 +20,7 @@
             <li>
               <a href="<?php echo $product['href']; ?>">
                 <div class="pic_img" >
-                  <img src="<?php echo $product['thumb']; ?>"  />
+                  <img src="<?php echo $product['thumb']; ?>"   />
                 </div>
                 <div class="text clearfix" >
                 <span class="price">
@@ -37,9 +37,7 @@
                 </div>
               </a>
               <div class="sc_div <?=$product['wishlist']==1 ?'off':'';?>"
-             <?php if($product['wishlist']==1) { ?>
-              style='background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/pro_star_.png") no-repeat scroll 0% 0% / 1.87vw 1.87vw;';
-              <?php }?>
+            
                        
                onclick="wishlist('<?php echo $product['product_id']; ?>',this);" ></div>
             </li>
@@ -112,18 +110,18 @@
       if(win>750){
         if($(this).hasClass("off")){
           $(this).removeClass("off");
-          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","1.87vw 1.87vw");
+          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","1.87vw 1.87vw");
         }else{
           $(this).addClass("off");
-          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","1.87vw 1.87vw");
+          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","1.87vw 1.87vw");
         }
       }else{
         if($(this).hasClass("off")){
           $(this).removeClass("off");
-          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","0.5rem 0.5rem");
+          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","0.5rem 0.5rem");
         }else{
           $(this).addClass("off");
-          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","0.5rem 0.5rem");
+          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","0.5rem 0.5rem");
         }
       }
     })

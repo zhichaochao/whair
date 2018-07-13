@@ -70,7 +70,7 @@
                             <form action="<?=$submit_bank_receipt;?>" method="post" enctype="multipart/form-data">
                             <div class="file_div">
                                 <input type="file" name="bank_receipt" id="file" value="" title="上传照片" onchange="getphoto(this)" class="flie_in"/>
-                                <img class="file_img" src="catalog/view/theme/default/img/png/file.png"/>
+                                <img class="file_img" src="/catalog/view/theme/default/img/png/file.png"/>
                             </div>
                             <div class="text_div">
                                 <img src="" alt="" />

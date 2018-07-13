@@ -122,6 +122,10 @@ header{position:fixed;top:0;left:0;width:100%;background: #fff;z-index:10;height
 .nav .mn_type{position: absolute;top: 20px;left: 0;cursor: pointer;}
 .nav .mn_type .top p{display: block;float: left;padding-left: 25px;background: url(../img/png/usd1.png) no-repeat left center;
 line-height: 16px;margin-right: 18px;background-size: 16px 16px;font-size: 16px;}
+.nav .mn_type .top p.currency_USD{background: url(../img/png/usd1.png) no-repeat left center;background-size: 16px 16px;}
+.nav .mn_type .top p.currency_EUR{background: url(../img/png/eur1.png) no-repeat left center;background-size: 16px 16px;}
+.nav .mn_type .top p.currency_GBP{background: url(../img/png/zar1.png) no-repeat left center;background-size: 16px 16px;}
+/*.nav .mn_type .top p.currency_NAN{background: url(../img/png/ngn1.png) no-repeat left center;background-size: 16px 16px;}*/
 .nav .mn_type .top .pic_img{float: left; position: relative;top: -5px;width: 34px;height:28px;padding: 10px;}
 
 .nav .mn_type .bot{display: none;position: absolute;top: 15px;left: 0px;z-index: 9;padding-top: 10px;}
@@ -131,9 +135,9 @@ line-height: 16px;margin-right: 18px;background-size: 16px 16px;font-size: 16px;
  border-color: transparent transparent #fff;position: absolute;top: 1px;left: -10px;}
 .nav .mn_type .ul_type {background: #fff;border: 1px solid #eee;border-radius: 4px; width: 100px;padding:10px 20px;}
 .nav .mn_type .ul_type li{padding-left: 25px;line-height: 16px;margin: 16px 0;cursor: pointer;font-size: 16px;}
-.nav .mn_type .ul_type li:nth-child(1){background: url(../img/png/eur1.png) no-repeat left center;background-size: 16px 16px;}
-.nav .mn_type .ul_type li:nth-child(2){background: url(../img/png/ngn1.png) no-repeat left center;background-size: 16px 16px;}
-.nav .mn_type .ul_type li:nth-child(3){background: url(../img/png/zar1.png) no-repeat left center;background-size: 16px 16px;}
+.nav .mn_type .ul_type li.currency_select_EUR{background: url(../img/png/eur1.png) no-repeat left center;background-size: 16px 16px;}
+.nav .mn_type .ul_type li.currency_select_GBP{background: url(../img/png/zar1.png) no-repeat left center;background-size: 16px 16px;}
+.nav .mn_type .ul_type li.currency_select_USD{background: url(../img/png/usd1.png) no-repeat left center;background-size: 16px 16px;}
 
 .nav .logo a{display: block;width: 334px;margin: auto;}
 .nav .logo img{margin:30px auto ;display: block;}

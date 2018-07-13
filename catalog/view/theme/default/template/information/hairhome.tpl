@@ -9,7 +9,7 @@
 					<?php foreach ($profile_video['videos'] as $key => $child) {?>
 					<li>
 						<video src="<?=$child['video'];?>" class="video_li" poster="<?=$child['image'];?>"></video>
-						<img class="bf" src="catalog/view/theme/default/img/png/bf.png"/>
+						<img class="bf" src="/catalog/view/theme/default/img/png/bf.png"/>
 						<div class="text_vd clearfix">
 						<div class="bg_div">
 							<p><?=$child['gallery_title'];?> </p>

@@ -120,15 +120,13 @@
 									About Measurement
 								</span>
 								<div class="meas_img">
-									<img class=" changeimage" data-image='catalog/view/theme/default/img/jpg/size_guid.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_size_guid.jpg'  />
+									<img class=" changeimage" data-image='/catalog/view/theme/default/img/jpg/size_guid.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_size_guid.jpg'  />
 									<div class="close"></div>
 								</div>
 							</div>
 							<a class="a_btn clearfix" id="button-cart" >ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
 								<button class="xyd_btn <?=$wishlist==1 ?'off':'';?>"
-							  <?php if($wishlist==1) { ?>
-			              style='border: 1px solid rgb(213, 175, 116); background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll right 0.83vw center / 0.83vw auto;';
-			              <?php }?> 
+							 
 			              onclick="wishlist('<?php echo $product_id; ?>',this);"><span>WISHLIST</span></button>
 						</div>
 						<div class="bot_text clear">
@@ -173,7 +171,7 @@
 							<div class="xxk_text">
 								<div class="ul_top clearfix">
 									<div class="left">
-										<img src="catalog/view/theme/default/img/jpg/map.jpg"/>
+										<img src="/catalog/view/theme/default/img/jpg/map.jpg"/>
 									</div>
 									<div class="right clearfix">
 										<ul class="ul_text clearfix">
@@ -217,11 +215,11 @@
 										<span>Our express</span>
 										<ol class="clearfix">
 											<li>
-												<img src="catalog/view/theme/default/img/jpg/pro_det2.jpg"/>
+												<img src="/catalog/view/theme/default/img/jpg/pro_det2.jpg"/>
 												<p>FedEx</p>
 											</li>
 											<li>
-												<img src="catalog/view/theme/default/img/jpg/pro_det3.jpg"/>
+												<img src="/catalog/view/theme/default/img/jpg/pro_det3.jpg"/>
 												<p>DHL</p>
 											</li>
 										</ol>
@@ -230,11 +228,11 @@
 										<span>Package</span>
 										<ol class="clearfix">
 											<li>
-												<img src="catalog/view/theme/default/img/jpg/pro_det2.jpg"/>
+												<img src="/catalog/view/theme/default/img/jpg/pro_det2.jpg"/>
 												<p>Product Packaging</p>
 											</li>
 											<li>
-												<img src="catalog/view/theme/default/img/jpg/pro_det3.jpg"/>
+												<img src="/catalog/view/theme/default/img/jpg/pro_det3.jpg"/>
 												<p>The Outer Packing</p>
 											</li>
 										</ol>
@@ -378,14 +376,14 @@ $(function(){
 		$(".xxk_h1").click(function(){
 			if($(this).hasClass("off")){
 				$(this).removeClass("off");
-				$(this).css("background","url(catalog/view/theme/default/img/png/jiahao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
+				$(this).css("background","url(/catalog/view/theme/default/img/png/jiahao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
 				$(this).siblings(".xxk_text").slideUp();
 			}else{
 				$(".xxk_h1").removeClass("off");
-				$(".xxk_h1").css("background","url(catalog/view/theme/default/img/png/jiahao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
+				$(".xxk_h1").css("background","url(/catalog/view/theme/default/img/png/jiahao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
 				$('.xxk_text').slideUp();
 				$(this).addClass("off");
-				$(this).css("background","url(catalog/view/theme/default/img/png/jianhao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
+				$(this).css("background","url(/catalog/view/theme/default/img/png/jianhao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
 				$(this).siblings(".xxk_text").slideDown();
 			}
 		})
@@ -425,18 +423,18 @@ $(function(){
 			if(win>992){
 				if($(this).hasClass("off")){
 					$(this).removeClass("off");
-					$(this).css("border","1px solid #ccc").css("background","url(catalog/view/theme/default/img/png/shop_star.png) no-repeat right 0.83vw center").css("background-size","0.83vw");
+					$(this).css("border","1px solid #ccc").css("background","url(/catalog/view/theme/default/img/png/shop_star.png) no-repeat right 0.83vw center").css("background-size","0.83vw");
 				}else{
 					$(this).addClass("off");
-					$(this).css("border","1px solid #d5af74").css("background","url(catalog/view/theme/default/img/png/shop_star_.png) no-repeat right 0.83vw center").css("background-size","0.83vw");
+					$(this).css("border","1px solid #d5af74").css("background","url(/catalog/view/theme/default/img/png/shop_star_.png) no-repeat right 0.83vw center").css("background-size","0.83vw");
 				}
 			}else{
 				if($(this).hasClass("off")){
 					$(this).removeClass("off");
-					$(this).css("border","1px solid #ccc").css("background","url(catalog/view/theme/default/img/png/shop_star.png) no-repeat center").css("background-size","0.38rem 0.36rem");
+					$(this).css("border","1px solid #ccc").css("background","url(/catalog/view/theme/default/img/png/shop_star.png) no-repeat center").css("background-size","0.38rem 0.36rem");
 				}else{
 					$(this).addClass("off");
-					$(this).css("border","1px solid #d5af74").css("background","url(catalog/view/theme/default/img/png/shop_star_.png) no-repeat  center").css("background-size","0.38rem 0.36rem");
+					$(this).css("border","1px solid #d5af74").css("background","url(/catalog/view/theme/default/img/png/shop_star_.png) no-repeat  center").css("background-size","0.38rem 0.36rem");
 				}
 			}
 		})

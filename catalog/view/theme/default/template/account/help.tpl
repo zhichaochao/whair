@@ -13,9 +13,9 @@
 				</div>
 				
 				<div class="right m_call clearfix">
-					<p><img src="catalog/view/theme/default/img/png/call1.png" alt="" /> +8613450252494</p>
-					<a href="mailto:hellena@hotbeautyhair.com"><p><img src="catalog/view/theme/default/img/png/call2.png" alt="" /> rebecca@hotbeautyhair.com</p></a>	
-					<p><img src="catalog/view/theme/default/img/png/call3.png" alt="" /> Submit your Feedback</p>
+					<p><img src="/catalog/view/theme/default/img/png/call1.png" alt="" /> +8613450252494</p>
+					<a href="mailto:hellena@hotbeautyhair.com"><p><img src="/catalog/view/theme/default/img/png/call2.png" alt="" /> rebecca@hotbeautyhair.com</p></a>	
+					<p><img src="/catalog/view/theme/default/img/png/call3.png" alt="" /> Submit your Feedback</p>
 					<form action="<?php echo $action; ?>" method="post" class="dash-help-form">	
 					<span>*Comment:</span>
 					<textarea name="enquiry"></textarea>

@@ -85,12 +85,12 @@
                 <!--logo-->
                 <div class="logo">
                     <a href="<?php echo $root_home; ?>">
-                        <img class="changeimage" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" data-image="catalog/view/theme/default/img/png/logo.png" data-mimage="catalog/view/theme/default/img/png/yd_logo.png"  src='catalog/view/theme/default/img/png/logo.png'  />
+                        <img class="changeimage" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" data-image="/catalog/view/theme/default/img/png/logo.png" data-mimage="/catalog/view/theme/default/img/png/yd_logo.png"  src='/catalog/view/theme/default/img/png/logo.png'  />
                     </a>
                 </div>  
                 
                 <!--whatApp-->
-                <p class="whatapp"><a  target="_blank"  href="whatsapp://send?phone=<?=$whatappphone;?>"><img src="catalog/view/theme/default/img/png/phone.png"/>WhatApp:<?=$whatappphone;?></a></p>
+                <p class="whatapp"><a  target="_blank"  href="whatsapp://send?phone=<?=$whatappphone;?>"><img src="/catalog/view/theme/default/img/png/phone.png"/>WhatApp:<?=$whatappphone;?></a></p>
                 
                 <!--pc导航-->
                 <ul class="nav_ul clearfix">
@@ -129,7 +129,7 @@
              </form> -->
              <form class="search fl">
               <input id="header-search" value="" type="" name="new_search" placeholder="Search">
-                <img class="close" src="catalog/view/theme/default/img/png/close2.png"/>
+                <img class="close" src="/catalog/view/theme/default/img/png/close2.png"/>
               </form>
                 
                 <!--导航购物车-->
@@ -145,14 +145,14 @@
                 <!--移动导航-->
                 <div class="yd_nav">
                     <div class="top">
-                        <img class="menu" src="catalog/view/theme/default/img/png/menu.png"  />
-                        <img class="close" src="catalog/view/theme/default/img/png/close2.png"/>
+                        <img class="menu" src="/catalog/view/theme/default/img/png/menu.png"  />
+                        <img class="close" src="/catalog/view/theme/default/img/png/close2.png"/>
                     </div>
                     
                     <ul>
                     <?php if($navs){ foreach ($navs as $k => $nav) { ?>
                         <li class="clearfix">
-                            <a  href="<?php echo $nav['url']; ?>"  <?=$nav['is_target']==1?'target="_blank"':''; ?> ><?=$nav['name'];?>   </a><?php if($nav['child']){?><img class="slide_img" src="catalog/view/theme/default/img/png/jiahao.png" data-img='catalog/view/theme/default/img/png/jiahao.png' data-imgs='catalog/view/theme/default/img/png/jianhao.png'/>  <?php } ?>
+                            <a  href="<?php echo $nav['url']; ?>"  <?=$nav['is_target']==1?'target="_blank"':''; ?> ><?=$nav['name'];?>   </a><?php if($nav['child']){?><img class="slide_img" src="/catalog/view/theme/default/img/png/jiahao.png" data-img='/catalog/view/theme/default/img/png/jiahao.png' data-imgs='/catalog/view/theme/default/img/png/jianhao.png'/>  <?php } ?>
                             <?php if($nav['child']){?>
                             <ol class="yd_nav_ol clearfix">
                     

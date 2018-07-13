@@ -1,5 +1,5 @@
   <?php if ($products || $vouchers) { ?>
-  <h1>MY SHOPPING CART(<span><?=$total_items;?></span>) <div class="close"><img src="catalog/view/theme/default/img/png/close2.png"></div></h1>
+  <h1>MY SHOPPING CART(<span><?=$total_items;?></span>) <div class="close"><img src="/catalog/view/theme/default/img/png/close2.png"></div></h1>
           
           <div class="has">
             <ul class="cart_ul">
@@ -48,7 +48,7 @@
 
     <?php } else { ?>
 
-<h1>MY SHOPPING CART(<span>0</span>) <div class="close"><img src="catalog/view/theme/default/img/png/close2.png"></div></h1>
+<h1>MY SHOPPING CART(<span>0</span>) <div class="close"><img src="/catalog/view/theme/default/img/png/close2.png"></div></h1>
 <div class="null">
 <p>Your shopping cart is empty</p>
 </div>

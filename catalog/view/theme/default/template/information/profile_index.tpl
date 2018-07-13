@@ -1,7 +1,7 @@
 <?php echo $header; ?>
 		
 			<div class="content in_content hairclub clearfix">
-				<img class="changeimage bnr_img" data-image='catalog/view/theme/default/img/jpg/hairclub1.jpg' data-mimage='catalog/view/theme/default/img/jpg/yd_hairclub1.jpg'  />
+				<img class="changeimage bnr_img" data-image='/catalog/view/theme/default/img/jpg/hairclub1.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_hairclub1.jpg'  />
 				<h1><?=$profile_care['title'];?></h1>
 				<p><?=$profile_care['meta_description'];?></p>
 				<ul class="hair_ul clearfix">
@@ -55,7 +55,7 @@
 					<?php foreach ($profile_video['videos'] as $key => $child) {?>
 					<li>
 						<video src="<?=$child['video'];?>" class="video_li" poster="<?=$child['image'];?>"></video>
-						<img class="bf" src="catalog/view/theme/default/img/png/bf.png"/>
+						<img class="bf" src="/catalog/view/theme/default/img/png/bf.png"/>
 						<div class="text_vd clearfix">
 						<div class="bg_div">
 							<p><?=$child['gallery_title'];?> </p>

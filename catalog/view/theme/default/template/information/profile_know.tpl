@@ -11,11 +11,11 @@
             </div>
             <div class="right fr clearfix">
               <ul>
-               <li><a id="share_button_facebook"><img src="catalog/view/theme/default/img/png/hc_1.png"/></a></li>
-                <li><a id="share_button_twitter"><img src="catalog/view/theme/default/img/png/hc_2.png"/></a></li>
-                <li><a id="share_button_google"><img src="catalog/view/theme/default/img/png/hc_3.png"/></a></li>
-                <li><a id="share_button_pinterest"><img src="catalog/view/theme/default/img/png/hc_4.png"/></a></li>
-                <li><a id="share_button_linked"><img src="catalog/view/theme/default/img/png/hc_5.png"/></a></li>
+               <li><a id="share_button_facebook"><img src="/catalog/view/theme/default/img/png/hc_1.png"/></a></li>
+                <li><a id="share_button_twitter"><img src="/catalog/view/theme/default/img/png/hc_2.png"/></a></li>
+                <li><a id="share_button_google"><img src="/catalog/view/theme/default/img/png/hc_3.png"/></a></li>
+                <li><a id="share_button_pinterest"><img src="/catalog/view/theme/default/img/png/hc_4.png"/></a></li>
+                <li><a id="share_button_linked"><img src="/catalog/view/theme/default/img/png/hc_5.png"/></a></li>
               </ul>
             </div>
           </div>

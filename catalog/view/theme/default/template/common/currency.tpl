@@ -6,7 +6,7 @@
                     <div class="top clearfix">
                         <p class="currency_<?=$code;?>"><?=$code;?></p>
                         <div class="pic_img">
-                            <img src="catalog/view/theme/default/img/png/down.png" alt="" />
+                            <img src="/catalog/view/theme/default/img/png/down.png" alt="" />
                         </div>
                     </div>
                     <div class="bot">

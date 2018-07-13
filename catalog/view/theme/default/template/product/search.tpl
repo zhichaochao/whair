@@ -87,9 +87,7 @@
                 </div>
               </a>
               <div class="sc_div <?=$product['wishlist']==1 ?'off':'';?>"
-             <?php if($product['wishlist']==1) { ?>
-              style='background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/pro_star_.png") no-repeat scroll 0% 0% / 1.87vw 1.87vw;';
-              <?php }?>
+            
                        
                onclick="wishlist('<?php echo $product['product_id']; ?>',this);" ></div>
             </li>
@@ -161,18 +159,18 @@ $('select[name=\'category_id\']').trigger('change');
       if(win>750){
         if($(this).hasClass("off")){
           $(this).removeClass("off");
-          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","1.87vw 1.87vw");
+          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","1.87vw 1.87vw");
         }else{
           $(this).addClass("off");
-          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","1.87vw 1.87vw");
+          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","1.87vw 1.87vw");
         }
       }else{
         if($(this).hasClass("off")){
           $(this).removeClass("off");
-          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","0.5rem 0.5rem");
+          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","0.5rem 0.5rem");
         }else{
           $(this).addClass("off");
-          $(this).css("background","url(catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","0.5rem 0.5rem");
+          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","0.5rem 0.5rem");
         }
       }
     })
