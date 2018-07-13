@@ -1,71 +1,66 @@
 <?php echo $header; ?>
-<div class="container">
-  <ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
-  <div class="row"><?php echo $column_left; ?>
-    <?php if ($column_left && $column_right) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $column_right) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
-      <div class="row">
-        <div class="col-sm-6">
-          <ul>
+<!--内容-->
+    <div class=" in_content peo_center">
+      <div class="content clearfix">
+        <div class="left clearfix">
+          <h1>CATALOGUE</h1>
+          <ol>
+          <?php if($inforon) { ?>
+            <?php foreach($inforon as $key => $value) { ?>
+                <li class="<?php echo $value['class']; ?>">
+                  <a href="<?php echo $value['url']; ?>"><?php echo $value['title']; ?></a>
+                </li>
+            <?php } ?>
+                <li class="active">
+                  <a href="<?php echo $sitemap; ?>">SiteMap1</a>
+                </li>
+          <?php } ?>
+          </ol>
+        </div>       
+        <div class="right fot_text clearfix">
+          <h1 class="footer_h1">Site Map</h1>
+          <div class="fot_6">
+            <dl>
             <?php foreach ($categories as $category_1) { ?>
-            <li><a href="<?php echo $category_1['href']; ?>"><?php echo $category_1['name']; ?></a>
+            <dd><a href="<?php echo $category_1['href']; ?>"><i><?php echo $category_1['name']; ?></i></a>
               <?php if ($category_1['children']) { ?>
-              <ul>
                 <?php foreach ($category_1['children'] as $category_2) { ?>
-                <li><a href="<?php echo $category_2['href']; ?>"><?php echo $category_2['name']; ?></a>
+                <dd><a href="<?php echo $category_2['href']; ?>"><i><?php echo $category_2['name']; ?></i></a>
                   <?php if ($category_2['children']) { ?>
                   <ul>
                     <?php foreach ($category_2['children'] as $category_3) { ?>
-                    <li><a href="<?php echo $category_3['href']; ?>"><?php echo $category_3['name']; ?></a></li>
+                    <dd><a href="<?php echo $category_3['href']; ?>"><i><?php echo $category_3['name']; ?></i></a></dd>
                     <?php } ?>
-                  </ul>
                   <?php } ?>
-                </li>
+                </dd>
                 <?php } ?>
-              </ul>
               <?php } ?>
-            </li>
+            </dd>
             <?php } ?>
-          </ul>
-        </div>
-        <div class="col-sm-6">
-          <ul>
-            <li><a href="<?php echo $special; ?>"><?php echo $text_special; ?></a></li>
-            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a>
-              <ul>
-                <li><a href="<?php echo $edit; ?>"><?php echo $text_edit; ?></a></li>
-                <li><a href="<?php echo $password; ?>"><?php echo $text_password; ?></a></li>
-                <li><a href="<?php echo $address; ?>"><?php echo $text_address; ?></a></li>
-                <li><a href="<?php echo $history; ?>"><?php echo $text_history; ?></a></li>
-                <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-              </ul>
-            </li>
-            <li><a href="<?php echo $cart; ?>"><?php echo $text_cart; ?></a></li>
-            <li><a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a></li>
-            <li><a href="<?php echo $search; ?>"><?php echo $text_search; ?></a></li>
-            <li><?php echo $text_information; ?>
-              <ul>
-                <?php foreach ($informations as $information) { ?>
-                <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
+            </dl>
+            <dl>
+              <dt>MY ACCOUNT</dt>
+              <dd><a href="<?php echo $order; ?>"><i>My Order</i></a></dd>
+              <dd><a href="<?php echo $accountinformation; ?>"><i>Account Information</i></a></dd>
+              <dd><a href="<?php echo $cart; ?>"><i>Shopping Cart</i></a></dd>
+              <dd><a href="<?php echo $address; ?>"><i>Address List</i></a></dd>
+              <dd><a href="<?php echo $wishlist; ?>"><i>My Wish List</i></a></dd>
+              <dd><a href="<?php echo $vip; ?>"><i>My VIP</i></a></dd>
+             <!--  <dd><a href="<?php echo $order; ?>"><i>My Coupon</i></a></dd> --> 
+             <dd><a href="<?php echo $help; ?>"><i>Help Center</i></a></dd>
+              <dd><a href="<?php echo $login; ?>"><i>Sign In</i></a></dd>
+              <dd><a href="<?php echo $login; ?>"><i>Sign Up</i></a></dd>
+            </dl>
+            <dl>
+              <dt>CUSTOMER SERVICE</dt>
+              <?php foreach ($informations as $information) { ?>
+                <dd><a href="<?php echo $information['href']; ?>"><i><?php echo $information['title']; ?></i></a></dd>
                 <?php } ?>
-                <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
-              </ul>
-            </li>
-          </ul>
+            </dl>
+          </div>
         </div>
       </div>
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
-</div>
+      <?php echo $content_bottom; ?>
+      <?php echo $column_right; ?>
+    </div>
 <?php echo $footer; ?>

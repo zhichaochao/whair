@@ -10,19 +10,15 @@ class ControllerInformationLeft extends Controller {
 
             $this->load->model('catalog/information');
             $profiles = $this->model_catalog_information->getProfiles();
-            print_r($profiles);exit();
+           // print_r($profiles);exit();
             $r=array();
             foreach ($profiles as $key => $value) {
                 $r[]=array(
-                  
                       'name' => $value['title'],
                       'profile_id'=>$value['profile_id'],
                     'url' => $this->url->link('information/company/index','profile_id=' .  $value['profile_id']),
                 );
             }
-         
-
-
 		return $this->load->view('information/left', $route);
 	}
 
