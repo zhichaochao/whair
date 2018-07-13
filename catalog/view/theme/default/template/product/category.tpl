@@ -37,9 +37,7 @@
                 </div>
               </a>
               <div class="sc_div <?=$product['wishlist']==1 ?'off':'';?>"
-             <?php if($product['wishlist']==1) { ?>
-              style='background: rgba(0, 0, 0, 0) url("catalog/view/theme/default/img/png/pro_star_.png") no-repeat scroll 0% 0% / 1.87vw 1.87vw;';
-              <?php }?>
+            
                        
                onclick="wishlist('<?php echo $product['product_id']; ?>',this);" ></div>
             </li>
