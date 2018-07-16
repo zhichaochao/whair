@@ -392,29 +392,29 @@ class ModelCatalogProduct extends Model {
             }
         }
 
-		if (isset($data['product_discount'])) {
-			foreach ($data['product_discount'] as $product_discount) {
-			    if ($product_discount['product_discount_id']) {
-			        if (isset($product_discount['customer_group_id'])) {
-                        $this->querysql("UPDATE " . DB_PREFIX . "product_discount SET product_id = '" . (int)$product_id . "', 
+		// if (isset($data['product_discount'])) {
+		// 	foreach ($data['product_discount'] as $product_discount) {
+		// 	    if ($product_discount['product_discount_id']) {
+		// 	        if (isset($product_discount['customer_group_id'])) {
+  //                       $this->querysql("UPDATE " . DB_PREFIX . "product_discount SET product_id = '" . (int)$product_id . "', 
                     
-                        customer_group_id = '" . (int)$product_discount['customer_group_id'] . "', quantity = '" . (int)$product_discount['quantity'] . "', 
+  //                       customer_group_id = '" . (int)$product_discount['customer_group_id'] . "', quantity = '" . (int)$product_discount['quantity'] . "', 
                     
-                        priority = '" . (int)$product_discount['priority'] . "', price = '" . (float)$product_discount['price'] . "', 
+  //                       priority = '" . (int)$product_discount['priority'] . "', price = '" . (float)$product_discount['price'] . "', 
                     
-                        date_start = '" . $this->db->escape($product_discount['date_start']) . "', date_end = '" . $this->db->escape($product_discount['date_end']) . "'
+  //                       date_start = '" . $this->db->escape($product_discount['date_start']) . "', date_end = '" . $this->db->escape($product_discount['date_end']) . "'
                         
-                        WHERE product_discount_id = '" . (int)$product_discount['product_discount_id'] . "'");
-                    }
-                    else {
-                        $this->querysql("DELETE FROM " . DB_PREFIX . "product_discount WHERE product_discount_id = '" . (int)$product_discount['product_discount_id'] . "'");
-                    }
-                }
-                else {
-                    $this->querysql("INSERT INTO " . DB_PREFIX . "product_discount SET product_id = '" . (int)$product_id . "', customer_group_id = '" . (int)$product_discount['customer_group_id'] . "', quantity = '" . (int)$product_discount['quantity'] . "', priority = '" . (int)$product_discount['priority'] . "', price = '" . (float)$product_discount['price'] . "', date_start = '" . $this->db->escape($product_discount['date_start']) . "', date_end = '" . $this->db->escape($product_discount['date_end']) . "'");
-                }
-			}
-		}
+  //                       WHERE product_discount_id = '" . (int)$product_discount['product_discount_id'] . "'");
+  //                   }
+  //                   else {
+  //                       $this->querysql("DELETE FROM " . DB_PREFIX . "product_discount WHERE product_discount_id = '" . (int)$product_discount['product_discount_id'] . "'");
+  //                   }
+  //               }
+  //               else {
+  //                   $this->querysql("INSERT INTO " . DB_PREFIX . "product_discount SET product_id = '" . (int)$product_id . "', customer_group_id = '" . (int)$product_discount['customer_group_id'] . "', quantity = '" . (int)$product_discount['quantity'] . "', priority = '" . (int)$product_discount['priority'] . "', price = '" . (float)$product_discount['price'] . "', date_start = '" . $this->db->escape($product_discount['date_start']) . "', date_end = '" . $this->db->escape($product_discount['date_end']) . "'");
+  //               }
+		// 	}
+		// }
 		
 		if (isset($data['product_special'])) {
 			//是否同步同类产品的折扣信息
@@ -424,7 +424,7 @@ class ModelCatalogProduct extends Model {
 			else {
 				foreach ($data['product_special'] as $key => $product_special) {
 					// print_r($product_special);exit();
-                    if ($product_special['product_special_id']) {
+                    if (isset($product_special['product_special_id'])){
                         if (isset($product_special['date_end']) && !empty($product_special['date_end'])) {
                             $this->db->query("UPDATE " . DB_PREFIX . "product_special SET
 					        customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
@@ -453,6 +453,16 @@ class ModelCatalogProduct extends Model {
 				}
 			}	
 		}
+
+		$price=$this->getProductSpecials($product_id);
+		// print_r($price);exit();
+		if ($price) {
+			$price=$price[0]['special_price'];
+		}else{
+			$price=$this->getProductPrice($product_id);
+		}
+		//算一个最低价，来排序
+		 $this->db->query("UPDATE " . DB_PREFIX . "product SET price='".$price."' WHERE product_id= '" . (int)$product_id . "'");
 		
 		if (isset($data['product_image'])) {
 		    $this->querysql("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");

@@ -339,8 +339,8 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			if ($data['sort'] == 'pd.name' || $data['sort'] == 'p.model') {
 				$sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
-			} elseif ($data['sort'] == 'p.price') {
-				$sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+			// } elseif ($data['sort'] == 'p.price') {
+			// 	$sql .= " ORDER BY  p.price END)";
 			} else {
 				$sql .= " ORDER BY " . $data['sort'];
 			}
@@ -353,7 +353,7 @@ class ModelCatalogProduct extends Model {
 		} else {
 			$sql .= " ASC, LCASE(pd.name) ASC";
 		}
-		// print_r($data['order']);exit();
+		// print_r($data['sort']);exit();
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
@@ -369,7 +369,7 @@ class ModelCatalogProduct extends Model {
 
 		$product_data = array();
 		//var_dump($);die
-
+// print_r($sql);exit();
 		$query = $this->db->query($sql);
 		// print_r($query->rows);exit();
 

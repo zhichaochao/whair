@@ -114,8 +114,8 @@ class ControllerProductCategory extends Controller {
 			$data['text_tax'] = $this->language->get('text_tax');
 			$data['text_points'] = $this->language->get('text_points');
 
-			$data['sort_sort_order'] = $this->url->link('product/category', 'token='  . '&sort=p.price1' . $url, true);
-			$data['sort_sort_order_d'] = $this->url->link('product/category', 'token='  . '&sort=p.price1&order=DESC' . $url, true);
+			$data['sort_sort_order'] = $this->url->link('product/category', 'token='  . '&sort=p.price' . $url, true);
+			$data['sort_sort_order_d'] = $this->url->link('product/category', 'token='  . '&sort=p.price&order=DESC' . $url, true);
 			$data['sort_sort_add'] = $this->url->link('product/category', 'token='  . '&sort=p.date_added' . $url, true);
 			$data['sort_sort_rating'] = $this->url->link('product/category', 'token='  . '&sort=rating' . $url, true);
 			//产品对比按钮
