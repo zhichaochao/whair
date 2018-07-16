@@ -73,8 +73,11 @@
                   <p class="ov_text"><?php echo $product['name']; ?>
                 </p>
                   <span class="d_price"><?php echo $product['total']; ?></span>
-               <span class="num">&nbsp;
-              <i class="yd_i">X</i><?php echo $product['option'][1]['value']; ?>
+              <span class="num">&nbsp;
+                  <?php foreach ($product['option'] as $option) { ?>
+              <i class="yd_i">X</i><?php echo $option['value']; ?>
+                <!-- <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small> -->
+                <?php } ?>
               </span>
                  <!--  <span class="num"><i class="yd_i">X</i>1</span> -->
                   <span class="length"><i class="yd_i"></i><?php echo $product['quantity']; ?></span>
