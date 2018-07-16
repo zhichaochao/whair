@@ -68,7 +68,7 @@
                 <label class="control-label" for="input-price"><?php echo $entry_price; ?></label>
                 <input type="text" name="filter_price" value="<?php echo $filter_price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
               </div>
-              <div class="form-group">
+              <div class="form-group" >
                 <label class="control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
                 <input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
               </div>
@@ -90,27 +90,6 @@
                   <?php } ?>
                 </select>
               </div>              
-              <div class="form-group" >
-                <label class="control-label" for="input-quantity"><?php echo $entry_relation_product; ?></label>
-                <input type="text" name="filter_relation_product" value="<?php echo $filter_relation_product; ?>" placeholder="<?php echo $entry_relation_product; ?>" id="input-quantity" class="form-control" />
-              </div>
-              
-              <!--<div class="form-group">
-                <label class="control-label" for="input-image"><?php echo $entry_image; ?></label>
-                <select name="filter_image" id="input-image" class="form-control">
-                  <option value="*"></option>
-                  <?php if ($filter_image) { ?>
-                  <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                  <?php } else { ?>
-                  <option value="1"><?php echo $text_enabled; ?></option>
-                  <?php } ?>
-                  <?php if (!$filter_image && !is_null($filter_image)) { ?>
-                  <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                  <?php } else { ?>
-                  <option value="0"><?php echo $text_disabled; ?></option>
-                  <?php } ?>
-                </select>
-              </div>-->
               <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
             </div>
           </div>
@@ -143,11 +122,7 @@
                     <a href="<?php echo $sort_quantity; ?>"><?php echo $column_quantity; ?></a>
                     <?php } ?></td>
                   
-                  <td class="text-right"><?php if ($sort == 'p.relation_product') { ?>
-                    <a href="<?php echo $sort_relation_product; ?>" class="<?php echo strtolower($order); ?>"><?php echo $entry_relation_product; ?></a>
-                    <?php } else { ?>
-                    <a href="<?php echo $sort_relation_product; ?>"><?php echo $entry_relation_product; ?></a>
-                    <?php } ?></td>
+                
                   
                   <td class="text-left"><?php if ($sort == 'p.status') { ?>
                     <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
@@ -187,7 +162,6 @@
                     <?php } else { ?>
                     <span class="label label-success"><?php echo $product['quantity']; ?></span>
                     <?php } ?></td>
-                  <td class="text-left"><?php echo $product['relation_product']; ?></td>
                   <td class="text-left"><?php echo $product['status']; ?></td>
                   <td class="text-center">
                     <?php if($product['free_postage'] == '1') {?>
