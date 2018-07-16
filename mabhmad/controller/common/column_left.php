@@ -60,22 +60,22 @@ class ControllerCommonColumnLeft extends Controller {
 			}
 			
 		
-
-			if ($this->user->hasPermission('access', 'catalog/recurring')) {
-				$catalog[] = array(
-					'name'	   => $this->language->get('text_recurring'),
-					'href'     => $this->url->link('catalog/recurring', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
-
-			if ($this->user->hasPermission('access', 'catalog/filter')) {
-				$catalog[] = array(
-					'name'	   => $this->language->get('text_filter'),
-					'href'     => $this->url->link('catalog/filter', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// 分期付款
+			// if ($this->user->hasPermission('access', 'catalog/recurring')) {
+			// 	$catalog[] = array(
+			// 		'name'	   => $this->language->get('text_recurring'),
+			// 		'href'     => $this->url->link('catalog/recurring', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
+			// 商品过滤
+			// if ($this->user->hasPermission('access', 'catalog/filter')) {
+			// 	$catalog[] = array(
+			// 		'name'	   => $this->language->get('text_filter'),
+			// 		'href'     => $this->url->link('catalog/filter', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 
 			// Attributes
 			$attribute = array();
@@ -111,22 +111,22 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()
 				);
 			}
-
-			if ($this->user->hasPermission('access', 'catalog/manufacturer')) {
-				$catalog[] = array(
-					'name'	   => $this->language->get('text_manufacturer'),
-					'href'     => $this->url->link('catalog/manufacturer', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
-
-			if ($this->user->hasPermission('access', 'catalog/download')) {
-				$catalog[] = array(
-					'name'	   => $this->language->get('text_download'),
-					'href'     => $this->url->link('catalog/download', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// 品牌管理
+			// if ($this->user->hasPermission('access', 'catalog/manufacturer')) {
+			// 	$catalog[] = array(
+			// 		'name'	   => $this->language->get('text_manufacturer'),
+			// 		'href'     => $this->url->link('catalog/manufacturer', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
+			// 下载设置
+			// if ($this->user->hasPermission('access', 'catalog/download')) {
+			// 	$catalog[] = array(
+			// 		'name'	   => $this->language->get('text_download'),
+			// 		'href'     => $this->url->link('catalog/download', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 
 			if ($this->user->hasPermission('access', 'catalog/review')) {
 				$catalog[] = array(

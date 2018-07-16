@@ -36,10 +36,10 @@
                 <label class="control-label" for="input-gallery-title"><?php echo $entry_gallery_title; ?></label>
                 <input type="text" name="filter_gallery_title" value="<?php echo $filter_gallery_title; ?>" placeholder="<?php echo $entry_gallery_title; ?>" id="input-gallery-title" class="form-control" />
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label class="control-label" for="input-author"><?php echo $entry_author; ?></label>
                 <input type="text" name="filter_author" value="<?php echo $filter_author; ?>" placeholder="<?php echo $entry_author; ?>" id="input-author" class="form-control" />
-              </div>
+              </div> -->
             </div>
             <div class="col-sm-6">
               <div class="form-group">
@@ -66,9 +66,9 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_product_name; ?>"><?php echo $column_product_name; ?></a>
                     <?php } ?></td>
-                  <td class="text-left">
+                  <!-- <td class="text-left">
                     <?=$column_author?></a>
-                  </td>
+                  </td> -->
                   <td class="text-left">
                     <?=$column_thumbnail?></a>
                   </td>
@@ -90,7 +90,7 @@
                   </td>
                   <td class="text-left"><?php echo $gallery['gallery_title']; ?></td>
                   <td class="text-left"><?php echo $gallery['product_name']; ?></td>
-                  <td class="text-left"><?=$gallery['author']?></td>
+                  <!-- <td class="text-left"><?=$gallery['author']?></td> -->
                   <td class="text-left"><img src="<?php echo $gallery['image']; ?>"/></td>
                   <td class="text-left"><?=$gallery['view']?></td>
                   <td class="text-right"><a href="<?php echo $gallery['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>

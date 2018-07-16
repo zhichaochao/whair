@@ -43,12 +43,13 @@
                       <?php } ?>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <!-- 用户名称 -->
+                  <!-- <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-author"><?php echo $entry_author; ?></label>
                     <div class="col-sm-10">
                         <input type="text" name="author" value="<?=empty($author) ? '' : $author?>" placeholder="<?php echo $entry_author; ?>" id="input-author" class="form-control" />
                     </div>
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="<?php echo $help_related; ?>"><?php echo $entry_related; ?></span></label>
                     <div class="col-sm-10">
