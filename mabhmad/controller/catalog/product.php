@@ -548,7 +548,8 @@ class ControllerCatalogProduct extends Controller {
 		$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
 		$results = $this->model_catalog_product->getProducts($filter_data);
-
+		// print_r($results);
+// exit();
 		foreach ($results as $result) {
 			if (is_file(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], 50, 50);
@@ -558,10 +559,13 @@ class ControllerCatalogProduct extends Controller {
 
 			$special = false;
 			$percent = false;
+			// print_r($result['product_id']);exit();
 
 		
 			$product_specials = $this->model_catalog_product->getProductSpecials($result['product_id']);
-			
+			// print_r($product_specials);
+			$special_price='';
+			$old_price='';
 			foreach ($product_specials  as $product_special) {
 			
 					$special_price = $product_special['special_price'];   //折后价格				
@@ -579,7 +583,7 @@ class ControllerCatalogProduct extends Controller {
 				'name'       => $result['name'],
 				'href'       => HTTP_CATALOG . $keyword,
 				'model'      => $result['model'],
-				'price'      => isset($old_price)?$old_price:$this->model_catalog_product->getProductPrice($result['product_id']),
+				'price'      => isset($old_price)&&$old_price>0?$old_price:$this->model_catalog_product->getProductPrice($result['product_id']),
 				'special'    => isset($special_price) ?$special_price : 0,
 				'free_postage' => $result['free_postage'],
 				'quantity'   => $result['quantity'],
@@ -587,8 +591,9 @@ class ControllerCatalogProduct extends Controller {
 				'status'     => $result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 				'edit'       => $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, true)
 			);
+			// print_r($this->model_catalog_product->getProductPrice($result['product_id']));
 		}
-
+// exit();
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_list'] = $this->language->get('text_list');

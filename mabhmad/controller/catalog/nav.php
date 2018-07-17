@@ -547,8 +547,8 @@ class ControllerCatalogNav extends Controller {
 	}
 	protected function especiallynavs(){
 		$res=array();
-		$res[]= array('name' =>'All Hair Collections' ,'url'=>'product/category');
-		$res[]= array('name' =>'Promotion' ,'url'=>'information/promotion');
+		// $res[]= array('name' =>'All Hair Collections' ,'url'=>'product/category');
+		$res[]= array('name' =>'Promotion' ,'url'=>'product/promotion');
 		$res[]= array('name' =>'Hair Club' ,'url'=>'information/profile');
 		$res[]= array('name' =>'Company Profile' ,'url'=>'information/company');
 		return $res;
