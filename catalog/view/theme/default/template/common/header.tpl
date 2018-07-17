@@ -127,11 +127,11 @@
                     <input class="text_in"  type="text" name="new_search" placeholder="Search">
                     <img class="close" src="catalog/view/theme/default/img/png/close2.png"/>
              </form> -->
-             <form class="search fl">
+             <!-- <form class="search fl">
               <input id="header-search" value="" type="" name="new_search" placeholder="Search">
                 <img class="close" src="/catalog/view/theme/default/img/png/close2.png"/>
               </form>
-                
+ -->                
                 <!--导航购物车-->
                 <div class="nav_cart">
                
