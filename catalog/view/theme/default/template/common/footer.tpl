@@ -94,7 +94,7 @@
                       <li><a href="www.facebook.com/hotbeautymelisha"><img src="/catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
                       <li><a href="www.instagram.com/hotbeautyhairofficial"><img src="/catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
                       <li><a href="tel://<?=$telephone;?>"><img src="/catalog/view/theme/default/img/png/yd_fot3.png" alt=""></a></li>
-                      <li><a href="skype:hotbeautymelisha?add" target="blank"><img src="/catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
+                      <li><a href="skype:<?=$skype;?>?add" target="blank"><img src="/catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
                     </ol>
                       </div>
                     </li>
@@ -126,7 +126,7 @@
           </a>
           <div class="a_text">
             <a href="tel://<?=$telephone;?>"><img src="/catalog/view/theme/default/img/jpg/fot_con1.jpg"/></a>
-            <a href="skype:hotbeautymelisha?add"><img src="/catalog/view/theme/default/img/jpg/fot_con2.jpg"/></a>
+            <a href="skype:<?=$skype;?>?add"><img src="/catalog/view/theme/default/img/jpg/fot_con2.jpg"/></a>
             <a href="mailto:<?php echo $email; ?>"><img src="/catalog/view/theme/default/img/jpg/fot_con3.jpg"/></a>
           </div>
         </li>
