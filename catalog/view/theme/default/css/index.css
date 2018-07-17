@@ -116,6 +116,25 @@
 	.pro_det_content .top .pro_img_ol li{width: 5vw;height: 5vw;background: #f5f5f5;margin-bottom: 0.83vw;border: 1px solid transparent;cursor: pointer;}
 	.pro_det_content .top .pro_img_ol li.active,
 	.pro_det_content .top .pro_img_ol li:hover{border: 1px solid #ccc;}
+	.pro_det_content .pro_lb_off{width: 5vw;float: left;margin-right: 0.83vw;position: relative;height: 40vw;}
+	.pro_det_content .pro_lb_off .lb_text{width: 5vw;height: 29.15vw;position: relative;top: 5.9vw;overflow: hidden;}
+	.pro_lb_off .swiper-container{height: 100%;}
+	.pro_det_content .pro_lb_off .swiper-slide{height: 5.83vw;cursor: pointer;}
+	.pro_det_content .pro_lb_off .swiper-slide.active img{border: 1px solid #ccc;box-sizing: border-box;}
+	.pro_det_content .pro_lb_off .swiper-slide:hover img{border: 1px solid #ccc;box-sizing: border-box;}
+	
+	.pro_lb_off .swiper-button-nexts, .pro_lb_off .swiper-button-prevs{position:absolute;z-index: 9;left: 50%;margin-left: -20px;width:40px;height:40px;
+	border-radius: 100%;cursor: pointer;z-index: 9;transform: rotate(90deg);}
+	.pro_lb_off .swiper-button-prevs,
+	.pro_lb_off .swiper-container-rtl .swiper-button-nexts{top: 1.5vw; 
+	background:rgba(0,0,0,.5) url(../img/png/lb_lefts.png) no-repeat center center;background-size: 10px 18px;}
+	.pro_lb_off .swiper-button-nexts,
+	.pro_lb_off .swiper-container-rtl .swiper-button-prevs{bottom: 1.5vw;top: auto;
+	background: rgba(0,0,0,.5) url(../img/png/lb_rights.png) no-repeat center center;background-size: 10px 18px;}
+	.pro_det_content .top .right{float: left;padding-left: 3.64vw;}
+	.pro_lb_off .swiper-button-nexts.swiper-button-disabled,.pro_lb_off .swiper-button-prevs.swiper-button-disabled{opacity:0.5;cursor:auto;pointer-events:none;}
+	
+	
 	.pro_det_content .top .pro_big_img{width: 40.5vw;height: 40.5vw;float: left;overflow: hidden;}
 	.pro_det_content .top .pro_big_img ul li{display: block;float: left;}
 	.pro_big_img .swiper-pagination{display: none;}
@@ -1259,6 +1278,7 @@
 	.pro_det_content .top{background: #fff;}
 	.pro_det_content .top .left{width: 100%;}
 	.pro_det_content .top .left .pro_img_ol{display: none;}
+	.pro_det_content .top .left .pro_lb_off{display: none;}
 	.swiper-button-next, .swiper-button-prev{display: none;}
 	.pro_det_content .top .top_text{padding: 0 0.4rem;}
 	.pro_det_content .top .right a{font-family: san_b; font-size: 0.3rem;color: #333;line-height: 0.8rem;display: block;text-align: center;}
