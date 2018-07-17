@@ -130,6 +130,7 @@ class ControllerProductPromotion extends Controller {
 			} else {
 				$rating = false;
 			}
+			  $wishlist= $this->model_catalog_product->wishlistornot($result['product_id']);
 
 			$data['products'][] = array(
 				'product_id'  => $result['product_id'],
@@ -142,7 +143,8 @@ class ControllerProductPromotion extends Controller {
 				'tax'         => $tax,
 				'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 				'rating'      => $result['rating'],
-				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
+				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url),
+				'wishlist'	  =>$wishlist
 			);
 		}
 
@@ -270,6 +272,8 @@ class ControllerProductPromotion extends Controller {
 		if ($limit && ceil($product_total / $limit) > $page) {
 		    $this->document->addLink($this->url->link('product/promotion', 'page='. ($page + 1), true), 'next');
 		}
+		$data['wishlist'] = $this->url->link('account/wishlist/add', '', true);
+			$data['delewishlist'] = $this->url->link('account/wishlist/delete', '', true);
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;
