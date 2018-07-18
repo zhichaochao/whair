@@ -231,7 +231,7 @@ class ControllerCatalogProduct extends Controller {
                         if($tmp != '') {
                             $dirAll .= $tmp.'/';
                             if(!file_exists($dirAll)) {
-                                mkdir($dirAll,0777,true);
+                                // mkdir($dirAll,0777,true);
                             }
                         }
                     }
