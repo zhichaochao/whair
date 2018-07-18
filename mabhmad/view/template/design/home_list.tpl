@@ -38,7 +38,10 @@
                   <td class="text-left">
                    <?php echo $column_name; ?>
                    </td>
-                
+               <!--  
+                  <td class="text-left">
+                   <?php echo $column_name; ?>
+                   </td> -->
                   <td class="text-left">
                    <?php echo $column_category; ?>
                    </td>
@@ -57,6 +60,7 @@
                     <input type="checkbox" name="selected[]" value="<?php echo $home['home_id']; ?>" />
                     <?php } ?></td>
                   <td class="text-left"><?php echo $home['floor']; ?>楼</td>
+                  <!-- <td class="text-left"><?php echo $home['name']; ?></td> -->
              
                   <td class="text-left"><?php echo $home['path']; ?></td>
                   <td class="text-right"><a href="<?php echo $home['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>

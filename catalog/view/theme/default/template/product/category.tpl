@@ -25,8 +25,8 @@
                 <div class="text clearfix" >
                 <span class="price">
                   <?php if($product['special']) { ?>
-                     <span><?php echo $product['special']; ?></span>
-                     <del><?php echo $product['price']; ?></del>
+                     <span><?php echo $product['special']; ?>
+                     <del><?php echo $product['price']; ?></del></span>
                   <?php }else{ ?>
                      <span class="price-single"><?php echo $product['price']; ?></span>
                   <?php } ?>
