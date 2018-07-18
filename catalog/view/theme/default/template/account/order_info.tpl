@@ -324,3 +324,8 @@ $('select[name=\'country_id\']').trigger('change');
 
 
 //--></script>
+<?php if($success){?>
+    <script type="text/javascript">
+alert('<?php echo $success; ?>');
+</script>
+<?php }?>

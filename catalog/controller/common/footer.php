@@ -117,7 +117,7 @@ class ControllerCommonFooter extends Controller {
 		$data['affiliate'] = $this->url->link('affiliate/account', '', true);
 		$data['special'] = $this->url->link('product/special');
 		$data['account'] = $this->url->link('account/account', '', true);
-		$data['order'] = $this->url->link('account/order', '', true);
+		$data['vip'] = $this->url->link('account/vip', '', true);
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);
 		$data['newsletter'] = $this->url->link('account/newsletter', '', true);
 

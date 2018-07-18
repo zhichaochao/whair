@@ -924,55 +924,7 @@ class ModelCheckoutOrder extends Model {
 
 			$this->cache->delete('product');
 
-			// If order status is not 0 then send update text email
-			//if ($order_info['order_status_id'] && $order_status_id && $notify) {
-                        /* 优化 by hwh begin 注释掉无效代码
-            if(false){
-				$language = new Language($order_info['language_code']);
-				$language->load($order_info['language_code']);
-				$language->load('mail/order');
-
-				$subject = sprintf($language->get('text_update_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_info['order_no']);
-
-				$message  = $language->get('text_update_order') . ' ' . $order_info['order_no'] . "\n";
-				$message .= $language->get('text_update_date_added') . ' ' . date($language->get('date_format_short'), strtotime($order_info['date_added'])) . "\n\n";
-
-				$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$order_info['language_id'] . "'");
-
-				if ($order_status_query->num_rows) {
-					$message .= $language->get('text_update_order_status') . "\n\n";
-					$message .= $order_status_query->row['name'] . "\n\n";
-				}
-
-				if ($order_info['customer_id']) {
-					$message .= $language->get('text_update_link') . "\n";
-					$message .= $order_info['store_url'] . 'index.php?route=account/order/info&order_id=' . $order_id . "\n\n";
-				}
-
-				if ($comment) {
-					$message .= $language->get('text_update_comment') . "\n\n";
-					$message .= strip_tags($comment) . "\n\n";
-				}
-
-				$message .= $language->get('text_update_footer');
-
-				$mail = new Mail();
-				$mail->protocol = $this->config->get('config_mail_protocol');
-				$mail->parameter = $this->config->get('config_mail_parameter');
-				$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-				$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-				$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-				$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-				$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-				$mail->setTo($order_info['email']);
-				$mail->setFrom($this->config->get('config_mail_parameter'));
-				$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
-				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-				$mail->setText($message);
-				//$mail->send();
-			}
-                        优化 by hwh end */
+			
 		}
 	}
 
@@ -992,7 +944,7 @@ class ModelCheckoutOrder extends Model {
                     WHERE op.order_id = '" . (int)$order_id . "' GROUP BY op.product_id ORDER BY oo.order_product_id  ";
 
         $order_query = $this->db->query($sql);
-
+//var_dump($order_query);exit;
         $order_products = array();
 	    if ($order_query->num_rows) {
             $order_products = $order_query->rows;

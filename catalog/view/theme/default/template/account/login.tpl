@@ -125,7 +125,7 @@ $(document).delegate('#button-register', 'click', function() {
             
             } else if (json['error']) {
           
-         //if (json['redirect']) {
+         if (json['redirect']) {
             if(json['error']['agree']){
                $('.erroragree').show().html( json['error']['agree'] );
               }
@@ -145,10 +145,10 @@ $(document).delegate('#button-register', 'click', function() {
               if(json['error']['confirm']){
                $('#errorconfirm').show().html( json['error']['confirm'] );
               }
-            // } else{
-            //    $(".zzc_li").css("display","none");
-            //   $("div").removeClass("hidden");
-            // }   
+            } else{
+               $(".zzc_li").css("display","none");
+              $("div").removeClass("hidden");
+            }   
                 
             } 
         },

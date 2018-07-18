@@ -1,6 +1,6 @@
 <!--返回顶部-->
     <div class="xf_right">
-      <div class="vip"><a href="<?php echo $order?>"><span>VIP</span></a></div>
+      <a href="<?php echo $vip?>"><div class="vip"><span>VIP</span></div></a>
       <div class="top"><span>TOP</span></div>
     </div>
 

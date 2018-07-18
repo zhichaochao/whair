@@ -210,6 +210,7 @@ class ControllerAccountOrder extends Controller {
 			} else {
 				$data['success'] = '';
 			}
+			// print_r($data['success']);exit;
 
 			if ($order_info['invoice_no']) {
 				$data['invoice_no'] = $order_info['invoice_prefix'] . $order_info['invoice_no'];
@@ -368,7 +369,7 @@ class ControllerAccountOrder extends Controller {
 				} else {
 					$reorder = '';
 				}
-			
+			//var_dump($product_info);exit;
 			$this->load->model('tool/image');
 		
 		
@@ -388,7 +389,7 @@ class ControllerAccountOrder extends Controller {
 				);
 			
 			}
-  // var_dump($data['products']);exit;
+ //var_dump($data['products']);exit;
 			// Voucher
 			$data['vouchers'] = array();
 			$vouchers = $this->model_account_order->getOrderVouchers($this->request->get['order_id']);
@@ -765,10 +766,15 @@ class ControllerAccountOrder extends Controller {
 				$mail->send();
 
 			}
-			$this->session->data ['success'] = "The order is canceled!";
+			if(isset($this->request->get['tips'])){
+				$this->session->data ['success'] = "The product information has changed, please reorder!";
+			}else{
+				$this->session->data ['success'] = "The order is canceled!";
+			}
+			
 		}
 
-		$this->response->redirect($this->url->link('account/order'));
+		$this->response->redirect($this->url->link('account/order/info','order_id='.$order_id));
 	}
 
 	/**
@@ -787,10 +793,42 @@ class ControllerAccountOrder extends Controller {
 	    }
 
 	    $this->session->data['order_id'] = $order_id;
-	    //$this->load->model('account/order');
-	    //$order_info = $this->model_account_order->getOrder($order_id);
+	    $this->load->model('account/order');
+	    $order_info = $this->model_account_order->getOrderProducts($order_id);
+		$this->load->model('catalog/product');
+		$error=0;
+	   foreach ($order_info as $result) {
+			$data['order_info'][] = array(
+				'quantity' => $result['quantity'],
+				'product_id' => $result['product_id'],
+				'price'      => $result['price']
+				);				
+	  
+	   // $data['options'] = array();
+	   // print_r( $order_info );exit;
 
-	    $this->response->redirect($this->url->link('checkout/payment'));
+	   $options_tem=$this->model_account_order->getOrderOptions($order_id,$result['order_product_id']);
+	   $options=array();
+	   foreach ($options_tem as $k => $val) {
+	   	$options[$val['product_option_id']]=$val['product_option_value_id'];
+	   }
+ // print_r(	$options);exit;
+
+		$price=  $this->model_catalog_product->getProductPricebyOptions($result['product_id'],$options);
+		if ($price['price']!=$result['price']&&$result['price']!=$price['special']) {
+			$error=1;
+		}
+		// print_r($price);exit;
+	  
+	    }
+	    if($error==1){
+	    	$this->response->redirect( $this->url->link('account/order/cancel', 'order_id=' . $order_id.'&tips=1', true));
+	    	}else{
+	    		 $this->response->redirect($this->url->link('checkout/payment'));
+
+	    	}
+	
+	  
 	}
 	/**
 	 * 再上传凭证
