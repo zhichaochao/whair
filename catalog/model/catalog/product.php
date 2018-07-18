@@ -173,6 +173,7 @@ class ModelCatalogProduct extends Model {
     // 根据属性来获取价格
     public function getProductPricebyOptions($product_id,$options)
     {
+
     	$price_type=$this->customer->isLogged()?(int)$this->config->get('config_customer_group_id'):'';
     	$share='{';
     	$k=0;
@@ -186,6 +187,7 @@ class ModelCatalogProduct extends Model {
     		}
     		$k++;
     		$query = $this->db->query("SELECT  price".$price_type." as price,product_option_value_id,product_option_id FROM " . DB_PREFIX . "product_option_value   WHERE product_id='".$product_id."' AND  product_option_id ='".$key."' AND product_option_value_id='".$value."'");
+    		// print_r("SELECT  price".$price_type." as price,product_option_value_id,product_option_id FROM " . DB_PREFIX . "product_option_value   WHERE product_id='".$product_id."' AND  product_option_id ='".$key."' AND product_option_value_id='".$value."'");;exit;
     		$tem_price=$query->row;
     		$price+= $tem_price['price'];
 			$ids.=','.$value;
@@ -209,6 +211,7 @@ class ModelCatalogProduct extends Model {
     	 }else{
     	 	$special='';
     	 }
+    	 	// print_r(1);exit;
 
     	 return   array('price'=>$price,'share'=>$share,'special'=>$special);
 
