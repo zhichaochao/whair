@@ -42,7 +42,7 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
-            <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li>
+           <!--  <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li> -->
             <!-- <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li> -->
             <li><a href="#tab-option" data-toggle="tab">价格</a></li>
             <!-- <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li> -->
@@ -129,6 +129,19 @@
                   <?php if ($error_model) { ?>
                   <div class="text-danger"><?php echo $error_model; ?></div>
                   <?php } ?>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
+                  <div id="product-category" class="well well-sm" style="height: 150px; overflow: auto;">
+                    <?php foreach ($product_categories as $product_category) { ?>
+                    <div id="product-category<?php echo $product_category['category_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_category['name']; ?>
+                      <input type="hidden" name="product_category[]" value="<?php echo $product_category['category_id']; ?>" />
+                    </div>
+                    <?php } ?>
+                  </div>
                 </div>
               </div>
              <!--  <div class="form-group">
@@ -466,44 +479,7 @@
                   <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
                 </div>
               </div>
-            </div>
-
-            <!-- M端产品链接 -->
-            <div class="tab-pane" id="tab-links">
-             <!--  <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="manufacturer" value="<?php echo $manufacturer; ?>" placeholder="<?php echo $entry_manufacturer; ?>" id="input-manufacturer" class="form-control" />
-                  <input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" />
-                </div>
-              </div> -->
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
-                  <div id="product-category" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_categories as $product_category) { ?>
-                    <div id="product-category<?php echo $product_category['category_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_category['name']; ?>
-                      <input type="hidden" name="product_category[]" value="<?php echo $product_category['category_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>
-           <!--    <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
-                  <div id="product-filter" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_filters as $product_filter) { ?>
-                    <div id="product-filter<?php echo $product_filter['filter_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_filter['name']; ?>
-                      <input type="hidden" name="product_filter[]" value="<?php echo $product_filter['filter_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div> -->
-              <div class="form-group">
+               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
                   <div class="well well-sm" style="height: 150px; overflow: auto;">
@@ -534,6 +510,32 @@
                   </div>
                 </div>
               </div>
+            </div>
+
+            <!-- M端产品链接 -->
+            <div class="tab-pane" id="tab-links">
+             <!--  <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="manufacturer" value="<?php echo $manufacturer; ?>" placeholder="<?php echo $entry_manufacturer; ?>" id="input-manufacturer" class="form-control" />
+                  <input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" />
+                </div>
+              </div> -->
+              
+           <!--    <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
+                  <div id="product-filter" class="well well-sm" style="height: 150px; overflow: auto;">
+                    <?php foreach ($product_filters as $product_filter) { ?>
+                    <div id="product-filter<?php echo $product_filter['filter_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_filter['name']; ?>
+                      <input type="hidden" name="product_filter[]" value="<?php echo $product_filter['filter_id']; ?>" />
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div> -->
+             
               <!-- 相关商品 -->
              <!--  <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="<?php echo $help_related; ?>"><?php echo $entry_related; ?></span></label>
