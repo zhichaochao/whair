@@ -75,7 +75,7 @@
                       <h4>COMPANY INFO<div class="pic_img"><img src="/catalog/view/theme/default/img/png/jiahao_white.png" data-img='/catalog/view/theme/default/img/png/jiahao_white.png' data-imgs='/catalog/view/theme/default/img/png/jianhao_white.png'/></div></h4>
                       <div class="slide_div">
                         <ol>
-                      <li><a target="_blank" href="”tel://<?=$telephone;?>"><span>Call Us:</span><?=$telephone;?></li></a>  
+                      <li><a target="_blank" href="tel://<?=$telephone;?>"><span>Call Us:</span><?=$telephone;?></li></a>  
                       <li><a target="_blank" href="whatsapp://send?phone=<?=$telephone;?>"><span>Whatsapp:</span> <?php echo $telephone; ?></a></li>
                       <li><a target="_blank" href="mailto:<?php echo $email; ?>"><span>Email:</span><?php echo $email; ?></a></li>
                       <li>                       
@@ -93,8 +93,8 @@
                     <ol class="fot_img clearfix">
                       <li><a href="www.facebook.com/hotbeautymelisha"><img src="/catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
                       <li><a href="www.instagram.com/hotbeautyhairofficial"><img src="/catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
-                      <li><a href="###"><img src="/catalog/view/theme/default/img/png/yd_fot3.png" alt=""></a></li>
-                      <li><a href="skype:hotbeautymelisha?add" target="blank"><img src="/catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
+                      <li><a href="tel://<?=$telephone;?>"><img src="/catalog/view/theme/default/img/png/yd_fot3.png" alt=""></a></li>
+                      <li><a href="skype:<?=$skype;?>?add" target="blank"><img src="/catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
                     </ol>
                       </div>
                     </li>
@@ -112,19 +112,31 @@
           </a>
         </li>
         <li>
-          <a href="###">
+          <a href="<?php echo $contac?>">
             <img class="active" src="/catalog/view/theme/default/img/png/fenlei-1.png" alt="" />
             <img src="/catalog/view/theme/default/img/png/fenlei-2.png" alt="" />
             <p>ALL HAIR</p>
           </a>
         </li>
         <li>
+          <a class="contact" href="javascript:0;"  onclick="return false">
+            <img class="active" src="/catalog/view/theme/default/img/png/contact-1.png" alt="" />
+            <img src="/catalog/view/theme/default/img/png/contact-2 .png" alt="" />
+            <p>CONTACT</p>
+          </a>
+          <div class="a_text">
+            <a href="tel://<?=$telephone;?>"><img src="/catalog/view/theme/default/img/jpg/fot_con1.jpg"/></a>
+            <a href="skype:<?=$skype;?>?add"><img src="/catalog/view/theme/default/img/jpg/fot_con2.jpg"/></a>
+            <a href="mailto:<?php echo $email; ?>"><img src="/catalog/view/theme/default/img/jpg/fot_con3.jpg"/></a>
+          </div>
+        </li>
+       <!--  <li>
           <a href="###">
             <img class="active" src="/catalog/view/theme/default/img/png/contact-1.png" alt="" />
             <img src="/catalog/view/theme/default/img/png/contact-2.png" alt="" />
             <p>CONTACT</p>
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="<?php echo $cart?>">
             <img class="active" src="/catalog/view/theme/default/img/png/cart-1.png" alt="" />

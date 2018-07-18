@@ -1,9 +1,5 @@
 <?php echo $header; ?>
-  <!--<ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>-->
+
   
   <!--错误提示-->
   <div id="checkout-login" class="alert alert-danger" style="display:none;" ></div>
@@ -95,6 +91,11 @@
                 <input class="tj_input" type="button" value="SIGN UP" id="button-register"/>
                 <!-- <button type="button" id="button-register" class="tj_input">SIGN UP</button> -->
               </form>
+
+                <div  class="zzc_li  hidden">
+                <img src="/catalog/view/theme/default/img/loading.gif"/>
+                <p>Sending an email, it may take a few seconds, please wait</p>
+              </div>
               <!-- </div> -->
               </div>
             </li>
@@ -107,7 +108,8 @@
 // Register
 $(document).delegate('#button-register', 'click', function() {
   // console.log($('#register-form-div input'));
-
+    $(".zzc_li").css("display","block");
+     $("div").addClass("hidden");
       $.ajax({
         url: '<?php echo $register;?>',
         type: 'post',
@@ -117,11 +119,13 @@ $(document).delegate('#button-register', 'click', function() {
         success: function(json) {
           if (json['redirect']) {
 
-                location = json['redirect']; 
-
+            // $(".zzc_li").css("display","block");
+            // $("div").addClass("hidden");
+            location = json['redirect']; 
+            
             } else if (json['error']) {
           
-        
+         //if (json['redirect']) {
             if(json['error']['agree']){
                $('.erroragree').show().html( json['error']['agree'] );
               }
@@ -141,7 +145,10 @@ $(document).delegate('#button-register', 'click', function() {
               if(json['error']['confirm']){
                $('#errorconfirm').show().html( json['error']['confirm'] );
               }
-                
+            // } else{
+            //    $(".zzc_li").css("display","none");
+            //   $("div").removeClass("hidden");
+            // }   
                 
             } 
         },
