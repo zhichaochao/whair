@@ -1435,8 +1435,8 @@ $('#attribute tbody tr').each(function(index, element) {
       var option_value_row = <?php echo $option_value_row; ?>;
 
       function addOptionValue(option_row) {
-          html  = '<tr id="option-value-row' + option_value_row + '">';
-          html ='     <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" /><input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" value="+"/>';
+          html  = '<tr id="option-value-row' + option_value_row + '"><input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" /><input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" value="+"/>';
+
           html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
           html += $('#option-values' + option_row).html();
           html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
