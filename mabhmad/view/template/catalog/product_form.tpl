@@ -470,13 +470,13 @@
 
             <!-- M端产品链接 -->
             <div class="tab-pane" id="tab-links">
-              <!-- <div class="form-group">
+             <!--  <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="manufacturer" value="<?php echo $manufacturer; ?>" placeholder="<?php echo $entry_manufacturer; ?>" id="input-manufacturer" class="form-control" />
                   <input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" />
                 </div>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
                 <div class="col-sm-10">
@@ -490,7 +490,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+           <!--    <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
