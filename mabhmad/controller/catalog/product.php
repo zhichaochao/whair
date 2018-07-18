@@ -1358,8 +1358,12 @@ class ControllerCatalogProduct extends Controller {
 					);
 				}
 			}
-			if ($product_option['name']=='Length'&&$product_option['type']=='select') {
+			if (isset($this->request->get['product_id'])&&$product_option['name']=='Length'&&$product_option['type']=='select') {
+			
+					
+			
 				$data['special_options']=$this->model_catalog_product->getProductOptionnames($this->request->get['product_id'],$product_option['option_id']);
+
 			}
 			
 
@@ -1432,7 +1436,7 @@ class ControllerCatalogProduct extends Controller {
 		
 		foreach ($product_specials as $product_special) {
 			$data['product_specials'][] = array(
-			    'product_special_id'=> $product_special['product_special_id'],
+			    'product_special_id'=> isset($product_special['product_special_id'])?$product_special['product_special_id']:'',
 				'customer_group_id' => $product_special['customer_group_id'],
 				'priority'          => $product_special['priority'],
 				'price'             => $product_special['price'],
