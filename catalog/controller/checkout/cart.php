@@ -191,6 +191,8 @@ class ControllerCheckoutCart extends Controller {
      
             $data['wishlist_add'] = $this->url->link('account/wishlist/add', '', true);
             $data['delewishlist'] = $this->url->link('account/wishlist/delete', '', true);
+            $data['information'] = $this->url->link('information/information','information_id=3');
+            $data['return'] = $this->url->link('information/information','information_id=4');
             // Gift Voucher
             $data['vouchers'] = array();
 

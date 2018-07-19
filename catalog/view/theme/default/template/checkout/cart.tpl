@@ -97,7 +97,7 @@
 						<dd class="pc_dd">
 							We ship by FedEx, DHL express and local express.<br />
 							You can expect to get these items within <br />
-							5-7 days. <a href="###">More information&nbsp;&nbsp;>></a>
+							5-7 days. <a href="<?=$information?>">More information&nbsp;&nbsp;>></a>
 						</dd>
 						<dd class="yd_dd">
 							Shopping on Hot Beauty Hair.com is safe and secure 
@@ -119,7 +119,7 @@
 							Hot Beauty Hair.com respects your privacy.<br />
 							We do NOT share or in any way distribute 
 							any personal, business or contact information 
-							you may provide. <a href="###">See Our Return Policy&nbsp;&nbsp;>></a>
+							you may provide. <a href="<?=$return?>">See Our Return Policy&nbsp;&nbsp;>></a>
 						</dd>
 						<dd class="yd_dd">
 							Hot Beauty Hair.com respects your privacy.We do NOT share 
