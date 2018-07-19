@@ -1,5 +1,7 @@
 <?php
 // Text
+$_['heading_title']       = 'HairClub';
+$_['heading_titles']       = 'HAIR TUTORIAL';
 $_['text_refine']       = 'Refine Search';
 $_['text_product']      = 'Products';
 $_['text_error']        = 'Category not found!';

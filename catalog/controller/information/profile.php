@@ -5,6 +5,7 @@ class ControllerInformationProfile extends Controller {
 
 				$this->load->model('catalog/profile');
 					$this->load->model('tool/image');
+				$this->document->setTitle($this->language->get('heading_title'));	
 				//print_r($this->model_catalog_information);exit;
 				// if (isset($this->request->get['profile_id'])) {
 				// 	$profile_id = (int)$this->request->get['profile_id'];
@@ -92,8 +93,8 @@ class ControllerInformationProfile extends Controller {
 		}
 		public function hairclub()
 		{
-			$this->load->language('information/profile');
-
+				$this->load->language('information/profile');
+				$this->document->setTitle($this->language->get('heading_titles'));
 				$this->load->model('catalog/profile');
 					$this->load->model('tool/image');
 			$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
@@ -136,6 +137,8 @@ class ControllerInformationProfile extends Controller {
 		{
 				$this->load->model('catalog/profile');
 				$this->load->model('tool/image');
+				$this->load->language('information/profile');
+				$this->document->setTitle($this->language->get('heading_title'));
 				$profile_info=$this->model_catalog_profile->getProfile($this->request->get['profile_id']);
 				//print_r($profile_info);exit;
 				$this->model_catalog_profile->updateProfileView($this->request->get['profile_id']);
@@ -158,6 +161,8 @@ class ControllerInformationProfile extends Controller {
 		{
 				$this->load->model('catalog/profile');
 				$this->load->model('tool/image');
+				$this->load->language('information/profile');
+				$this->document->setTitle($this->language->get('heading_title'));
 				$profile_info=$this->model_catalog_profile->getProfile($this->request->get['profile_id']);
 				$this->model_catalog_profile->updateProfileView($this->request->get['profile_id']);
 				$data['author']=$profile_info['author'];
