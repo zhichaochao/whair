@@ -37,7 +37,7 @@
                              <?php } ?>
                         </ul>
 
-<a class="btn240" onclick="toselectPayment()">SAVW AND CONTINUE &nbsp;&nbsp;&nbsp;&gt;</a>
+<a class="btn240" onclick="toselectPayment()">SAVE AND CONTINUE &nbsp;&nbsp;&nbsp;&gt;</a>
    </div>
 
 <?php }else{?>

@@ -45,9 +45,14 @@ class ControllerCheckoutPaymentMethod extends Controller {
 			$results = $this->model_extension_extension->getExtensions('payment');
 
 			$recurring = $this->cart->hasRecurringProducts();
+			// print_r($this->session->data['shipping_address']);exit();
+			$country_id=$this->session->data['shipping_address']['country_id'];
+			// print_r($country_id);
+			// print_r($results);exit();
 
 			foreach ($results as $result) {
-				if ($this->config->get($result['code'] . '_status')) {
+				// 只有尼日利亚才显示尼日利亚支付
+				if ($this->config->get($result['code'] . '_status')&&($result['code']!='naria_account'||($result['code']=='naria_account'&&$country_id==156))) {
 					$this->load->model('extension/payment/' . $result['code']);
 
 					$method = $this->{'model_extension_payment_' . $result['code']}->getMethod($this->session->data['payment_address'], $total);

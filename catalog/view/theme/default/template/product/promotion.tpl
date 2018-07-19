@@ -12,7 +12,7 @@
             <li>
               <a href="<?php echo $product['href']; ?>">
                 <div class="pic_img">
-                  <img src="<?php echo $product['thumb']; ?>"  style="width: 372px;height: 372px;"/>
+                  <img src="<?php echo $product['thumb']; ?>" />
                 </div>
                 <div class="text clearfix">
                   <p><?php echo $product['name']; ?></p>
