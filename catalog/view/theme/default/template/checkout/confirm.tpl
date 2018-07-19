@@ -69,7 +69,7 @@
 
 <?php } else { ?>
 <script type="text/javascript"><!--
-location = '<?php echo $redirect; ?>';
+// location = '<?php echo $redirect; ?>';
 //--></script>
 <?php } ?>
 

@@ -40,6 +40,7 @@
                   <a href="<?php echo $forgotten?>">Forgotten Password ?</a>
                 </label>
                 <input class="tj_input" type="submit" value="SIGN IN" />
+                <input type="hidden" name="redirect" value='<?=$redirect;?>'/>
               </form>
             </li>
             <li>

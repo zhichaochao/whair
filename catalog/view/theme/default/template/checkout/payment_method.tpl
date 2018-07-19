@@ -47,7 +47,23 @@
  
 <?php } ?>
  <a  href="<?=$checkout;?>">Previous Step&nbsp;&nbsp;&nbsp;></a>
+<script>
+$(function( ){
+  //单选
+    $(".pay_dx").click(function(){
+      if($(this).prop("checked")){
+        $(".pay_dx").removeClass("active");
+        $(this).addClass("active");
+        $(this).parents("li").addClass("active").siblings("li").removeClass("active");
+      }else{
+        $(".pay_dx").addClass("active");
+        $(this).removeClass("active");
+        $(this).parents("li").removeClass("active").siblings("li").addClass("active");
+      }
+    })
+})
 
+</script>
 <script type="text/javascript"><!--
 
 function changePayment(flag, e){

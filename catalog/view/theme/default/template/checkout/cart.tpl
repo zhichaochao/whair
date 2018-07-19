@@ -8,6 +8,7 @@
 				</div>
 			
 				<div class="shop2_text clearfix">
+				
 					<div class="left">
 						<label for="" class="qx_label" id="cart-tfoot">
 							<span>ALL</span>
@@ -18,6 +19,7 @@
 						<ul class="shop2_ul" id="cart_table">
 							 <?php foreach($products as $product){ ?>
 							<li class="clearfix">
+
 								<label for="" class="dx_label">
 									 <input checked="checked" onclick="getOrder()" class="check_input" autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>">
 									 <i class="check_i active"></i>
@@ -49,10 +51,11 @@
 			                        </p>
 
 									<p><span>Commodity code:</span><?=$product['model'];?></p>
-
+									<p class="ts_ps"><?=$product['stock']?'':'Lack of stock';?></p>
 									
 								</div>
 								<div class="price clearfix">
+
 									<!-- <p>$35.65<span>$35.65</span></p> -->
 									<?php if($product['original_price']) { ?>
 					                    <p class="price-new"><?php echo $product['price']; ?>

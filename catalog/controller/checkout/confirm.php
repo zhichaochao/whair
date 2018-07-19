@@ -1,12 +1,7 @@
 <?php
 class ControllerCheckoutConfirm extends Controller {
 	public function index() {
-		$redirect = '';
-
-		// Validate cart has products and has stock.
-		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-			$redirect = $this->url->link('checkout/cart');
-		}
+		
 		
 		if (isset($this->session->data['coupon'])) {
 		    $data['coupon'] = $this->session->data['coupon'];
@@ -34,14 +29,9 @@ class ControllerCheckoutConfirm extends Controller {
 				}
 			}
 
-			if ($product['minimum'] > $product_total) {
-				$redirect = $this->url->link('checkout/cart');
-
-				break;
-			}
+		
 		}
 
-		if (!$redirect) {
 
 		    $order_data = array();
 		    $totals = array();
@@ -182,9 +172,7 @@ class ControllerCheckoutConfirm extends Controller {
 					'text'  => $this->currency->format($total['value'], $this->session->data['currency'])
 				);
 			}
-		} else {
-			$data['redirect'] = $redirect;
-		}
+	
 		$data['payment_type'] = isset($this->session->data['payment_type'])?$this->session->data['payment_type']:'';
 		$data['comment'] = isset($this->session->data['comment'])?$this->session->data['comment']:'';
 

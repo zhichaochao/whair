@@ -59,7 +59,7 @@
             <div class="text clearfix">
               <div class="span_div clearfix">
                 <span>Subtotal</span>
-                <span>Length</span>
+                <span class="cl_len">Color/Length</span>
                 <span>Quantity</span>
                 <span>Unit  Price</span>
               </div>              

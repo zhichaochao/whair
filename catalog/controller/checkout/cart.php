@@ -1,9 +1,8 @@
 <?php
 class ControllerCheckoutCart extends Controller {
 	public function index() {
-//        print_r($this->config);exit();
+      
         $this->load->language('checkout/cart');
-        $this->document->addStyle('catalog/view/styles/shopping-cart.css');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
@@ -37,7 +36,7 @@ class ControllerCheckoutCart extends Controller {
             $data['button_remove'] = $this->language->get('button_remove');
             $data['button_shopping'] = $this->language->get('button_shopping');
             $data['button_checkout'] = $this->language->get('button_checkout');
-
+ // $data['error_warning']='';
             if (!$this->cart->hasStock() && (!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning'))) {
                 $data['error_warning'] = $this->language->get('error_stock');
             } elseif (isset($this->session->data['error'])) {
@@ -47,6 +46,8 @@ class ControllerCheckoutCart extends Controller {
             } else {
                 $data['error_warning'] = '';
             }
+
+
 
             if ($this->config->get('config_customer_price') && !$this->customer->isLogged()) {
                 $data['attention'] = sprintf($this->language->get('text_login'), $this->url->link('account/login'), $this->url->link('account/register'));
@@ -87,8 +88,8 @@ class ControllerCheckoutCart extends Controller {
 //            $products = $this->cart->getProducts();
 //            var_dump($products);
             $products = $this->cart->getProducts();
-//            var_dump($products);die;
-
+         // print_r($products);die;
+        
             foreach ($products as $product) {
                 $product_total = 0;
 
@@ -97,10 +98,14 @@ class ControllerCheckoutCart extends Controller {
                         $product_total += $product_2['quantity'];
                     }
                 }
+               
 
                 if ($product['minimum'] > $product_total) {
                     $data['error_warning'] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
+                
                 }
+
+                // print_r($product['minimum'].'<br/>'.  $data['error_warning'] .$product['name'].'<br/>');
 
                 if ($product['image']) {
                     $image = $this->model_tool_image->resize($product['image'], $this->config->get($this->config->get('config_theme') . '_image_cart_width'), $this->config->get($this->config->get('config_theme') . '_image_cart_height'));
@@ -178,7 +183,8 @@ class ControllerCheckoutCart extends Controller {
                     'original_price' => $original_price,//原价
                     'total'     => $total,
                     'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id']),
-                    'wishlist'    =>$wishlist
+                    'wishlist'    =>$wishlist,
+                
                 );
             }
             // print_r(  $data['products']);exit();
@@ -223,6 +229,7 @@ class ControllerCheckoutCart extends Controller {
                     }
                 }
             }
+            // print_r( $data['error_warning']);exit;
 
             $data['paypal_checkout'] = HTTP_SERVER.'index.php?route=extension/payment/pp_express/express';
             $data['step_cart'] = $this->language->get('step_cart');
