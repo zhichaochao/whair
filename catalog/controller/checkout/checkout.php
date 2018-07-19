@@ -6,11 +6,14 @@ class ControllerCheckoutCheckout extends Controller {
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$this->response->redirect($this->url->link('checkout/cart'));
 		}
-
+		if(!$this->customer->isLogged()){
+		    $this->session->data['userurl'] = $_SERVER["HTTP_REFERER"];
+        }
+        //print_r($this->session->data['userurl']);exit;
 		if(!$this->customer->isLogged()){
 		    $this->session->data['redirect'] = $this->url->link('checkout/checkout', '', true);
             $this->response->redirect($this->url->link('account/login'));
-        }
+        }   
 
         $this->session->data['same_as_shipping'] = 1;
         $this->session->data['payment_type'] = 'Standard';//支付类型，标准支付

@@ -85,7 +85,7 @@
 									<span>Quantity:</span>
 									<div class="price_input clearfix">
 											<span class="sub" ></span>
-										<input class="num" name="quantity" type="text" value="1" id="nums"/>
+										<input class="num" name="quantity" type="text" value="1" id="nums" readonly="readonly" />
 										<span class="add"></span>
 									</div>
 								</label>

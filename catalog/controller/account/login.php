@@ -50,8 +50,7 @@ class ControllerAccountLogin extends Controller {
 		$this->load->language('account/login');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-		//引入页面样式
-		$this->document->addStyle("catalog/view/theme/default/stylesheet/account/account_login.css");
+		
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			// Unset guest
@@ -94,8 +93,10 @@ class ControllerAccountLogin extends Controller {
 			// Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
 			if (isset($this->request->post['redirect']) && $this->request->post['redirect'] != $this->url->link('account/logout', '', true) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
 				$this->response->redirect(str_replace('&amp;', '&', $this->request->post['redirect']));
-			} else {
-                $this->response->redirect($this->url->link('account/dashboard', '', true));
+			} elseif(isset($this->session->data['userurl'])) {
+                $this->response->redirect($this->session->data['userurl']);
+			}else{
+				$this->response->redirect($this->url->link('account/dashboard', '', true));
 			}
 		}
 

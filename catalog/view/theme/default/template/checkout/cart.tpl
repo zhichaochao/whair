@@ -65,7 +65,7 @@
 									<div class="num_div">
 										<span class="sub" onclick="javascript:updateQty(this,1);"></span>
 										<!-- <input class="num" type="text" value="1" /> -->
-										<input class="product_quantity" type="text" aid="<?php echo $product['cart_id']; ?>" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
+										<input class="product_quantity" readonly="readonly" type="text" aid="<?php echo $product['cart_id']; ?>" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" onchange="updateQty(this,0);" />
 										<span class="add" onclick="javascript:updateQty(this,2);"></span>
 									</div>
 								</div>

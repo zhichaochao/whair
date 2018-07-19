@@ -2,7 +2,12 @@
 <div class="haircare">
       <div class="content in_content clearfix">
         <div class="hair_text clearfix">
+        <div class="bnr_div">
           <img class="changeimage bnr_img" data-image='<?php echo $images ?>' data-mimage='<?php echo $images ?>'  />
+          <div class="hui">
+              <p><?php echo $title ?></p>
+          </div>
+          </div>
           <div class="text2 clearfix">
             <div class="left fl clearfix">
               <p>Author : <span><?php echo $author ?></span> / <?php echo $update_time ?></p>

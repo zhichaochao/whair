@@ -141,6 +141,7 @@ class ControllerInformationProfile extends Controller {
 				$this->model_catalog_profile->updateProfileView($this->request->get['profile_id']);
 				$data['author']=$profile_info['author'];
 				$data['view']=$profile_info['view'];
+				$data['title']=$profile_info['title'];
 				$data['update_time']=$profile_info['update_time'];
 				//$data['image']=$this->model_tool_image->resize($profile_info['image'],920,460);
 				$data['images']=$this->model_tool_image->resize($profile_info['images'],920,460);
@@ -161,6 +162,7 @@ class ControllerInformationProfile extends Controller {
 				$this->model_catalog_profile->updateProfileView($this->request->get['profile_id']);
 				$data['author']=$profile_info['author'];
 				$data['view']=$profile_info['view'];
+				$data['title']=$profile_info['title'];
 				$data['update_time']=$profile_info['update_time'];
 				//$data['image']=$this->model_tool_image->resize($profile_info['image'],920,460);
 				$data['images']=$this->model_tool_image->resize($profile_info['images'],920,460);
