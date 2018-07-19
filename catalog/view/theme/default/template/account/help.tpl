@@ -19,6 +19,7 @@
 					<form action="<?php echo $action; ?>" method="post" class="dash-help-form">	
 					<span>*Comment:</span>
 					<textarea name="enquiry"></textarea>
+					</br>
 					<?php if ($error_enquiry) { ?>
 					<div class="text-danger" >
 					<?php echo $error_enquiry; ?>
