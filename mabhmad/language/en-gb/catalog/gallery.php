@@ -17,7 +17,7 @@ $_['text_edit']              = '编辑相册';
 $_['text_default']           = '默认';
 
 // Column
-$_['column_gallery_title']   = '视频描述';
+$_['column_gallery_title']   = '相册描述';
 $_['column_sort_order']	     = '排序';
 $_['column_action']          = '操作';
 $_['column_product_name']	 = '产品名称';

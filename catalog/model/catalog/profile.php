@@ -55,6 +55,11 @@ public function getVideo($limit_num='') {
 	//var_dump($query);exit;
 		return $query->rows;
 	}
+	public function getVideoCount(){
+		 $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "gallery id ");
+		return $query->row['total'];
+
+	}
 
 
 }

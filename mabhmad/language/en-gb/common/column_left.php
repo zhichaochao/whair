@@ -28,6 +28,7 @@ $_['text_information']              = '信息管理';
 $_['text_nav']                      = '导航管理';
 $_['text_hairclub']                 = 'hairclub管理';
 $_['text_profile']                  = '简介管理';
+$_['text_provideo']                  = '视频管理';
 $_['text_installer']                = '插件安装';
 $_['text_language']                 = '语言设置';
 $_['text_layout']                   = '布局';

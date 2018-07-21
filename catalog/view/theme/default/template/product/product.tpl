@@ -93,7 +93,17 @@
 								<?php if ($options) { ?>
 								<?php foreach ($options as $option) { ?>	
 								<?php if ($option['product_option_value']) { ?>
-								<?php if ($option['type'] == 'select') { ?> 
+								<?php if ($option['type'] == 'radio') { ?> 
+								<dl class="pro_det_dl clearfix">
+					                <dt><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</dt>
+					                <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php if(isset($shareoption[$option['product_option_id']])){ echo $shareoption[$option['product_option_id']];}else{ echo $option['product_option_value'][0]['product_option_value_id'];} ?>" />
+
+					                <?php foreach ($option['product_option_value'] as $k=> $option_value) { ?>
+					                 <dd><p class="<?php if(isset($shareoption[$option['product_option_id']])){ if($shareoption[$option['product_option_id']]==$option_value['product_option_value_id']) echo 'active';} else if($k==0) echo 'active'; ?>" value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?></p></dd>
+					                 <?php } ?>
+
+					              </dl>
+								<?php }elseif ($option['type'] == 'select') { ?>
 								<label class="len_label" for="">
 									<span><?php if($option['required']) { ?>*<?php } ?><?=$option['name']?>:</span>
 									<div class="select_div" id="input-option<?php echo $option['product_option_id']; ?>">
@@ -155,18 +165,18 @@
 			
 				<div class="bot clearfix">
 					<ol class="text_ol clearfix">
-						<li>PRODUCTS DETAILS <hr /></li>
-						<li class="active">DELIVERY AND PACKAGE <hr /></li>
+						<li class="active">PRODUCTS DETAILS <hr /></li>
+						<li >DELIVERY AND PACKAGE <hr /></li>
 						<li>FAQ <hr /></li>
 					</ol>
 					<ul class="text_ul">
-						<li>
+						<li class="active">
 							<h1 class="xxk_h1">PRODUCTS DETAILS</h1>
 							<div class="xxk_text">
 								<?=$description;?>
 							</div>
 						</li>
-						<li class="active">
+						<li >
 							<h1 class="xxk_h1">Delivery And Package</h1>
 							<div class="xxk_text">
 								<div class="ul_top clearfix">
@@ -333,6 +343,14 @@ var swiper3 = new Swiper('#swiper3', {
     },
 });
 $(function(){
+	    $(".pro_det_dl>dd>p").click(function(){
+      $(".pro_det_dl>dd>p").removeClass("active");
+      $(this).addClass("active");
+      	var value= $(this).attr('value');
+   //    	alert(value);
+			console.log(value);
+			$(this).parents('dl').find('input').val(value);
+    })
 		$(".pro_det_content .measurement").click(function(){
 			$(".meas_img").fadeIn();
 		})
@@ -350,6 +368,7 @@ $(function(){
 		
 		
 		$(".pro_det_content .len_label>ul>li").click(function(){
+
 			$(this).addClass("active").siblings("li").removeClass("active");
 		})
 		

@@ -28,7 +28,7 @@
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-page_image" class="form-horizontal">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
-            <li><a href="#tab-image" data-toggle="tab"><?=$tab_image?></a></li>
+           <!--  <li><a href="#tab-image" data-toggle="tab"><?=$tab_image?></a></li> -->
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -87,6 +87,19 @@
                         <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
                     </div>
                   </div>
+                <div class="form-group">
+                  
+                         <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_image; ?></label>
+                      
+                        <div class="col-sm-10">
+                              <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail">
+                                  <img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" />
+                              </a>
+                              <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
+
+                      </div>
+
+              </div>
                 </div>
 
             </div>
@@ -117,20 +130,20 @@
 
                 </div>
               </div> --> 
-          <div class="form-group">
+          <!-- <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
                 <div class="col-sm-10">
                   <ul style="list-style-type: none">
                     <!-- 预览框： -->
-                     <li style="float: left;width: 100px">
+                    <!--  <li style="float: left;width: 100px">
                       <div class="preview">
                           <?php if($video){ ?>
                           <video src="<?=$video;?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
                       </div>
                     </li>
-   <?php if($product_id){ ?>
+   <?php if($product_id){ ?> -->
  <!--   <?php echo $product_id?>  -->
-                    <li style="float: left;width: 100px;margin-left: 10px">  
+                   <!--  <li style="float: left;width: 100px;margin-left: 10px">  
                   <div style="margin-top:10px;">
                
                     <label for="input-video" class="input-video">请上传</label><br/>
@@ -143,52 +156,9 @@
                   </ul>
 
                 </div>
-              </div> 
-           <!--  <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
-                <div class="col-sm-10">
-                  <ul style="list-style-type: none">
-                    <!-- 预览框： -->
-                  <!--   <li style="float: left;width: 100px">
-                      <div class="preview">
-                          <?php if($video){ ?>
-                          <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
-                      </div>
-                    </li>
-
-                    <li style="float: left;width: 100px;margin-left: 10px">
-                  <div style="margin-top:10px;">
-                    <label for="input-video" class="input-video">请上传</label><br/>
-                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
-                      <div class="input-video" onclick="deleteVideo();">删除</div>
-                  </div></li>
-                  <input type="hidden" name="video" value="<?=$video;?>" id='video' />
-
-                  </ul>
-
-                </div>
-              </div> -->
-              <div class="table-responsive">
-                  <table class="table table-striped table-bordered table-hover">
-                      <thead>
-                      <tr>
-                          <td class="text-left"><?php echo $entry_image; ?></td>
-                      </tr>
-                      </thead>
-
-                      <tbody>
-                      <tr>
-                          <td class="text-left">
-                              <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail">
-                                  <img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" />
-                              </a>
-                              <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-              </div>
-              <div class="table-responsive">
+              </div>  -->   
+              <!-- 上传多张图片 -->
+             <!--  <div class="table-responsive">
                   <table id="images" class="table table-striped table-bordered table-hover">
                       <thead>
                       <tr>
@@ -226,7 +196,7 @@
                       </tr>
                       </tfoot>
                   </table>
-              </div>
+              </div> -->
             </div>
           </div>
         </form>

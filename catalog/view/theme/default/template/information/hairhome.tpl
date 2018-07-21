@@ -20,12 +20,9 @@
 				<?php } ?>
 				</ul>
 				
-				<!-- <div class="fy_div clearfix">
-					<div class="left"><?php echo $pagination; ?></div>
-			          <div class="right">
-			            <p><?php echo $results; ?></p>
-			          </div>
-        		</div> -->
+				<div class="fy_div clearfix">
+		           <?php echo $pagination; ?>  
+		        </div>
 				</div>
 			</div>
 		<?php echo $footer; ?>
