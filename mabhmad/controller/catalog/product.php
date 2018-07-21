@@ -182,7 +182,7 @@ class ControllerCatalogProduct extends Controller {
        // var_dump($this->request->get['product_id']);
       
         if(isset($this->request->get['product_id'])){
-        	  unlink('../image/'.$this->request->get['video']); 
+        	  unlink('/image/'.$this->request->get['video']); 
         $this->model_catalog_product->deleteVideo($this->request->get['product_id']);
     	}else{
     		  unlink($this->request->get['video']);
@@ -257,7 +257,7 @@ class ControllerCatalogProduct extends Controller {
                     	if(isset($this->request->get['product_id'])){
                         $this->model_catalog_product->editVideo($this->request->get['product_id'],$previewSrc);
                     	}
-                        $data['previewSrc'] = '../image/'.$previewSrc;
+                        $data['previewSrc'] = '/image/'.$previewSrc;
                     }
 
 //                }

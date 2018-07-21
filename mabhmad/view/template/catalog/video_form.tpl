@@ -43,7 +43,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-title<?php echo $language['language_id']; ?>"><?php echo $entry_title; ?></label>
                     <div class="col-sm-10">
-                      <input type="text" name="profile_description[<?php echo $language['language_id']; ?>][title]" value="<?php echo isset($profile_description[$language['language_id']]) ? $profile_description[$language['language_id']]['title'] : ''; ?>" placeholder="<?php echo $entry_title; ?>" id="input-title<?php echo $language['language_id']; ?>" class="form-control" />
+                      <input type="text" name="video_description[<?php echo $language['language_id']; ?>][title]" value="<?php echo isset($video_description[$language['language_id']]) ? $video_description[$language['language_id']]['title'] : ''; ?>" placeholder="<?php echo $entry_title; ?>" id="input-title<?php echo $language['language_id']; ?>" class="form-control" />
                       <?php if (isset($error_title[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_title[$language['language_id']]; ?></div>
                       <?php } ?>
@@ -52,7 +52,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
                     <div class="col-sm-10">
-                      <textarea name="profile_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($profile_description[$language['language_id']]) ? $profile_description[$language['language_id']]['description'] : ''; ?></textarea>
+                      <textarea name="video_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($video_description[$language['language_id']]) ? $video_description[$language['language_id']]['description'] : ''; ?></textarea>
                       <?php if (isset($error_description[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_description[$language['language_id']]; ?></div>
                       <?php } ?>
@@ -61,7 +61,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>"><?php echo $entry_meta_title; ?></label>
                     <div class="col-sm-10">
-                      <input type="text" name="profile_description[<?php echo $language['language_id']; ?>][meta_title]" value="<?php echo isset($profile_description[$language['language_id']]) ? $profile_description[$language['language_id']]['meta_title'] : ''; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title<?php echo $language['language_id']; ?>" class="form-control" />
+                      <input type="text" name="video_description[<?php echo $language['language_id']; ?>][meta_title]" value="<?php echo isset($video_description[$language['language_id']]) ? $video_description[$language['language_id']]['meta_title'] : ''; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title<?php echo $language['language_id']; ?>" class="form-control" />
                       <?php if (isset($error_meta_title[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_meta_title[$language['language_id']]; ?></div>
                       <?php } ?>
@@ -70,13 +70,13 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-meta-description<?php echo $language['language_id']; ?>"><?php echo $entry_meta_description; ?></label>
                     <div class="col-sm-10">
-                      <textarea name="profile_description[<?php echo $language['language_id']; ?>][meta_description]" rows="5" placeholder="<?php echo $entry_meta_description; ?>" id="input-meta-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($profile_description[$language['language_id']]) ? $profile_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
+                      <textarea name="video_description[<?php echo $language['language_id']; ?>][meta_description]" rows="5" placeholder="<?php echo $entry_meta_description; ?>" id="input-meta-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($video_description[$language['language_id']]) ? $video_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-meta-keyword<?php echo $language['language_id']; ?>"><?php echo $entry_meta_keyword; ?></label>
                     <div class="col-sm-10">
-                      <textarea name="profile_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($profile_description[$language['language_id']]) ? $profile_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
+                      <textarea name="video_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($video_description[$language['language_id']]) ? $video_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
                     </div>
                   </div>
                 </div>
@@ -90,11 +90,11 @@
                   <div class="well well-sm" style="height: 150px; overflow: auto;">
                     <div class="checkbox">
                       <label>
-                        <?php if (in_array(0, $profile_store)) { ?>
-                        <input type="checkbox" name="profile_store[]" value="0" checked="checked" />
+                        <?php if (in_array(0, $video_store)) { ?>
+                        <input type="checkbox" name="video_store[]" value="0" checked="checked" />
                         <?php echo $text_default; ?>
                         <?php } else { ?>
-                        <input type="checkbox" name="profile_store[]" value="0" />
+                        <input type="checkbox" name="video_store[]" value="0" />
                         <?php echo $text_default; ?>
                         <?php } ?>
                       </label>
@@ -102,11 +102,11 @@
                     <?php foreach ($stores as $store) { ?>
                     <div class="checkbox">
                       <label>
-                        <?php if (in_array($store['store_id'], $profile_store)) { ?>
-                        <input type="checkbox" name="profile_store[]" value="<?php echo $store['store_id']; ?>" checked="checked" />
+                        <?php if (in_array($store['store_id'], $video_store)) { ?>
+                        <input type="checkbox" name="video_store[]" value="<?php echo $store['store_id']; ?>" checked="checked" />
                         <?php echo $store['name']; ?>
                         <?php } else { ?>
-                        <input type="checkbox" name="profile_store[]" value="<?php echo $store['store_id']; ?>" />
+                        <input type="checkbox" name="video_store[]" value="<?php echo $store['store_id']; ?>" />
                         <?php echo $store['name']; ?>
                         <?php } ?>
                       </label>
@@ -124,11 +124,11 @@
                     <?php if($parents) { ?>
                       <?php foreach($parents as $parent) { ?>
                         <option 
-                          <?php if($parent['profile_id'] == $profile_id) { ?>
+                          <?php if($parent['video_id'] == $video_id) { ?>
                              style="display:none;"
                           <?php } ?>
-                          value="<?php echo $parent['profile_id']; ?>" 
-                          <?php if($parent['profile_id'] == $parent_id) { ?>
+                          value="<?php echo $parent['video_id']; ?>" 
+                          <?php if($parent['video_id'] == $parent_id) { ?>
                             selected="selected"
                           <?php } ?> >
                           <?php echo $parent['title']; ?>
@@ -189,20 +189,20 @@
                   <input type="text" name="author" value="<?php echo $author; ?>" placeholder="<?php echo $entry_author; ?>" id="input-author" class="form-control" />
                 </div>
               </div> -->
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
                 <div class="col-sm-10">
                   <ul style="list-style-type: none">
                     <!-- 预览框： -->
-                     <li style="float: left;width: 100px">
+                    <!--  <li style="float: left;width: 100px">
                       <div class="preview">
                           <?php if($video){ ?>
                           <video src="<?=$video;?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
                       </div>
                     </li>
-   <?php if($product_id){ ?>
+   <?php if($product_id){ ?> -->
  <!--   <?php echo $product_id?>  -->
-                    <li style="float: left;width: 100px;margin-left: 10px">  
+                   <!--  <li style="float: left;width: 100px;margin-left: 10px">  
                   <div style="margin-top:10px;">
                
                     <label for="input-video" class="input-video">请上传</label><br/>
@@ -212,6 +212,30 @@
                  <input type="hidden" name="video" value="<?=$video;?>" id='video' />
                 </li>
    <?php }else{ echo '视频只支持编辑时上传，请先保存产品后再点击编辑时再来上传小视频';} ?>
+                  </ul>
+
+                </div>
+              </div> -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
+                <div class="col-sm-10">
+                  <ul style="list-style-type: none">
+                    <!-- 预览框： -->
+                    <li style="float: left;width: 100px">
+                      <div class="preview">
+                          <?php if($video){ ?>
+                          <video src="<?=$video_url;?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
+                      </div>
+                    </li>
+
+                    <li style="float: left;width: 100px;margin-left: 10px">
+                  <div style="margin-top:10px;">
+                    <label for="input-video" class="input-video">请上传</label><br/>
+                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
+                      <div class="input-video" onclick="deleteVideo();">删除</div>
+                  </div></li>
+                  <input type="hidden" name="video" value="<?=$video;?>" id='video' />
+
                   </ul>
 
                 </div>
@@ -256,10 +280,10 @@
                   <tbody>
                     <tr>
                       <td class="text-left"><?php echo $text_default; ?></td>
-                      <td class="text-left"><select name="profile_layout[0]" class="form-control">
+                      <td class="text-left"><select name="video_layout[0]" class="form-control">
                           <option value=""></option>
                           <?php foreach ($layouts as $layout) { ?>
-                          <?php if (isset($profile_layout[0]) && $profile_layout[0] == $layout['layout_id']) { ?>
+                          <?php if (isset($video_layout[0]) && $video_layout[0] == $layout['layout_id']) { ?>
                           <option value="<?php echo $layout['layout_id']; ?>" selected="selected"><?php echo $layout['name']; ?></option>
                           <?php } else { ?>
                           <option value="<?php echo $layout['layout_id']; ?>"><?php echo $layout['name']; ?></option>
@@ -270,10 +294,10 @@
                     <?php foreach ($stores as $store) { ?>
                     <tr>
                       <td class="text-left"><?php echo $store['name']; ?></td>
-                      <td class="text-left"><select name="profile_layout[<?php echo $store['store_id']; ?>]" class="form-control">
+                      <td class="text-left"><select name="video_layout[<?php echo $store['store_id']; ?>]" class="form-control">
                           <option value=""></option>
                           <?php foreach ($layouts as $layout) { ?>
-                          <?php if (isset($profile_layout[$store['store_id']]) && $profile_layout[$store['store_id']] == $layout['layout_id']) { ?>
+                          <?php if (isset($video_layout[$store['store_id']]) && $video_layout[$store['store_id']] == $layout['layout_id']) { ?>
                           <option value="<?php echo $layout['layout_id']; ?>" selected="selected"><?php echo $layout['name']; ?></option>
                           <?php } else { ?>
                           <option value="<?php echo $layout['layout_id']; ?>"><?php echo $layout['name']; ?></option>
@@ -295,15 +319,7 @@
   <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script> 
 
-  <script src="view/javascript/fileupload/jquery.ui.widget.js"></script>
-  <script src="view/javascript/fileupload/jquery.iframe-transport.js"></script>
-  <script src="view/javascript/fileupload/jquery.fileupload.js"></script>
-  <script src="view/javascript/fileupload/jquery.xdr-transport.js"></script>
-    <script src="view/javascript/fileupload/jquery.xdr-transport.js"></script>
- <!--  <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script> -->
-<!--   <link href="view/javascript/summernote/summernote.css" rel="stylesheet" /> -->
-<!--   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script> -->
-    <style type="text/css">
+ <style type="text/css">
     .input-video {
       width: 100px;
       height: 30px;
@@ -322,11 +338,15 @@
       color: #fff;
       text-shadow: 1px 1px 0.5px #22629B;
     }
-  </style> 
+  </style>
+   <script src="view/javascript/fileupload/jquery.ui.widget.js"></script>
+  <script src="view/javascript/fileupload/jquery.iframe-transport.js"></script>
+  <script src="view/javascript/fileupload/jquery.fileupload.js"></script>
+  <script src="view/javascript/fileupload/jquery.xdr-transport.js"></script>
   <script type="text/javascript">
       $(".upinput").fileupload({
 
-          url: "<?php echo $edit_video; ?>"+"<?php echo $edit_video_url; ?>",//文件上传地址，当然也可以直接写在input的data-url属性内
+          url: "<?php echo $edit_video; ?>",//文件上传地址，当然也可以直接写在input的data-url属性内
           dataType: "json", //如果不指定json类型，则传来的json字符串就需要解析jQuery.parseJSON(data.result);
 
           done: function (e, data) {
@@ -336,9 +356,9 @@
               if (data.result.sta) {
                   // 上传成功：
                   console.log('成功');
-                  $('#video').val(data.result.previewSrc );
                   $(".upstatus").html(data.result.msg);
                   $(".preview").html("<video src="+ data.result.previewSrc +" loop='loop' autoplay='autoplay' width='100px' height='100px'></video>");
+                  $('#video').val(data.result.previewSrc );
               } else {
                   // 上传失败：
                   alert(data.result.msg);
@@ -356,10 +376,11 @@
       });
       function deleteVideo(){
           $.ajax({
-              url: 'index.php?route=catalog/gallery/deleteVideo'+"<?php echo $edit_video_url; ?>",
+              url: '<?php echo $delete_video; ?>',
               dataType: 'json',
-              data:{video:'<?php echo $video; ?>'},
+              data:{video:$('#video').val()},
               success: function() {
+                $('#video').val('');
                   $(".preview").html("");
               },
               error:function(){

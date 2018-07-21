@@ -163,10 +163,10 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()
 				);
 			}
-			if ($this->user->hasPermission('access', 'catalog/provideo')) {
+			if ($this->user->hasPermission('access', 'catalog/video')) {
 				$hairclub[] = array(
 					'name'	   => $this->language->get('text_provideo'),
-					'href'     => $this->url->link('catalog/provideo', 'token=' . $this->session->data['token'], true),
+					'href'     => $this->url->link('catalog/video', 'token=' . $this->session->data['token'], true),
 					'children' => array()
 				);
 			}

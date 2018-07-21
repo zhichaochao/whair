@@ -49,17 +49,17 @@
                 </tr>
               </thead>
               <tbody>
-                <?php if ($profiles) { ?>
-                <?php foreach ($profiles as $profile) { ?>
+                <?php if ($videos) { ?>
+                <?php foreach ($videos as $video) { ?>
                 <tr>
-                  <td class="text-center"><?php if (in_array($profile['profile_id'], $selected)) { ?>
-                    <input type="checkbox" name="selected[]" value="<?php echo $profile['profile_id']; ?>" checked="checked" />
+                  <td class="text-center"><?php if (in_array($video['video_id'], $selected)) { ?>
+                    <input type="checkbox" name="selected[]" value="<?php echo $video['video_id']; ?>" checked="checked" />
                     <?php } else { ?>
-                    <input type="checkbox" name="selected[]" value="<?php echo $profile['profile_id']; ?>" />
+                    <input type="checkbox" name="selected[]" value="<?php echo $video['video_id']; ?>" />
                     <?php } ?></td>
-                  <td class="text-left"><?php echo $profile['title']; ?></td>
-                  <td class="text-right"><?php echo $profile['sort_order']; ?></td>
-                  <td class="text-right"><a href="<?php echo $profile['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                  <td class="text-left"><?php echo $video['title']; ?></td>
+                  <td class="text-right"><?php echo $video['sort_order']; ?></td>
+                  <td class="text-right"><a href="<?php echo $video['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <?php } ?>
                 <?php } else { ?>
