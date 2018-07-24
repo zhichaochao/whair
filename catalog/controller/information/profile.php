@@ -41,7 +41,7 @@ class ControllerInformationProfile extends Controller {
 						foreach ($childs as $key => $value) {
 							$childs[$key]['href']=$this->url->link('information/profile/infocare', 'profile_id=' .  $value['profile_id']);
 							$childs[$key]['image']=$this->model_tool_image->resize($value['image'],380,350);
-							$childs[$key]['images']=$this->model_tool_image->resize($value['images'],710,460);
+							$childs[$key]['images']=$this->model_tool_image->resize($value['images'],920,460);
 						}
 				}
 				$profile_care['childs']=$childs;
@@ -53,7 +53,7 @@ class ControllerInformationProfile extends Controller {
 						foreach ($childs as $key => $value) {
 							$childs[$key]['href']=$this->url->link('information/profile/infoknow', 'profile_id=' .  $value['profile_id']);
 							$childs[$key]['image']=$this->model_tool_image->resize($value['image'],380,350);
-							$childs[$key]['images']=$this->model_tool_image->resize($value['images'],710,460);
+							$childs[$key]['images']=$this->model_tool_image->resize($value['images'],920,460);
 						}
 				}
 				$profile_know['childs']=$childs;
