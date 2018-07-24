@@ -58,7 +58,7 @@
 						<img class="bf" src="/catalog/view/theme/default/img/png/bf.png"/>
 						<div class="text_vd clearfix">
 						<div class="bg_div">
-							<p><?=$child['gallery_title'];?> </p>
+							<p><?=$child['title'];?> </p>
 						</div>
 						</div>
 					</li>

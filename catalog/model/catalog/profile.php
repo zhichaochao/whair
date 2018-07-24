@@ -32,31 +32,22 @@ class ModelCatalogProfile extends Model {
 	
 		
 	}
-public function getVideo($limit_num='') {
-		// $where=' ';
-		// if ($parent_id>0) {
-		// 	$where.=' AND parent_id ='.$parent_id;
-		// }else{
-		// 	$where.=' AND parent_id =0';
-		// }
+
+
+
+public function getVideos($filter_data) {
+	if(!empty($filter_data['limit'])){
 		$limit='';
-		if ($limit_num>0) {
-			$limit.=' limit 0,'.$limit_num;
+		if ($filter_data['limit']>0) {
+			$limit.=' limit '.$filter_data['start'].','.$filter_data['limit'];
 		}
-			$query = $this->db->query("SELECT video,gallery_title,image FROM " . DB_PREFIX . "gallery id " .$limit);
-
-	//var_dump($query);exit;
-		return $query->rows;
-	}
-	public function getVideos() {
-
-			$query = $this->db->query("SELECT video,gallery_title,image FROM " . DB_PREFIX . "gallery id ");
-
-	//var_dump($query);exit;
-		return $query->rows;
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "video i LEFT JOIN " . DB_PREFIX . "video_description id ON (i.video_id = id.video_id) WHERE id.language_id = '" . (int)$this->config->get('config_language_id') . "'" .$limit);
+	}else{
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "video i LEFT JOIN " . DB_PREFIX . "video_description id ON (i.video_id = id.video_id) WHERE id.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+	}		return $query->rows;
 	}
 	public function getVideoCount(){
-		 $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "gallery id ");
+		 $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "video");
 		return $query->row['total'];
 
 	}
