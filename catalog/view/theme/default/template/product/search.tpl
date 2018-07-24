@@ -98,7 +98,7 @@
            <?php echo $pagination; ?>  
         </div>
       <?php } else { ?>
-      <p style="font-size: 18px;"><?php echo $text_empty; ?></p>
+      <p class="sec_p"><?php echo $text_empty; ?></p>
       <?php } ?>
       </div>
       <?php echo $column_right; ?>
