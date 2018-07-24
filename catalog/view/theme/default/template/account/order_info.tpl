@@ -59,8 +59,8 @@
             <div class="text clearfix">
               <div class="span_div clearfix">
                 <span>Subtotal</span>
-                <span class="cl_len">Color/Length</span>
                 <span>Quantity</span>
+                <span class="cl_len">Lace Closure/Color/Length</span>
                 <span>Unit  Price</span>
               </div>              
               
@@ -71,19 +71,16 @@
                     <img src="<?php echo $product['order_image']; ?>" alt="" />                   
                   </div>
                   <p class="ov_text"><?php echo $product['name']; ?>
-                </p>
+                  </p>
                   <span class="d_price"><?php echo $product['total']; ?></span>
-               <span class="num">&nbsp;
-                 <?php foreach ($product['option'] as $option) { ?>
-              <i class="yd_i">X</i><?php echo $option['value']; ?>
-               <?php } ?>
-              </span>
-                 <!--  <span class="num"><i class="yd_i">X</i>1</span> -->
-                  <span class="length"><i class="yd_i"></i><?php echo $product['quantity']; ?></span>
-                 <!--  <span class="z_price">$35.05</span> -->
-              
+               
+                  <span class="num"><i class="yd_i">X</i><?php echo $product['quantity']; ?></span>
+                  <span class="length">
+                   <?php foreach ($product['option'] as $option) { ?>
+                    <?php echo $option['value']; ?>
+                  <?php } ?>
+                  </span>
                     <span class="z_price"><?php echo $product['price']; ?></span>
-              
                 </li>
                <?php } ?>
               </ul>
