@@ -26,13 +26,13 @@
 									<!-- <input autocomplete="off" name="product" type="checkbox" value="<?php echo $product['cart_id']; ?>" class="check_i" > -->
 								</label>	
 								<?php if ($product['thumb']) { ?>
-									<div>
+									<div class="pic_img">
 			                        <a href="<?php echo $product['href']; ?>">
 			                   <img src="<?php echo $product['thumb']; ?>"  title="<?php echo $product['name']; ?>" class="pic_img" />
 			                        </a>
 			                        </div>
 			                      <?php } ?>
-								<!-- <div class="pic_img">
+								<!-- <div >
 									<a href="###"><img src="img/jpg/pro_det1.jpg" alt="" /></a>
 								</div> -->
 								<div class="text">
