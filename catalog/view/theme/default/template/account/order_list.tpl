@@ -88,7 +88,7 @@
             </li>
             <?php } ?>
             <?php } else { ?>
-          <div class="right m_account clearfix">
+          <div class="m_account clearfix">
           
           <img src="/catalog/view/theme/default/img/png/order.png"/>
           <p> You have placed no orders</p>

@@ -29,7 +29,7 @@ define('DIR_MODIFICATION', DIR_SYSTEM.'storage/modification/');
 
  $base_data=array(
  		0=>array('username'=>'root','password'=>'root','database'=>'w'),
-// 		1=>array('username'=>'root','password'=>'root','database'=>'o'),
+		1=>array('username'=>'root','password'=>'root','database'=>'o'),
  );
 // DB
 define('DB_DRIVER', 'mpdo');

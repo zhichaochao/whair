@@ -48,6 +48,7 @@ $_['entry_address']                    = '地址';
 $_['entry_geocode']                    = '地理编码';
 $_['entry_email']                      = '邮箱';
 $_['entry_telephone']                  = '手机号码';
+$_['entry_facebook']                  = '链接';
 $_['entry_skype']                      = 'Skype';
 $_['entry_fax']                        = '传真';
 $_['entry_image']                      = '图像';

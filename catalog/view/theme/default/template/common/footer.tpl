@@ -40,7 +40,7 @@
                     <button type="submit" class="btn1" onClick="return subscribe();">SUBMIT</button>
 
                     <ol class="clearfix">
-                      <li><a target="_blank"  href="http://www.facebook.com/hotbeautymelisha"><img src="/catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
+                      <li><a target="_blank"  href="http://www.facebook.com/<?=$facebook;?>"><img src="/catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
                       <li><a target="_blank"  href="http://www.instagram.com/hotbeautyhairofficial"><img src="/catalog/view/theme/default/img/png/fot_2.png" alt=""></a></li>
                       <li><a target="_blank"  href="http://api.whatsapp.com/send?phone=<?=$telephone;?>"><img src="/catalog/view/theme/default/img/png/fot_3.png" alt=""></a></li>
                     </ol>

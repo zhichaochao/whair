@@ -78,31 +78,31 @@ class ControllerCommonColumnLeft extends Controller {
 			// }
 
 			// Attributes
-			$attribute = array();
+			// $attribute = array();
 
-			if ($this->user->hasPermission('access', 'catalog/attribute')) {
-				$attribute[] = array(
-					'name'     => $this->language->get('text_attribute'),
-					'href'     => $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'catalog/attribute')) {
+			// 	$attribute[] = array(
+			// 		'name'     => $this->language->get('text_attribute'),
+			// 		'href'     => $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 
-			if ($this->user->hasPermission('access', 'catalog/attribute_group')) {
-				$attribute[] = array(
-					'name'	   => $this->language->get('text_attribute_group'),
-					'href'     => $this->url->link('catalog/attribute_group', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'catalog/attribute_group')) {
+			// 	$attribute[] = array(
+			// 		'name'	   => $this->language->get('text_attribute_group'),
+			// 		'href'     => $this->url->link('catalog/attribute_group', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 
-			if ($attribute) {
-				$catalog[] = array(
-					'name'	   => $this->language->get('text_attribute'),
-					'href'     => '',
-					'children' => $attribute
-				);
-			}
+			// if ($attribute) {
+			// 	$catalog[] = array(
+			// 		'name'	   => $this->language->get('text_attribute'),
+			// 		'href'     => '',
+			// 		'children' => $attribute
+			// 	);
+			// }
 
 			if ($this->user->hasPermission('access', 'catalog/option')) {
 				$catalog[] = array(
