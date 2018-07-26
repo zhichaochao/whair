@@ -104,14 +104,14 @@
     </div>
     <div class="yd_footer2" >
       <ol class="ol_ydfot clearfix">
-        <li class="active">
+        <li class="<?=strpos($thispage,'common') !== false ?'active':'';?>">
           <a href="<?php echo $home?>">
             <img class="active" src="/catalog/view/theme/default/img/png/home-1.png" alt="" />
             <img src="/catalog/view/theme/default/img/png/home-2.png" alt="" />
             <p>HOME</p>
           </a>
         </li>
-        <li>
+        <li class="<?=strpos($thispage,'product') !== false ?'active':'';?>">
           <a href="<?php echo $contac?>">
             <img class="active" src="/catalog/view/theme/default/img/png/fenlei-1.png" alt="" />
             <img src="/catalog/view/theme/default/img/png/fenlei-2.png" alt="" />
@@ -137,14 +137,14 @@
             <p>CONTACT</p>
           </a>
         </li> -->
-        <li>
+        <li class="<?=strpos($thispage,'checkout') !== false ?'active':'';?>">
           <a href="<?php echo $cart?>">
             <img class="active" src="/catalog/view/theme/default/img/png/cart-1.png" alt="" />
             <img src="/catalog/view/theme/default/img/png/cart-2.png" alt="" />
             <p>CART</p>
           </a>
         </li>
-        <li>
+        <li class="<?=strpos($thispage,'account') !== false ?'active':'';?>">
           <a href="<?php echo $account_left?>">
             <img class="active" src="/catalog/view/theme/default/img/png/account-1.png" alt="" />
             <img src="/catalog/view/theme/default/img/png/account-2.png" alt="" />
