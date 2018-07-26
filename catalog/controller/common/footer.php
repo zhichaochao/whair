@@ -161,9 +161,9 @@ class ControllerCommonFooter extends Controller {
 
 			$this->model_tool_online->addOnline($ip, $this->customer->getId(), $url, $referer);
 		}
-		print_r($_SERVER);
+		// print_r($_SERVER);
 		$data['thispage']=$_SERVER['QUERY_STRING'].$_SERVER['REQUEST_URI'];
-	print_r($data['thispage']);exit;
+	// print_r($data['thispage']);exit;
 		$data['email'] = $this->config->get('config_email');
 		$data['telephone'] = $this->config->get('config_telephone');
 		$data['skype'] = $this->config->get('config_skype');
