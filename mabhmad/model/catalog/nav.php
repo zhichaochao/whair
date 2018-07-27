@@ -1,16 +1,28 @@
 <?php
 class ModelCatalogNav extends Model {
 	
-
+private function querysql($sql)
+	{
+		$dbs= unserialize($this->config->get('db_database_data'));
+		foreach ($dbs as $key => $value) {
+			if($key==0){
+				$this->db->query($sql);
+			}else{
+				$d='db'.$key;
+				$this->$d->query($sql);
+			}
+		}
+		
+	}
 	public function addNav($data) {
 
 		// print_r($data);exit();
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "nav` SET parent_id = '" . (int)$data['parent_id'] . "', url = '" . $this->db->escape($data['url']) . "',type = '" . $this->db->escape($data['type']) . "',seo_url = '" . $this->db->escape($data['seo_url']) . "',inside_id = '" . (int)$data['inside_id'] . "', is_target = '" .(int)$data['is_target'] . "',   sort_order = '" . (int)$data['sort_order'] . "'");
+		$this->querysql("INSERT INTO `" . DB_PREFIX . "nav` SET parent_id = '" . (int)$data['parent_id'] . "', url = '" . $this->db->escape($data['url']) . "',type = '" . $this->db->escape($data['type']) . "',seo_url = '" . $this->db->escape($data['seo_url']) . "',inside_id = '" . (int)$data['inside_id'] . "', is_target = '" .(int)$data['is_target'] . "',   sort_order = '" . (int)$data['sort_order'] . "'");
 
 		$nav_id = $this->db->getLastId();
 
 		foreach ($data['nav_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "nav_description SET nav_id = '" . (int)$nav_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
+			$this->querysql("INSERT INTO " . DB_PREFIX . "nav_description SET nav_id = '" . (int)$nav_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
 		}
 
 		
@@ -21,20 +33,20 @@ class ModelCatalogNav extends Model {
 	public function editNav($nav_id, $data) {
 		
 
-		$this->db->query("UPDATE `" . DB_PREFIX . "nav`  SET parent_id = '" . (int)$data['parent_id'] . "', url = '" . $this->db->escape($data['url']) . "',type = '" . $this->db->escape($data['type']) . "',seo_url = '" . $this->db->escape($data['seo_url']) . "',inside_id = '" . (int)$data['inside_id'] . "', is_target = '" .(int)$data['is_target'] . "',   sort_order = '" . (int)$data['sort_order'] . "' WHERE nav_id = '" . (int)$nav_id . "'");
+		$this->querysql("UPDATE `" . DB_PREFIX . "nav`  SET parent_id = '" . (int)$data['parent_id'] . "', url = '" . $this->db->escape($data['url']) . "',type = '" . $this->db->escape($data['type']) . "',seo_url = '" . $this->db->escape($data['seo_url']) . "',inside_id = '" . (int)$data['inside_id'] . "', is_target = '" .(int)$data['is_target'] . "',   sort_order = '" . (int)$data['sort_order'] . "' WHERE nav_id = '" . (int)$nav_id . "'");
 
-		$this->db->query("DELETE FROM " . DB_PREFIX . "nav_description WHERE nav_id = '" . (int)$nav_id . "'");
+		$this->querysql("DELETE FROM " . DB_PREFIX . "nav_description WHERE nav_id = '" . (int)$nav_id . "'");
 
 		foreach ($data['nav_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "nav_description SET nav_id = '" . (int)$nav_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
+			$this->querysql("INSERT INTO " . DB_PREFIX . "nav_description SET nav_id = '" . (int)$nav_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
 		}
 
 		
 	}
 
 	public function deleteNav($nav_id) {
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "nav` WHERE nav_id = '" . (int)$nav_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "nav_description WHERE nav_id = '" . (int)$nav_id . "'");
+		$this->querysql("DELETE FROM `" . DB_PREFIX . "nav` WHERE nav_id = '" . (int)$nav_id . "'");
+		$this->querysql("DELETE FROM " . DB_PREFIX . "nav_description WHERE nav_id = '" . (int)$nav_id . "'");
 	
 	}
 
