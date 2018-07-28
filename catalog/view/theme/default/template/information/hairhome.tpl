@@ -30,7 +30,7 @@
 <script>
 	$(function(){
 		$(".video_ul li img.bf").click(function(){
-			$(this).siblings(".bg_div").css("display","none");
+			$(this).siblings(".text_vd").css("display","none");
 			
 			$(".video_li").each(function(){
 				this.pause();

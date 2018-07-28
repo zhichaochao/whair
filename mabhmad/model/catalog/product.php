@@ -135,7 +135,7 @@ class ModelCatalogProduct extends Model {
 				$this->syncProductPercent($data['product_special']);
 			} else {
 				foreach ($data['product_special'] as $product_special) {
-					 $this->db->query("INSERT INTO " . DB_PREFIX . "product_special SET
+					 $this->querysql("INSERT INTO " . DB_PREFIX . "product_special SET
 						product_id = '" . (int)$product_id . "',
 						customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
 						priority = '" . (int)$product_special['priority'] . "',
@@ -315,7 +315,7 @@ class ModelCatalogProduct extends Model {
 
                                         $this->querysql("UPDATE " . DB_PREFIX . "product_option_value SET option_value_id = '" . (int)$product_option_value['option_value_id'] . "', quantity = '" . (int)$product_option_value['quantity'] . "', subtract = '" . (int)$product_option_value['subtract'] . "', points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "', weight = '" . (float)$product_option_value['weight'] . "',  weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "' WHERE product_option_value_id = '" . $product_option_value['product_option_value_id'] . "'");
 
-                                        $this->db->query("UPDATE " . DB_PREFIX . "product_option_value SET   price = '" . (float)$product_option_value['price'] . "',price1 = '" . (float)$product_option_value['price1'] . "',price2 = '" . (float)$product_option_value['price2'] . "',price3 = '" . (float)$product_option_value['price3'] . "',price4 = '" . (float)$product_option_value['price4'] . "',price5 = '" . (float)$product_option_value['price5'] . "',price6 = '" . (float)$product_option_value['price6'] . "',price7 = '" . (float)$product_option_value['price7'] . "', price_prefix = '" . $this->db->escape($product_option_value['price_prefix']) . "', points = '" . (int)$product_option_value['points'] . "',  points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "' WHERE product_option_value_id = '" . $product_option_value['product_option_value_id'] . "'");
+                                        $this->querysql("UPDATE " . DB_PREFIX . "product_option_value SET   price = '" . (float)$product_option_value['price'] . "',price1 = '" . (float)$product_option_value['price1'] . "',price2 = '" . (float)$product_option_value['price2'] . "',price3 = '" . (float)$product_option_value['price3'] . "',price4 = '" . (float)$product_option_value['price4'] . "',price5 = '" . (float)$product_option_value['price5'] . "',price6 = '" . (float)$product_option_value['price6'] . "',price7 = '" . (float)$product_option_value['price7'] . "', price_prefix = '" . $this->db->escape($product_option_value['price_prefix']) . "', points = '" . (int)$product_option_value['points'] . "',  points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "' WHERE product_option_value_id = '" . $product_option_value['product_option_value_id'] . "'");
                                     }
 
                                     else {
@@ -426,7 +426,7 @@ class ModelCatalogProduct extends Model {
 					// print_r($product_special);exit();
                     if (isset($product_special['product_special_id'])){
                         if (isset($product_special['date_end']) && !empty($product_special['date_end'])) {
-                            $this->db->query("UPDATE " . DB_PREFIX . "product_special SET
+                            $this->querysql("UPDATE " . DB_PREFIX . "product_special SET
 					        customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
 					        	product_option_value_id = '" . (int)$product_special['product_option_value_id'] . "',
 					        priority = '" . (int)$product_special['priority'] . "',
@@ -436,11 +436,11 @@ class ModelCatalogProduct extends Model {
 					        date_end = '" . $this->db->escape($product_special['date_end']) . "' WHERE product_special_id = '" . $product_special['product_special_id'] . "'");
                         }
                         else {
-                            $this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_special_id = '" . $product_special['product_special_id'] . "'");
+                            $this->querysql("DELETE FROM " . DB_PREFIX . "product_special WHERE product_special_id = '" . $product_special['product_special_id'] . "'");
                         }
                     }
                     else {
-                        $this->db->query("INSERT INTO " . DB_PREFIX . "product_special SET
+                        $this->querysql("INSERT INTO " . DB_PREFIX . "product_special SET
 					    product_id = '" . (int)$product_id . "',
 					    customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
 					    priority = '" . (int)$product_special['priority'] . "',
@@ -462,7 +462,7 @@ class ModelCatalogProduct extends Model {
 			$price=$this->getProductPrice($product_id);
 		}
 		//算一个最低价，来排序
-		 $this->db->query("UPDATE " . DB_PREFIX . "product SET price='".$price."' WHERE product_id= '" . (int)$product_id . "'");
+		 $this->querysql("UPDATE " . DB_PREFIX . "product SET price='".$price."' WHERE product_id= '" . (int)$product_id . "'");
 		
 		if (isset($data['product_image'])) {
 		    $this->querysql("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
@@ -1158,13 +1158,13 @@ class ModelCatalogProduct extends Model {
 		$product_ids = $this->getPercentProductId($relation_product, $color_id);
 
 		foreach($product_ids as $product_id){
-			$this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id['product_id'] . "'");
+			$this->querysql("DELETE FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id['product_id'] . "'");
 		}
 
 		foreach ($product_specials as $product_special){
 			foreach($product_ids as $product_id){
 				//同类产品只能同步折扣，不能同步折后价
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_special SET
+				$this->querysql("INSERT INTO " . DB_PREFIX . "product_special SET
 						product_id = '" . (int)$product_id['product_id'] . "',
 						customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
 						priority = '" . (int)$product_special['priority'] . "',

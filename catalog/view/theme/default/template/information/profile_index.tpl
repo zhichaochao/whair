@@ -79,7 +79,7 @@
 <script>
 	$(function(){
 		$(".video_ul li img.bf").click(function(){
-			$(this).siblings(".bg_div").css("display","none");
+			$(this).siblings(".text_vd").css("display","none");
 			for(var i=0; i<$(".video_ul li").length;i++){
 				document.getElementsByClassName("video_li")[i].pause();
 			}
