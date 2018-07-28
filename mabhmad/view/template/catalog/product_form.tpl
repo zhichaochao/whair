@@ -865,8 +865,8 @@
                       <!-- <td class="text-right"><?php echo $entry_priority; ?></td> -->
                       <td class="text-right">直减(正常价减去下边的价格)</td>
                       <td class="text-right"><?php echo $entry_percent; ?>（正常价的比例）（优先）<br/>0代表不使用百分比</td>
-                      <td class="text-left"><?php echo $entry_date_start; ?></td>
-                      <td class="text-left"><?php echo $entry_date_end; ?></td>
+                      <td class="text-left"><?php echo $entry_date_start; ?><span style="color:#ff0000;">*必填项</span></td>
+                      <td class="text-left"><?php echo $entry_date_end; ?><span style="color:#ff0000;">*必填项</span></td>
                       <td></td>
                     </tr>
                   </thead>

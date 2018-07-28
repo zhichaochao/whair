@@ -418,15 +418,12 @@ class ModelCatalogProduct extends Model {
 		
 		if (isset($data['product_special'])) {
 			//是否同步同类产品的折扣信息
-			if ($data['sync_percent'] == 1) {
-				$this->syncProductPercent($data['product_special'], $data['relation_product'], $data['color_id']);
-			}
-			else {
-				foreach ($data['product_special'] as $key => $product_special) {
-					// print_r($product_special);exit();
+		
+			foreach ($data['product_special'] as $key => $product_special) {
+			
                     if (isset($product_special['product_special_id'])){
                         if (isset($product_special['date_end']) && !empty($product_special['date_end'])) {
-                            $this->querysql("UPDATE " . DB_PREFIX . "product_special SET
+                           $this->db->query("UPDATE " . DB_PREFIX . "product_special SET
 					        customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
 					        	product_option_value_id = '" . (int)$product_special['product_option_value_id'] . "',
 					        priority = '" . (int)$product_special['priority'] . "',
@@ -436,11 +433,12 @@ class ModelCatalogProduct extends Model {
 					        date_end = '" . $this->db->escape($product_special['date_end']) . "' WHERE product_special_id = '" . $product_special['product_special_id'] . "'");
                         }
                         else {
-                            $this->querysql("DELETE FROM " . DB_PREFIX . "product_special WHERE product_special_id = '" . $product_special['product_special_id'] . "'");
+                         $this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_special_id = '" . $product_special['product_special_id'] . "'");
                         }
                     }
                     else {
-                        $this->querysql("INSERT INTO " . DB_PREFIX . "product_special SET
+                    	 if (isset($product_special['date_end']) && !empty($product_special['date_end'])) {
+                       $this->db->query("INSERT INTO " . DB_PREFIX . "product_special SET
 					    product_id = '" . (int)$product_id . "',
 					    customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
 					    priority = '" . (int)$product_special['priority'] . "',
@@ -449,10 +447,12 @@ class ModelCatalogProduct extends Model {
 					    percent = '" . (float)$product_special['percent'] . "',
 					    date_start = '" . $this->db->escape($product_special['date_start']) . "',
 					    date_end = '" . $this->db->escape($product_special['date_end']) . "'");
+                   		}
                     }
-				}
-			}	
+				
+		
 		}
+	}
 
 		$price=$this->getProductSpecials($product_id);
 		// print_r($price);exit();
