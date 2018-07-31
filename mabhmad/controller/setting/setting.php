@@ -65,6 +65,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_email'] = $this->language->get('entry_email');
 		$data['entry_telephone'] = $this->language->get('entry_telephone');
 		$data['entry_facebook'] = $this->language->get('entry_facebook');
+		$data['entry_whatsapp'] = $this->language->get('entry_whatsapp');
 		$data['entry_skype'] = $this->language->get('entry_skype');
 		$data['entry_fax'] = $this->language->get('entry_fax');
 		$data['entry_image'] = $this->language->get('entry_image');
@@ -486,6 +487,11 @@ class ControllerSettingSetting extends Controller {
 			$data['config_facebook'] = $this->request->post['config_facebook'];
 		} else {
 			$data['config_facebook'] = $this->config->get('config_facebook');
+		}
+		if (isset($this->request->post['config_whatsapp'])) {
+			$data['config_whatsapp'] = $this->request->post['config_whatsapp'];
+		} else {
+			$data['config_whatsapp'] = $this->config->get('config_whatsapp');
 		}
 		
 		if (isset($this->request->post['config_skype'])) {

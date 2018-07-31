@@ -166,6 +166,7 @@ class ControllerCommonFooter extends Controller {
 	// print_r($data['thispage']);exit;
 		$data['email'] = $this->config->get('config_email');
 		$data['telephone'] = $this->config->get('config_telephone');
+		$data['whatsapp'] = $this->config->get('config_whatsapp');
 		$data['skype'] = $this->config->get('config_skype');
 		$data['facebook'] = $this->config->get('config_facebook');
 

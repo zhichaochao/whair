@@ -145,6 +145,15 @@
                   <?php } ?>
                 </div>
               </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-telephone"><?php echo $entry_whatsapp; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_whatsapp" value="<?php echo $config_whatsapp; ?>" placeholder="<?php echo $config_whatsapp; ?>" id="input-telephone" class="form-control" />
+                  <?php if ($error_telephone) { ?>
+                  <div class="text-danger"><?php echo $error_telephone; ?></div>
+                  <?php } ?>
+                </div>
+              </div>
 
               <div class="form-group required">
                 <label class="col-sm-2 control-label" for="input-telephone"><?php echo $entry_facebook; ?></label>

@@ -47,6 +47,7 @@ $_['entry_address']                = 'Address';
 $_['entry_geocode']                = 'Geocode';
 $_['entry_email']                  = 'E-Mail';
 $_['entry_telephone']              = 'Telephone';
+$_['entry_whatsapp']              = 'WhatsApp';
 $_['entry_skype']                  = 'Skype';
 $_['entry_fax']                    = 'Fax';
 $_['entry_image']                  = 'Image';
