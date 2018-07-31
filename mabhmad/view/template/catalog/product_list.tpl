@@ -89,7 +89,7 @@
                   <option value="0"><?php echo $text_disabled; ?></option>
                   <?php } ?>
                 </select>
-              </div>              
+              </div>
               <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
             </div>
           </div>
@@ -227,18 +227,6 @@ $('#button-filter').on('click', function() {
   if (filter_free_postage != '*') {
     url += '&filter_free_postage=' + encodeURIComponent(filter_free_postage);
   }
-	
-	var filter_relation_product = $('input[name=\'filter_relation_product\']').val();
-    if (filter_relation_product != '*') {
-       url += '&filter_relation_product=' + encodeURIComponent(filter_relation_product);
-    }
-
-  //var filter_image = $('select[name=\'filter_image\']').val();
-//
-//  if (filter_image != '*') {
-//    url += '&filter_image=' + encodeURIComponent(filter_image);
-//  }
-
 	location = url;
 });
 //--></script>
