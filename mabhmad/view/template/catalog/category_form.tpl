@@ -82,7 +82,7 @@
             </div>
             <div class="tab-pane" id="tab-data">
             <!-- 主目录 -->
-             <!--  <div class="form-group">
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-parent"><?php echo $entry_parent; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="path" value="<?php echo $path; ?>" placeholder="<?php echo $entry_parent; ?>" id="input-parent" class="form-control" />
@@ -91,7 +91,7 @@
                   <div class="text-danger"><?php echo $error_parent; ?></div>
                   <?php } ?>
                 </div>
-              </div> -->
+              </div>
               <!-- 筛选器 -->
              <!--  <div class="form-group" style="background: red;">
                 <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
