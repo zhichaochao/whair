@@ -42,7 +42,7 @@
                     <ol class="clearfix">
                       <li><a target="_blank"  href="http://www.facebook.com/<?=$facebook;?>"><img src="/catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
                       <li><a target="_blank"  href="http://www.instagram.com/hotbeautyhairofficial"><img src="/catalog/view/theme/default/img/png/fot_2.png" alt=""></a></li>
-                      <li><a target="_blank"  href="http://api.whatsapp.com/send?phone=<?=$telephone;?>"><img src="/catalog/view/theme/default/img/png/fot_3.png" alt=""></a></li>
+                      <li><a target="_blank"  href="http://api.whatsapp.com/send?phone=<?=$whatsapp;?>"><img src="/catalog/view/theme/default/img/png/fot_3.png" alt=""></a></li>
                     </ol>
                       </li>
               </ul>
@@ -75,8 +75,8 @@
                       <h4>COMPANY INFO<div class="pic_img"><img src="/catalog/view/theme/default/img/png/jiahao_white.png" data-img='/catalog/view/theme/default/img/png/jiahao_white.png' data-imgs='/catalog/view/theme/default/img/png/jianhao_white.png'/></div></h4>
                       <div class="slide_div">
                         <ol>
-                      <li><a target="_blank" href="tel://<?=$telephone;?>"><span>Call Us:</span><?=$whatsapp;?></li></a>  
-                      <li><a target="_blank" href="whatsapp://send?phone=<?=$telephone;?>"><span>Whatsapp:</span> <?php echo $telephone; ?></a></li>
+                      <li><a target="_blank" href="tel://<?=$telephone;?>"><span>Call Us:</span><?=$telephone;?></li></a>
+                      <li><a target="_blank" href="whatsapp://send?phone=<?=$whatsapp;?>"><span>Whatsapp:</span> <?php echo $whatsapp; ?></a></li>
                       <li><a target="_blank" href="mailto:<?php echo $email; ?>"><span>Email:</span><?php echo $email; ?></a></li>
                       <li>                       
                           <a ><span><?php echo $yd_Address; ?></span><?php echo $yd_Addcont; ?></a>                  
