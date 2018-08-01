@@ -137,8 +137,11 @@ class ControllerCommonHome extends Controller {
         }
         // print_r($homes);exit();
         $data['homes']=$homes;
+        if(isset($this->session->data['choose'])){ $data['choose']=1; }else { $data['choose']=''; }
+        // print_r($data['choose']);exit;
+        // unset($this->session->data['choose']);
 
-
+        $data['choose_url']=$this->url->link('common/home/set_session', '', true);
 		$this->response->setOutput($this->load->view('common/home', $data));
 	}
     protected function get_category_path($category_id)
@@ -152,5 +155,11 @@ class ControllerCommonHome extends Controller {
             $path=$this->get_category_path($category_info['parent_id']);
             return $path."_".$category_id;
         }
+    }
+  public function set_session() {
+
+        $this->session->data['choose'] =1 ;
+        $this->response->redirect($this->url->link('common/home', '', true));
+
     }
 }

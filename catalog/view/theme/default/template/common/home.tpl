@@ -193,10 +193,62 @@
             </div>
             
         </div>
+        <?php if(!$choose){?>
+        <!--登录注册弹窗-->
+        <div class="modal img_modal">
+            <div class="text">
+                <div class="close"></div>
+                <h1>Please Choose Your Sale Rep's Name:</h1>
+                <div class="bot">
+                    <ul>
+                        <li><a href="http://o.luvmewig.com/">Rebecca</a></li>
+                        <li><a href="http://o.luvmewig.com/">Melisha</a></li>
+                        <li><a href="http://o.luvmewig.com/">Jojo</a></li>
+                        <li><a href="http://o.luvmewig.com/">Yuki</a></li>
+                        <li><a href="http://o.luvmewig.com/">Cathy</a></li>
+                        <li><a href="http://o.luvmewig.com/">Linda</a></li>
+                        <li><a href="http://o.luvmewig.com/">Manon</a></li>
+                        <li><a href="http://o.luvmewig.com">Emily</a></li>
+                        <li><a href="http://o.luvmewig.com">Edison</a></li>
+                        <li><a href="http://o.luvmewig.com">Ashely</a></li>
+                        <li><a href="http://o.luvmewig.com">Twinkle</a></li>
+                        <li><a href="http://o.luvmewig.com">Alex</a></li>
+                        <li><a href="http://o.luvmewig.com">Kristen</a></li>
+                        <li><a href="<?php echo $choose_url;?>">I dont have</a></li>
+
+                  
+                    </ul>
+                </div>
+                
+                <!--<a class="login_a" href="###"></a>-->
+            </div>
+        </div>
+        <?php }?>
         
 <?php echo $footer; ?>
 
 <script>
+
+var login_time = setTimeout(gg_show,1000);
+    function gg_show (){
+        $(".img_modal").fadeIn();
+    }
+   
+    var gb=0;   
+        //关闭登陆注册
+        $(".img_modal .close").click(function(){
+            gb=1;
+            clearTimeout(login_time);
+            $(".img_modal").fadeOut();
+        })
+        $(".img_modal .text").hover(function(){
+            clearTimeout(login_time);
+            $(".img_modal").fadeIn();
+        },function(){
+            if(gb==0){
+                gg_show ();
+            }
+        })
  
     var mySwiper = new Swiper('#swiper2', {
         autoplay: true,
@@ -230,11 +282,11 @@
             }else{
               $(".video_div .video").attr("poster","/catalog/view/theme/default/img/jpg/video_bg.jpg");
             }
-            if(win<=992){
-                $(".img_modal .text").css("background"," url(/catalog/view/theme/default/img/jpg/yd_modal.jpg) no-repeat ").css("background-size","4rem 4.5rem");
-            }else{
-                    $(".img_modal .text").css("background"," url(/catalog/view/theme/default/img/jpg/pc_modal.jpg) no-repeat ");
-            }
+            // if(win<=992){
+            //     $(".img_modal .text").css("background"," url(/catalog/view/theme/default/img/jpg/yd_modal.jpg) no-repeat ").css("background-size","4rem 4.5rem");
+            // }else{
+            //         $(".img_modal .text").css("background"," url(/catalog/view/theme/default/img/jpg/pc_modal.jpg) no-repeat ");
+            // }
         $(window).resize(function() {
             var win = $(window).width();
             if(win<=750){
@@ -242,11 +294,11 @@
             }else{
               $(".video_div .video").attr("poster","/catalog/view/theme/default/img/jpg/video_bg.jpg");
             }
-            if(win<=992){
-                $(".img_modal .text").css("background"," url(/catalog/view/theme/default/img/jpg/yd_modal.jpg) no-repeat ").css("background-size","4rem 4.5rem");
-            }else{
-                    $(".img_modal .text").css("background"," url(/catalog/view/theme/default/img/jpg/pc_modal.jpg) no-repeat ");
-            }
+            // if(win<=992){
+            //     $(".img_modal .text").css("background"," url(/catalog/view/theme/default/img/jpg/yd_modal.jpg) no-repeat ").css("background-size","4rem 4.5rem");
+            // }else{
+            //         $(".img_modal .text").css("background"," url(/catalog/view/theme/default/img/jpg/pc_modal.jpg) no-repeat ");
+            // }
         })
         
     })

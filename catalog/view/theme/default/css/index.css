@@ -23,9 +23,16 @@
 	
 	/*index图片弹窗*/
 	.img_modal{position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: transparent;display: none;}
-	.img_modal .text{position: absolute;width: 500px;height: 200px;left: 50%; margin-left: -160px;top: 50%;margin-top: -100px;}
+	.img_modal .text{position: absolute;width: 42vw;height:31.25vw;left: 50%; margin-left: -21vw;top: 50%;margin-top: -15.625vw;
+	background:#fff6f3 url(../img/png/modal_bg.png) no-repeat right bottom;background-size: 13.125vw 28.125vw;box-shadow: 0px 0px 10px 1px #ddd;}
 	.img_modal .text .close{width: 52px;height: 52px; position: absolute;right: 0px;top: 0px;cursor: pointer;
 	background: url(../img/png/close2.png) no-repeat center center;background-size: 18px 18px;}
+	.img_modal .text h1{font-size: 1.56vw;color: #333;font-weight: bold;margin: 3.65vw 2.08vw 2.9vw 2.08vw;}
+	.img_modal .text .bot{width: 26.5vw;margin-left: 2.08vw;}
+	.img_modal .text .bot ul li{width: 30%;float: left;display: inline-block;margin-right: 3.33%;margin-bottom: 1.56vw;}
+	.img_modal .text .bot ul li a{border: 1px solid #ddd;background: #fff;display: block;border-radius: 50px;color: #444;font-size: 1.25vw;text-align: center;
+	height: 2.6vw;line-height: 2.6vw;}
+	.img_modal .text .bot ul li:hover a{background: #f46479;border: 1px solid #f46479;color: #fff;}
 	.img_modal .login_a{position: absolute;bottom: 40px;width: 160px;height: 40px;left: 80px; display: block;}
 	
 	/**登陆注册**/
@@ -143,8 +150,11 @@
 	.pro_big_img .swiper-button-next,.pro_big_img  .swiper-container-rtl .swiper-button-prev{right: 20px;width: 50px;height: 50px;border-radius: 100%;
 	background: rgba(0,0,0,.5) url(../img/png/lb_rights.png) no-repeat center center;background-size: 14px 26px;}
 	.pro_det_content .top .right{float: left;padding-left: 3.64vw;}
-	.pro_det_content .top .right a{font-size: 1.66vw;color: #333;line-height: 3.33vw;padding-top: 1vw;display: block;
-	text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width: 24vw;}
+	.pro_det_content .top .right a{font-size: 1.66vw;color: #333;line-height: 2vw;display: block;width: 28vw;margin: 0.7vw 0;
+	/*text-overflow: ellipsis;white-space: nowrap;overflow: hidden;*/}
+	@media only screen and (min-width: 993px) and (max-width: 1200px) {
+		.pro_det_content .top .right a{width: 36vw;}
+	}
 	.pro_det_content .top p.price{font-family: san_r;color: #333;font-size: 1.56vw;line-height: 1.8vw;display: block;margin-bottom: 1.5vw;}
 	.pro_det_content .top p.price i{color: #ccc;text-decoration: line-through;margin-left: 0.46vw;}
 	.pro_det_content .hiar_color {margin-bottom: 1.04vw;display: inline-block;}
@@ -156,7 +166,7 @@
 	.pro_det_content .pro_det_dl dt{font-size: 0.83vw;color: #333;line-height: 1.77vw;}
 	.pro_det_content .pro_det_dl dd{width: 33.33%;display: block;float: left;height: 2.08vw;line-height: 2.08vw;
 	padding: 0 10px 0 0;box-sizing: border-box;cursor: pointer;margin-bottom: 10px;}
-	.pro_det_content .pro_det_dl dd p{background: #f5f5f5;border-radius: 50px;text-align: center;font-size: 0.72vw;}
+	.pro_det_content .pro_det_dl dd p{background: #f5f5f5;border-radius: 50px;text-align: center;font-size: 0.93vw;}
 	.pro_det_content .pro_det_dl dd p.active,
 	.pro_det_content .pro_det_dl dd p:hover{background: #d6af74 ;color: #fff;}
 	
@@ -194,8 +204,8 @@
 	background: url(../img/png/shop_star.png) no-repeat right 0.83vw center;background-size: 0.83vw;}
 	.pro_det_content .right .xyd_btn.off{background: url(../img/png/shop_star_.png) no-repeat right 0.83vw center;background-size: 0.83vw;border: 1px solid #d5af74;}
 	.pro_det_content .right .xyd_btn span{display: block;float: left;height: 2.08vw;line-height: 2.1vw;padding-left: 1.25vw;}
-	.pro_det_content .bot_text dl dt{font-size: 0.93vw;color: #000;line-height: 0.93vw;margin-bottom: 0.43vw;}
-	.pro_det_content .bot_text dl dd{font-size: 0.83vw;color: #666;line-height: 1.36vw;padding-left: 0.83vw;
+	.pro_det_content .bot_text dt{font-size: 0.93vw;color: #000;line-height: 0.93vw;margin-bottom: 0.43vw;}
+	.pro_det_content .bot_text dd{font-size: 0.83vw;color: #666;line-height: 1.36vw;padding-left: 0.83vw;
 	background: url(../img/png/yuan.png)no-repeat left center;background-size: 0.41vw 0.41vw;}
 	.pro_det_content .share span{font-size: 0.93vw;color: #333;display: block; margin-top: 1.04vw;}
 	.pro_det_content .share_ul li{width: 1.66vw;height: 1.66vw;display: block;float: left;margin: 0.83vw 0.83vw 0 0;}
@@ -214,6 +224,7 @@
 	.pro_det_content .bot .text_ol>li hr{position: absolute;bottom: 0;left: 50%;margin-left: -6.25vw; width: 12.5vw;height: 3px;border: none;background: #d5af74;display: none;}
 	.pro_det_content .bot .text_ol>li.active hr,
 	.pro_det_content .bot .text_ol>li:hover hr{display: block;}
+	.pro_det_content .bot .text_ul{margin-bottom: 20px;}
 	.pro_det_content .bot .text_ul>li{display: none;}
 	.pro_det_content .bot .text_ul>li.active{display: block;}
 	.pro_det_content .bot .text_ul>li .xxk_h1{display: none;}
@@ -1191,10 +1202,16 @@
 	
 	/*index图片弹窗*/
 	.img_modal{position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: transparent;display: none;}
-	.img_modal .text{position: absolute;width: 5rem;height: 2rem;left: 50%; margin-left: -2.5rem;top: 50%;margin-top: -1rem;
-	background: url(../img/jpg/yd_modal.jpg) no-repeat ;background-size: 4rem 4.5rem;}
+	.img_modal .text{position: absolute;width: 5rem;height:3.75rem;left: 50%; margin-left: -2.5rem;top: 50%;margin-top: -1.875rem;
+	background:#fff6f3 url(../img/png/modal_bg.png) no-repeat right bottom;background-size: 1.5rem 3.2rem;box-shadow: 0px 0px 10px 1px #ddd;}
 	.img_modal .text .close{width: 0.8rem;height: 0.8rem; position: absolute;right: 0px;top: 0px;cursor: pointer;
 	background: url(../img/png/close2.png) no-repeat center center;background-size: 0.3rem 0.3rem;}
+	.img_modal .text h1{font-size: 0.2rem;color: #333;font-weight: bold;margin: 0.3rem 0.2rem 0.2rem 0.2rem;}
+	.img_modal .text .bot{width:3.6rem;margin-left: 0.2rem;}
+	.img_modal .text .bot ul li{width: 30%;float: left;display: inline-block;margin-right: 3.33%;margin-bottom: 0.2rem;}
+	.img_modal .text .bot ul li a{border: 1px solid #ddd;background: #fff;display: block;border-radius: 50px;color: #444;font-size: 0.16rem;text-align: center;
+	height: 0.36rem;line-height: 0.36rem;}
+	.img_modal .text .bot ul li:hover a{background: #f46479;border: 1px solid #f46479;color: #fff;}
 	.img_modal .login_a{position: absolute;bottom: 0.4rem;width: 2rem;height: 0.5rem;left:1rem; display: block;}
 	
 	/**登陆注册yd**/
@@ -1336,8 +1353,8 @@
 	.pro_det_content .top .bot_text{border-top: 0.2rem solid #f5f5f5; padding: 0 0.4rem;}
 	.pro_det_content .top .text_p2{margin-top: 0.4rem;color: #666;font-size: 0.2rem !important;margin-bottom: 0.2rem;}
 	.pro_det_content .top .text_p2 span{clear: both;width: 100%;display: block;}
-	.pro_det_content .bot_text dl dt{font-family: san_n; font-size: 0.26rem;color: #000;line-height: 0.3rem;margin-bottom: 0.1rem;}
-	.pro_det_content .bot_text dl dd{font-size: 0.2rem;color: #666;line-height: 0.3rem;padding-left: 0.2rem;
+	.pro_det_content .bot_text dt{font-family: san_n; font-size: 0.26rem;color: #000;line-height: 0.3rem;margin-bottom: 0.1rem;}
+	.pro_det_content .bot_text dd{font-size: 0.2rem;color: #666;line-height: 0.3rem;padding-left: 0.2rem;
 	background: url(../img/png/yuan.png)no-repeat left center;background-size: 0.1rem 0.1rem;}
 	.pro_det_content .share{padding: 0.15rem 0 0.3rem 0;}
 	.pro_det_content .share span{font-family: san_m; font-size: 0.26rem;color: #333;display: block; float: left;
