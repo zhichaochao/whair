@@ -490,13 +490,13 @@ class ControllerCommonColumnLeft extends Controller {
 			}
 
 			//Import Products  dyl add
-			if ($this->user->hasPermission('access', 'tool/import_xls')) {
-				$system[] = array(
-					'name'	   => 'Import Products',
-					'href'     => $this->url->link('tool/import_xls', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'tool/import_xls')) {
+			// 	$system[] = array(
+			// 		'name'	   => 'Import Products',
+			// 		'href'     => $this->url->link('tool/import_xls', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 			//Import Products,end
 
 			// Users

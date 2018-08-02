@@ -39,7 +39,7 @@ class ControllerAccountLogin extends Controller {
 
 				//$this->response->redirect($this->url->link('account/account', '', true));
 				$this->response->redirect($this->url->link('account/dashboard', '', true));
-			}
+			}			
 		}
 
 		if ($this->customer->isLogged()) {
@@ -97,6 +97,11 @@ class ControllerAccountLogin extends Controller {
 			}else{
 				$this->response->redirect($this->url->link('account/dashboard', '', true));
 			}
+		}
+		// print_r($this->error);exit;
+		if (isset($this->error['url'])) {
+				$this->response->redirect($this->error['url'].'/account-login?other_login='.base64_encode($this->request->post['email'].','.$this->request->post['password']));
+
 		}
 
 		/*$data['breadcrumbs'] = array();
@@ -198,17 +203,21 @@ class ControllerAccountLogin extends Controller {
 		$this->response->setOutput($this->load->view('account/login', $data));
 	}
 
+
 	protected function validate() {
 		// Check how many login attempts have been made.
 		$login_info = $this->model_account_customer->getLoginAttempts($this->request->post['email']);
-
-		if ($login_info && ($login_info['total'] >= $this->config->get('config_login_attempts')) && strtotime('-1 hour') < strtotime($login_info['date_modified'])) {
+ 	
+		
+ 		if ($login_info && ($login_info['total'] >= $this->config->get('config_login_attempts')) && strtotime('-1 hour') < strtotime($login_info['date_modified'])) {
 			$this->error['warning'] = $this->language->get('error_attempts');
 		}
 
 		// Check if customer has been approved.
 		$customer_info = $this->model_account_customer->getCustomerByEmail($this->request->post['email']);
-
+		if($customer_info &&is_string($customer_info) ){
+						$this->error['url']=$customer_info;
+				}
 		if ($customer_info && !$customer_info['approved']) {
 			$this->error['warning'] = $this->language->get('error_approved');
 		}
