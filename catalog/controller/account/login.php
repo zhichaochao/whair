@@ -100,8 +100,8 @@ class ControllerAccountLogin extends Controller {
 		}
 		// print_r($this->error);exit;
 		if (isset($this->error['url'])) {
-				$this->response->redirect($this->error['url'].'/account-login?other_login='.base64_encode($this->request->post['email'].','.$this->request->post['password']));
-
+				$this->response->redirect($this->error['url'].'/account-login?other_login='. base64_encode($this->request->post['email'].','.$this->request->post['password']));
+ 				
 		}
 
 		/*$data['breadcrumbs'] = array();

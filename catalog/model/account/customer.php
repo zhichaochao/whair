@@ -190,9 +190,20 @@ class ModelAccountCustomer extends Model {
 	}
 
 	public function getTotalCustomersByEmail($email) {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer WHERE LOWER(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
+		$sql="SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer WHERE LOWER(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'";
+		$query = $this->db->query($sql);
+		$count=$query->row['total'];
+		if($count<1){
+			$dbs= unserialize($this->config->get('db_database_data'));
+				unset($dbs[0]);
+			foreach ($dbs as $key => $value) {
+				$p=$this->$d->query($sql);
+				$count+=$p->row['total'];
 
-		return $query->row['total'];
+			}
+		}
+
+		return $count;
 	}
 
 	public function getRewardTotal($customer_id) {

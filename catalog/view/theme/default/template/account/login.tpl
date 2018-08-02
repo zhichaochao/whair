@@ -7,10 +7,6 @@
   <?php if ($success) { ?>
   <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div>
   <?php } ?>
-  <?php if ($error_warning) { ?>
-  <div class="alert alert-danger" id="danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
-  <?php } ?>
-<!-- 底部新 -->
 <div class="login in_content clearfix">
       <div class="text clearfix">
         <div class="top">
@@ -139,7 +135,7 @@ $(document).delegate('#button-register', 'click', function() {
               }
               if(json['error']['email']){
                $('#erroremail').show().html( json['error']['email'] );
-              }
+              } 
               if(json['error']['password']){
                $('#errorpassword').show().html( json['error']['password'] );
               }
@@ -147,6 +143,9 @@ $(document).delegate('#button-register', 'click', function() {
                $('#errorconfirm').show().html( json['error']['confirm'] );
               }
             } else{
+               if(json['error']['warning']){
+               $('#erroremail').show().html( json['error']['warning'] );
+              }
                $(".zzc_li").css("display","none");
               $("div").removeClass("hidden");
             }   
