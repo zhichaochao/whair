@@ -197,7 +197,7 @@ class ModelAccountCustomer extends Model {
 			$dbs= unserialize($this->config->get('db_database_data'));
 				unset($dbs[0]);
 			foreach ($dbs as $key => $value) {
-				$p=$this->$d->query($sql);
+				$p=$this->$db->query($sql);
 				$count+=$p->row['total'];
 
 			}
