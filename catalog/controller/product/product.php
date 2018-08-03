@@ -314,6 +314,18 @@ class ControllerProductProduct extends Controller {
                 $data['name'] = '';
             }
 
+           
+            //print_r($_SERVER["REQUEST_URI"]);exit();
+            $this->session->data['userurl'] = $_SERVER["REQUEST_URI"];
+            if(!$this->customer->isLogged()){
+             $this->session->data['redirect'] = $this->url->link($this->session->data['userurl']);
+             unset($this->session->data['userurl']);
+         }else{
+        
+
+                $data['logins']=1;               
+            }
+             $data['login'] = $this->url->link('account/login');
             if (isset($this->request->post['email'])) {
                 $data['email'] = $this->request->post['email'];
             } else {
