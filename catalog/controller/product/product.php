@@ -316,15 +316,22 @@ class ControllerProductProduct extends Controller {
 
            
             //print_r($_SERVER["REQUEST_URI"]);exit();
-            $this->session->data['userurl'] = $_SERVER["REQUEST_URI"];
+            //print_r($this->session->data['userurl']);exit;
             if(!$this->customer->isLogged()){
-             $this->session->data['redirect'] = $this->url->link($this->session->data['userurl']);
-             unset($this->session->data['userurl']);
+
+                if ($_SERVER['HTTPS']) {
+                $this->session->data['redirect']='https://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+                
+            }else{
+                $this->session->data['redirect']='http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+            }
+            
+            
          }else{
-        
 
                 $data['logins']=1;               
             }
+            // print_r(  $this->session->data['userurl']);exit;
              $data['login'] = $this->url->link('account/login');
             if (isset($this->request->post['email'])) {
                 $data['email'] = $this->request->post['email'];
