@@ -253,7 +253,7 @@ class ModelCustomerAllcustomer extends Model {
 		return $address_data;
 	}
 
-	public function getTotalCustomers($data = array()) {
+	public function getTotalCustomers($data = array(),$key) {
 		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer";
 
 		$implode = array();
@@ -293,8 +293,14 @@ class ModelCustomerAllcustomer extends Model {
 		if ($implode) {
 			$sql .= " WHERE " . implode(" AND ", $implode);
 		}
+		if ($key>0) {
+				$d='db'.$key;
+		$query = $this->$d->query($sql);
+		}else{
+				$query = $this->db->query($sql);
+		}
 
-		$query = $this->db->query($sql);
+		//$query = $this->db->query($sql);
 
 		return $query->row['total'];
 	}

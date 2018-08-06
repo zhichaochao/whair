@@ -209,7 +209,7 @@
   <script type="text/javascript"><!--
 
 $('#button-filter').on('click', function() {
-	url = 'index.php?route=customer/customer&token=<?php echo $token; ?>';
+	url = 'index.php?route=customer/allcustomer&token=<?php echo $token; ?>&key=<?php echo $key; ?>';
 	
 	var filter_name = $('input[name=\'filter_name\']').val();
 	

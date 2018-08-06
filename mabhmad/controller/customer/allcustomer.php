@@ -318,7 +318,7 @@ class ControllerCustomerAllcustomer extends Controller {
 			'limit'                    => $this->config->get('config_limit_admin')
 		);
 
-		$customer_total = $this->model_customer_allcustomer->getTotalCustomers($filter_data);
+		
 		$dbs= unserialize($this->config->get('db_database_data'));
 		foreach ($dbs as $key => $value) {
 			$data['url_cust'][]=array(
@@ -336,6 +336,8 @@ class ControllerCustomerAllcustomer extends Controller {
 			$key=0;
 			$results = $this->model_customer_allcustomer->getCustomers($filter_data,0);
 		}
+		$customer_total = $this->model_customer_allcustomer->getTotalCustomers($filter_data,$key);
+		//print_r($customer_total);exit;
 		//$results = $this->model_customer_customer->getCustomers($filter_data,$key);
 		foreach ($results as $result) {
 			if (!$result['approved']) {
@@ -464,13 +466,13 @@ class ControllerCustomerAllcustomer extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['url_key'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token']  . $url, true);
-		$data['sort_name'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] . '&sort=name' . $url, true);
-		$data['sort_email'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] . '&sort=c.email' . $url, true);
-		$data['sort_customer_group'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] . '&sort=customer_group' . $url, true);
-		$data['sort_status'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] . '&sort=c.status' . $url, true);
-		$data['sort_ip'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] . '&sort=c.ip' . $url, true);
-		$data['sort_date_added'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] . '&sort=c.date_added' . $url, true);
+		$data['url_key'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] .'&key='.$key . $url, true);
+		$data['sort_name'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] .'&key='.$key. '&sort=name' . $url, true);
+		$data['sort_email'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] .'&key='.$key. '&sort=c.email' . $url, true);
+		$data['sort_customer_group'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'].'&key='.$key . '&sort=customer_group' . $url, true);
+		$data['sort_status'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] .'&key='.$key. '&sort=c.status' . $url, true);
+		$data['sort_ip'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'].'&key='.$key . '&sort=c.ip' . $url, true);
+		$data['sort_date_added'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] .'&key='.$key. '&sort=c.date_added' . $url, true);
 
 		$url = '';
 
@@ -514,7 +516,7 @@ class ControllerCustomerAllcustomer extends Controller {
 		$pagination->total = $customer_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
+		$pagination->url = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] .'&key='.$key. $url . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
