@@ -27,6 +27,8 @@ $_['column_action']         = '操作';
 // Entry
 $_['entry_customer_group']  = '用户等级';
 $_['entry_firstname']       = '姓名';
+$_['entry_firstnames']       = '原网站';
+$_['entry_customer_groups']  = '转移到';
 $_['entry_lastname']        = '姓氏';
 $_['entry_email']           = 'E-Mail';
 $_['entry_telephone']       = '电话';
