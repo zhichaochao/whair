@@ -628,7 +628,7 @@ class ControllerCustomerAllcustomer extends Controller {
 			$data['action'] = $this->url->link('customer/allcustomer/edit', 'token=' . $this->session->data['token'] .'&key='.$key.'&customer_id=' . $this->request->get['customer_id'] . $url, true);
 		}
 
-		$data['cancel'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] . $url, true);
+		$data['cancel'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] .'&key='.$key. $url, true);
 
 		
 
