@@ -457,9 +457,9 @@ class ControllerCustomerAllcustomer extends Controller {
 		}
 
 		if ($order == 'ASC') {
-			$url .= '&order=DESC';
-		} else {
 			$url .= '&order=ASC';
+		} else {
+			$url .= '&order=DESC';
 		}
 
 		if (isset($this->request->get['page'])) {
