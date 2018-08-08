@@ -16,7 +16,8 @@
                         <?php if($fast['link']){?>
                         <a href="<?=$fast['link'];?>">
                             <div class="pic clearfix">
-                                <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>" src="<?=$fast['image'];?>" />
+                                <!-- <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>" src="<?=$fast['image'];?>" /> -->
+                                <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>"  />
                             </div>
                             <div class="text">
                                 <h2><?=$fast['title'];?></h2>
@@ -25,7 +26,7 @@
                         </a>
                         <?php }else{?>
                         <div class="pic clearfix">
-                                <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>" src="<?=$fast['image'];?>"  />
+                                 <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>" />
                             </div>
                             <div class="text">
                                 <h2><?=$fast['title'];?></h2>
@@ -55,7 +56,7 @@
                     <li>
                         <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>" data-mimage="<?=$val['image'];?>"  />
+                                <img class="changeimage" data-image="<?=$val['image'];?>"  data-mimage="<?=$val['image'];?>"  />
                                 <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
@@ -74,7 +75,7 @@
                         <h1><?=$homes[1]['title'];?></h1>
                         <a href="<?=$homes[1]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top2_img changeimage" data-image="<?=$homes[1]['image'];?>" src="<?=$homes[1]['image'];?>" data-mimage="<?=$homes[1]['mimage'];?>"  />
+                    <img class="top2_img changeimage" data-image="<?=$homes[1]['image'];?>"  data-mimage="<?=$homes[1]['mimage'];?>"  />
                     
                 </div>
                     <?php if(isset($homes[1]['child'])){ ?>
@@ -83,7 +84,7 @@
                     <li>
                         <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['image'];?>"  />
+                                <img class="changeimage" data-image="<?=$val['image'];?>"   data-mimage="<?=$val['image'];?>"  />
                                 <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
@@ -101,7 +102,7 @@
                         <h1><?=$homes[2]['title'];?></h1>
                         <a href="<?=$homes[2]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top3_img changeimage" data-image="<?=$homes[2]['image'];?>" src="<?=$homes[2]['image'];?>" data-mimage="<?=$homes[2]['mimage'];?>"  />
+                    <img class="top3_img changeimage" data-image="<?=$homes[2]['image'];?>"  data-mimage="<?=$homes[2]['mimage'];?>"  />
                 </div>
                     <?php if(isset($homes[2]['child'])){ ?>
                 <ol class="ol_img4 ol_img clearfix">
@@ -109,7 +110,7 @@
                     <li>
                        <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['image'];?>"  />
+                                <img class="changeimage" data-image="<?=$val['image'];?>"   data-mimage="<?=$val['image'];?>"  />
                                  <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
@@ -133,7 +134,7 @@
                     <div class="bt2">
                         <a href="<?=$homes[3]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
-                    <img class="top4_img changeimage" data-image="<?=$homes[3]['image'];?>" src="<?=$homes[3]['image'];?>" data-mimage="<?=$homes[3]['mimage'];?>"  />
+                    <img class="top4_img changeimage" data-image="<?=$homes[3]['image'];?>" " data-mimage="<?=$homes[3]['mimage'];?>"  />
                 </div>
                    <?php if(isset($homes[3]['child'])){ ?>
                 <ol class="ol_img5 ol_img clearfix">
@@ -141,7 +142,7 @@
                     <li>
                        <a href="<?=$val['url'];?>">
                             <div class="pic">
-                                <img class="changeimage" data-image="<?=$val['image'];?>" src="<?=$val['image'];?>"  data-mimage="<?=$val['image'];?>" />
+                                <img class="changeimage" data-image="<?=$val['image'];?>"   data-mimage="<?=$val['image'];?>" />
                               <p><?=$val['name'];?></p>
                             </div>
                             <div class="text">
