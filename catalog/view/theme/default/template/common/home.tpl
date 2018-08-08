@@ -71,7 +71,7 @@
                   <?php if(isset($homes[1])){ ?>   
                 <div class="top top2 clearfix">
                     <div class="bt2">
-                        <h1><?=$homes[1]['category']['name'];?></h1>
+                        <h1><?=$homes[1]['title'];?></h1>
                         <a href="<?=$homes[1]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
                     <img class="top2_img changeimage" data-image="<?=$homes[1]['image'];?>" src="<?=$homes[1]['image'];?>" data-mimage="<?=$homes[1]['mimage'];?>"  />
@@ -98,7 +98,7 @@
                <?php if(isset($homes[2])){ ?>   
                 <div class="top top3 clearfix">
                     <div class="bt2">
-                        <h1><?=$homes[2]['category']['name'];?></h1>
+                        <h1><?=$homes[2]['title'];?></h1>
                         <a href="<?=$homes[2]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
                     <img class="top3_img changeimage" data-image="<?=$homes[2]['image'];?>" src="<?=$homes[2]['image'];?>" data-mimage="<?=$homes[2]['mimage'];?>"  />

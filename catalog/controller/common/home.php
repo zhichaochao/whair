@@ -92,8 +92,14 @@ class ControllerCommonHome extends Controller {
           $homes=$this->model_common_home->getHomePages();
         if ($homes) {
           foreach ($homes as $key => $value) {
-              $homes[$key]['image']= $this->model_tool_image->resize($value['image'], 1040, 560);
+            if($key==3){
+                 $homes[$key]['image']= $this->model_tool_image->resize($value['image'], 1537, 600);   
+            }else{
+                $homes[$key]['image']= $this->model_tool_image->resize($value['image'], 1040, 560);
+            }
+              
               $homes[$key]['mimage']= $this->model_tool_image->resize($value['mimage'], 710, 400);
+              $homes[$key]['title']= $value['title'];
                 $homes[$key]['category']= $this->model_catalog_category->getCategory($value['category_id']);
                 $category_path=$this->get_category_path($value['category_id']);
               $homes[$key]['category_url']=$this->url->link('product/category', 'path=' .$category_path);
