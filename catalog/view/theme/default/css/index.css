@@ -205,7 +205,7 @@
 	.pro_det_content .right .xyd_btn.off{background: url(../img/png/shop_star_.png) no-repeat right 0.83vw center;background-size: 0.83vw;border: 1px solid #d5af74;}
 	.pro_det_content .right .xyd_btn span{display: block;float: left;height: 2.08vw;line-height: 2.1vw;padding-left: 1.25vw;}
 	.pro_det_content .bot_text dt{font-size: 0.93vw;color: #000;line-height: 0.93vw;margin-bottom: 0.43vw;}
-	.pro_det_content .bot_text dd{font-size: 0.83vw;color: #666;line-height: 1.36vw;padding-left: 0.83vw;
+	.pro_det_content .bot_text dd{font-size: 0.83vw !important;color: #666;line-height: 1.36vw;padding-left: 0.83vw;
 	background: url(../img/png/yuan.png)no-repeat left center;background-size: 0.41vw 0.41vw;}
 	.pro_det_content .share span{font-size: 0.93vw;color: #333;display: block; margin-top: 1.04vw;}
 	.pro_det_content .share_ul li{width: 1.66vw;height: 1.66vw;display: block;float: left;margin: 0.83vw 0.83vw 0 0;}
@@ -2321,7 +2321,7 @@
 	.bt2 a.a_btn{font-family: san_r;font-size: 1.04vw;color: #333;border: 1px solid #333;border-radius: 50px;box-sizing: border-box;
 	display: block;width: 12.5vw;height: 2.91vw;line-height: 2.91vw;text-align: center;margin:5.62vw auto 0 auto;}
 	.bt2 a.a_btn:hover{background: #d5af74;border: 1px solid #d5af74;color: #fff;}	
-	.video_div{position: relative;float: right;height: 28.7vw;width: 53.1vw;}
+	.video_div{position: relative;float: right;height: 28.7vw;width: 53vw;}
 	.video_div .bg_div{width: 100%;height: 100%;position: absolute;top: 0;left: 0;
 	 background: rgba(0,0,0,.5) url(../img/png/video_bf.png) no-repeat center center;}
 	.index_text .video{width: 100%;height: 100%;}
@@ -2345,7 +2345,7 @@
 	
 	
 	.index_text .top2 .bt2{float: right;background: url(../img/png/orn-right.png) no-repeat right top;background-size: 0.42vw 2.08vw;}
-	.index_text .top2 img{display: block;float: left;width: 53.1vw;}
+	.index_text .top2 img{display: block;float: left;width: 53vw;}
 	.ol_img3{margin: 0 -0.83vw;}
 	.ol_img3 li{width: 25%;padding: 0 0.83vw;float: left;}
 	
