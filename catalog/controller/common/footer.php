@@ -40,8 +40,8 @@ class ControllerCommonFooter extends Controller {
 							'url'=>$this->url->link('information/information','information_id=2'),
 							),
 						2=>array(
-							'title'=>'Privacy Policy',
-							'url'=>$this->url->link('information/information','information_id=6'),
+							'title'=>'Terms & Conditions',
+							'url'=>$this->url->link('information/information','information_id=5'),
 
 							),
 						3=>array(
