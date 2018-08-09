@@ -18,6 +18,7 @@ $_['column_action']          = '操作';
 $_['entry_title']            = '简介标题';
 $_['entry_description']      = '描述';
 $_['entry_store']            = '商店';
+$_['entry_vedio']            = '关联视频';
 $_['entry_meta_title'] 	     = 'Meta 标签标题';
 $_['entry_meta_keyword'] 	 = 'Meta 标记关键字';
 $_['entry_meta_description'] = 'Meta 标签说明';

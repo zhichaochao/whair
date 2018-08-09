@@ -152,7 +152,21 @@ class ControllerInformationProfile extends Controller {
 				$this->load->language('information/profile');
 				$this->document->setTitle($this->language->get('heading_title'));
 				$profile_info=$this->model_catalog_profile->getProfile($this->request->get['profile_id']);
-				//print_r($profile_info);exit;
+				if ($profile_info['video_ids']) {
+						$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+					$videos=$this->model_catalog_profile->getProfileVideos($profile_info['video_ids']);
+					// print_r($videos);exit();
+					foreach ($videos as $key => $value) {
+							$videos[$key]['video']=$http_type . $_SERVER['HTTP_HOST']. $value['video'];
+							$videos[$key]['title']=$value['title'];
+							$videos[$key]['image']=$this->model_tool_image->resize($value['image'],380,215);
+					}
+					$data['videos']=$videos;
+				}else{
+					$data['videos']=array();
+				}
+				
+				// print_r($data['videos']);exit;
 				$this->model_catalog_profile->updateProfileView($this->request->get['profile_id']);
 				$data['author']=$profile_info['author'];
 				$data['view']=$profile_info['view'];

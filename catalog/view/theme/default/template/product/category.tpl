@@ -6,6 +6,7 @@
       <div class="pro_content clearfix">
         <div class="top clearfix">
           <h1><?php echo $heading_title; ?> [<span><?php echo $product_total; ?></span>]</h1>
+          <div class="s_page"><?php echo $pagination; ?></div>
           <span class="sortby"><span>+</span> SORT BY</span>
           <ol class="sortby_ol">
             <li><a href="<?php echo $sort_sort_rating?>">Best selling</a></li>

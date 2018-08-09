@@ -301,6 +301,7 @@ class ControllerCatalogProfile extends Controller {
 		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
 		$data['entry_keyword'] = $this->language->get('entry_keyword');
 		$data['entry_store'] = $this->language->get('entry_store');
+		$data['entry_vedio'] = $this->language->get('entry_vedio');
 		$data['entry_bottom'] = $this->language->get('entry_bottom');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$data['entry_status'] = $this->language->get('entry_status');
@@ -420,6 +421,17 @@ class ControllerCatalogProfile extends Controller {
 			$data['profile_store'] = $this->model_catalog_profile->getProfileStores($this->request->get['profile_id']);
 		} else {
 			$data['profile_store'] = array(0);
+		}
+	$this->load->model('catalog/video');
+		$data['videos'] = $this->model_catalog_video->getVideos();
+		// print_r($data['videos']);exit();
+
+		if (isset($this->request->post['profile_video'])) {
+			$data['profile_video'] = $this->request->post['profile_video'];
+		} elseif (isset($this->request->get['profile_id'])) {
+			$data['profile_video'] = explode(',', $profile_info['video_ids']);
+		} else {
+			$data['profile_video'] = array(0);
 		}
 
 		if (isset($this->request->post['keyword'])) {

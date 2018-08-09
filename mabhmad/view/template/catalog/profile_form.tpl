@@ -115,6 +115,27 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_vedio; ?></label>
+                <div class="col-sm-10">
+                  <div class="well well-sm" style="height: 150px; overflow: auto;">
+                 
+                    <?php foreach ($videos as $video) { ?>
+                    <div class="checkbox">
+                      <label>
+                        <?php if (in_array($video['video_id'], $profile_video)) { ?>
+                        <input type="checkbox" name="profile_video[]" value="<?php echo $video['video_id']; ?>" checked="checked" />
+                        <?php echo $video['title']; ?>
+                        <?php } else { ?>
+                        <input type="checkbox" name="profile_video[]" value="<?php echo $video['video_id']; ?>" />
+                        <?php echo $video['title']; ?>
+                        <?php } ?>
+                      </label>
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
               <!-- 父类下拉框 -->
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-parent"><?php echo $entry_parent; ?></label>

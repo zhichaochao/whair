@@ -18,6 +18,7 @@ $_['column_action']          = 'Action';
 $_['entry_title']            = 'Information title';
 $_['entry_description']      = 'Describe';
 $_['entry_store']            = 'Store';
+$_['entry_vedio']            = 'video';
 $_['entry_meta_title'] 	     = 'Meta label title';
 $_['entry_meta_keyword'] 	 = 'Meta markup key';
 $_['entry_meta_description'] = 'Meta label description';

@@ -35,6 +35,10 @@ class ModelCatalogProfile extends Model {
 
 
 
+public function getProfileVideos($video_ids) {
+	$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "video i LEFT JOIN " . DB_PREFIX . "video_description id ON (i.video_id = id.video_id) WHERE i.video_id in (".$video_ids.") AND id.language_id = '" . (int)$this->config->get('config_language_id') . "'" );
+	return $query->rows;
+}
 public function getVideos($filter_data) {
 	if(!empty($filter_data['limit'])){
 		$limit='';
