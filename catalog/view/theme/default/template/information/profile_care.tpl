@@ -25,12 +25,12 @@
           </div>
           <?=$description;?>
           <?php if($videos){ ?>
-          <div class="text5">
+          <div class="text5 new_video">
           <ul class="video_ul clearfix">
             <?php   foreach ($videos as $key => $value) {?>
               <li>
-                <video src="<?=$value['video'];?>" poster="<?=$value['title'];?>"></video>
-                <img class="bf" src="<?=$value['title'];?>">
+                <video src="<?=$value['video'];?>" poster="<?=$value['image'];?>"></video>
+                <img class="bf" src="/catalog/view/theme/default/img/png/bf.png">
               </li>
             <?php } ?>
             </ul></div>
@@ -40,6 +40,13 @@
     </div>
 <?php echo $footer; ?>
 <script type="text/javascript">
+    $(function(){
+    $(".video_ul li img.bf").click(function(){
+      $(this).siblings("video").attr("controls","controls");
+      this.previousElementSibling.play();
+      $(this).css("display","none");
+    })
+  })
 function popupwindow(url, title, w, h) {
             wLeft = window.screenLeft ? window.screenLeft : window.screenX;
             wTop = window.screenTop ? window.screenTop : window.screenY;
