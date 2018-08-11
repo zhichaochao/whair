@@ -1,7 +1,20 @@
 <?php
 class ModelDesignHome extends Model {
+	private function querysql($sql)
+	{
+		$dbs= unserialize($this->config->get('db_database_data'));
+		foreach ($dbs as $key => $value) {
+			if($key==0){
+				$this->db->query($sql);
+			}else{
+				$d='db'.$key;
+				$this->$d->query($sql);
+			}
+		}
+		
+	}
 	public function addHome($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "home_page SET  video= '" . $this->db->escape($data['video']) . "',mimage= '" . $this->db->escape($data['mimage']) . "',title= '" . $this->db->escape($data['title']) . "',link= '" . $this->db->escape($data['link']) . "',image= '" . $this->db->escape($data['image']) . "', path= '" . $this->db->escape($data['path']) . "',  category_id = '" . (int)$data['category_id'] . "',  floor = '" . (int)$data['floor'] . "'");
+		$this->querysql("INSERT INTO " . DB_PREFIX . "home_page SET  video= '" . $this->db->escape($data['video']) . "',mimage= '" . $this->db->escape($data['mimage']) . "',title= '" . $this->db->escape($data['title']) . "',link= '" . $this->db->escape($data['link']) . "',image= '" . $this->db->escape($data['image']) . "', path= '" . $this->db->escape($data['path']) . "',  category_id = '" . (int)$data['category_id'] . "',  floor = '" . (int)$data['floor'] . "'");
 
 		$home_id = $this->db->getLastId();
 
@@ -12,14 +25,14 @@ class ModelDesignHome extends Model {
 
 	public function editHome($home_id, $data) {
 		// print_r($data);exit();
-		$this->db->query("UPDATE " . DB_PREFIX . "home_page SET  video= '" . $this->db->escape($data['video']) . "',title= '" . $this->db->escape($data['title']) . "',link= '" . $this->db->escape($data['link']) . "',mimage= '" . $this->db->escape($data['mimage']) . "',image= '" . $this->db->escape($data['image']) . "',path= '" . $this->db->escape($data['path']) . "',  category_id = '" . (int)$data['category_id'] . "',  floor = '" . (int)$data['floor'] . "' WHERE home_id = '" . (int)$home_id . "'");
+		$this->querysql("UPDATE " . DB_PREFIX . "home_page SET  video= '" . $this->db->escape($data['video']) . "',title= '" . $this->db->escape($data['title']) . "',link= '" . $this->db->escape($data['link']) . "',mimage= '" . $this->db->escape($data['mimage']) . "',image= '" . $this->db->escape($data['image']) . "',path= '" . $this->db->escape($data['path']) . "',  category_id = '" . (int)$data['category_id'] . "',  floor = '" . (int)$data['floor'] . "' WHERE home_id = '" . (int)$home_id . "'");
 
 
 		
 	}
 
 	public function deleteHome($home_id) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "home_page WHERE home_id = '" . (int)$home_id . "'");
+		$this->querysql("DELETE FROM " . DB_PREFIX . "home_page WHERE home_id = '" . (int)$home_id . "'");
 	}
 
 	public function getHome($home_id) {

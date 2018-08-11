@@ -57,7 +57,6 @@ class ControllerCommonHome extends Controller {
         $this->load->model('catalog/product');
         //首页推荐商品
         $recommend_products = $this->model_catalog_product->getRecommendProducts();
-        // print_r($recommend_products);exit();
         $i = 0;
         foreach($recommend_products as $key=>$row){
         	$recommend_products[$key]['key_id'] = $i;   //作为索引值 dyl add
@@ -86,7 +85,6 @@ class ControllerCommonHome extends Controller {
              $gallerys[$key]['image']= $this->model_tool_image->resize($value['image'], 241, 241);
         }
           $data['gallerys'] =$gallerys;
-           // print_r($gallerys);exit();
 
         $this->load->model('common/home');
           $homes=$this->model_common_home->getHomePages();
@@ -141,10 +139,8 @@ class ControllerCommonHome extends Controller {
 
           }
         }
-        // print_r($homes);exit();
         $data['homes']=$homes;
         if(isset($this->session->data['choose'])){ $data['choose']=1; }else { $data['choose']=''; }
-        // print_r($data['choose']);exit;
         // unset($this->session->data['choose']);
 
         $data['choose_url']=$this->url->link('common/home/set_session', '', true);
