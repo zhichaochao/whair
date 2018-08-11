@@ -195,12 +195,12 @@
               <!-- end 显示PC端home页面的属性标题 -->
 
               <!-- start M端前台首页显示分类图片 -->
-           <!--    <div class="form-group">
+              <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_m_image; ?></label>
                 <div class="col-sm-10"><a href="" id="m-thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $m_thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
                   <input type="hidden" name="m_image" value="<?php echo $m_image; ?>" id="input-m-image" />
                 </div>
-              </div> -->
+              </div>
               <!-- end M端前台首页显示分类图片 -->
               <!-- start 是否在M端前台home页面显示 -->
              <!--  <div class="form-group">

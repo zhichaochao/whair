@@ -80,22 +80,10 @@ class ModelCatalogCategory extends Model {
      * @author  dyl  783973660@qq.com  2016.9.18
      * @param   Int  $category_id   类别ID
      */
-	public function getCategoryImage($category_id) {
-		/*$sql = "SELECT category_id,image,parent_id FROM " . DB_PREFIX . "category
-				WHERE category_id = '" . (int)$category_id . "' AND status = '1'";
-		$query = $this->db->query($sql);
-
-		if($query->row['parent_id'] > 0){       //属于子类,再根据父类ID去查询图片
-           $sql = "SELECT image FROM " . DB_PREFIX . "category
-				   WHERE category_id = " . (int)$query->row['parent_id'] . " AND status = 1";
-		   $query = $this->db->query($sql);
-		}*/
-
-		$sql = "SELECT image FROM " . DB_PREFIX . "category
-				WHERE category_id = '" . (int)$category_id . "' AND status = '1'";
-		$query = $this->db->query($sql);
-
-		return $query->row;
+	public function getCategoryImage($parent_id = 0) {
+		//$sql = ;
+		$query = $this->db->query("SELECT i.category_id,i.m_image,id.name FROM " . DB_PREFIX . "category i LEFT JOIN " . DB_PREFIX . "category_description id ON (i.category_id = id.category_id) WHERE i.parent_id != '" . (int)$parent_id . "'");
+		return $query;
 	}
 
 
