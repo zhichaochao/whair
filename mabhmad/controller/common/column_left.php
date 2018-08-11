@@ -401,7 +401,7 @@ class ControllerCommonColumnLeft extends Controller {
 			if ($this->user->hasPermission('access', 'customer/customer')) {
 				$customer[] = array(
 					'name'	   => $this->language->get('text_allcustomer'),
-					'href'     => $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'], true),
+					'href'     => $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'].'&key=0', true),
 					'children' => array()
 				);
 			}
