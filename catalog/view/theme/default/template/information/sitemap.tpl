@@ -25,14 +25,14 @@
             <dd><a href="<?php echo $category_1['href']; ?>"><i><?php echo $category_1['name']; ?></i></a>
               <?php if ($category_1['children']) { ?>
                 <?php foreach ($category_1['children'] as $category_2) { ?>
-                <dd><a href="<?php echo $category_2['href']; ?>"><i><?php echo $category_2['name']; ?></i></a>
+              <div class="text">  
+                <a href="<?php echo $category_2['href']; ?>"><i>><?php echo $category_2['name']; ?></i></a>
                   <?php if ($category_2['children']) { ?>
-                  <ul>
                     <?php foreach ($category_2['children'] as $category_3) { ?>
-                    <dd><a href="<?php echo $category_3['href']; ?>"><i><?php echo $category_3['name']; ?></i></a></dd>
+                   <a href="<?php echo $category_3['href']; ?>"><i><?php echo $category_3['name']; ?></i></a>
                     <?php } ?>
                   <?php } ?>
-                </dd>
+                </div>
                 <?php } ?>
               <?php } ?>
             </dd>

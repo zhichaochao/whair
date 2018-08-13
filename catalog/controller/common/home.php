@@ -17,9 +17,9 @@ class ControllerCommonHome extends Controller {
 
         //banner轮播图
         $setting_info = array("name"=>"Home Page", "banner_id"=>1, "width"=>1536, "height"=>720, "mwidth"=>710,  "mheight"=>480, "status"=>1 );
-        // print_r( $setting_info);exit();
+        
 		$data['slideshow'] = $this->load->controller('extension/module/slideshow',$setting_info);
-        // print_r($data['slideshow']);exit();
+        
 
         //读取首页的中间图片
 		$this->load->model('design/banner');
@@ -44,7 +44,7 @@ class ControllerCommonHome extends Controller {
 
             }
         }
-        // print_r( $data['fasts']);exit();
+        
 		//读取首页的中间图片,end
 
         //首页的产品分类显示
