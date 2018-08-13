@@ -14,6 +14,7 @@ $_['text_coupon']                   = '优惠券设置';
 $_['text_currency']                 = '货币设置';
 $_['text_customer']                 = '客户列表';
 $_['text_allcustomer']              = '全部客户列表';
+$_['text_inquiries']              	= '客户询问';
 $_['text_customer_group']           = '客户群组';
 $_['text_custom_field']             = '自定义字段';
 $_['text_custom_email']             = '群发邮件';

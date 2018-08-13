@@ -29,7 +29,7 @@
                 <a href="<?php echo $category_2['href']; ?>"><i>><?php echo $category_2['name']; ?></i></a>
                   <?php if ($category_2['children']) { ?>
                     <?php foreach ($category_2['children'] as $category_3) { ?>
-                   <a href="<?php echo $category_3['href']; ?>"><i><?php echo $category_3['name']; ?></i></a>
+                   <a href="<?php echo $category_3['href']; ?>"><i>><?php echo $category_3['name']; ?></i></a>
                     <?php } ?>
                   <?php } ?>
                 </div>
