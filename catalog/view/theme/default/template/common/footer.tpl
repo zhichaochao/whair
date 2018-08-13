@@ -104,13 +104,24 @@
     </div>
     <div class="yd_footer2" >
       <ol class="ol_ydfot clearfix">
-        <li class="<?=strpos($thispage,'common') !== false ?'active':'';?>">
+      <?php if($sername =='/'){ ?>   
+        <li class="active">
+            <a href="<?php echo $home?>">
+              <img class="active" src="/catalog/view/theme/default/img/png/home-1.png" alt="" />
+              <img src="/catalog/view/theme/default/img/png/home-2.png" alt="" />
+              <p>HOME</p>
+            </a>
+          </li>
+       <?php }else{ ?>
+          <li class="<?=strpos($thispage,'common' ) !== false ?'active':'';?>">
           <a href="<?php echo $home?>">
             <img class="active" src="/catalog/view/theme/default/img/png/home-1.png" alt="" />
             <img src="/catalog/view/theme/default/img/png/home-2.png" alt="" />
             <p>HOME</p>
           </a>
         </li>
+        <?php }?>
+        
         <li class="<?=strpos($thispage,'product') !== false ?'active':'';?>">
           <a href="<?php echo $contac?>">
             <img class="active" src="/catalog/view/theme/default/img/png/fenlei-1.png" alt="" />
