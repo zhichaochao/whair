@@ -411,6 +411,12 @@ class ControllerCommonColumnLeft extends Controller {
 					'href'     => $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'], true),
 					'children' => array()
 				);
+			}if ($this->user->hasPermission('access', 'customer/subscribe')) {
+				$customer[] = array(
+					'name'	   => $this->language->get('text_subscribe'),
+					'href'     => $this->url->link('customer/subscribe', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
 			}
 			// if ($this->user->hasPermission('access', 'customer/customer_group')) {
 			// 	$customer[] = array(

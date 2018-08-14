@@ -135,7 +135,7 @@
 								</div>
 							</div>
 							<?php if (!isset($logins)) { ?>
-							<a class="a_btn clearfix" href="<?php echo $login; ?>">PLEASE LOG IN FIRST&nbsp;&nbsp;&nbsp;&nbsp;></a>
+							<a class="a_btn clearfix" href="<?php echo $login; ?>">PLEASE LOGIN FIRST&nbsp;&nbsp;&nbsp;&nbsp;></a>
 							<?php }else{ ?>
 							<a class="a_btn clearfix" id="button-cart" >ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
 							<?php }?>
