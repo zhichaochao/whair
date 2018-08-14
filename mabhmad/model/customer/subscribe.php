@@ -15,6 +15,21 @@ class ModelCustomerSubscribe extends Model {
 
 	public function getSubscribes($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "newsletter r";
+		$sort_data = array(
+			'r.news_id',
+			'r.news_email'
+		);
+		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+			$sql .= " ORDER BY " . $data['sort'];
+		} else {
+			$sql .= " ORDER BY r.news_email";
+		}
+
+		if (isset($data['order']) && ($data['order'] == 'DESC')) {
+			$sql .= " DESC";
+		} else {
+			$sql .= " ASC";
+		}
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;

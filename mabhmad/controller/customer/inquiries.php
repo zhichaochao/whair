@@ -347,11 +347,11 @@ class ControllerCustomerInquiries extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_product'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, true);
+		$data['sort_product'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.name' . $url, true);
 		$data['sort_author'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.author' . $url, true);
-		$data['sort_rating'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.rating' . $url, true);
-		$data['sort_status'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.status' . $url, true);
-		$data['sort_date_added'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.date_added' . $url, true);
+		$data['sort_rating'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.phone' . $url, true);
+		$data['sort_status'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.comment' . $url, true);
+		$data['sort_date_added'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.submitTime' . $url, true);
 
 		$url = '';
 
