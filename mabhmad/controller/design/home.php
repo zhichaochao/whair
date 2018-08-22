@@ -367,7 +367,7 @@ class ControllerDesignHome extends Controller {
                  $data['video_url'] = $http_type . $_SERVER['HTTP_HOST'] . '/image/' . $this->request->post['video'];
         } elseif (!empty($home_info)) {
             $data['video'] = $home_info['video'];
-               $data['video_url'] = $http_type . $_SERVER['HTTP_HOST'].'/mabhmad/'. $home_info['video'];
+               $data['video_url'] = $http_type . $_SERVER['HTTP_HOST']. $home_info['video'];
         } else {
             $data['video'] = '';
             $data['video_url'] ='';
