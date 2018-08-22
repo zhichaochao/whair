@@ -46,7 +46,7 @@
 
  
 <?php } ?>
- <a  href="<?=$checkout;?>">Previous Step&nbsp;&nbsp;&nbsp;></a>
+ <a  href="<?=$checkout;?>" class="step">Previous Step&nbsp;&nbsp;&nbsp;></a>
 <script>
 $(function( ){
   //单选

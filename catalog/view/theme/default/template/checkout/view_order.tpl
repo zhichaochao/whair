@@ -22,11 +22,6 @@
                  
                      <?php if ($payment_method_code == 'pp_express') { ?>
 
-     <!--    <form action="<?php echo $payment; ?>" method="post">
-          <p class="p3">
-            <button type="submit" value="Confirm Order"><i class="fa fa-lock"></i>CHECKOUT</button>
-          </p>
-        </form> -->
                 <div class="pay_4">
                         <img class="xs_pay" src="img/jpg/pay_xs.png" alt="" />
                         <p>

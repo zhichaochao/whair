@@ -183,39 +183,7 @@
                   <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
                 </div>
               </div>   
-               <!-- <div class="form-group" >
-                <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_author; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="author" value="<?php echo $author; ?>" placeholder="<?php echo $entry_author; ?>" id="input-author" class="form-control" />
-                </div>
-              </div> -->
-              <!-- <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
-                <div class="col-sm-10">
-                  <ul style="list-style-type: none">
-                    <!-- 预览框： -->
-                    <!--  <li style="float: left;width: 100px">
-                      <div class="preview">
-                          <?php if($video){ ?>
-                          <video src="<?=$video;?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
-                      </div>
-                    </li>
-   <?php if($product_id){ ?> -->
- <!--   <?php echo $product_id?>  -->
-                   <!--  <li style="float: left;width: 100px;margin-left: 10px">  
-                  <div style="margin-top:10px;">
                
-                    <label for="input-video" class="input-video">请上传</label><br/>
-                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
-                      <div class="input-video" onclick="deleteVideo();">删除</div>
-                    </div>
-                 <input type="hidden" name="video" value="<?=$video;?>" id='video' />
-                </li>
-   <?php }else{ echo '视频只支持编辑时上传，请先保存产品后再点击编辑时再来上传小视频';} ?>
-                  </ul>
-
-                </div>
-              </div> -->
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
                 <div class="col-sm-10">
@@ -252,19 +220,7 @@
                       </div>
 
               </div>
-              <!-- <div class="form-group">
-                  
-                         <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_image; ?></label>
-                      
-                        <div class="col-sm-10">
-                              <a href="" id="thumb-images" data-toggle="image" class="img-thumbnail" >
-                                  <img src="<?php echo $club_images; ?>" alt="" title="" data-placeholder="<?php echo $club_images; ?>" />
-                              </a>
-                              <input type="hidden" name="images" value="<?php echo $images; ?>" id="input-images" />
-                      </div>
-
-              </div> -->
-              <!--  -->
+              
      
 
             </div>

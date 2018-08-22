@@ -152,7 +152,7 @@ class ModelCatalogProduct extends Model {
 	public function getProductMinPrice($product_id){
 			//用户组
 		$price_type=$this->customer->isLogged()?(int)$this->config->get('config_customer_group_id'):'';
-	       $query = $this->db->query("SELECT  price".$price_type." as price ,product_option_id,product_option_value_id FROM (SELECT * FROM " . DB_PREFIX . "product_option_value WHERE  product_id='".$product_id."' ORDER BY  price".$price_type." ASC,product_option_value_id ASC ) as opv  WHERE product_id='".$product_id."' AND quantity>0 GROUP BY option_id ORDER BY product_option_value_id DESC");
+	       $query = $this->db->query("SELECT  price".$price_type." as price ,product_option_id,product_option_value_id FROM (SELECT * FROM " . DB_PREFIX . "product_option_value WHERE  product_id='".$product_id."' ORDER BY  price".$price_type." ASC,product_option_value_id ASC ) as opv  WHERE product_id='".$product_id."' AND quantity>0 GROUP BY option_id ORDER BY option_value_id DESC");
 			$price=0;
 			$share='{';
 			if ($query->rows) {
@@ -187,7 +187,7 @@ class ModelCatalogProduct extends Model {
     		}
     		$k++;
     		$query = $this->db->query("SELECT  price".$price_type." as price,product_option_value_id,product_option_id FROM " . DB_PREFIX . "product_option_value   WHERE product_id='".$product_id."' AND  product_option_id ='".$key."' AND product_option_value_id='".$value."'");
-    		// print_r("SELECT  price".$price_type." as price,product_option_value_id,product_option_id FROM " . DB_PREFIX . "product_option_value   WHERE product_id='".$product_id."' AND  product_option_id ='".$key."' AND product_option_value_id='".$value."'");;exit;
+
     		$tem_price=$query->row;
     		$price+= $tem_price['price'];
 			$ids.=','.$value;
@@ -342,8 +342,7 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			if ($data['sort'] == 'pd.name' || $data['sort'] == 'p.model') {
 				$sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
-			// } elseif ($data['sort'] == 'p.price') {
-			// 	$sql .= " ORDER BY  p.price END)";
+
 			} else {
 				$sql .= " ORDER BY " . $data['sort'];
 			}
@@ -464,34 +463,11 @@ class ModelCatalogProduct extends Model {
 	    $sql = "SELECT related_id FROM ". DB_PREFIX . "product_related WHERE product_id='" . (int)$product_id."'";
         $query = $this->db->query($sql);
 
-		/*$product_data = $this->cache->get('product.popular.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit);
 
-		if (!$product_data) {
-			$query = $this->db->query("SELECT p.product_id FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ORDER BY p.viewed DESC, p.date_added DESC LIMIT " . (int)$limit);
-
-			foreach ($query->rows as $result) {
-				$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
-			}
-
-			$this->cache->set('product.popular.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit, $product_data);
-		}
-
-		return $product_data;*/
 
 
 		$product_data = array();
 
-        //$sql = "SELECT p.product_id FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ORDER BY p.viewed DESC, p.date_added DESC LIMIT " . (int)$limit;
-
-        //根据当前产品id查询出该产品所属的分类ID
-//        $sql1 = "SELECT ptc.category_id FROM " . DB_PREFIX . "product p
-//				LEFT JOIN " . DB_PREFIX . "product_to_category ptc
-//				ON p.product_id = ptc.product_id
-//				WHERE p.product_id = ".(int)$product_id." and p.status = 1";
-//		$query1 = $this->db->query($sql1);
-
-        //调用方法,获取属于父类的产品ID
-//        $query = $this->getCategoryProduct($query1,$product_id);
         foreach ($query->rows as $result) {
 		   $product_data[$result['related_id']] = $this->getProduct($result['related_id']);
 //            return $product_data;

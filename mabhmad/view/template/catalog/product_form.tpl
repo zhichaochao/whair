@@ -42,14 +42,10 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
-           <!--  <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li> -->
-            <!-- <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li> -->
             <li><a href="#tab-option" data-toggle="tab">价格</a></li>
-            <!-- <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li> -->
             <li><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
             <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
-            <!-- <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li> -->
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -144,12 +140,6 @@
                   </div>
                 </div>
               </div>
-             <!--  <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-price"><?php echo $entry_price; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="price" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
-                </div>
-              </div> -->
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-tax-class"><?php echo $entry_tax_class; ?></label>
                 <div class="col-sm-10">
@@ -297,23 +287,7 @@
                   </select>
                 </div>
               </div>
-<!--
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-video"><?php echo $entry_video; ?></label>
-                <div class="col-sm-10">
-                  <a href="" id="thumb-video" data-toggle="image" class="img-thumbnail">
-                    <?php if($video) { ?>
-                      <video src="<?=$video_url?>"  width="320" height="180" controls="controls">
-                        Your browser does not support the video tag.
-                      </video>
-                    <?php } else { ?>
-                      <img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" />
-                    <?php } ?>
-                  </a>
-                  <input type="hidden" name="video" value="<?php echo $video; ?>"  id="input-video" />
-                </div>
-              </div>
--->
+
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
                 <div class="col-sm-10">
@@ -348,46 +322,7 @@
                 </div>
               </div>
               
-              <!--新增产品属性
-              <div class="form-group" style="display: none">
-                <label class="col-sm-2 control-label" for="input-location"><?php echo $entry_relation_product; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="relation_product" value="<?php echo $relation_product; ?>" placeholder="<?php echo $entry_relation_product; ?>" id="input-relation-product" class="form-control" />
-                </div>
-              </div>
-
-              <div class="form-group" style="display: none">
-                <label class="col-sm-2 control-label" for="input-weight-class"><?php echo $entry_color; ?></label>
-                <div class="col-sm-10">
-                  <select name="color_id" class="form-control" id="data-color-id" onchange="colorSynchro()">
-					<option value="0">--Select--</option>
-                    <?php foreach ($colors as $color) { ?>
-                    <?php if ($color['option_value_id'] == $color_id) { ?>
-                    <option value="<?php echo $color['option_value_id']; ?>" selected="selected"><?php echo $color['name']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $color['option_value_id']; ?>"><?php echo $color['name']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group" style="display: none">
-                <label class="col-sm-2 control-label" for="input-weight-class"><?php echo $entry_length; ?></label>
-                <div class="col-sm-10">
-                  <select name="length_id" class="form-control" id="data-length-id" onchange="lengthSynchro()">
-					<option value="0">--Select--</option>
-                    <?php foreach ($lengths as $length) { ?>
-                    <?php if ($length['option_value_id'] == $length_id) { ?>
-                    <option value="<?php echo $length['option_value_id']; ?>" selected="selected"><?php echo $length['name']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $length['option_value_id']; ?>"><?php echo $length['name']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              新增产品属性-->
+            
               
               
               <div class="form-group">
@@ -405,22 +340,7 @@
                 </div>
               </div>
               
-              <!--是否为主产品-->
-           <!--    <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-is-main"><?php echo $entry_is_main; ?></label>
-                <div class="col-sm-10">
-                  <select name="is_main" id="input-is-main" class="form-control">
-                    <?php if ($is_main) { ?>
-                    <option value="1" selected="selected">Yes</option>
-                    <option value="0">No</option>
-                    <?php } else { ?>
-                    <option value="1">Yes</option>
-                    <option value="0" selected="selected">No</option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div> -->
-              <!--/是否为主产品-->
+      
               
               <!--是否为新品-->
               <div class="form-group">
@@ -440,20 +360,7 @@
               <!--/是否为新品-->
 
               <!--是否为首页显示-->
-          <!--     <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-is-home"><?php echo $entry_is_home; ?></label>
-                <div class="col-sm-10">
-                  <select name="is_home" id="input-is-home" class="form-control">
-                    <?php if ($is_home) { ?>
-                    <option value="1" selected="selected">Yes</option>
-                    <option value="0">No</option>
-                    <?php } else { ?>
-                    <option value="1">Yes</option>
-                    <option value="0" selected="selected">No</option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div> -->
+          
               <!--/是否为首页显示-->
 			  
 			        <!--是否包邮-->
@@ -514,78 +421,9 @@
 
             <!-- M端产品链接 -->
             <div class="tab-pane" id="tab-links">
-             <!--  <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="manufacturer" value="<?php echo $manufacturer; ?>" placeholder="<?php echo $entry_manufacturer; ?>" id="input-manufacturer" class="form-control" />
-                  <input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" />
-                </div>
-              </div> -->
-              
-           <!--    <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
-                  <div id="product-filter" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_filters as $product_filter) { ?>
-                    <div id="product-filter<?php echo $product_filter['filter_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_filter['name']; ?>
-                      <input type="hidden" name="product_filter[]" value="<?php echo $product_filter['filter_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div> -->
-             
-              <!-- 相关商品 -->
-             <!--  <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="<?php echo $help_related; ?>"><?php echo $entry_related; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="related" value="" placeholder="<?php echo $entry_related; ?>" id="input-related" class="form-control" />
-                  <div id="product-related" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_relateds as $product_related) { ?>
-                    <div id="product-related<?php echo $product_related['product_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_related['name']; ?>
-                      <input type="hidden" name="product_related[]" value="<?php echo $product_related['product_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div> -->
+         
             </div>
-           <!--  <div class="tab-pane" id="tab-attribute">
-              <div class="table-responsive">
-                <table id="attribute" class="table table-striped table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <td class="text-left"><?php echo $entry_attribute; ?></td>
-                      <td class="text-left"><?php echo $entry_text; ?></td>
-                      <td></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $attribute_row = 0; ?>
-                    <?php foreach ($product_attributes as $product_attribute) { ?>
-                    <tr id="attribute-row<?php echo $attribute_row; ?>">
-                      <td class="text-left" style="width: 40%;"><input type="text" name="product_attribute[<?php echo $attribute_row; ?>][name]" value="<?php echo $product_attribute['name']; ?>" placeholder="<?php echo $entry_attribute; ?>" class="form-control" />
-                        <input type="hidden" name="product_attribute[<?php echo $attribute_row; ?>][attribute_id]" value="<?php echo $product_attribute['attribute_id']; ?>" /></td>
-                      <td class="text-left"><?php foreach ($languages as $language) { ?>
-                        <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
-                          <textarea name="product_attribute[<?php echo $attribute_row; ?>][product_attribute_description][<?php echo $language['language_id']; ?>][text]" rows="5" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute['product_attribute_description'][$language['language_id']]) ? $product_attribute['product_attribute_description'][$language['language_id']]['text'] : ''; ?></textarea>
-                        </div>
-                        <?php } ?></td>
-                      <td class="text-left"><button type="button" onclick="$('#attribute-row<?php echo $attribute_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
-                    </tr>
-                    <?php $attribute_row++; ?>
-                    <?php } ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td class="text-left"><button type="button" onclick="addAttribute();" data-toggle="tooltip" title="<?php echo $button_attribute_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </div> -->
+           
             <div class="tab-pane" id="tab-option">
               <div class="row">
                 <div class="col-sm-2" style="width: 10%; position: relative;">
@@ -725,16 +563,7 @@
                             </td>
                             <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
                             <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" value='1'/>
-                           <!--  <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
-                                <?php if ($product_option_value['subtract']) { ?>
-                                <option value="1" selected="selected"><?php echo $text_yes; ?></option>
-                                <option value="0"><?php echo $text_no; ?></option>
-                                <?php } else { ?>
-                                <option value="1"><?php echo $text_yes; ?></option>
-                                <option value="0" selected="selected"><?php echo $text_no; ?></option>
-                                <?php } ?>
-                              </select></td> -->
-
+                        
                             <td class="text-right">
                               <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo $product_option_value['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
                                <?php foreach ($customer_groups as $customer_group) { ?>
@@ -797,50 +626,7 @@
                 </div>
               </div>
             </div>
-         <!--    <div class="tab-pane" id="tab-discount">
-              <div class="table-responsive">
-                <table id="discount" class="table table-striped table-bordered table-hover">
-                  <thead>
-                    <tr>
-               
-                      <td class="text-right"><?php echo $entry_price; ?></td>
-                    
-                      <td></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $discount_row = 0; ?>
-                    <?php foreach ($product_discounts as $product_discount) { ?>
-                    <input type="hidden" name="product_discount[<?=$discount_row?>][product_discount_id]" value="<?=$product_discount['product_discount_id']?>"/>
-                    <tr id="discount-row<?php echo $discount_row; ?>">
-                      <td class="text-left"><select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
-                          <?php foreach ($customer_groups as $customer_group) { ?>
-                          <?php if ($customer_group['customer_group_id'] == $product_discount['customer_group_id']) { ?>
-                          <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected"><?php echo $customer_group['name']; ?></option>
-                          <?php } else { ?>
-                          <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>
-                          <?php } ?>
-                          <?php } ?>
-                        </select></td>
-                   
-                      <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][priority]" value="<?php echo $product_discount['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>
-                      <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][price]" value="<?php echo $product_discount['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
-                  
-              
-                      <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
-                    </tr>
-                    <?php $discount_row++; ?>
-                    <?php } ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="6"></td>
-                      <td class="text-left"><button type="button" onclick="addDiscount();" data-toggle="tooltip" title="<?php echo $button_discount_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </div> -->
+       
             <div class="tab-pane" id="tab-special">
               <div class="table-responsive">
               <?php if ($error_special) { ?>
@@ -896,7 +682,7 @@
                           <?php } ?>
                           <?php } ?>
                         </select></td>
-                      <!-- <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][priority]" value="<?php echo $product_special['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td> -->
+                     
                       <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][price]" value="<?php echo $product_special['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
                       <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][percent]" value="<?php echo $product_special['percent']; ?>" placeholder="<?php echo $entry_percent; ?>" class="form-control" /></td>
                       <td class="text-left" style="width: 20%;"><div class="input-group date">

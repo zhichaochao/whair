@@ -43,13 +43,7 @@
                       <?php } ?>
                     </div>
                   </div>
-                  <!-- 用户名称 -->
-                  <!-- <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-author"><?php echo $entry_author; ?></label>
-                    <div class="col-sm-10">
-                        <input type="text" name="author" value="<?=empty($author) ? '' : $author?>" placeholder="<?php echo $entry_author; ?>" id="input-author" class="form-control" />
-                    </div>
-                  </div> -->
+                 
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="<?php echo $help_related; ?>"><?php echo $entry_related; ?></span></label>
                     <div class="col-sm-10">
@@ -104,99 +98,7 @@
 
             </div>
             <div class="tab-pane" id="tab-image">
-            <!-- 视频 -->
-            <!-- <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
-                <div class="col-sm-10">
-                  <ul style="list-style-type: none">
-                    <!-- 预览框： -->
-                  <!--   <li style="float: left;width: 100px">
-                      <div class="preview">
-                          <?php if($video){ ?>
-                          <video src="<?php echo $video_url; ?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video>
-                          <?php } ?>
-                      </div>
-                    </li>
-
-                    <li style="float: left;width: 100px;margin-left: 10px">
-                  <div style="margin-top:10px;">
-                    <label for="input-video" class="input-video">请上传</label><br/>
-                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
-                      <div class="input-video" onclick="deleteVideo();">删除</div>
-                  </div></li>
-                  <input type="hidden" name="video" value="<?=$video;?>" id='video' />
-
-                  </ul>
-
-                </div>
-              </div> --> 
-          <!-- <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $entry_video; ?></label>
-                <div class="col-sm-10">
-                  <ul style="list-style-type: none">
-                    <!-- 预览框： -->
-                    <!--  <li style="float: left;width: 100px">
-                      <div class="preview">
-                          <?php if($video){ ?>
-                          <video src="<?=$video;?>" loop="loop" autoplay="autoplay" width="100px" height="100px"></video><?php } ?>
-                      </div>
-                    </li>
-   <?php if($product_id){ ?> -->
- <!--   <?php echo $product_id?>  -->
-                   <!--  <li style="float: left;width: 100px;margin-left: 10px">  
-                  <div style="margin-top:10px;">
-               
-                    <label for="input-video" class="input-video">请上传</label><br/>
-                      <input id="input-video" style="display: none" type="file" name="files" class="upinput"/>
-                      <div class="input-video" onclick="deleteVideo();">删除</div>
-                    </div>
-                 <input type="hidden" name="video" value="<?=$video;?>" id='video' />
-                </li>
-   <?php }else{ echo '视频只支持编辑时上传，请先保存产品后再点击编辑时再来上传小视频';} ?>
-                  </ul>
-
-                </div>
-              </div>  -->   
-              <!-- 上传多张图片 -->
-             <!--  <div class="table-responsive">
-                  <table id="images" class="table table-striped table-bordered table-hover">
-                      <thead>
-                      <tr>
-                          <td class="text-left"><?php echo $entry_additional_image; ?></td>
-                          <td class="text-right"><?php echo $entry_sort_order; ?></td>
-                          <td></td>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <?php $image_row = 0; ?>
-                      <?php foreach ($gallery_images as $gallery_image) { ?>
-                      <tr id="image-row<?php echo $image_row; ?>">
-                          <td class="text-left">
-                              <a href="" id="thumb-image<?php echo $image_row; ?>" data-toggle="image" class="img-thumbnail">
-                                  <img src="<?php echo $gallery_image['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" />
-                              </a>
-                              <input type="hidden" name="gallery_image[<?php echo $image_row; ?>][image]" value="<?php echo $gallery_image['image']; ?>" id="input-image<?php echo $image_row; ?>" />
-                          </td>
-                          <td class="text-right">
-                              <input type="text" name="gallery_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $gallery_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" />
-                          </td>
-                          <td class="text-left">
-                              <button type="button" onclick="$('#image-row<?php echo $image_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger">
-                                  <i class="fa fa-minus-circle"></i>
-                              </button>
-                          </td>
-                      </tr>
-                      <?php $image_row++; ?>
-                      <?php } ?>
-                      </tbody>
-                      <tfoot>
-                      <tr>
-                          <td colspan="2"></td>
-                          <td class="text-left"><button type="button" onclick="addImage();" data-toggle="tooltip" title="<?php echo $button_image_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
-                      </tr>
-                      </tfoot>
-                  </table>
-              </div> -->
+           
             </div>
           </div>
         </form>
@@ -210,9 +112,6 @@
   <script src="view/javascript/fileupload/jquery.iframe-transport.js"></script>
   <script src="view/javascript/fileupload/jquery.fileupload.js"></script>
   <script src="view/javascript/fileupload/jquery.xdr-transport.js"></script>
- <!--  <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script> -->
-<!--   <link href="view/javascript/summernote/summernote.css" rel="stylesheet" /> -->
-<!--   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script> -->
     <style type="text/css">
     .input-video {
       width: 100px;

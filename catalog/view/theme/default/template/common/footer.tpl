@@ -132,7 +132,7 @@
         <li>
           <a class="contact" href="javascript:0;"  onclick="return false">
             <img class="active" src="/catalog/view/theme/default/img/png/contact-1.png" alt="" />
-            <img src="/catalog/view/theme/default/img/png/contact-2 .png" alt="" />
+            <img src="/catalog/view/theme/default/img/png/contact-2.png" alt="" />
             <p>CONTACT</p>
           </a>
           <div class="a_text">

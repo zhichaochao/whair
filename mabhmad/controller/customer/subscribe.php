@@ -28,9 +28,9 @@ class ControllerCustomerSubscribe extends Controller {
 			//获取路由参数
 			$doneUrl=isset($this->request->get['route']) ? $this->request->get['route'] : "";
 			$name='';
-            foreach($result['name'] as $value){
-            	$name.='ID='.$value['id'].',author='.$value['author'].';';
-            }
+            // foreach($result['name'] as $value){
+            // 	$name.='ID='.$value['id'].',author='.$value['author'].';';
+            // }
 			$done="deleteSubscribe:".substr($name, 0, -1);
 			//调用父类Controller的方法将操作记录添加入库
             $this->addUserDone($doneUrl,$done);

@@ -1,7 +1,7 @@
 <?php
 class ModelCustomerEmail extends Model {
 	public function addEmail($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "email SET title = '" .$this->db->escape($data['title']) . "', content = '" . $this->db->escape($data['content']) . "', customer_id = '" . $this->db->escape(implode(',', $data['customer_id'])) . "',time='".date('Y-m-d H:i:s',time())."'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "email SET title = '" .$this->db->escape($data['title']) . "', content = '" . $this->db->escape($data['content']) . "', customer_id = '" . $this->db->escape(implode(',', $data['customer_id'])) . "',time='".time()."'");
 		$email_id = $this->db->getLastId();
 		// print_r("INSERT INTO " . DB_PREFIX . "email SET title = '" . (int)$data['title'] . "', content = '" . $this->db->escape($data['content']) . "', customer_id = '" . $this->db->escape(implode(',', $data['customer_id'])) . "',time=".date('Y-m-d H:i:s',time()));exit();
 		return $email_id;

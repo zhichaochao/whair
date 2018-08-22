@@ -92,20 +92,7 @@
                   <?php } ?>
                 </div>
               </div>
-              <!-- 筛选器 -->
-             <!--  <div class="form-group" style="background: red;">
-                <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
-                  <div id="category-filter" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($category_filters as $category_filter) { ?>
-                    <div id="category-filter<?php echo $category_filter['filter_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $category_filter['name']; ?>
-                      <input type="hidden" name="category_filter[]" value="<?php echo $category_filter['filter_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div> -->
+            
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
@@ -146,53 +133,7 @@
                   <?php } ?>
                 </div>
               </div>
-           <!--    <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-top"><span data-toggle="tooltip" title="<?php echo $help_top; ?>"><?php echo $entry_top; ?></span></label>
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <label>
-                      <?php if ($top) { ?>
-                      <input type="checkbox" name="top" value="1" checked="checked" id="input-top" />
-                      <?php } else { ?>
-                      <input type="checkbox" name="top" value="1" id="input-top" />
-                      <?php } ?>
-                      &nbsp; </label>
-                  </div>
-                </div>
-              </div> -->
-
-              <!-- start PC端前台首页显示分类图片 -->
-          <!--     <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $entry_pc_image; ?></label>
-                <div class="col-sm-10"><a href="" id="pc-thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $pc_thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
-                  <input type="hidden" name="pc_image" value="<?php echo $pc_image; ?>" id="input-image" />
-                </div>
-              </div> -->
-              <!-- end PC端前台首页显示分类图片 -->
-              <!-- start 是否在PC端前台home页面显示 -->
-             <!--  <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-pc-show"><?php echo $entry_pc_show; ?></label>
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <label>
-                      <?php if ($pc_show) { ?>
-                      <input type="checkbox" name="pc_show" value="1" checked="checked" id="input-pc-show" />
-                      <?php } else { ?>
-                      <input type="checkbox" name="pc_show" value="1" id="input-pc-show" />
-                      <?php } ?>
-                      &nbsp; </label>
-                  </div>
-                </div>
-              </div> -->
-              <!-- end 是否在PC端前台home页面显示 -->
-              <!-- start 显示PC端home页面的属性标题 -->
-            <!--   <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-pc-show-title"><?php echo $entry_pc_show_title; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="pc_show_title" value="<?php echo $pc_show_title; ?>" placeholder="<?php echo $entry_pc_show_title; ?>" id="input-pc-show-title" class="form-control" />
-                </div>
-              </div> -->
-              <!-- end 显示PC端home页面的属性标题 -->
+          
 
               <!-- start M端前台首页显示分类图片 -->
               <div class="form-group">
@@ -201,38 +142,7 @@
                   <input type="hidden" name="m_image" value="<?php echo $m_image; ?>" id="input-m-image" />
                 </div>
               </div>
-              <!-- end M端前台首页显示分类图片 -->
-              <!-- start 是否在M端前台home页面显示 -->
-             <!--  <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-top"><?php echo $entry_m_show; ?></label>
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <label>
-                      <?php if ($m_show) { ?>
-                      <input type="checkbox" name="m_show" value="1" checked="checked" id="input-m-show" />
-                      <?php } else { ?>
-                      <input type="checkbox" name="m_show" value="1" id="input-m-show" />
-                      <?php } ?>
-                      &nbsp; </label>
-                  </div>
-                </div>
-              </div> -->
-              <!-- end 是否在M端前台home页面显示 -->
-              <!-- start 显示M端home页面的属性标题 -->
-        <!--       <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-m-show-title"><?php echo $entry_m_show_title; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="m_show_title" value="<?php echo $m_show_title; ?>" placeholder="<?php echo $entry_m_show_title; ?>" id="input-m-show-title" class="form-control" />
-                </div>
-              </div> -->
-              <!-- end 显示M端home页面的属性标题 -->
-<!-- 
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-column"><span data-toggle="tooltip" title="<?php echo $help_column; ?>"><?php echo $entry_column; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="column" value="<?php echo $column; ?>" placeholder="<?php echo $entry_column; ?>" id="input-column" class="form-control" />
-                </div>
-              </div> -->
+             
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
                 <div class="col-sm-10">

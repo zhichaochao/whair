@@ -392,29 +392,7 @@ class ModelCatalogProduct extends Model {
             }
         }
 
-		// if (isset($data['product_discount'])) {
-		// 	foreach ($data['product_discount'] as $product_discount) {
-		// 	    if ($product_discount['product_discount_id']) {
-		// 	        if (isset($product_discount['customer_group_id'])) {
-  //                       $this->querysql("UPDATE " . DB_PREFIX . "product_discount SET product_id = '" . (int)$product_id . "', 
-                    
-  //                       customer_group_id = '" . (int)$product_discount['customer_group_id'] . "', quantity = '" . (int)$product_discount['quantity'] . "', 
-                    
-  //                       priority = '" . (int)$product_discount['priority'] . "', price = '" . (float)$product_discount['price'] . "', 
-                    
-  //                       date_start = '" . $this->db->escape($product_discount['date_start']) . "', date_end = '" . $this->db->escape($product_discount['date_end']) . "'
-                        
-  //                       WHERE product_discount_id = '" . (int)$product_discount['product_discount_id'] . "'");
-  //                   }
-  //                   else {
-  //                       $this->querysql("DELETE FROM " . DB_PREFIX . "product_discount WHERE product_discount_id = '" . (int)$product_discount['product_discount_id'] . "'");
-  //                   }
-  //               }
-  //               else {
-  //                   $this->querysql("INSERT INTO " . DB_PREFIX . "product_discount SET product_id = '" . (int)$product_id . "', customer_group_id = '" . (int)$product_discount['customer_group_id'] . "', quantity = '" . (int)$product_discount['quantity'] . "', priority = '" . (int)$product_discount['priority'] . "', price = '" . (float)$product_discount['price'] . "', date_start = '" . $this->db->escape($product_discount['date_start']) . "', date_end = '" . $this->db->escape($product_discount['date_end']) . "'");
-  //               }
-		// 	}
-		// }
+		
 		
 		if (isset($data['product_special'])) {
 			//是否同步同类产品的折扣信息

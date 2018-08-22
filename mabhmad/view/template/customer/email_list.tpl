@@ -38,15 +38,15 @@
                 <tr>
                   <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
                   <td class="text-left"><?php if ($sort == 'name') { ?>
-                    <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
+                    <a  class=""><?php echo $column_name; ?></a>
                     <?php } else { ?>
-                    <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
+                    <a ><?php echo $column_name; ?></a>
                     <?php } ?></td>
                  
                   <td class="text-left"><?php if ($sort == 'time') { ?>
-                    <a href="<?php echo $sort_time; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_time; ?></a>
+                    <a  class=""><?php echo $column_time; ?></a>
                     <?php } else { ?>
-                    <a href="<?php echo $sort_time; ?>"><?php echo $column_time; ?></a>
+                    <a ><?php echo $column_time; ?></a>
                     <?php } ?></td>
                   <td class="text-right"><?php echo $column_content; ?></td>
                   <td class="text-right"><?php echo $column_action; ?></td>

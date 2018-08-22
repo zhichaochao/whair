@@ -36,10 +36,7 @@
                 <label class="control-label" for="input-gallery-title"><?php echo $entry_gallery_title; ?></label>
                 <input type="text" name="filter_gallery_title" value="<?php echo $filter_gallery_title; ?>" placeholder="<?php echo $entry_gallery_title; ?>" id="input-gallery-title" class="form-control" />
               </div>
-              <!-- <div class="form-group">
-                <label class="control-label" for="input-author"><?php echo $entry_author; ?></label>
-                <input type="text" name="filter_author" value="<?php echo $filter_author; ?>" placeholder="<?php echo $entry_author; ?>" id="input-author" class="form-control" />
-              </div> -->
+              
             </div>
             <div class="col-sm-6">
               <div class="form-group">

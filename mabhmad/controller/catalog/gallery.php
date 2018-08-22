@@ -427,14 +427,7 @@ class ControllerCatalogGallery extends Controller
 
         }
         //视频
-       // if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-       //      $product_info = $this->model_catalog_product->getProduct($this->request->get['product_id']);
-       //      $data['edit_video_url'] = '&token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url;
-       //  }else{
-       //      $data['edit_video_url']='';
-       //  }
-        //$data['token'] = $this->session->data['token'];
-        //
+
          $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
 
         //视频end
