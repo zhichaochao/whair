@@ -46,7 +46,7 @@
                         <a href="<?=$homes[0]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
                     <div class="video_div">
-                        <video id="video" class="video" poster="<?=$homes[0]['image'];?>" src="<?=$homes[0]['video'];?>" ></video>
+                        <video id="video" class="video" poster="<?=$homes[0]['image'];?>" src="<?=$video;?>" ></video>
                         <div class="bg_div"></div>
                     </div>
                 </div>

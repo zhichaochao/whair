@@ -140,6 +140,9 @@ class ControllerCommonHome extends Controller {
           }
         }
         $data['homes']=$homes;
+        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+        $data['video']=$http_type . $_SERVER['HTTP_HOST']. $homes[0]['video'];
+       // print_r($data['video']);exit;
         if(isset($this->session->data['choose'])){ $data['choose']=1; }else { $data['choose']=''; }
         // unset($this->session->data['choose']);
 
