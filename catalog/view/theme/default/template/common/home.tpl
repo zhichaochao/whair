@@ -272,6 +272,7 @@ var login_time = setTimeout(gg_show,1000);
         var myvideo = document.getElementById("video");
         $(".video_div .bg_div").click(function(){
             myvideo.play();
+            $("#video").attr("controls","controls");
             $(".video_div .bg_div").css("display","none")
         })
         
