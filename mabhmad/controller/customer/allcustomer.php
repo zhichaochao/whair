@@ -367,6 +367,8 @@ class ControllerCustomerAllcustomer extends Controller {
 				'edit'           => $this->url->link('customer/allcustomer/edit', 'token=' . $this->session->data['token'] .'&key='.$key. '&customer_id=' . $result['customer_id'] . $url, true)
 			);
 		}
+		$data['importComment'] = $this->url->link('customer/allcustomer/importComment', 'token=' . $this->session->data['token'].'&key='.$key, 'SSL');
+		$data['exportComment'] = $this->url->link('customer/allcustomer/exportComment', 'token=' . $this->session->data['token'].'&key='.$key, 'SSL');
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
@@ -1128,4 +1130,181 @@ class ControllerCustomerAllcustomer extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+	public function importComment(){
+		$this->load->language('catalog/review');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+		$data['heading_title'] = 'Customer Import';
+		$data['breadcrumbs'] = array();
+
+		// $data['breadcrumbs'][] = array(
+		// 	'text' => $this->language->get('text_home'),
+		// 	'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+		// );
+
+		// $data['breadcrumbs'][] = array(
+		// 	'text' => $this->language->get('heading_title'),
+		// 	'href' => $this->url->link('catalog/customer', 'token=' . $this->session->data['token'], 'SSL')
+		// );
+		$data['text_form'] = !isset($this->request->get['id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+		$data['entry_import'] = 'import';
+		$data['button_save'] = $this->language->get('button_save');
+		$data['button_cancel'] = $this->language->get('button_cancel');
+
+		$data['error_upload_warning'] = '';
+
+		if (isset($this->request->get['key'])) {
+       		$key=$this->request->get['key'];
+       		$data['key']=$this->request->get['key'];
+		}else{
+			$key=0;
+		}
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
+			//	print_r($_FILES);exit;
+			if ((isset( $this->request->files['upload'] )) && (is_uploaded_file($this->request->files['upload']['tmp_name']))) {
+				$file = $this->request->files['upload']['tmp_name'];
+				//
+				$this->load->model('customer/allcustomer');
+				$uploaded = $this->model_customer_allcustomer->upload($file,$key);
+					//print_r($uploaded);exit;
+				//获取路由参数
+				$doneUrl=isset($this->request->get['route']) ? $this->request->get['route'] : "";
+				$done="addReviewImport:file=".$this->request->files['upload']['name'];
+				//调用父类Controller的方法将操作记录添加入库
+	            $this->addUserDone($doneUrl,$done);
+
+				$this->session->data['success'] = 'the review import is success!'.var_dump($this->request->files['upload']);
+				$this->response->redirect($this->url->link('customer/allcustomer/importComment', 'token=' . $this->session->data['token'], 'SSL'));
+			}
+			else
+			{
+			    $data['error_upload_warning'] = 'Please upload the file!';
+			}
+		}
+
+		if (isset($this->session->data['error'])) {
+			$data['error_warning'] = $this->session->data['error'];
+			unset($this->session->data['error']);
+		} else {
+			$data['error_warning'] = '';
+		}
+
+		if (isset($this->session->data['success'])) {
+			$data['success'] ="Import success!";
+			unset($this->session->data['success']);
+		} else {
+			$data['success'] = '';
+		}
+
+		
+
+		$data['cancel'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'].'&key='.$key, 'SSL');
+		$data['action'] = $this->url->link('customer/allcustomer/importComment', 'token=' . $this->session->data['token'].'&key='.$key, 'SSL');
+
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+
+		$this->response->setOutput($this->load->view('customer/customer_import.tpl', $data));
+    }
+    // daochu
+     //导出 
+      public function exportComment(){
+      	 require_once DIR_SYSTEM.'common/SimpleExcel.php';
+        $header = array(
+            'customer_group_id' => '*Grade',
+            'firstname' => '*firstname',
+            'lastname' => '*lastname',
+            'email' => '*email',
+            'telephone' => 'telephone',
+            
+        );
+       if (isset($this->request->get['key'])) {
+       		$key=$this->request->get['key'];
+       		$data['key']=$this->request->get['key'];
+		}else{
+			$key=0;
+		}
+      	$this->load->model('customer/allcustomer');
+		$new_data = $this->model_customer_allcustomer->allgetCustomers($key);
+        $datas = array();
+        foreach ($new_data as $v){
+        	$data['customers'][]=array(
+	            'customer_group_id' => $v['customer_group_id'],
+	           	 'firstname' => $v['firstname'],
+	            'lastname' => $v['lastname'],
+	            'email'=>  $v['email'],
+	            'telephone' => $v['telephone']
+            );
+        }
+         ksort($data['customers']);
+
+    
+        $excel = new SimpleExcel();
+        $excel->header = $header;
+        $excel->name = 'customer'.date('Y-m-d');
+        $excel->data = $data['customers'];
+        //$excel->fill = array('key'=>'is_main', 'val'=>1);
+        $excel->toString();
+    //引入类
+  //   	chdir( '../system/PHPExcel' );
+		// require_once( 'Classes/PHPExcel.php' );
+		// chdir( '../../mabhmad' );
+  //         $op =new \PHPExcel();
+  //         $objReade = \PHPExcel_IOFactory::createWriter($op,'Excel5');
+		 
+		// // require_once( 'Classes/PHPExcel.php' );
+		// // chdir( '../../mabhmad' );
+		// //$inputFileType = PHPExcel_IOFactory::identify();
+		// //$objReader = PHPExcel_IOFactory::createReader($inputFileType);
+		
+  //   //设置Excel表头
+  //         $op->getActiveSheet()->setCellValue('A1','customer_group_id');
+  //         $op->getActiveSheet()->setCellValue('B1','firstname');
+  //         $op->getActiveSheet()->setCellValue('C1','lastname');
+  //         $op->getActiveSheet()->setCellValue('D1','email');
+  //         $op->getActiveSheet()->setCellValue('E1','telephone');
+  //         $op->getActiveSheet()->setCellValue('F1','password');
+  //         $op->getActiveSheet()->setCellValue('G1','salt');
+  //         $op->getActiveSheet()->setCellValue('H1','ip');
+
+
+
+  //   //填入数据
+  //        if (isset($this->request->get['key'])) {
+  //      		$key=$this->request->get['key'];
+  //      		$data['key']=$this->request->get['key'];
+		// }else{
+		// 	$key=0;
+		// }
+  //     	$this->load->model('customer/allcustomer');
+		// $new_data = $this->model_customer_allcustomer->allgetCustomers($key);
+		// // print_r($new_data);exit;
+  //       $count=count($new_data);
+  //      // print_r($count);exit;
+  //         foreach ($new_data as $key=>$val ) {
+  //           $i=$key+2;
+  //           $op->getActiveSheet()->setCellValue('A'.$i,$val['customer_group_id']);
+  //           $op->getActiveSheet()->setCellValue('B'.$i,$val['firstname']);
+  //           $op->getActiveSheet()->setCellValue('C'.$i,$val['lastname']);
+  //           $op->getActiveSheet()->setCellValue('D'.$i,$val['email']);
+  //           $op->getActiveSheet()->setCellValue('E'.$i,$val['telephone']);
+  //           $op->getActiveSheet()->setCellValue('F'.$i,$val['password']);
+  //           $op->getActiveSheet()->setCellValue('G'.$i,$val['salt']);
+  //           $op->getActiveSheet()->setCellValue('H'.$i,$val['ip']);
+  //         }
+  //         $op->getActiveSheetIndex();
+  //         // print_r($objReade);exit;
+  //         header("Content-type: applicationnd.ms-excel");
+  //         header('Content-Disposition: attachmet;filename="customer.xls"');
+  //        // header('Content-Control:max-age=0');
+  //         $objReade->save("php://output");
+  //         exit;
+  }
+
+
+
+
 }

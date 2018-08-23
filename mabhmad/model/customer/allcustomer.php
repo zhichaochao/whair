@@ -535,4 +535,63 @@ class ModelCustomerAllcustomer extends Model {
 	public function deleteLoginAttempts($email) {
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape($email) . "'");
 	}
+	// 导入
+	function upload( $filename,$key) {
+		//print_r($filename);exit();
+		global $config;
+		global $log;
+		$config = $this->config;
+		$log = $this->log;
+
+		$database =& $this->db;
+		ini_set("memory_limit","512M");
+		ini_set("max_execution_time",180);
+
+		chdir( '../system/PHPExcel' );
+		require_once( 'Classes/PHPExcel.php' );
+		chdir( '../../mabhmad' );
+		$inputFileType = PHPExcel_IOFactory::identify($filename);
+		$objReader = PHPExcel_IOFactory::createReader($inputFileType);
+		$objReader->setReadDataOnly(true);
+		$reader = $objReader->load($filename);
+
+		$data = $reader->getSheet(0);
+
+        $highestRow = $data->getHighestRow(); // 取得总行数
+        $highestColumn = $data->getHighestColumn(); // 取得总列数	
+		for($j=2;$j<=$highestRow;$j++)
+        {
+			$str = '';
+			for($k='A';$k<=$highestColumn;$k++)
+		    {
+			  $str .= iconv('utf-8','gbk',$reader->getActiveSheet()->getCell("$k$j")->getValue()).'\\';//读 取单元格
+			}
+			//explode:函 数把字符串分割为数组。
+            $customer_data =explode("\\",$str);
+            // print_r($customer_data);exit;
+
+			if($customer_data){
+
+					$sql="INSERT INTO " . DB_PREFIX . "customer SET  language_id ='1' , customer_group_id = '" . $this->db->escape(strip_tags($customer_data[0])) . "', firstname = '" . $this->db->escape(strip_tags($customer_data[1])) . "', lastname = '" . $this->db->escape(strip_tags($customer_data[2])) . "', email = '" . $this->db->escape( $customer_data[3]) . "',  telephone = '" . $this->db->escape(strip_tags($customer_data[4])) . "',  salt = '" .$this->db->escape($salt = token(9)). "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($customer_data[5])))). "',ip = '', token = '', total_order = '" . $this->db->escape( $customer_data[6]) . "', code = '', status = 1,date_added=now(),custom_field = '', fax = '',approved = 1,safe = 0";
+					// print_r($sql);exit;
+					if ($key>0) {
+						 $d='db'.$key;
+						 $query = $this->$d->query($sql);
+					 }else{
+						 $query = $this->db->query($sql);
+					}	
+			}
+
+		}
+	}
+	public function allgetCustomers($key) {
+		$sql = "SELECT r.customer_group_id,r.customer_group_id,r.firstname,r.lastname,r.email,r.telephone,r.password,r.salt,r.ip FROM " . DB_PREFIX . "customer r";
+		if ($key>0) {
+				$d='db'.$key;
+		$query = $this->$d->query($sql);
+		}else{
+				$query = $this->db->query($sql);
+		}
+		return $query->rows;
+	}
 }
