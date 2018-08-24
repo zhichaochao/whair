@@ -50,7 +50,7 @@
       </div>
       <div class="bot clearfix">
         
-        <p>Copyright Notice &copy; 2016-<?php echo (($Y = intval(date('Y'))) > 2017) ? "$Y" : '';?> <?php echo $_SERVER['SERVER_NAME']; ?>  All rights reserved </p>
+        <p>Copyright Notice &copy; 2009-<?php echo (($Y = intval(date('Y'))) > 2017) ? "$Y" : '';?> <?php echo $_SERVER['SERVER_NAME']; ?>  All rights reserved </p>
       </div>
     </div>
     
@@ -100,7 +100,7 @@
                     </li>
         </ul>
       </div>
-      <p class="clearfix">Copyright Notice &copy; 2016-<?php echo (($Y = intval(date('Y'))) > 2017) ? "$Y" : '';?> <?php echo $_SERVER['SERVER_NAME']; ?>  All rights reserved</p>
+      <p class="clearfix">Copyright Notice &copy; 2009-<?php echo (($Y = intval(date('Y'))) > 2017) ? "$Y" : '';?> <?php echo $_SERVER['SERVER_NAME']; ?>  All rights reserved</p>
     </div>
     <div class="yd_footer2" >
       <ol class="ol_ydfot clearfix">

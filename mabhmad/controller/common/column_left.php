@@ -309,13 +309,13 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 	
-			if ($this->user->hasPermission('access', 'customer/email')) {
-				$customer[] = array(
-					'name'	   => $this->language->get('text_custom_email'),
-					'href'     => $this->url->link('customer/email', 'token=' . $this->session->data['token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'customer/email')) {
+			// 	$customer[] = array(
+			// 		'name'	   => $this->language->get('text_custom_email'),
+			// 		'href'     => $this->url->link('customer/email', 'token=' . $this->session->data['token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 
 			if ($customer) {
 				$data['menus'][] = array(
