@@ -33,6 +33,17 @@
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
     <?php } ?>
+
+    <?php if (isset($shourow)) { ?>
+    <div class="alert alert-danger"><i class="fa fa-check-circle"></i> 
+    部分客户导入成功,系统检测出客户:</br>
+    <?php foreach ($shourow as $vlaue ) { ?>
+   <?php echo $vlaue['email']; ?></br>
+    <?php } ?>
+     重复,已为你自动删除导入的部分。
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    <?php } ?>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-pencil"></i> <?php echo $text_form; ?></h3>

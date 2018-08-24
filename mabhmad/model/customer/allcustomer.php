@@ -569,11 +569,8 @@ class ModelCustomerAllcustomer extends Model {
 			//explode:函 数把字符串分割为数组。
             $customer_data =explode("\\",$str);
             // print_r($customer_data);exit;
-
 			if($customer_data){
-
 					$sql="INSERT INTO " . DB_PREFIX . "customer SET  language_id ='1' , customer_group_id = '" . $this->db->escape(strip_tags($customer_data[0])) . "', firstname = '" . $this->db->escape(strip_tags($customer_data[1])) . "', lastname = '" . $this->db->escape(strip_tags($customer_data[2])) . "', email = '" . $this->db->escape( $customer_data[3]) . "',  telephone = '" . $this->db->escape(strip_tags($customer_data[4])) . "',  salt = '" .$this->db->escape($salt = token(9)). "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($customer_data[5])))). "',ip = '', token = '', total_order = '" . $this->db->escape( $customer_data[6]) . "', code = '', status = 1,date_added=now(),custom_field = '', fax = '',approved = 1,safe = 0";
-					// print_r($sql);exit;
 					if ($key>0) {
 						 $d='db'.$key;
 						 $query = $this->$d->query($sql);
@@ -583,6 +580,29 @@ class ModelCustomerAllcustomer extends Model {
 			}
 
 		}
+	}
+	public function Allrepeat($key)
+	{
+		$sql="SELECT a.customer_id,a.email FROM ". DB_PREFIX . "customer a WHERE email IN (SELECT email FROM ". DB_PREFIX . "customer GROUP BY email HAVING count(email) > 1)AND customer_id NOT IN (SELECT min(customer_id) FROM ". DB_PREFIX . "customer GROUP BY email HAVING count(email) > 1)";
+		if ($key>0) {
+			 $d='db'.$key;
+				$query = $this->$d->query($sql);
+			 }else{
+		 $query = $this->db->query($sql);
+		}	
+		return $query;
+	}
+	public function Dellrepeat($key)
+	{
+		$sql= "DELETE FROM ". DB_PREFIX . "customer WHERE email IN (select * from (( SELECT  email  FROM ". DB_PREFIX . "customer GROUP BY email HAVING count(email) > 1 ) a) )AND customer_id NOT IN (
+ 		select * from (( SELECT min(customer_id) FROM ". DB_PREFIX . "customer GROUP BY  email HAVING count(email) > 1 ) b)) ";
+		if ($key>0) {
+			 $d='db'.$key;
+				$query = $this->$d->query($sql);
+			 }else{
+		 $query = $this->db->query($sql);
+		}	
+		return $query;
 	}
 	public function allgetCustomers($key) {
 		$sql = "SELECT r.customer_group_id,r.customer_group_id,r.firstname,r.lastname,r.email,r.telephone,r.password,r.salt,r.ip FROM " . DB_PREFIX . "customer r";

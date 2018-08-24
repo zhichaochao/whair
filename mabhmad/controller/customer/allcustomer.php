@@ -1169,14 +1169,32 @@ class ControllerCustomerAllcustomer extends Controller {
 				$this->load->model('customer/allcustomer');
 				$uploaded = $this->model_customer_allcustomer->upload($file,$key);
 					//print_r($uploaded);exit;
+			   $allrepeat = $this->model_customer_allcustomer->Allrepeat($key);
+			   $rows=$allrepeat->rows;
+			   if(empty($rows)){
+			   //	print_r($allrepeat);exit;
 				//获取路由参数
 				$doneUrl=isset($this->request->get['route']) ? $this->request->get['route'] : "";
 				$done="addReviewImport:file=".$this->request->files['upload']['name'];
 				//调用父类Controller的方法将操作记录添加入库
 	            $this->addUserDone($doneUrl,$done);
 
-				$this->session->data['success'] = 'the review import is success!'.var_dump($this->request->files['upload']);
-				$this->response->redirect($this->url->link('customer/allcustomer/importComment', 'token=' . $this->session->data['token'], 'SSL'));
+				$this->session->data['success'] = 'Import success!'.var_dump($this->request->files['upload']);
+				$this->response->redirect($this->url->link('customer/allcustomer/importComment', 'token=' . $this->session->data['token'].'&key='.$key, 'SSL'));
+				}else{
+					foreach ($rows as $key=>$value ){
+						$data['rows'][$key] = array(
+							'customer_id'       => $value['customer_id'],
+							'email'	 		 => $value['email']
+							);
+						
+					}
+					$this->session->data['shourows']=$data['rows'];
+					$data['shourow']=$this->session->data['shourows'];
+					//print_r($this->session->data['shourows']);exit;
+				$delrepeat = $this->model_customer_allcustomer->Dellrepeat($this->request->get['key']);
+				}
+
 			}
 			else
 			{
@@ -1200,7 +1218,7 @@ class ControllerCustomerAllcustomer extends Controller {
 
 		
 
-		$data['cancel'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'].'&key='.$key, 'SSL');
+		$data['cancel'] = $this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'].'&key='.$this->request->get['key'], 'SSL');
 		$data['action'] = $this->url->link('customer/allcustomer/importComment', 'token=' . $this->session->data['token'].'&key='.$key, 'SSL');
 
 		$data['header'] = $this->load->controller('common/header');
