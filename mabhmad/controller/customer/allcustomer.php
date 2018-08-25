@@ -1233,11 +1233,11 @@ class ControllerCustomerAllcustomer extends Controller {
       	 require_once DIR_SYSTEM.'common/SimpleExcel.php';
         $header = array(
             'customer_group_id' => '*Grade',
-            'firstname' => '*firstname',
-            'lastname' => '*lastname',
-            'email' => '*email',
-            'telephone' => 'telephone',
-            
+            'firstname' => '*Firstname',
+            'lastname' => '*Lastname',
+            'email' => '*Email',
+            'telephone' => '*Telephone',
+            'total_order' => '*Total consumption'
         );
        if (isset($this->request->get['key'])) {
        		$key=$this->request->get['key'];
@@ -1254,7 +1254,8 @@ class ControllerCustomerAllcustomer extends Controller {
 	           	 'firstname' => $v['firstname'],
 	            'lastname' => $v['lastname'],
 	            'email'=>  $v['email'],
-	            'telephone' => $v['telephone']
+	            'telephone' => $v['telephone'],
+	            'total_order' => $v['total_order']
             );
         }
          ksort($data['customers']);
