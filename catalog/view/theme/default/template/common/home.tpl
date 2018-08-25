@@ -157,7 +157,7 @@
                     <?php  }?>
             </div>
               <?php  }?>
-            <!-- <div class="index_text3">
+            <div class="index_text3">
                 <div class="bt">
                     <img src="/catalog/view/theme/default/img/png/bt2.png" alt="CUSTOMER SHARE" />
                     <h1># CUSTOMER SHARE</h1>
@@ -175,8 +175,7 @@
                
                 
                 </ol> -->
-                
-                <!-- <div class="product_lb clearfix">
+                <div class="product_lb clearfix">
                     <div class="swiper-container" id="swiper2">
                       <div class="swiper-wrapper">
                         <?php foreach ($gallerys as $gallery) { ?>
@@ -191,7 +190,7 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
-            </div> --> 
+            </div>
             
         </div>
         <?php if(!$choose){?>
