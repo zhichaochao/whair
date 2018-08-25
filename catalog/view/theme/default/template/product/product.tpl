@@ -242,11 +242,11 @@
 										<span>Package</span>
 										<ol class="clearfix">
 											<li>
-												<img src="/catalog/view/theme/default/img/jpg/pro_det2.jpg"/>
+												<img src="/catalog/view/theme/default/img/jpg/pro.jpg"/>
 												<p>Product Packaging</p>
 											</li>
 											<li>
-												<img src="/catalog/view/theme/default/img/jpg/pro_det3.jpg"/>
+												<img src="/catalog/view/theme/default/img/jpg/pro_det.jpg"/>
 												<p>The Outer Packing</p>
 											</li>
 										</ol>
