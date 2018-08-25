@@ -236,7 +236,7 @@ class ModelCatalogProduct extends Model {
 			    quantity = '" . (int)$data['quantity'] . "', minimum = '" . (int)$data['minimum'] . "',
 			    subtract = '" . (int)$data['subtract'] . "', stock_status_id = '" . (int)$data['stock_status_id'] . "',
 			    date_available = '" . $this->db->escape($data['date_available']) . "',
-			    manufacturer_id = '" . (int)$data['manufacturer_id'] . "',
+			   
 			    shipping = '" . (int)$data['shipping'] . "', price = '" . (float)$data['price'] . "',
 			    points = '" . (int)$data['points'] . "', weight = '" . (float)$data['weight'] . "',
 			    weight_class_id = '" . (int)$data['weight_class_id'] . "', length = '" . (float)$data['length'] . "',
@@ -344,6 +344,8 @@ class ModelCatalogProduct extends Model {
                         }
                         else {
                             $this->querysql("DELETE FROM " . DB_PREFIX . "product_option WHERE product_option_id = '" . (int)$product_option['product_option_id'] . "'");
+                            $this->querysql("DELETE FROM " . DB_PREFIX . "product_option_value WHERE product_option_id = '" . (int)$product_option['product_option_id'] . "'");
+
                         }
                     }
 
@@ -383,6 +385,7 @@ class ModelCatalogProduct extends Model {
                         }
                         else {
                             $this->querysql("DELETE FROM " . DB_PREFIX . "product_option WHERE product_option_id = '" . (int)$product_option['product_option_id'] . "'");
+                            $this->querysql("DELETE FROM " . DB_PREFIX . "product_option_value WHERE product_option_id = '" . (int)$product_option['product_option_id'] . "'");
                         }
                     }
                     else{
