@@ -164,17 +164,7 @@
                     <p>Customers share pictures and immediately buy the same</p>
                 </div>
                 
-                <!-- <ol class="ol_img6 clearfix">
-                      <?php foreach ($gallerys as $gallery) { ?>
-                    <li>
-                        <a href="<?=$gallery['url']?>">
-                            <img src="<?=$gallery['image']?>" title="<?=$gallery['gallery_title']?>" alt="<?=$gallery['gallery_title']?>" />
-                        </a>
-                    </li>
-                    <?php } ?>
-               
-                
-                </ol> -->
+
                 
                 <div class="product_lb clearfix">
                     <div class="swiper-container" id="swiper2">
