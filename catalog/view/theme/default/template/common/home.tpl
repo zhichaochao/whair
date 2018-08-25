@@ -164,7 +164,7 @@
                     <p>Customers share pictures and immediately buy the same</p>
                 </div>
                 
-                <ol class="ol_img6 clearfix">
+                <!-- <ol class="ol_img6 clearfix">
                       <?php foreach ($gallerys as $gallery) { ?>
                     <li>
                         <a href="<?=$gallery['url']?>">
@@ -174,7 +174,7 @@
                     <?php } ?>
                
                 
-                </ol>
+                </ol> -->
                 
                 <div class="product_lb clearfix">
                     <div class="swiper-container" id="swiper2">
@@ -250,10 +250,18 @@ var login_time = setTimeout(gg_show,1000);
                 gg_show ();
             }
         })
- 
+    
+    var li_w=6;
+    var win_w = $(window).innerWidth();
+    if(win_w>=1080){
+        li_w=6;
+    }else{
+        li_w=3
+    }
     var mySwiper = new Swiper('#swiper2', {
+        loop:true,
         autoplay: true,
-        slidesPerView : 3,
+        slidesPerView : li_w,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
