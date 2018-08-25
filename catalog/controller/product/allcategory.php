@@ -27,7 +27,7 @@ class ControllerProductAllcategory extends Controller {
 			}
 			//print_r($paths);exit;
 			$data['rows'][$key] = array(
-					'm_image'       => $this->model_tool_image->resize($value['m_image'],710,400),
+					'm_image'       => $this->model_tool_image->resize($value['m_image'],710,320),
 					'name'	 		 => $value['name'],
 					'href'             => $this->url->link('product/category', 'path=' . $paths)
 					
