@@ -573,13 +573,13 @@ class ModelCustomerAllcustomer extends Model {
             // print_r($customer_data);exit;
 			if(count($customer_data)>0 && !empty($this->db->escape(strip_tags($customer_data[3])))){
 				 //print_r($this->db->escape(strip_tags($customer_data[5])));exit();
-					if(!empty($this->db->escape(strip_tags($customer_data[5])))){
-						$password=$this->db->escape(strip_tags($customer_data[5]));
+					if(!empty($this->db->escape(strip_tags($customer_data[6])))){
+						$password=$this->db->escape(strip_tags($customer_data[6]));
 					}else{
 						$password='88888888';		
 					}
 					//print_r($password);exit;
-					$sql="INSERT INTO " . DB_PREFIX . "customer SET  language_id ='1' , customer_group_id = '" . $this->db->escape(strip_tags($customer_data[0])) . "', firstname = '" . $this->db->escape(strip_tags($customer_data[1])) . "', lastname = '" . $this->db->escape(strip_tags($customer_data[2])) . "', email = '" . $this->db->escape( $customer_data[3]) . "',  telephone = '" . $this->db->escape(strip_tags($customer_data[4])) . "',  salt = '" .$this->db->escape($salt = token(9)). "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))). "',ip = '', token = '', total_order = '" . $this->db->escape( $customer_data[6]) . "', code = '', status = 1,date_added=now(),custom_field = '', fax = '',approved = 1,safe = 0";
+					$sql="INSERT INTO " . DB_PREFIX . "customer SET  language_id ='1' , customer_group_id = '" . $this->db->escape(strip_tags($customer_data[0])) . "', firstname = '" . $this->db->escape(strip_tags($customer_data[1])) . "', lastname = '" . $this->db->escape(strip_tags($customer_data[2])) . "', email = '" . $this->db->escape( $customer_data[3]) . "',  telephone = '" . $this->db->escape(strip_tags($customer_data[4])) . "',  salt = '" .$this->db->escape($salt = token(9)). "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))). "',ip = '', token = '', total_order = '" . $this->db->escape( $customer_data[5]) . "', code = '', status = 1,date_added=now(),custom_field = '', fax = '',approved = 1,safe = 0";
 					if ($key>0) {
 						 $d='db'.$key;
 						 $query = $this->$d->query($sql);
