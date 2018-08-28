@@ -48,7 +48,7 @@
                     </div>
                     <div class="bt2">
                         <h1>One Donor <?=$homes[0]['category']['name'];?></h1>
-                        <a href="<?=$homes[0]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
+                        <a href="<?=$homes[0]['category_url'];?>" class="a_btn mr_b_no">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
                 </div>
              <?php if(isset($homes[0]['child'])){ ?>

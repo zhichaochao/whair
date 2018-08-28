@@ -242,11 +242,13 @@
 										<span>Package</span>
 										<ol class="clearfix">
 											<li>
-												<img src="/catalog/view/theme/default/img/jpg/pro.jpg"/>
+											<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/proo.jpg' data-mimage='/catalog/view/theme/default/img/jpg/yd_pro.jpg'  />
+												<!-- <img src="/catalog/view/theme/default/img/jpg/pro.jpg" style="height:263px;width: 298px;" /> -->
 												<p>Product Packaging</p>
 											</li>
 											<li>
-												<img src="/catalog/view/theme/default/img/jpg/pro_det.jpg"/>
+											<img class="changeimage" data-image='/catalog/view/theme/default/img/jpg/pro_dett.jpg' data-mimage='/catalog/view/theme/default/img/jpg/ydpro_det.jpg'  />
+												<!-- <img src="/catalog/view/theme/default/img/jpg/pro_det.jpg" style="height:263px;width: 298px;"/> -->
 												<p>The Outer Packing</p>
 											</li>
 										</ol>

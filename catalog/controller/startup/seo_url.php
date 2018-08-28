@@ -98,7 +98,7 @@ class ControllerStartupSeoUrl extends Controller {
 						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'");
 
 						if ($query->num_rows && $query->row['keyword']) {
-							$url .= '/' . $query->row['keyword'];
+							$url = '/' . $query->row['keyword'];
 						} else {
 							$url = '';
 
