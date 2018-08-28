@@ -1021,7 +1021,15 @@ class ModelCatalogProduct extends Model {
 		return $query->row['total'];
 	}
 	public function getTotalProductsByCategoryId($category_id) {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$category_id . "'");
+		$cat_id=array();
+		$cat_id[]=$category_id;
+		$query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "category WHERE parent_id = '" . (int)$category_id . "'");
+		if ($query->rows) {
+			foreach ($query->rows as $key => $value) {
+				$cat_id[]=$value['category_id'];
+			}
+		}
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product_to_category WHERE category_id in(".implode(',', $cat_id).")");
 
 		return $query->row['total'];
 	}
