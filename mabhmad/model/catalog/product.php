@@ -1020,7 +1020,11 @@ class ModelCatalogProduct extends Model {
 
 		return $query->row['total'];
 	}
+	public function getTotalProductsByCategoryId($category_id) {
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$category_id . "'");
 
+		return $query->row['total'];
+	}
 	public function getTotalProductsByProfileId($recurring_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product_recurring WHERE recurring_id = '" . (int)$recurring_id . "'");
 

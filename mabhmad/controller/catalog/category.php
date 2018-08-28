@@ -672,6 +672,16 @@ class ControllerCatalogCategory extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
+		$this->load->model('catalog/product');
+
+		foreach ($this->request->post['selected'] as $category_id) {
+			$product_total = $this->model_catalog_product->getTotalProductsByCategoryId($category_id);
+			//print_r($product_total);exit;
+			if ($product_total) {
+				$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
+			}
+		}
+
 		return !$this->error;
 	}
 
