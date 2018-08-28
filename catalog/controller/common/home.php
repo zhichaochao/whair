@@ -30,7 +30,7 @@ class ControllerCommonHome extends Controller {
             if (is_file(DIR_IMAGE . $result['image'])) {
                 $image=$this->model_tool_image->resize($result['image'], 480, 480);
                 if (is_file(DIR_IMAGE . $result['mimage'])) {
-                   $mimage=  $this->model_tool_image->resize($result['mimage'], 230, 260);
+                   $mimage=  $this->model_tool_image->resize($result['mimage'], 230, 330);
                 }else{
                      $mimage=$image;
                 }

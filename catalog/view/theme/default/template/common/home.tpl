@@ -198,7 +198,7 @@
         <div class="modal img_modal">
             <div class="text">
                 <div class="close"></div>
-                <h1>Please Choose Your Sale Rep's Name:</h1>
+                <h1>Please Choose Your Sales Rep's Name:</h1>
                 <div class="bot">
                     <ul>
                         <li><a href="http://o.luvmewig.com/">Rebecca</a></li>
@@ -214,7 +214,7 @@
                         <li><a href="http://o.luvmewig.com">Twinkle</a></li>
                         <li><a href="http://o.luvmewig.com">Alex</a></li>
                         <li><a href="http://o.luvmewig.com">Kristen</a></li>
-                        <li><a href="<?php echo $choose_url;?>">I dont have</a></li>
+                        <li><a href="<?php echo $choose_url;?>">I don't have</a></li>
 
                   
                     </ul>
