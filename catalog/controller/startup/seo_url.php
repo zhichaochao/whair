@@ -102,7 +102,7 @@ class ControllerStartupSeoUrl extends Controller {
 						} else {
 							$url = '';
 
-							break;
+
 						}
 					}
 
