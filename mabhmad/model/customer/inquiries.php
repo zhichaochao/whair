@@ -76,7 +76,15 @@ class ModelCustomerInquiries extends Model {
 
 		return $query->row['total'];
 	}
-
+	public function updInquiries($id) {
+		$query = $this->db->query("SELECT  * FROM " . DB_PREFIX . "feedback r  WHERE r.id = '" . (int)$id . "'");
+		if($query->row['status']==1){
+			$querys = $this->db->query("UPDATE " . DB_PREFIX . "feedback SET status = 0 WHERE id = '" . (int)$id . "'");
+		}else{
+			$querys = $this->db->query("UPDATE " . DB_PREFIX . "feedback SET status = 1 WHERE id = '" . (int)$id . "'");	
+		}
+		return $querys;
+	}
 
   
 }

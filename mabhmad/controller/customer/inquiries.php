@@ -208,6 +208,7 @@ class ControllerCustomerInquiries extends Controller {
 				'name'       => $result['name'],
 				'email'     => $result['email'],
 				'phone'     => $result['phone'],
+				'status'	=>$result['status'],
 				'comment'     =>utf8_substr(strip_tags($result['comment']),0,50).'...',
 				'submitTime' => date($this->language->get('date_format_short'), strtotime($result['submitTime'])),
 				'edit'       => $this->url->link('customer/inquiries/edit', 'token=' . $this->session->data['token'] . '&id=' . $result['id'], true)
@@ -295,6 +296,7 @@ class ControllerCustomerInquiries extends Controller {
 		$data['sort_rating'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.phone' . $url, true);
 		$data['sort_status'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.comment' . $url, true);
 		$data['sort_date_added'] = $this->url->link('customer/inquiries', 'token=' . $this->session->data['token'] . '&sort=r.submitTime' . $url, true);
+		// $data['click_jia'] = $this->url->link('customer/inquiries/click_jia', 'token=' . $this->session->data['token']. $url, true);
 
 		$url = '';
 
@@ -470,7 +472,17 @@ class ControllerCustomerInquiries extends Controller {
 
 		return !$this->error;
 	}
+	public function click_jia() {
+		// print_r($this->request->post['id']);die;
+		$this->load->model('customer/inquiries');
+		$json = array();
+		if (isset($this->request->post['id'])) {
+			$inquiries_info = $this->model_customer_inquiries->updInquiries($this->request->post['id']);
+		}
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
 
+	}
 
   
 
