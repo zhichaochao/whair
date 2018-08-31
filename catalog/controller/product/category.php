@@ -204,7 +204,7 @@ class ControllerProductCategory extends Controller {
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
-			// print_r($results);exit();
+			// print_r($filter_data);exit();
 
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -392,9 +392,11 @@ class ControllerProductCategory extends Controller {
 			$data['pagination'] = $pagination->render();
 			
 			$data['product_total']=$product_total;
-			//var_dump($data['product_total']);exit();
+			// $data['page']=$page;
+			//
 			$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
-
+			$data['allpage']=ceil($product_total / $limit);
+// var_dump(ceil($product_total / $limit));exit();
 			// http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
 			if ($page == 1) {
 			    $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'canonical');
@@ -411,6 +413,7 @@ class ControllerProductCategory extends Controller {
 			$data['sort'] = $sort;
 			$data['order'] = $order;
 			$data['limit'] = $limit;
+			$data['category_id'] = $category_info['category_id'];
 
 			$data['continue'] = $this->url->link('common/home');
 
@@ -475,6 +478,301 @@ class ControllerProductCategory extends Controller {
 			$data['header'] = $this->load->controller('common/header');
 
 			$this->response->setOutput($this->load->view('error/not_found', $data));
+		}
+	}	
+
+
+	public function loadpage() {
+		// print_r($this->request->get);exit;
+		$this->load->language('product/category');
+
+		$this->load->model('catalog/category');
+
+		$this->load->model('catalog/product');
+
+		$this->load->model('tool/image');
+
+	    //引入该页面的css样式
+
+		if (isset($this->request->get['filter'])) {
+			$filter = $this->request->get['filter'];
+		} else {
+			$filter = '';
+		}
+
+		if (isset($this->request->get['sort'])) {
+			$sort = $this->request->get['sort'];
+		} else {
+			$sort = 'p.sort_order';
+		}
+		// if (isset($this->request->get['sort'])) {
+		// 	$sort = $this->request->get['price'];
+		// } else {
+		// 	$sort = 'i.price';
+		// }
+
+		if (isset($this->request->get['order'])) {
+			$order = $this->request->get['order'];
+		} else {
+			$order = 'ASC';
+		}
+
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
+		} else {
+			$page = 1;
+		}
+
+		if (isset($this->request->get['limit'])) {
+			$limit = (int)$this->request->get['limit'];
+		} else {
+			$limit = $this->config->get($this->config->get('config_theme') . '_product_limit');
+		}
+
+		$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => 'Home',
+			'href' => $this->url->link('common/home')
+		);
+
+		if (isset($this->request->get['category_id'])) {
+			$url = '';
+
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['limit'])) {
+				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+
+
+			$category_id =$this->request->get['category_id'];
+
+		
+		} else {
+			$category_id = 0;
+		}
+
+		$category_info = $this->model_catalog_category->getCategory($category_id);
+
+		$url = '';
+
+		if ($category_info) {
+			$this->document->setTitle($category_info['meta_title']);
+			$this->document->setDescription($category_info['meta_description']);
+			$this->document->setKeywords($category_info['meta_keyword']);
+
+			$data['heading_title'] = $category_info['name'];
+
+			$data['text_refine'] = $this->language->get('text_refine');
+			$data['text_empty'] = $this->language->get('text_empty');
+			$data['text_quantity'] = $this->language->get('text_quantity');
+			$data['text_manufacturer'] = $this->language->get('text_manufacturer');
+			$data['text_model'] = $this->language->get('text_model');
+			$data['text_price'] = $this->language->get('text_price');
+			$data['text_tax'] = $this->language->get('text_tax');
+			$data['text_points'] = $this->language->get('text_points');
+
+			$data['sort_sort_order'] = $this->url->link('product/category', 'token='  . '&sort=p.price' . $url, true);
+			$data['sort_sort_order_d'] = $this->url->link('product/category', 'token='  . '&sort=p.price&order=DESC' . $url, true);
+			$data['sort_sort_add'] = $this->url->link('product/category', 'token='  . '&sort=p.date_added' . $url, true);
+			$data['sort_sort_rating'] = $this->url->link('product/category', 'token='  . '&sort=rating' . $url, true);
+			//产品对比按钮
+			//$data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
+			$data['text_sort'] = $this->language->get('text_sort');
+			$data['text_limit'] = $this->language->get('text_limit');
+
+			$data['button_cart'] = $this->language->get('button_cart');
+			$data['button_wishlist'] = $this->language->get('button_wishlist');
+			$data['button_compare'] = $this->language->get('button_compare');
+			$data['button_continue'] = $this->language->get('button_continue');
+			$data['button_list'] = $this->language->get('button_list');
+			$data['button_grid'] = $this->language->get('button_grid');
+
+	
+          
+
+            //该分类的描述
+			//$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+			//产品的对比
+			//$data['compare'] = $this->url->link('product/compare');
+
+			$url = '';
+
+			if (isset($this->request->get['filter'])) {
+				$url .= '&filter=' . $this->request->get['filter'];
+			}
+
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['limit'])) {
+				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+	
+
+			$data['products'] = array();
+
+			$filter_data = array(
+				'filter_category_id' => $category_id,
+				'filter_sub_category' => true,       //dyl add
+				'filter_filter'      => $filter,
+				'sort'               => $sort,
+				'order'              => $order,
+				'start'              => ($page - 1) * $limit,
+				'limit'              => $limit
+			);
+
+			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+
+			$results = $this->model_catalog_product->getProducts($filter_data);
+			// print_r($results);exit();
+
+			foreach ($results as $result) {
+				if ($result['image']) {
+					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+				} else {
+					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+				}
+
+				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+					//$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					$price = $this->currency->format($result['price'], $this->session->data['currency']);
+				} else {
+					$price = false;
+				}
+
+			
+
+				if ($this->config->get('config_tax')) {
+					$tax = $this->currency->format((float)$result['special']>0 ? $result['special'] : $result['price'], $this->session->data['currency']);
+				} else {
+					$tax = false;
+				}
+
+				if ($this->config->get('config_review_status')) {
+					$rating = (int)$result['rating'];
+				} else {
+					$rating = false;
+				}
+
+				//颜色名称
+				$color_name = '';
+				if($result['color_id']!=0){
+				   $color_data = $this->model_catalog_product->getOptionValueByID($result['color_id']);
+				   if($color_data){
+					  $color_arr = explode(':',$color_data['name']);
+					  $color_name = $color_arr[0];
+				   }
+			    }
+
+			    $wishlist= $this->model_catalog_product->wishlistornot($result['product_id']);
+                            
+                //texture
+                $texture = $this->model_catalog_product->getOptionDes('Texture',$result['product_id']);
+
+				$data['products'][] = array(
+					'product_id'  => $result['product_id'],
+					'thumb'       => $image,
+					//'name'        => $result['name'],
+					'max_name'	  => $result['name'],
+					'name'        => utf8_substr(strip_tags($result['name']),0,40).'...',
+					'color_name'  => $color_name,
+                    'texture'     => $texture,
+					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
+					'price'       => $this->currency->format($result['price'],$this->session->data['currency']),
+					'special'     => $result['special']>0? $this->currency->format($result['special'],$this->session->data['currency']) : '',
+					'tax'         => $tax,
+					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
+					'rating'      => $result['rating'],
+					//'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
+					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+					'wishlist'	  =>$wishlist
+				);
+			}
+			// print_r(	$data['products']);exit();
+			$url = '';
+
+			if (isset($this->request->get['filter'])) {
+				$url .= '&filter=' . $this->request->get['filter'];
+			}
+
+			if (isset($this->request->get['limit'])) {
+				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+		
+			$url = '';
+
+			if (isset($this->request->get['filter'])) {
+				$url .= '&filter=' . $this->request->get['filter'];
+			}
+
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			$data['limits'] = array();
+
+			$limits = array_unique(array($this->config->get($this->config->get('config_theme') . '_product_limit'), 25, 50, 75, 100));
+
+			sort($limits);
+
+		
+
+			$url = '';
+
+			if (isset($this->request->get['filter'])) {
+				$url .= '&filter=' . $this->request->get['filter'];
+			}
+
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['limit'])) {
+				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+			$pagination = new Pagination();
+			$pagination->total = $product_total;
+			$pagination->page = $page;
+			$pagination->limit = $limit;
+			$pagination->url = $this->url->link('product/category', 'path='  . $url . '&page={page}');
+
+			$data['pagination'] = $pagination->render();
+			
+			$data['product_total']=$product_total;
+			$data['page']=$page;
+	
+			$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
+
+	
+// print_r($data['products']);exit;
+		
+			$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($data));
 		}
 	}
 }
