@@ -79,7 +79,8 @@ class ControllerCommonHome extends Controller {
         $data['recommend_products'] = $recommend_products;
         $this->load->model('common/gallery');
        
-        $gallerys=$this->model_common_gallery->getGallerys(array('is_home'=>1,'start'=>0,'limit'=>6));
+        $gallerys=$this->model_common_gallery->getGallerys(array('is_home'=>1,'start'=>0));
+        // print_r($gallerys);exit;
         foreach ($gallerys as $key => $value) {
             $gallerys[$key]['url']=$this->url->link('product/product','product_id='.$value['product_id']);
              $gallerys[$key]['image']= $this->model_tool_image->resize($value['image'], 241, 241);

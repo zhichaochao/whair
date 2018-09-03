@@ -21,17 +21,17 @@ class ModelCommonGallery extends Model {
 		} else {
 			$sql .= " DESC";
 		}
-		if (isset($data['start']) || isset($data['limit'])) {
-			if ($data['start'] < 0) {
-				$data['start'] = 0;
-			}
+		// if (isset($data['start']) || isset($data['limit'])) {
+		// 	if ($data['start'] < 0) {
+		// 		$data['start'] = 0;
+		// 	}
 
-			if ($data['limit'] < 1) {
-				$data['limit'] = 20;
-			}
+		// 	if ($data['limit'] < 1) {
+		// 		$data['limit'] = 20;
+		// 	}
 
-			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-		}
+		// 	$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+		// }
 		// print_r($sql);exit();
 
 		$query = $this->db->query($sql);
