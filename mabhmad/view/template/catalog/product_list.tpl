@@ -130,6 +130,7 @@
                     <a href="<?php echo $sort_status; ?>"><?php echo $column_status; ?></a>
                     <?php } ?></td>
                   <td class="text-center"><?php echo $column_free_postage; ?></td>
+                  <td class="text-center">浏览量</td>
                   <td class="text-right"><?php echo $column_action; ?></td>
                 </tr>
               </thead>
@@ -170,6 +171,7 @@
                       NO
                     <?php } ?>
                   </td>
+                  <td class="text-left"><?php echo $product['browse']; ?></td>
                   <td class="text-right"><a href="<?php echo $product['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <?php } ?>
