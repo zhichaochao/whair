@@ -17,7 +17,8 @@ class ModelCustomerSubscribe extends Model {
 		$sql = "SELECT * FROM " . DB_PREFIX . "newsletter r";
 		$sort_data = array(
 			'r.news_id',
-			'r.news_email'
+			'r.news_email',
+			'r.subtime'
 		);
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
@@ -51,6 +52,15 @@ class ModelCustomerSubscribe extends Model {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "newsletter");
 
 		return $query->row['total'];
+	}
+	public function updsubscribes($news_id) {
+		$query = $this->db->query("SELECT  * FROM " . DB_PREFIX . "newsletter r  WHERE r.news_id = '" . (int)$news_id . "'");
+		if($query->row['status']==1){
+			$querys = $this->db->query("UPDATE " . DB_PREFIX . "newsletter SET status = 0 WHERE news_id = '" . (int)$news_id . "'");
+		}else{
+			$querys = $this->db->query("UPDATE " . DB_PREFIX . "newsletter SET status = 1 WHERE news_id = '" . (int)$news_id . "'");	
+		}
+		return $querys;
 	}
 
 
