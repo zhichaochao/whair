@@ -38,7 +38,22 @@ class ModelCommonGallery extends Model {
 
 		return $query->rows;
 	}
+public function updateProductView($product_id)
+	{
+		$query= $this->db->query("SELECT * FROM " . DB_PREFIX . "product where product_id=".(int)$product_id);
+		$row=$query->row;
+		$query= $this->db->query("SELECT * FROM " . DB_PREFIX . "gallery where product_id=".(int)$product_id);
+		$rows=$query->row;
 
+		if (isset($rows['view'])) {
+				$query= $this->db->query("UPDATE " . DB_PREFIX . "product set browse=".($row['browse']+1)." where product_id=".(int)$product_id);
+				$query= $this->db->query("UPDATE " . DB_PREFIX . "gallery set view=".($rows['view']+1)." where product_id=".(int)$product_id);
+		}else{
+				$query= $this->db->query("UPDATE " . DB_PREFIX . "product set browse=".($row['browse']+1)." where product_id=".(int)$product_id);
+		}
+	
+		
+	}
 
 
 
