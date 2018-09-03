@@ -339,7 +339,7 @@ class ControllerCustomerSubscribe extends Controller {
 			$inquiries_info = $this->model_customer_subscribe->updsubscribes($this->request->post['news_id']);
 		}
 		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(jsonn_encode($json));
+		$this->response->setOutput(json_encode($json));
 
 	}
 
