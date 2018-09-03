@@ -158,22 +158,23 @@
                                       + '<div class="text clearfix" >'
                                       +'<p>'+data.products[i].name
                                         +'</p>'
-                                       + '<span class="price">';
+                                       + '<div class="price">';
 
                               if (data.products[i].special) {
                                  result += '  <span>'+data.products[i].special
-                                           +' <del>'+data.products[i].price
-                                            +'</del>'
-                                          + '</span>';
+                                            + '</span>'
+                                           +' <i>'+data.products[i].price
+                                            +'</i>';
+                                          
                              }else{
-                                      result+= '<span class="price-single">'+data.products[i].price+'</span>';
+                                      result+= '<span>'+data.products[i].price+'</span>';
                               }
 
-                                    result+=   '</span>'
-                                        +' <p class="fsbg_div">'
+                                    result+=   '</div>'
+                                        +' <div class="fsbg_div">'
                                         +'<i>'+'-'+data.products[i].off+'%'    
                                         +'</i>' 
-                                        + '</p>'
+                                        + '</div>'
                                       +'</div>'
                                    +'</a>';
                                    if (data.products[i].wishlist==1) {
