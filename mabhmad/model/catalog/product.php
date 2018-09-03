@@ -625,6 +625,7 @@ class ModelCatalogProduct extends Model {
 			'pd.name',
 			'p.model',
 			'p.price',
+			'p.browse',
 			'p.quantity',
 			'p.relation_product',
 			'p.status',
