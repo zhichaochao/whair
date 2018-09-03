@@ -262,6 +262,8 @@ var login_time = setTimeout(gg_show,1000);
         loop:true,
         autoplay: true,
         slidesPerView : li_w,
+        loopFillGroupWithBlank: true,
+        slidesPerGroup: li_w,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',

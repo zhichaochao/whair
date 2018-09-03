@@ -170,7 +170,9 @@
                               }
 
                                     result+=   '</span>'
-                                        +' <p class="fsbg_div">'+data.products[i].off
+                                        +' <p class="fsbg_div">'
+                                        +'<i>'+'-'+data.products[i].off+'%'    
+                                        +'</i>' 
                                         + '</p>'
                                       +'</div>'
                                    +'</a>';
