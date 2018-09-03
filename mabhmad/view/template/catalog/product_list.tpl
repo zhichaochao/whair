@@ -130,7 +130,13 @@
                     <a href="<?php echo $sort_status; ?>"><?php echo $column_status; ?></a>
                     <?php } ?></td>
                   <td class="text-center"><?php echo $column_free_postage; ?></td>
-                  <td class="text-center">浏览量</td>
+
+                  <td class="text-right"><?php if ($sort == 'p.browse') { ?>
+                    <a href="<?php echo $sort_browse; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_browse; ?></a>
+                    <?php } else { ?>
+                    <a href="<?php echo $sort_browse; ?>"><?php echo $column_browse; ?></a>
+                    <?php } ?></td>
+                  <!-- <td class="text-center">浏览量</td> -->
                   <td class="text-right"><?php echo $column_action; ?></td>
                 </tr>
               </thead>

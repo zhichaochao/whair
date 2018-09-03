@@ -607,6 +607,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['column_name'] = $this->language->get('column_name');
 		$data['column_model'] = $this->language->get('column_model');
 		$data['column_price'] = $this->language->get('column_price');
+		$data['column_browse'] = $this->language->get('column_browse');
 		$data['column_quantity'] = $this->language->get('column_quantity');
 		$data['column_status'] = $this->language->get('column_status');
 		$data['column_action'] = $this->language->get('column_action');
@@ -696,6 +697,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['sort_relation_product'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.relation_product' . $url, true);
 		$data['sort_status'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.status' . $url, true);
 		$data['sort_order'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, true);
+		$data['sort_browse'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.browse' . $url, true);
 
 		$url = '';
 
