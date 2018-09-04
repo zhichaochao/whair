@@ -248,8 +248,7 @@ $('select[name=\'category_id\']').trigger('change');
                                       result+= '<span class="price-single">'+data.products[i].price+'</span>';
                               }
                                     result+=   '</span>'
-                                        +' <p class="p1">'+data.products[i].texture
-                                        + '</p>'
+                                      
                                         +'<p>'+data.products[i].name
                                         +'</p>'
                                       +'</div>'
