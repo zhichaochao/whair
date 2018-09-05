@@ -10,6 +10,7 @@ class ControllerSettingSetting extends Controller {
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			// print_r($this->request->post);exit();
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 
 			if ($this->config->get('config_currency_auto')) {
@@ -1227,7 +1228,7 @@ class ControllerSettingSetting extends Controller {
 			$this->error['complete_status'] = $this->language->get('error_complete_status');
 		}
 
-		if ($this->request->post['config_ftp_status']) {
+		if (isset($this->request->post['config_ftp_status'])) {
 			if (!$this->request->post['config_ftp_hostname']) {
 				$this->error['ftp_hostname'] = $this->language->get('error_ftp_hostname');
 			}
