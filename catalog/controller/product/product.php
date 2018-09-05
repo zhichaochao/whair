@@ -271,9 +271,10 @@ class ControllerProductProduct extends Controller {
 
             $data['points'] = $product_info['points'];
             $data['material'] = $product_info['material'];
-            $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+ 
+            $data['description'] =html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
             $data['m_description'] = html_entity_decode($product_info['m_description'], ENT_QUOTES, 'UTF-8');
-
+           
             //产品属性
             $data['manufacturer'] = $product_info['manufacturer'];
             $data['manufacturers'] = $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $product_info['manufacturer_id']);
@@ -313,10 +314,6 @@ class ControllerProductProduct extends Controller {
             }else{
                 $data['name'] = '';
             }
-
-           
-            //print_r($_SERVER["REQUEST_URI"]);exit();
-            //print_r($this->session->data['userurl']);exit;
             if(!$this->customer->isLogged()){
 
                 if ($_SERVER['HTTPS']) {
@@ -333,6 +330,7 @@ class ControllerProductProduct extends Controller {
             }
             // print_r(  $this->session->data['userurl']);exit;
              $data['login'] = $this->url->link('account/login');
+
             if (isset($this->request->post['email'])) {
                 $data['email'] = $this->request->post['email'];
             } else {
@@ -575,6 +573,7 @@ class ControllerProductProduct extends Controller {
             //产品浏览量
             $this->load->model('common/gallery');
             $this->model_common_gallery->updateProductView($product_id);
+
             //询盘请求的url   dyl add
             $data['inquiry_url'] = $this->url->link('product/product/addinquiry');
             $this->load->model('localisation/country');

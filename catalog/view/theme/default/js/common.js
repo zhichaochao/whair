@@ -38,7 +38,10 @@ $(function(){
 	
 //	头部导航二级菜单
 	$(".nav_ul>li").hover(function(){
-		$(this).find("ol").stop().slideToggle()
+//		$(this).find("ol").stop().slideToggle()
+		$(this).find("ol").stop().slideDown();
+	},function(){
+		$(this).find("ol").stop().slideUp();
 	})
 	
 //	头部导航货币切换
