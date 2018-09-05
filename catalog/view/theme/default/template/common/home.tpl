@@ -41,13 +41,14 @@
                 
                 <?php if(isset($homes[0])){ ?>   
                 <div class="top clearfix">
-                    <div class="bt2">
-                        <h1>One Donor <?=$homes[0]['category']['name'];?></h1>
-                        <a href="<?=$homes[0]['category_url'];?>" class="a_btn">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
-                    </div>
+                    
                     <div class="video_div">
                         <video id="video" class="video" poster="<?=$homes[0]['image'];?>" src="<?=$video;?>" ></video>
                         <div class="bg_div"></div>
+                    </div>
+                    <div class="bt2">
+                        <h1>One Donor <?=$homes[0]['category']['name'];?></h1>
+                        <a href="<?=$homes[0]['category_url'];?>" class="a_btn mr_b_no">VIEW MORE &nbsp;&nbsp;><span class="triangle"><em></em></span></a>
                     </div>
                 </div>
              <?php if(isset($homes[0]['child'])){ ?>
@@ -198,7 +199,7 @@
         <div class="modal img_modal">
             <div class="text">
                 <div class="close"></div>
-                <h1>Please Choose Your Sale Rep's Name:</h1>
+                <h1>Please Choose Your Sales Rep's Name:</h1>
                 <div class="bot">
                     <ul>
                         <li><a href="http://o.luvmewig.com/">Rebecca</a></li>
@@ -214,7 +215,7 @@
                         <li><a href="http://o.luvmewig.com">Twinkle</a></li>
                         <li><a href="http://o.luvmewig.com">Alex</a></li>
                         <li><a href="http://o.luvmewig.com">Kristen</a></li>
-                        <li><a href="<?php echo $choose_url;?>">I dont have</a></li>
+                        <li><a href="<?php echo $choose_url;?>">I don't have</a></li>
 
                   
                     </ul>
@@ -261,6 +262,8 @@ var login_time = setTimeout(gg_show,1000);
         loop:true,
         autoplay: true,
         slidesPerView : li_w,
+        loopFillGroupWithBlank: true,
+        slidesPerGroup: li_w,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',

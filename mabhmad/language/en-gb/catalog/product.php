@@ -22,6 +22,7 @@ $_['column_image']           = '图像';
 $_['column_price']           = '价格';
 $_['column_quantity']        = '数量';
 $_['column_status']          = '状态';
+$_['column_browse']          = '浏览量';
 $_['column_action']          = '操作';
 
 // Entry

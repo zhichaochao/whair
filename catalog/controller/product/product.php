@@ -572,7 +572,9 @@ class ControllerProductProduct extends Controller {
             if($this->request->server['REQUEST_METHOD'] == 'POST' && $this->write()){
                 $data['error'] = $this->error;
             }
-
+            //产品浏览量
+            $this->load->model('common/gallery');
+            $this->model_common_gallery->updateProductView($product_id);
             //询盘请求的url   dyl add
             $data['inquiry_url'] = $this->url->link('product/product/addinquiry');
             $this->load->model('localisation/country');

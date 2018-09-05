@@ -25,7 +25,7 @@ class ModelModuleNewsletters extends Model {
 		else
 		{
 		
-			if($this->db->query("INSERT INTO " . DB_PREFIX . "newsletter(news_email) values ('".$data['email']."')"))
+			if($this->db->query("INSERT INTO " . DB_PREFIX . "newsletter(news_email,subtime) values ('".$data['email']."',now())"))
 			{
 				//$this->response->redirect($this->url->link('common/home', '', 'SSL'));
 				return "Subscription Successfull";

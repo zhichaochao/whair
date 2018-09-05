@@ -62,6 +62,9 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                     <?php } ?></td>
+                    <td class="text-left" style="color:#1e91cf;">
+                    状态
+                    </td>
                   <td class="text-right"><?php echo $column_action; ?></td>
                 </tr>
               </thead>
@@ -79,6 +82,20 @@
                   <td class="text-right"><?php echo $inquiries['phone']; ?></td>
                   <td class="text-left"><?php echo $inquiries['comment']; ?></td>
                   <td class="text-left"><?php echo $inquiries['submitTime']; ?></td>
+                  <!-- <td class="text-left"><?php if($inquiries['status']==1){ echo '未处理';}else{ echo '已处理';}; ?></td> -->
+
+                  <td class="text-left" onclick="click_jia(<?php echo $inquiries['id']; ?>)">
+                <?php if($inquiries['status']==1){ ?>  
+                      <h3><font color="red">×</font></h3>
+                <?php }else{?>  
+                      <h3><font color="green">√</font></h3>
+                <?php }?>  
+                    <!-- <if condition="<?php echo $inquiries['status']; ?> eq 1">
+                       <h3><font color="green">√</font></h3>
+                    <else/>
+                      <h3><font color="red">×</font></h3>
+                  </if> -->
+                  </td>
                   <td class="text-right"><a href="<?php echo $inquiries['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <?php } ?>
@@ -99,6 +116,20 @@
     </div>
   </div>
   <script type="text/javascript"><!--
+  function click_jia(id){
+if(confirm('确认更改吗?')){
+   $.ajax({
+         url:"index.php?route=customer/inquiries/click_jia&token=<?php echo $token; ?>",
+         type:"post",
+         data:{'id':id},
+         dataType:'json',
+         success:function(json){
+           window.location.reload();
+         } 
+      });
+}
+
+    }
 $('#button-filter').on('click', function() {
 	url = 'index.php?route=catalog/inquiries&token=<?php echo $token; ?>';
 	

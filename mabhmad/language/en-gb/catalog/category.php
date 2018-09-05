@@ -49,3 +49,4 @@ $_['error_name']             = '类别名称必须介于 2 到 32 个字符之�
 $_['error_meta_title']       = 'Meta 标题必须大于 3 和少于 255 个字符 ！';
 $_['error_keyword']          = 'SEO 关键字已被使用 ！';
 $_['error_parent']           = '您所选的父类为当前分类的一个子类!';
+$_['error_product']       = '警告： 不能删除此选项，因为它目前分配给 %s 个商品 ！';

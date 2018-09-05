@@ -1,6 +1,12 @@
 <?php echo $header; ?>
 
 <div>
+<input type="hidden" name="allpage" value='<?=$allpage;?>' id='allpage'/>
+<input type="hidden" name="page" value='1' id='page'/>
+<input type="hidden" name="category_id" value='<?=$category_id;?>' id='category_id'/>
+<input type="hidden" name="sort" value='<?=$sort;?>' id='sort'/>
+<input type="hidden" name="order" value='<?=$order;?>' id='order'/>
+<input type="hidden" name="limit" value='<?=$limit;?>' id='limit'/>
       <!--内容-->
     <div class="content in_content product">
       <div class="pro_content clearfix">
@@ -16,7 +22,8 @@
           </ol>
         </div>
         <div class="pro_text clearfix">
-          <ul class="pro_ul">
+          <ul class="pro_ul prolist">
+
            <?php foreach ($products as $product) { ?>
             <li>
               <a href="<?php echo $product['href']; ?>">
@@ -127,5 +134,77 @@
       }
     })
   })
+</script>
+
+<script>
+    function loadmore(obj){
+      var allpage=$('#allpage').val();
+      var page=$('#page').val();
+      var sort=$('#sort').val();
+      var category_id=$('#category_id').val();
+      var limit=$('#limit').val();
+      var win =$(window).width();
+        if(win<920){
+             var scrollTop = $(obj).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(obj).height();
+            if (allpage>page) {
+             if (scrollHeight-scrollTop - windowHeight<=250 ) {
+              page++;
+              $('#page').val(page);
+               $.ajax({
+                          url: 'index.php?route=product/category/loadpage&page='+page+'&sort='+sort+'&category_id='+category_id+'&limit='+limit ,
+                          dataType: 'json',
+                          success: function(data) {
+                            var result="";
+                            console.log( data.products );
+                            for (var i =0; i < data.products.length ; i++) {
+                            var addwinst="wishlist('"+data.products[i].product_id+"'";
+                               result+='<li>'
+                                  +'<a href="'+data.products[i].href+'">'
+                                    +'<div class="pic_img" >'
+                                        +'<img src="'+data.products[i].thumb+'"   />'
+                                    + '</div>'
+                                      + '<div class="text clearfix" >'
+                                       + '<span class="price">';
+                              if (data.products[i].special) {
+                                 result += '  <span>'+data.products[i].special
+                                           +' <del>'+data.products[i].price
+                                            +'</del>'
+                                          + '</span>';
+                             }else{
+                                      result+= '<span class="price-single">'+data.products[i].price+'</span>';
+                              }
+                                    result+=   '</span>'
+                                        +' <p class="p1">'+data.products[i].texture
+                                        + '</p>'
+                                        +'<p>'+data.products[i].name
+                                        +'</p>'
+                                      +'</div>'
+                                   +'</a>';
+                                   if (data.products[i].wishlist==1) {
+                                    result+='<div class="sc_div off" onclick="'+addwinst+',this);" >';
+                                   }else{
+                                    result+='<div class="sc_div" onclick="'+addwinst+',this);" >';
+                                   }
+                                  +'</div>'
+                                  +'</li>';
+                                   }
+                                  // console.log(result);
+                           $('.prolist').append(result);
+                          }
+                       })
+                      } 
+                    }
+                    // else if(!$(".pro_text ").hasClass('over')){
+                    //   $(".pro_text ").addClass('over')
+                    //    $(".pro_text ").append("<p>加载完成</p>");
+                    // }
+                }
+              }
+    //页面滚动执行事件
+    $(window).scroll(function (){
+        loadmore($(this));
+    });
 </script>
 <?php echo $footer; ?>

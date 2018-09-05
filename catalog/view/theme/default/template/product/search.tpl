@@ -2,6 +2,9 @@
   <!--内容-->
   <?php echo $column_left; ?>
     <div class="content in_content pro_content  search_div" id="content"><?php echo $content_top; ?>
+    <input type="hidden" name="allpage" value='<?=$allpage;?>' id='allpage'/>
+      <input type="hidden" name="page" value='1' id='page'/>
+      <input type="hidden" name="searchs" value='<?=$search;?>' id='searchs'/>
       <h1><?php echo $heading_title; ?></h1>
         <div class="form_sr clearfix">
           <p class="p_sr"><?php echo $entry_search; ?></p>
@@ -68,7 +71,7 @@
             </select>
         </label>
         
-        <ul class="pro_ul clearfix">
+        <ul class="pro_ul clearfix prolist">
         <?php foreach ($products as $product) { ?>
             <li>
               <a href="<?php echo $product['href']; ?>">
@@ -206,4 +209,69 @@ $('select[name=\'category_id\']').trigger('change');
  }
 }
 --></script>
+
+<script>
+    function loadmore(obj){
+      var allpage=$('#allpage').val();
+      var page=$('#page').val();
+      var search=$('#searchs').val();
+      var win =$(window).width();
+        if(win<920){
+             var scrollTop = $(obj).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(obj).height();
+            if (allpage>page) {
+             if (scrollHeight-scrollTop - windowHeight<=250 ) {
+              page++;
+              $('#page').val(page);
+               $.ajax({
+                          url: 'index.php?route=product/search/loadpage&search='+search+'&page='+page ,
+                          dataType: 'json',
+                          success: function(data) {
+                            var result="";
+                            // console.log( data.products );
+                            for (var i =0; i < data.products.length ; i++) {
+                            var addwinst="wishlist('"+data.products[i].product_id+"'";
+                               result+='<li>'
+                                  +'<a href="'+data.products[i].href+'">'
+                                    +'<div class="pic_img" >'
+                                        +'<img src="'+data.products[i].thumb+'"   />'
+                                    + '</div>'
+                                      + '<div class="text clearfix" >'
+                                       + '<span class="price">';
+                              if (data.products[i].special) {
+                                 result += '  <span>'+data.products[i].special
+                                           +' <del>'+data.products[i].price
+                                            +'</del>'
+                                          + '</span>';
+                             }else{
+                                      result+= '<span class="price-single">'+data.products[i].price+'</span>';
+                              }
+                                    result+=   '</span>'
+                                      
+                                        +'<p>'+data.products[i].name
+                                        +'</p>'
+                                      +'</div>'
+                                   +'</a>';
+                                   if (data.products[i].wishlist==1) {
+                                    result+='<div class="sc_div off" onclick="'+addwinst+',this);" >';
+                                   }else{
+                                    result+='<div class="sc_div" onclick="'+addwinst+',this);" >';
+                                   }
+                                  +'</div>'
+                                  +'</li>';
+                                   }
+                                  // console.log(result);
+                           $('.prolist').append(result);
+                          }
+                       })
+                      } 
+                    }
+                }
+              }
+    //页面滚动执行事件
+    $(window).scroll(function (){
+        loadmore($(this));
+    });
+</script>
 <?php echo $footer; ?>

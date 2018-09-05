@@ -21,24 +21,39 @@ class ModelCommonGallery extends Model {
 		} else {
 			$sql .= " DESC";
 		}
-		if (isset($data['start']) || isset($data['limit'])) {
-			if ($data['start'] < 0) {
-				$data['start'] = 0;
-			}
+		// if (isset($data['start']) || isset($data['limit'])) {
+		// 	if ($data['start'] < 0) {
+		// 		$data['start'] = 0;
+		// 	}
 
-			if ($data['limit'] < 1) {
-				$data['limit'] = 20;
-			}
+		// 	if ($data['limit'] < 1) {
+		// 		$data['limit'] = 20;
+		// 	}
 
-			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-		}
+		// 	$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+		// }
 		// print_r($sql);exit();
 
 		$query = $this->db->query($sql);
 
 		return $query->rows;
 	}
+public function updateProductView($product_id)
+	{
+		$query= $this->db->query("SELECT * FROM " . DB_PREFIX . "product where product_id=".(int)$product_id);
+		$row=$query->row;
+		$query= $this->db->query("SELECT * FROM " . DB_PREFIX . "gallery where product_id=".(int)$product_id);
+		$rows=$query->row;
 
+		if (isset($rows['view'])) {
+				$query= $this->db->query("UPDATE " . DB_PREFIX . "product set browse=".($row['browse']+1)." where product_id=".(int)$product_id);
+				$query= $this->db->query("UPDATE " . DB_PREFIX . "gallery set view=".($rows['view']+1)." where product_id=".(int)$product_id);
+		}else{
+				$query= $this->db->query("UPDATE " . DB_PREFIX . "product set browse=".($row['browse']+1)." where product_id=".(int)$product_id);
+		}
+	
+		
+	}
 
 
 

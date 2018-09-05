@@ -40,6 +40,15 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_product; ?>"><?php echo $column_product; ?></a>
                     <?php } ?></td>
+
+                    <td class="text-left"><?php if ($sort == 'r.subtime') { ?>
+                    <a href="<?php echo $sort_date_added; ?>" class="<?php echo strtolower($order); ?>">添加日期</a>
+                    <?php } else { ?>
+                    <a href="<?php echo $sort_date_added; ?>">添加日期</a>
+                    <?php } ?></td>
+                    <td class="text-left" style="color:#1e91cf;">
+                    状态
+                    </td>
                 </tr>
               </thead>
               <tbody>
@@ -52,6 +61,16 @@
                     <input type="checkbox" name="selected[]" value="<?php echo $subscribe['news_id']; ?>" />
                     <?php } ?></td>
                   <td class="text-left"><?php echo $subscribe['news_email']; ?></td>
+                  <td class="text-left">
+                 <?php if(empty($subscribe["subtime"])){ echo "";}else{echo date("Y-m-d",strtotime($subscribe['subtime'])) ;}?>
+                  </td>
+                  <td class="text-left" onclick="click_jia(<?php echo $subscribe['news_id']; ?>)">
+                <?php if($subscribe['status']==1){ ?>  
+                      <h3><font color="red">×</font></h3>
+                <?php }else{?>  
+                      <h3><font color="green">√</font></h3>
+                <?php }?>
+                  </td>
                 </tr>
                 <?php } ?>
                 <?php } else { ?>
@@ -72,4 +91,20 @@
   </div>
 
 </div>
+<script>
+  function click_jia(news_id){
+if(confirm('确认更改吗?')){
+   $.ajax({
+         url:"index.php?route=customer/subscribe/click_jia&token=<?php echo $token; ?>",
+         type:"post",
+         data:{'news_id':news_id},
+         dataType:'json',
+         success:function(json){
+           window.location.reload();
+         } 
+      });
+}
+
+    }
+</script>
 <?php echo $footer; ?>

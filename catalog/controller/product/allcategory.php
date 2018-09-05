@@ -37,6 +37,8 @@ class ControllerProductAllcategory extends Controller {
 			//print_r($data['rows']);exit;
 			$data['continue'] = $this->url->link('common/home');
 			$data['navs']=$this->get_navs();
+			$data['promotion']=$data['navs'][2];
+			$data['promimg']=$data['navs'][2]['m_image'];			
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');

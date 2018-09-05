@@ -75,7 +75,7 @@ header{position:fixed;top:0;left:0;width:100%;background: #fff;z-index:10;height
 	.btn240{width:6.28rem;height:0.8rem;text-align: center;line-height: 0.8rem;background: #333;font-size: 0.24rem;color: #fff;
 	display: block;border-radius: 4px;font-weight: normal;margin: auto;}
 }
-
+.mr_b_no{margin-bottom: 0 !important;}
 
 .ts_ps{display: block;color: #fd4f57 !important;font-size: 14px !important;margin: 10px 0;}
 .text-danger{color: red;}
@@ -116,6 +116,8 @@ header{position:fixed;top:0;left:0;width:100%;background: #fff;z-index:10;height
 }
 .content{width: 80%;margin: auto;}
 .ov_text{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 100%;}
+a.step{background: #333;color: #fff;border-radius: 5px;margin-top: 20px;display: inline-block;padding: 5px;}
+.share_l{max-width: 400px !important;}
 
 /**头部**/
 .big_nav{position: fixed;top: 0;left: 0;z-index: 99;background: #fff;width: 100%;}
@@ -262,9 +264,9 @@ text-align: center; position: absolute;bottom: 10px;}
 .yd_footer2{position: fixed;bottom: 0;left: 0;width: 100%;height:1.1rem;background: #000;z-index: 99;display: none;-webkit-overflow-scrolling: touch;}
 .yd_footer2 .ol_ydfot{border-top: 1px solid #fff;padding-top: 0.07rem;}
 .yd_footer2 .ol_ydfot li{float: left;width: 20%;text-align: center;position: relative;}
-.yd_footer2 .ol_ydfot li .a_text{position: absolute;bottom: 100%;left: 0;display: none;}
-.yd_footer2 .ol_ydfot li .a_text a{display: block;width: 2rem;height: 1.2rem;}
-.yd_footer2 .ol_ydfot li .a_text a img{display: block;margin: 0;width: 2rem;height: 1.2rem;}
+.yd_footer2 .ol_ydfot li .a_text{position: absolute;bottom: 100%;left: 0;display: none;margin-bottom: 0.08rem;}
+.yd_footer2 .ol_ydfot li .a_text a{display: block;width: 1.5rem;height: 0.9rem;}
+.yd_footer2 .ol_ydfot li .a_text a img{display: block;margin: 0;width: 100%;height: 0.9rem;}
 
 .yd_footer2 .ol_ydfot li:last-child{border-right: none;}
 .yd_footer2 .ol_ydfot li img{display: none;margin:0.15rem auto 0.1rem auto;width: 0.4rem;height: 0.4rem;}

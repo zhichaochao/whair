@@ -182,7 +182,9 @@ class ControllerCustomerSubscribe extends Controller {
 		foreach ($results as $result) {
 			$data['subscribes'][] = array(
 				'news_id'  => $result['news_id'],
-				'news_email'     => $result['news_email']
+				'news_email'     => $result['news_email'],
+				'status'     => $result['status'],
+				'subtime'     =>$result['subtime']
 			);
 		}
 
@@ -266,7 +268,7 @@ class ControllerCustomerSubscribe extends Controller {
 		$data['sort_author'] = $this->url->link('customer/subscribe', 'token=' . $this->session->data['token'] . '&sort=r.author' . $url, true);
 		$data['sort_rating'] = $this->url->link('customer/subscribe', 'token=' . $this->session->data['token'] . '&sort=r.rating' . $url, true);
 		$data['sort_status'] = $this->url->link('customer/subscribe', 'token=' . $this->session->data['token'] . '&sort=r.status' . $url, true);
-		$data['sort_date_added'] = $this->url->link('customer/subscribe', 'token=' . $this->session->data['token'] . '&sort=r.date_added' . $url, true);
+		$data['sort_date_added'] = $this->url->link('customer/subscribe', 'token=' . $this->session->data['token'] . '&sort=r.subtime' . $url, true);
 
 		$url = '';
 
@@ -328,6 +330,17 @@ class ControllerCustomerSubscribe extends Controller {
 		}
 
 		return !$this->error;
+	}
+	public function click_jia() {
+		// print_r($this->request->post['news_id']);die;
+		$this->load->model('customer/subscribe');
+		$json = array();
+		if (isset($this->request->post['news_id'])) {
+			$inquiries_info = $this->model_customer_subscribe->updsubscribes($this->request->post['news_id']);
+		}
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+
 	}
 
 }
