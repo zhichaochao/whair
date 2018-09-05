@@ -40,7 +40,7 @@
               </ol>
             </div>
             
-            <a class="btn240" onclick="checkout()" >SAVW AND CONTINUE &nbsp;&nbsp;&nbsp;></a>
+            <a class="btn240" onclick="checkout()" >SAVE AND CONTINUE &nbsp;&nbsp;&nbsp;></a>
 
 
 
