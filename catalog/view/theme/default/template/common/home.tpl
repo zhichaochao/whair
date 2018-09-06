@@ -202,19 +202,19 @@
                 <h1>Please Choose Your Sales Rep's Name:</h1>
                 <div class="bot">
                     <ul>
-                        <li><a href="a.hotbeautyhairmall.com">Melisha</a></li>
-                        <li><a href="b.hotbeautyhairmall.com">Amy</a></li>
-                        <li><a href="c.hotbeautyhairmall.com">Yuki</a></li>
-                        <li><a href="d.hotbeautyhairmall.com">Manon</a></li>
-                        <li><a href="e.hotbeautyhairmall.com">Kristen</a></li>
-                        <li><a href="f.hotbeautyhairmall.com">Emily</a></li>
-                        <li><a href="g.hotbeautyhairmall.com">Cathy</a></li>
-                        <li><a href="h.hotbeautyhairmall.com">Linda</a></li>
-                        <li><a href="i.hotbeautyhairmall.com">Twinkle</a></li>
-                        <li><a href="j.hotbeautyhairmall.com">Ashley</a></li>
-                        <li><a href="k.hotbeautyhairmall.com">Alex</a></li>
-                        <li><a href="l.hotbeautyhairmall.com">Edison</a></li>
-                        <li><a href="m.hotbeautyhairmall.com">Leia</a></li>
+                        <li><a href="http://a.hotbeautyhairmall.com">Melisha</a></li>
+                        <li><a href="http://b.hotbeautyhairmall.com">Amy</a></li>
+                        <li><a href="http://c.hotbeautyhairmall.com">Yuki</a></li>
+                        <li><a href="http://d.hotbeautyhairmall.com">Manon</a></li>
+                        <li><a href="http://e.hotbeautyhairmall.com">Kristen</a></li>
+                        <li><a href="http://f.hotbeautyhairmall.com">Emily</a></li>
+                        <li><a href="http://g.hotbeautyhairmall.com">Cathy</a></li>
+                        <li><a href="http://h.hotbeautyhairmall.com">Linda</a></li>
+                        <li><a href="http://i.hotbeautyhairmall.com">Twinkle</a></li>
+                        <li><a href="http://j.hotbeautyhairmall.com">Ashley</a></li>
+                        <li><a href="http://k.hotbeautyhairmall.com">Alex</a></li>
+                        <li><a href="http://l.hotbeautyhairmall.com">Edison</a></li>
+                        <li><a href="http://m.hotbeautyhairmall.com">Leia</a></li>
                         <li><a href="<?php echo $choose_url;?>">I don't have</a></li>
 
                   
