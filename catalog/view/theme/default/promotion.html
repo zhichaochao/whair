@@ -175,7 +175,7 @@
 					
 					<ul>
 						<li class="clearfix">
-							<a href="javascript:0;">All Hair Collections <img class="slide_img" src="img/png/jiahao.png"/></a>
+							<a href="###">All Hair Collections </a><img class="slide_img" src="img/png/jiahao.png" data-img="img/png/jiahao.png" data-imgs="img/png/jianhao.png"/>
 							<ol class="yd_nav_ol clearfix">
 								<li class="clearfix"><a class="right_img" href="###">Double Drawn Funmi Hair </a></li>
 								<li class="clearfix"><a class="right_img" href="###">Virgin Brazilian Hair </a></li>
@@ -184,7 +184,7 @@
 							</ol>
 						</li>
 						<li class="clearfix">
-							<a href="javascript:0;">Closure & Frontal & Wig <img class="slide_img" src="img/png/jiahao.png"/></a>
+							<a href="###">Closure & Frontal & Wig </a><img class="slide_img" src="img/png/jiahao.png" data-img="img/png/jiahao.png" data-imgs="img/png/jianhao.png"/>
 							<ol class="yd_nav_ol clearfix">
 								<li class="clearfix"><a class="right_img" href="###">360 Frontal </a></li>
 								<li class="clearfix"><a class="right_img" href="###">Customized Bundles Wig</a></li>
@@ -216,7 +216,7 @@
 			
 			<div class="pro_content clearfix">
 				<div class="pro_text clearfix">
-					<ul class="pro_ul">
+					<ul class="pro_ul clearfix">
 						<li>
 							<a href="###">
 								<div class="pic_img">
@@ -727,24 +727,12 @@
 		
 		//收藏
 		$(".pro_content .pro_ul .sc_div").click(function(){
-			var win = $(window).width()
-			
-			if(win>992){
-				if($(this).hasClass("off")){
-					$(this).removeClass("off");
-					$(this).css("background","url(img/png/pro_star.png) no-repeat").css("background-size","1.87vw 1.87vw");
-				}else{
-					$(this).addClass("off");
-					$(this).css("background","url(img/png/pro_star_.png) no-repeat").css("background-size","1.87vw 1.87vw");
-				}
+			if($(this).hasClass("off")){
+				$(this).removeClass("off");
+				tips('Moved out from collection','');
 			}else{
-				if($(this).hasClass("off")){
-					$(this).removeClass("off");
-					$(this).css("background","url(img/png/pro_star.png) no-repeat").css("background-size","0.5rem 0.5rem");
-				}else{
-					$(this).addClass("off");
-					$(this).css("background","url(img/png/pro_star_.png) no-repeat").css("background-size","0.5rem 0.5rem");
-				}
+				$(this).addClass("off");
+				tips('Save to collection','');
 			}
 		})
 	})

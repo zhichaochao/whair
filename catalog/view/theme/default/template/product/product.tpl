@@ -575,6 +575,7 @@ function productInfoImg(elm) {
      
             success: function(json) {
             	if (json.success) {
+            		tpis('加入购物车成功');
         			$('#cart_count').html(json.total);
         			$('.cart_count').html(json.total);
         			  $(".cart_li").click();

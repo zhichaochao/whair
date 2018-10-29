@@ -175,7 +175,7 @@
 					
 					<ul>
 						<li class="clearfix">
-							<a href="javascript:0;">All Hair Collections <img class="slide_img" src="img/png/jiahao.png"/></a>
+							<a href="###">All Hair Collections </a><img class="slide_img" src="img/png/jiahao.png" data-img="img/png/jiahao.png" data-imgs="img/png/jianhao.png"/>
 							<ol class="yd_nav_ol clearfix">
 								<li class="clearfix"><a class="right_img" href="###">Double Drawn Funmi Hair </a></li>
 								<li class="clearfix"><a class="right_img" href="###">Virgin Brazilian Hair </a></li>
@@ -184,7 +184,7 @@
 							</ol>
 						</li>
 						<li class="clearfix">
-							<a href="javascript:0;">Closure & Frontal & Wig <img class="slide_img" src="img/png/jiahao.png"/></a>
+							<a href="###">Closure & Frontal & Wig </a><img class="slide_img" src="img/png/jiahao.png" data-img="img/png/jiahao.png" data-imgs="img/png/jianhao.png"/>
 							<ol class="yd_nav_ol clearfix">
 								<li class="clearfix"><a class="right_img" href="###">360 Frontal </a></li>
 								<li class="clearfix"><a class="right_img" href="###">Customized Bundles Wig</a></li>
@@ -218,7 +218,6 @@
 			</p>
 			<a class="a_btn" href="###">GO  BACK&nbsp;&nbsp;></a>
 		</div>
-		
 		<!--返回顶部-->
 		<div class="xf_right">
 			<div class="vip"><a href="###"><span>VIP</span></a></div>
@@ -369,7 +368,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="contact" href="javascript:0;">
+					<a class="contact" href="javascript:0;" onclick="return false">
 						<img class="active" src="img/png/contact-1.png" alt="" />
 						<img src="img/png/contact-2	.png" alt="" />
 						<p>CONTACT</p>
@@ -400,3 +399,19 @@
 	</body>
 </html>
 
+<script>
+
+var windowTop=0;//初始话可视区域距离页面顶端的距离
+var p=0,t=0;
+$(window).scroll(function() {
+    p = $(this).scrollTop();//获取当前可视区域距离页面顶端的距离
+    
+    if(p<t && p!== 0){
+    	$(".yd_footer2").slideUp('fast');
+    }else{
+    	$(".yd_footer2").slideDown('fast');
+    }
+    t=p;
+    
+});
+</script>

@@ -151,18 +151,18 @@ class ControllerAccountLogin extends Controller {
 		}
 
 		$data['action'] = $this->url->link('account/login', '', true);
-		if ($this->request->server['HTTPS']) {
-			$data['action'] =str_replace(HTTPS_SERVER,HTTPS_SERVERS,$data['action']);
-		}else{
+		// if ($this->request->server['HTTPS']) {
+		// 	$data['action'] =str_replace(HTTPS_SERVER,HTTPS_SERVERS,$data['action']);
+		// }else{
 
-			$data['action'] =str_replace(HTTP_SERVER,HTTP_SERVERS,$data['action']);
-		}
+		// 	$data['action'] =str_replace(HTTP_SERVER,HTTP_SERVERS,$data['action']);
+		// }
 
-		if ($this->request->server['HTTPS']) {
-		 $data['redirecturl']  = HTTPS_SERVER;
-		} else {
-		 $data['redirecturl'] = HTTP_SERVER;
-		}
+		// if ($this->request->server['HTTPS']) {
+		//  $data['redirecturl']  = HTTPS_SERVER;
+		// } else {
+		//  $data['redirecturl'] = HTTP_SERVER;
+		// }
 
 		//$data['registers'] = $this->url->link('account/register', '', true);
 		$data['register'] = $this->url->link('account/login/register_save', '', true);

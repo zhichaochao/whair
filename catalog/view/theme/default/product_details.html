@@ -16,7 +16,7 @@
 	<body>
 		<!--头部-->
 		<div class="big_nav">
-			<div class="nav content clearfix">
+			<div class="nav yd_hide content clearfix">
 				
 				<!--货币切换-->
 				<div class="mn_type">
@@ -178,7 +178,7 @@
 					
 					<ul>
 						<li class="clearfix">
-							<a href="javascript:0;">All Hair Collections <img class="slide_img" src="img/png/jiahao.png"/></a>
+							<a href="###">All Hair Collections </a><img class="slide_img" src="img/png/jiahao.png" data-img="img/png/jiahao.png" data-imgs="img/png/jianhao.png"/>
 							<ol class="yd_nav_ol clearfix">
 								<li class="clearfix"><a class="right_img" href="###">Double Drawn Funmi Hair </a></li>
 								<li class="clearfix"><a class="right_img" href="###">Virgin Brazilian Hair </a></li>
@@ -187,7 +187,7 @@
 							</ol>
 						</li>
 						<li class="clearfix">
-							<a href="javascript:0;">Closure & Frontal & Wig <img class="slide_img" src="img/png/jiahao.png"/></a>
+							<a href="###">Closure & Frontal & Wig </a><img class="slide_img" src="img/png/jiahao.png" data-img="img/png/jiahao.png" data-imgs="img/png/jianhao.png"/>
 							<ol class="yd_nav_ol clearfix">
 								<li class="clearfix"><a class="right_img" href="###">360 Frontal </a></li>
 								<li class="clearfix"><a class="right_img" href="###">Customized Bundles Wig</a></li>
@@ -210,21 +210,49 @@
 				
 			</div>
 		
+			<div class="new_nav pc_hide clearfix">
+				<a class="fh" href="###"></a>
+				<p>PRODUCT DETAILS</p>
+			</div>
+			
 		</div>
 		
 		<!--内容-->
-					
-		<div class="content product_det in_content">
+		<div class="content product_det in_content new_in_content">
 			<div class="pro_det_content clearfix">
 				<div class="top clearfix">
 					<div class="left clearfix">
-						<ol class="pro_img_ol">
-							<li><img src="img/jpg/pro_det1.jpg"/></li>
-							<li><img src="img/jpg/product1.jpg"/></li>
-							<li><img src="img/jpg/pro_det1.jpg"/></li>
-							<li><img src="img/jpg/pro_det1.jpg"/></li>
-							<li><img src="img/jpg/product1.jpg"/></li>
-						</ol>
+						<div class="pro_lb_off clearfix">
+							<div class="lb_text">
+								<div class="swiper-container"id="swiper2">
+								    <div class="swiper-wrapper">
+								      	<div class="swiper-slide active">
+								      		<img src="img/jpg/pro_det1.jpg"/>
+								      	</div>
+									    <div class="swiper-slide">
+									    	<img src="img/jpg/product1.jpg"/>
+									    </div>
+									    <div class="swiper-slide">
+									    	<img src="img/jpg/pro_det1.jpg"/>
+									    </div>
+									    <div class="swiper-slide">
+								      		<img src="img/jpg/pro_det1.jpg"/>
+								      	</div>
+									    <div class="swiper-slide">
+									    	<img src="img/jpg/product1.jpg"/>
+									    </div>
+									    <div class="swiper-slide">
+								      		<img src="img/jpg/pro_det1.jpg"/>
+								      	</div>
+									    <div class="swiper-slide">
+									    	<img src="img/jpg/product1.jpg"/>
+									    </div>
+							  		</div>
+								</div>
+							</div>
+					    	<div class="swiper-button-prevs"></div>
+							<div class="swiper-button-nexts"></div>
+						</div>
 						<div class="pro_big_img">
 							<div class="swiper-container" id="swiper3">
 							    <div class="swiper-wrapper">
@@ -236,6 +264,12 @@
 								    </div>
 								    <div class="swiper-slide ban_img">
 								    	<img src="img/jpg/pro_det1.jpg"/>
+								    </div>
+								    <div class="swiper-slide ban_img">
+							      		<img src="img/jpg/pro_det1.jpg"/>
+							      	</div>
+								    <div class="swiper-slide ban_img">
+								    	<img src="img/jpg/product1.jpg"/>
 								    </div>
 								    <div class="swiper-slide ban_img">
 							      		<img src="img/jpg/pro_det1.jpg"/>
@@ -255,94 +289,115 @@
 						<div class="top_text">
 							<a class="bt_a" href="###">Raw Super Double Drawn BoB</a>
 							<p class="price"><span>$36.59</span><i>$136.00</i></p>
-							<!--<div class="select_div hiar_color clearfix">
-								<span>Hair Color:</span>
-								<button class="select_btn"><span>Natural Black</span></button>
-								<div class="select_ul">
-									<ul>
-										<li>Natural Black</li>
-										<li>Natural 1</li>
-										<li>Natural 2</li>
-										<li>Natural 3</li>
-										<li>Natural 4</li>
-										<li>Natural 5</li>
-									</ul>
-								</div>
-							</div>-->
-							
+							<div class="yd_hide clearfix">
 								<label class="num_label clearfix" for="">
 									<span>Quantity:</span>
 									<div class="price_input clearfix">
 										<span class="sub"></span>
-										<input class="num" type="text" value="1"/>
+										<input class="num" type="text" value="1" readonly='readonly'/>
 										<span class="add"></span>
 									</div>
 								</label>
-							<div class="label_div clearfix">
-								<label class="len_label" for="">
-									<span>Hair Color:</span>
-									<div class="select_div">
-										<button class="select_btn"><span>Natural Black</span></button>
-										<div class="select_ul">
-											<ul>
-												<li>Natural Black</li>
-												<li>Jet Black</li>
-												<li>Ash Bloned</li>
-											</ul>
+								<div class="label_div clearfix">
+								<dl class="pro_det_dl clearfix">
+									<dt>Lace Closure:</dt>
+									<dd><p>3 Parting</p></dd>
+									<dd><p>Middle Parting</p></dd>
+									<dd><p>Free Parting</p></dd>
+								</dl>
+									<label class="len_label" for="">
+										<span>Hair Color:</span>
+										<div class="select_div">
+											<button class="select_btn"><span>Natural Black</span></button>
+											<div class="select_ul">
+												<ul>
+													<li>Natural Black</li>
+													<li>Jet Black</li>
+													<li>Ash Bloned</li>
+												</ul>
+											</div>
+										</div>
+										<ul style="display: none;" class="clearfix">
+											<li class="active">Natural Black</li>
+											<li>Jet Black</li>
+											<li>Ash Bloned</li>
+										</ul>
+										
+									</label>
+									
+									<label class="len_label" for="">
+										<span>Length:</span>
+										<div class="select_div">
+											<button class="select_btn"><span>12inch  100g</span></button>
+											<div class="select_ul">
+												<ul>
+													<li>12inch  100g</li>
+													<li>14inch  100g</li>
+													<li>16inch  100g</li>
+													<li>18inch  100g</li>
+													<li>20inch  100g</li>
+													<li>22inch  100g</li>
+													<li>24inch  100g</li>
+													<li>26inch  100g</li>
+													<li>28inch  100g</li>
+													<li>30inch  100g</li>
+												</ul>
+											</div>
+										</div>
+										<ul style="display: none;" class="clearfix">
+											<li class="active">12inch 100g</li>
+											<li>12inch  100g</li>
+											<li>14inch  100g</li>
+											<li>16inch  100g</li>
+											<li>18inch  100g</li>
+											<li>20inch  100g</li>
+											<li>22inch  100g</li>
+											<li>24inch  100g</li>
+											<li>26inch  100g</li>
+											<li>28inch  100g</li>
+											<li>30inch  100g</li>
+										</ul>
+										
+									</label>
+									<span class="measurement">
+										About Measurement
+									</span>
+									<div class="meas_img">
+										<img class=" changeimage" data-image='img/jpg/size_guid.jpg' data-mimage='img/jpg/yd_size_guid.jpg'  />
+										<div class="close"></div>
+									</div>
+								</div>
+								<a class="add_shop a_btn clearfix" href="javascript:0;">ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
+								<button class="xyd_btn sc_btn" href="###"><span>WISHLIST</span></button>
+							</div>
+						
+							<div class="yd_show clearfix">
+								<div class="cart_attr cart_modal clearfix">
+									<ol class="clearfix">
+										<li class="clearfix">
+											<span>Color:</span>
+											<em>Black</em>
+										</li>
+										<li class="clearfix">
+											<span>Black:</span>
+											<em>10 Inch 100g</em>
+										</li>
+									</ol>
+									<div class="price_input clearfix">
+										<p>Quantity:</p>
+										<div class="text clearfix">
+											<span class="subs"></span>
+											<input class="num" type="text" value="1" readonly="readonly">
+											<span class="adds"></span>
 										</div>
 									</div>
-									<ul style="display: none;" class="clearfix">
-										<li class="active">Natural Black</li>
-										<li>Jet Black</li>
-										<li>Ash Bloned</li>
-									</ul>
-									
-								</label>
-								<label class="len_label" for="">
-									<span>Length:</span>
-									<div class="select_div">
-										<button class="select_btn"><span>12inch  100g</span></button>
-										<div class="select_ul">
-											<ul>
-												<li>12inch  100g</li>
-												<li>14inch  100g</li>
-												<li>16inch  100g</li>
-												<li>18inch  100g</li>
-												<li>20inch  100g</li>
-												<li>22inch  100g</li>
-												<li>24inch  100g</li>
-												<li>26inch  100g</li>
-												<li>28inch  100g</li>
-												<li>30inch  100g</li>
-											</ul>
-										</div>
-									</div>
-									<ul style="display: none;" class="clearfix">
-										<li class="active">12inch 100g</li>
-										<li>12inch  100g</li>
-										<li>14inch  100g</li>
-										<li>16inch  100g</li>
-										<li>18inch  100g</li>
-										<li>20inch  100g</li>
-										<li>22inch  100g</li>
-										<li>24inch  100g</li>
-										<li>26inch  100g</li>
-										<li>28inch  100g</li>
-										<li>30inch  100g</li>
-									</ul>
-									
-								</label>
-								<span class="measurement">
-									About Measurement
-								</span>
-								<div class="meas_img">
-									<img class=" changeimage" data-image='img/jpg/size_guid.jpg' data-mimage='img/jpg/yd_size_guid.jpg'  />
-									<div class="close"></div>
+									<span class="length">Select color and  length&nbsp;&nbsp;></span>
 								</div>
 							</div>
-							<a class="add_shop a_btn clearfix" href="javascript:0;">ADD TO SHOPPING CART&nbsp;&nbsp;&nbsp;&nbsp;></a>
-							<button class="xyd_btn" href="###"><span>WISHLIST</span></button>
+						
+						
 						</div>
+						
 						<div class="bot_text clear">
 							<p class="text_p text_p2"><span>Hair Material:</span> Double Drawn Human Hair</p>
 							<dl>
@@ -371,18 +426,127 @@
 			
 				<div class="bot clearfix">
 					<ol class="text_ol clearfix">
-						<li>PRODUCTS DETAILS <hr /></li>
-						<li class="active">DELIVERY AND PACKAGE <hr /></li>
+						<li class="active">PRODUCTS DETAILS <hr /></li>
+						<li>DELIVERY AND PACKAGE <hr /></li>
 						<li>FAQ <hr /></li>
 					</ol>
 					<ul class="text_ul">
-						<li>
+						<li class="active">
 							<h1 class="xxk_h1">PRODUCTS DETAILS</h1>
-							<div class="xxk_text">
-								<img src="img/jpg/products.jpg"/>
+							<div class="xxk_text" style="margin-bottom: 2.6vw;">
+								<h1 style="font-size: 1.25vw;margin-top: 2.08vw;font-weight: normal;">Specifications of Best One Donor Brazilian Hair</h1>
+								<table style="border: 1px solid #c1c1c1;max-width: 750px;margin-top: 1.04vw;">
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Hair Material :
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											100% Brazilian Human One Donor Hair
+										</td>
+									</tr>
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Hair Grade:
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											7A virgin human hair
+										</td>
+									</tr>
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Hair Color:
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											color #1b (the color is natural without any processing)
+										</td>
+									</tr>
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Available Texture:
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											Body wave ,Deep curly,Natural wave,Silk straight Big curl,Rose 
+											curl,Spiral curl, Princess curl etc.
+										</td>
+									</tr>
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Available Length (Inch):
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											10~ 30 inches in large stock for wholesale hair
+										</td>
+									</tr>
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Net Weight:
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											About 3.5-3.8oz/pcs
+										</td>
+									</tr>
+									
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Advantage:
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											1. Soft , glossy and clean , no lice or knit<br />
+											2. We promise no tangling, no shedding<br />
+											3. No synthetic hair , not mix animal hair<br />
+											4. Can keep the texture after wash and hair last for 3-5 years.<br />
+											5. Can be ironed and dyed , even bleached
+										</td>
+									</tr>
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Samples:
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											Samples testing order available on the basic of stock
+										</td>
+									</tr>
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											OEM:
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											10 pcs per length,per color or per style
+										</td>
+									</tr>
+									<tr>
+										<td style="background: #f2f2f2;border-bottom: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 0.4vw;">
+											Payment: 
+										</td>
+										<td style="border: 1px solid #c1c1c1;font-size: 0.83vw;padding: 0.83vw 0 0.83vw 1.04vw;">
+											Paypal, T/T, L/C, Money Gram, Western Union, etc.
+										</td>
+									</tr>
+								</table>
+								
+								<h1 style="font-size: 1.25vw;margin-top: 2.08vw;font-weight: normal;">Features of the Unprocessed Brazilian Hair</h1>
+								<p style="max-width: 750px;font-size: 0.83vw;margin-bottom: 0.25vw;display: block;">
+									<span style="font-size: 1.04vw;">●</span>
+									Brazilian virgin hair is original virgin bulk hair, cut from young girls’ head and sew to weft, so 
+									hair is very full in the end, very little short hair inside. <br />
+									And the hair cuticles face the same direction, absolutely tangle free during usage.
+								</p>
+								<p style="max-width: 750px;font-size: 0.83vw;margin-bottom: 0.25vw;display: block;">
+									<span style="font-size: 1.04vw;">●</span>
+									The hair has not been treated at all. So hair quality has not been destroyed by chemical,the 
+									hair is still alive. Feels very silky and nutritious.
+								</p>
+								<p style="max-width: 750px;font-size: 0.83vw;margin-bottom: 0.25vw;display: block;">
+									<span style="font-size: 1.04vw;">●</span>
+									The hair can be dyed to any color, and since it is kind of thick hair, can be done to any styles many times.
+								</p>
+								<p style="max-width: 750px;font-size: 0.83vw;margin-bottom: 0.25vw;display: block;">
+									<span style="font-size: 1.04vw;">●</span>
+									The hair can last 3-5 years if take care well under directions.
+								</p>	
 							</div>
 						</li>
-						<li class="active">
+						<li>
 							<h1 class="xxk_h1">Delivery And Package</h1>
 							<div class="xxk_text">
 								<div class="ul_top clearfix">
@@ -557,9 +721,8 @@
 									<img src="img/jpg/pro_det4.jpg"/>
 								</div>
 								<div class="text">
-									<span>$37.01</span>
-									<p class="p1">Silky Straight</p>
 									<p class="p2">10"-30" Virgin Brazilian Straight Hair </p>
+									<span>$37.01</span>
 								</div>
 							</a>
 						</li>
@@ -569,9 +732,8 @@
 									<img src="img/jpg/pro_det4.jpg"/>
 								</div>
 								<div class="text">
-									<span>$37.01</span>
-									<p class="p1">Silky Straight</p>
 									<p class="p2">10"-30" Virgin Brazilian Straight Hair </p>
+									<span>$37.01</span>
 								</div>
 							</a>
 						</li>
@@ -581,9 +743,8 @@
 									<img src="img/jpg/pro_det4.jpg"/>
 								</div>
 								<div class="text">
-									<span>$37.01</span>
-									<p class="p1">Silky Straight</p>
 									<p class="p2">10"-30" Virgin Brazilian Straight Hair </p>
+									<span>$37.01</span>
 								</div>
 							</a>
 						</li>
@@ -593,13 +754,77 @@
 									<img src="img/jpg/pro_det4.jpg"/>
 								</div>
 								<div class="text">
-									<span>$37.01</span>
-									<p class="p1">Silky Straight</p>
 									<p class="p2">10"-30" Virgin Brazilian Straight Hair </p>
+									<span>$37.01</span>
 								</div>
 							</a>
 						</li>
 					</ul>
+				</div>
+				
+				<div class="cart_fixed clearfix">
+					<div class="left clearfix">
+						<a class="cart_a" href="###"><span>99</span></a>
+						<button class="sc_btn"></button>
+					</div>
+					<button class="cart_btn cart_modal">ADD TO CART</button>
+				</div>
+				
+				<!--购物车弹窗-->
+				<div class="cart_tc clearfix">
+					<div class="text clearfix">
+						<div class="close_tc"></div>
+						<div class="img clearfix">
+							<img src="img/jpg/i.jpg" alt="" />
+							<span>$31.50</span>
+						</div>
+						<ol class="attr_ol clearfix">
+							<li class="clearfix">
+								<span class="bt_span">Color:</span>	
+								<ul class="attr_ul clearfix">
+									<li class="active">Black</li>
+									<li>Blue</li>
+									<li>Red</li>
+									<li>Nature Black</li>
+								</ul>
+							</li>
+							<li class="clearfix">
+								<span class="bt_span">Length:</span>	
+								<ul class="attr_ul clearfix">
+									<li class="active">10 Inch 100g</li>
+									<li class="hui">12 Inch 100g</li>
+									<li>14 Inch 100g</li>
+									<li>16 Inch 100g</li>
+									<li>18 Inch 100g</li>
+									<li>20 Inch 100g</li>
+									<li>22 Inch 100g</li>
+									<li>24 Inch 100g</li>
+									<li>26 Inch 100g</li>
+								</ul>
+								<span class="measurement">Length Guide&nbsp;&nbsp;></span>
+							</li>
+							<li class="clearfix">
+								<span class="bt_span">Style:</span>	
+								<ul class="attr_ul clearfix">
+									<li class="active">Straight</li>
+									<li>Straight</li>
+									<li>Straight</li>
+								</ul>
+							</li>
+							<li class="clearfix">
+								<span class="bt_span">Quantity:</span>
+								<div class="price_input clearfix">
+									<span class="sub"></span>
+									<input class="num" type="text" value="1" readonly="readonly">
+									<span class="add"></span>
+								</div>
+							</li>
+						</ol>
+					</div>
+					<div class="meas_img">
+						<img class=" changeimage" data-image='img/jpg/size_guid.jpg' data-mimage='img/jpg/yd_size_guid.jpg'  />
+						<div class="close"></div>
+					</div>	
 				</div>
 				
 			</div>
@@ -668,7 +893,7 @@
 		</div>
 		
 		<!--yd底部-->
-		<div class="yd_footer clearfix">
+		<div class="yd_footer hide clearfix">
 			<div class="top">
 				<ul class="ul_ydfot clearfix">
 					<li>
@@ -738,7 +963,7 @@
 			</div>
 			<p class="clearfix">Copyright Notice &copy; 2016-2018 www.hotbeautyhairmall.com All rights reserved</p>
 		</div>
-		<div class="yd_footer2">
+		<div class="yd_footer2 hide">
 			<ol class="ol_ydfot clearfix">
 				<li class="active">
 					<a href="###">
@@ -787,8 +1012,9 @@
 </html>
 
 <script>
+	
 var swiper3 = new Swiper('#swiper3', {
-	loop:true,
+	autoplay: true,
 	navigation: {
 	    nextEl: '.swiper-button-next',
 	    prevEl: '.swiper-button-prev',
@@ -797,9 +1023,27 @@ var swiper3 = new Swiper('#swiper3', {
 		el: '.swiper-pagination',
 		clickable: true,
     },
+    on: {
+	    slideChangeTransitionStart: function(){
+	      $(".pl_img_ol>li").eq(this.activeIndex).addClass("active").siblings("li").removeClass("active");
+	      $(".lb_text .swiper-slide").eq(this.activeIndex).addClass("active").siblings(".swiper-slide").removeClass("active");
+	    },
+	 },
 });
+
+var swiper2 = new Swiper('#swiper2', {
+	freeMode:false,
+	slidesPerView:5,
+	direction: 'vertical',
+	navigation: {
+	    nextEl: '.swiper-button-nexts',
+	    prevEl: '.swiper-button-prevs',
+	},
+});
+
+
 	$(function(){
-		$(".pro_det_content .measurement").click(function(){
+		$(".measurement").click(function(){
 			$(".meas_img").fadeIn();
 		})
 		
@@ -807,11 +1051,16 @@ var swiper3 = new Swiper('#swiper3', {
 			$(".meas_img").fadeOut();
 		})
 		
-		$(".pro_img_ol>li").click(function(){
+		
+		
+		$(".pro_lb_off .swiper-slide").click(function(){
+			$(this).addClass("active").siblings(".swiper-slide").removeClass("active");
 			var this_index = $(this).index();
 			$(this).addClass("active").siblings("li").removeClass("active");
+			console.log($(".swiper-pagination-clickable span").length)
 			$(".swiper-pagination-clickable span").eq(this_index).trigger('click');
 		})
+		
 		
 		$(".pro_det_content .len_label>ul>li").click(function(){
 			$(this).addClass("active").siblings("li").removeClass("active");
@@ -831,7 +1080,14 @@ var swiper3 = new Swiper('#swiper3', {
 			num++;
 			 $(".num").val(num);
 		})
-		
+
+		//pro_det_dl
+		$(".pro_det_dl>dd>p").click(function(){
+			$(".pro_det_dl>dd>p").removeClass("active");
+			$(this).addClass("active");
+		})
+
+
 		//xxk
 		$(".pro_det_content .bot .text_ol>li").click(function(){
 			$(this).addClass("active").siblings("li").removeClass("active");
@@ -840,14 +1096,11 @@ var swiper3 = new Swiper('#swiper3', {
 		$(".xxk_h1").click(function(){
 			if($(this).hasClass("off")){
 				$(this).removeClass("off");
-				$(this).css("background","url(img/png/jiahao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
 				$(this).siblings(".xxk_text").slideUp();
 			}else{
 				$(".xxk_h1").removeClass("off");
-				$(".xxk_h1").css("background","url(img/png/jiahao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
 				$('.xxk_text').slideUp();
 				$(this).addClass("off");
-				$(this).css("background","url(img/png/jianhao.png) no-repeat right center").css("background-size","0.38rem 0.38rem");
 				$(this).siblings(".xxk_text").slideDown();
 			}
 		})
@@ -883,25 +1136,25 @@ var swiper3 = new Swiper('#swiper3', {
 			}
 		})
 		var win = $(window).width();
-		$(".xyd_btn").click(function(){
-			if(win>992){
-				if($(this).hasClass("off")){
-					$(this).removeClass("off");
-					$(this).css("border","1px solid #ccc").css("background","url(img/png/shop_star.png) no-repeat right 0.83vw center").css("background-size","0.83vw");
-				}else{
-					$(this).addClass("off");
-					$(this).css("border","1px solid #d5af74").css("background","url(img/png/shop_star_.png) no-repeat right 0.83vw center").css("background-size","0.83vw");
-				}
-			}else{
-				if($(this).hasClass("off")){
-					$(this).removeClass("off");
-					$(this).css("border","1px solid #ccc").css("background","url(img/png/shop_star.png) no-repeat center").css("background-size","0.38rem 0.36rem");
-				}else{
-					$(this).addClass("off");
-					$(this).css("border","1px solid #d5af74").css("background","url(img/png/shop_star_.png) no-repeat  center").css("background-size","0.38rem 0.36rem");
-				}
-			}
-		})
+//		$(".xyd_btn").click(function(){
+//			if(win>992){
+//				if($(this).hasClass("off")){
+//					$(this).removeClass("off");
+//					$(this).css("border","1px solid #ccc").css("background","url(img/png/shop_star.png) no-repeat right 0.83vw center").css("background-size","0.83vw");
+//				}else{
+//					$(this).addClass("off");
+//					$(this).css("border","1px solid #d5af74").css("background","url(img/png/shop_star_.png) no-repeat right 0.83vw center").css("background-size","0.83vw");
+//				}
+//			}else{
+//				if($(this).hasClass("off")){
+//					$(this).removeClass("off");
+//					$(this).css("border","1px solid #ccc").css("background","url(img/png/shop_star.png) no-repeat center").css("background-size","0.38rem 0.36rem");
+//				}else{
+//					$(this).addClass("off");
+//					$(this).css("border","1px solid #d5af74").css("background","url(img/png/shop_star_.png) no-repeat  center").css("background-size","0.38rem 0.36rem");
+//				}
+//			}
+//		})
 		
 		var win = $(window).innerWidth();
 		if(win>=751){
@@ -927,6 +1180,42 @@ var swiper3 = new Swiper('#swiper3', {
 				$(".cart_ul").append(li_text);
 			})
 		}
+		
+		/**收藏**/
+		$(".sc_btn").click(function(){
+			if($(this).hasClass("off")){
+				$(this).removeClass("off");
+				tips('Moved out from collection','');
+			}else{
+				$(this).addClass("off");
+				tips('Save to collection','');
+			}
+		})
+		
+		/***属性选择***/
+		$(".attr_ul>li").click(function(){
+			if(!$(this).hasClass("hui")){
+				$(this).addClass("active").siblings().removeClass("active");
+			}
+		})
+		/**打开属性弹窗**/
+		$(".cart_modal").click(function(){
+			$(".cart_tc").animate({top:"0%"});
+			$("body").css("overflow","hidden");
+		})
+		/**关闭属性弹窗**/
+		$(".close_tc").click(function(){
+			$(".cart_tc").animate({top:"100%"});
+			$("body").css("overflow","");
+		})
+		$(".cart_tc").click(function(e){
+			var win = $(window).width();
+			var close = $('.cart_tc .text , .cart_tc .meas_img'); 
+		   	if(!close.is(e.target) && close.has(e.target).length === 0){
+		   		$(".cart_tc").animate({top:"100%"});
+		   		$("body").css("overflow","");
+			}
+		})
 		
 	})
 </script>

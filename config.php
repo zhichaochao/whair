@@ -34,7 +34,7 @@ define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
 define('HTTP_SKIN', HTTP_SERVER.'catalog/view/theme/default/');
 
 // HTTPS
-define('HTTPS_SERVER', 'https://'.$_SERVER['HTTP_HOST'].'/');
+define('HTTPS_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
 
 // DIR
 define('DIR_ROOT', str_replace('\\', '/', __DIR__).'/');

@@ -175,7 +175,8 @@
 					
 					<ul>
 						<li class="clearfix">
-							<a href="javascript:0;">All Hair Collections <img class="slide_img" src="img/png/jiahao.png"/></a>
+							<a href="###">All Hair Collections </a>
+							<img class="slide_img" src="img/png/jiahao.png" data-img="img/png/jiahao.png" data-imgs="img/png/jianhao.png"/>
 							<ol class="yd_nav_ol clearfix">
 								<li class="clearfix"><a class="right_img" href="###">Double Drawn Funmi Hair </a></li>
 								<li class="clearfix"><a class="right_img" href="###">Virgin Brazilian Hair </a></li>
@@ -184,7 +185,8 @@
 							</ol>
 						</li>
 						<li class="clearfix">
-							<a href="javascript:0;">Closure & Frontal & Wig <img class="slide_img" src="img/png/jiahao.png"/></a>
+							<a href="###">Closure & Frontal & Wig </a>
+							<img class="slide_img" src="img/png/jiahao.png" data-img="img/png/jiahao.png" data-imgs="img/png/jianhao.png"/>
 							<ol class="yd_nav_ol clearfix">
 								<li class="clearfix"><a class="right_img" href="###">360 Frontal </a></li>
 								<li class="clearfix"><a class="right_img" href="###">Customized Bundles Wig</a></li>
@@ -322,43 +324,55 @@
 					<li>
 						<video src="img/myvideo.mp4" class="video_li" poster="img/jpg/bf_bg.png"></video>
 						<img class="bf" src="img/png/bf.png"/>
-						<div class="bg_div">
-							<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+						<div class="text_vd clearfix">
+							<div class="bg_div">
+								<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+							</div>
 						</div>
 					</li>
 					<li>
 						<video src="img/myvideo.mp4" class="video_li" poster="img/jpg/bf_bg2.png"></video>
 						<img class="bf" src="img/png/bf.png"/>
-						<div class="bg_div">
-							<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+						<div class="text_vd clearfix">
+							<div class="bg_div">
+								<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+							</div>
 						</div>
 					</li>
 					<li>
 						<video src="img/myvideo.mp4" class="video_li" poster="img/jpg/bf_bg.png"></video>
 						<img class="bf" src="img/png/bf.png"/>
-						<div class="bg_div">
-							<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+						<div class="text_vd clearfix">
+							<div class="bg_div">
+								<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+							</div>
 						</div>
 					</li>
 					<li>
 						<video src="img/myvideo.mp4" class="video_li" poster="img/jpg/bf_bg2.png"></video>
 						<img class="bf" src="img/png/bf.png"/>
-						<div class="bg_div">
-							<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+						<div class="text_vd clearfix">
+							<div class="bg_div">
+								<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+							</div>
 						</div>
 					</li>
 					<li>
 						<video src="img/myvideo.mp4" class="video_li" poster="img/jpg/bf_bg.png"></video>
 						<img class="bf" src="img/png/bf.png"/>
-						<div class="bg_div">
-							<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+						<div class="text_vd clearfix">
+							<div class="bg_div">
+								<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+							</div>
 						</div>
 					</li>
 					<li>
 						<video src="img/myvideo.mp4" class="video_li" poster="img/jpg/bf_bg2.png"></video>
 						<img class="bf" src="img/png/bf.png"/>
-						<div class="bg_div">
-							<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+						<div class="text_vd clearfix">
+							<div class="bg_div">
+								<p>How To Look Expensive With Cheap Hair------Make It Your Own! </p>
+							</div>
 						</div>
 					</li>
 				</ul>
@@ -551,13 +565,12 @@
 <script>
 	$(function(){
 		$(".video_ul li img.bf").click(function(){
-			$(this).siblings(".bg_div").css("display","none");
 			for(var i=0; i<$(".video_ul li").length;i++){
 				document.getElementsByClassName("video_li")[i].pause();
 			}
 			$(this).siblings("video").attr("controls","controls");
 			this.previousElementSibling.play();
-			
+			$(this).siblings(".text_vd").css("display","none");
 			$(this).css("display","none");
 		})
 		
