@@ -3,6 +3,7 @@ class ModelExtensionShippingWeight extends Model {
 	public function getQuote($address) {
 		$this->load->language('extension/shipping/weight');
 
+
 		$quote_data = array();
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "geo_zone ORDER BY name");
@@ -22,7 +23,11 @@ class ModelExtensionShippingWeight extends Model {
 
 			if ($status) {
 				$cost = '';
-				$weight = $this->cart->getWeight();
+				if (isset($address['cart_ids'])) {
+					$weight = $this->cart->getWeight($address['cart_ids']);
+				}else
+				{	$weight = $this->cart->getWeight();}
+				
 
 				$rates = explode(',', $this->config->get('weight_' . $result['geo_zone_id'] . '_rate'));
 				

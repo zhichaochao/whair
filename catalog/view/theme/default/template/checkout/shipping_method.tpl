@@ -30,7 +30,11 @@
                                 <dl>
                                     <dt>Shipping Cost</dt>
                                     <dd>
+                                    <?php if($quote['code'] == 'weight.weight_10'){  ?>
+                                          <span>Shipping cost will be paid by buyer when collect goods from shipping agent.</span>
+                                         <?php }else{ ?>
                                         <span><?php echo $quote['text']; ?></span>
+                                        <?php } ?>
                                     </dd>
                                 </dl>
                             </li>
@@ -51,6 +55,7 @@
 <script type="text/javascript"><!--
 function toselectPayment(){
 
+alert('Please Select Shipping Method');
  $('#no_sel').html('Please Select Shipping Method');
 
 }
@@ -76,6 +81,7 @@ function saveMethod(e) {
     });
     }else{
          $('#no_sel').html('Please Select Shipping Address');
+         alert('Please Select Shipping Address');
     }
 }
 

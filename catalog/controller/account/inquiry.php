@@ -15,13 +15,28 @@ class ControllerAccountInquiry extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		
+		/*$data['limits'] = array();
+		$limits = array_unique(array(10, 25, 50));
+		sort($limits);
+		foreach($limits as $value) {
+			$data['limits'][] = array(
+				'text'  => $value,
+				'value' => $value,
+				'href'  => $this->url->link('account/inquiry', $url . '&limit=' . $value)
+			);
+		}*/
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_empty'] = $this->language->get('text_empty');
 
-		
+		/*$data['column_inquiry_id'] = $this->language->get('column_inquiry_id');
+		$data['column_status'] = $this->language->get('column_status');
+		$data['column_date_added'] = $this->language->get('column_date_added');
+		$data['column_customer'] = $this->language->get('column_customer');
+		$data['column_product'] = $this->language->get('column_product');
+		$data['column_total'] = $this->language->get('column_total');*/
+
 		$data['column_inquiry_id'] = 'Inquiry ID';
 		$data['column_image'] = 'Image';
         $data['column_pro_name'] = 'Product Name';
@@ -44,7 +59,11 @@ class ControllerAccountInquiry extends Controller {
 			$page = 1;
 		}
 
-		
+		/*if (isset($this->request->get['limit'])) {
+			$limit = $this->request->get['limit'];
+		} else {
+			$limit = 10;
+		}*/
 
 		$limit = 10;
 

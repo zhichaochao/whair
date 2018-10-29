@@ -7,6 +7,10 @@
   <?php if ($success) { ?>
   <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div>
   <?php } ?>
+  <?php if ($error_warning) { ?>
+  <div class="alert alert-danger" id="danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
+  <?php } ?>
+<!-- 底部新 -->
 <div class="login in_content clearfix">
       <div class="text clearfix">
         <div class="top">
@@ -21,7 +25,7 @@
               <p class="bt_p">Returning Customer</p>
               <!-- 新登录 -->
               <!-- <form class="login_form lr_form"> -->
-              <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="login_form lr_form">
+              <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="login_form lr_form" >
                 <label for="">
                   <span>E-Mail Address <i class="red_i">*</i></span>
                   <!-- <input class="email email1" type="text" /> -->
@@ -37,6 +41,7 @@
                 </label>
                 <input class="tj_input" type="submit" value="SIGN IN" />
                 <input type="hidden" name="redirect" value='<?=$redirect;?>'/>
+                <input type="hidden" name="url" value='<?=$redirecturl;?>'/>
               </form>
             </li>
             <li>
@@ -102,6 +107,7 @@
       </div>
     </div>
 <script>
+
 // Register
 $(document).delegate('#button-register', 'click', function() {
   // console.log($('#register-form-div input'));
@@ -135,7 +141,7 @@ $(document).delegate('#button-register', 'click', function() {
               }
               if(json['error']['email']){
                $('#erroremail').show().html( json['error']['email'] );
-              } 
+              }
               if(json['error']['password']){
                $('#errorpassword').show().html( json['error']['password'] );
               }
@@ -143,7 +149,7 @@ $(document).delegate('#button-register', 'click', function() {
                $('#errorconfirm').show().html( json['error']['confirm'] );
               }
             } else{
-               if(json['error']['warning']){
+              if(json['error']['warning']){
                $('#erroremail').show().html( json['error']['warning'] );
               }
                $(".zzc_li").css("display","none");
@@ -177,7 +183,7 @@ $(document).delegate('#button-register', 'click', function() {
       var re=/^[a-zA-Z]+$/;
       if(!re.test(text) && text !=""){
         $(this).siblings(".ts_p").addClass("off");
-        $(this).siblings(".ts_p").text("Please fill in in English");
+        $(this).siblings(".ts_p").text("Letters Only, No Space or Digit");
       }else{
         $(this).siblings(".ts_p").removeClass("off");
       }

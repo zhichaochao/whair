@@ -21,6 +21,20 @@ class ControllerDesignBanner extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_design_banner->addBanner($this->request->post);
+			$this->load->model('tool/image');
+			if (isset($this->request->post['banner_image'])) {
+				foreach ($this->request->post['banner_image'] as $language_id => $value) {
+						foreach ($value as $result) {
+							if (is_file(DIR_IMAGE . $result['image'])) {
+								$image = $this->model_tool_image->resize($result['image'], 1536, 720);
+								$image = $this->model_tool_image->resize($result['mimage'], 710, 480);
+								$image = $this->model_tool_image->resize($result['image'], 480, 480);
+								$image = $this->model_tool_image->resize($result['mimage'], 230, 320);
+							}
+						}
+					}
+			}
+
 
 			//获取路由参数
 			$doneUrl=isset($this->request->get['route']) ? $this->request->get['route'] : "";
@@ -59,6 +73,19 @@ class ControllerDesignBanner extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_design_banner->editBanner($this->request->get['banner_id'], $this->request->post);
+			$this->load->model('tool/image');
+			if (isset($this->request->post['banner_image'])) {
+				foreach ($this->request->post['banner_image'] as $language_id => $value) {
+						foreach ($value as $result) {
+							if (is_file(DIR_IMAGE . $result['image'])) {
+								$image = $this->model_tool_image->resize($result['image'], 1536, 720);
+								$image = $this->model_tool_image->resize($result['mimage'], 710, 480);
+								$image = $this->model_tool_image->resize($result['image'], 480, 480);
+								$image = $this->model_tool_image->resize($result['mimage'], 230, 320);
+							}
+						}
+					}
+			}
 
 			//获取路由参数
 			$doneUrl=isset($this->request->get['route']) ? $this->request->get['route'] : "";

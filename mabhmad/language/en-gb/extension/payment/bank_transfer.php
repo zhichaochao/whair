@@ -24,6 +24,9 @@ $_['entry_order_status'] = '订单状态';
 $_['entry_geo_zone']     = '区域群组';
 $_['entry_status']       = '状态';
 $_['entry_sort_order']   = '排序';
+$_['entry_is_poundage']					 = '是否收手续费';
+$_['entry_including_postage']					 = '是否包含邮费';
+$_['entry_poundage']					 = '手续费';
 
 // Help
 $_['help_total']         = '结账订单金额大于此金额支付方式才有效。';

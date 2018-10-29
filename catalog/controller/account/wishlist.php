@@ -107,6 +107,7 @@ class ControllerAccountWishList extends Controller {
 		}
 		$data['continue'] = $this->url->link('account/account', '', true);
 		$data['wishlist_delete'] = $this->url->link('account/wishlist/delete');
+		$data['goshopping'] = $this->url->link('common/home', '', true);
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');

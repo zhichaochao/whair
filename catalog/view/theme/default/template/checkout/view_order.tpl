@@ -22,6 +22,7 @@
                  
                      <?php if ($payment_method_code == 'pp_express') { ?>
 
+   
                 <div class="pay_4">
                         <img class="xs_pay" src="img/jpg/pay_xs.png" alt="" />
                         <p>

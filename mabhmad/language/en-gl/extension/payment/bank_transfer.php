@@ -14,6 +14,10 @@ $_['entry_order_status'] = 'Order Status';
 $_['entry_geo_zone']	 = 'Geo Zone';
 $_['entry_status']		 = 'Status';
 $_['entry_sort_order']	 = 'Sort Order';
+$_['entry_is_poundage']					 = '是否收手续费';
+$_['entry_including_postage']					 = '是否包含邮费';
+$_['entry_poundage']					 = '手续费';
+
 
 // Help
 $_['help_total']		 = 'The checkout total the order must reach before this payment method becomes active.'; 

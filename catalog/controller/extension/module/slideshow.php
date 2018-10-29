@@ -9,23 +9,15 @@ class ControllerExtensionModuleSlideshow extends Controller {
 		$data['banners'] = array();
 
 		$results = $this->model_design_banner->getBanner($setting['banner_id']);
+		// print_r($results);
 	
 
 		foreach ($results as $result) {
-			if (is_file(DIR_IMAGE . $result['image'])) {
-				//dyl add
-				$BannerArr = getimagesize(DIR_IMAGE . $result['image']);    //获取图片的尺寸
-				if (!isset($setting['width'])) {$setting['width']=$BannerArr[0]; }
-				if (!isset($setting['height'])) {$setting['height']=$BannerArr[1]; }
+			
 				$image=$this->model_tool_image->resize($result['image'], $setting['width'], $setting['height']);
-			if (is_file(DIR_IMAGE . $result['mimage'])) {
-				$BannerArrm = getimagesize(DIR_IMAGE . $result['mimage']);    //获取图片的尺寸
-				if (!isset($setting['mwidth'])) {$setting['mwidth']=$BannerArrm[0]; }
-				if (!isset($setting['mheight'])) {$setting['mheight']=$BannerArrm[1]; }
+		
 				$mimage=$this->model_tool_image->resize($result['mimage'], $setting['mwidth'], $setting['mheight']);
-			}else{
-				$mimage=$image;
-			}
+		
 			
 				$data['banners'][] = array(
 					'title' => $result['title'],
@@ -33,7 +25,7 @@ class ControllerExtensionModuleSlideshow extends Controller {
 					'image' =>$image,
 					'mimage' =>$mimage
 				);
-			}
+			
 		}
 
 		$data['module'] = $module++;

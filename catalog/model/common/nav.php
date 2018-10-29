@@ -8,7 +8,6 @@ class ModelCommonNav extends Model {
 
 	public function getChildNavs($nav_id) {
 		$query = $this->db->query("SELECT o.*,od.*,c.m_image FROM `" . DB_PREFIX . "nav` o LEFT JOIN " . DB_PREFIX . "nav_description od ON (o.nav_id = od.nav_id) left join " . DB_PREFIX . "category c on c.category_id=o.inside_id  WHERE  o.parent_id =  '".(int)$nav_id."'  ORDER BY o.sort_order ASC");
-		// print_r($query->rows);exit;
 
 		return $query->rows;
 	}

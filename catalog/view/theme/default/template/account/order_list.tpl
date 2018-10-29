@@ -15,6 +15,8 @@
           <ul class="order_ul clearfix">
           <?php if ($orders) { ?>
           <?php foreach ($orders as $order) { ?>
+          
+
             <li class="clearfix">
               <div class="top clearfix">
                 <ol class="top_ol clearfix">
@@ -54,12 +56,12 @@
                         <?php } }?>
                   </ol>
                 </div>
-                
+                <a href=" <?php echo $order['view']; ?>">
                 <div class="total">
                   <p class="p1">Shipping<span class="fr"><?php echo $order['shipping_total']; ?></span></p>
                   <p class="p2">Total <span class="fr"><?php echo $order['total']; ?></span></p>
                 </div>
-                
+                </a>
                 <div class="btn_div">
                   <!-- <a class="return" href="###">Return</a>
                   <a class="" href="###">View</a> -->
@@ -69,6 +71,7 @@
                 
                 <?php if($order['status'] == 'Pending'){ ?>
                   &nbsp;&nbsp;<a href="javascript:;" data-toggle="tooltip" onclick="cancel_order('<?php echo $order['cancel_href'];?>')" href="<?php echo $order['cancel_href'];?>" title="Cancel Order"  class="btn btn-cancel">Cancel</a>
+
                   <?php if($order['payment_code'] == 'pp_standard' || $order['payment_code'] == 'pp_express') { ?>
                     &nbsp;&nbsp;<a data-toggle="tooltip" href="<?php echo $order['repay'];?>" title="Pay"  class="red">Pay</a>
                   <?php } ?>
@@ -86,6 +89,7 @@
                 </div>
               </div>
             </li>
+             
             <?php } ?>
             <?php } else { ?>
           <div class="m_account clearfix">

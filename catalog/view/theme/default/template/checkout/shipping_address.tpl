@@ -1,8 +1,9 @@
 
-
+ <link rel="stylesheet" href="/catalog/view/theme/default/js/select2/css/select2.css" />
+        <script type="text/javascript" src="/catalog/view/theme/default/js/select2/js/select2.js" ></script>
   <div class="bg_fff" id="shipping-existing" style="display: <?php echo ($eaddress||empty($addresses) ? 'none' : 'block'); ?>;">
 
-       <h2>Select the shipping address</h2>
+       <h2><em style="color: #f00;">*</em>Select the shipping address</h2>
                         <ul class="address_ul clearfix">
                       <?php foreach ($addresses as $address) { ?>
                           <?php 
@@ -314,5 +315,11 @@ $(document).ready(function() {
 
 
 });
+//为国家地区下拉列表添加二级搜索框
+$(document).ready(function(){
+  $("#input-shipping-country").select2();
+  $("#input-shipping-zone").select2();
+});
+
 
 //--></script>

@@ -90,7 +90,23 @@ class ControllerAccountAccount extends Controller {
 			$data['error_telephone'] = '';
 		}
 		//密码的错误提示
-	
+		/*if (isset($this->error['oldpassword'])) {
+			$data['error_oldpassword'] = $this->error['oldpassword'];
+		} else {
+			$data['error_oldpassword'] = '';
+		}
+
+		if (isset($this->error['password'])) {
+			$data['error_password'] = $this->error['password'];
+		} else {
+			$data['error_password'] = '';
+		}
+
+		if (isset($this->error['confirm'])) {
+			$data['error_confirm'] = $this->error['confirm'];
+		} else {
+			$data['error_confirm'] = '';
+		}*/
 
 		if (isset($this->session->data['oldpassword'])) {
 			$data['error_oldpassword'] = $this->session->data['oldpassword'];

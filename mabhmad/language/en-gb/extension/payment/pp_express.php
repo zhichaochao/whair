@@ -53,6 +53,10 @@ $_['entry_allow_notes']				 = 'Allow notes';
 $_['entry_colour']	      			 = 'Page background colour';
 $_['entry_logo']					 = 'Logo';
 
+$_['entry_is_poundage']					 = '是否收手续费';
+$_['entry_including_postage']					 = '是否包含邮费';
+$_['entry_poundage']					 = '手续费';
+
 // Tab
 $_['tab_api']				         = 'API Details';
 $_['tab_order_status']				 = 'Order status';

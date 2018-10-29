@@ -129,6 +129,7 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+
 		if (isset($data['product_special'])) {
 			//是否同步同类产品的折扣信息
 			if ($data['sync_percent'] == 1) {
@@ -313,9 +314,9 @@ class ModelCatalogProduct extends Model {
 
                                     if (isset($product_option_value['option_value_id'])) {
 
-                                        $this->querysql("UPDATE " . DB_PREFIX . "product_option_value SET option_value_id = '" . (int)$product_option_value['option_value_id'] . "', quantity = '" . (int)$product_option_value['quantity'] . "', subtract = '" . (int)$product_option_value['subtract'] . "', points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "', weight = '" . (float)$product_option_value['weight'] . "',  weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "' WHERE product_option_value_id = '" . $product_option_value['product_option_value_id'] . "'");
+                                        $this->querysql("UPDATE " . DB_PREFIX . "product_option_value SET  price = '" . (float)$product_option_value['price'] . "',price1 = '" . (float)$product_option_value['price1'] . "',option_value_id = '" . (int)$product_option_value['option_value_id'] . "', quantity = '" . (int)$product_option_value['quantity'] . "', subtract = '" . (int)$product_option_value['subtract'] . "', points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "', weight = '" . (float)$product_option_value['weight'] . "',  weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "' WHERE product_option_value_id = '" . $product_option_value['product_option_value_id'] . "'");
 
-                                        $this->query("UPDATE " . DB_PREFIX . "product_option_value SET   price = '" . (float)$product_option_value['price'] . "',price1 = '" . (float)$product_option_value['price1'] . "',price2 = '" . (float)$product_option_value['price2'] . "',price3 = '" . (float)$product_option_value['price3'] . "',price4 = '" . (float)$product_option_value['price4'] . "',price5 = '" . (float)$product_option_value['price5'] . "',price6 = '" . (float)$product_option_value['price6'] . "',price7 = '" . (float)$product_option_value['price7'] . "', price_prefix = '" . $this->db->escape($product_option_value['price_prefix']) . "', points = '" . (int)$product_option_value['points'] . "',  points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "' WHERE product_option_value_id = '" . $product_option_value['product_option_value_id'] . "'");
+                                        $this->db->query("UPDATE " . DB_PREFIX . "product_option_value SET  price2 = '" . (float)$product_option_value['price2'] . "',price3 = '" . (float)$product_option_value['price3'] . "',price4 = '" . (float)$product_option_value['price4'] . "',price5 = '" . (float)$product_option_value['price5'] . "',price6 = '" . (float)$product_option_value['price6'] . "',price7 = '" . (float)$product_option_value['price7'] . "', price_prefix = '" . $this->db->escape($product_option_value['price_prefix']) . "', points = '" . (int)$product_option_value['points'] . "',  points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "' WHERE product_option_value_id = '" . $product_option_value['product_option_value_id'] . "'");
                                     }
 
                                     else {
@@ -366,7 +367,7 @@ class ModelCatalogProduct extends Model {
                              
                                 option_value_id = '" . (int)$product_option_value['option_value_id'] . "', quantity = '" . (int)$product_option_value['quantity'] . "', 
                              
-                                subtract = '" . (int)$product_option_value['subtract'] . "', price = '" . (float)$product_option_value['price'] . "', 
+                                subtract = '" . (int)$product_option_value['subtract'] . "',price = '" . (float)$product_option_value['price'] . "',price1 = '" . (float)$product_option_value['price1'] . "',price2 = '" . (float)$product_option_value['price2'] . "',price3 = '" . (float)$product_option_value['price3'] . "',price4 = '" . (float)$product_option_value['price4'] . "',price5 = '" . (float)$product_option_value['price5'] . "',price6 = '" . (float)$product_option_value['price6'] . "',price7 = '" . (float)$product_option_value['price7'] . "', 
                              
                                 price_prefix = '" . $this->db->escape($product_option_value['price_prefix']) . "', points = '" . (int)$product_option_value['points'] . "', 
                              
@@ -395,7 +396,7 @@ class ModelCatalogProduct extends Model {
             }
         }
 
-		
+			
 		
 		if (isset($data['product_special'])) {
 			//是否同步同类产品的折扣信息
@@ -428,6 +429,15 @@ class ModelCatalogProduct extends Model {
 					    percent = '" . (float)$product_special['percent'] . "',
 					    date_start = '" . $this->db->escape($product_special['date_start']) . "',
 					    date_end = '" . $this->db->escape($product_special['date_end']) . "'");
+         //               print_r("INSERT INTO " . DB_PREFIX . "product_special SET
+					    // product_id = '" . (int)$product_id . "',
+					    // customer_group_id = '" . (int)$product_special['customer_group_id'] . "',
+					    // priority = '" . (int)$product_special['priority'] . "',
+					    // 	product_option_value_id = '" . (int)$product_special['product_option_value_id'] . "',
+					    // price = '" . (float)$product_special['price'] . "',
+					    // percent = '" . (float)$product_special['percent'] . "',
+					    // date_start = '" . $this->db->escape($product_special['date_start']) . "',
+					    // date_end = '" . $this->db->escape($product_special['date_end']) . "'");exit();
                    		}
                     }
 				

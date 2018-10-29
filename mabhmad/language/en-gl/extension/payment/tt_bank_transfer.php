@@ -13,6 +13,10 @@ $_['entry_image']	     = 'Image';
 $_['entry_text']         = 'Text';
 $_['entry_value']        = 'Value';
 $_['entry_status']       = 'Status';
+$_['entry_is_poundage']					 = '是否收手续费';
+$_['entry_including_postage']					 = '是否包含邮费';
+$_['entry_poundage']					 = '手续费';
+
 
 // Error
 $_['error_permission']	 = 'Warning: You do not have permission to modify payment T/T Bank Transfer!';

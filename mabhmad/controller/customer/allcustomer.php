@@ -364,7 +364,8 @@ class ControllerCustomerAllcustomer extends Controller {
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'approve'        => $approve,
 				'unlock'         => $unlock,
-				'edit'           => $this->url->link('customer/allcustomer/edit', 'token=' . $this->session->data['token'] .'&key='.$key. '&customer_id=' . $result['customer_id'] . $url, true)
+				'edit'           => $this->url->link('customer/allcustomer/edit', 'token=' . $this->session->data['token'] .'&key='.$key. '&customer_id=' . $result['customer_id'] . $url, true),
+				'delete'           => $this->url->link('customer/allcustomer/delete', 'token=' . $this->session->data['token'] .'&key='.$key. '&customer_id=' . $result['customer_id'] . $url, true)
 			);
 		}
 		$data['importComment'] = $this->url->link('customer/allcustomer/importComment', 'token=' . $this->session->data['token'].'&key='.$key, 'SSL');
@@ -680,6 +681,25 @@ class ControllerCustomerAllcustomer extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('customer/allcustomer_form', $data));
+	}
+
+	public function delete() {
+		$this->load->language('customer/customer');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+		$customer_id=$this->request->get['customer_id'];
+		$key=$this->request->get['key'];
+		$this->load->model('customer/allcustomer');
+		$this->model_customer_allcustomer->deleteCustomer($customer_id,$key);
+		     $name.='ID='.$value['customer_id'].':'.$key;
+            
+			$done="deleteCustomer:".substr($name, 0, -1);
+			//调用父类Controller的方法将操作记录添加入库
+            $this->addUserDone($doneUrl,$done);
+			
+		$this->session->data['success'] = $this->language->get('text_success');
+		$this->response->redirect($this->url->link('customer/allcustomer', 'token=' . $this->session->data['token'] . '&key='.$key, true));
+
 	}
 
 	protected function validateForm() {

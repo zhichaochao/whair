@@ -21,6 +21,11 @@ class ControllerCatalogCategory extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_category->addCategory($this->request->post);
+				$this->load->model('tool/image');
+				// print_r($this->request->post['m_image']);exit();
+					if (is_file(DIR_IMAGE . $this->request->post['m_image'])) {
+						$image = $this->model_tool_image->resize($this->request->post['m_image'], 710, 320);
+					}
 
 			//获取路由
     		$doneUrl = isset($this->request->get['route']) ? $this->request->get['route'] : "";
@@ -59,6 +64,11 @@ class ControllerCatalogCategory extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_category->editCategory($this->request->get['category_id'], $this->request->post);
+			$this->load->model('tool/image');
+				// print_r($this->request->post['m_image']);exit();
+					if (is_file(DIR_IMAGE . $this->request->post['m_image'])) {
+						$image = $this->model_tool_image->resize($this->request->post['m_image'], 710, 320);
+					}
 
 			//获取路由
     		$doneUrl = isset($this->request->get['route']) ? $this->request->get['route'] : "";

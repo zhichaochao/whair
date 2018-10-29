@@ -4,6 +4,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 		$this->load->language('checkout/checkout');
 
 		if (isset($this->session->data['shipping_address'])) {
+			$this->session->data['shipping_address']['cart_ids']=$this->session->data['cart_ids'];
 			// Shipping Methods
 			$method_data = array();
 			$this->load->model('extension/extension');

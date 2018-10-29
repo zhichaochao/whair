@@ -26,8 +26,8 @@ define('DIR_CATALOG', DIR_ROOT.'catalog/');
 define('DB_DRIVER', 'mpdo');
 define('DB_HOSTNAME', 'localhost');
  $base_data=array(
- 		0=>array('username'=>'root','password'=>'root','database'=>'w'),
-// 		1=>array('username'=>'root','password'=>'root','database'=>'o'),
+ 		0=>array('username'=>'root','password'=>'root','database'=>'w','url'=>'http://opcart.com/' ,'name'=>'主站'),
+		1=>array('username'=>'root','password'=>'root','database'=>'o','url'=>'http://fuzhan.com/' ,'name'=>'副站1'),
  	
  );
  define('DB_DATABASE_DATA', serialize($base_data));

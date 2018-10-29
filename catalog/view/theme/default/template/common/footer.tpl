@@ -25,7 +25,7 @@
                       <li>
                     <h4>COMPANY INFO</h4>
                           <p><span><?php echo $yd_Call; ?></span> <?=$telephone;?></a></p>
-                          <p><span><?php echo $yd_Whatsapp; ?></span><?php echo $whatsapp; ?></p>
+                          <p><span><?php echo $yd_Whatsapp; ?></span>+<?php echo $whatsapp; ?></p>
                           <p><span><?php echo $yd_Email; ?></span><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
                         <p style="max-width:260px;line-height: 18px;margin-top: 3px;margin-bottom: 0;">
                           <span><?php echo $yd_Address; ?></span><?php echo $yd_Addcont; ?>
@@ -40,9 +40,9 @@
                     <button type="submit" class="btn1" onClick="return subscribe();">SUBMIT</button>
 
                     <ol class="clearfix">
-                      <li><a target="_blank"  href="http://www.facebook.com/<?=$facebook;?>"><img src="/catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
-                      <li><a target="_blank"  href="http://www.instagram.com/hotbeautyhairofficial"><img src="/catalog/view/theme/default/img/png/fot_2.png" alt=""></a></li>
-                      <li><a target="_blank"  href="http://api.whatsapp.com/send?phone=<?=$whatsapp;?>"><img src="/catalog/view/theme/default/img/png/fot_3.png" alt=""></a></li>
+                      <li><a target="_blank"  href="https://www.facebook.com/<?=$facebook;?>"><img src="/catalog/view/theme/default/img/png/fot_1.png" alt=""></a></li>
+                      <li><a target="_blank"  href="https://www.instagram.com/<?=$instagram;?>"><img src="/catalog/view/theme/default/img/png/fot_2.png" alt=""></a></li>
+                      <li><a target="_blank"  href="https://api.whatsapp.com/send?phone=<?=$whatsapp;?>"><img src="/catalog/view/theme/default/img/png/fot_3.png" alt=""></a></li>
                     </ol>
                       </li>
               </ul>
@@ -75,9 +75,9 @@
                       <h4>COMPANY INFO<div class="pic_img"><img src="/catalog/view/theme/default/img/png/jiahao_white.png" data-img='/catalog/view/theme/default/img/png/jiahao_white.png' data-imgs='/catalog/view/theme/default/img/png/jianhao_white.png'/></div></h4>
                       <div class="slide_div">
                         <ol>
-                      <li><a target="_blank" href="tel://<?=$telephone;?>"><span>Call Us:</span><?=$telephone;?></li></a>
-                      <li><a target="_blank" href="whatsapp://send?phone=<?=$whatsapp;?>"><span>Whatsapp:</span> <?php echo $whatsapp; ?></a></li>
-                      <li><a target="_blank" href="mailto:<?php echo $email; ?>"><span>Email:</span><?php echo $email; ?></a></li>
+                      <li><a target="_blank" href="https://tel://<?=$telephone;?>"><span>Call Us:</span><?=$telephone;?></li></a>  
+                      <li><a target="_blank" href="https://api.whatsapp.com/send?phone=<?=$whatsapp;?>"><span>Whatsapp:</span> +<?php echo $whatsapp; ?></a></li>
+                      <li><a target="_blank" href="https://mailto:<?php echo $email; ?>"><span>Email:</span><?php echo $email; ?></a></li>
                       <li>                       
                           <a ><span><?php echo $yd_Address; ?></span><?php echo $yd_Addcont; ?></a>                  
                       </li>
@@ -91,10 +91,10 @@
                     <input type="email" name="txtemail" id="txtemail" value="" placeholder="Your Email Address" class="text1">
                     <button type="submit" class="btn1" onClick="return subscribe();">SUBMIT</button>
                     <ol class="fot_img clearfix">
-                      <li><a href="www.facebook.com/<?=$facebook;?>"><img src="/catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
-                      <li><a href="www.instagram.com/hotbeautyhairofficial"><img src="/catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
-                      <li><a href="tel://<?=$telephone;?>"><img src="/catalog/view/theme/default/img/png/yd_fot3.png" alt=""></a></li>
-                      <li><a href="skype:<?=$skype;?>?add" target="blank"><img src="/catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
+                      <li><a href="https://www.facebook.com/<?=$facebook;?>"><img src="/catalog/view/theme/default/img/png/yd_fot1.png" alt=""></a></li>
+                      <li><a href="https://www.instagram.com/<?=$instagram;?>"><img src="/catalog/view/theme/default/img/png/yd_fot2.png" alt=""></a></li>
+                      <li><a href="https://api.whatsapp.com/send?phone=<?=$whatsapp;?>"><img src="/catalog/view/theme/default/img/png/yd_fot3.png" alt=""></a></li>
+                      <li><a href="skype:<?=$skype;?>?chat" target="blank"><img src="/catalog/view/theme/default/img/png/yd_fot4.png" alt=""></a></li>
                     </ol>
                       </div>
                     </li>
@@ -104,7 +104,7 @@
     </div>
     <div class="yd_footer2" >
       <ol class="ol_ydfot clearfix">
-      <?php if($sername =='/'){ ?>   
+        <?php if($sername =='/'){ ?>   
         <li class="active">
             <a href="<?php echo $home?>">
               <img class="active" src="/catalog/view/theme/default/img/png/home-1.png" alt="" />
@@ -121,7 +121,6 @@
           </a>
         </li>
         <?php }?>
-        
         <li class="<?=strpos($thispage,'product') !== false ?'active':'';?>">
           <a href="<?php echo $contac?>">
             <img class="active" src="/catalog/view/theme/default/img/png/fenlei-1.png" alt="" />
@@ -137,7 +136,7 @@
           </a>
           <div class="a_text">
             <a href="tel://<?=$telephone;?>"><img src="/catalog/view/theme/default/img/jpg/fot_con1.jpg"/></a>
-            <a href="skype:<?=$skype;?>?add"><img src="/catalog/view/theme/default/img/jpg/fot_con2.jpg"/></a>
+            <a href="skype:<?=$skype;?>?chat"><img src="/catalog/view/theme/default/img/jpg/fot_con2.jpg"/></a>
             <a href="mailto:<?php echo $email; ?>"><img src="/catalog/view/theme/default/img/jpg/fot_con3.jpg"/></a>
           </div>
         </li>
@@ -152,7 +151,7 @@
           <a href="<?php echo $cart?>">
             <img class="active" src="/catalog/view/theme/default/img/png/cart-1.png" alt="" />
             <img src="/catalog/view/theme/default/img/png/cart-2.png" alt="" />
-            <p>CART</p>
+            <p><span class='cart_count'><?=$text_cart_items;?></span>CART</p>
           </a>
         </li>
         <li class="<?=strpos($thispage,'account') !== false ?'active':'';?>">

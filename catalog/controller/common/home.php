@@ -17,9 +17,9 @@ class ControllerCommonHome extends Controller {
 
         //banner轮播图
         $setting_info = array("name"=>"Home Page", "banner_id"=>1, "width"=>1536, "height"=>720, "mwidth"=>710,  "mheight"=>480, "status"=>1 );
-        
+        // print_r( $setting_info);exit();
 		$data['slideshow'] = $this->load->controller('extension/module/slideshow',$setting_info);
-        
+        // print_r($data['slideshow']);exit();
 
         //读取首页的中间图片
 		$this->load->model('design/banner');
@@ -27,9 +27,9 @@ class ControllerCommonHome extends Controller {
 		 $data['fasts'] = array();
         $results = $this->model_design_banner->getBanner(2);
         foreach ($results as $result) {
-            if (is_file(DIR_IMAGE . $result['image'])) {
+            if ($result['image']) {
                 $image=$this->model_tool_image->resize($result['image'], 480, 480);
-                if (is_file(DIR_IMAGE . $result['mimage'])) {
+                if ( $result['mimage']) {
                    $mimage=  $this->model_tool_image->resize($result['mimage'], 230, 320);
                 }else{
                      $mimage=$image;
@@ -44,7 +44,7 @@ class ControllerCommonHome extends Controller {
 
             }
         }
-        
+        // print_r( $data['fasts']);exit();
 		//读取首页的中间图片,end
 
         //首页的产品分类显示
@@ -80,7 +80,6 @@ class ControllerCommonHome extends Controller {
         $this->load->model('common/gallery');
        
         $gallerys=$this->model_common_gallery->getGallerys(array('is_home'=>1,'start'=>0));
-        // print_r($gallerys);exit;
         foreach ($gallerys as $key => $value) {
             $gallerys[$key]['url']=$this->url->link('product/product','product_id='.$value['product_id']);
              $gallerys[$key]['image']= $this->model_tool_image->resize($value['image'], 241, 241);
@@ -141,9 +140,7 @@ class ControllerCommonHome extends Controller {
           }
         }
         $data['homes']=$homes;
-        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
-        $data['video']=$http_type . $_SERVER['HTTP_HOST']. $homes[0]['video'];
-       // print_r($data['video']);exit;
+        $data['video']=HTTPS_SERVERS. $homes[0]['video'];
         if(isset($this->session->data['choose'])){ $data['choose']=1; }else { $data['choose']=''; }
         // unset($this->session->data['choose']);
 

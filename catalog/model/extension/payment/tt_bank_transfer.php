@@ -10,6 +10,15 @@ class ModelExtensionPaymentTtBankTransfer extends Model {
 			$status = false;
 		}
 
+			$poundage = '';
+		if ($this->config->get('tt_bank_transfer_is_poundage')) {
+			if ($this->config->get('tt_bank_transfer_poundage')) {
+				$poundage =$this->config->get('tt_bank_transfer_poundage'); //保留两位小数
+			}
+		}
+
+
+
 		$method_data = array();
 
 		if ($status) {
@@ -17,6 +26,7 @@ class ModelExtensionPaymentTtBankTransfer extends Model {
 				'code'       => 'tt_bank_transfer',
 				'title'      => $this->language->get('text_title'),
 				'terms'      => '',
+				'poundage'   => $poundage,
 				'image'      => $this->model_tool_image->resize($this->config->get('tt_bank_transfer_image'), 80, 40),
 				'sort_order' => $this->config->get('tt_bank_transfer_sort_order')
 			);

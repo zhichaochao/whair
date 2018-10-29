@@ -10,7 +10,10 @@
         <script type="text/javascript" src="/catalog/view/theme/default/js/jquery.min.js" ></script>
         <script type="text/javascript" src="/catalog/view/theme/default/js/common.js" ></script>
         <script type="text/javascript" src="/catalog/view/theme/default/js/swiper.js" ></script>
+        <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
         <title><?php echo $title; ?></title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="bookmark" href="/favicon.ico" />
         <base href="<?php echo $base; ?>" />
         <?php if ($description) { ?>
         <meta name="description" content="<?php echo $description; ?>" />
@@ -50,9 +53,12 @@
 <!-- End Google Tag Manager (noscript) -->
 <!-- 购物车 AJAX -->
 <script type="text/javascript">
-    // 购物车开关
+    // 购物车开关 
  $(function(){
-    $(".img_ol .cart_li").click(function(){
+    var win = $(window).innerWidth();
+
+     if(win>=920){
+$(".img_ol .cart_li").click(function(){
         $(".nav_cart").fadeIn();
         $.ajax({
             url: 'index.php?route=common/cart/info',
@@ -69,6 +75,7 @@
             }
         });  
     })
+}   
 });
 
 </script>
@@ -84,13 +91,14 @@
                
                 <!--logo-->
                 <div class="logo">
-                    <a href="<?php echo $root_home; ?>">
+                    <!-- href="<?php echo $root_home; ?>" -->
+                    <a href="<?=HTTPS_SERVER;?>" >
                         <img class="changeimage" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" data-image="/catalog/view/theme/default/img/png/logo.png" data-mimage="/catalog/view/theme/default/img/png/yd_logo.png"  src='/catalog/view/theme/default/img/png/logo.png'  />
                     </a>
                 </div>  
                 
                 <!--whatApp-->
-                <p class="whatapp"><a  target="_blank"  href="whatsapp://send?phone=<?=$whatappphone;?>"><img src="/catalog/view/theme/default/img/png/phone.png"/>WhatApp:<?=$whatappphone;?></a></p>
+                <p class="whatapp"><a  target="_blank"  href="https://api.whatsapp.com/send?phone=<?=$whatappphone;?>"><img src="/catalog/view/theme/default/img/png/phone.png"/>WhatsApp:+<?=$whatappphone;?></a></p>
                 
                 <!--pc导航-->
                 <ul class="nav_ul clearfix">
@@ -115,18 +123,32 @@
                 <div class="right">
                     <ol class="img_ol clearfix fl">
                         <li class="search_li"><i>Search</i></li>
+                         <?php if ($logged) { ?>
+                        <li class="login_li">   <a href="<?php echo $account; ?>"></a><?php echo $account_email; ?></li>
+                        <?php }else{ ?>
                         <li class="login_li"><a href="<?php echo $login_li?>"></a>Account</li>
+                        <?php } ?>
                         <li><a href="<?=$wishlist;?>"><span id='wishlist_count'><?php echo $text_wishlist; ?></span></a>Like</li>
                         <li class="cart_li"><span  id='cart_count'><?=$text_cart_items;?></span>Cart</li>
                     </ol>
+                      <?php if ($logged) { ?>
+                    <div class="lg_hover clearfix">
+                        <div class="text clearfix">
+                          <em></em>
+                          <i><img src="/catalog/view/theme/default/img/png/vip1.png"/></i>
+                          <p><a href="<?=$vip;?>"><?=$account_vip;?></a></p>
+                         <a href="<?=$logout;?>"> <button>Logout</button></a>
+                        </div>
+                      </div>
+                         <?php } ?>
                 </div>
                 
                 <!--搜索框-->
-           <!--  <form method='post' action='<?php echo $search_url;?>'  class="search fl" >
+            <form method='post' action='<?php echo $search_url;?>'  class="search fl" >
                     <input class="btn_in" type="submit" value="">
                     <input class="text_in"  type="text" name="new_search" placeholder="Search">
                     <img class="close" src="catalog/view/theme/default/img/png/close2.png"/>
-             </form> -->
+             </form>
              <!-- <form class="search fl">
               <input id="header-search" value="" type="" name="new_search" placeholder="Search">
                 <img class="close" src="/catalog/view/theme/default/img/png/close2.png"/>
@@ -176,6 +198,7 @@
             /* Search */
             $('.search_li ').click(function() {
                // alert(1111);die;
+               if ($(this).hasClass('on')) {
                 url = '<?php echo $search_url; ?>';
                 var value = $("input[name='new_search']").val();
 
@@ -183,6 +206,11 @@
                     url += '?search=' + encodeURIComponent(value);
                 }
                 location = url;
+            }else{
+                $(this).addClass('on');
+                $('input[name="new_search"]').focus();
+
+            }
             });
 
             $('#header-search').keydown(function(e){

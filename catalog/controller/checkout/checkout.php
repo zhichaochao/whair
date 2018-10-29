@@ -16,12 +16,16 @@ class ControllerCheckoutCheckout extends Controller {
         $this->session->data['same_as_shipping'] = 1;
         $this->session->data['payment_type'] = 'Standard';//支付类型，标准支付
 
-		// Validate minimum quantity requirements.
-//        var_dump();
-    	$this->request->get['cart_ids']= isset($this->request->get['cart_ids'])?$this->request->get['cart_ids']:'';
-        $products = $this->cart->getProducts($this->request->get['cart_ids']);
-//        var_dump($products);die;
+        if(isset($this->session->data['cart_ids'])){
+    	$this->request->get['cart_ids']= isset($this->request->get['cart_ids'])?$this->request->get['cart_ids']:$this->session->data['cart_ids'];
+    }else{
 
+       $this->request->get['cart_ids']= isset($this->request->get['cart_ids'])?$this->request->get['cart_ids']:'';
+    }
+    $this->session->data['cart_ids']=$this->request->get['cart_ids'];
+     $products = $this->cart->getProducts($this->session->data['cart_ids']);
+
+     
         foreach ($products as $product) {
 			$product_total = 0;
 

@@ -21,6 +21,30 @@ class ControllerCatalogProduct extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_product->addProduct($this->request->post);
+			$data=$this->request->post;
+			$this->load->model('tool/image');
+			if (!isset($data['product_image'])) {
+				$data['product_image'] = array();
+			}else{
+				foreach ($data['product_image'] as $result) {
+					if (is_file(DIR_IMAGE . $result['image'])) {
+						$image = $this->model_tool_image->resize($result['image'], 50, 50);
+						$image = $this->model_tool_image->resize($result['image'], 100, 100);
+						$image = $this->model_tool_image->resize($result['image'], 200, 200);
+						$image = $this->model_tool_image->resize($result['image'], 400, 400);
+						$image = $this->model_tool_image->resize($result['image'], 800, 800);
+					}
+				}
+
+			}
+			if (is_file(DIR_IMAGE . $data['image'])) {
+						$image = $this->model_tool_image->resize($data['image'], 50, 50);
+						$image = $this->model_tool_image->resize($data['image'], 100, 100);
+						$image = $this->model_tool_image->resize($data['image'], 200, 200);
+						$image = $this->model_tool_image->resize($data['image'], 400, 400);
+						$image = $this->model_tool_image->resize($data['image'], 800, 800);
+			}
+
 
 			//获取路由参数
 			$doneUrl=isset($this->request->get['route']) ? $this->request->get['route'] : "";

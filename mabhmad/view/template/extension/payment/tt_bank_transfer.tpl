@@ -56,6 +56,31 @@
               </select>
             </div>
           </div>
+           <!-- start 是否收取手续费 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-is-poundage"><?php echo $entry_is_poundage; ?></label>
+                <div class="col-sm-10">
+                  <select name="tt_bank_transfer_is_poundage" id="input-is-poundage" class="form-control">
+                    <?php if ($tt_bank_transfer_is_poundage) { ?>
+                    <option value="1" selected="selected"><?php echo $text_yes; ?></option>
+                    <option value="0"><?php echo $text_no; ?></option>
+                    <?php } else { ?>
+                    <option value="1"><?php echo $text_yes; ?></option>
+                    <option value="0" selected="selected"><?php echo $text_no; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <!-- end 是否收取手续费 -->
+           
+              <!-- start 手续费 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-poundage"><?php echo $entry_poundage; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="tt_bank_transfer_poundage" value="<?php echo $tt_bank_transfer_poundage; ?>" placeholder="<?php echo $entry_poundage; ?>(USD)" id="input-poundage" class="form-control" />
+                </div>
+              </div>
+              <!-- end 百分比手续费 -->
 
           <div class="tab-content">
             <?php $row = 0; ?>

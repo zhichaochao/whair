@@ -35,7 +35,7 @@
                             <h2>Select the shipping address</h2>
                      
                         </div>
-                        <div class="shipping_method bg_fff bg_gif" id="shipping_method">
+                        <div class="shipping_method bg_fff bg_gif" id="shipping_method" style="display: none;" >
                             <h3>Shipping Method</h3>
                         </div>
                         </div>
@@ -43,7 +43,7 @@
                     
                 </div>
             
-                <div class="right clearfix right_shop  bg_gif">
+                <div class="right clearfix right_shop ">
                     <div class="collapse-checkout bg_fff" id='collapse-checkout-confirm'><h2>SUMMARY</h2></div>
                   
                 </div>
@@ -100,12 +100,14 @@ function getShippingAddress(address_id)
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
-        getShippingMethod();
+        // getShippingMethod();
 }
 
 // Get Shipping Method
 function getShippingMethod()
 {
+     $('#shipping_method').show();
+
     $.ajax({
         url: 'index.php?route=checkout/shipping_method',
         dataType: 'html',

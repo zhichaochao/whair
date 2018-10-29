@@ -30,7 +30,8 @@ class ControllerCommonHeader extends Controller {
 		$data['base'] = $server;
 		$data['description'] = $this->document->getDescription();
 		$data['keywords'] = $this->document->getKeywords();
-		$data['links'] = $this->document->getLinks();
+		// $data['links'] = $this->document->getLinks();
+		$data['links'] =array();
 		$data['styles'] = $this->document->getStyles();
 		$data['scripts'] = $this->document->getScripts();
 		$data['lang'] = $this->language->get('code');
@@ -48,13 +49,20 @@ class ControllerCommonHeader extends Controller {
 
 		$data['text_home'] = $this->language->get('text_home');
 
+// print_r($this->customer);exit();
 		// Wishlist
 		if ($this->customer->isLogged()) {
 			$this->load->model('account/wishlist');
 
+			$data['account_email']=$this->customer->getFirstName()?$this->customer->getFirstName().' '.$this->customer->getFirstName():$this->customer->getEmail();
+			$data['account_vip']=$this->customer->getGroupName();
+			
+
 			$data['text_wishlist'] =  $this->model_account_wishlist->getTotalWishlist();
 		} else {
 			$data['text_wishlist'] =  (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0);
+			$data['account_email']='';
+			$data['account_vip']='';
 		}
 
 		$data['text_shopping_cart'] = $this->language->get('text_shopping_cart');
@@ -82,6 +90,7 @@ class ControllerCommonHeader extends Controller {
 		$data['transaction'] = $this->url->link('account/transaction', '', true);
 		$data['download'] = $this->url->link('account/download', '', true);
 		$data['logout'] = $this->url->link('account/logout', '', true);
+		$data['vip'] = $this->url->link('account/vip', '', true);
 		$data['shopping_cart'] = $this->url->link('checkout/cart');
 		$data['checkout'] = $this->url->link('checkout/checkout', '', true);
 		$data['contact'] = $this->url->link('information/contact');
@@ -107,6 +116,7 @@ class ControllerCommonHeader extends Controller {
 	
 //		$data['cart'] = $this->load->controller('common/cart'); //购物车
         $data['cart_product_quantity'] = $this->cart->countProducts(); //购物车商品总数量
+        // print_r($this->customer);exit();
 
 		// For page specific css
 		if (isset($this->request->get['route'])) {
@@ -132,7 +142,8 @@ class ControllerCommonHeader extends Controller {
 		$data['text_cart_items'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 		//dyl,end
 		// print_r($this->config);exit();
-	$data['whatappphone'] = $this->config->get('config_telephone'); //电话
+	// $data['whatappphone'] = $this->config->get('config_telephone'); //电话
+		$data['whatappphone'] = $this->config->get('config_whatsapp'); //电话
 		$data['email'] = $this->cart->customer->getEmail();
 		$data['link_account'] = $this->url->link('account/dashboard');
 		$data['link_logout'] = $this->url->link('account/logout');

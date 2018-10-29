@@ -45,54 +45,7 @@
 </section>
 
 <script type="text/javascript">
-//$('#enquiry').focus(function (){
-//    if ($(this).val() == 'Briefly explain what type of business you operate and what specific type of products you are interested in.'){
-//        $('#enquiry').val('').css("color","");
-//        }
-//    }).blur(function(){
-//        if($(this).val() == ''){
-//            $('#enquiry').val('Briefly explain what type of business you operate and what specific type of products you are interested in.').css("color","#aaaaaa");
-//        }
-//    });
-	
-//$('#submint_contact').click(function(){
-//    var form = $('#contact_usid');
-//    var enquiry = $('#enquiry');
-//    var email = $('#email-address');
-//    var business = $('#business');
-//    var phone = $('#phone');
-//    var contactname = $('#contactname');
-//    var inquiry_country_id = $('#inquiry_country_id').val();
-//    var verification_code = $('#antirobotreg').val();
-//    var message = '';
-//    if (!email.val() || email.val().search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) == - 1){
-//       message += 'Please make sure you entered an Email Address ' + "\n";
-//    }
-//    if (!contactname.val()){
-//        message += 'Please enter your Name ' + "\n";
-//    }
-////    if (!business.val()){
-////        message += 'Please enter your Business Name ' + "\n";
-////    }
-//    if (!phone.val() && phone.val().length < 5){
-//        message += 'Please enter your Phone Number ' + "\n";
-//    }
-//	if(!inquiry_country_id){
-//		message += 'Please select country ' + "\n";
-//	}
-//    if (enquiry.val().length < 4 && enquiry.val()!='Briefly explain what type of business you operate'){
-//        message += 'Please enter Type of Business ' + "\n";
-//    }
-//    if(!verification_code){
-//        message += 'Please enter Validation Code ' + "\n";
-//    }
-//    
-//    if (message.length == 0){
-//        form.submit();
-//    } else{
-//        alert('Notes:' + "\n"+message);
-//    }
-//});
+
 </script>
 
 <?php echo $footer; ?>

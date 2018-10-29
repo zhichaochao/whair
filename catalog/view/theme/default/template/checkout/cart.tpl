@@ -1,5 +1,10 @@
 <?php echo $header; ?>
 <!--内容-->
+<style>
+  @media only screen and (min-width: 1px) and (max-width: 920px) {
+    .cart_count{display: none;}
+  }
+</style>
 		<div class="shopcart2 clearfix">
 			<div class="content in_content shop2_content clearfix">
 				<div class="top clearfix">
@@ -75,9 +80,7 @@
 			
 								<div class="close" onclick="javascript:cart_remove('<?php echo $product['cart_id']; ?>');"></div>
 								<span class="wishlist <?=$product['wishlist']==1 ?'off':'';?>" 
-									<?php if($product['wishlist']==1) { ?>
-					              style='background: rgba(0, 0, 0, 0) url("/catalog/view/theme/default/img/png/shop_star_.png") no-repeat scroll left center / 0.83vw 0.83vw; color: rgb(213, 175, 116);';
-					              <?php }?>
+									
 								 onclick="wishlist('<?php echo $product['product_id']; ?>',this);cart_removes('<?php echo $product['cart_id']; ?>')">Move to Wishlist</span>
 							</li>
 							<?php } ?>
@@ -276,18 +279,18 @@ function cart_removes(product_key){
 			if(win>992){
 				if($(this).hasClass("off")){
 					$(this).removeClass("off");
-					$(this).css("background","url(/catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#666");
+					// $(this).css("background","url(/catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#666");
 				}else{
 					$(this).addClass("off");
-					$(this).css("background","url(/catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#d5af74");
+					// $(this).css("background","url(/catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.83vw 0.83vw").css("color","#d5af74");
 				}
 			}else{
 				if($(this).hasClass("off")){
 					$(this).removeClass("off");
-					$(this).css("background","url(/catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#666");
+					// $(this).css("background","url(/catalog/view/theme/default/img/png/shop_star.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#666");
 				}else{
 					$(this).addClass("off");
-					$(this).css("background","url(/catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#d5af74");
+					// $(this).css("background","url(/catalog/view/theme/default/img/png/shop_star_.png) no-repeat left center").css("background-size","0.16rem 0.16rem").css("color","#d5af74");
 				}
 			}
 			
@@ -296,17 +299,17 @@ function cart_removes(product_key){
 		//全选
 		$(".qx_label input").click(function(cart_id){
 			if($(this).prop("checked")){
-				$(this).siblings(".check_i").removeClass("active");
+					$(this).siblings(".check_i").removeClass("active");
 				$(".dx_label input").each(function(){
 					$(this).prop("checked","");
 					$(this).siblings(".check_i").removeClass("active");
-				})
+				})				
 			}else{
 				$(this).siblings(".check_i").addClass("active");
 				$(".dx_label input").each(function(){
 					$(this).prop("checked",true);
 					$(this).siblings(".check_i").addClass("active");
-				})	
+				})
 			}
 		})
 		//单选

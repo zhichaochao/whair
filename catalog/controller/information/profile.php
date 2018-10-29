@@ -41,13 +41,13 @@ class ControllerInformationProfile extends Controller {
 				}
 				$profile_know['childs']=$childs;
 				// print_r($profile_care['childs']);exit;
-				$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
 				$videos=$this->model_catalog_profile->getVideos(array('start'=>0,'limit'=>3));
 				//var_dump($videos);exit;
 			    if ($videos) {
 				
 						foreach ($videos as $key => $value) {
-							$videos[$key]['video']=$http_type . $_SERVER['HTTP_HOST'].'/image/video/hairclub/'. $value['video'];
+							//$videos[$key]['video']=HTTP_SERVERS. $value['video'];
+							$videos[$key]['video']=HTTPS_SERVERS.'/image/video/hairclub/'. $value['video'];
 							$videos[$key]['title']=$value['title'];
 							$videos[$key]['image']=$this->model_tool_image->resize($value['image'],380,215);
 						}
@@ -80,7 +80,6 @@ class ControllerInformationProfile extends Controller {
 				$this->document->setTitle($this->language->get('heading_titles'));
 				$this->load->model('catalog/profile');
 					$this->load->model('tool/image');
-			$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
 			  $url = '';
 			   if (isset($this->request->get['page'])) {
 				$page = $this->request->get['page'];
@@ -113,7 +112,8 @@ class ControllerInformationProfile extends Controller {
 				if ($videos) {
 				
 						foreach ($videos as $key => $value) {
-							$videos[$key]['video']=$http_type . $_SERVER['HTTP_HOST'].'/image/video/hairclub/'. $value['video'];
+							// $videos[$key]['video']=HTTP_SERVERS. $value['video'];
+							$videos[$key]['video']=HTTPS_SERVERS.'/image/video/hairclub/'. $value['video'];
 							$videos[$key]['title']=$value['title'];
 							$videos[$key]['image']=$this->model_tool_image->resize($value['image'],380,215);
 						}
@@ -157,7 +157,8 @@ class ControllerInformationProfile extends Controller {
 					$videos=$this->model_catalog_profile->getProfileVideos($profile_info['video_ids']);
 					// print_r($videos);exit();
 					foreach ($videos as $key => $value) {
-							$videos[$key]['video']=$http_type . $_SERVER['HTTP_HOST'].'/image/video/hairclub/'. $value['video'];
+							// $videos[$key]['video']=HTTP_SERVERS. $value['video'];
+							$videos[$key]['video']=HTTPS_SERVERS.'/image/video/hairclub/'. $value['video'];
 							$videos[$key]['title']=$value['title'];
 							$videos[$key]['image']=$this->model_tool_image->resize($value['image'],380,215);
 					}
@@ -165,8 +166,7 @@ class ControllerInformationProfile extends Controller {
 				}else{
 					$data['videos']=array();
 				}
-				
-				// print_r($data['videos']);exit;
+				//print_r($profile_info);exit;
 				$this->model_catalog_profile->updateProfileView($this->request->get['profile_id']);
 				$data['author']=$profile_info['author'];
 				$data['view']=$profile_info['view'];
@@ -246,7 +246,8 @@ class ControllerInformationProfile extends Controller {
 				if ($videos) {
 				
 						foreach ($videos as $key => $value) {
-							$videos[$key]['video']=$http_type . $_SERVER['HTTP_HOST'].'/image/video/hairclub/'. $value['video'];
+							// $videos[$key]['video']=$http_type . $_SERVER['HTTP_HOST'].'/image/video/hairclub/'. $value['video'];
+							$videos[$key]['video']=HTTPS_SERVERS.'/image/video/hairclub/'. $value['video'];
 							$videos[$key]['title']=$value['title'];
 							$videos[$key]['image']=$this->model_tool_image->resize($value['image'],380,215);
 						}

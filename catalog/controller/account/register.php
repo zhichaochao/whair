@@ -11,6 +11,10 @@ class ControllerAccountRegister extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
+		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
+		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
+		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
+
 		$this->load->model('account/customer');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
@@ -38,7 +42,22 @@ class ControllerAccountRegister extends Controller {
 			$this->response->redirect($this->url->link('account/success'));
 		}
 
-		
+		/*$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home')
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
+			'href' => $this->url->link('account/account', '', true)
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_register'),
+			'href' => $this->url->link('account/register', '', true)
+		);*/
 
 		$data['heading_title'] = $this->language->get('heading_title');
 

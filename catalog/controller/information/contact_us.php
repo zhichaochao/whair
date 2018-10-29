@@ -31,7 +31,79 @@ class ControllerInformationContactus extends Controller {
 		$this->session->data['email_message']['contact_send_page'] = isset($this->request->get['route']) ? $this->request->get['route'] : "";
 		
 		//form表单提交
-		
+		/*if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+
+            $this->load->model('setting/feedback');
+            $result = $this->model_setting_feedback->addFeedback($this->request->post);
+            if($result){
+               $this->session->data['success'] = 'We have received your message, thank you for your advice';
+
+               //发送邮件
+               $this->load->language('mail/customer');
+
+               //logo
+               if ($this->request->server['HTTPS']) {
+				   $server = $this->config->get('config_ssl');
+			   } else {
+				   $server = $this->config->get('config_url');
+			   }
+               if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
+			       $html_data['logo'] = $server . 'image/' . $this->config->get('config_logo');
+		       } else {
+			       $html_data['logo'] = '';
+		       }
+
+		       $this->load->model('localisation/country');
+		       $country_result = $this->model_localisation_country->getCountry($this->request->post['country_id']);
+
+               $html_data['from_name'] = trim($this->request->post['name']);
+               $html_data['email'] = trim($this->request->post['email']);
+               $html_data['tel_number'] = trim($this->request->post['fixed_line']);
+               $html_data['country_name'] = $country_result['name'];
+               $html_data['business_name'] = trim($this->request->post['name']);
+               $html_data['ip_address'] = $this->request->server['REMOTE_ADDR'];
+               $html_data['send_page'] = $QUERY_STRING[1];
+               $html_data['content'] = trim($this->request->post['enquiry']);
+
+               //$message  = $this->language->get('text_website') . ' ' . html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8') . "\n\n";
+		       //$message .= "";
+		       //$message .= 'Full Name: ' . $this->request->post['name'] . "\n\n";
+		       //$message .= $this->language->get('text_email') . ' '  .  $this->request->post['email'] . "\n\n";
+		       //$message .= 'enquiry Content: '  .  $this->request->post['enquiry'] . "\n\n";
+
+               $mail = new Mail();
+               $mail->protocol = $this->config->get('config_mail_protocol');
+               $mail->parameter = $this->config->get('config_mail_parameter');
+               $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+               $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+               $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+               $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+               $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+
+               $mail->setTo($this->config->get('config_email'));                     //发给系统管理员的邮箱(接收人邮箱)
+               $mail->setFrom($this->config->get('config_mail_smtp_username'));      //发送人
+               $mail->setSender(html_entity_decode(trim($this->request->post['name']), ENT_QUOTES, 'UTF-8'));    //发送者名字
+               //$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
+               $mail->setSubject('Hot Beauty Hair Contact Us enquiry');                                                //邮件标题
+               $mail->setHtml($this->load->view('mail/contact_us_email',$html_data));
+               //$mail->setText($message);
+               $mail->send();
+
+            }else{
+               $this->session->data['error'] = 'Submit your proposal to failure.';
+            }
+
+            //跳转回本页
+			$this->response->redirect($this->url->link($URL_STRING, '', true));
+		}*/
+
+		/*$data['text_store'] = $this->language->get('text_store');
+		$data['text_contact'] = $this->language->get('text_contact');
+		$data['text_address'] = $this->language->get('text_address');
+		$data['text_telephone'] = $this->language->get('text_telephone');
+		$data['text_fax'] = $this->language->get('text_fax');
+		$data['text_open'] = $this->language->get('text_open');
+		$data['text_comment'] = $this->language->get('text_comment');*/
 
 		$data['entry_name'] = 'Your Name';
 		$data['entry_email'] = 'E-Mail Address';
@@ -58,7 +130,20 @@ class ControllerInformationContactus extends Controller {
 		}
 
         //成功提示
-		
+		/*if (isset($this->session->data['success'])) {
+			$data['success'] = $this->session->data['success'];
+			unset($this->session->data['success']);
+		} else {
+			$data['success'] = '';
+		}
+
+        //失败提示
+		if (isset($this->session->data['error'])) {
+			$data['error_warning'] = $this->session->data['error'];
+			unset($this->session->data['error']);
+		} else {
+			$data['error_warning'] = '';
+		}*/
 
 		$data['button_submit'] = 'Submit';
 		//$data['action'] = $this->url->link($URL_STRING, '', true);
@@ -68,7 +153,47 @@ class ControllerInformationContactus extends Controller {
 		$this->load->model('localisation/country');
 		$data['countries'] = $this->model_localisation_country->getCountries();
 
-		
+		/*$this->load->model('tool/image');
+		if ($this->config->get('config_image')) {
+			$data['image'] = $this->model_tool_image->resize($this->config->get('config_image'), $this->config->get($this->config->get('config_theme') . '_image_location_width'), $this->config->get($this->config->get('config_theme') . '_image_location_height'));
+		} else {
+			$data['image'] = false;
+		}*/
+
+		/*$data['store'] = $this->config->get('config_name');
+		$data['address'] = nl2br($this->config->get('config_address'));
+		$data['geocode'] = $this->config->get('config_geocode');
+		$data['geocode_hl'] = $this->config->get('config_language');
+		$data['telephone'] = $this->config->get('config_telephone');
+		$data['fax'] = $this->config->get('config_fax');
+		$data['open'] = nl2br($this->config->get('config_open'));
+		$data['comment'] = $this->config->get('config_comment');*/
+
+		/*$data['locations'] = array();
+		$this->load->model('localisation/location');
+		foreach((array)$this->config->get('config_location') as $location_id) {
+			$location_info = $this->model_localisation_location->getLocation($location_id);
+
+			if ($location_info) {
+				if ($location_info['image']) {
+					$image = $this->model_tool_image->resize($location_info['image'], $this->config->get($this->config->get('config_theme') . '_image_location_width'), $this->config->get($this->config->get('config_theme') . '_image_location_height'));
+				} else {
+					$image = false;
+				}
+
+				$data['locations'][] = array(
+					'location_id' => $location_info['location_id'],
+					'name'        => $location_info['name'],
+					'address'     => nl2br($location_info['address']),
+					'geocode'     => $location_info['geocode'],
+					'telephone'   => $location_info['telephone'],
+					'fax'         => $location_info['fax'],
+					'image'       => $image,
+					'open'        => nl2br($location_info['open']),
+					'comment'     => $location_info['comment']
+				);
+			}
+		}*/
 
 		if (isset($this->request->post['name'])) {
 			$data['name'] = $this->request->post['name'];

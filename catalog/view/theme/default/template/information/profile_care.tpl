@@ -40,7 +40,7 @@
     </div>
 <?php echo $footer; ?>
 <script type="text/javascript">
-    $(function(){
+$(function(){
     $(".video_ul li img.bf").click(function(){
       $(this).siblings("video").attr("controls","controls");
       this.previousElementSibling.play();

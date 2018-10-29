@@ -16,7 +16,7 @@
                         <?php if($fast['link']){?>
                         <a href="<?=$fast['link'];?>">
                             <div class="pic clearfix">
-                                <!-- <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>" src="<?=$fast['image'];?>" /> -->
+                               
                                 <img class="changeimage" title="<?=$fast['title'];?>" alt="<?=$fast['title'];?>" data-image="<?=$fast['image'];?>" data-mimage="<?=$fast['mimage'];?>"  />
                             </div>
                             <div class="text">
@@ -40,8 +40,7 @@
                 </ul>
                 
                 <?php if(isset($homes[0])){ ?>   
-                <div class="top clearfix">
-                    
+                <div class="top clearfix">  
                     <div class="video_div">
                         <video id="video" class="video" poster="<?=$homes[0]['image'];?>" src="<?=$video;?>" ></video>
                         <div class="bg_div"></div>
@@ -165,7 +164,7 @@
                     <p>Customers share pictures and immediately buy the same</p>
                 </div>
                 
-                <!-- <ol class="ol_img6 clearfix">
+               <!--  <ol class="ol_img6 clearfix">
                       <?php foreach ($gallerys as $gallery) { ?>
                     <li>
                         <a href="<?=$gallery['url']?>">
@@ -176,6 +175,7 @@
                
                 
                 </ol> -->
+                
                 <div class="product_lb clearfix">
                     <div class="swiper-container" id="swiper2">
                       <div class="swiper-wrapper">
@@ -194,42 +194,16 @@
             </div>
             
         </div>
-        <?php if(!$choose){?>
-        <!--登录注册弹窗-->
-        <div class="modal img_modal">
-            <div class="text">
-                <div class="close"></div>
-                <h1>Please Choose Your Sales Rep's Name:</h1>
-                <div class="bot">
-                    <ul>
-                        <li><a href="http://a.hotbeautyhairmall.com">Melisha</a></li>
-                        <li><a href="http://b.hotbeautyhairmall.com">Amy</a></li>
-                        <li><a href="http://c.hotbeautyhairmall.com">Yuki</a></li>
-                        <li><a href="http://d.hotbeautyhairmall.com">Manon</a></li>
-                        <li><a href="http://e.hotbeautyhairmall.com">Kristen</a></li>
-                        <li><a href="http://f.hotbeautyhairmall.com">Emily</a></li>
-                        <li><a href="http://g.hotbeautyhairmall.com">Cathy</a></li>
-                        <li><a href="http://h.hotbeautyhairmall.com">Linda</a></li>
-                        <li><a href="http://i.hotbeautyhairmall.com">Twinkle</a></li>
-                        <li><a href="http://j.hotbeautyhairmall.com">Ashley</a></li>
-                        <li><a href="http://k.hotbeautyhairmall.com">Alex</a></li>
-                        <li><a href="http://l.hotbeautyhairmall.com">Edison</a></li>
-                        <li><a href="http://m.hotbeautyhairmall.com">Leia</a></li>
-                        <li><a href="<?php echo $choose_url;?>">I don't have</a></li>
-
-                  
-                    </ul>
-                </div>
-                
-                <!--<a class="login_a" href="###"></a>-->
-            </div>
-        </div>
-        <?php }?>
-        
+   
+      
 <?php echo $footer; ?>
 
 <script>
 
+// var login_time = setTimeout(gg_show,1000);
+//     function gg_show (){
+//         $(".img_modal").fadeIn();
+//     }
 var login_time = setTimeout(gg_show,1000);
     function gg_show (){
         $(".img_modal").fadeIn();
@@ -250,8 +224,8 @@ var login_time = setTimeout(gg_show,1000);
                 gg_show ();
             }
         })
-    
-    var li_w=6;
+ 
+ var li_w=6;
     var win_w = $(window).innerWidth();
     if(win_w>=1080){
         li_w=6;
@@ -269,6 +243,7 @@ var login_time = setTimeout(gg_show,1000);
             prevEl: '.swiper-button-prev',
           },
     })
+
 
 
     $(function(){

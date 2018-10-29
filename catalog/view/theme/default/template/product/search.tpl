@@ -2,12 +2,12 @@
   <!--内容-->
   <?php echo $column_left; ?>
     <div class="content in_content pro_content  search_div" id="content"><?php echo $content_top; ?>
-    <input type="hidden" name="allpage" value='<?=$allpage;?>' id='allpage'/>
+        <input type="hidden" name="allpage" value='<?=$allpage;?>' id='allpage'/>
       <input type="hidden" name="page" value='1' id='page'/>
       <input type="hidden" name="searchs" value='<?=$search;?>' id='searchs'/>
       <h1><?php echo $heading_title; ?></h1>
         <div class="form_sr clearfix">
-          <p class="p_sr"><?php echo $entry_search; ?></p>
+          <p class="p_sr"><?php echo $entry_search; ?>(<?=$total?> results) </p>
           <input type="text" name="search" value="<?php echo $search; ?>" placeholder="<?php echo $text_keyword; ?>" id="input-search" class="input_sr" />
            <select name="category_id" class="form-control">
             <option value="0"><?php echo $text_category; ?></option>
@@ -162,18 +162,18 @@ $('select[name=\'category_id\']').trigger('change');
       if(win>750){
         if($(this).hasClass("off")){
           $(this).removeClass("off");
-          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","1.87vw 1.87vw");
+          // $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","1.87vw 1.87vw");
         }else{
           $(this).addClass("off");
-          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","1.87vw 1.87vw");
+          // $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","1.87vw 1.87vw");
         }
       }else{
         if($(this).hasClass("off")){
           $(this).removeClass("off");
-          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","0.5rem 0.5rem");
+          // $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star.png) no-repeat").css("background-size","0.5rem 0.5rem");
         }else{
           $(this).addClass("off");
-          $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","0.5rem 0.5rem");
+          // $(this).css("background","url(/catalog/view/theme/default/img/png/pro_star_.png) no-repeat").css("background-size","0.5rem 0.5rem");
         }
       }
     })
@@ -248,7 +248,7 @@ $('select[name=\'category_id\']').trigger('change');
                                       result+= '<span class="price-single">'+data.products[i].price+'</span>';
                               }
                                     result+=   '</span>'
-                                      
+                                        
                                         +'<p>'+data.products[i].name
                                         +'</p>'
                                       +'</div>'

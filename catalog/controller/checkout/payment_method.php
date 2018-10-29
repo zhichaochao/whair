@@ -93,6 +93,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		} else {
 			$data['error_warning'] = '';
 		}
+		// print_r($this->session->data['payment_methods']);exit();
 
 		if (isset($this->session->data['payment_methods'])) {
 			$data['payment_methods'] = $this->session->data['payment_methods'];

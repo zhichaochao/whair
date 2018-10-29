@@ -174,6 +174,7 @@
                     
                     
                     <a href="<?php echo $customer['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                    <a onclick="confirm('删除/卸载操作无法撤消 ！确定要执行操作？') ? jump('<?php echo $customer['delete']; ?>'): false;" data-toggle="tooltip" title="删除" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
                 <?php } ?>
@@ -197,7 +198,9 @@
     a.active.zz{font-weight: bold;color:#333;}
   </style>
   <script type="text/javascript"><!--
-
+function jump(href) {
+ window.location.href=href;
+}
 $('#button-filter').on('click', function() {
 	url = 'index.php?route=customer/allcustomer&token=<?php echo $token; ?>&key=<?php echo $key; ?>';
 	

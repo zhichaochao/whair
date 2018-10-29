@@ -33,6 +33,10 @@ class ControllerExtensionPaymentTtBankTransfer extends Controller {
 		$data['entry_text'] = $this->language->get('entry_text');
 		$data['entry_value'] = $this->language->get('entry_value');
 		$data['entry_status'] = $this->language->get('entry_status');
+		$data['entry_is_poundage'] = $this->language->get('entry_is_poundage');
+		$data['entry_poundage'] = $this->language->get('entry_poundage');
+			$data['text_yes'] = $this->language->get('text_yes');
+		$data['text_no'] = $this->language->get('text_no');
 
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
@@ -100,6 +104,16 @@ class ControllerExtensionPaymentTtBankTransfer extends Controller {
 			$data['tt_bank_transfer_status'] = $this->request->post['tt_bank_transfer_status'];
 		} else {
 			$data['tt_bank_transfer_status'] = $this->config->get('tt_bank_transfer_status');
+		}
+		if (isset($this->request->post['pp_express_is_poundage'])) {
+			$data['tt_bank_transfer_is_poundage'] = $this->request->post['tt_bank_transfer_is_poundage'];
+		} else {
+			$data['tt_bank_transfer_is_poundage'] = $this->config->get('tt_bank_transfer_is_poundage');
+		}
+			if (isset($this->request->post['pp_express_poundage'])) {
+			$data['tt_bank_transfer_poundage'] = $this->request->post['tt_bank_transfer_poundage'];
+		} else {
+			$data['tt_bank_transfer_poundage'] = $this->config->get('tt_bank_transfer_poundage');
 		}
 
 		$data['header'] = $this->load->controller('common/header');

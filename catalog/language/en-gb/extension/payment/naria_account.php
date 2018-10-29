@@ -1,3 +1,3 @@
 <?php
 // Text
-$_['text_title'] = 'Naria Account';
+$_['text_title'] = 'Naira  Account';

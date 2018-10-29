@@ -133,6 +133,13 @@ $(function(){
 		$(".search .text_in").css("animation","myanimate2s .8s forwards");
 		$("li.search_li").removeClass("off");
 	})
+
+// 退出登录
+	$(".login_li,.lg_hover").hover(function(){
+		$(".lg_hover").show();
+	},function(){
+		$(".lg_hover").hide();
+	})
 	
 //	yd头部导航二级菜单	
 	$(".yd_nav .slide_img").click(function(){

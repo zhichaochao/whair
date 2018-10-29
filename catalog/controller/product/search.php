@@ -461,7 +461,7 @@ class ControllerProductSearch extends Controller {
 			$data['pagination'] = $pagination->render();
 
 			$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
-			$data['allpage']=ceil($product_total / $limit);
+			$data['allpage']=ceil($product_total / $limit);	
 			// http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
 			if ($page == 1) {
 			    $this->document->addLink($this->url->link('product/search', '', true), 'canonical');
@@ -515,6 +515,7 @@ class ControllerProductSearch extends Controller {
 		$data['sort'] = $sort;
 		$data['order'] = $order;
 		$data['limit'] = $limit;
+		$data['total'] = isset($product_total)?$product_total:0;
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -525,6 +526,7 @@ class ControllerProductSearch extends Controller {
 
 		$this->response->setOutput($this->load->view('product/search', $data));
 	}
+
 	public function loadpage() {
 		// print_r($this->request->get);exit();
 		$this->load->language('product/search');

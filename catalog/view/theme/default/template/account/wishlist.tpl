@@ -1,5 +1,6 @@
 <?php echo $header; ?>
 <!--内容-->
+<?php if ($products) { ?>
     <div class="content in_content shopcart">
       <div class="shop_content clearfix">
         <div class="top clearfix">
@@ -8,7 +9,7 @@
         </div>
 
   <div class="shop_text clearfix">
-          <ul class="shop_ul">
+          <ul class="shop_ul">           
             <?php foreach ($products as $product) { ?>
             <li >
               <a class="one_a"  href="<?php echo $product['href']; ?>">
@@ -40,6 +41,16 @@
 
       </div>
     </div>
+    <?php } else { ?>
+          <div class="content in_content shopcart_null">
+      <div class="shop_img"></div>
+      <p>
+        Your wish list is empty.<br />
+        Come and pick your favorite products ~
+      </p>
+      <a class="a_btn" href="<?php echo $goshopping?>">GO  SHOPPING&nbsp;&nbsp;></a>
+    </div>
+          <?php } ?>
 <script type="text/javascript">
 $(function(){
 $(".shop_ul .close").click(function(){
